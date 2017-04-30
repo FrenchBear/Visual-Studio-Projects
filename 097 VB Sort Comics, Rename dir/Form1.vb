@@ -1,0 +1,127 @@
+' Sort Comics
+' Manipulation d'expressions régilières et du filesystem
+' 2004-07-14    PV
+' 2006-10-01    PV  VS2005
+' 2012-02-25	PV  VS2010
+
+Imports System
+Imports System.IO
+Imports System.Text.RegularExpressions
+
+
+Public Class Form1
+    Inherits System.Windows.Forms.Form
+
+
+#Region " Code généré par le Concepteur Windows Form "
+
+    Public Sub New()
+        MyBase.New()
+
+        'Cet appel est requis par le Concepteur Windows Form.
+        InitializeComponent()
+
+        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+
+    End Sub
+
+    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+        If disposing Then
+            If Not (components Is Nothing) Then
+                components.Dispose()
+            End If
+        End If
+        MyBase.Dispose(disposing)
+    End Sub
+
+    'Requis par le Concepteur Windows Form
+    Private components As System.ComponentModel.IContainer
+
+    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Ne la modifiez pas en utilisant l'éditeur de code.
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.Button1 = New System.Windows.Forms.Button
+        Me.Button2 = New System.Windows.Forms.Button
+        Me.SuspendLayout()
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(24, 16)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(88, 23)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Move Comics"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(24, 56)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(88, 23)
+        Me.Button2.TabIndex = 1
+        Me.Button2.Text = "Rename dvpt"
+        '
+        'Form1
+        '
+        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
+        Me.Name = "Form1"
+        Me.Text = "Form1"
+        Me.ResumeLayout(False)
+
+    End Sub
+
+#End Region
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Const sPath As String = "F:\Documents\comics"
+
+        Dim diRoot As New DirectoryInfo(sPath)
+        Dim nbFic, nbMatch, nbMove, nbDir As Integer
+        Dim rePic As New Regex("^([a-z]+)[0-9]+\.(gif|jpg)$")
+        For Each fi As FileInfo In diRoot.GetFiles
+            nbFic += 1
+            Dim m As Match = rePic.Match(fi.Name)
+            If m.Success Then
+                nbMatch += 1
+
+                Dim sComics As String = m.Groups(1).ToString
+                Dim diSub As DirectoryInfo
+                Try
+                    diSub = diRoot.GetDirectories(sComics)(0)
+                Catch ex As Exception
+                    nbDir += 1
+                    diSub = diRoot.CreateSubdirectory(sComics)
+                End Try
+                fi.MoveTo(diSub.FullName & "\" & fi.Name)
+                nbMove += 1
+            End If
+        Next
+        MsgBox(nbFic & " fichiers traités" & vbCrLf & nbMatch & " images" & vbCrLf & nbMove & " déplacments" & vbCrLf & nbDir & " répertoires créés")
+    End Sub
+
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        Const sPath As String = "F:\Development\Visual Studio Projects\"
+
+        Dim diRoot As New DirectoryInfo(sPath)
+        Dim nbDir As Integer
+        Dim reDir As New Regex("^[0-9]{2} .*")
+        For Each sd As DirectoryInfo In diRoot.GetDirectories("*")
+            If reDir.IsMatch(sd.Name) Then
+                nbDir += 1
+                Try
+                    Directory.Move(sPath & sd.Name, sPath & "0" & sd.Name)
+                Catch ex As Exception
+
+                End Try
+                'Debug.WriteLine(String.Format("{0}: {1}", nbDir, sd.Name))
+            End If
+        Next
+        MsgBox(nbDir & " répertoires")
+    End Sub
+End Class

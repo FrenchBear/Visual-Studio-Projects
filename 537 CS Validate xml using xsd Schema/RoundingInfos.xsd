@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema version="1" id="RoundingInfos" elementFormDefault="unqualified"
+    targetNamespace="http://tempuri.org/RoundingInfos.xsd"
+    xmlns="http://tempuri.org/RoundingInfos.xsd"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Main element -->
+  <xsd:element name="RoundingConfigContainer">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="ConfigVersion" type="xsd:string" />
+        <xsd:element ref="WRoundingInfos"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+    <!-- One section = group of tests -->
+  <xsd:element name="WRoundingInfos">
+    <xsd:complexType>
+      <xsd:choice minOccurs="1" maxOccurs="unbounded">
+        <xsd:element ref="RoundingInfo"/>
+        <!--<xsd:any namespace="##other" processContents="lax" />-->
+      </xsd:choice>
+      <!--<xsd:anyAttribute namespace="##other" processContents="lax" />-->
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="RoundingInfo">
+    <xsd:complexType>
+      <xsd:attribute name="RoundingCode" type="xsd:string" use="required" />
+      <xsd:attribute name="RoundingName" type="xsd:string" use="required" />
+      <xsd:attribute name="Decimal" type="xsd:integer" use="required" />
+      <xsd:attribute name="Significant" type="xsd:integer" use="required" />
+      <xsd:attribute name="IsNotInUse" type="xsd:boolean" use="required" />
+      <xsd:attribute name="MethodOfRoundingKey" type="xsd:string" use="required" />
+      <xsd:attribute name="MethodOfRoundingCode" type="xsd:string" use="required" />
+      <xsd:attribute name="DecimalNumber" type="xsd:integer" use="required" />
+      <!--<xsd:anyAttribute namespace="##other" processContents="lax" />-->
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>

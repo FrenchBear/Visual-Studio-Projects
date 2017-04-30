@@ -1,0 +1,17 @@
+luxembourg
+berlin
+madrid
+londres
+lyon
+koenigsberg
+stockholm
+dublin
+rome
+poznan
+séville
+copenhague
+lisbonne
+amsterdam
+bruxelles
+athènes
+paris

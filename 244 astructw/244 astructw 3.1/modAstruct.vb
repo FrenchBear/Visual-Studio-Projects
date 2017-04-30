@@ -1,0 +1,384 @@
+' module astruct
+' Active code of astruct
+' 2006-10-03    FPVI    First .Net version (3.0), both interactive and command line
+' 2006-10-10    FPVI    Dropped interactive mode, added colExclusions, filtered SYS+HIDDEN, skip hard links
+' 2006-10-11    FPVI    3.1 with win32 functions to enumerate files and folders (twice faster than .Net functions)
+
+Imports System.IO
+Imports VB = Microsoft.VisualBasic
+Imports System.Runtime.InteropServices
+
+
+Module modAstruct
+    Dim nbFiles As Integer
+    Dim nbDirectories As Integer
+    Dim nbFilesCopied As Integer
+    Dim nbFilesDeleted As Integer
+    Dim colErrors As New Collection
+
+    Public bVerbose As Boolean
+    Public bDisableTimeCheck As Boolean     ' For interactive trace
+    Public bNoAction As Boolean
+    Public bFollowLinks As Boolean          ' Copy what is behind a reparse point (a junction/HTFS link)
+    Public colExclusions As New Collection  ' List of patterns to ignore
+
+    Public m_ListBox As ListBox
+
+    Const sNomficTTO As String = "$$--$$--.$-$"  ' Test TimeOffset
+
+
+#Region "Interface with Win32 enumeration functions"
+    Structure FILETIME
+        Dim dwLowDateTime As UInteger
+        Dim dwHighDateTime As UInteger
+    End Structure
+
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)> _
+Structure WIN32_FIND_DATAW
+        Dim dwFileAttributes As Integer
+        Dim ftCreationTime As FILETIME
+        Dim ftLastAccessTime As FILETIME
+        Dim ftLastWriteTime As FILETIME
+        Dim nFileSizeHigh As UInteger
+        Dim nFileSizeLow As UInteger
+        Dim dwReserved0 As Integer
+        Dim dwReserved1 As Integer
+        ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode  
+        <VBFixedString(520), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
+        ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode  
+        <VBFixedString(28), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
+    End Structure
+
+    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    Public Function FindFirstFileW(ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
+    End Function
+
+    <DllImport("kernel32.dll", EntryPoint:="FindNextFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    Public Function FindNextFileW(ByVal hFindFile As Integer, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
+    End Function
+
+    Declare Function FindClose Lib "kernel32" (ByVal hFindFile As Integer) As Integer
+#End Region
+
+    ' Can't create an empty FileInfo, so I have to use my own class...
+    Class MyFileInfo
+        Public Name As String
+        Public Attributes As FileAttributes
+        Public FileSize As ULong                 ' 64 bit
+        Public LastWriteTime As Long             ' 64 bit (not ULong since subtraction can generate a negative value)
+    End Class
+
+
+    Public Sub astruct(ByVal sSource As String, ByVal sDest As String)
+        If bNoAction Then Console.WriteLine(sHelpHeader() & " (noaction)")
+        Dim bProblem As Boolean = False
+        If Not bCheckFolder(sSource, "source") Then bProblem = True
+        If Not bCheckFolder(sDest, "destination") Then bProblem = True
+        If bProblem Then Exit Sub
+
+        If VB.Right(sSource, 1) <> "\" Then sSource &= "\"
+        If VB.Right(sDest, 1) <> "\" Then sDest &= "\"
+        If Not bDisableTimeCheck Then
+            If Not bTimeCheck(sSource, sDest) Then Exit Sub
+        End If
+
+        Dim t1 As DateTime = DateTime.Now
+        nbFiles = 0
+        nbDirectories = 0
+        nbFilesCopied = 0
+        nbFilesDeleted = 0
+        Trace("astructw " & sQuote(sSource) & " -> " & sQuote(sDest))
+        DoAstruct(sSource, sDest)
+        Dim t2 As DateTime = DateTime.Now
+        Dim ts As TimeSpan = t2 - t1
+        Trace("")
+        Trace(nbDirectories.ToString & " folder" & s(nbDirectories) & " analyzed, " & nbFiles.ToString & " file" & s(nbFiles) & " analyzed")
+        Trace(nbFilesCopied.ToString & " file" & s(nbFilesCopied) & " copied, " & nbFilesDeleted.ToString & " file" & s(nbFilesDeleted) & " deleted")
+        Trace(String.Format("Total time {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        If colErrors.Count > 0 Then
+            Trace("")
+            Trace(colErrors.Count.ToString & " error" & s(colErrors.Count) & ":")
+            For Each s As String In colErrors
+                Trace(s.Replace("|", " ==> "))
+            Next
+        End If
+    End Sub
+
+    Private Function bCheckFolder(ByVal sFolder As String, ByVal sPosition As String) As Boolean
+        Try
+            If My.Computer.FileSystem.DirectoryExists(sFolder) Then Return True
+            CLShowError("Can't find " & sPosition & " folder " & sQuote(sFolder))
+        Catch ex As Exception
+            Trace("Error accessing " & sPosition & " folder " & sQuote(sFolder))
+            Trace(ex.Message)
+        End Try
+        Return False
+    End Function
+
+    Sub Trace(ByVal sMsg As String)
+        If m_ListBox IsNot Nothing Then
+            With m_ListBox
+                For Each s As String In sMsg.Replace(vbLf, "").Split(vbCr)
+                    .Items.Add(s)
+                    .SelectedIndex = .Items.Count - 1
+                    .Refresh()
+                Next
+            End With
+        Else
+            Console.WriteLine(sMsg)
+        End If
+    End Sub
+
+    Function s(ByVal n As Integer) As String
+        If n > 1 Then
+            Return "s"
+        Else
+            Return vbNullString
+        End If
+    End Function
+
+
+    Function sQuote(ByVal s As String)
+        If s.Contains(" ") Then
+            Return Chr(34) & s & Chr(34)
+        Else
+            Return s
+        End If
+    End Function
+
+
+
+    Private Sub DoAstruct(ByVal sSource As String, ByVal sDest As String)
+        '        Dim dSource As DirectoryInfo = New DirectoryInfo(sSource)
+        '        Dim dDest As DirectoryInfo = New DirectoryInfo(sDest)
+
+        Dim colFilesSource As New Collection
+        Dim colFilesDest As New Collection
+        Dim colFoldersSource As New Collection
+        Dim colFoldersDest As New Collection
+
+        ' Enumerate source and destination
+        Enumerate(sSource, colFoldersSource, colFilesSource)
+        Enumerate(sDest, colFoldersDest, colFilesDest)
+
+
+        If bVerbose Then
+            Trace("-- Source folder " & sQuote(sSource) & ": " & colFilesSource.Count.ToString & " file" & s(colFilesSource.Count.ToString) & ", " & colFoldersSource.Count.ToString & " folder" & s(colFoldersSource.Count.ToString))
+        End If
+
+        Dim sCmd As String
+        ' 1. Copy all files that exist on source and do not exist on dest, or files that are different
+        For Each fiSource As MyFileInfo In colFilesSource
+            nbFiles += 1
+            If Not colFilesDest.Contains(fiSource.Name) Then
+                sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
+                If bVerbose Then Trace("-- Source file " & sQuote(sSource & fiSource.Name) & " does not exist in dest folder " & sQuote(sDest) & " --> Copy")
+                Trace(sCmd)
+                nbFilesCopied += 1
+                If Not bNoAction Then
+                    Try
+                        My.Computer.FileSystem.CopyFile(sSource & fiSource.Name, sDest & fiSource.Name)
+                    Catch ex As Exception
+                        Trace("*** Caused error: " & ex.Message)
+                        colErrors.Add(sCmd & "|" & ex.Message)
+                    End Try
+                End If
+            Else
+                ' File exist on dest.  Is it the same?
+                Dim fiDest As MyFileInfo = colFilesDest(fiSource.Name)
+                Dim bToCopy As Boolean = False
+                If fiSource.FileSize <> fiDest.FileSize Then
+                    If bVerbose Then
+                        Trace("-- Source size " & sQuote(sSource & fiSource.Name) & ": " & fiSource.FileSize.ToString)
+                        Trace("-- Dest size " & sQuote(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
+                    End If
+                    bToCopy = True
+                ElseIf Math.Abs((fiSource.LastWriteTime - fiDest.LastWriteTime) / 10000000) > 2 Then
+                    If bVerbose Then
+                        Trace("-- Source timestamp " & sQuote(sSource & fiSource.Name) & ": " & fiSource.LastWriteTime / 10000000)
+                        Trace("-- Dest timestamp " & sQuote(sDest & fiDest.Name) & ": " & fiDest.LastWriteTime / 10000000 & " --> Copy")
+                    End If
+                    bToCopy = True
+                End If
+                If bToCopy AndAlso Not bNoAction Then
+                    ' If dest exists and is readonly, remove attribute first
+                    If (fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
+                        sCmd = "attrib -h " & sQuote(sDest & fiDest.Name)
+                        Trace(sCmd)
+                        Try
+                            System.IO.File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not FileAttributes.ReadOnly)
+                        Catch ex As Exception
+                            Trace("*** Caused error: " & ex.Message)
+                            colErrors.Add(sCmd & "|" & ex.Message)
+                        End Try
+                    End If
+                    sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
+                    Trace(sCmd)
+                    nbFilesCopied += 1
+                    Try
+                        My.Computer.FileSystem.CopyFile(sSource & fiSource.Name, sDest & fiSource.Name, True)
+                    Catch ex As Exception
+                        Trace("*** Caused error: " & ex.Message)
+                        colErrors.Add(sCmd & "|" & ex.Message)
+                    End Try
+                End If
+            End If
+        Next
+
+        ' 2. Delete all files that exist on dest but do not exist on source
+        For Each fiDest As MyFileInfo In colFilesDest
+            If Not colFilesSource.Contains(fiDest.Name) Then
+                ' If dest exists and is readonly, remove attribute first
+                If (Not bNoAction) And (fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
+                    sCmd = "attrib -h " & sQuote(sDest & fiDest.Name)
+                    Trace(sCmd)
+                    Try
+                        System.IO.File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not FileAttributes.ReadOnly)
+                    Catch ex As Exception
+                        Trace("*** Caused error: " & ex.Message)
+                        colErrors.Add(sCmd & "|" & ex.Message)
+                    End Try
+                End If
+                sCmd = "del " & sQuote(sDest & fiDest.Name)
+                Trace(sCmd)
+                nbFilesDeleted += 1
+                If Not bNoAction Then
+                    Try
+                        My.Computer.FileSystem.DeleteFile(sDest & fiDest.Name)
+                    Catch ex As Exception
+                        Trace("*** Caused error: " & ex.Message)
+                        colErrors.Add(sCmd & "|" & ex.Message)
+                    End Try
+                End If
+            End If
+        Next
+
+        ' 3. Recursively process subdirectories, creating missing subdirectories
+        For Each sSubfolder As String In colFoldersSource
+            nbDirectories += 1
+            If Not colFoldersDest.Contains(sSubfolder) Then
+                sCmd = "mkdir " & sQuote(sDest & sSubfolder)
+                Trace(sCmd)
+                If Not bNoAction Then
+                    Try
+                        My.Computer.FileSystem.CreateDirectory(sDest & sSubfolder)
+                    Catch ex As Exception
+                        Trace("*** Caused error: " & ex.Message)
+                        colErrors.Add(sCmd & "|" & ex.Message)
+                        ' In this case, don't attempt to do recurse astruct
+                        Continue For
+                    End Try
+                End If
+            End If
+            DoAstruct(sSource & sSubfolder & "\", sDest & sSubfolder & "\")
+        Next
+
+        ' 4. Remove extra subdirectories on dest
+        For Each sSubfolder As String In colFoldersDest
+            If Not colFoldersSource.Contains(sSubfolder) Then
+                sCmd = "rd /s " & sQuote(sDest & sSubfolder)
+                Trace(sCmd)
+                If Not bNoAction Then
+                    Try
+                        My.Computer.FileSystem.DeleteDirectory(sDest & sSubfolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
+                    Catch ex As Exception
+                        Trace("*** Caused error: " & ex.Message)
+                        colErrors.Add(sCmd & "|" & ex.Message)
+                    End Try
+                End If
+            End If
+        Next
+    End Sub
+
+    Private Function bTimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
+        Dim sPathSource As String = sSource & sNomficTTO
+        Dim sPathDest As String = sDest & sNomficTTO
+
+        Dim bReturn As Boolean
+        Try
+
+            Try
+                My.Computer.FileSystem.WriteAllText(sPathSource, "", False)
+            Catch ex As Exception
+                Trace("Creation of test file <" & sPathSource & "> for time offset check failed: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
+                Return False
+            End Try
+
+            Dim fiSource As FileInfo = New System.IO.FileInfo(sPathSource)
+            My.Computer.FileSystem.CopyFile(sPathSource, sPathDest)
+            Dim fiDest As FileInfo = New System.IO.FileInfo(sPathDest)
+
+            Dim dt As TimeSpan = fiSource.LastWriteTimeUtc - fiDest.LastWriteTimeUtc
+            If Math.Abs(dt.TotalSeconds) <= 2 Then
+                bReturn = True
+            Else
+                Trace("*** Time offset check detected a difference between source and destination")
+                Trace("Time source: " & fiSource.LastWriteTimeUtc.ToLongTimeString)
+                Trace("Time dest:   " & fiDest.LastWriteTimeUtc.ToLongTimeString)
+                Trace("Use option /t to disable this check.")
+                bReturn = False
+            End If
+
+            My.Computer.FileSystem.DeleteFile(sPathSource)
+            My.Computer.FileSystem.DeleteFile(sPathDest)
+
+        Catch ex As Exception
+            Trace("Unexpected error in bTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
+            Return False
+
+        End Try
+
+        Return bReturn
+    End Function
+
+    ' Enumeration of files and folders using Win32 functions
+    Private Sub Enumerate(ByVal sPath As String, ByVal colFoldersSource As Collection, ByVal colFilesSource As Collection)
+        Dim hsearch As Long  ' handle to the file search
+        Dim findinfo As WIN32_FIND_DATAW
+        Dim success As Long  ' will be 1 if successive searches are successful, 0 if not
+        Dim retval As Long  ' generic return value
+
+        Dim s As String
+        If sPath.StartsWith("\\") Then
+            s = "\\?\UNC" & sPath.Substring(1) & "*"
+        Else
+            s = "\\?\" & sPath & "*"
+        End If
+#Disable Warning BC42108
+        hsearch = FindFirstFileW(s, findinfo)
+        If hsearch <> -1 Then  ' no files match the search string
+            Do
+                If findinfo.dwFileAttributes And FileAttributes.Directory Then
+                    ' Ignore SYSTEM+HIDDEN directories on source
+                    If (findinfo.dwFileAttributes And FileAttributes.Hidden) <> FileAttributes.Hidden OrElse (findinfo.dwFileAttributes And FileAttributes.System) <> FileAttributes.System Then
+                        If bFollowLinks Or (findinfo.dwFileAttributes And FileAttributes.ReparsePoint) <> FileAttributes.ReparsePoint Then
+                            ' Ignore special folders
+                            If findinfo.cFileName = "." Or findinfo.cFileName = ".." Then GoTo NextFile
+                            ' Ignore exclusions
+                            For Each sExcl As String In colExclusions
+                                If findinfo.cFileName Like sExcl Then GoTo NextFile
+                            Next
+                            colFoldersSource.Add(findinfo.cFileName, findinfo.cFileName)
+                        End If
+                    End If
+                Else
+                    Dim fi As MyFileInfo
+                    fi = New MyFileInfo
+                    fi.Name = findinfo.cFileName
+                    fi.Attributes = findinfo.dwFileAttributes
+                    fi.FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow
+                    fi.LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                    colFilesSource.Add(fi, fi.Name)
+                End If
+NextFile:
+                success = FindNextFileW(hsearch, findinfo)
+            Loop Until success = 0  ' keep looping until no more matching files are found
+
+            ' Close the file search handle
+            retval = FindClose(hsearch)
+        End If
+    End Sub
+
+End Module
+
+

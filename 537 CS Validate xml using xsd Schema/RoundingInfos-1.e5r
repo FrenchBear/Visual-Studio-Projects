@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RoundingConfigContainer xmlns="http://tempuri.org/RoundingInfos.xsd">
+  <ConfigVersionZ>RoundingConfig 1.0.0 Version of 2015-09-17</ConfigVersionZ>
+  <RoundingInfos>
+    <RoundingInfo RoundingCode="D0" RoundingName="0 Decimal" Decimal="0" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="0" />
+    <RoundingInfo RoundingCode="D1" RoundingName="1 Decimal" Decimal="1" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="1" />
+    <RoundingInfo RoundingCode="D2" RoundingName="2 Decimal" Decimal="2" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="2" />
+    <RoundingInfo RoundingCode="D3" RoundingName="3 Decimal" Decimal="3" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="3" />
+    <RoundingInfo RoundingCode="D4" RoundingName="4 Decimal" Decimal="4" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="4" />
+    <RoundingInfo RoundingCode="D5" RoundingName="5 Decimal" Decimal="5" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="5" />
+    <RoundingInfo RoundingCode="D6" RoundingName="6 Decimal" Decimal="6" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="6" />
+    <RoundingInfo RoundingCode="D7" RoundingName="7 Decimal" Decimal="7" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="7" />
+    <RoundingInfo RoundingCode="D8" RoundingName="8 Decimal" Decimal="8" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 1)" methodOfRoundingCode="1" DecimalNumber="8" />
+    <RoundingInfo RoundingCode="N" RoundingName="No rounding" Decimal="-1" Significant="-1" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="0" />
+    <RoundingInfo RoundingCode="S1" RoundingName="1 Significant" Decimal="-1" Significant="1" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="1" />
+    <RoundingInfo RoundingCode="S2" RoundingName="2 Significant" Decimal="-1" Significant="2" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="2" />
+    <RoundingInfo RoundingCode="S3" RoundingName="3 Significant" Decimal="-1" Significant="3" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="3" />
+    <RoundingInfo RoundingCode="S4" RoundingName="4 Significant" Decimal="-1" Significant="4" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="4" />
+    <RoundingInfo RoundingCode="S5" RoundingName="5 Significant" Decimal="-1" Significant="5" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="5" />
+    <RoundingInfo RoundingCode="S6" RoundingName="6 Significant" Decimal="-1" Significant="6" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="6" />
+    <RoundingInfo RoundingCode="S7" RoundingName="7 Significant" Decimal="-1" Significant="7" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="7" />
+    <RoundingInfo RoundingCode="S8" RoundingName="8 Significant" Decimal="-1" Significant="8" isNotInUse="false" methodOfRoundingKey="(2, 2)" methodOfRoundingCode="2" DecimalNumber="8" />
+    <RoundingInfo RoundingCode="D1S4" RoundingName="1 Dec 4 Sig" Decimal="1" Significant="4" isNotInUse="false" methodOfRoundingKey="(134, 1)" methodOfRoundingCode="A" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D2S3" RoundingName="2 Dec 3 Sig" Decimal="2" Significant="3" isNotInUse="false" methodOfRoundingKey="(1018, 1)" methodOfRoundingCode="A" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D2S4" RoundingName="2 Dec 4 Sig" Decimal="2" Significant="4" isNotInUse="false" methodOfRoundingKey="(134, 2)" methodOfRoundingCode="B" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D3S4" RoundingName="3 Dec 4 Sig" Decimal="3" Significant="4" isNotInUse="false" methodOfRoundingKey="(134, 3)" methodOfRoundingCode="C" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D4S4" RoundingName="4 Dec 4 Sig" Decimal="4" Significant="4" isNotInUse="false" methodOfRoundingKey="(134, 4)" methodOfRoundingCode="D" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D1S3" RoundingName="1 Dec 3 Sig" Decimal="1" Significant="3" isNotInUse="false" methodOfRoundingKey="(134, 5)" methodOfRoundingCode="E" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D2S3" RoundingName="2 Dec 3 Sig" Decimal="2" Significant="3" isNotInUse="false" methodOfRoundingKey="(134, 6)" methodOfRoundingCode="F" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D3S3" RoundingName="3 Dec 3 Sig" Decimal="3" Significant="3" isNotInUse="false" methodOfRoundingKey="(134, 7)" methodOfRoundingCode="G" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D1S2" RoundingName="1 Dec 2 Sig" Decimal="1" Significant="2" isNotInUse="false" methodOfRoundingKey="(134, 8)" methodOfRoundingCode="H" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D2S2" RoundingName="2 Dec 2 Sig" Decimal="2" Significant="2" isNotInUse="false" methodOfRoundingKey="(134, 9)" methodOfRoundingCode="I" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D3S2" RoundingName="3 Dec 2 Sig" Decimal="3" Significant="2" isNotInUse="false" methodOfRoundingKey="(312, 1)" methodOfRoundingCode="J" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D4S2" RoundingName="4 Dec 2 Sig" Decimal="4" Significant="2" isNotInUse="false" methodOfRoundingKey="(312, 2)" methodOfRoundingCode="K" DecimalNumber="-1" />
+    <RoundingInfo RoundingCode="D4S3" RoundingName="4 Dec 3 Sig" Decimal="4" Significant="3" isNotInUse="false" methodOfRoundingKey="(312, 3)" methodOfRoundingCode="L" DecimalNumber="-1" />
+  </RoundingInfos>
+</RoundingConfigContainer>

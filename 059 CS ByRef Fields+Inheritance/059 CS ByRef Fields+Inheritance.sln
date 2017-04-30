@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "059 CS ByRef Fields+Inheritance", "059 CS ByRef Fields+Inheritance.csproj", "{6E06CF64-C5B7-4EDF-829B-29FACA7EB636}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E06CF64-C5B7-4EDF-829B-29FACA7EB636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E06CF64-C5B7-4EDF-829B-29FACA7EB636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E06CF64-C5B7-4EDF-829B-29FACA7EB636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E06CF64-C5B7-4EDF-829B-29FACA7EB636}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

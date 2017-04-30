@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "324 CS WPF Controls Gallery Sample", "324 CS WPF Controls Gallery Sample.csproj", "{146128B5-4CE0-456F-B391-15B79C6F3419}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{146128B5-4CE0-456F-B391-15B79C6F3419}.Debug|x86.ActiveCfg = Debug|x86
+		{146128B5-4CE0-456F-B391-15B79C6F3419}.Debug|x86.Build.0 = Debug|x86
+		{146128B5-4CE0-456F-B391-15B79C6F3419}.Release|x86.ActiveCfg = Release|x86
+		{146128B5-4CE0-456F-B391-15B79C6F3419}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

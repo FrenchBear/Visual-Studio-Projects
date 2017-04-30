@@ -1,0 +1,27 @@
+REM * DevPartner Code Review Batch Configuration File *
+
+[SOLUTION]
+SOLUTION=C:\Documents Kafi\Visual Studio 2005\Projects\ConsoleApplication2\ConsoleApplication2.sln
+RULESET=All Rules
+UNCALLED=1
+METRICS=1
+NAMING=1
+UseVSNETNaming=1
+AnalyzeNamespaces=1
+AnalyzeClasses=1
+AnalyzeInterfaces=1
+AnalyzeDelegates=1
+AnalyzeEvents=1
+AnalyzeEnums=1
+AnalyzeStructs=1
+AnalyzeParameters=1
+AnalyzeMethods=1
+AnalyzeVars=1
+AnalyzePublicsOnly=1
+UseCamelOnLocals=1
+Dictionary=0
+REGARDLESS=0
+EXCLUDEBUILDRULES=0
+CodeReviewVersion=8.0 Build (651)
+SESSIONFILE=C:\Documents Kafi\Visual Studio 2005\Projects\ConsoleApplication2\ConsoleApplication2.DPMDB
+SUMMARYFILE=C:\Documents Kafi\Visual Studio 2005\Projects\ConsoleApplication2\CR_ConsoleApplication2.HTM

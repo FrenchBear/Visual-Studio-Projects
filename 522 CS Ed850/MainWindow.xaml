@@ -1,0 +1,162 @@
+﻿<Window x:Class="Ed850.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Ed850"
+        FocusManager.FocusedElement="{Binding ElementName=MyTextBox}"
+        Title="{Binding WindowCaption, FallbackValue=ED850}" Height="350" Width="525" Icon="Resources/Ed850.ico">
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="NewExecuted"/>
+        <CommandBinding Command="Open" Executed="OpenExecuted"/>
+        <CommandBinding Command="Close" CanExecute="CloseCanExecute" Executed="CloseExecuted"/>
+        <CommandBinding Command="Save" Executed="SaveExecuted"/>
+        <CommandBinding Command="SaveAs" Executed="SaveAsExecuted"/>
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Command="New" Key="N" Modifiers="Control" />
+        <KeyBinding Command="Open" Key="O" Modifiers="Control" />
+        <KeyBinding Command="Save" Key="S" Modifiers="Control" />
+        <KeyBinding Command="local:MainWindow.About" Key="F1" />
+    </Window.InputBindings>
+
+    <Window.Resources>
+        <!-- Gray out toolbar elements when disabled (why is it not automatic ??) -->
+        <Style TargetType="{x:Type Image}" x:Key="toolbarImageStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}, AncestorLevel=1}, Path=IsEnabled}" Value="False">
+                    <Setter Property="Opacity" Value="0.35"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type TextBlock}" x:Key="toolbarTextBlockStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}, AncestorLevel=1}, Path=IsEnabled}" Value="False">
+                    <Setter Property="Opacity" Value="0.35"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type Button}" x:Key="toolbarButtonStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled}" Value="False">
+                    <Setter Property="Opacity" Value="0.35"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Padding="3" >
+            <MenuItem Name="FileMenu" Header="_Fichier">
+
+                <MenuItem Command="New" Header="_Nouveau" >
+                    <MenuItem.Icon>
+                        <Image Source="Icons/new.ico" Stretch="None" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="Open" Header="_Ouvrir..." >
+                    <MenuItem.Icon>
+                        <Image Source="Icons/open.ico" Stretch="None" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="Save" Header="_Enregistrer">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/save.ico" Stretch="None" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="SaveAs" Header="Enregistrer _sous..." />
+
+                <Separator/>
+                <MenuItem Name="CloseCommand" Command="Close" InputGestureText="Alt+F4" Header="_Quitter">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/close.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Name="EditMenu" Header="_Edition">
+                <MenuItem Command="Undo" Header="_Annuler">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/undo.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="Redo" Header="_Refaire">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/redo.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Name="CutCommand" Command="Cut" Header="_Couper" >
+                    <MenuItem.Icon>
+                        <Image Source="Icons/cut.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="CopyCommand" Command="Copy" Header="Co_pier">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/copy.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Name="PasteCommand" Command="Paste" Header="C_oller">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/paste.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Command="EditingCommands.Delete" Header="_Supprimer" InputGestureText="Suppr" />
+                <Separator/>
+                <MenuItem Command="SelectAll" Header="Sélectionner _tout">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/selectall.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <MenuItem Name="HelpMenu" Header="_?" >
+                <MenuItem Name="AboutCommand" Command="local:MainWindow.About" Header="À _propos de ED850...">
+                    <MenuItem.Icon>
+                        <Image Source="Icons/about.ico" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar DockPanel.Dock="Top" Margin="0,-1,0,1" ToolBarTray.IsLocked="True">
+            <Button Command="New" ToolTip="Crée un nouveau document">
+                <Image Source="Icons/new.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+            <Button Command="Open" ToolTip="Ouvre un fichier existant">
+                <Image Source="Icons/open.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+            <Button Name="SaveTBButton" Command="Save" ToolTip="Enregistre le fichier courant">
+                <Image Source="Icons/save.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+            <Separator/>
+            <Button Command="Undo" ToolTip="Annule la dernière modification">
+                <Image Source="Icons/undo.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+            <Button Command="Redo" ToolTip="Re-exécute la dernière modification annulée">
+                <Image Source="Icons/redo.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+
+            <Separator/>
+
+            <Button Name="CutTBButton" Command="Cut" ToolTip="Couper">
+                <Image Source="Icons/cut.png" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+            <Button Name="CopyTBButton" Command="Copy" ToolTip="Copier">
+                <Image Source="Icons/copy.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+            <Button Name="PasteTBButton" Command="Paste" ToolTip="Coller">
+                <Image Source="Icons/paste.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+            <Button Command="SelectAll" ToolTip="Sélectionner tout">
+                <Image Source="Icons/selectall.ico" Stretch="None" Style="{StaticResource toolbarImageStyle}"/>
+            </Button>
+
+        </ToolBar>
+
+        <TextBox Margin="6" Name="MyTextBox" FontFamily="Consolas, Lucida Console, Courier New" TextChanged="AnyTextBox_TextChanged" FontSize="13"
+                 AcceptsReturn="True" AcceptsTab="True"/>
+
+    </DockPanel>
+</Window>
