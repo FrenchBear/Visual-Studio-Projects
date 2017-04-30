@@ -81,12 +81,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\611 CS NewLaby\611 CS NewLaby.csproj">
-      <Project>{5D1334B2-E3FA-46C9-A98A-491FF64917B5}</Project>
-      <Name>611 CS NewLaby</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
