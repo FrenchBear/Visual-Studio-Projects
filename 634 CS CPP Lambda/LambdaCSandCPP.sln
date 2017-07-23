@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LambdaCPP", "LambdaCPP\LambdaCPP.vcxproj", "{92F00049-2670-471E-A5FA-FB342E11F03D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "634 CPP LambdaCPP", "LambdaCPP\LambdaCPP.vcxproj", "{92F00049-2670-471E-A5FA-FB342E11F03D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LamdaCS", "LamdaCS\LamdaCS.csproj", "{1B85BB0A-5133-471E-8786-5E53B995BB87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "634 CS LambdaCS", "LamdaCS\634 CS LambdaCS.csproj", "{1B85BB0A-5133-471E-8786-5E53B995BB87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
