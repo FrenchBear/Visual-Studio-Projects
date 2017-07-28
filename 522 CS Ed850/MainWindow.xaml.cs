@@ -49,13 +49,15 @@ namespace Ed850
             if (!z) return;
 
             // Configure open file dialog box
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = ""; // Default file name
-            dlg.DefaultExt = ".bat"; // Default file extension
-            dlg.Filter = "Commandes (.bat,*.cmd)|*.bat;*.cmd|Tous les fichiers (*.*)|*.*";
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+            {
+                FileName = "", // Default file name
+                DefaultExt = ".bat", // Default file extension
+                Filter = "Commandes (.bat,*.cmd)|*.bat;*.cmd|Tous les fichiers (*.*)|*.*"
+            };
 
             // Show open file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
+            bool? result = dlg.ShowDialog();
 
             // Process open file dialog box results 
             if (result == true)
@@ -123,13 +125,15 @@ namespace Ed850
         private void SaveAsExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             // Configure save file dialog box
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-            dlg.FileName = ""; // Default file name
-            dlg.DefaultExt = ".bat"; // Default file extension
-            dlg.Filter = "Commandes (.bat,*.cmd)|*.bat;*.cmd|Tous les fichiers (*.*)|*.*";  // Filter files by extension 
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
+            {
+                FileName = "", // Default file name
+                DefaultExt = ".bat", // Default file extension
+                Filter = "Commandes (.bat,*.cmd)|*.bat;*.cmd|Tous les fichiers (*.*)|*.*"  // Filter files by extension 
+            };
 
             // Show save file dialog box
-            Nullable<bool> result = dlg.ShowDialog();
+            bool? result = dlg.ShowDialog();
 
             // Process save file dialog box results 
             if (result == true)
@@ -169,11 +173,10 @@ namespace Ed850
 
         private void NotifyPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private string _FileName = null;
+        private string _FileName;
         public string FileName
         {
             get { return _FileName; }

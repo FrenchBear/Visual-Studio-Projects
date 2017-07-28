@@ -17,10 +17,10 @@ namespace Ed850
             InitializeComponent();
 
             Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-            AssemblyTitleAttribute aTitleAttr = (AssemblyTitleAttribute)AssemblyTitleAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyTitleAttribute));
-            AssemblyDescriptionAttribute aDescAttr = (AssemblyDescriptionAttribute)AssemblyDescriptionAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyDescriptionAttribute));
+            AssemblyTitleAttribute aTitleAttr = (AssemblyTitleAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyTitleAttribute));
+            AssemblyDescriptionAttribute aDescAttr = (AssemblyDescriptionAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyDescriptionAttribute));
             string sAssemblyVersion = myAssembly.GetName().Version.ToString();
-            AssemblyCopyrightAttribute aCopyrightAttr = (AssemblyCopyrightAttribute)AssemblyTitleAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyCopyrightAttribute));
+            AssemblyCopyrightAttribute aCopyrightAttr = (AssemblyCopyrightAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyCopyrightAttribute));
 
             AssemblyTitle.Text = aTitleAttr.Title;
             AssemblyDescription.Text = aDescAttr.Description;
