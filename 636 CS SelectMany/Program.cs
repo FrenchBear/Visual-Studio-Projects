@@ -40,6 +40,7 @@ namespace ConsoleApp1
                 Console.WriteLine(item);
             Console.WriteLine();
 
+            // Framework version
             var l4 = odds.SelectMany(
                 o => evens,
                 (o, e) => (o, e));
@@ -47,8 +48,10 @@ namespace ConsoleApp1
                 Console.WriteLine(item);
             Console.WriteLine();
 
-            var l5 = odds.SelectMany(
-                o => evens.Select(e => (o,e)));
+            // My version
+            var l5 = odds.MySelectMany(
+                o => evens,
+                (o, e) => (o, e));
             foreach (var item in l5)
                 Console.WriteLine(item);
             Console.WriteLine();
@@ -57,6 +60,20 @@ namespace ConsoleApp1
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
+        }
+    }
+
+    public static class Extensionmethods
+    {
+        // A manual implementation of SelectMany
+        public static IEnumerable<TOutput> MySelectMany<T1, T2, TOutput>(
+            this IEnumerable<T1> src,
+            Func<T1, IEnumerable<T2>> inputSelector,
+            Func<T1, T2, TOutput> resultSelector)
+        {
+            foreach (T1 first in src)
+                foreach (T2 second in inputSelector(first))
+                    yield return resultSelector(first, second);
         }
     }
 }
