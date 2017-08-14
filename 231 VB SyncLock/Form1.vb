@@ -3,7 +3,7 @@
 
 Option Compare Text
 
-Public Class Form1
+Public Class frmVB231
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Dim country As New Country
         With country
