@@ -30,7 +30,7 @@
     <MyType>WindowsFormsWithCustomSubMain</MyType>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <ProjectGuid>{42A2CACE-79DD-49CB-A8FB-C25EC17396E1}</ProjectGuid>
     <PublishUrl>publish\</PublishUrl>

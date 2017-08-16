@@ -11,7 +11,7 @@
     <RootNamespace>ConsoleApplication1</RootNamespace>
     <AssemblyName>Custom Attribute</AssemblyName>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

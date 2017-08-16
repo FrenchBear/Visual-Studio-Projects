@@ -7,13 +7,12 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FC4D9FCF-675D-4249-ACC7-9FC5D180AAAD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>My.MyApplication</StartupObject>
-    <RootNamespace>
-    </RootNamespace>
-    <AssemblyName>Assembly Name</AssemblyName>
+    <StartupObject>VB202.My.MyApplication</StartupObject>
+    <RootNamespace>VB202</RootNamespace>
+    <AssemblyName>VB202</AssemblyName>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>System iTools.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -44,7 +43,7 @@
     <DefineTrace>true</DefineTrace>
     <IncrementalBuild>true</IncrementalBuild>
     <OutputPath>bin\</OutputPath>
-    <DocumentationFile>Assembly Name.xml</DocumentationFile>
+    <DocumentationFile>VB202.xml</DocumentationFile>
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
@@ -69,7 +68,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DocumentationFile>Assembly Name.xml</DocumentationFile>
+    <DocumentationFile>VB202.xml</DocumentationFile>
     <NoWarn>42016,42017,42018,42019,42032,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>

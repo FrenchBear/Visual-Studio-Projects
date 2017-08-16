@@ -31,7 +31,7 @@
     <MyType>Console</MyType>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <ProjectGuid>{529C3953-36CF-4E04-BBA0-5ACEB6A4DEBE}</ProjectGuid>
     <PublishUrl>publish\</PublishUrl>

@@ -12,7 +12,7 @@
     <RootNamespace>DotNetDll</RootNamespace>
     <AssemblyName>DotNetDll</AssemblyName>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

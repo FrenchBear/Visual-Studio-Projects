@@ -11,7 +11,7 @@
     <RootNamespace>XML_Serialize_Tests_1</RootNamespace>
     <AssemblyName>XML Serialize Tests 1</AssemblyName>
     <MyType>Console</MyType>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

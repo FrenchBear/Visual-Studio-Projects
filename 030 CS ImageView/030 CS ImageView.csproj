@@ -50,7 +50,7 @@
     </UpgradeBackupLocation>
     <ProjectGuid>{39B06BE2-E5D2-4941-874A-32465E6B50BD}</ProjectGuid>
     <RootNamespace>ImageView</RootNamespace>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <ApplicationRevision>0</ApplicationRevision>
     <TargetFrameworkProfile />

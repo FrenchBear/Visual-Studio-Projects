@@ -11,7 +11,7 @@
     <RootNamespace>VB203</RootNamespace>
     <AssemblyName>VB203</AssemblyName>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

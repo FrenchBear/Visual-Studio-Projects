@@ -193,16 +193,16 @@ namespace CS601
             // Type pattern: no promotion, no conversion...
             int? i1 = 100, i2 = null;
             if (i1 is int i) WriteLine($"i1 is int {i}");
-            if (i1 is short h) WriteLine($"i1 is short {h}");
+            //if (i1 is short h) WriteLine($"i1 is short {h}");
             if (i2 is int ibis) WriteLine($"i2 is int {ibis}");
 
             short? h1 = 1024;
-            if (h1 is int half) WriteLine($"h1 is int {half}");
+            //if (h1 is int half) WriteLine($"h1 is int {half}");
 
             float? f1 = 3.1416e10F;
             if (f1 is float f) WriteLine($"f1 is float {f}");
-            if (f1 is double d1) WriteLine($"f1 is double {d1}");
-            if (f1 is decimal d2) WriteLine($"f1 is decimal {d2}");
+            //if (f1 is double d1) WriteLine($"f1 is double {d1}");
+            //if (f1 is decimal d2) WriteLine($"f1 is decimal {d2}");
 
             // Constant pattern (match if expression==constant is true)
             if (i1 is 100) WriteLine($"i1 is 100");
