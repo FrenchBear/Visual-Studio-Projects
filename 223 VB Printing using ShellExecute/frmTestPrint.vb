@@ -15,7 +15,7 @@ Public Class frmTestPrint
         Dim myProcess As New Process()
 
         Try
-            myProcess.StartInfo.FileName = "C:\Documents\Calculators\TI\TI-Nspire\nextprime.txt"
+            myProcess.StartInfo.FileName = "C:\Users\Pierre\GoogleDrive\Calculators\TI\TI-Nspire\nextprime.txt"
             myProcess.StartInfo.Verb = "Print"
             myProcess.StartInfo.CreateNoWindow = True
             myProcess.Start()
