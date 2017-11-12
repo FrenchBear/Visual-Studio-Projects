@@ -6,27 +6,25 @@
 // Note: Try Parallel.Invoke(action, action, action)
 
 using System;
-using System.Collections.Generic;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using static System.Console;
 using static System.Threading.Interlocked;
 
 namespace CS540
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             TestAction("Synchro avec Monitor.Enter/.Exit",
                 () =>
                 {
                     var hs = new Queue<int>();
-                    Enumerable.Range(0, 1000000).AsParallel().ForAll(
+                    Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                         (int i) =>
                         {
                             Monitor.Enter(hs);
@@ -42,7 +40,7 @@ namespace CS540
                 () =>
                 {
                     var hs = new Queue<int>();
-                    Enumerable.Range(0, 1000000).AsParallel().ForAll(
+                    Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                         (int i) =>
                         {
                             lock (hs)
@@ -60,11 +58,11 @@ namespace CS540
                 {
                     var hs = new Queue<int>();
                     var sl = new SpinLock();
-                    Enumerable.Range(0, 1000000).AsParallel().ForAll(
+                    Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                         (int i) =>
                         {
                             bool gotLock = false;
-                            sl.Enter(ref gotLock);
+                            sl.Enter(ref gotLock);      // Enter blocks access if not available
                             hs.Enqueue(i);
                             sl.Exit();
                         });
@@ -77,15 +75,14 @@ namespace CS540
                 () =>
                 {
                     var hs = new ConcurrentQueue<int>();
-                    Enumerable.Range(0, 1000000).AsParallel().ForAll(
+                    Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                         (int i) =>
                         {
                             hs.Enqueue(i);
                         });
                     for (int i = 0; i < 30; i++)
                     {
-                        int n;
-                        hs.TryDequeue(out n);   // Will always succeed, single-threaded here
+                        hs.TryDequeue(out int n);   // Will always succeed, single-threaded here
                         Write($"{n} ");
                     }
                     WriteLine();
@@ -96,7 +93,7 @@ namespace CS540
                 {
                     var lockObject = new Object();
                     int sum = 0;
-                    Enumerable.Range(0, 1000000).AsParallel().ForAll(
+                    Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                         (int i) =>
                         {
                             lock (lockObject)
@@ -110,19 +107,19 @@ namespace CS540
                 () =>
                 {
                     int sum = 0;
-                    Enumerable.Range(0, 1000000).AsParallel().ForAll(
+                    Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                         (int i) =>
                         {
                             Increment(ref sum);
                         });
                 });
 
-            TestAction("100K ++ with Mutex",
+            TestAction("1M ++ with Mutex",
                 () =>
                 {
                     int sum = 0;
                     var m = new Mutex();
-                    Enumerable.Range(0, 100000).AsParallel().ForAll(
+                    Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                         (int i) =>
                         {
                             m.WaitOne();
@@ -137,7 +134,7 @@ namespace CS540
             Console.ReadLine();
         }
 
-        static void TestAction(string message, Action action)
+        private static void TestAction(string message, Action action)
         {
             WriteLine(message);
             var ti = Stopwatch.StartNew();
