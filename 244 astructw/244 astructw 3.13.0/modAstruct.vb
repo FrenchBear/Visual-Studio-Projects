@@ -573,6 +573,10 @@ Label1:
                                 ' register for copy
                                 colFoldersSource.Add(findinfo.cFileName, findinfo.cFileName)
                             End If
+                        ElseIf colFoldersSource.Contains(findinfo.cFileName) Then
+                            Dim sErr As String = "Source folder " + Quote(sPath) + " contains folders that only differs by case: " + Quote(colFoldersSource(findinfo.cFileName)) + " and " + Quote(findinfo.cFileName) + ", only one gets copied."
+                            Trace("*** " + sErr)
+                            AddError(sErr)
                         Else
                             ' Normal folder, register for copy
                             colFoldersSource.Add(findinfo.cFileName, findinfo.cFileName)
@@ -588,7 +592,6 @@ Label1:
                         Dim sErr As String = "Source folder " + Quote(sPath) + " contains files that only differs by case: " + Quote(colFilesSource(findinfo.cFileName).Name) + " and " + Quote(findinfo.cFileName) + ", only one gets copied."
                         Trace("*** " + sErr)
                         AddError(sErr)
-
                     ElseIf findinfo.cFileName <> sNomficTTO Then
                         Dim fi As MyFileInfo
                         fi = New MyFileInfo With {
