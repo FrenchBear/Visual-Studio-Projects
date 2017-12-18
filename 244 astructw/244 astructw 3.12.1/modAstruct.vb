@@ -6,7 +6,7 @@
 ' 2006-10-19    FPVI    3.2 My.Computer.FileSystem.DeleteDirectory(sDest & sSubfolder, FileIO.DeleteDirectoryOption.DeleteAllContents) does not work if there is r/o file in the folder
 '                       Use Win32 CopyFile, DeleteFile... to support paths with more than 260 characters
 ' 2006-10-20    FPVI    3.2.1 My.Computer.FileSystem.DeleteDirectory(sDest & sSubfolder, FileIO.DeleteDirectoryOption.DeleteAllContents) does not work if there is r/o file in the folder
-' 2006-10-21    FPVI    3.3   Options Mutlithread, DotNetCalls, NoWidePath
+' 2006-10-21    FPVI    3.3   Options mutlithread, DotNetCalls, NoWidePath
 ' 2007-01-04    FPVI    3.3.1 Option /c to create target folder
 ' 2009-05-21    FPVI    3.3.2 Manage correctly copy a file to a hidden file
 ' 2009-05-22    FPVI    3.4 VS 2008, backup/restore privilege
@@ -17,7 +17,7 @@
 ' 2010-04-05    FPVI    3.6.2: bOneHourDifferenceAccepted
 ' 2010-04-18    FPVI    3.7: Use Win32 CopyFileEx to copy encrypted files
 ' 2010-12-16    FPVI    3.7.1: iFolderTraceLevel to control folder trace depth
-' 2010-12-17    FPVI    3.7.2: Repeat FindFirstFileW 4 times during enumerations to fix a bug on Synologic DS1010+ on Shark
+' 2010-12-17    FPVI    3.7.2: Repeat FindFirstFileW 4 times during enumerations to fix a bug on Synology DS1010+ on Shark
 ' 2010-12-17    FPVI    3.7.2: Limit number of errors collected to 1000
 '
 ' SafeFileHandle from http://www.pinvoke.net/default.aspx/kernel32/CreateFile.html
@@ -26,10 +26,9 @@ Option Explicit On
 Option Compare Text
 
 Imports System.IO
-Imports VB = Microsoft.VisualBasic
 Imports System.Runtime.InteropServices
-Imports System.Diagnostics
 Imports Microsoft.Win32.SafeHandles
+Imports VB = Microsoft.VisualBasic
 
 Module modAstruct
     Dim nbFiles As Integer
@@ -48,7 +47,7 @@ Module modAstruct
     Public bMultiThread As Boolean                      ' Enumerates folder contents in separate threads
     Public bDotNetCalls As Boolean                      ' Use .Net and not Win32
     Public bNoWidePaths As Boolean                      ' Do not use wide paths extension (sWidePath function)
-    Public bCreateTarget As Boolean                     ' Create destination folder if if does not exist
+    Public bCreateTarget As Boolean                     ' Create destination folder if it does not exist
     Public bOneHourDifferenceAccepted As Boolean        ' Consider files identical if they have 1hr difference (and same size)
     Public bIgnoreDatetimeDifferences As Boolean        ' Only checks presence/absence and size
 
@@ -57,9 +56,9 @@ Module modAstruct
 
     Const sNomficTTO As String = "$$--$$--.$-$"         ' Test TimeOffset
 
-
 #Region "Interface with Win32 enumeration functions"
-    <StructLayout(LayoutKind.Sequential)> _
+
+    <StructLayout(LayoutKind.Sequential)>
     Structure FILETIME
         Dim dwLowDateTime As UInteger
         Dim dwHighDateTime As UInteger
@@ -72,7 +71,7 @@ Module modAstruct
     '<FieldOffset(4)> Public dwHighDateTime As UInteger
     'End Structure
 
-    <StructLayout(LayoutKind.Sequential)> _
+    <StructLayout(LayoutKind.Sequential)>
     Structure SYSTEMTIME
         Public wYear As Short
         Public wMonth As Short
@@ -84,7 +83,7 @@ Module modAstruct
         Public wMilliseconds As Short
     End Structure
 
-    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)> _
+    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)>
     Structure WIN32_FIND_DATAW
         Dim dwFileAttributes As Integer
         Dim ftCreationTime As FILETIME
@@ -94,10 +93,13 @@ Module modAstruct
         Dim nFileSizeLow As UInteger
         Dim dwReserved0 As Integer
         Dim dwReserved1 As Integer
-        ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode  
+
+        ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode
         <VBFixedString(520), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
-        ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode  
+
+        ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode
         <VBFixedString(28), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
+
     End Structure
 
     '<StructLayout(LayoutKind.Sequential)> _
@@ -107,11 +109,11 @@ Module modAstruct
     'Public bInheritHandle As Integer
     'End Structure
 
-    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Public Function FindFirstFileW(ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As IntPtr
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="FindNextFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="FindNextFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Public Function FindNextFileW(ByVal hFindFile As IntPtr, ByRef lpFindFileData As WIN32_FIND_DATAW) As Boolean
     End Function
 
@@ -120,52 +122,52 @@ Module modAstruct
     'Declare Function FileTimeToLocalFileTime Lib "kernel32" (ByRef lpFileTime As FILETIME, ByRef lpLocalFileTime As FILETIME) As Integer
     'Declare Function FileTimeToSystemTime Lib "kernel32" (ByRef lpFileTime As FILETIME, ByRef lpSystemTime As SYSTEMTIME) As Integer
 
-    <DllImport("kernel32.dll", EntryPoint:="CopyFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="CopyFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Function CopyFile(ByVal lpSource As String, ByVal lpDest As String, ByVal bFailIfExists As Integer) As Integer
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="CopyFileExW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="CopyFileExW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Function CopyFileEx(ByVal lpExistingFileName As String, ByVal lpNewFileName As String, ByVal lpProgressRoutine As CPCallback, ByRef lpData As Long, ByRef pbCancel As Boolean, ByVal dwCopyFlags As Integer) As Integer
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="MoveFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="MoveFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Function MoveFile(ByVal lpExistingFileName As String, ByVal lpNewFileName As String) As Integer
     End Function
 
     Const COPY_FILE_ALLOW_DECRYPTED_DESTINATION As Integer = 8
 
-    Public Delegate Function CPCallback( _
-        ByVal TotalFileSize As Long, _
-        ByVal TotalBytesTransfered As Long, _
-        ByVal StreamSize As Long, _
-        ByVal StreamBytesTransfered As Long, _
-        ByVal StreamNumber As Integer, _
-        ByVal dwCallbackReason As Integer, _
-        ByVal hSourceFile As IntPtr, _
-        ByVal hDestFile As IntPtr, _
+    Public Delegate Function CPCallback(
+        ByVal TotalFileSize As Long,
+        ByVal TotalBytesTransfered As Long,
+        ByVal StreamSize As Long,
+        ByVal StreamBytesTransfered As Long,
+        ByVal StreamNumber As Integer,
+        ByVal dwCallbackReason As Integer,
+        ByVal hSourceFile As IntPtr,
+        ByVal hDestFile As IntPtr,
         ByRef lpData As Long) As Integer
 
-    <DllImport("kernel32.dll", EntryPoint:="DeleteFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="DeleteFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Function DeleteFile(ByVal lpFileName As String) As Integer
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="SetFileAttributesW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="SetFileAttributesW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Function SetFileAttributes(ByVal lpFileName As String, ByVal dwFileAttributes As FileAttribute) As Integer
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="RemoveDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="RemoveDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Function RemoveDirectory(ByVal lpFileName As String) As Integer
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="CreateDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="CreateDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Function CreateDirectory(ByVal lpFileName As String, ByVal lpSecurityAttributes As IntPtr) As Integer
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="GetFileTime", SetLastError:=True)> _
+    <DllImport("kernel32.dll", EntryPoint:="GetFileTime", SetLastError:=True)>
     Function GetFileTime(ByVal hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
     End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="SetFileTime", SetLastError:=True)> _
+    <DllImport("kernel32.dll", EntryPoint:="SetFileTime", SetLastError:=True)>
     Function SetFileTime(ByVal hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
     End Function
 
@@ -173,19 +175,17 @@ Module modAstruct
     'Function CreateFile(ByVal lpFileName As String, ByVal dwDesiredAccess As Integer, ByVal dwShareMode As Integer, ByRef lpSecurityAttributes As SECURITY_ATTRIBUTES, ByVal dwCreationDisposition As Integer, ByVal dwFlagsAndAttributes As Integer, ByVal hTemplateFile As Integer) As IntPtr
     'End Function
 
-    <DllImport("kernel32.dll", EntryPoint:="CloseHandle", SetLastError:=True)> _
+    <DllImport("kernel32.dll", EntryPoint:="CloseHandle", SetLastError:=True)>
     Function CloseHandle(ByVal hObject As SafeFileHandle) As Integer
     End Function
 
-
-
-    <System.Runtime.InteropServices.DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=System.Runtime.InteropServices.CharSet.Unicode)> _
-    Friend Function CreateFile(ByVal lpFileName As String, _
-   ByVal dwDesiredAccess As EFileAccess, _
-   ByVal dwShareMode As EFileShare, _
-   ByVal lpSecurityAttributes As IntPtr, _
-   ByVal dwCreationDisposition As ECreationDisposition, _
-   ByVal dwFlagsAndAttributes As EFileAttributes, _
+    <System.Runtime.InteropServices.DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=System.Runtime.InteropServices.CharSet.Unicode)>
+    Friend Function CreateFile(ByVal lpFileName As String,
+   ByVal dwDesiredAccess As EFileAccess,
+   ByVal dwShareMode As EFileShare,
+   ByVal lpSecurityAttributes As IntPtr,
+   ByVal dwCreationDisposition As ECreationDisposition,
+   ByVal dwFlagsAndAttributes As EFileAttributes,
    ByVal hTemplateFile As IntPtr) As Microsoft.Win32.SafeHandles.SafeFileHandle
     End Function
 
@@ -243,6 +243,7 @@ Module modAstruct
     End Enum
 
     Friend Enum ECreationDisposition
+
         ''' <summary>
         ''' Creates a new file, only if it does not already exist.
         ''' If the specified file exists, the function fails and the last-error code is set to ERROR_FILE_EXISTS (80).
@@ -278,6 +279,7 @@ Module modAstruct
         ''' The calling process must open the file with the GENERIC_WRITE bit set as part of the dwDesiredAccess parameter.
         ''' </summary>
         TRUNCATE_EXISTING = 5
+
     End Enum
 
     Friend Enum EFileAttributes
@@ -308,7 +310,6 @@ Module modAstruct
         Public FileSize As ULong                    ' 64 bit
         Public LastWriteTime As Long                ' 64 bit (not ULong since subtraction can generate a negative value)
     End Class
-
 
     Public Sub astruct(ByVal sSource As String, ByVal sDest As String)
         ' If we used options, then show them explicitly
@@ -380,7 +381,6 @@ Module modAstruct
         Trace(String.Format("Total time {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
     End Sub
 
-
     Private Function bCheckFolder(ByVal sFolder As String, ByVal sPosition As String) As Boolean
         Try
             If My.Computer.FileSystem.DirectoryExists(sFolder) Then Return True
@@ -404,7 +404,6 @@ Module modAstruct
         End If
     End Function
 
-
     Private Function sQuote(ByVal s As String)
         If s.Contains(" ") Then
             Return Chr(34) & s & Chr(34)
@@ -418,7 +417,7 @@ Module modAstruct
         If colErrors.Count < 1000 Then colErrors.Add(sErrMsg)
     End Sub
 
-    ' For Multithread option
+    ' For mutlithread option
     Delegate Sub EnumProc(ByVal sPath As String, ByVal colFoldersSource As Kollection, ByVal colFilesSource As Kollection)
 
     Private Sub DoAstruct(ByVal sSource As String, ByVal sDest As String, ByVal iLevel As Integer)
@@ -481,7 +480,7 @@ Module modAstruct
                     End If
                     If bVerbose Then
                         Trace("-- Source LastWrite on " & DateTime.FromFileTime(fiSource.LastWriteTime).ToString & " " & sQuote(sSource & fiSource.Name))
-                        Trace("-- Destin LastWrite on " & DateTime.FromFileTime(fiDest.LastWriteTime).ToString & " " & sQuote(sDest & fiDest.Name) & " --> Copy")
+                        Trace("-- Dest   LastWrite on " & DateTime.FromFileTime(fiDest.LastWriteTime).ToString & " " & sQuote(sDest & fiDest.Name) & " --> Copy")
                     End If
                     bToCopy = True
                 End If
@@ -611,7 +610,7 @@ Label1:
         End If
     End Sub
 
-    ' Manual implementation since My.Computer.FileSystem.DeleteDirectory(sDest & sSubfolder, FileIO.DeleteDirectoryOption.DeleteAllContents) 
+    ' Manual implementation since My.Computer.FileSystem.DeleteDirectory(sDest & sSubfolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
     ' does not work if there is r/o file in the folder
     Private Sub RecurseDeleteDirectory(ByVal sPath As String)
         Dim colFiles As New Kollection
@@ -700,7 +699,6 @@ Label1:
 
             My.Computer.FileSystem.DeleteFile(sPathSource)
             My.Computer.FileSystem.DeleteFile(sPathDest)
-
         Catch ex As Exception
             Trace("Unexpected error in bTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
             Return False
@@ -709,7 +707,6 @@ Label1:
 
         Return bReturn
     End Function
-
 
     Private Sub MyCopyFile(ByVal sourcePath As String, ByVal destinationPath As String)
         If bDotNetCalls Then
@@ -728,7 +725,6 @@ Label1:
             End If
         End If
     End Sub
-
 
     ' New for 3.11
     Private Sub MyRenameFile(ByVal targetPath As String, ByVal oldName As String, ByVal newName As String)
@@ -768,9 +764,9 @@ Label1:
     ''' Function to use filenames up to 32000 characters.  According to Win32 help:
     ''' The Unicode versions of several functions permit paths that exceed the MAX_PATH length if the path has the "\\?\" prefix.
     ''' The "\\?\" tells the function to turn off path parsing. However, each component in the path cannot be more than MAX_PATH
-    ''' characters long. Use the "\\?\" prefix with paths for local storage devices and the "\\?\UNC\" prefix with paths having 
+    ''' characters long. Use the "\\?\" prefix with paths for local storage devices and the "\\?\UNC\" prefix with paths having
     ''' the Universal Naming Convention (UNC) format. The "\\?\" is ignored as part of the path. For example, "\\?\C:\myworld\private"
-    ''' is seen as "C:\myworld\private", and "\\?\UNC\bill_g_1\hotstuff\coolapps" is seen as "\\bill_g_1\hotstuff\coolapps". 
+    ''' is seen as "C:\myworld\private", and "\\?\UNC\bill_g_1\hotstuff\coolapps" is seen as "\\bill_g_1\hotstuff\coolapps".
     ''' </summary>
     Private Function sWidePath(ByVal sPath As String) As String
         If bNoWidePaths Then        ' Option to deactivate this mechanism
@@ -783,7 +779,6 @@ Label1:
             Return sPath            ' For local relative/no drive names, keep name as is
         End If
     End Function
-
 
     ' Enumeration of files and folders using Win32 functions
     Private Sub Enumerate(ByVal sPath As String, ByVal colFoldersSource As Kollection, ByVal colFilesSource As Kollection)

@@ -4,19 +4,21 @@
 Option Explicit On
 Option Compare Text
 
-Imports System.Text
 Imports System.Runtime.InteropServices
-
+Imports System.Text
 
 Module Security
+
     Private Structure LUID
         Dim LowPart As Integer
         Dim HighPart As Integer
     End Structure
+
     Private Structure LUID_AND_ATTRIBUTES
         Dim pLuid As LUID
         Dim Attributes As Integer
     End Structure
+
     Private Structure TOKEN_PRIVILEGES
         Dim PrivilegeCount As Integer
         Dim Privileges As LUID_AND_ATTRIBUTES
@@ -68,14 +70,18 @@ Module Security
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, IntPtr.Zero, number, 0, Buffer, Buffer.Capacity, 0)
         Return Buffer.ToString()
     End Function
+
 End Module
 
 Public Class PrivilegeException
     Inherits Exception
+
     Public Sub New()
         MyBase.New()
     End Sub
+
     Public Sub New(ByVal message As String)
         MyBase.New(message)
     End Sub
+
 End Class

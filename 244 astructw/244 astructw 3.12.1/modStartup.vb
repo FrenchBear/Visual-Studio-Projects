@@ -14,7 +14,7 @@
 ' 2014-05-02    FPVI    3.10.0: Bug grosse=groﬂe for VB Collection but not for filesystem.  Use class Kollection instead
 ' 2014-05-05    FPVI    3.11.0: Align filename case
 ' 2014-12-22    FPVI    3.12.0: Exclude by default files thumbs.db and .DS_Store
-
+' 2017-12-18    FPVI    3.12.1: Use WindowsFileExplorerComparer
 
 Option Explicit On
 Option Compare Text
@@ -149,35 +149,35 @@ Sortie:
         Console.WriteLine(sHelpHeader() & vbCrLf & vbCrLf & sUsage())
     End Sub
 
-
     Function sHelpHeader() As String
         Return "astructw " & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Revision & vbCrLf & My.Application.Info.Description
     End Function
 
     Function sUsage() As String
-        Return "Usage: astructw [/?] [/??] [/option ...] source destination" & vbCrLf & _
-               "Source and destination must be valid and existing folders" & vbCrLf & vbCrLf & _
-               "Common Options:" & vbCrLf & _
-               "/v      Verbose mode, detailed output" & vbCrLf & _
-               "/f[1-9] Folder trace during analysis, max to specified depth. /f=all levels" & vbCrLf & _
-               "/t      Disable time difference check between source and destination" & vbCrLf & _
-               "/x dir  Exclude dir from copy (ie: /x ""Temporary Internet Files""), repeatable" & vbCrLf & _
-               "/xf fil Exclude file (like pattern) from copy, repeatable" & vbCrLf & _
-               "/_      Do not copy files and folders beginning with _ (same as /x _*)" & vbCrLf & _
-               "/c      Creates target folder if it does not exists instead of causing an error" & vbCrLf & _
-               "/n      NoAction: Do not actually copy or delete anything on destination" & vbCrLf & _
+        Return "Usage: astructw [/?] [/??] [/option ...] source destination" & vbCrLf &
+               "Source and destination must be valid and existing folders" & vbCrLf & vbCrLf &
+               "Common Options:" & vbCrLf &
+               "/v      Verbose mode, detailed output" & vbCrLf &
+               "/f[1-9] Folder trace during analysis, max to specified depth. /f=all levels" & vbCrLf &
+               "/t      Disable time difference check between source and destination" & vbCrLf &
+               "/x dir  Exclude dir from copy (ie: /x ""Temporary Internet Files""), repeatable" & vbCrLf &
+               "/xf fil Exclude file (like pattern) from copy, repeatable" & vbCrLf &
+               "/_      Do not copy files and folders beginning with _ (same as /x _*)" & vbCrLf &
+               "/c      Creates target folder if it does not exists instead of causing an error" & vbCrLf &
+               "/n      NoAction: Do not actually copy or delete anything on destination" & vbCrLf &
                "/au     AddUpdate mode, only update modified files and add new files"
     End Function
 
     Function sExtendedHelp() As String
-        Return "Copyright " & My.Application.Info.Copyright & vbCrLf & vbCrLf & _
-               "Advanced Options:" & vbCrLf & _
-               "/d     Use DotNet calls for filesystem operations instead of Win32 calls" & vbCrLf & _
-               "/m     Multitreading: Enumerates folder contents in two separate threads" & vbCrLf & _
-               "/r2    Copy directory reparse point contents instead of ignoring then" & vbCrLf & _
-               "/t1    Tolerates exactly 1 hour difference between source and target" & vbCrLf & _
-               "/w-    Do not use wide paths extensions for Win32 calls" & vbCrLf & _
-               "/i     Ignores datetime differences in comparisons" & vbCrLf & _
+        Return "Copyright " & My.Application.Info.Copyright & vbCrLf & vbCrLf &
+               "Advanced Options:" & vbCrLf &
+               "/d     Use DotNet calls for filesystem operations instead of Win32 calls" & vbCrLf &
+               "/m     Multitreading: Enumerates folder contents in two separate threads" & vbCrLf &
+               "/r2    Copy directory reparse point contents instead of ignoring then" & vbCrLf &
+               "/t1    Tolerates exactly 1 hour difference between source and target" & vbCrLf &
+               "/w-    Do not use wide paths extensions for Win32 calls" & vbCrLf &
+               "/i     Ignores datetime differences in comparisons" & vbCrLf &
           vbCrLf & "Note: SYSTEM+HIDDEN folders on source such as are always ignored"
     End Function
+
 End Module

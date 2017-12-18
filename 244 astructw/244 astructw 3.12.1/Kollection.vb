@@ -1,11 +1,13 @@
 ﻿' class Kollection
 ' A replacement for VB Collection, with a case insensitive string index based on StringComparer.OrdinalIgnoreCase
 ' With this comparer, grosse<>große, which is not the case with VB Collection
+'
+' 2017-12-18    Use WindowsFileExplorerComparer to make sure that comparisons are identical to Windows file system
 
 Class Kollection
     Implements IEnumerable
 
-    Private d As Dictionary(Of String, Object) = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
+    Private d As Dictionary(Of String, Object) = New Dictionary(Of String, Object)(New WindowsFileExplorerComparer())
 
     Public Sub Add(ByVal Item As Object, ByVal Key As String)
         d.Add(Key, Item)
@@ -16,13 +18,6 @@ Class Kollection
             Return d(Key)
         End Get
     End Property
-
-    ' Not available, we target .Net Framework 3.5 here
-    'Public Iterator Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
-    '    For Each o As Object In d.Values
-    '        Yield o
-    '    Next
-    'End Function
 
     Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
         Return d.Values.GetEnumerator
