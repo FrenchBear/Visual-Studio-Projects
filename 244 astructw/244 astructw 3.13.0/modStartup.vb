@@ -14,12 +14,12 @@
 ' 2014-05-02    FPVI    3.10.0: Bug grosse=groﬂe for VB Collection but not for filesystem.  Use class Kollection instead
 ' 2014-05-05    FPVI    3.11.0: Align filename case
 ' 2014-12-22    FPVI    3.12.0: Exclude by default files thumbs.db and .DS_Store
-' 2017-12-18    FPVI    3.12.1: Use WindowsFileExplorerComparer
+' 2017-12-18    FPVI    3.13: Case of Linux subsystem filesystem that is case sensitive on NTFS; Kollection is now generic; No need for synclock in readonly mode
 
 Option Explicit On
 Option Compare Text
 
-Module modStartup
+Friend Module modStartup
     Public sSourceGlobal As String
     Public sDestGlobal As String
 
@@ -127,7 +127,7 @@ Module modStartup
             colExclusionsFiles.Add(".DS_Store", Rnd.ToString)
         End If
 
-        astruct(sSourceGlobal, sDestGlobal)
+        Astruct(sSourceGlobal, sDestGlobal)
 Sortie:
         If bFinalPause Then
             Console.Write("(Pause)")
@@ -142,18 +142,18 @@ Sortie:
     End Sub
 
     Sub CLShowExtendedHelp()
-        Console.WriteLine(sHelpHeader() & vbCrLf & sExtendedHelp())
+        Console.WriteLine(HelpHeader() & vbCrLf & ExtendedHelp())
     End Sub
 
     Sub CLShowHelp()
-        Console.WriteLine(sHelpHeader() & vbCrLf & vbCrLf & sUsage())
+        Console.WriteLine(HelpHeader() & vbCrLf & vbCrLf & Usage())
     End Sub
 
-    Function sHelpHeader() As String
+    Function HelpHeader() As String
         Return "astructw " & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Revision & vbCrLf & My.Application.Info.Description
     End Function
 
-    Function sUsage() As String
+    Function Usage() As String
         Return "Usage: astructw [/?] [/??] [/option ...] source destination" & vbCrLf &
                "Source and destination must be valid and existing folders" & vbCrLf & vbCrLf &
                "Common Options:" & vbCrLf &
@@ -168,7 +168,7 @@ Sortie:
                "/au     AddUpdate mode, only update modified files and add new files"
     End Function
 
-    Function sExtendedHelp() As String
+    Function ExtendedHelp() As String
         Return "Copyright " & My.Application.Info.Copyright & vbCrLf & vbCrLf &
                "Advanced Options:" & vbCrLf &
                "/d     Use DotNet calls for filesystem operations instead of Win32 calls" & vbCrLf &

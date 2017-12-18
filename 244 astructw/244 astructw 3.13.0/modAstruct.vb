@@ -19,18 +19,21 @@
 ' 2010-12-16    FPVI    3.7.1: iFolderTraceLevel to control folder trace depth
 ' 2010-12-17    FPVI    3.7.2: Repeat FindFirstFileW 4 times during enumerations to fix a bug on Synology DS1010+ on Shark
 ' 2010-12-17    FPVI    3.7.2: Limit number of errors collected to 1000
+' 2017-12-18    FPVI    3.13: Case of Linux subsystem filesystem that is case sensitive on NTFS; Kollection is now generic; No need for synclock in readonly mode
 '
 ' SafeFileHandle from http://www.pinvoke.net/default.aspx/kernel32/CreateFile.html
 
 Option Explicit On
 Option Compare Text
+Option Infer On
+
 
 Imports System.IO
 Imports System.Runtime.InteropServices
 Imports Microsoft.Win32.SafeHandles
 Imports VB = Microsoft.VisualBasic
 
-Module modAstruct
+Friend Module modAstruct
     Dim nbFiles As Integer
     Dim nbDirectories As Integer
     Dim nbFilesCopied As Integer
@@ -51,256 +54,11 @@ Module modAstruct
     Public bOneHourDifferenceAccepted As Boolean        ' Consider files identical if they have 1hr difference (and same size)
     Public bIgnoreDatetimeDifferences As Boolean        ' Only checks presence/absence and size
 
-    Public colExclusionsFolders As New Kollection       ' List of patterns to ignore for folders
-    Public colExclusionsFiles As New Kollection         ' List of patterns to ignore for folders
+    Public colExclusionsFolders As New Kollection(Of String)       ' List of patterns to ignore for folders
+    Public colExclusionsFiles As New Kollection(Of String)         ' List of patterns to ignore for folders
 
     Const sNomficTTO As String = "$$--$$--.$-$"         ' Test TimeOffset
 
-#Region "Interface with Win32 enumeration functions"
-
-    <StructLayout(LayoutKind.Sequential)>
-    Structure FILETIME
-        Dim dwLowDateTime As UInteger
-        Dim dwHighDateTime As UInteger
-    End Structure
-
-    '<StructLayout(LayoutKind.Explicit)> _
-    'Public Structure FILETIME2
-    '<FieldOffset(0)> Public LongDateTime As ULong
-    '<FieldOffset(0)> Public dwLowDateTime As UInteger
-    '<FieldOffset(4)> Public dwHighDateTime As UInteger
-    'End Structure
-
-    <StructLayout(LayoutKind.Sequential)>
-    Structure SYSTEMTIME
-        Public wYear As Short
-        Public wMonth As Short
-        Public wDayOfWeek As Short
-        Public wDay As Short
-        Public wHour As Short
-        Public wMinute As Short
-        Public wSecond As Short
-        Public wMilliseconds As Short
-    End Structure
-
-    <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)>
-    Structure WIN32_FIND_DATAW
-        Dim dwFileAttributes As Integer
-        Dim ftCreationTime As FILETIME
-        Dim ftLastAccessTime As FILETIME
-        Dim ftLastWriteTime As FILETIME
-        Dim nFileSizeHigh As UInteger
-        Dim nFileSizeLow As UInteger
-        Dim dwReserved0 As Integer
-        Dim dwReserved1 As Integer
-
-        ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode
-        <VBFixedString(520), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
-
-        ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode
-        <VBFixedString(28), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
-
-    End Structure
-
-    '<StructLayout(LayoutKind.Sequential)> _
-    'Public Structure SECURITY_ATTRIBUTES
-    'Public nLength As Integer
-    'Public lpSecurityDescriptor As Integer
-    'Public bInheritHandle As Integer
-    'End Structure
-
-    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Public Function FindFirstFileW(ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As IntPtr
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="FindNextFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Public Function FindNextFileW(ByVal hFindFile As IntPtr, ByRef lpFindFileData As WIN32_FIND_DATAW) As Boolean
-    End Function
-
-    Declare Function FindClose Lib "kernel32" (ByVal hFindFile As IntPtr) As Integer
-
-    'Declare Function FileTimeToLocalFileTime Lib "kernel32" (ByRef lpFileTime As FILETIME, ByRef lpLocalFileTime As FILETIME) As Integer
-    'Declare Function FileTimeToSystemTime Lib "kernel32" (ByRef lpFileTime As FILETIME, ByRef lpSystemTime As SYSTEMTIME) As Integer
-
-    <DllImport("kernel32.dll", EntryPoint:="CopyFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function CopyFile(ByVal lpSource As String, ByVal lpDest As String, ByVal bFailIfExists As Integer) As Integer
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="CopyFileExW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function CopyFileEx(ByVal lpExistingFileName As String, ByVal lpNewFileName As String, ByVal lpProgressRoutine As CPCallback, ByRef lpData As Long, ByRef pbCancel As Boolean, ByVal dwCopyFlags As Integer) As Integer
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="MoveFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function MoveFile(ByVal lpExistingFileName As String, ByVal lpNewFileName As String) As Integer
-    End Function
-
-    Const COPY_FILE_ALLOW_DECRYPTED_DESTINATION As Integer = 8
-
-    Public Delegate Function CPCallback(
-        ByVal TotalFileSize As Long,
-        ByVal TotalBytesTransfered As Long,
-        ByVal StreamSize As Long,
-        ByVal StreamBytesTransfered As Long,
-        ByVal StreamNumber As Integer,
-        ByVal dwCallbackReason As Integer,
-        ByVal hSourceFile As IntPtr,
-        ByVal hDestFile As IntPtr,
-        ByRef lpData As Long) As Integer
-
-    <DllImport("kernel32.dll", EntryPoint:="DeleteFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function DeleteFile(ByVal lpFileName As String) As Integer
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="SetFileAttributesW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function SetFileAttributes(ByVal lpFileName As String, ByVal dwFileAttributes As FileAttribute) As Integer
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="RemoveDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function RemoveDirectory(ByVal lpFileName As String) As Integer
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="CreateDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function CreateDirectory(ByVal lpFileName As String, ByVal lpSecurityAttributes As IntPtr) As Integer
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="GetFileTime", SetLastError:=True)>
-    Function GetFileTime(ByVal hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
-    End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="SetFileTime", SetLastError:=True)>
-    Function SetFileTime(ByVal hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
-    End Function
-
-    '<DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
-    'Function CreateFile(ByVal lpFileName As String, ByVal dwDesiredAccess As Integer, ByVal dwShareMode As Integer, ByRef lpSecurityAttributes As SECURITY_ATTRIBUTES, ByVal dwCreationDisposition As Integer, ByVal dwFlagsAndAttributes As Integer, ByVal hTemplateFile As Integer) As IntPtr
-    'End Function
-
-    <DllImport("kernel32.dll", EntryPoint:="CloseHandle", SetLastError:=True)>
-    Function CloseHandle(ByVal hObject As SafeFileHandle) As Integer
-    End Function
-
-    <System.Runtime.InteropServices.DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=System.Runtime.InteropServices.CharSet.Unicode)>
-    Friend Function CreateFile(ByVal lpFileName As String,
-   ByVal dwDesiredAccess As EFileAccess,
-   ByVal dwShareMode As EFileShare,
-   ByVal lpSecurityAttributes As IntPtr,
-   ByVal dwCreationDisposition As ECreationDisposition,
-   ByVal dwFlagsAndAttributes As EFileAttributes,
-   ByVal hTemplateFile As IntPtr) As Microsoft.Win32.SafeHandles.SafeFileHandle
-    End Function
-
-    Friend Structure STORAGE_DEVICE_NUMBER
-        Friend DeviceType As Integer
-        Friend DeviceNumber As Integer
-        Friend PartitionNumber As Integer
-    End Structure
-
-    Friend Enum EFileAccess As System.Int32
-        ''
-        ''  The following are masks for the predefined standard access types
-        ''
-
-        DELETE = &H10000
-        READ_CONTROL = &H20000
-        WRITE_DAC = &H40000
-        WRITE_OWNER = &H80000
-        SYNCHRONIZE = &H100000
-
-        STANDARD_RIGHTS_REQUIRED = &HF0000
-        STANDARD_RIGHTS_READ = READ_CONTROL
-        STANDARD_RIGHTS_WRITE = READ_CONTROL
-        STANDARD_RIGHTS_EXECUTE = READ_CONTROL
-        STANDARD_RIGHTS_ALL = &H1F0000
-        SPECIFIC_RIGHTS_ALL = &HFFFF
-
-        ''
-        '' AccessSystemAcl access type
-        ''
-
-        ACCESS_SYSTEM_SECURITY = &H1000000
-
-        ''
-        '' MaximumAllowed access type
-        ''
-
-        MAXIMUM_ALLOWED = &H2000000
-
-        ''
-        ''  These are the generic rights.
-        ''
-
-        GENERIC_READ = &H80000000
-        GENERIC_WRITE = &H40000000
-        GENERIC_EXECUTE = &H20000000
-        GENERIC_ALL = &H10000000
-    End Enum
-
-    Friend Enum EFileShare
-        FILE_SHARE_NONE = &H0
-        FILE_SHARE_READ = &H1
-        FILE_SHARE_WRITE = &H2
-        FILE_SHARE_DELETE = &H4
-    End Enum
-
-    Friend Enum ECreationDisposition
-
-        ''' <summary>
-        ''' Creates a new file, only if it does not already exist.
-        ''' If the specified file exists, the function fails and the last-error code is set to ERROR_FILE_EXISTS (80).
-        ''' If the specified file does not exist and is a valid path to a writable location, a new file is created.
-        ''' </summary>
-        CREATE_NEW = 1
-
-        ''' <summary>
-        ''' Creates a new file, always.
-        ''' If the specified file exists and is writable, the function overwrites the file, the function succeeds, and last-error code is set to ERROR_ALREADY_EXISTS (183).
-        ''' If the specified file does not exist and is a valid path, a new file is created, the function succeeds, and the last-error code is set to zero.
-        ''' For more information, see the Remarks section of this topic.
-        ''' </summary>
-        CREATE_ALWAYS = 2
-
-        ''' <summary>
-        ''' Opens a file or device, only if it exists.
-        ''' If the specified file or device does not exist, the function fails and the last-error code is set to ERROR_FILE_NOT_FOUND (2).
-        ''' For more information about devices, see the Remarks section.
-        ''' </summary>
-        OPEN_EXISTING = 3
-
-        ''' <summary>
-        ''' Opens a file, always.
-        ''' If the specified file exists, the function succeeds and the last-error code is set to ERROR_ALREADY_EXISTS (183).
-        ''' If the specified file does not exist and is a valid path to a writable location, the function creates a file and the last-error code is set to zero.
-        ''' </summary>
-        OPEN_ALWAYS = 4
-
-        ''' <summary>
-        ''' Opens a file and truncates it so that its size is zero bytes, only if it exists.
-        ''' If the specified file does not exist, the function fails and the last-error code is set to ERROR_FILE_NOT_FOUND (2).
-        ''' The calling process must open the file with the GENERIC_WRITE bit set as part of the dwDesiredAccess parameter.
-        ''' </summary>
-        TRUNCATE_EXISTING = 5
-
-    End Enum
-
-    Friend Enum EFileAttributes
-        FILE_ATTRIBUTE_READONLY = &H1
-        FILE_ATTRIBUTE_HIDDEN = &H2
-        FILE_ATTRIBUTE_SYSTEM = &H4
-        FILE_ATTRIBUTE_DIRECTORY = &H10
-        FILE_ATTRIBUTE_ARCHIVE = &H20
-        FILE_ATTRIBUTE_DEVICE = &H40
-        FILE_ATTRIBUTE_NORMAL = &H80
-        FILE_ATTRIBUTE_TEMPORARY = &H100
-        FILE_ATTRIBUTE_SPARSE_FILE = &H200
-        FILE_ATTRIBUTE_REPARSE_POINT = &H400
-        FILE_ATTRIBUTE_COMPRESSED = &H800
-        FILE_ATTRIBUTE_OFFLINE = &H1000
-        FILE_ATTRIBUTE_NOT_CONTENT_INDEXED = &H2000
-        FILE_ATTRIBUTE_ENCRYPTED = &H4000
-        FILE_ATTRIBUTE_VIRTUAL = &H10000
-    End Enum
-
-#End Region
 
     ' Can't create an empty FileInfo, so I have to use my own class...
     Class MyFileInfo
@@ -311,7 +69,7 @@ Module modAstruct
         Public LastWriteTime As Long                ' 64 bit (not ULong since subtraction can generate a negative value)
     End Class
 
-    Public Sub astruct(ByVal sSource As String, ByVal sDest As String)
+    Public Sub Astruct(ByVal sSource As String, ByVal sDest As String)
         ' If we used options, then show them explicitly
         Dim sOptions As String = ""
         If bVerbose Then sOptions = sOptions & ", Verbose"
@@ -326,7 +84,7 @@ Module modAstruct
         If bDotNetCalls Then sOptions = sOptions & ", DotNetCalls"
         If bNoWidePaths Then sOptions = sOptions & ", NoWidePaths"
         If sOptions.Length > 0 Then
-            Console.WriteLine(sHelpHeader() & " (" & sOptions.Substring(2) & ")")
+            Console.WriteLine(HelpHeader() & " (" & sOptions.Substring(2) & ")")
         End If
 
         ' Create target folder if it does not exist and option /c has been specified
@@ -335,7 +93,7 @@ Module modAstruct
                 My.Computer.FileSystem.CreateDirectory(sDest)
             End If
         Catch ex As Exception
-            Trace("Error creating target folder " & sQuote(sDest))
+            Trace("Error creating target folder " & Quote(sDest))
             Trace(ex.Message)
         End Try
 
@@ -345,15 +103,15 @@ Module modAstruct
 
         ' Source and destination must exist at this stage
         Dim bProblem As Boolean = False
-        If Not bCheckFolder(sSource, "source") Then bProblem = True
-        If Not bCheckFolder(sDest, "destination") Then bProblem = True
+        If Not IsFolderOk(sSource, "source") Then bProblem = True
+        If Not IsFolderOk(sDest, "destination") Then bProblem = True
         If bProblem Then Exit Sub
 
         ' Normalize paths
         If VB.Right(sSource, 1) <> "\" Then sSource &= "\"
         If VB.Right(sDest, 1) <> "\" Then sDest &= "\"
         If Not bDisableTimeCheck Then
-            If Not bTimeCheck(sSource, sDest) Then Exit Sub
+            If Not TimeCheck(sSource, sDest) Then Exit Sub
         End If
 
         Dim t1 As DateTime = DateTime.Now
@@ -362,31 +120,31 @@ Module modAstruct
         nbFilesCopied = 0
         nbFilesRenamed = 0
         nbFilesDeleted = 0
-        Trace("astructw " & sQuote(sSource) & " -> " & sQuote(sDest))
+        Trace("astructw " & Quote(sSource) & " -> " & Quote(sDest))
 
         DoAstruct(sSource, sDest, 1)
         Dim t2 As DateTime = DateTime.Now
         Dim ts As TimeSpan = t2 - t1
         If colErrors.Count > 0 Then
             Trace("")
-            Trace(colErrors.Count.ToString & " error" & s(colErrors.Count) & ":")
+            Trace(colErrors.Count.ToString & " error" & S(colErrors.Count) & ":")
             For Each s As String In colErrors
                 Trace(s.Replace("|", " ==> "))
             Next
         End If
         Trace("")
-        Trace(nbDirectories.ToString & " folder" & s(nbDirectories) & " analyzed, " & nbFiles.ToString & " file" & s(nbFiles) & " analyzed")
-        Trace(nbFilesCopied.ToString & " file" & s(nbFilesCopied) & " copied, " & nbFilesDeleted.ToString & " file" & s(nbFilesDeleted) & " deleted, " & nbFilesRenamed.ToString & " file" & s(nbFilesRenamed) & " renamed")
-        If colErrors.Count > 0 Then Trace(colErrors.Count.ToString & " error" & s(colErrors.Count) & " reported")
+        Trace(nbDirectories.ToString & " folder" & S(nbDirectories) & " analyzed, " & nbFiles.ToString & " file" & S(nbFiles) & " analyzed")
+        Trace(nbFilesCopied.ToString & " file" & S(nbFilesCopied) & " copied, " & nbFilesDeleted.ToString & " file" & S(nbFilesDeleted) & " deleted, " & nbFilesRenamed.ToString & " file" & S(nbFilesRenamed) & " renamed")
+        If colErrors.Count > 0 Then Trace(colErrors.Count.ToString & " error" & S(colErrors.Count) & " reported")
         Trace(String.Format("Total time {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
     End Sub
 
-    Private Function bCheckFolder(ByVal sFolder As String, ByVal sPosition As String) As Boolean
+    Private Function IsFolderOk(ByVal sFolder As String, ByVal sPosition As String) As Boolean
         Try
             If My.Computer.FileSystem.DirectoryExists(sFolder) Then Return True
-            CLShowError("Can't find " & sPosition & " folder " & sQuote(sFolder))
+            CLShowError("Can't find " & sPosition & " folder " & Quote(sFolder))
         Catch ex As Exception
-            Trace("Error accessing " & sPosition & " folder " & sQuote(sFolder))
+            Trace("Error accessing " & sPosition & " folder " & Quote(sFolder))
             Trace(ex.Message)
         End Try
         Return False
@@ -396,7 +154,7 @@ Module modAstruct
         Console.WriteLine(sMsg)
     End Sub
 
-    Private Function s(ByVal n As Integer) As String
+    Private Function S(ByVal n As Integer) As String
         If n > 1 Then
             Return "s"
         Else
@@ -404,7 +162,7 @@ Module modAstruct
         End If
     End Function
 
-    Private Function sQuote(ByVal s As String)
+    Private Function Quote(ByVal s As String)
         If s.Contains(" ") Then
             Return Chr(34) & s & Chr(34)
         Else
@@ -418,13 +176,13 @@ Module modAstruct
     End Sub
 
     ' For mutlithread option
-    Delegate Sub EnumProc(ByVal sPath As String, ByVal colFoldersSource As Kollection, ByVal colFilesSource As Kollection)
+    Delegate Sub EnumProc(ByVal sPath As String, ByVal colFoldersSource As Kollection(Of String), ByVal colFilesSource As Kollection(Of MyFileInfo))
 
     Private Sub DoAstruct(ByVal sSource As String, ByVal sDest As String, ByVal iLevel As Integer)
-        Dim colFilesSource As New Kollection
-        Dim colFilesDest As New Kollection
-        Dim colFoldersSource As New Kollection
-        Dim colFoldersDest As New Kollection
+        Dim colFilesSource As New Kollection(Of MyFileInfo)
+        Dim colFilesDest As New Kollection(Of MyFileInfo)
+        Dim colFoldersSource As New Kollection(Of String)
+        Dim colFoldersDest As New Kollection(Of String)
 
         ' Enumerate source and destination
         If bMultiThread Then
@@ -440,7 +198,7 @@ Module modAstruct
         End If
 
         If bVerbose Then
-            Trace("-- Source folder " & sQuote(sSource) & ": " & colFilesSource.Count.ToString & " file" & s(colFilesSource.Count.ToString) & ", " & colFoldersSource.Count.ToString & " folder" & s(colFoldersSource.Count.ToString))
+            Trace("-- Source folder " & Quote(sSource) & ": " & colFilesSource.Count.ToString & " file" & S(colFilesSource.Count.ToString) & ", " & colFoldersSource.Count.ToString & " folder" & S(colFoldersSource.Count.ToString))
         End If
 
         Dim sCmd As String
@@ -448,8 +206,8 @@ Module modAstruct
         For Each fiSource As MyFileInfo In colFilesSource
             nbFiles += 1
             If Not colFilesDest.Contains(fiSource.Name) Then
-                sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
-                If bVerbose Then Trace("-- Source file " & sQuote(sSource & fiSource.Name) & " does not exist in dest folder " & sQuote(sDest) & " --> Copy")
+                sCmd = "copy " & Quote(sSource & fiSource.Name) & " " & Quote(sDest & fiSource.Name)
+                If bVerbose Then Trace("-- Source file " & Quote(sSource & fiSource.Name) & " does not exist in dest folder " & Quote(sDest) & " --> Copy")
                 Trace(sCmd)
                 nbFilesCopied += 1
                 If Not bNoAction Then MyCopyFile(sSource & fiSource.Name, sDest & fiSource.Name)
@@ -459,8 +217,8 @@ Module modAstruct
                 Dim bToCopy As Boolean = False
                 If fiSource.FileSize <> fiDest.FileSize Then
                     If bVerbose Then
-                        Trace("-- Source size " & sQuote(sSource & fiSource.Name) & ": " & fiSource.FileSize.ToString)
-                        Trace("-- Dest size " & sQuote(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
+                        Trace("-- Source size " & Quote(sSource & fiSource.Name) & ": " & fiSource.FileSize.ToString)
+                        Trace("-- Dest size " & Quote(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
                     End If
                     bToCopy = True
                 ElseIf (Not bIgnoreDatetimeDifferences) AndAlso Math.Abs((fiSource.LastWriteTime - fiDest.LastWriteTime) / 10000000) > 2 Then
@@ -479,8 +237,8 @@ Module modAstruct
                         If delta >= 3599 And delta <= 3601 Then GoTo Label1
                     End If
                     If bVerbose Then
-                        Trace("-- Source LastWrite on " & DateTime.FromFileTime(fiSource.LastWriteTime).ToString & " " & sQuote(sSource & fiSource.Name))
-                        Trace("-- Dest   LastWrite on " & DateTime.FromFileTime(fiDest.LastWriteTime).ToString & " " & sQuote(sDest & fiDest.Name) & " --> Copy")
+                        Trace("-- Source LastWrite on " & DateTime.FromFileTime(fiSource.LastWriteTime).ToString & " " & Quote(sSource & fiSource.Name))
+                        Trace("-- Dest   LastWrite on " & DateTime.FromFileTime(fiDest.LastWriteTime).ToString & " " & Quote(sDest & fiDest.Name) & " --> Copy")
                     End If
                     bToCopy = True
                 End If
@@ -491,7 +249,7 @@ Label1:
                         sCmd = "attrib "
                         If (fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then sCmd &= "-r "
                         If (fiDest.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden Then sCmd &= "-h "
-                        sCmd &= sQuote(sDest & fiDest.Name)
+                        sCmd &= Quote(sDest & fiDest.Name)
                         Trace(sCmd)
                         If Not bNoAction Then
                             If bDotNetCalls Then
@@ -502,12 +260,12 @@ Label1:
                                     AddError(sCmd & "|" & ex.Message)
                                 End Try
                             Else
-                                Dim bRet As Integer = SetFileAttributes(sWidePath(sDest & fiDest.Name), fiDest.Attributes And Not (FileAttributes.ReadOnly Or FileAttributes.Hidden))
+                                Dim bRet As Integer = SetFileAttributes(WidePath(sDest & fiDest.Name), fiDest.Attributes And Not (FileAttributes.ReadOnly Or FileAttributes.Hidden))
                                 If bRet = 0 Then TraceWin32Error(sCmd)
                             End If
                         End If
                     End If
-                    sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
+                    sCmd = "copy " & Quote(sSource & fiSource.Name) & " " & Quote(sDest & fiSource.Name)
                     Trace(sCmd)
                     nbFilesCopied += 1
                     If Not bNoAction Then MyCopyFile(sSource & fiSource.Name, sDest & fiSource.Name)
@@ -516,7 +274,7 @@ Label1:
                 ' New for 3.11: Check that case is identical, otherwise rename
                 If StrComp(fiSource.Name, fiDest.Name, CompareMethod.Binary) Then
                     ' Should rename
-                    sCmd = "ren " & sQuote(sDest & fiDest.Name) & " " & sQuote(fiSource.Name)
+                    sCmd = "ren " & Quote(sDest & fiDest.Name) & " " & Quote(fiSource.Name)
                     Trace(sCmd)
                     nbFilesRenamed += 1
                     If Not bNoAction Then MyRenameFile(sDest, fiDest.Name, fiSource.Name)
@@ -530,7 +288,7 @@ Label1:
                 If Not colFilesSource.Contains(fiDest.Name) Then
                     ' If dest exists and is readonly, remove attribute first
                     If (Not bNoAction) And ((fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly OrElse (fiDest.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden OrElse (fiDest.Attributes And FileAttributes.System) = FileAttributes.System) Then
-                        sCmd = "attrib -rhs " & sQuote(sDest & fiDest.Name)
+                        sCmd = "attrib -rhs " & Quote(sDest & fiDest.Name)
                         Trace(sCmd)
                         If bDotNetCalls Then
                             Try
@@ -541,11 +299,11 @@ Label1:
                                 AddError(sCmd & "|" & ex.Message)
                             End Try
                         Else
-                            Dim bRet As Integer = SetFileAttributes(sWidePath(sDest & fiDest.Name), FileAttributes.Normal)
+                            Dim bRet As Integer = SetFileAttributes(WidePath(sDest & fiDest.Name), FileAttributes.Normal)
                             If bRet = 0 Then TraceWin32Error(sCmd)
                         End If
                     End If
-                    sCmd = "del " & sQuote(sDest & fiDest.Name)
+                    sCmd = "del " & Quote(sDest & fiDest.Name)
                     Trace(sCmd)
                     nbFilesDeleted += 1
                     If Not bNoAction Then
@@ -557,7 +315,7 @@ Label1:
                                 AddError(sCmd & "|" & ex.Message)
                             End Try
                         Else
-                            Dim bRet As Boolean = DeleteFile(sWidePath(sDest & fiDest.Name))
+                            Dim bRet As Boolean = DeleteFile(WidePath(sDest & fiDest.Name))
                             If bRet = 0 Then TraceWin32Error(sCmd)
                         End If
                     End If
@@ -568,11 +326,11 @@ Label1:
         ' 3. Recursively process subdirectories, creating missing subdirectories
         For Each sSubfolder As String In colFoldersSource
             If iLevel <= iFolderTraceLevel Then
-                Trace("Processing " & sQuote(sSource & sSubfolder))
+                Trace("Processing " & Quote(sSource & sSubfolder))
             End If
             nbDirectories += 1
             If Not colFoldersDest.Contains(sSubfolder) Then
-                sCmd = "mkdir " & sQuote(sDest & sSubfolder)
+                sCmd = "mkdir " & Quote(sDest & sSubfolder)
                 Trace(sCmd)
                 If Not bNoAction Then
                     If bDotNetCalls Then
@@ -585,7 +343,7 @@ Label1:
                             Continue For
                         End Try
                     Else
-                        Dim bRet As Boolean = CreateDirectory(sWidePath(sDest & sSubfolder), IntPtr.Zero)
+                        Dim bRet As Boolean = CreateDirectory(WidePath(sDest & sSubfolder), IntPtr.Zero)
                         If bRet = 0 Then
                             TraceWin32Error(sCmd)
                         End If
@@ -600,7 +358,7 @@ Label1:
             For Each sSubfolder As String In colFoldersDest
                 If Not colFoldersSource.Contains(sSubfolder) Then
                     If bNoAction Then
-                        sCmd = "rd /s " & sQuote(sDest & sSubfolder)
+                        sCmd = "rd /s " & Quote(sDest & sSubfolder)
                         Trace(sCmd)
                     Else
                         RecurseDeleteDirectory(sDest & sSubfolder)
@@ -613,8 +371,8 @@ Label1:
     ' Manual implementation since My.Computer.FileSystem.DeleteDirectory(sDest & sSubfolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
     ' does not work if there is r/o file in the folder
     Private Sub RecurseDeleteDirectory(ByVal sPath As String)
-        Dim colFiles As New Kollection
-        Dim colFolders As New Kollection
+        Dim colFiles As New Kollection(Of MyFileInfo)
+        Dim colFolders As New Kollection(Of String)
 
         If Right(sPath, 1) <> "\" Then sPath = sPath & "\"
         Enumerate(sPath, colFolders, colFiles)
@@ -624,7 +382,7 @@ Label1:
         Dim sCmd As String
         For Each f As MyFileInfo In colFiles
             If (f.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly OrElse (f.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden OrElse (f.Attributes And FileAttributes.System) = FileAttributes.System Then
-                sCmd = "attrib -rhs " & sQuote(f.FullName)
+                sCmd = "attrib -rhs " & Quote(f.FullName)
                 Trace(sCmd)
                 ' No need to check bNoAction since if it's False, RecurseDeleteDirectory is not called
                 If bDotNetCalls Then
@@ -635,11 +393,11 @@ Label1:
                         AddError(sCmd & "|" & ex.Message)
                     End Try
                 Else
-                    Dim bRet As Integer = SetFileAttributes(sWidePath(f.FullName), FileAttributes.Normal)
+                    Dim bRet As Integer = SetFileAttributes(WidePath(f.FullName), FileAttributes.Normal)
                     If bRet = 0 Then TraceWin32Error(sCmd)
                 End If
             End If
-            sCmd = "del " & sQuote(f.FullName)
+            sCmd = "del " & Quote(f.FullName)
             Trace(sCmd)
             If bDotNetCalls Then
                 Try
@@ -649,11 +407,11 @@ Label1:
                     AddError(sCmd & "|" & ex.Message)
                 End Try
             Else
-                Dim bRet As Boolean = DeleteFile(sWidePath(f.FullName))
+                Dim bRet As Boolean = DeleteFile(WidePath(f.FullName))
                 If bRet = 0 Then TraceWin32Error(sCmd)
             End If
         Next
-        sCmd = "rd " & sQuote(sPath)
+        sCmd = "rd " & Quote(sPath)
         Trace(sCmd)
         If bDotNetCalls Then
             Try
@@ -663,12 +421,12 @@ Label1:
                 AddError(sCmd & "|" & ex.Message)
             End Try
         Else
-            Dim bRet As Boolean = RemoveDirectory(sWidePath(sPath))
+            Dim bRet As Boolean = RemoveDirectory(WidePath(sPath))
             If bRet = 0 Then TraceWin32Error(sCmd)
         End If
     End Sub
 
-    Private Function bTimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
+    Private Function TimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
         Dim sPathSource As String = sSource & sNomficTTO
         Dim sPathDest As String = sDest & sNomficTTO
 
@@ -718,7 +476,7 @@ Label1:
             End Try
         Else
             Dim cancel As Boolean = False
-            Dim bRet As Integer = CopyFileEx(sWidePath(sourcePath), sWidePath(destinationPath), Nothing, 0, cancel, COPY_FILE_ALLOW_DECRYPTED_DESTINATION)
+            Dim bRet As Integer = CopyFileEx(WidePath(sourcePath), WidePath(destinationPath), Nothing, 0, cancel, COPY_FILE_ALLOW_DECRYPTED_DESTINATION)
             If bRet = 0 Then
                 TraceWin32Error("CopyFileEx(""" & sourcePath & """, """ & destinationPath & "")
                 Exit Sub
@@ -743,7 +501,7 @@ Label1:
                 AddError("Rename(""" & targetPath & tempName & """, """ & newName & """)|" & ex.Message)
             End Try
         Else
-            Dim bRet As Integer = MoveFile(sWidePath(targetPath & oldName), sWidePath(targetPath & newName))
+            Dim bRet As Integer = MoveFile(WidePath(targetPath & oldName), WidePath(targetPath & newName))
             If bRet = 0 Then
                 TraceWin32Error("MoveFile(""" & targetPath & oldName & """, """ & targetPath & newName & "")
                 Exit Sub
@@ -768,7 +526,7 @@ Label1:
     ''' the Universal Naming Convention (UNC) format. The "\\?\" is ignored as part of the path. For example, "\\?\C:\myworld\private"
     ''' is seen as "C:\myworld\private", and "\\?\UNC\bill_g_1\hotstuff\coolapps" is seen as "\\bill_g_1\hotstuff\coolapps".
     ''' </summary>
-    Private Function sWidePath(ByVal sPath As String) As String
+    Private Function WidePath(ByVal sPath As String) As String
         If bNoWidePaths Then        ' Option to deactivate this mechanism
             Return sPath
         ElseIf sPath.Length > 1 AndAlso sPath(1) = ":"c Then
@@ -781,15 +539,15 @@ Label1:
     End Function
 
     ' Enumeration of files and folders using Win32 functions
-    Private Sub Enumerate(ByVal sPath As String, ByVal colFoldersSource As Kollection, ByVal colFilesSource As Kollection)
+    Private Sub Enumerate(ByVal sPath As String, ByVal colFoldersSource As Kollection(Of String), ByVal colFilesSource As Kollection(Of MyFileInfo))
         Dim hsearch As IntPtr  ' handle to the file search
         Dim findinfo As WIN32_FIND_DATAW = Nothing
         Dim success As Long  ' will be 1 if successive searches are successful, 0 if not
         Dim retval As Long  ' generic return value
 
-        Dim s As String = sWidePath(sPath) & "*"
+        Dim s As String = WidePath(sPath) & "*"
         hsearch = FindFirstFileW(s, findinfo)
-        ' astructw 3.7.2, Try again for Synologic DS1010+ on Shark after waiting a bit...
+        ' astructw 3.7.2, Try again for Synology DS1010+ on Shark after waiting a bit...
         If hsearch = -1 Then
             For i As Integer = 1 To 10
                 System.Threading.Thread.Sleep(10)
@@ -803,11 +561,9 @@ Label1:
                     ' Ignore special folders
                     If findinfo.cFileName = "." Or findinfo.cFileName = ".." Then GoTo NextFile
                     ' Ignore folders exclusions
-                    SyncLock colExclusionsFolders
-                        For Each sExcl As String In colExclusionsFolders
-                            If findinfo.cFileName Like sExcl Then GoTo NextFile
-                        Next
-                    End SyncLock
+                    For Each sExcl As String In colExclusionsFolders
+                        If findinfo.cFileName Like sExcl Then GoTo NextFile
+                    Next
 
                     ' Ignore SYSTEM+HIDDEN folders on source
                     If (findinfo.dwFileAttributes And FileAttributes.Hidden) <> FileAttributes.Hidden OrElse (findinfo.dwFileAttributes And FileAttributes.System) <> FileAttributes.System Then
@@ -824,20 +580,24 @@ Label1:
                     End If
                 Else
                     ' Ignore files exclusions
-                    SyncLock colExclusionsFiles
-                        For Each sExcl As String In colExclusionsFiles
-                            If findinfo.cFileName Like sExcl Then GoTo NextFile
-                        Next
-                    End SyncLock
+                    For Each sExcl As String In colExclusionsFiles
+                        If findinfo.cFileName Like sExcl Then GoTo NextFile
+                    Next
 
-                    If findinfo.cFileName <> sNomficTTO Then
+                    If colFilesSource.Contains(findinfo.cFileName) Then
+                        Dim sErr As String = "Source folder " + Quote(sPath) + " contains files that only differs by case: " + Quote(colFilesSource(findinfo.cFileName).Name) + " and " + Quote(findinfo.cFileName) + ", only one gets copied."
+                        Trace("*** " + sErr)
+                        AddError(sErr)
+
+                    ElseIf findinfo.cFileName <> sNomficTTO Then
                         Dim fi As MyFileInfo
-                        fi = New MyFileInfo
-                        fi.Name = findinfo.cFileName
-                        fi.FullName = sPath & findinfo.cFileName
-                        fi.Attributes = findinfo.dwFileAttributes
-                        fi.FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow
-                        fi.LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                        fi = New MyFileInfo With {
+                            .Name = findinfo.cFileName,
+                            .FullName = sPath & findinfo.cFileName,
+                            .Attributes = findinfo.dwFileAttributes,
+                            .FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow,
+                            .LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                        }
                         colFilesSource.Add(fi, fi.Name)
                     End If
                 End If
@@ -847,44 +607,7 @@ NextFile:
 
             ' Close the file search handle
             retval = FindClose(hsearch)
-            'Else
-            ' Should never stop here actually since a folder always contains subfolders or at least . and ..
-            ' And it's usually useless to run astruct on a completely totally empty drive
-            'Stop
         End If
     End Sub
-
-    '    Private Sub CopyOneFileWin32(ByVal sSource As String, ByVal sDest As String, ByVal sCmd As String, ByVal SourceLastWriteTime As Long)
-    '        Dim bRet As Integer = CopyFile(sSource, sDest, False)
-    '        If bRet = 0 Then
-    '            TraceWin32Error(sCmd)
-    '            Exit Sub
-    '        End If
-
-    '        Exit Sub
-
-    '        'Const GENERIC_ALL = &H10000000
-    '        Const GENERIC_READ = &H80000000
-    '        Const FILE_WRITE_ATTRIBUTES = &H100
-    '        Const FILE_SHARE_READ = &H1
-    '        'Const FILE_SHARE_WRITE = &H2
-    '        Const OPEN_EXISTING = 3
-
-    '        'hFile = CreateFile(sDest, GENERIC_ALL, FILE_SHARE_READ Or FILE_SHARE_WRITE, Nothing, OPEN_EXISTING, 0, 0)
-    '        Dim hFile As SafeFileHandle, LastWriteTime As FILETIME
-    '        hFile = CreateFile(sDest, GENERIC_READ Or FILE_WRITE_ATTRIBUTES, FILE_SHARE_READ, Nothing, OPEN_EXISTING, 0, 0)
-
-    '        If hFile.IsInvalid Then TraceWin32Error("CreateFile " & sDest) : Exit Sub
-    '        If GetFileTime(hFile, Nothing, Nothing, LastWriteTime) = 0 Then TraceWin32Error("GetFileTime " & sDest) : GoTo Sortie
-
-    '        If Math.Abs((SourceLastWriteTime - LastWriteTime.dwHighDateTime * 4294967296 - LastWriteTime.dwLowDateTime) / 10000000) > 2 Then
-    '            LastWriteTime.dwHighDateTime = SourceLastWriteTime \ 4294967296
-    '            LastWriteTime.dwLowDateTime = SourceLastWriteTime Mod 4294967296
-    '            If SetFileTime(hFile, Nothing, Nothing, LastWriteTime) = 0 Then TraceWin32Error("SetFileTime " & sDest)
-    '        End If
-
-    'Sortie:
-    '        CloseHandle(hFile)
-    '    End Sub
 
 End Module

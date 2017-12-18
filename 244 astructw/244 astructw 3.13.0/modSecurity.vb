@@ -7,35 +7,7 @@ Option Compare Text
 Imports System.Runtime.InteropServices
 Imports System.Text
 
-Module Security
-
-    Private Structure LUID
-        Dim LowPart As Integer
-        Dim HighPart As Integer
-    End Structure
-
-    Private Structure LUID_AND_ATTRIBUTES
-        Dim pLuid As LUID
-        Dim Attributes As Integer
-    End Structure
-
-    Private Structure TOKEN_PRIVILEGES
-        Dim PrivilegeCount As Integer
-        Dim Privileges As LUID_AND_ATTRIBUTES
-    End Structure
-
-    Private Const TOKEN_ADJUST_PRIVILEGES = &H20
-    Private Const TOKEN_QUERY = &H8
-    Private Const SE_PRIVILEGE_ENABLED = &H2
-    Private Const FORMAT_MESSAGE_FROM_SYSTEM = &H1000
-
-    Private Declare Function LoadLibrary Lib "kernel32" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As IntPtr
-    Private Declare Function FreeLibrary Lib "kernel32" (ByVal hLibModule As IntPtr) As Integer
-    Private Declare Function GetProcAddress Lib "kernel32" (ByVal hModule As IntPtr, ByVal lpProcName As String) As IntPtr
-    Private Declare Function OpenProcessToken Lib "advapi32.dll" (ByVal ProcessHandle As IntPtr, ByVal DesiredAccess As Integer, ByRef TokenHandle As IntPtr) As Integer
-    Private Declare Function LookupPrivilegeValue Lib "advapi32.dll" Alias "LookupPrivilegeValueA" (ByVal lpSystemName As String, ByVal lpName As String, ByRef lpLuid As LUID) As Integer
-    Private Declare Function AdjustTokenPrivileges Lib "advapi32.dll" (ByVal TokenHandle As IntPtr, ByVal DisableAllPrivileges As Integer, ByRef NewState As TOKEN_PRIVILEGES, ByVal BufferLength As Integer, ByRef PreviousState As TOKEN_PRIVILEGES, ByRef ReturnLength As Integer) As Integer
-    Private Declare Function FormatMessage Lib "kernel32" Alias "FormatMessageA" (ByVal dwFlags As Integer, ByVal lpSource As IntPtr, ByVal dwMessageId As Integer, ByVal dwLanguageId As Integer, ByVal lpBuffer As StringBuilder, ByVal nSize As Integer, ByVal Arguments As Integer) As Integer
+Friend Module Security
 
     ' Look for "Privilege constants" in help
     Public Sub EnableToken(ByVal privilege As String)
@@ -73,6 +45,8 @@ Module Security
 
 End Module
 
+
+<Serializable>
 Public Class PrivilegeException
     Inherits Exception
 
