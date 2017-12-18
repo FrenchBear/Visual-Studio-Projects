@@ -15,7 +15,7 @@ Friend Class WindowsFileExplorerComparer
     End Function
 
     Public Overloads Function GetHashCode(name As String) As Integer Implements IEqualityComparer(Of String).GetHashCode
-        Return name.GetHashCode()
+        Return name.ToUpperInvariant().GetHashCode()
     End Function
 
     Private Function Compare(x As String, y As String) As Integer Implements IComparer(Of String).Compare
