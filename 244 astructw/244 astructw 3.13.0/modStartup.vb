@@ -172,7 +172,7 @@ Sortie:
         Return "Copyright " & My.Application.Info.Copyright & vbCrLf & vbCrLf &
                "Advanced Options:" & vbCrLf &
                "/d     Use DotNet calls for filesystem operations instead of Win32 calls" & vbCrLf &
-               "/m     Multitreading: Enumerates folder contents in two separate threads" & vbCrLf &
+               "/m     Multithreading: Enumerates folder contents in two separate threads" & vbCrLf &
                "/r2    Copy directory reparse point contents instead of ignoring then" & vbCrLf &
                "/t1    Tolerates exactly 1 hour difference between source and target" & vbCrLf &
                "/w-    Do not use wide paths extensions for Win32 calls" & vbCrLf &
