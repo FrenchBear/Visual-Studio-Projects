@@ -47,8 +47,7 @@ namespace CS419
         // Retruns false in case of a problem, otherwise returns true and variables drawString and angle are filled
         private bool OkGenerate()
         {
-            int d;
-            if (!int.TryParse(LevelTextBox.Text, out d))
+            if (!int.TryParse(LevelTextBox.Text, out int d))
             {
                 MessageBox.Show("Invalid depth", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;

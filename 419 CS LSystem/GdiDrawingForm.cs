@@ -29,12 +29,14 @@ namespace CS419
 
         private void GdiDrawingForm_Load(object sender, EventArgs e)
         {
-            GdiDraw();
+            if (_s != null)
+                GdiDraw();
         }
 
         private void GdiDrawingForm_Resize(object sender, EventArgs e)
         {
-            GdiDraw();
+            if (_s!=null)
+                GdiDraw();
         }
 
         private void GdiDraw()
