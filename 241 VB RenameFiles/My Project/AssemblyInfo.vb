@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Dot Net version of VB6 RenameFiles")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("RenameFiles")>
-<Assembly: AssemblyCopyright("Copyright © P.Violent 2006")>
+<Assembly: AssemblyCopyright("Copyright © Pierre Violent 2006-2018")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("2.3.0.0")>
-<Assembly: AssemblyFileVersion("2.3.0.0")>
+<Assembly: AssemblyVersion("2.3.0.1")>
+<Assembly: AssemblyFileVersion("2.3.0.1")>
