@@ -1,6 +1,10 @@
 ﻿// 549 CS Strcmp Accent and Case insensitive
 // Comparison and searches both case and accent insensitive
 // Note: Do not bother about special case of I in Turkish (İ I i ı)
+//
+// 2016-09-26   PV
+// 2018-09-01   PV      œ example
+
 
 using System;
 using System.Collections.Generic;
@@ -15,16 +19,22 @@ namespace CS549
 {
     class Program
     {
-        const string file = @"W:\Livres\Art\Colorisation de BD - Du traditionnel au numérique (2005) - Baril, Naïts.pdf";
-        static void Main(string[] args)
+        const string file = @"Colorisation de BD - Du traditionnel au numérique (2005) - Cœur de Presse - Baril, Naïts.pdf";
+
+        static void Main()
         {
             string s1 = "MaÏs";
             string s2 = "Mais";
 
+
+            //string s1 = "Cœur";
+            //string s2 = "Coeur";
+
             int cmp = string.Compare(s1, s2, CultureInfo.CurrentCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase);
 
             WriteLine($"cmp(\"{s1}\", \"{s2}\"): {cmp}");
-            WriteLine($"ContainsAICI: {ContainsAICI(file, "ITS")}");
+            WriteLine($"ContainsAICI ITS:   {ContainsAICI(file, "ITS")}");
+            WriteLine($"ContainsAICI Coeur: {ContainsAICI(file, "Coeur")}");
 
             WriteLine();
             TimeExec(RemoveDiacritics);
@@ -37,6 +47,7 @@ namespace CS549
         }
 
         // StringContains both Accent Insensitive and Case Insensitive
+        // Note that oe=œ because of InvariantCulture locale, not because of RemoveDiacritics
         private static bool ContainsAICI(string searched, string value)
         {
             return RemoveDiacritics(searched).IndexOf(RemoveDiacritics(value), StringComparison.InvariantCultureIgnoreCase) >= 0;
@@ -63,7 +74,6 @@ namespace CS549
             foreach (char ch in text.Normalize(NormalizationForm.FormD))
                 if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
                     sb.Append(ch);
-
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
         static string RemoveDiacritics2(string text)
