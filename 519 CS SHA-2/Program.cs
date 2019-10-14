@@ -7,41 +7,40 @@
 // http://en.wikipedia.org/wiki/SHA-2
 // 2014-03-24   PV
 // 2014-03-25   PV  SHA512 & 385; .Net version
+// 2019-10-14   PV  VS2019; Added Go examples "x" and "X"
 
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
+
 
 namespace SHA_2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("CS 519 SHA-2");
 
             // Test rotation function
             uint u32 = 0xcafe;
-            u32 = rightrotate(u32, 1);
-            u32 = rightrotate(u32, 2);
-            u32 = rightrotate(u32, 4);
-            u32 = rightrotate(u32, 8);
-            u32 = rightrotate(u32, 15);
-            u32 = rightrotate(u32, 29);
-            u32 = rightrotate(u32, 5);
+            u32 = RightRotate(u32, 1);
+            u32 = RightRotate(u32, 2);
+            u32 = RightRotate(u32, 4);
+            u32 = RightRotate(u32, 8);
+            u32 = RightRotate(u32, 15);
+            u32 = RightRotate(u32, 29);
+            u32 = RightRotate(u32, 5);
             Debug.Assert(u32 == 0xcafe);
 
             ulong u64 = 0xcafe;
-            u64 = rightrotate(u64, 4);
-            u64 = rightrotate(u64, 1);
-            u64 = rightrotate(u64, 12);
-            u64 = rightrotate(u64, 37);
-            u64 = rightrotate(u64, 10);
+            u64 = RightRotate(u64, 4);
+            u64 = RightRotate(u64, 1);
+            u64 = RightRotate(u64, 12);
+            u64 = RightRotate(u64, 37);
+            u64 = RightRotate(u64, 10);
             Debug.Assert(u64 == 0xcafe);
 
 
@@ -61,6 +60,10 @@ namespace SHA_2
             // Two blocks processing
             Test_sha_256("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq",
                 "248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1");
+
+            // 2019-20-14 Compare with Go
+            Test_sha_256("x", "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881");
+            Test_sha_256("X", "4b68ab3847feda7d6c62c1fbcbeebfa35eab7351ed5e78f4ddadea5df64b8015");
 
 
 
@@ -122,22 +125,24 @@ namespace SHA_2
         private static void Test_sha_256(string s, string hashed)
         {
             // Use local implementation
-            Debug.Assert(sha_256(s) == hashed);
+            Debug.Assert(SHA_256(s) == hashed);
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            SHA256Managed hashstring = new SHA256Managed();
-            byte[] hash = hashstring.ComputeHash(bytes);
-            StringBuilder hsb = new StringBuilder();
-            foreach (byte b in hash)
-                hsb.Append(b.ToString("x2"));
-            Debug.Assert(hsb.ToString() == hashed);
+            using (SHA256Managed hashstring = new SHA256Managed())
+            {
+                byte[] hash = hashstring.ComputeHash(bytes);
+                StringBuilder hsb = new StringBuilder();
+                foreach (byte b in hash)
+                    hsb.Append(b.ToString("x2"));
+                Debug.Assert(hsb.ToString() == hashed);
+            }
         }
 
         private static void Test_sha_224(string s, string hashed)
         {
             // Use local implementation
-            Debug.Assert(sha_224(s) == hashed);
+            Debug.Assert(SHA_224(s) == hashed);
 
             // .Net Framework does not provide a managed version
         }
@@ -145,31 +150,35 @@ namespace SHA_2
         private static void Test_sha_512(string s, string hashed)
         {
             // Use local implementation
-            Debug.Assert(sha_512(s) == hashed);
+            Debug.Assert(SHA_512(s) == hashed);
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            SHA512Managed hashstring = new SHA512Managed();
-            byte[] hash = hashstring.ComputeHash(bytes);
-            StringBuilder hsb = new StringBuilder();
-            foreach (byte b in hash)
-                hsb.Append(b.ToString("x2"));
-            Debug.Assert(hsb.ToString() == hashed);
+            using (SHA512Managed hashstring = new SHA512Managed())
+            {
+                byte[] hash = hashstring.ComputeHash(bytes);
+                StringBuilder hsb = new StringBuilder();
+                foreach (byte b in hash)
+                    hsb.Append(b.ToString("x2"));
+                Debug.Assert(hsb.ToString() == hashed);
+            }
         }
 
         private static void Test_sha_384(string s, string hashed)
         {
             // Use local implementation
-            Debug.Assert(sha_384(s) == hashed);
+            Debug.Assert(SHA_384(s) == hashed);
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            SHA384Managed hashstring = new SHA384Managed();
-            byte[] hash = hashstring.ComputeHash(bytes);
-            StringBuilder hsb = new StringBuilder();
-            foreach (byte b in hash)
-                hsb.Append(b.ToString("x2"));
-            Debug.Assert(hsb.ToString() == hashed);
+            using (SHA384Managed hashstring = new SHA384Managed())
+            {
+                byte[] hash = hashstring.ComputeHash(bytes);
+                StringBuilder hsb = new StringBuilder();
+                foreach (byte b in hash)
+                    hsb.Append(b.ToString("x2"));
+                Debug.Assert(hsb.ToString() == hashed);
+            }
         }
 
 
@@ -215,7 +224,7 @@ namespace SHA_2
         }
 
 
-        private static string sha_256(string s)
+        private static string SHA_256(string s)
         {
             // Initialize hash values:
             // First 32 bits of the fractional parts of the square roots of the first 8 primes 2..19:
@@ -231,10 +240,10 @@ namespace SHA_2
                 0x5be0cd19
             };
 
-            return sha_256_224(s, h);
+            return SHA_256_224(s, h);
         }
 
-        private static string sha_224(string s)
+        private static string SHA_224(string s)
         {
             // Initialize hash values:
             // The second 32 bits of the fractional parts of the square roots of the 9th through 16th primes 23..53:
@@ -250,7 +259,7 @@ namespace SHA_2
                 0xbefa4fa4
             };
 
-            return sha_256_224(s, h).Substring(0, 56);
+            return SHA_256_224(s, h).Substring(0, 56);
         }
 
 
@@ -260,7 +269,7 @@ namespace SHA_2
         // Note 4: Big-endian convention is used when expressing the constants in this pseudocode,
         // and when parsing message block data from bytes to words, for example,
         // the first word of the input message "abc" after padding is 0x61626380
-        private static string sha_256_224(string s, uint[] h)
+        private static string SHA_256_224(string s, uint[] h)
         {
             // Initialize array of round constants:
             // (first 32 bits of the fractional parts of he cube roots of the first 64 primes 2..311):
@@ -276,9 +285,9 @@ namespace SHA_2
                 0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
             };
 
-            byte[] tb;          // Table of bytes
-            int nb;             // Number of blocks
-            Preprocessing(s, 512, 64, out tb, out nb);
+            // tb: Table of bytes
+            // nb: Number of blocks
+            Preprocessing(s, 512, 64, out byte[] tb, out int nb);
 
             // Process the message in successive 512-bit chunks:
             // break message into 512-bit chunks for each chunk
@@ -301,8 +310,8 @@ namespace SHA_2
                 //      w[i] := w[i-16] + s0 + w[i-7] + s1
                 for (int i = 16; i < 64; i++)
                 {
-                    uint s0 = rightrotate(w[i - 15], 7) ^ rightrotate(w[i - 15], 18) ^ (w[i - 15] >> 3);
-                    uint s1 = rightrotate(w[i - 2], 17) ^ rightrotate(w[i - 2], 19) ^ (w[i - 2] >> 10);
+                    uint s0 = RightRotate(w[i - 15], 7) ^ RightRotate(w[i - 15], 18) ^ (w[i - 15] >> 3);
+                    uint s1 = RightRotate(w[i - 2], 17) ^ RightRotate(w[i - 2], 19) ^ (w[i - 2] >> 10);
                     w[i] = w[i - 16] + s0 + w[i - 7] + s1;
                 }
 
@@ -327,10 +336,10 @@ namespace SHA_2
                     // maj := (a and b) xor (a and c) xor (b and c)
                     // temp2 := S0 + maj
 
-                    uint S1 = rightrotate(e, 6) ^ rightrotate(e, 11) ^ rightrotate(e, 25);
+                    uint S1 = RightRotate(e, 6) ^ RightRotate(e, 11) ^ RightRotate(e, 25);
                     uint ch = (e & f) ^ ((~e) & g);
                     uint temp1 = hh + S1 + ch + k[i] + w[i];
-                    uint S0 = rightrotate(a, 2) ^ rightrotate(a, 13) ^ rightrotate(a, 22);
+                    uint S0 = RightRotate(a, 2) ^ RightRotate(a, 13) ^ RightRotate(a, 22);
                     uint maj = (a & b) ^ (a & c) ^ (b & c);
                     uint temp2 = S0 + maj;
 
@@ -361,7 +370,7 @@ namespace SHA_2
         }
 
 
-        private static string sha_512(string s)
+        private static string SHA_512(string s)
         {
             // Initialize hash values:
             // First 64 bits of the fractional parts of the square roots of the first 8 primes 2..19:
@@ -377,11 +386,11 @@ namespace SHA_2
                 0x5be0cd19137e2179
             };
 
-            return sha_512_384(s, h);
+            return SHA_512_384(s, h);
         }
 
 
-        private static string sha_384(string s)
+        private static string SHA_384(string s)
         {
             // Initialize hash values:
             // First 64 bits of the fractional parts of the square roots of the first 9th to 16th primes:
@@ -397,11 +406,11 @@ namespace SHA_2
                 0x47b5481dbefa4fa4
             };
 
-            return sha_512_384(s, h).Substring(0, 96);
+            return SHA_512_384(s, h).Substring(0, 96);
         }
 
 
-        private static string sha_512_384(string s, ulong[] h)
+        private static string SHA_512_384(string s, ulong[] h)
         {
 
             // Initialize array of round constants:
@@ -427,9 +436,9 @@ namespace SHA_2
             };
 
             // Premare message in blocks of 1024 bits (stored in bytes), with a length encoded on 128 bits
-            byte[] tb;          // Table of bytes
-            int nb;             // Number of blocks
-            Preprocessing(s, 1024, 128, out tb, out nb);
+            // tb: Table of bytes
+            // nb: Number of blocks
+            Preprocessing(s, 1024, 128, out byte[] tb, out int nb);
 
             // Process the message in successive 1024-bit chunks:
             // break message into 1024-bit chunks for each chunk
@@ -453,8 +462,8 @@ namespace SHA_2
                 //      w[i] := w[i-16] + s0 + w[i-7] + s1
                 for (int i = 16; i < 80; i++)
                 {
-                    ulong s0 = rightrotate(w[i - 15], 1) ^ rightrotate(w[i - 15], 8) ^ (w[i - 15] >> 7);
-                    ulong s1 = rightrotate(w[i - 2], 19) ^ rightrotate(w[i - 2], 61) ^ (w[i - 2] >> 6);
+                    ulong s0 = RightRotate(w[i - 15], 1) ^ RightRotate(w[i - 15], 8) ^ (w[i - 15] >> 7);
+                    ulong s1 = RightRotate(w[i - 2], 19) ^ RightRotate(w[i - 2], 61) ^ (w[i - 2] >> 6);
                     w[i] = w[i - 16] + s0 + w[i - 7] + s1;
                 }
 
@@ -479,10 +488,10 @@ namespace SHA_2
                     // maj := (a and b) xor (a and c) xor (b and c)
                     // temp2 := S0 + maj
 
-                    ulong S1 = rightrotate(e, 14) ^ rightrotate(e, 18) ^ rightrotate(e, 41);
+                    ulong S1 = RightRotate(e, 14) ^ RightRotate(e, 18) ^ RightRotate(e, 41);
                     ulong ch = (e & f) ^ ((~e) & g);
                     ulong temp1 = hh + S1 + ch + k[i] + w[i];
-                    ulong S0 = rightrotate(a, 28) ^ rightrotate(a, 34) ^ rightrotate(a, 39);
+                    ulong S0 = RightRotate(a, 28) ^ RightRotate(a, 34) ^ RightRotate(a, 39);
                     ulong maj = (a & b) ^ (a & c) ^ (b & c);
                     ulong temp2 = S0 + maj;
 
@@ -515,13 +524,13 @@ namespace SHA_2
 
         // equivalent of C++ _rotr
         // 32-bit version
-        static uint rightrotate(uint original, int bits)
+        static uint RightRotate(uint original, int bits)
         {
             return (original >> bits) | (original << (32 - bits));
         }
 
         // 64-bit version
-        static ulong rightrotate(ulong original, int bits)
+        static ulong RightRotate(ulong original, int bits)
         {
             return (original >> bits) | (original << (64 - bits));
         }

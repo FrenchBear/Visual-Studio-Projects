@@ -5,13 +5,11 @@
 // 2014-03-24   PV
 // 2014-03-25   PV  SHA512 & 385; .Net version
 // 2017-04-27   PV  SHA-1, VS2017
+// 2019-10-15   PV  VS2019
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 
 
@@ -19,19 +17,19 @@ namespace SHA_1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("519b CS SHA-1");
 
             // Test rotation function
             uint u32 = 0xcafe;
-            u32 = leftrotate(u32, 1);
-            u32 = leftrotate(u32, 2);
-            u32 = leftrotate(u32, 4);
-            u32 = leftrotate(u32, 8);
-            u32 = leftrotate(u32, 15);
-            u32 = leftrotate(u32, 29);
-            u32 = leftrotate(u32, 5);
+            u32 = LeftRotate(u32, 1);
+            u32 = LeftRotate(u32, 2);
+            u32 = LeftRotate(u32, 4);
+            u32 = LeftRotate(u32, 8);
+            u32 = LeftRotate(u32, 15);
+            u32 = LeftRotate(u32, 29);
+            u32 = LeftRotate(u32, 5);
             Debug.Assert(u32 == 0xcafe);
 
 
@@ -59,16 +57,18 @@ namespace SHA_1
         private static void Test_sha1(string s, string hashed)
         {
             // Use local implementation
-            Debug.Assert(sha1(s) == hashed);
+            Debug.Assert(SHA1(s) == hashed);
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            SHA1Managed hashstring = new SHA1Managed();
-            byte[] hash = hashstring.ComputeHash(bytes);
-            StringBuilder hsb = new StringBuilder();
-            foreach (byte b in hash)
-                hsb.Append(b.ToString("x2"));
-            Debug.Assert(hsb.ToString() == hashed);
+            using (SHA1Managed hashstring = new SHA1Managed())
+            {
+                byte[] hash = hashstring.ComputeHash(bytes);
+                StringBuilder hsb = new StringBuilder();
+                foreach (byte b in hash)
+                    hsb.Append(b.ToString("x2"));
+                Debug.Assert(hsb.ToString() == hashed);
+            }
         }
 
 
@@ -120,7 +120,7 @@ namespace SHA_1
         // Note 4: Big-endian convention is used when expressing the constants in this pseudocode,
         // and when parsing message block data from bytes to words, for example,
         // the first word of the input message "abc" after padding is 0x61626380
-        private static string sha1(string s)
+        private static string SHA1(string s)
         {
             // Initialize hash values h[0..4]
             uint[] h = {
@@ -131,9 +131,9 @@ namespace SHA_1
                 0xC3D2E1F0
             };
 
-            byte[] tb;          // Table of bytes
-            int nb;             // Number of blocks
-            Preprocessing(s, 512, 64, out tb, out nb);
+            // tb: Table of bytes
+            // nb: Number of blocks
+            Preprocessing(s, 512, 64, out byte[] tb, out int nb);
 
             // Process the message in successive 512-bit chunks:
             // break message into 512-bit chunks for each chunk
@@ -153,7 +153,7 @@ namespace SHA_1
                 //     w[i] = (w[i - 3] xor w[i - 8] xor w[i - 14] xor w[i - 16]) leftrotate 1
                 for (int i = 16; i < 80; i++)
                 {
-                    w[i] = leftrotate(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
+                    w[i] = LeftRotate(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
                 }
 
                 // Initialize working variables to current hash value:
@@ -209,10 +209,10 @@ namespace SHA_1
                         k = 0xCA62C1D6;
                     }
 
-                    uint temp = leftrotate(a, 5) + f + e + k + w[i];
+                    uint temp = LeftRotate(a, 5) + f + e + k + w[i];
                     e = d;
                     d = c;
-                    c = leftrotate(b, 30);
+                    c = LeftRotate(b, 30);
                     b = a;
                     a = temp;
                 }
@@ -233,7 +233,7 @@ namespace SHA_1
 
         // equivalent of C++ _rotl
         // 32-bit version
-        static uint leftrotate(uint original, int bits)
+        static uint LeftRotate(uint original, int bits)
         {
             return (original << bits) | (original >> (32 - bits));
         }
