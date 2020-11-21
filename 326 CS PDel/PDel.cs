@@ -3,25 +3,32 @@
 // 2009-08-03   PV  First version 2.0 rewritten in C#
 // 2009-08-08   PV  Security adjusted for Windows 7
 // 2012-02-25   PV  VS2010
+// 2020-11-21   PV  CS2019; .Net 4.8; Options -v, -f and -r2.  Ignore SYSTEM+HIDDEN directories
 
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Text;
 using System.Reflection;
 using Microsoft.VisualBasic.FileIO;
+using System.Diagnostics;
 
 [assembly: CLSCompliant(true)]
+
+#nullable enable
+
 
 namespace pdel
 {
     class Program
     {
-        static bool isRecurseMode;          // True when option -s is used, delete files in subfolders too
-        static TextWriter errorWriter;      // stderr
+        static bool isRecurseMode;      // True when option -s is used, delete files in subfolders too
+        static bool isVerbose = false;  // Option -v
+        static bool isFinal = false;    // Option -f
+        static bool isReparsePointsFollowed = false;
+        static readonly TextWriter errorWriter = Console.Error;  // stderr
 
 
-        /// A private structure to store an input path and pattern (options -in and -inr)
+        /// A private structure to store an input path and pattern
         private struct InputSource
         {
             public string path;
@@ -38,7 +45,6 @@ namespace pdel
             bool isWithFinalPause = false;
 
             // Process arguments
-            errorWriter = Console.Error;
             for (int i = 0; i < args.Length; i++)
             {
                 if (args[i][0] == '-' || args[i][0] == '/')
@@ -55,6 +61,18 @@ namespace pdel
 
                         case "s":
                             isRecurseMode = true;
+                            break;
+
+                        case "v":
+                            isVerbose = true;
+                            break;
+
+                        case "r2":
+                            isReparsePointsFollowed = true;
+                            break;
+
+                        case "f":
+                            isFinal = true;
                             break;
 
                         case "p":
@@ -89,9 +107,11 @@ namespace pdel
                         return 2;
                     }
 
-                    var myInputSource = new InputSource();
-                    myInputSource.path = path;
-                    myInputSource.pattern = pattern;
+                    var myInputSource = new InputSource
+                    {
+                        path = path,
+                        pattern = pattern
+                    };
 
                     inputSourceList.Add(myInputSource);
                 }
@@ -129,7 +149,9 @@ namespace pdel
                     // Delete one file
                     try
                     {
-                        FileSystem.DeleteFile(fileName, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                        if (isVerbose)
+                            Console.WriteLine("DEL " + QuotedFile(fileName));
+                        FileSystem.DeleteFile(fileName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
                     }
                     catch (Exception ex)
                     {
@@ -142,6 +164,14 @@ namespace pdel
                     string[] folders = System.IO.Directory.GetDirectories(path, "*.*", System.IO.SearchOption.TopDirectoryOnly);
                     foreach (string directoryName in folders)
                     {
+                        // Ignore SYSTEM+HIDDEN folders
+                        DirectoryInfo di = new DirectoryInfo(directoryName);
+                        if ((di.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden && (di.Attributes & FileAttributes.System) == FileAttributes.System)
+                            continue;
+                        // Also ignore reparse points unless we use /r2 option
+                        if ((!isReparsePointsFollowed) && (di.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
+                            continue;
+
                         PDel(directoryName, pattern);
 
                         // If we are deleting all files, then delete folders too
@@ -150,7 +180,9 @@ namespace pdel
                             // Delete one directory
                             try
                             {
-                                FileSystem.DeleteDirectory(directoryName, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+                                if (isVerbose)
+                                    Console.WriteLine("RD " + QuotedFile(directoryName));
+                                FileSystem.DeleteDirectory(directoryName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
                             }
                             catch (Exception)
                             {
@@ -164,23 +196,15 @@ namespace pdel
             }
             catch (Exception ex)
             {
-                errorWriter.Write("PDel: Can't access folder " + path + ": " + ex.Message);
-                //return 2;
+                errorWriter.WriteLine("PDel: Can't access folder " + path + ": " + ex.Message);
             }
         }
 
+        private static string QuotedFile(string fileName) => fileName.Contains(" ") ? "\"" + fileName + "\"" : fileName;
 
+        private static void ShowUsage() => Console.WriteLine(HelpHeader(false) + "\n\n" + Usage());
 
-        private static void ShowUsage()
-        {
-            Console.WriteLine(HelpHeader(false) + "\n\n" + Usage());
-        }
-
-
-        private static void ShowExtendedHelp()
-        {
-            Console.WriteLine(HelpHeader(true) + "\n");
-        }
+        private static void ShowExtendedHelp() => Console.WriteLine(HelpHeader(true) + "\n");
 
 
         private static string HelpHeader(bool includeExtendedHelp)
@@ -198,10 +222,6 @@ namespace pdel
 
             if (includeExtendedHelp)
             {
-                //string asmCompany = ((AssemblyCompanyAttribute)asm.GetCustomAttributes(
-                //    typeof(AssemblyCompanyAttribute), false)[0]).Company;
-                //s += "\n" + asmCompany;
-
                 string asmCopyright = ((AssemblyCopyrightAttribute)asm.GetCustomAttributes(
                     typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
                 s += "\n" + asmCopyright;
@@ -212,11 +232,14 @@ namespace pdel
 
         private static string Usage()
         {
-            return "Usage: PDel [-?] [-??] [-p] [-s] [path\\]pattern [path\\]pattern]...\n"
+            return "Usage: PDel [-?] [-??] [-p] [-s] [-v] [-f] [path\\]pattern [path\\]pattern]...\n"
                  + "-?     Shows version and usage\n"
                  + "-??    Shows extended information\n"
                  + "-p     Adds a final pause\n"
                  + "-s     Recursive mode, include subfolders\n"
+                 + "-v     Verbose, shows deleted files\n"
+                 + "-f     Forced/final delete, does not send the file to trash can\n"
+                 + "-r2    Follow reparse points (by default, they're skipped)\n"
                  ;
         }
 

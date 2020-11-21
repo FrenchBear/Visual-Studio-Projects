@@ -32,9 +32,9 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.VB202.Form1
+            Me.MainForm = Global.VB202.RootNameSpace.Form1
         End Sub
-
+        
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateSplashScreen()
             Me.SplashScreen = Global.VB202.frmSplash

@@ -11,7 +11,7 @@
     <RootNamespace>ConsoleApplication1</RootNamespace>
     <AssemblyName>Operators (Fraction)</AssemblyName>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -101,6 +101,7 @@
     <Compile Include="My Project\MyApplication.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>MyApplication.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\MyResources.Designer.vb">
       <AutoGen>True</AutoGen>
