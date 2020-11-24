@@ -21,8 +21,6 @@
 ' 2010-12-17    FPVI    3.7.2: Limit number of errors collected to 1000
 ' 2017-12-18    FPVI    3.13: Case of Linux subsystem filesystem that is case sensitive on NTFS; Kollection is now generic; No need for synclock in readonly mode
 ' 2020-11-22    FPVI    3.14 (π edition!): Option /xp for path exclusions, colExclusionsPaths
-'
-' SafeFileHandle from http://www.pinvoke.net/default.aspx/kernel32/CreateFile.html
 
 Option Explicit On
 Option Compare Text
@@ -31,7 +29,6 @@ Option Infer On
 
 Imports System.IO
 Imports System.Runtime.InteropServices
-Imports VB = Microsoft.VisualBasic
 
 Friend Module modAstruct
     Dim nbFiles As Integer
@@ -53,7 +50,7 @@ Friend Module modAstruct
     Public bNoWidePaths As Boolean                      ' Do not use wide paths extension (sWidePath function)
     Public bCreateTarget As Boolean                     ' Create destination folder if it does not exist
     Public bOneHourDifferenceAccepted As Boolean        ' Consider files identical if they have 1hr difference (and same size)
-    Public bIgnoreDatetimeDifferences As Boolean        ' Only checks presence/absence and size
+    Public bIgnoreDateDifferences As Boolean        ' Only checks presence/absence and size
 
     Public colExclusionsFolders As New Kollection(Of String)       ' List of patterns to ignore for folders
     Public colExclusionsFiles As New Kollection(Of String)         ' List of patterns to ignore for files
@@ -73,12 +70,12 @@ Friend Module modAstruct
         Public LastWriteTime As Long                ' 64 bit (not ULong since subtraction can generate a negative value)
     End Class
 
-    Friend Sub Trace(ByVal sMsg As String)
+    Friend Sub Trace(sMsg As String)
         swOut?.WriteLine(sMsg)
         Console.WriteLine(sMsg)
     End Sub
 
-    Friend Sub TraceColor(ByVal color As ConsoleColor, ByVal sMsg As String)
+    Friend Sub TraceColor(color As ConsoleColor, sMsg As String)
         swOut?.WriteLine(sMsg)
         Dim cBak = Console.ForegroundColor
         Console.ForegroundColor = color
@@ -88,7 +85,7 @@ Friend Module modAstruct
 
 
 
-    Public Sub Astruct(ByVal sSource As String, ByVal sDest As String)
+    Public Sub Astruct(sSource As String, sDest As String)
         ' If we used options, then show them explicitly
         Dim sOptions As String = ""
         If bVerbose Then sOptions &= ", Verbose"
@@ -97,7 +94,7 @@ Friend Module modAstruct
         If bDisableTimeCheck Then sOptions &= ", NoTimeCheck"
         If bNoAction Then sOptions &= ", NoAction"
         If bOneHourDifferenceAccepted Then sOptions &= ", OneHourDifference"
-        If bIgnoreDatetimeDifferences Then sOptions &= ", IgnoreDatetimeDifference"
+        If bIgnoreDateDifferences Then sOptions &= ", IgnoreDateDifference"
         If bAddUpdate Then sOptions &= ", AddUpdate"
         If bCopyDirectoryReparsePointContent Then sOptions &= ", CopyDirectoryReparsePointContent"
         If bMultiThread Then sOptions &= ", MultiThread"
@@ -128,13 +125,13 @@ Friend Module modAstruct
         If bProblem Then Exit Sub
 
         ' Normalize paths
-        If VB.Right(sSource, 1) <> "\" Then sSource &= "\"
-        If VB.Right(sDest, 1) <> "\" Then sDest &= "\"
+        If Right(sSource, 1) <> "\" Then sSource &= "\"
+        If Right(sDest, 1) <> "\" Then sDest &= "\"
         If Not bDisableTimeCheck Then
             If Not TimeCheck(sSource, sDest) Then Exit Sub
         End If
 
-        Dim t1 As DateTime = DateTime.Now
+        Dim t1 As Date = Date.Now
         nbFiles = 0
         nbDirectories = 0
         nbFilesCopied = 0
@@ -143,7 +140,7 @@ Friend Module modAstruct
         Trace("astructw " & Quote(sSource) & " -> " & Quote(sDest))
 
         DoAstruct(sSource, sDest, 1)
-        Dim t2 As DateTime = DateTime.Now
+        Dim t2 As Date = Date.Now
         Dim ts As TimeSpan = t2 - t1
         If colErrors.Count > 0 Then
             Trace("")
@@ -159,7 +156,7 @@ Friend Module modAstruct
         Trace(String.Format("Total time {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
     End Sub
 
-    Private Function IsFolderOk(ByVal sFolder As String, ByVal sPosition As String) As Boolean
+    Private Function IsFolderOk(sFolder As String, sPosition As String) As Boolean
         Try
             If My.Computer.FileSystem.DirectoryExists(sFolder) Then Return True
             CLShowError("Can't find " & sPosition & " folder " & Quote(sFolder))
@@ -170,7 +167,7 @@ Friend Module modAstruct
         Return False
     End Function
 
-    Private Function S(ByVal n As Integer) As String
+    Private Function S(n As Integer) As String
         If n > 1 Then
             Return "s"
         Else
@@ -178,7 +175,7 @@ Friend Module modAstruct
         End If
     End Function
 
-    Friend Function Quote(ByVal s As String)
+    Friend Function Quote(s As String)
         If s.Contains(" ") Then
             Return Chr(34) & s & Chr(34)
         Else
@@ -187,14 +184,14 @@ Friend Module modAstruct
     End Function
 
     ' 3.7.2: Limit number of errors collected to 1000
-    Private Sub AddError(ByVal sErrMsg As String)
+    Private Sub AddError(sErrMsg As String)
         If colErrors.Count < 1000 Then colErrors.Add(sErrMsg)
     End Sub
 
     ' For mutlithread option
-    Delegate Sub EnumProc(ByVal sPath As String, ByVal colFoldersSource As Kollection(Of String), ByVal colFilesSource As Kollection(Of MyFileInfo))
+    Delegate Sub EnumProc(sPath As String, colFoldersSource As Kollection(Of String), colFilesSource As Kollection(Of MyFileInfo))
 
-    Private Sub DoAstruct(ByVal sSource As String, ByVal sDest As String, ByVal iLevel As Integer)
+    Private Sub DoAstruct(sSource As String, sDest As String, iLevel As Integer)
         Dim colFilesSource As New Kollection(Of MyFileInfo)
         Dim colFilesDest As New Kollection(Of MyFileInfo)
         Dim colFoldersSource As New Kollection(Of String)
@@ -237,24 +234,24 @@ Friend Module modAstruct
                         Trace("-- Dest size " & Quote(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
                     End If
                     bToCopy = True
-                ElseIf (Not bIgnoreDatetimeDifferences) AndAlso Math.Abs((fiSource.LastWriteTime - fiDest.LastWriteTime) / 10000000) > 2 Then
+                ElseIf (Not bIgnoreDateDifferences) AndAlso Math.Abs((fiSource.LastWriteTime - fiDest.LastWriteTime) / 10000000) > 2 Then
                     If bOneHourDifferenceAccepted Then
-                        Dim t1, t2 As Int64
+                        Dim t1, t2 As Long
                         t1 = fiSource.LastWriteTime
                         t2 = fiDest.LastWriteTime
                         If t2 < t1 Then
-                            Dim t3 As Int64
+                            Dim t3 As Long
                             t3 = t1
                             t1 = t2
                             t2 = t3
                         End If
-                        Dim delta As Int64
+                        Dim delta As Long
                         delta = (t2 - t1) / 10000000
                         If delta >= 3599 And delta <= 3601 Then GoTo Label1
                     End If
                     If bVerbose Then
-                        Trace("-- Source LastWrite on " & DateTime.FromFileTime(fiSource.LastWriteTime).ToString & " " & Quote(sSource & fiSource.Name))
-                        Trace("-- Dest   LastWrite on " & DateTime.FromFileTime(fiDest.LastWriteTime).ToString & " " & Quote(sDest & fiDest.Name) & " --> Copy")
+                        Trace("-- Source LastWrite on " & Date.FromFileTime(fiSource.LastWriteTime).ToString & " " & Quote(sSource & fiSource.Name))
+                        Trace("-- Dest   LastWrite on " & Date.FromFileTime(fiDest.LastWriteTime).ToString & " " & Quote(sDest & fiDest.Name) & " --> Copy")
                     End If
                     bToCopy = True
                 End If
@@ -270,7 +267,7 @@ Label1:
                         If Not bNoAction Then
                             If bDotNetCalls Then
                                 Try
-                                    System.IO.File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not (FileAttributes.ReadOnly Or FileAttributes.Hidden))
+                                    File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not (FileAttributes.ReadOnly Or FileAttributes.Hidden))
                                 Catch ex As Exception
                                     TraceColor(ConsoleColor.Red, "*** Caused error: " & ex.Message)
                                     AddError(sCmd & "|" & ex.Message)
@@ -308,8 +305,8 @@ Label1:
                         Trace(sCmd)
                         If bDotNetCalls Then
                             Try
-                                'System.IO.File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not FileAttributes.ReadOnly)
-                                System.IO.File.SetAttributes(sDest & fiDest.Name, FileAttributes.Normal)
+                                'File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not FileAttributes.ReadOnly)
+                                File.SetAttributes(sDest & fiDest.Name, FileAttributes.Normal)
                             Catch ex As Exception
                                 TraceColor(ConsoleColor.Red, "*** Caused error: " & ex.Message)
                                 AddError(sCmd & "|" & ex.Message)
@@ -386,7 +383,7 @@ Label1:
 
     ' Manual implementation since My.Computer.FileSystem.DeleteDirectory(sDest & sSubfolder, FileIO.DeleteDirectoryOption.DeleteAllContents)
     ' does not work if there is r/o file in the folder
-    Private Sub RecurseDeleteDirectory(ByVal sPath As String)
+    Private Sub RecurseDeleteDirectory(sPath As String)
         Dim colFiles As New Kollection(Of MyFileInfo)
         Dim colFolders As New Kollection(Of String)
 
@@ -442,7 +439,7 @@ Label1:
         End If
     End Sub
 
-    Private Function TimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
+    Private Function TimeCheck(sSource As String, sDest As String) As Boolean
         Dim sPathSource As String = sSource & sNomficTTO
         Dim sPathDest As String = sDest & sNomficTTO
 
@@ -456,9 +453,9 @@ Label1:
                 Return False
             End Try
 
-            Dim fiSource As FileInfo = New System.IO.FileInfo(sPathSource)
+            Dim fiSource As FileInfo = New FileInfo(sPathSource)
             MyCopyFile(sPathSource, sPathDest)
-            Dim fiDest As FileInfo = New System.IO.FileInfo(sPathDest)
+            Dim fiDest As FileInfo = New FileInfo(sPathDest)
 
             Dim dt As TimeSpan = fiSource.LastWriteTimeUtc - fiDest.LastWriteTimeUtc
             If Math.Abs(dt.TotalSeconds) <= 2 Then
@@ -482,7 +479,7 @@ Label1:
         Return bReturn
     End Function
 
-    Private Sub MyCopyFile(ByVal sourcePath As String, ByVal destinationPath As String)
+    Private Sub MyCopyFile(sourcePath As String, destinationPath As String)
         If bDotNetCalls Then
             Try
                 My.Computer.FileSystem.CopyFile(sourcePath, destinationPath, True)
@@ -494,6 +491,8 @@ Label1:
             Dim cancel As Boolean = False
             Dim bRet As Integer = CopyFileEx(WidePath(sourcePath), WidePath(destinationPath), Nothing, 0, cancel, COPY_FILE_ALLOW_DECRYPTED_DESTINATION)
             If bRet = 0 Then
+                Console.WriteLine(WidePath(sourcePath))
+                Console.WriteLine(WidePath(destinationPath))
                 TraceWin32Error("CopyFileEx(""" & sourcePath & """, """ & destinationPath & "")
                 Exit Sub
             End If
@@ -501,7 +500,7 @@ Label1:
     End Sub
 
     ' New for 3.11
-    Private Sub MyRenameFile(ByVal targetPath As String, ByVal oldName As String, ByVal newName As String)
+    Private Sub MyRenameFile(targetPath As String, oldName As String, newName As String)
         If bDotNetCalls Then
             Dim tempName As String = Guid.NewGuid.ToString
             Try
@@ -525,8 +524,8 @@ Label1:
         End If
     End Sub
 
-    Private Sub TraceWin32Error(ByVal sCmd As String)
-        Dim sErr As String = Marshal.GetLastWin32Error.ToString & ": " & (New System.ComponentModel.Win32Exception().Message)
+    Private Sub TraceWin32Error(sCmd As String)
+        Dim sErr As String = $"{Marshal.GetLastWin32Error}: {New ComponentModel.Win32Exception().Message}"
         If InStr(sErr, vbCr) > 0 Then sErr = Replace(sErr, vbCr, " ")
         If InStr(sErr, vbLf) > 0 Then sErr = Replace(sErr, vbLf, " ")
         sErr = Trim(sErr)
@@ -542,7 +541,7 @@ Label1:
     ''' the Universal Naming Convention (UNC) format. The "\\?\" is ignored as part of the path. For example, "\\?\C:\myworld\private"
     ''' is seen as "C:\myworld\private", and "\\?\UNC\bill_g_1\hotstuff\coolapps" is seen as "\\bill_g_1\hotstuff\coolapps".
     ''' </summary>
-    Private Function WidePath(ByVal sPath As String) As String
+    Private Function WidePath(sPath As String) As String
         If bNoWidePaths Then        ' Option to deactivate this mechanism
             Return sPath
         ElseIf sPath.Length > 1 AndAlso sPath(1) = ":"c Then
@@ -555,7 +554,7 @@ Label1:
     End Function
 
     ' Enumeration of files and folders using Win32 functions
-    Private Sub Enumerate(ByVal sPath As String, ByVal colFoldersSource As Kollection(Of String), ByVal colFilesSource As Kollection(Of MyFileInfo))
+    Private Sub Enumerate(sPath As String, colFoldersSource As Kollection(Of String), colFilesSource As Kollection(Of MyFileInfo))
         Dim hsearch As IntPtr  ' handle to the file search
         Dim findinfo As WIN32_FIND_DATAW = Nothing
         Dim success As Long  ' will be 1 if successive searches are successful, 0 if not
@@ -574,7 +573,7 @@ Label1:
         ' astructw 3.7.2, Try again for Synology DS1010+ on Shark after waiting a bit...
         If hsearch = -1 Then
             For i As Integer = 1 To 10
-                System.Threading.Thread.Sleep(10)
+                Threading.Thread.Sleep(10)
                 hsearch = FindFirstFileW(s, findinfo)
                 If hsearch <> -1 Then Exit For
             Next
@@ -640,7 +639,7 @@ Label1:
                             .FullName = sPath & findinfo.cFileName,
                             .Attributes = findinfo.dwFileAttributes,
                             .FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow,
-                            .LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                            .LastWriteTime = findinfo.ftLastWriteTime.dwHighDate * 4294967296 + findinfo.ftLastWriteTime.dwLowDate
                         }
                         colFilesSource.Add(fi, fi.Name)
                     End If

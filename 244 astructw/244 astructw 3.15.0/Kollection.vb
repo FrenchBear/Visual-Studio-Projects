@@ -10,16 +10,16 @@ Friend Class Kollection(Of T)
 
     Private ReadOnly d As Dictionary(Of String, T) = New Dictionary(Of String, T)(StringComparer.OrdinalIgnoreCase)
 
-    Public Sub Add(ByVal Item As T, ByVal Key As String)
+    Public Sub Add(Item As T, Key As String)
         d.Add(Key, Item)
     End Sub
 
     ' Simplified version, use a random key
-    Public Sub Add(ByVal Item As T)
+    Public Sub Add(Item As T)
         d.Add(Rnd.ToString, Item)
     End Sub
 
-    Default Public ReadOnly Property Item(ByVal Key As String) As T
+    Default Public ReadOnly Property Item(Key As String) As T
         Get
             Return d(Key)
         End Get
@@ -35,7 +35,7 @@ Friend Class Kollection(Of T)
         End Get
     End Property
 
-    Public Function Contains(ByVal Key As String) As Boolean
+    Public Function Contains(Key As String) As Boolean
         Return d.ContainsKey(Key)
     End Function
 

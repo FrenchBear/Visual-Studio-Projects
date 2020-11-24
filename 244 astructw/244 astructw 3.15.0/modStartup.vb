@@ -1,5 +1,3 @@
-Option Explicit On
-Option Compare Text
 ' Startup module for astructw
 ' 2006-10-03    FPVI
 ' 2007-01-04    FPVI    Option /c
@@ -11,7 +9,7 @@ Option Compare Text
 ' 2010-04-05    FPVI    3.6.2: /t1:  Tolerance for 1hr difference (summer time issue on Buffalo)
 ' 2010-12-16    FPVI    3.7.1: /f1../f9 control depth of folder trace, and /f trace all folders
 ' 2013-02-28    FPVI    3.8.0: /xf to ignore a file (can be repeated)
-' 2013-03-20    FPVI    3.9.0: /i to ignore datetime differences in comparisons
+' 2013-03-20    FPVI    3.9.0: /i to ignore Date differences in comparisons
 ' 2013-12-30    FPVI    3.9.1: Bug option /x fixed
 ' 2014-05-02    FPVI    3.10.0: Bug grosse=groﬂe for VB Collection but not for filesystem.  Use class Kollection instead
 ' 2014-05-05    FPVI    3.11.0: Align filename case
@@ -20,6 +18,11 @@ Option Compare Text
 ' 2020-11-22    FPVI    3.14: Option /xp for path exclusions
 ' 2020-11-23    FPVI    3.15: Option /vx (verbose exclusions) and color error messages and verbose exclusions
 
+Option Explicit On
+Option Compare Text
+Option Infer On
+
+
 Imports System.IO
 
 Friend Module modStartup
@@ -27,7 +30,7 @@ Friend Module modStartup
     Public sDestGlobal As String
     Public swOut As StreamWriter = Nothing
 
-    Function Main(ByVal cmdArgs() As String) As Integer
+    Function Main(cmdArgs() As String) As Integer
         Dim returnValue As Integer = 0
         Dim bFinalPause As Boolean = False
 
@@ -71,7 +74,7 @@ Friend Module modStartup
                     bOneHourDifferenceAccepted = True
 
                 Case "-i", "/i"
-                    bIgnoreDatetimeDifferences = True
+                    bIgnoreDateDifferences = True
 
                 Case "-n", "/n"
                     bNoAction = True
@@ -149,7 +152,7 @@ Friend Module modStartup
 
         If Not String.IsNullOrEmpty(sLogPath) Then
             Try
-                swOut = New StreamWriter(sLogPath, False, System.Text.Encoding.UTF8)
+                swOut = New StreamWriter(sLogPath, False, Text.Encoding.UTF8)
             Catch ex As Exception
                 CLShowError("Error opening log file: " + ex.Message)
                 returnValue = 1
@@ -202,7 +205,7 @@ Sortie:
 
         q = s.IndexOf("}"c, p + 1)
         If q < 0 Then
-            CLShowError("No matching } in path exclusion " & modAstruct.Quote(s) & ", ignored")
+            CLShowError("No matching } in path exclusion " & Quote(s) & ", ignored")
             Yield s
             Return
         End If
@@ -213,7 +216,7 @@ Sortie:
         Next
     End Function
 
-    Sub CLShowError(ByVal sMsg As String)
+    Sub CLShowError(sMsg As String)
         TraceColor(ConsoleColor.Red, "atructw: " & sMsg)
     End Sub
 
@@ -236,9 +239,9 @@ Sortie:
                "/v      Verbose mode, detailed output" & vbCrLf &
                "/f[1-9] Folder trace during analysis, max to specified depth. /f=all levels" & vbCrLf &
                "/t      Disable time difference check between source and destination" & vbCrLf &
-               "/x dir  Exclude dir from copy (ie: /x ""Temporary Internet Files""), repeatable" & vbCrLf &
+               "/x dir  Exclude dir from copy (ex: /x ""Temporary Internet Files""), repeatable" & vbCrLf &
                "/xf fil Exclude file (like pattern) from copy, repeatable" & vbCrLf &
-               "/xp str Exclude paths containint str (ex: /xp \Windows\servicing\) from copy, repeatable" & vbCrLf &
+               "/xp str Exclude paths containing str (ex: /xp \Windows\servicing\) from copy, repeatable" & vbCrLf &
                "/_      Do not copy files and folders beginning with _ (same as /x _*)" & vbCrLf &
                "/c      Creates target folder if it does not exists instead of causing an error" & vbCrLf &
                "/n      NoAction: Do not actually copy or delete anything on destination" & vbCrLf &
@@ -253,7 +256,7 @@ Sortie:
                "/r2    Copy directory reparse point contents instead of ignoring then" & vbCrLf &
                "/t1    Tolerates exactly 1 hour difference between source and target" & vbCrLf &
                "/w-    Do not use wide paths extensions for Win32 calls" & vbCrLf &
-               "/i     Ignores datetime differences in comparisons" & vbCrLf &
+               "/i     Ignores Date differences in comparisons" & vbCrLf &
                "/vx    Shows ignored files/folders in color" & vbCrLf &
           vbCrLf & "Note: SYSTEM+HIDDEN folders on source such as are always ignored"
     End Function

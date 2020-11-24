@@ -10,7 +10,7 @@ Imports System.Text
 Friend Module Security
 
     ' Look for "Privilege constants" in help
-    Public Sub EnableToken(ByVal privilege As String)
+    Public Sub EnableToken(privilege As String)
         If Not CheckEntryPoint("advapi32.dll", "AdjustTokenPrivileges") Then Return
         Dim tokenHandle As IntPtr = IntPtr.Zero
         Dim privilegeLUID = New LUID()
@@ -25,7 +25,7 @@ Friend Module Security
         If (AdjustTokenPrivileges(tokenHandle, 0, tokenPrivileges, 4 + (12 * tokenPrivileges.PrivilegeCount), newPrivileges, Size)) = 0 Then Throw New PrivilegeException(FormatError(Marshal.GetLastWin32Error()))
     End Sub
 
-    Private Function CheckEntryPoint(ByVal library As String, ByVal method As String) As Boolean
+    Private Function CheckEntryPoint(library As String, method As String) As Boolean
         Dim libPtr As IntPtr = LoadLibrary(library)
         If Not libPtr.Equals(IntPtr.Zero) Then
             If Not GetProcAddress(libPtr, method).Equals(IntPtr.Zero) Then
@@ -37,7 +37,7 @@ Friend Module Security
         Return False
     End Function
 
-    Private Function FormatError(ByVal number As Integer) As String
+    Private Function FormatError(number As Integer) As String
         Dim Buffer = New StringBuilder(255)
         FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, IntPtr.Zero, number, 0, Buffer, Buffer.Capacity, 0)
         Return Buffer.ToString()
@@ -54,7 +54,7 @@ Public Class PrivilegeException
         MyBase.New()
     End Sub
 
-    Public Sub New(ByVal message As String)
+    Public Sub New(message As String)
         MyBase.New(message)
     End Sub
 

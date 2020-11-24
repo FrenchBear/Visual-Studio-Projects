@@ -1,5 +1,6 @@
 ' NativeMethods class
 ' Regroup P/Invoke declarations, to follow Microsoft code analysis recommendations
+' SafeFileHandle from http://www.pinvoke.net/default.aspx/kernel32/CreateFile.html
 '
 ' 2017-12-18    FPVI    For astructw 2.13
 
@@ -31,15 +32,15 @@ Friend Module NativeMethods
     Friend Const SE_PRIVILEGE_ENABLED = &H2
     Friend Const FORMAT_MESSAGE_FROM_SYSTEM = &H1000
 
-    Declare Function LoadLibrary Lib "kernel32" Alias "LoadLibraryA" (ByVal lpLibFileName As String) As IntPtr
-    Declare Function FreeLibrary Lib "kernel32" (ByVal hLibModule As IntPtr) As Integer
-    Declare Function GetProcAddress Lib "kernel32" (ByVal hModule As IntPtr, ByVal lpProcName As String) As IntPtr
-    Declare Function OpenProcessToken Lib "advapi32.dll" (ByVal ProcessHandle As IntPtr, ByVal DesiredAccess As Integer, ByRef TokenHandle As IntPtr) As Integer
-    Declare Function LookupPrivilegeValue Lib "advapi32.dll" Alias "LookupPrivilegeValueA" (ByVal lpSystemName As String, ByVal lpName As String, ByRef lpLuid As LUID) As Integer
-    Declare Function AdjustTokenPrivileges Lib "advapi32.dll" (ByVal TokenHandle As IntPtr, ByVal DisableAllPrivileges As Integer, ByRef NewState As TOKEN_PRIVILEGES, ByVal BufferLength As Integer, ByRef PreviousState As TOKEN_PRIVILEGES, ByRef ReturnLength As Integer) As Integer
+    Declare Function LoadLibrary Lib "kernel32" Alias "LoadLibraryA" (lpLibFileName As String) As IntPtr
+    Declare Function FreeLibrary Lib "kernel32" (hLibModule As IntPtr) As Integer
+    Declare Function GetProcAddress Lib "kernel32" (hModule As IntPtr, lpProcName As String) As IntPtr
+    Declare Function OpenProcessToken Lib "advapi32.dll" (ProcessHandle As IntPtr, DesiredAccess As Integer, ByRef TokenHandle As IntPtr) As Integer
+    Declare Function LookupPrivilegeValue Lib "advapi32.dll" Alias "LookupPrivilegeValueA" (lpSystemName As String, lpName As String, ByRef lpLuid As LUID) As Integer
+    Declare Function AdjustTokenPrivileges Lib "advapi32.dll" (TokenHandle As IntPtr, DisableAllPrivileges As Integer, ByRef NewState As TOKEN_PRIVILEGES, BufferLength As Integer, ByRef PreviousState As TOKEN_PRIVILEGES, ByRef ReturnLength As Integer) As Integer
 
     <DllImportAttribute("kernel32.dll", EntryPoint:="FormatMessageA", SetLastError:=True, CharSet:=CharSet.Ansi, BestFitMapping:=False, ThrowOnUnmappableChar:=True)>
-    Function FormatMessage(ByVal dwFlags As Integer, ByVal lpSource As IntPtr, ByVal dwMessageId As Integer, ByVal dwLanguageId As Integer, ByVal lpBuffer As StringBuilder, ByVal nSize As Integer, ByVal Arguments As Integer) As Integer
+    Function FormatMessage(dwFlags As Integer, lpSource As IntPtr, dwMessageId As Integer, dwLanguageId As Integer, lpBuffer As StringBuilder, nSize As Integer, Arguments As Integer) As Integer
     End Function
 
 #End Region
@@ -47,15 +48,15 @@ Friend Module NativeMethods
 #Region "FileSystem"
     <StructLayout(LayoutKind.Sequential)>
     Structure FILETIME
-        Dim dwLowDateTime As UInteger
-        Dim dwHighDateTime As UInteger
+        Dim dwLowDate As UInteger
+        Dim dwHighDate As UInteger
     End Structure
 
     '<StructLayout(LayoutKind.Explicit)> _
     'Public Structure FILETIME2
-    '<FieldOffset(0)> Public LongDateTime As ULong
-    '<FieldOffset(0)> Public dwLowDateTime As UInteger
-    '<FieldOffset(4)> Public dwHighDateTime As UInteger
+    '<FieldOffset(0)> Public LongDate As ULong
+    '<FieldOffset(0)> Public dwLowDate As UInteger
+    '<FieldOffset(4)> Public dwHighDate As UInteger
     'End Structure
 
     <StructLayout(LayoutKind.Sequential)>
@@ -97,83 +98,83 @@ Friend Module NativeMethods
     'End Structure
 
     <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Public Function FindFirstFileW(ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As IntPtr
+    Public Function FindFirstFileW(lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As IntPtr
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="FindNextFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Public Function FindNextFileW(ByVal hFindFile As IntPtr, ByRef lpFindFileData As WIN32_FIND_DATAW) As Boolean
+    Public Function FindNextFileW(hFindFile As IntPtr, ByRef lpFindFileData As WIN32_FIND_DATAW) As Boolean
     End Function
 
-    Declare Function FindClose Lib "kernel32" (ByVal hFindFile As IntPtr) As Integer
+    Declare Function FindClose Lib "kernel32" (hFindFile As IntPtr) As Integer
 
     'Declare Function FileTimeToLocalFileTime Lib "kernel32" (ByRef lpFileTime As FILETIME, ByRef lpLocalFileTime As FILETIME) As Integer
     'Declare Function FileTimeToSystemTime Lib "kernel32" (ByRef lpFileTime As FILETIME, ByRef lpSystemTime As SYSTEMTIME) As Integer
 
     <DllImport("kernel32.dll", EntryPoint:="CopyFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function CopyFile(ByVal lpSource As String, ByVal lpDest As String, ByVal bFailIfExists As Integer) As Integer
+    Function CopyFile(lpSource As String, lpDest As String, bFailIfExists As Integer) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="CopyFileExW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function CopyFileEx(ByVal lpExistingFileName As String, ByVal lpNewFileName As String, ByVal lpProgressRoutine As CPCallback, ByRef lpData As Long, ByRef pbCancel As Boolean, ByVal dwCopyFlags As Integer) As Integer
+    Function CopyFileEx(lpExistingFileName As String, lpNewFileName As String, lpProgressRoutine As CPCallback, ByRef lpData As Long, ByRef pbCancel As Boolean, dwCopyFlags As Integer) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="MoveFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function MoveFile(ByVal lpExistingFileName As String, ByVal lpNewFileName As String) As Integer
+    Function MoveFile(lpExistingFileName As String, lpNewFileName As String) As Integer
     End Function
 
     Public Const COPY_FILE_ALLOW_DECRYPTED_DESTINATION As Integer = 8
 
     Public Delegate Function CPCallback(
-        ByVal TotalFileSize As Long,
-        ByVal TotalBytesTransfered As Long,
-        ByVal StreamSize As Long,
-        ByVal StreamBytesTransfered As Long,
-        ByVal StreamNumber As Integer,
-        ByVal dwCallbackReason As Integer,
-        ByVal hSourceFile As IntPtr,
-        ByVal hDestFile As IntPtr,
+        TotalFileSize As Long,
+        TotalBytesTransfered As Long,
+        StreamSize As Long,
+        StreamBytesTransfered As Long,
+        StreamNumber As Integer,
+        dwCallbackReason As Integer,
+        hSourceFile As IntPtr,
+        hDestFile As IntPtr,
         ByRef lpData As Long) As Integer
 
     <DllImport("kernel32.dll", EntryPoint:="DeleteFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function DeleteFile(ByVal lpFileName As String) As Integer
+    Function DeleteFile(lpFileName As String) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="SetFileAttributesW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function SetFileAttributes(ByVal lpFileName As String, ByVal dwFileAttributes As FileAttribute) As Integer
+    Function SetFileAttributes(lpFileName As String, dwFileAttributes As FileAttribute) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="RemoveDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function RemoveDirectory(ByVal lpFileName As String) As Integer
+    Function RemoveDirectory(lpFileName As String) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="CreateDirectoryW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Function CreateDirectory(ByVal lpFileName As String, ByVal lpSecurityAttributes As IntPtr) As Integer
+    Function CreateDirectory(lpFileName As String, lpSecurityAttributes As IntPtr) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="GetFileTime", SetLastError:=True)>
-    Function GetFileTime(ByVal hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
+    Function GetFileTime(hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="SetFileTime", SetLastError:=True)>
-    Function SetFileTime(ByVal hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
+    Function SetFileTime(hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
     End Function
 
     '<DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
-    'Function CreateFile(ByVal lpFileName As String, ByVal dwDesiredAccess As Integer, ByVal dwShareMode As Integer, ByRef lpSecurityAttributes As SECURITY_ATTRIBUTES, ByVal dwCreationDisposition As Integer, ByVal dwFlagsAndAttributes As Integer, ByVal hTemplateFile As Integer) As IntPtr
+    'Function CreateFile(lpFileName As String, dwDesiredAccess As Integer, dwShareMode As Integer, ByRef lpSecurityAttributes As SECURITY_ATTRIBUTES, dwCreationDisposition As Integer, dwFlagsAndAttributes As Integer, hTemplateFile As Integer) As IntPtr
     'End Function
 
     <DllImport("kernel32.dll", EntryPoint:="CloseHandle", SetLastError:=True)>
-    Function CloseHandle(ByVal hObject As SafeFileHandle) As Integer
+    Function CloseHandle(hObject As SafeFileHandle) As Integer
     End Function
 
     <System.Runtime.InteropServices.DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=System.Runtime.InteropServices.CharSet.Unicode)>
-    Friend Function CreateFile(ByVal lpFileName As String,
-   ByVal dwDesiredAccess As EFileAccess,
-   ByVal dwShareMode As EFileShare,
-   ByVal lpSecurityAttributes As IntPtr,
-   ByVal dwCreationDisposition As ECreationDisposition,
-   ByVal dwFlagsAndAttributes As EFileAttributes,
-   ByVal hTemplateFile As IntPtr) As Microsoft.Win32.SafeHandles.SafeFileHandle
+    Friend Function CreateFile(lpFileName As String,
+   dwDesiredAccess As EFileAccess,
+   dwShareMode As EFileShare,
+   lpSecurityAttributes As IntPtr,
+   dwCreationDisposition As ECreationDisposition,
+   dwFlagsAndAttributes As EFileAttributes,
+   hTemplateFile As IntPtr) As Microsoft.Win32.SafeHandles.SafeFileHandle
     End Function
 
     Friend Structure STORAGE_DEVICE_NUMBER
