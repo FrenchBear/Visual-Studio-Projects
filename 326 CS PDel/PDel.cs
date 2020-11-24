@@ -1,34 +1,36 @@
 ﻿// PDel
 // .Net version of old utility pdel that delele a file or a group of files to the trashcan
-// 2009-08-03   PV  First version 2.0 rewritten in C#
-// 2009-08-08   PV  Security adjusted for Windows 7
-// 2012-02-25   PV  VS2010
-// 2020-11-21   PV  CS2019; .Net 4.8; Options -v, -f and -r2.  Ignore SYSTEM+HIDDEN directories
+// 2009-08-03   PV      First version 2.0 rewritten in C#
+// 2009-08-08   PV      Security adjusted for Windows 7
+// 2012-02-25   PV      VS2010
+// 2020-11-21   PV      CS2019; .Net 4.8; Options -v, -f and -r2.  Ignore SYSTEM+HIDDEN directories
+// 2020-11-24   PV      WidePath to support paths longer than 256 chars; Option -n
+//
+// Debug on long paths:
+// /s /p /f /v /n "\\TERAZ\BACKUP_SKULL\C\Eurofins\Eurofins\US\eLIMS-FGS-Trunk\Fitnesse\FitNesseRoot\FitNesse\SuiteAcceptanceTests\SuiteSlimTests\ScenarioLibraryTestSuite\ScenarioLibariesOrderTests\ScenarioLibraryOrderSuite\ScenarioLibraryOrderTestParent\ScenarioLibrary\thumbs.db"
 
 using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.VisualBasic.FileIO;
-using System.Diagnostics;
-
-[assembly: CLSCompliant(true)]
 
 #nullable enable
 
 
-namespace pdel
+namespace PDel
 {
     class Program
     {
-        static bool isRecurseMode;      // True when option -s is used, delete files in subfolders too
-        static bool isVerbose = false;  // Option -v
-        static bool isFinal = false;    // Option -f
+        static bool isRecurseMode;          // True when option -s is used, delete files in subfolders too
+        static bool isVerbose = false;      // Option -v
+        static bool isNoAction = false;     // Option -n
+        static bool isFinal = false;        // Option -f
         static bool isReparsePointsFollowed = false;
         static readonly TextWriter errorWriter = Console.Error;  // stderr
 
 
-        /// A private structure to store an input path and pattern
+        // A private structure to store an input path and pattern
         private struct InputSource
         {
             public string path;
@@ -61,6 +63,10 @@ namespace pdel
 
                         case "s":
                             isRecurseMode = true;
+                            break;
+
+                        case "n":
+                            isNoAction = true;
                             break;
 
                         case "v":
@@ -99,11 +105,18 @@ namespace pdel
                     try
                     {
                         // For now just test if we can enumerate files, don't care about recursing
-                        string[] files = System.IO.Directory.GetFiles(path, pattern);
+                        string[] files = Directory.GetFiles(WidePath(path), pattern);
                     }
                     catch (Exception ex)
                     {
                         errorWriter.Write("PDel: Failed to explore pattern " + args[i] + ": " + ex.Message);
+                        return 2;
+                    }
+
+                    // Check that we're not just passing a directory without a file part
+                    if (Directory.Exists(args[i]))
+                    {
+                        errorWriter.Write("PDel: Parameter " + args[i] + " is just a directory.  A file/pattern part is required.");
                         return 2;
                     }
 
@@ -137,31 +150,83 @@ namespace pdel
             return 0;
         }
 
+        /// <summary>
+        /// Function to use filenames up to 32000 characters.  According to Win32 help:
+        /// The Unicode versions of several functions permit paths that exceed the MAX_PATH length if the path has the "\\?\" prefix.
+        /// The "\\?\" tells the function to turn off path parsing. However, each component in the path cannot be more than MAX_PATH
+        /// characters long. Use the "\\?\" prefix with paths for local storage devices and the "\\?\UNC\" prefix with paths having
+        /// the Universal Naming Convention (UNC) format. The "\\?\" is ignored as part of the path. For example, "\\?\C:\myworld\private"
+        /// is seen as "C:\myworld\private", and "\\?\UNC\bill_g_1\hotstuff\coolapps" is seen as "\\bill_g_1\hotstuff\coolapps".
+        /// </summary>
+        private static string WidePath(string path)
+        {
+            if (path.StartsWith(@"\\?\"))               // Already widened
+                return path;
+            if (path.Length >= 1 && path[1] == ':')     // Local drive
+                return @"\\?\" + path;
+            if (path.StartsWith(@"\\"))                 // UNC path
+                return @"\\?\UNC" + path.Substring(1);
+            return path;            // For local relative/no drive names, keep name as is
+        }
+
+        private static string UnwidePath(string path)
+        {
+            if (!path.StartsWith(@"\\?\"))              // Not a wide path
+                return path;
+            if (path.StartsWith(@"\\?\UNC"))            // UNC wide path
+                return path.Substring(7);
+            if (path.StartsWith(@"\\?\"))               // Other wide path
+                return path.Substring(4);
+            return path;                                // Other shuff (?)
+        }
+
+        const int MAX_PATH = 260;
+
         private static void PDel(string path, string pattern)
         {
             string[] files;
 
             try
             {
-                files = System.IO.Directory.GetFiles(path, pattern, System.IO.SearchOption.TopDirectoryOnly /*isRecurseMode ? System.IO.SearchOption.AllDirectories : System.IO.SearchOption.TopDirectoryOnly*/ );
+                files = Directory.GetFiles(WidePath(path), pattern, System.IO.SearchOption.TopDirectoryOnly);
                 foreach (string fileName in files)
                 {
+                    string normalFileName = UnwidePath(fileName);
+
                     // Delete one file
-                    try
+                    if (normalFileName.Length < MAX_PATH)
                     {
-                        if (isVerbose)
-                            Console.WriteLine("DEL " + QuotedFile(fileName));
-                        FileSystem.DeleteFile(fileName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
+                        try
+                        {
+                            if (isVerbose)
+                                Console.WriteLine((isFinal ? "DEL " : "PDEL ") + QuotedFile(normalFileName));
+                            if (!isNoAction)
+                                FileSystem.DeleteFile(normalFileName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
+                        }
+                        catch (Exception ex)
+                        {
+                            errorWriter.Write("PDel: Can't delete file " + normalFileName + ": " + ex.Message + '\n');
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        errorWriter.Write("PDel: Can't delete file " + fileName + ": " + ex.Message + '\n');
-                        //return 2;
+                        try
+                        {
+                            if (isVerbose)
+                                Console.WriteLine("DEL " + QuotedFile(fileName));
+                            if (!isNoAction)
+                                File.Delete(fileName);
+                        }
+                        catch (Exception ex)
+                        {
+                            errorWriter.Write("PDel: Can't delete long file " + fileName + ": " + ex.Message + '\n');
+                        }
                     }
                 }
+
                 if (isRecurseMode)
                 {
-                    string[] folders = System.IO.Directory.GetDirectories(path, "*.*", System.IO.SearchOption.TopDirectoryOnly);
+                    string[] folders = Directory.GetDirectories(WidePath(path), "*.*", System.IO.SearchOption.TopDirectoryOnly);
                     foreach (string directoryName in folders)
                     {
                         // Ignore SYSTEM+HIDDEN folders
@@ -177,18 +242,38 @@ namespace pdel
                         // If we are deleting all files, then delete folders too
                         if (pattern == "*.*")
                         {
+                            string normalDirectoryName = UnwidePath(directoryName);
+
                             // Delete one directory
-                            try
+                            if (normalDirectoryName.Length < MAX_PATH)
                             {
-                                if (isVerbose)
-                                    Console.WriteLine("RD " + QuotedFile(directoryName));
-                                FileSystem.DeleteDirectory(directoryName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
+                                try
+                                {
+                                    if (isVerbose)
+                                        Console.WriteLine((isFinal ? "RD " : "PRD ") + QuotedFile(normalDirectoryName));
+                                    if (!isNoAction)
+                                        FileSystem.DeleteDirectory(normalDirectoryName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
+                                }
+                                catch (Exception ex)
+                                {
+                                    errorWriter.Write("PDel: Can't delete directory " + normalDirectoryName + ": " + ex.Message + '\n');
+                                }
                             }
-                            catch (Exception)
+                            else
                             {
-                                //errorWriter.Write("PDel: Can't delete file " + directoryName + ": " + ex.Message + '\n');
-                                //return 2;
+                                try
+                                {
+                                    if (isVerbose)
+                                        Console.WriteLine("RD " + QuotedFile(directoryName));
+                                    if (!isNoAction)
+                                        Directory.Delete(directoryName);
+                                }
+                                catch (Exception ex)
+                                {
+                                    errorWriter.Write("PDel: Can't delete long directory " + directoryName + ": " + ex.Message + '\n');
+                                }
                             }
+
                         }
                     }
 
@@ -199,6 +284,12 @@ namespace pdel
                 errorWriter.WriteLine("PDel: Can't access folder " + path + ": " + ex.Message);
             }
         }
+
+
+        //// Win32 file delete
+        //[DllImport("kernel32.dll", EntryPoint = "DeleteFileW", SetLastError = true, CharSet = CharSet.Unicode)]
+        //static extern bool DeleteFile(string lpFileName);
+
 
         private static string QuotedFile(string fileName) => fileName.Contains(" ") ? "\"" + fileName + "\"" : fileName;
 
