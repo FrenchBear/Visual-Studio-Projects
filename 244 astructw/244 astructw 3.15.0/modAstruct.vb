@@ -491,8 +491,6 @@ Label1:
             Dim cancel As Boolean = False
             Dim bRet As Integer = CopyFileEx(WidePath(sourcePath), WidePath(destinationPath), Nothing, 0, cancel, COPY_FILE_ALLOW_DECRYPTED_DESTINATION)
             If bRet = 0 Then
-                Console.WriteLine(WidePath(sourcePath))
-                Console.WriteLine(WidePath(destinationPath))
                 TraceWin32Error("CopyFileEx(""" & sourcePath & """, """ & destinationPath & "")
                 Exit Sub
             End If

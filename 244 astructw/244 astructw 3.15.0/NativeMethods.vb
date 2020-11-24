@@ -1,4 +1,5 @@
 ' NativeMethods class
+' NativeMethods class
 ' Regroup P/Invoke declarations, to follow Microsoft code analysis recommendations
 ' SafeFileHandle from http://www.pinvoke.net/default.aspx/kernel32/CreateFile.html
 '
@@ -39,7 +40,7 @@ Friend Module NativeMethods
     Declare Function LookupPrivilegeValue Lib "advapi32.dll" Alias "LookupPrivilegeValueA" (lpSystemName As String, lpName As String, ByRef lpLuid As LUID) As Integer
     Declare Function AdjustTokenPrivileges Lib "advapi32.dll" (TokenHandle As IntPtr, DisableAllPrivileges As Integer, ByRef NewState As TOKEN_PRIVILEGES, BufferLength As Integer, ByRef PreviousState As TOKEN_PRIVILEGES, ByRef ReturnLength As Integer) As Integer
 
-    <DllImportAttribute("kernel32.dll", EntryPoint:="FormatMessageA", SetLastError:=True, CharSet:=CharSet.Ansi, BestFitMapping:=False, ThrowOnUnmappableChar:=True)>
+    <DllImport("kernel32.dll", EntryPoint:="FormatMessageA", SetLastError:=True, CharSet:=CharSet.Ansi, BestFitMapping:=False, ThrowOnUnmappableChar:=True)>
     Function FormatMessage(dwFlags As Integer, lpSource As IntPtr, dwMessageId As Integer, dwLanguageId As Integer, lpBuffer As StringBuilder, nSize As Integer, Arguments As Integer) As Integer
     End Function
 
@@ -83,10 +84,10 @@ Friend Module NativeMethods
         Dim dwReserved1 As Integer
 
         ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode
-        <VBFixedString(520), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
+        <VBFixedString(520), MarshalAs(UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
 
         ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode
-        <VBFixedString(28), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
+        <VBFixedString(28), MarshalAs(UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
 
     End Structure
 
@@ -97,7 +98,7 @@ Friend Module NativeMethods
     'Public bInheritHandle As Integer
     'End Structure
 
-    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
+    <DllImport("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Public Function FindFirstFileW(lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As IntPtr
     End Function
 
@@ -159,22 +160,18 @@ Friend Module NativeMethods
     Function SetFileTime(hFile As SafeFileHandle, ByRef lpCreationTime As FILETIME, ByRef lpLastAccessTime As FILETIME, ByRef lpLastWriteTime As FILETIME) As Integer
     End Function
 
-    '<DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
-    'Function CreateFile(lpFileName As String, dwDesiredAccess As Integer, dwShareMode As Integer, ByRef lpSecurityAttributes As SECURITY_ATTRIBUTES, dwCreationDisposition As Integer, dwFlagsAndAttributes As Integer, hTemplateFile As Integer) As IntPtr
-    'End Function
-
     <DllImport("kernel32.dll", EntryPoint:="CloseHandle", SetLastError:=True)>
     Function CloseHandle(hObject As SafeFileHandle) As Integer
     End Function
 
-    <System.Runtime.InteropServices.DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=System.Runtime.InteropServices.CharSet.Unicode)>
+    <DllImport("kernel32.dll", EntryPoint:="CreateFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
     Friend Function CreateFile(lpFileName As String,
-   dwDesiredAccess As EFileAccess,
-   dwShareMode As EFileShare,
-   lpSecurityAttributes As IntPtr,
-   dwCreationDisposition As ECreationDisposition,
-   dwFlagsAndAttributes As EFileAttributes,
-   hTemplateFile As IntPtr) As Microsoft.Win32.SafeHandles.SafeFileHandle
+       dwDesiredAccess As EFileAccess,
+       dwShareMode As EFileShare,
+       lpSecurityAttributes As IntPtr,
+       dwCreationDisposition As ECreationDisposition,
+       dwFlagsAndAttributes As EFileAttributes,
+       hTemplateFile As IntPtr) As SafeFileHandle
     End Function
 
     Friend Structure STORAGE_DEVICE_NUMBER
@@ -183,7 +180,7 @@ Friend Module NativeMethods
         Friend PartitionNumber As Integer
     End Structure
 
-    Friend Enum EFileAccess As System.Int32
+    Friend Enum EFileAccess As Integer
         ''
         ''  The following are masks for the predefined standard access types
         ''

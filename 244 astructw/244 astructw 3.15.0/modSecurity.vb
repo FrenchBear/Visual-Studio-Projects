@@ -16,13 +16,13 @@ Friend Module Security
         Dim privilegeLUID = New LUID()
         Dim newPrivileges = New TOKEN_PRIVILEGES()
         Dim tokenPrivileges As TOKEN_PRIVILEGES
-        If (OpenProcessToken(Process.GetCurrentProcess().Handle, TOKEN_ADJUST_PRIVILEGES Or TOKEN_QUERY, tokenHandle)) = 0 Then Throw New PrivilegeException(FormatError(Marshal.GetLastWin32Error()))
-        If (LookupPrivilegeValue("", privilege, privilegeLUID)) = 0 Then Throw New PrivilegeException(FormatError(Marshal.GetLastWin32Error()))
+        If OpenProcessToken(Process.GetCurrentProcess().Handle, TOKEN_ADJUST_PRIVILEGES Or TOKEN_QUERY, tokenHandle) = 0 Then Throw New PrivilegeException(FormatError(Marshal.GetLastWin32Error()))
+        If LookupPrivilegeValue("", privilege, privilegeLUID) = 0 Then Throw New PrivilegeException(FormatError(Marshal.GetLastWin32Error()))
         tokenPrivileges.PrivilegeCount = 1
         tokenPrivileges.Privileges.Attributes = SE_PRIVILEGE_ENABLED
         tokenPrivileges.Privileges.pLuid = privilegeLUID
         Dim Size As Integer = 4
-        If (AdjustTokenPrivileges(tokenHandle, 0, tokenPrivileges, 4 + (12 * tokenPrivileges.PrivilegeCount), newPrivileges, Size)) = 0 Then Throw New PrivilegeException(FormatError(Marshal.GetLastWin32Error()))
+        If AdjustTokenPrivileges(tokenHandle, 0, tokenPrivileges, 4 + (12 * tokenPrivileges.PrivilegeCount), newPrivileges, Size) = 0 Then Throw New PrivilegeException(FormatError(Marshal.GetLastWin32Error()))
     End Sub
 
     Private Function CheckEntryPoint(library As String, method As String) As Boolean
