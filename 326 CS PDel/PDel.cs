@@ -174,7 +174,7 @@ namespace PDel
             if (!path.StartsWith(@"\\?\"))              // Not a wide path
                 return path;
             if (path.StartsWith(@"\\?\UNC"))            // UNC wide path
-                return path.Substring(7);
+                return @"\" + path.Substring(7);
             if (path.StartsWith(@"\\?\"))               // Other wide path
                 return path.Substring(4);
             return path;                                // Other shuff (?)
