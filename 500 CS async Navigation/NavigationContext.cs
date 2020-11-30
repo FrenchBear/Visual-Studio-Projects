@@ -23,7 +23,7 @@ namespace CS500
             this.element = element;
         }
 
-        private T element;
+        private readonly T element;
 
         // object behind "awaited tasks", maintains thread status for awaited tasks
         private TaskCompletionSource<TResult> cts;

@@ -19,7 +19,7 @@ Class BasicDataEntryForm
         InitializeComponent()
     End Sub
 
-    Private components As System.ComponentModel.IContainer = Nothing
+    Private ReadOnly components As System.ComponentModel.IContainer = Nothing
 
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso Not (components Is Nothing) Then

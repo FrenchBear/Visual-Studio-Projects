@@ -14,6 +14,8 @@ using System.Linq;
 using System.Text;
 using static System.Console;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 
 namespace CS549
 {

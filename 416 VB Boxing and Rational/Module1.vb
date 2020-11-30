@@ -30,7 +30,7 @@ End Module
 
 
 Class Entier
-    Private _n As Integer
+    Private ReadOnly _n As Integer
 
     Public Sub New(ByVal i As Integer)
         _n = i
@@ -46,8 +46,8 @@ End Class
 Structure Rational
     Implements IFormattable
 
-    Private _numerator As Integer
-    Private _denominator As Integer
+    Private ReadOnly _numerator As Integer
+    Private ReadOnly _denominator As Integer
 
     Public Sub New(ByVal n As Integer, ByVal d As Integer)
         _numerator = n

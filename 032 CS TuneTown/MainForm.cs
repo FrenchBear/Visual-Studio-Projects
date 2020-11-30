@@ -140,10 +140,12 @@ public class MainForm : System.Windows.Forms.Form
             ListViewItem item = TuneView.FocusedItem;
             if (item != null)
             {
-                AddEditForm dlg = new AddEditForm();
-                dlg.Title = item.Text;
-                dlg.Artist = item.SubItems[1].Text;
-                dlg.Comment = item.SubItems[2].Text;
+                AddEditForm dlg = new AddEditForm
+                {
+                    Title = item.Text,
+                    Artist = item.SubItems[1].Text,
+                    Comment = item.SubItems[2].Text
+                };
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {

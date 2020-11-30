@@ -46,7 +46,7 @@ Public Class frmAnalyse
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -251,8 +251,8 @@ Public Class frmAnalyse
     Const sStartSite As String = "ou=Workstations & Printers,ou=fr,dc=eame,dc=global,dc=sgs,dc=com"
 
     ' Expressions régulières pour séparer les machines en listes séparées
-    Dim r00, r95, r98 As Regex
-    Dim rNum As Regex                   ' Pour extraire le n°
+    ReadOnly r00, r95, r98 As Regex
+    ReadOnly rNum As Regex                   ' Pour extraire le n°
 
     ' Un site 
     Class SiteAD
@@ -266,7 +266,7 @@ Public Class frmAnalyse
     End Class
 
     ' La liste des sites, lisée par site. clé=code site en minuscules, ex: cch
-    Dim slSitesAD As New SortedList
+    ReadOnly slSitesAD As New SortedList
 
     ' Un ordinateur, dans les listes slComp
     Class Computer
@@ -280,7 +280,7 @@ Public Class frmAnalyse
     Dim sHTML As System.Text.StringBuilder
 
     ' Les couleurs utilisées pour les sous-OU
-    Dim tColor As Color() = {Color.Pink, Color.Gold, Color.Chartreuse, Color.Aqua, Color.Violet, Color.LightCoral, Color.CornflowerBlue, Color.Wheat, Color.LightGray, Color.OrangeRed, Color.MediumOrchid, Color.LightGray}
+    ReadOnly tColor As Color() = {Color.Pink, Color.Gold, Color.Chartreuse, Color.Aqua, Color.Violet, Color.LightCoral, Color.CornflowerBlue, Color.Wheat, Color.LightGray, Color.OrangeRed, Color.MediumOrchid, Color.LightGray}
 
 
 
@@ -976,13 +976,14 @@ Public Class frmAnalyse
         If slSitesAD.ContainsKey(sKey) Then
             sad = slSitesAD(sKey)
         Else
-            sad = New SiteAD
-            sad.sSite = UCase(sKey)
-            sad.slOU = New SortedList
-            sad.slComp00 = New SortedList
-            sad.slComp95 = New SortedList
-            sad.slComp98 = New SortedList
-            sad.slCompXX = New SortedList
+            sad = New SiteAD With {
+                .sSite = UCase(sKey),
+                .slOU = New SortedList,
+                .slComp00 = New SortedList,
+                .slComp95 = New SortedList,
+                .slComp98 = New SortedList,
+                .slCompXX = New SortedList
+            }
             slSitesAD.Add(sKey, sad)
         End If
 
@@ -1051,8 +1052,8 @@ End Class
 Class ListViewItemComparer
     Implements IComparer
 
-    Private col As Integer
-    Private sens As Integer
+    Private ReadOnly col As Integer
+    Private ReadOnly sens As Integer
 
     Public Sub New()
         col = 0

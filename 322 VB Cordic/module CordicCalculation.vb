@@ -10,7 +10,7 @@ Module CordicCalculation
     Const n As Integer = 15
 
     ' Table of atn(1), atn(0.1), atn(0.01), ... (here calculated, but should actually be constants in the code)
-    Dim a(n) As Double
+    ReadOnly a(n) As Double
 
     Sub Main()
         CalculateConstants()
@@ -30,7 +30,7 @@ Module CordicCalculation
         If Θ = 0 Then Return 0
         Dim s As SByte = Math.Sign(Θ)
         Θ = Math.Abs(Θ)
-        Θ = Θ - Math.PI * Math.Floor(Θ / Math.PI)
+        Θ -= Math.PI * Math.Floor(Θ / Math.PI)
         If Θ > Math.PI / 2 Then
             s = -s
             Θ = Math.PI - Θ
@@ -51,7 +51,7 @@ Module CordicCalculation
             While Θ >= a(i)
                 Θ -= a(i)
                 Dim tp As Double = x - k * y
-                y = y + k * x
+                y += k * x
                 x = tp
             End While
             k /= 10

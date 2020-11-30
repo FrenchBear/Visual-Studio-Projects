@@ -25,7 +25,7 @@ namespace _101_CS_IEnumerable_Generic
 
 public class CityCollection : IEnumerable<string>
 {
-    string[] m_Cities = { "New York", "Paris", "London" };
+    readonly string[] m_Cities = { "New York", "Paris", "London" };
 
     public IEnumerable<string> Reverse()
     {
@@ -60,7 +60,7 @@ public class toto
 
     public class Internal : Machin
     {
-        int m_a, m_b;
+        readonly int m_a, m_b;
         public Internal(int a, int b)
         {
             m_a = a;
@@ -81,8 +81,8 @@ public class toto
 
 public class c2 : Machin
 {
-    LinkedList<string> l = new LinkedList<string>();
-    Dictionary<int, string> d = new Dictionary<int, string>();
+    readonly LinkedList<string> l = new LinkedList<string>();
+    readonly Dictionary<int, string> d = new Dictionary<int, string>();
 
     public int Bidule(int i)
     {

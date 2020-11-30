@@ -11,7 +11,7 @@ namespace CS530
     class Program
     {
         // All possible cells in output, based on blocks characters: horizointal, vertical, down right, ...
-        enum blocks { hz, vt, dr, dl, ur, ul, xx };
+        enum Blocks { hz, vt, dr, dl, ur, ul, xx };
 
         static void Main(string[] args)
         {
@@ -25,16 +25,16 @@ namespace CS530
             // Row = cell entrance orientation, 0..3 and 4 when there is no actual entrance (1st cell)
             // Column = cell exit orientation, 0..3 and 4 for the last cell
             // In the table xx=invalid combination, otherwise represent a box character (see box dictionary)
-            blocks[,] io = new blocks[,] {
-                {blocks.hz, blocks.ul, blocks.xx, blocks.dl, blocks.hz},
-                {blocks.dr, blocks.vt, blocks.dl, blocks.xx, blocks.vt},
-                {blocks.xx, blocks.ur, blocks.hz, blocks.dr, blocks.hz},
-                {blocks.ur, blocks.xx, blocks.ul, blocks.vt, blocks.vt},
-                {blocks.hz, blocks.vt, blocks.hz, blocks.vt, blocks.xx}
+            Blocks[,] io = new Blocks[,] {
+                {Blocks.hz, Blocks.ul, Blocks.xx, Blocks.dl, Blocks.hz},
+                {Blocks.dr, Blocks.vt, Blocks.dl, Blocks.xx, Blocks.vt},
+                {Blocks.xx, Blocks.ur, Blocks.hz, Blocks.dr, Blocks.hz},
+                {Blocks.ur, Blocks.xx, Blocks.ul, Blocks.vt, Blocks.vt},
+                {Blocks.hz, Blocks.vt, Blocks.hz, Blocks.vt, Blocks.xx}
             };
 
             int side = (int)Math.Pow(2, depth);     // # side of output square grid
-            blocks[,] tc = new blocks[side, side];  // Table of cells for output
+            Blocks[,] tc = new Blocks[side, side];  // Table of cells for output
 
             int a = 0;          // Current angular orientation: 0=East, 1=North, 2=West, 3=South
             int en = 4;         // Previous cell entrance, 4=no entrance (1st cell)
@@ -65,13 +65,13 @@ namespace CS530
             tc[cy, cx] = io[en, 4];          // Fill the last cell, since in the body we always fill previous cell
 
             // Unicode box characters
-            var boxes = new Dictionary<blocks, string> {
-                { blocks.hz, "\u2500\u2500"},   // Horizontal"
-                { blocks.vt, "\u2502 "},        // Vertical
-                { blocks.dr, "\u250c\u2500"},   // Down Right
-                { blocks.dl, "\u2510 "},        // Down Left
-                { blocks.ur, "\u2514\u2500"},   // Up Right
-                { blocks.ul, "\u2518 "}         // Up Left
+            var boxes = new Dictionary<Blocks, string> {
+                { Blocks.hz, "\u2500\u2500"},   // Horizontal"
+                { Blocks.vt, "\u2502 "},        // Vertical
+                { Blocks.dr, "\u250c\u2500"},   // Down Right
+                { Blocks.dl, "\u2510 "},        // Down Left
+                { Blocks.ur, "\u2514\u2500"},   // Up Right
+                { Blocks.ul, "\u2518 "}         // Up Left
             };
 
             // Draw curve

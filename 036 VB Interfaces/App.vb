@@ -9,7 +9,7 @@ Public Class MyApp
         Dim t As New MaClasse()
 
         t.MaMethodeBruyante1(1)
-        CType(t, MonInterface).MaMethodeBruyante1(2)
+        CType(t, IMonInterface).MaMethodeBruyante1(2)
 
         Console.ReadLine()
     End Sub
@@ -18,7 +18,7 @@ End Class
 
 Public Delegate Sub GestionnaireDeBip(ByVal sender As Object, ByVal sMsg As String)
 
-Public Interface MonInterface
+Public Interface IMonInterface
     Sub MaMethodeBruyante1(ByVal x As Integer)  ' Méthode
     Property MaPropriete() As Integer           ' Propriété
     Event Bip As GestionnaireDeBip              ' Evénement
@@ -28,11 +28,11 @@ End Interface
 
 
 Public Class MaClasse
-    Implements MonInterface
+    Implements IMonInterface
 
     Private iMembre As Integer
 
-    Private Sub MonInterface_MaMethodeBruyante1(ByVal x As Integer) Implements MonInterface.MaMethodeBruyante1
+    Private Sub MonInterface_MaMethodeBruyante1(ByVal x As Integer) Implements IMonInterface.MaMethodeBruyante1
         Console.WriteLine("Implémentation de MonInterface.MaMethodeBruyante1")
     End Sub
 
@@ -41,7 +41,7 @@ Public Class MaClasse
         Console.WriteLine("Implémentation privée de MaMethodeBruyante1")
     End Sub
 
-    Property MonInterface_MaPropriete() As Integer Implements MonInterface.MaPropriete
+    Property MonInterface_MaPropriete() As Integer Implements IMonInterface.MaPropriete
         Get
             Return iMembre
         End Get
@@ -50,15 +50,15 @@ Public Class MaClasse
         End Set
     End Property
 
-    Event Bip As GestionnaireDeBip Implements MonInterface.Bip
+    Event Bip As GestionnaireDeBip Implements IMonInterface.Bip
 
-    ReadOnly Property Item(ByVal index As Integer) As String Implements MonInterface.Item
+    ReadOnly Property Item(ByVal index As Integer) As String Implements IMonInterface.Item
         Get
             Return "Item[" & index & "]"
         End Get
     End Property
 
-    ReadOnly Property Item(ByVal index As String) As String Implements MonInterface.Item
+    ReadOnly Property Item(ByVal index As String) As String Implements IMonInterface.Item
         Get
             Return "Item[""" & index & """]"
         End Get

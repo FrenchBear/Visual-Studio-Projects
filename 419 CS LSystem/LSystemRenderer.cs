@@ -50,8 +50,10 @@ namespace CS419
 
             for (; ; pass++)
             {
-                AngleAndPosition ap = new AngleAndPosition();     // All fields start at 0.0
-                ap.SegmentLength = 10.0;
+                AngleAndPosition ap = new AngleAndPosition
+                {
+                    SegmentLength = 10.0
+                };     // All fields start at 0.0
 
                 Stack<AngleAndPosition> apStack = new Stack<AngleAndPosition>();
 

@@ -13,17 +13,17 @@ End Module
 
 
 Class TestClass
-    Partial Private Sub toto(ByRef x As Integer)
+    Partial Private Sub Toto(ByRef x As Integer)
     End Sub
 
-    Private Sub toto(ByRef x As Integer)
+    Private Sub Toto(ByRef x As Integer)
         MsgBox("Hello World " & CStr(x))
         x += 1
     End Sub
 
     Sub New()
         Dim a = 2
-        toto(a)
+        Toto(a)
         MsgBox("a: " & a)
     End Sub
 

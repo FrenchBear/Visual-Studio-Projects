@@ -16,10 +16,11 @@ Module Module1
         Dim k1 As MaClasse
         k1 = New MaClasse
         c = 0
-        t = New System.Timers.Timer
-        t.AutoReset = False
-        t.Interval = 1000
-        t.Enabled = True
+        t = New System.Timers.Timer With {
+            .AutoReset = False,
+            .Interval = 1000,
+            .Enabled = True
+        }
         Do
             LocalMachin()
             c += 1

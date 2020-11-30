@@ -34,7 +34,7 @@ Public Class frmTest
     Friend WithEvents btnThread As System.Windows.Forms.Button
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
@@ -76,7 +76,7 @@ Public Class frmTest
     End Sub
 
 
-    Shared m As New Mutex()
+    Shared ReadOnly m As New Mutex()
 
     Sub Proc1()
         Trace("Début Proc1")

@@ -53,11 +53,10 @@ Public Class Form1
         MsgBox("Anayze in " & sw.Elapsed.ToString)
     End Sub
 
-
-    Dim tdSingleProb(126 - 32) As Double     ' Cumuled probability
-    Dim tiSingleChar(126 - 32) As Integer    ' Character code
-    Dim tdDoubleProb(126 - 32)() As Double     ' Cumuled probability
-    Dim tiDoubleChar(126 - 32)() As Integer    ' Character code
+    ReadOnly tdSingleProb(126 - 32) As Double     ' Cumuled probability
+    ReadOnly tiSingleChar(126 - 32) As Integer    ' Character code
+    ReadOnly tdDoubleProb(126 - 32)() As Double     ' Cumuled probability
+    ReadOnly tiDoubleChar(126 - 32)() As Integer    ' Character code
 
     Function isFiller(ByVal i As Integer) As Boolean
         Static aldRand As New ArrayList
@@ -201,7 +200,7 @@ Public Class Form1
                     it = ti(j) : ti(j) = ti(j - 1) : ti(j - 1) = it
                 End If
             Next
-            i = i + 1
+            i += 1
         Loop While bSwap
     End Sub
 
@@ -346,9 +345,10 @@ Public Class Form1
 
         Dim t(94) As TempClass
         For i As Integer = 0 To 94
-            t(i) = New TempClass
-            t(i).Prob = tdSingleProb(i)
-            t(i).iChar = i
+            t(i) = New TempClass With {
+                .Prob = tdSingleProb(i),
+                .iChar = i
+            }
         Next
 
         iCall = 0

@@ -13,9 +13,9 @@ namespace ConsoleApp1
 {
     class Program
     {
-        static List<Predicate<int>> filters = new List<Predicate<int>>();
+        static readonly List<Predicate<int>> filters = new List<Predicate<int>>();
 
-        static void addDivisorFilter(int d)
+        static void AddDivisorFilter(int d)
         {
             int divisor = Math.Min(d, 100);
             filters.Add(n => n % divisor == 0);
@@ -41,8 +41,8 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            addDivisorFilter(5);
-            addDivisorFilter(11);
+            AddDivisorFilter(5);
+            AddDivisorFilter(11);
 
             IEnumerable<int> vi = new List<int> { 1,2,3,5,7,11,13,17,19 };
             WriteLine(vi);

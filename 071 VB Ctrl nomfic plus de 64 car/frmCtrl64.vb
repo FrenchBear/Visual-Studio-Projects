@@ -29,7 +29,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -58,7 +58,7 @@ Public Class Form1
     End Sub
 
 #End Region
-    Dim fs As New FileSystemObject()
+    ReadOnly fs As New FileSystemObject()
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         Debug.AutoFlush = True

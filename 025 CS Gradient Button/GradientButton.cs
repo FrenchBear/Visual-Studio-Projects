@@ -15,14 +15,14 @@ using System.Data;
 
 public class GradientButton : Button
 {
-    private void InitializeComponent()
+    internal void InitializeComponent()
     {
     }
 
     private Color startColor;
     private Color endColor;
 
-    private static StringFormat format = new StringFormat();
+    private static readonly StringFormat format = new StringFormat();
 
     public GradientButton()
         : base()

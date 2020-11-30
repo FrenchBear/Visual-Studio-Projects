@@ -9,6 +9,8 @@
 Imports System.Windows.Forms
 Imports System.Drawing
 
+#Disable Warning IDE1006 ' Naming Styles
+
 
 Public Class MyForm
     Inherits Form
@@ -24,18 +26,20 @@ Public Class MyForm
         Me.AutoScaleBaseSize = New Size(5, 13)
         Me.ClientSize = New Size(400, 150)
 
-        button1 = New Button()
-        button1.Location = New Point(100, 64)
-        button1.Size = New Size(90, 40)
-        button1.TabIndex = 2
-        button1.Text = "Bouton 1"
+        button1 = New Button With {
+            .Location = New Point(100, 64),
+            .Size = New Size(90, 40),
+            .TabIndex = 2,
+            .Text = "Bouton 1"
+        }
         Me.Controls.Add(button1)
 
-        button2 = New Button()
-        button2.Location = New Point(200, 64)
-        button2.Size = New Size(90, 40)
-        button2.TabIndex = 2
-        button2.Text = "Bouton 2"
+        button2 = New Button With {
+            .Location = New Point(200, 64),
+            .Size = New Size(90, 40),
+            .TabIndex = 2,
+            .Text = "Bouton 2"
+        }
         Me.Controls.Add(button2)
     End Sub
 
@@ -46,11 +50,12 @@ Public Class MyForm
 
         'Add the new button and add an event handler using AddHandler                             
         Dim newButton As New Button()
-        newButton = New Button()
-        newButton.Location = New Point(300, 64)
-        newButton.Size = New Size(90, 40)
-        newButton.TabIndex = 4
-        newButton.Text = "Bouton 3"
+        newButton = New Button With {
+            .Location = New Point(300, 64),
+            .Size = New Size(90, 40),
+            .TabIndex = 4,
+            .Text = "Bouton 3"
+        }
         Me.Controls.Add(newButton)
 
         AddHandler newButton.Click, AddressOf Me.clickNewbutton

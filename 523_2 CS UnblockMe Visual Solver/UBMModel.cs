@@ -31,7 +31,7 @@ namespace CS523B_UnblockMe_Solver_Visual
 
         public Config Configuration = new Config() { Length = 9, Pos = new byte[] { 0, 2, 2, 4, 0, 1, 3, 3, 0 } };
 
-        private SortedSet<int> History = new SortedSet<int>();
+        private readonly SortedSet<int> History = new SortedSet<int>();
 
         void UBModel()
         {
@@ -109,7 +109,7 @@ namespace CS523B_UnblockMe_Solver_Visual
             return false;
         }
 
-        private ConsoleColor[] Colors = { (ConsoleColor)1, (ConsoleColor)2, (ConsoleColor)3, (ConsoleColor)5, (ConsoleColor)6, (ConsoleColor)8, (ConsoleColor)9, (ConsoleColor)10, (ConsoleColor)11, (ConsoleColor)12, (ConsoleColor)13, (ConsoleColor)14, (ConsoleColor)15 };
+        private readonly ConsoleColor[] Colors = { (ConsoleColor)1, (ConsoleColor)2, (ConsoleColor)3, (ConsoleColor)5, (ConsoleColor)6, (ConsoleColor)8, (ConsoleColor)9, (ConsoleColor)10, (ConsoleColor)11, (ConsoleColor)12, (ConsoleColor)13, (ConsoleColor)14, (ConsoleColor)15 };
         private void ShowConfig(Config config)
         {
             Console.WriteLine();
@@ -177,9 +177,11 @@ namespace CS523B_UnblockMe_Solver_Visual
 
         public Config Clone()
         {
-            Config c2 = new Config();
-            c2.Length = Length;
-            c2.Pos = (byte[])Pos.Clone();
+            Config c2 = new Config
+            {
+                Length = Length,
+                Pos = (byte[])Pos.Clone()
+            };
             return c2;
         }
 

@@ -71,7 +71,7 @@ namespace CS635
             int i4 = myComparer.Compare(e31, e32);
 
             // Comparison using Comparison delegate
-            Comparison<Entier3> myComparison = (x3, y3) => x3.Value - y3.Value;
+            int myComparison(Entier3 x3, Entier3 y3) => x3.Value - y3.Value;
             int i5 = myComparison(e31, e32);
 
 
@@ -90,7 +90,7 @@ namespace CS635
     // base class
     class Entier
     {
-        private int n;
+        private readonly int n;
 
         public Entier(int value)
         {
@@ -114,8 +114,7 @@ namespace CS635
         {
             if (obj == null) return 1;
 
-            Entier1 otherEntier = obj as Entier1;
-            if (otherEntier != null)
+            if (obj is Entier1 otherEntier)
                 return Value - otherEntier.Value;
             else
                 throw new ArgumentException("Object is not an Entier1");

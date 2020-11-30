@@ -19,7 +19,7 @@ Module Pentamino
     Dim Pow2() As Integer
 
     Class Jeu     ' Plan de jeu
-        Private grille(,) As Byte
+        Private ReadOnly grille(,) As Byte
 
         Public Sub New()
             ReDim grille(MAXLIG - 1, MAXCOL - 1)

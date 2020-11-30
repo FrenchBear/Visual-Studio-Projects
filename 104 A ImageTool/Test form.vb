@@ -13,8 +13,9 @@ Public Class frmTest
         Dim ld As ListViewItemDoc
         ld = CType(lvNewDocuments.SelectedItems(0), ListViewItemDoc)
 
-        Dim ed As New EditDoc
-        ed.sPathName = ld.sPathName
+        Dim ed As New EditDoc With {
+            .sPathName = ld.sPathName
+        }
 
         Dim f As New frmImageTool
         f.OpenEditDoc(ed)
@@ -25,7 +26,7 @@ End Class
 Class ListViewItemDoc
     Inherits Windows.Forms.ListViewItem
 
-    Private m_sPathName
+    Private ReadOnly m_sPathName
 
     Public Sub New(ByVal sPath As String)
         m_sPathName = sPath

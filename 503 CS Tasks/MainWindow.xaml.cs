@@ -24,7 +24,7 @@ namespace WpfApplication3
     /// </summary>
     public partial class MainWindow : Window
     {
-        Random rnd = new Random();
+        readonly Random rnd = new Random();
 
         public MainWindow()
         {

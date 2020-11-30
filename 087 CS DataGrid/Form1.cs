@@ -21,7 +21,7 @@ public class Form1 : System.Windows.Forms.Form
     /// <summary>
     /// Variable nécessaire au concepteur.
     /// </summary>
-    private System.ComponentModel.Container components = null;
+    private readonly System.ComponentModel.Container components = null;
 
     public Form1()
     {
@@ -126,11 +126,15 @@ public class Form1 : System.Windows.Forms.Form
     private void Remplit1()
     {
         SqlConnection nwindConn = new SqlConnection("Persist Security Info=False;Integrated Security=SSPI;database=NorthWind;server='LU01ZEPHYR\\SQL2008';Connect Timeout=30");
-        SqlCommand selectCMD = new SqlCommand("SELECT CompanyName, ContactName, City, Country FROM Customers", nwindConn);
-        selectCMD.CommandTimeout = 30;
+        SqlCommand selectCMD = new SqlCommand("SELECT CompanyName, ContactName, City, Country FROM Customers", nwindConn)
+        {
+            CommandTimeout = 30
+        };
 
-        SqlDataAdapter custDA = new SqlDataAdapter();
-        custDA.SelectCommand = selectCMD;
+        SqlDataAdapter custDA = new SqlDataAdapter
+        {
+            SelectCommand = selectCMD
+        };
 
         nwindConn.Open();
         DataSet myDataSet = new DataSet();

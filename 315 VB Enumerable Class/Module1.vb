@@ -324,7 +324,7 @@ Module Module1
     End Sub
 
     Class Dog
-        Private _name As String
+        Private ReadOnly _name As String
         Public Sub New(ByVal name As String)
             _name = name
         End Sub

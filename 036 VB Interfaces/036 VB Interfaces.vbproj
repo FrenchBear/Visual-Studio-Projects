@@ -139,6 +139,7 @@
     <Compile Include="App.vb">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GlobalSuppressions.vb" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="My Project\" />

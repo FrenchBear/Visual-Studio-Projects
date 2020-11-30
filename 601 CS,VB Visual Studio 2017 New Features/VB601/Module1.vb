@@ -10,6 +10,9 @@ Imports System.Console
 Imports System.Runtime.CompilerServices
 Imports System.Text
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+
+
 Module VB601
     ' Throw expressions not supported in VB
     'Private GlobalPoint As Point = If(New Point(5, 6), Throw New InvalidOperationException("Could not initialize " + NameOf(GlobalPoint)))

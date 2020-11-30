@@ -55,7 +55,7 @@ using System.Globalization;
 
 struct Complex : IFormattable
 {
-    private double x, y;
+    private readonly double x, y;
 
     public Complex(double r, double i)
     {

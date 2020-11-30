@@ -21,8 +21,7 @@ namespace RI3
 
         public void NotifyPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         // Commands public interface
@@ -47,8 +46,8 @@ namespace RI3
 
 
         // Access to Model and window
-        private Model model;
-        private MainWindow window;
+        private readonly Model model;
+        private readonly MainWindow window;
 
 
         // Interface strings
@@ -138,8 +137,10 @@ namespace RI3
 
         private void SelectSourceFolderExecute(object parameter)
         {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog();
-            dialog.SelectedPath = SourceFolder;
+            var dialog = new System.Windows.Forms.FolderBrowserDialog
+            {
+                SelectedPath = SourceFolder
+            };
             System.Windows.Forms.DialogResult result = dialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
                 SourceFolder = dialog.SelectedPath;
@@ -267,7 +268,7 @@ namespace RI3
             }
         }
 
-        private ObservableCollection<string> tracesList = new ObservableCollection<string>();
+        private readonly ObservableCollection<string> tracesList = new ObservableCollection<string>();
         public ObservableCollection<string> TracesList
         {
             get
@@ -339,7 +340,7 @@ namespace RI3
 
     public static class ExtensionMethods
     {
-        private static Action EmptyDelegate = delegate () { };
+        private static readonly Action EmptyDelegate = delegate () { };
 
         // Extension method to force the refresh of a UIElement
         public static void Refresh(this UIElement uiElement)

@@ -28,7 +28,7 @@ Public Class frmEssaisIO
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  

@@ -13,8 +13,7 @@ namespace CS92
         [STAThread]
         static void Main(string[] args)
         {
-            Complex r1, r2, r3;
-            p3(1.0, -6.0, 11.0, -6.0, out r1, out r2, out r3);
+            p3(1.0, -6.0, 11.0, -6.0, out Complex r1, out Complex r2, out Complex r3);
             // 3 solutions réelles, 1, 2 et 3
             Console.WriteLine("x1={0}\nx2={1}\nx3={2}", r1, r2, r3);
             Console.ReadLine();

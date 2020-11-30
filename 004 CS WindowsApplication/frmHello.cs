@@ -11,12 +11,16 @@ namespace WindowsApplication2_CSharp
     using System.Windows.Forms;
     using System.Data;
 
+#pragma warning disable IDE1006 // Naming Styles
+
     public class frmHello : System.Windows.Forms.Form
     {
         /// <summary>
         ///    Required designer variable.
         /// </summary>
+#pragma warning disable IDE0052 // Remove unread private members
         private System.ComponentModel.Container components;
+#pragma warning restore IDE0052 // Remove unread private members
 
         private System.Windows.Forms.Button btnHello;
 

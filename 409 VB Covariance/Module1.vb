@@ -3,8 +3,7 @@
 ' 2011-09-28 PV
 
 Module Module1
-
-    Dim ListBase As New List(Of Base)
+    ReadOnly ListBase As New List(Of Base)
 
     Sub Main()
         ' Example of covariant generic interface (almost natural, looks like polymorphism)

@@ -6,6 +6,9 @@
 
 using System;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
+
 class MyApp
 {
     public static void Main()

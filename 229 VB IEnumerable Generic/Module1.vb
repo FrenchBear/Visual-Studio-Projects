@@ -15,7 +15,7 @@ End Module
 Class CityCollection
     Implements IEnumerable(Of String)
 
-    Dim m_Cities() As String = {"New York", "Paris", "London"}
+    ReadOnly m_Cities() As String = {"New York", "Paris", "London"}
 
     Public Function GetEnumerator() As System.Collections.Generic.IEnumerator(Of String) Implements System.Collections.Generic.IEnumerable(Of String).GetEnumerator
         Return New MyEnumerator(Me)
@@ -28,7 +28,7 @@ Class CityCollection
     Class MyEnumerator
         Implements IEnumerator(Of String)
 
-        Dim m_Collection As CityCollection
+        ReadOnly m_Collection As CityCollection
         Dim m_current As Integer
 
         Public Sub New(ByVal collection As CityCollection)
@@ -104,7 +104,8 @@ Partial Public Class toto
     End Function
 
     Public Class Internal : Implements Machin
-        Dim m_a, m_b As Integer
+
+        ReadOnly m_a, m_b As Integer
 
         Public Sub New(ByVal a As Integer, ByVal b As Integer)
             m_a = a

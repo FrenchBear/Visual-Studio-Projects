@@ -22,12 +22,13 @@ Module Module1
     ' Similar to a HashTable with no value type, but additionally having set operations 
     ' like Union, Intersection, Difference.
     Sub TestSet()
-        Dim s1 As New [Set](Of Integer)
-        s1.Add(1)
-        s1.Add(2)
-        s1.Add(3)
-        s1.Add(4)
-        s1.Add(5)
+        Dim s1 As New [Set](Of Integer) From {
+            1,
+            2,
+            3,
+            4,
+            5
+        }
         Console.WriteLine("Set ----------")
         Console.Write("s1:")
         For Each i As Integer In s1
@@ -36,12 +37,13 @@ Module Module1
         Next
         Console.WriteLine()
 
-        Dim s2 As New [Set](Of Integer)
-        s2.Add(2)
-        s2.Add(3)
-        s2.Add(5)
-        s2.Add(7)
-        s2.Add(11)
+        Dim s2 As New [Set](Of Integer) From {
+            2,
+            3,
+            5,
+            7,
+            11
+        }
         Console.Write("s2:")
         For Each i As Integer In s2
             Console.Write(" "c)
@@ -82,10 +84,11 @@ Module Module1
         C2 = New Pair(Of Integer, String)(2, "blanc")
         C3 = New Pair(Of Integer, String)(3, "rouge")
 
-        Dim d As New Dictionary(Of Pair(Of Integer, String), String)
-        d.Add(C1, "blue")
-        d.Add(C2, "white")
-        d.Add(C3, "red")
+        Dim d As New Dictionary(Of Pair(Of Integer, String), String) From {
+            {C1, "blue"},
+            {C2, "white"},
+            {C3, "red"}
+        }
 
         'Stop
     End Sub

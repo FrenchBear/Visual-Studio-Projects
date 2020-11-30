@@ -30,7 +30,7 @@ Public Class frmAnalyse
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -156,7 +156,7 @@ Public Class frmAnalyse
 #End Region
 #Region " Définition tsBmp "
 
-    Dim tsBmp() As String = {
+    ReadOnly tsBmp() As String = {
   "800EFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
   "800EFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
   "800EFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
@@ -270,7 +270,7 @@ Public Class frmAnalyse
   "800EFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
   "800EFFFFFFFFFFFFFFFFFFFFFFFFFFFF"}
 
-    Dim tsBmp2() As String = {
+    ReadOnly tsBmp2() As String = {
   "800E0000000000000000000000000000",
   "800E0000000000000000000000000000",
   "800E0000000000000000000000000000",

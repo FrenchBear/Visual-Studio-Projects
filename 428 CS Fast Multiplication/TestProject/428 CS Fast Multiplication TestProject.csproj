@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\428 CS Fast Multiplication.csproj">
-      <Project>{550A793A-ED38-4BD4-8D24-9D2AEAF534AD}</Project>
+      <Project>{550a793a-ed38-4bd4-8d24-9d2aeaf534ad}</Project>
       <Name>428 CS Fast Multiplication</Name>
     </ProjectReference>
   </ItemGroup>

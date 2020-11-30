@@ -136,7 +136,7 @@ namespace Arith2CS
         protected T high;
         protected T low;
 
-        private static int digits;
+        private static readonly int digits;
         public int Digits { get => digits; }
 
         // Static constructore to initialize static variable returned by an instance property that can be included in interface...
@@ -216,10 +216,10 @@ namespace Arith2CS
             (T t2h, T t2l) = this.low.Mult(other.high);
             (highH, highL) = this.high.Mult(other.high);
 
-            T ov1, ov2, dummy;
+            T ov1, ov2;
             (ov1, lowH) = lowH.Plus(t1l, t2l);
             (ov2, highL) = highL.Plus(t1h, t2h, ov1);
-            (dummy, highH) = highH.Plus(ov2);
+            (_, highH) = highH.Plus(ov2);
 
             return (new DA<T>(highH, highL), new DA<T>(lowH, lowL));
         }
@@ -301,8 +301,8 @@ namespace Arith2CS
             Int4d a, b;
             (a = new Int4d()).FromString("8000");
             (b = new Int4d()).FromString("7000");
-            WriteLine($"a: {a.ToString()}");
-            WriteLine($"b: {b.ToString()}");
+            WriteLine($"a: {a}");
+            WriteLine($"b: {b}");
             (Int4d h, Int4d l) = a.Plus(b);
             WriteLine($"a+b: " + h.ToString2(l));
             (h, l) = a.Mult(b);
@@ -312,8 +312,8 @@ namespace Arith2CS
             DA<Int4d> a8, b8;
             (a8 = new DA<Int4d>()).FromString("12345678");
             (b8 = new DA<Int4d>()).FromString("87654321");
-            WriteLine($"a8: {a8.ToString()}");
-            WriteLine($"b8: {b8.ToString()}");
+            WriteLine($"a8: {a8}");
+            WriteLine($"b8: {b8}");
             (DA<Int4d> h8, DA<Int4d> l8) = a8.Plus(b8);
             WriteLine($"a8+b8: " + h8.ToString2(l8));
             (h8, l8) = a8.Mult(b8);
@@ -323,8 +323,8 @@ namespace Arith2CS
             DA<DA<Int4d>> a16, b16;
             (a16 = new DA<DA<Int4d>>()).FromString("1234567812345678");
             (b16 = new DA<DA<Int4d>>()).FromString("8765432187654321");
-            WriteLine($"a16: {a16.ToString()}");
-            WriteLine($"b16: {b16.ToString()}");
+            WriteLine($"a16: {a16}");
+            WriteLine($"b16: {b16}");
             (DA<DA<Int4d>> h16, DA<DA<Int4d>> l16) = a16.Plus(b16);
             WriteLine($"a16+b16: " + h16.ToString2(l16));
             (h16, l16) = a16.Mult(b16);

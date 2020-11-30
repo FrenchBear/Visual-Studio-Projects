@@ -212,7 +212,7 @@ Class NumTheory
         v = n
         While v > 0
             r = v Mod 2
-            v = v \ 2
+            v \= 2
             If r = 1 Then res = (res * p) Mod b
             p = (p * p) Mod b
 
@@ -232,7 +232,7 @@ Class NumTheory
         Dim d As Long = n - 1
         Dim s As Long = 0
         While d Mod 2 = 0
-            d = d \ 2
+            d \= 2
             s += 1
         End While
         For i As Long = 1 To 5        ' repeat several times

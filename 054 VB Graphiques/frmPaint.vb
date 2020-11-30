@@ -36,7 +36,7 @@ Public Class frmPaint
     Friend WithEvents pic As System.Windows.Forms.PictureBox
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
@@ -85,14 +85,15 @@ Public Class frmPaint
 
 
         ' Create a pen 5 pixels wide that is and purple and partially transparent.
-        Dim penExample As New Pen(Color.FromArgb(150, Color.Purple), 5)
         ' Make it a dashed pen.
         '    penExample.DashStyle = DashStyle.Dash
         ' Make the ends round.
-        penExample.StartCap = LineCap.Round
-        penExample.EndCap = LineCap.Round
+        Dim penExample As New Pen(Color.FromArgb(150, Color.Purple), 5) With {
+            .StartCap = LineCap.Round,
+            .EndCap = LineCap.Round
+        }
 
-        ' Now draw a curve using the pen
+            ' Now draw a curve using the pen
         g.DrawCurve(penExample, New Point() {
                 New Point(200, 14),
                 New Point(70, 240),
@@ -129,14 +130,15 @@ Public Class frmPaint
                 CType(PathPointType.Line, Byte)
                 })
 
-        Dim pgb As New PathGradientBrush(path)
-        pgb.SurroundColors = New Color() {
+        Dim pgb As New PathGradientBrush(path) With {
+            .SurroundColors = New Color() {
             Color.Green,
             Color.Yellow,
             Color.Red,
             Color.Blue,
             Color.Orange,
             Color.White
+        }
         }
 
         g.FillPath(pgb, path)

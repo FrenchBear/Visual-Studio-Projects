@@ -441,7 +441,7 @@ Public Class frmAfficheImage
     Dim tImage() As PictureBox
     Dim tImage2() As Image
     Dim iRowSize As Integer = 0
-    Dim iMargin As Integer = 8
+    ReadOnly iMargin As Integer = 8
 
 
     ' Historique
@@ -459,7 +459,7 @@ Public Class frmAfficheImage
         If (result <> DialogResult.OK) Then Exit Sub
         sRep = FolderBrowserDialog1.SelectedPath
         SaveSetting(VB6GetExeName(), "Config", "Path", sRep)
-        If Microsoft.VisualBasic.Right(sRep, 1) <> "\" Then sRep = sRep & "\"
+        If Microsoft.VisualBasic.Right(sRep, 1) <> "\" Then sRep &= "\"
 
         cboFichiers.Items.Clear()
         PileImages = New System.Collections.Stack
@@ -604,7 +604,7 @@ Public Class frmAfficheImage
     End Sub
 
     Dim cPrefix As Integer
-    Dim tMem(255) As Integer
+    ReadOnly tMem(255) As Integer
 
     Private Sub frmAfficheImage_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles MyBase.KeyPress
         Dim c As Char = e.KeyChar
@@ -676,7 +676,7 @@ Public Class frmAfficheImage
         chLastKey = "-"c
         If iPos > 0 Then
             iPosPrev = iPos
-            iPos = iPos - 1
+            iPos -= 1
             AfficheImage()
         End If
     End Sub
@@ -685,7 +685,7 @@ Public Class frmAfficheImage
         chLastKey = "+"c
         If iPos < cboFichiers.Items.Count - 1 Then
             iPosPrev = iPos
-            iPos = iPos + 1
+            iPos += 1
             AfficheImage()
         End If
     End Sub
@@ -845,7 +845,7 @@ Public Class frmAfficheImage
                     .Location = New System.Drawing.Point(paClient.Left + c * (iImageWidth + iMargin), paClient.Top + l * (iImageHeight + iMargin))
                     .Size = New System.Drawing.Size(iImageWidth, iImageHeight)
                 End With
-                i = i + 1
+                i += 1
             Next
         Next
 

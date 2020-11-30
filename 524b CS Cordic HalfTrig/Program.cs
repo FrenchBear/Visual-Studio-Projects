@@ -13,6 +13,9 @@ using System.Numerics;
 using static System.Console;
 using System.Diagnostics;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
+
 namespace CordicHalfTrig
 {
     class Program
@@ -35,8 +38,7 @@ namespace CordicHalfTrig
 
             // Take a random angle (0..Pi/2)
             double a0 = 1.1823614786;
-            double sin, cos;
-            CordicCompute(a0, out sin, out cos);
+            CordicCompute(a0, out double sin, out double cos);
 
             Console.WriteLine("a={0}", a0);
             Console.WriteLine("Math:   c={0}\t\t\ts={1}", Math.Cos(a0), Math.Sin(a0));
@@ -71,12 +73,12 @@ namespace CordicHalfTrig
             if (angle > Math.PI / 2)
                 angle = Math.PI - angle;
 
-            double sin, cos;
-            CordicCompute(angle, out sin, out cos);
+            CordicCompute(angle, out double sin, out double cos);
 
             return invertSign ? -sin : sin;
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
         static double CosCordic(double angle)
         {
             return SinCordic(angle + Math.PI / 2);
@@ -122,7 +124,7 @@ namespace CordicHalfTrig
 
                 double c2 = c;
                 c = Math.Sqrt((c + 1.0) / 2.0);
-                s = s / Math.Sqrt(2 * (1.0 + c2));
+                s /= Math.Sqrt(2 * (1.0 + c2));
             }
 
         }

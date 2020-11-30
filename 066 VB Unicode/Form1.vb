@@ -34,7 +34,7 @@ Public Class Form1
     Friend WithEvents cmdQuitter As System.Windows.Forms.MenuItem
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  

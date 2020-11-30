@@ -19,7 +19,7 @@ End Module
 
 
 Module modTimeZone
-    Dim localZone As TimeZone = TimeZone.CurrentTimeZone
+    ReadOnly localZone As TimeZone = TimeZone.CurrentTimeZone
 
     Function LocalToUTC(ByVal dLocal As Date) As Date
         Return localZone.ToUniversalTime(dLocal)

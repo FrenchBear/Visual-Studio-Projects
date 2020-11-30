@@ -6,6 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;           // Namespace for RO interfaces and collections
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
+
 namespace CS612
 {
     class Program
@@ -13,12 +16,12 @@ namespace CS612
         static void Main(string[] args)
         {
             // ReadOnly Dictionary
-            var d1 = getNumberDic1();
+            var d1 = GetNumberDic1();
             foreach (var k in d1.Keys)
                 Console.WriteLine(k.ToString() + " -> " + d1[k]);
             Console.WriteLine();
 
-            var d2 = getNumberDic2();
+            var d2 = GetNumberDic2();
             foreach (var k in d2.Keys)
                 Console.WriteLine(k.ToString() + " -> " + d2[k]);
             Console.WriteLine();
@@ -28,7 +31,7 @@ namespace CS612
 
 
             // ReadOnly List
-            var l = getList();
+            var l = GetList();
             //var l2 = (List<int>)l;        // This fails
             //l2.Add(17);
 
@@ -38,21 +41,21 @@ namespace CS612
         }
 
         // Build a new ReadOnlyDictionary object, that is a wrapper around the original dictionary
-        static ReadOnlyDictionary<int, string> getNumberDic1()
+        static ReadOnlyDictionary<int, string> GetNumberDic1()
         {
             var d = new Dictionary<int, string> { { 1, "One" }, { 2, "Two" }, { 3, "Three" }, { 4, "Four" } };
             return new ReadOnlyDictionary<int, string>(d);
         }
 
         // Return IReadOnlyDictionary interface of a real dictionary
-        static IReadOnlyDictionary<int, string> getNumberDic2()
+        static IReadOnlyDictionary<int, string> GetNumberDic2()
         {
             var d = new Dictionary<int, string> { { 1, "One" }, { 2, "Two" }, { 3, "Three" } };
             return (IReadOnlyDictionary<int, string>)d;
         }
 
 
-        static IReadOnlyList<int> getList()
+        static IReadOnlyList<int> GetList()
         {
             var l = new List<int> { 2, 3, 5, 7, 11, 13 };
             // There is no ReadOnlyList class, but a list can be exposed as a ReadOnly, with no way to cast it back

@@ -7,10 +7,10 @@ Namespace My
     ''' <remarks></remarks>
     <Global.Microsoft.VisualBasic.HideModuleName()>
     Module MyWpfExtension
-        Private s_Computer As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.Devices.Computer)
-        Private s_User As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.ApplicationServices.User)
-        Private s_Windows As New ThreadSafeObjectProvider(Of MyWindows)
-        Private s_Log As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.Logging.Log)
+        Private ReadOnly s_Computer As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.Devices.Computer)
+        Private ReadOnly s_User As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.ApplicationServices.User)
+        Private ReadOnly s_Windows As New ThreadSafeObjectProvider(Of MyWindows)
+        Private ReadOnly s_Log As New ThreadSafeObjectProvider(Of Global.Microsoft.VisualBasic.Logging.Log)
         ''' <summary>
         ''' Returns the application object for the running application
         ''' </summary>

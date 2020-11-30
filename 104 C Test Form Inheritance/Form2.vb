@@ -16,12 +16,12 @@ Class Form2
         ts.Items.Add("Change Colors", Nothing, New EventHandler(AddressOf ChangeColors_Click))
 
         ' Create a new MenuStrip.
-        Dim ms As New MenuStrip()
-
         ' Dock the MenuStrip control to the top of the form.
-        ms.Dock = DockStyle.Top
+        Dim ms As New MenuStrip With {
+            .Dock = DockStyle.Top
+        }
 
-        ' Add the top-level menu items.
+            ' Add the top-level menu items.
         ms.Items.Add("File")
         ms.Items.Add("Edit")
         ms.Items.Add("View")

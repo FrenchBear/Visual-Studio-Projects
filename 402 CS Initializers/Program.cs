@@ -114,7 +114,7 @@ public class Order
 
 public class OrderCollection : IEnumerable<Order>
 {
-    List<Order> items = new List<Order>();
+    readonly List<Order> items = new List<Order>();
 
     public Order this[int index]
     {

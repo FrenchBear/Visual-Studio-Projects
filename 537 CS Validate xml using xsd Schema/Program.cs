@@ -16,7 +16,7 @@ namespace ValidateSchema
             XmlReaderSettings roundingInfosSettings = new XmlReaderSettings();
             roundingInfosSettings.Schemas.Add("http://tempuri.org/RoundingInfos.xsd", "roundingInfos.xsd");
             roundingInfosSettings.ValidationType = ValidationType.Schema;
-            roundingInfosSettings.ValidationEventHandler += new ValidationEventHandler(roundingInfosSettingsValidationEventHandler);
+            roundingInfosSettings.ValidationEventHandler += new ValidationEventHandler(RoundingInfosSettingsValidationEventHandler);
 
             XmlReader roundingInfos = XmlReader.Create("RoundingInfos-1.e5r", roundingInfosSettings);
 
@@ -34,7 +34,7 @@ namespace ValidateSchema
             Console.ReadLine();
         }
 
-        static void roundingInfosSettingsValidationEventHandler(object sender, ValidationEventArgs e)
+        static void RoundingInfosSettingsValidationEventHandler(object sender, ValidationEventArgs e)
         {
             if (e.Severity == XmlSeverityType.Warning)
             {

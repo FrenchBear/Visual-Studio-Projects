@@ -14,6 +14,7 @@ Module Module1
 
         Dim b As String
         b = CStr(1234)
+        Console.WriteLine("b={0}", b)
 
         Console.ReadLine()
     End Sub

@@ -124,7 +124,7 @@ Module modPCL
 
     Sub AnaPCLEscape(ByVal b As Byte)
         If b >= Asc("0") And b <= Asc("9") Or b = Asc(".") Or b = Asc("+") Or b = Asc("-") Then
-            sFactor = sFactor & Chr(b)
+            sFactor &= Chr(b)
             Exit Sub
         End If
 
@@ -301,7 +301,7 @@ Module modMacros
 
     Private macCurrentMacro As PCLMacro   ' macro en cours d'enregistrement
     Private iMacroID As Integer           ' dernier ID rencontré
-    Private colMacros As New Hashtable    ' Macros stockées en mémoire
+    Private ReadOnly colMacros As New Hashtable    ' Macros stockées en mémoire
 
 
     Sub PCLLearn(ByVal b As Byte)

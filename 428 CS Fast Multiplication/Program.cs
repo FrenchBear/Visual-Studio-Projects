@@ -15,7 +15,7 @@ namespace CS428
 {
     public class Program
     {
-        static Random rnd = new Random();
+        static readonly Random rnd = new Random();
 
         static void Main(string[] args)
         {

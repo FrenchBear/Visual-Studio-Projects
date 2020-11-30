@@ -104,15 +104,13 @@ namespace CS203
             Nait += EtreVivant_Nait;
             Meurt += EtreVivant_Meurt;
             NéLe = DateTime.Now;
-            if (Nait != null)
-                Nait();
+            Nait?.Invoke();
         }
 
         // Equivalent to protected void Finalize()
         ~EtreVivant()
         {
-            if (Meurt != null)
-                Meurt();
+            Meurt?.Invoke();
         }
 
         private void EtreVivant_Meurt()
@@ -144,8 +142,7 @@ namespace CS203
 
         public void Enerver()
         {
-            if (Mordre != null)
-                Mordre();
+            Mordre?.Invoke();
         }
 
         public virtual void Crier()
@@ -201,8 +198,7 @@ namespace CS203
 
         public void Exciter()
         {
-            if (Aboyer != null)
-                Aboyer();
+            Aboyer?.Invoke();
         }
 
         public override void Crier()

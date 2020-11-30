@@ -12,7 +12,7 @@ End Module
 
 Partial Public Class Toto
     Public i1 As Integer
-    Private j1 As Integer
+    Private ReadOnly j1 As Integer
     Sub s1()
     End Sub
     Event e1()

@@ -60,10 +60,7 @@ namespace _505_CS_Caller_Info
 
         protected void RaisePropertyChanged([CallerMemberName] string member = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(member));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
         // ========================================
     }

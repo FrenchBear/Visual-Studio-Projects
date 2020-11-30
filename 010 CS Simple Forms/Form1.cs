@@ -14,7 +14,9 @@ using System.Data;
 
 public class Form1 : System.Windows.Forms.Form
 {
+#pragma warning disable IDE0052 // Remove unread private members
     private System.ComponentModel.Container components;
+#pragma warning restore IDE0052 // Remove unread private members
 
     public Form1()
     {

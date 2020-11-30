@@ -13,9 +13,9 @@ using System.Drawing;
 
 public class MyForm : Form
 {
-    Button btnNew;
-    Button button1;
-    Button button2;
+    readonly Button btnNew;
+    readonly Button button1;
+    readonly Button button2;
 
     public MyForm()
     {
@@ -23,34 +23,40 @@ public class MyForm : Form
         AutoScaleBaseSize = new Size(5, 13);
         ClientSize = new Size(400, 150);
 
-        btnNew = new Button();
-        btnNew.Location = new Point(10, 10);
-        btnNew.Size = new Size(50, 30);
-        btnNew.Text = "New";
+        btnNew = new Button
+        {
+            Location = new Point(10, 10),
+            Size = new Size(50, 30),
+            Text = "New"
+        };
         Controls.Add(btnNew);
-        btnNew.Click += new System.EventHandler(onNewClick);
+        btnNew.Click += new System.EventHandler(OnNewClick);
 
 
-        button1 = new Button();
-        button1.Location = new Point(100, 64);
-        button1.Size = new Size(90, 40);
-        button1.TabIndex = 2;
-        button1.Text = "Bouton 1";
+        button1 = new Button
+        {
+            Location = new Point(100, 64),
+            Size = new Size(90, 40),
+            TabIndex = 2,
+            Text = "Bouton 1"
+        };
         Controls.Add(button1);
         //Register the event handler
-        button1.Click += new System.EventHandler(onClick);
+        button1.Click += new System.EventHandler(OnClick);
 
-        button2 = new Button();
-        button2.Location = new Point(200, 64);
-        button2.Size = new Size(90, 40);
-        button2.TabIndex = 2;
-        button2.Text = "Bouton 2";
+        button2 = new Button
+        {
+            Location = new Point(200, 64),
+            Size = new Size(90, 40),
+            TabIndex = 2,
+            Text = "Bouton 2"
+        };
         this.Controls.Add(button2);
-        button2.Click += new System.EventHandler(onClick);
+        button2.Click += new System.EventHandler(OnClick);
     }
 
     // Handler commun à button1 et button2
-    private void onClick(object sender, EventArgs evArgs)
+    private void OnClick(object sender, EventArgs evArgs)
     {
         if (sender == button1)
             MessageBox.Show("Hello Button 1");
@@ -59,7 +65,7 @@ public class MyForm : Form
     }
 
 
-    private void onNewClick(object sender, EventArgs evArgs)
+    private void OnNewClick(object sender, EventArgs evArgs)
     {
         // Application.Run(new MyForm());
         // -->
@@ -74,12 +80,12 @@ public class MyForm : Form
         // false before calling showDialog.
 
         MyForm f = new MyForm();
-        f.Closed += new System.EventHandler(onFormClosed);
+        f.Closed += new System.EventHandler(OnFormClosed);
         //f.ShowDialog();	  // Affichage modal
         f.Show();
     }
 
-    private void onFormClosed(object sender, EventArgs evArgs)
+    private void OnFormClosed(object sender, EventArgs evArgs)
     {
         MessageBox.Show("onFormClosed");
         ((MyForm)sender).Dispose();

@@ -47,7 +47,7 @@ namespace CS427
     public class DynamicDictionary : DynamicObject
     {
         // The inner dictionary.
-        Dictionary<string, object> dictionary = new Dictionary<string, object>();
+        readonly Dictionary<string, object> dictionary = new Dictionary<string, object>();
 
         // This property returns the number of elements
         // in the inner dictionary.

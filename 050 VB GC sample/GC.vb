@@ -40,7 +40,7 @@ Public Module ModMain
     Public Class BaseObj
         Inherits Object
 
-        Private name As String   ' Each object has a name to help identify it
+        Private ReadOnly name As String   ' Each object has a name to help identify it
 
         Public Sub New(ByVal name As String)
             MyBase.New()

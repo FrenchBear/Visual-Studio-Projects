@@ -68,7 +68,7 @@ class MaClasse
 
 
 enum couleur { bleu, blanc, rouge };
-struct complex { double x, y; complex(double r) { x = r; y = r; } }
+struct complex { readonly double x, y; complex(double r) { x = r; y = r; } }
 interface inter { void F(); }
 interface deriv : inter { void G(); }
 class cla1 { public virtual void H() { Console.WriteLine("cla1.H()"); } }

@@ -5,7 +5,7 @@
 
 <AttributeUsage(AttributeTargets.Assembly)> Public Class AssemblyPVAttribute
     Inherits System.Attribute
-    Private iPriv As Integer
+    Private ReadOnly iPriv As Integer
     Private sInfo As String
 
     Public Sub New(ByVal iVal As Integer)

@@ -27,7 +27,7 @@ Module Module1
     Class CO
         Implements IComparable(Of CO)
 
-        Private _n As Integer
+        Private ReadOnly _n As Integer
 
         Public Sub New(ByVal n As Integer)
             _n = n

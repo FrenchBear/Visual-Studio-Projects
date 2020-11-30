@@ -51,15 +51,16 @@ public class MyForm : Form
 
     private void OnOpenImage(object sender, EventArgs e)
     {
-        OpenFileDialog ofd = new OpenFileDialog();
-
-        ofd.Filter = "Images Files (JPEG, GIF, BMP, etc.)|*.jpg;*.jpeg;*.gif;*.tif;*.tiff;*.png|" +
+        OpenFileDialog ofd = new OpenFileDialog
+        {
+            Filter = "Images Files (JPEG, GIF, BMP, etc.)|*.jpg;*.jpeg;*.gif;*.tif;*.tiff;*.png|" +
                      "JPEG Files (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
                      "GIF Files (*.gif)|*.gif|" +
                      "BMP Files (*.bmp)|*.bmp|" +
                      "TIFF Files (*.tif;*.tiff)|*.tif;*.tiff|" +
                      "PNG Files (*.png)|*.png|" +
-                     "All files (*.*)|*.*";
+                     "All files (*.*)|*.*"
+        };
 
         if (_FilterIndex != -1)
             ofd.FilterIndex = _FilterIndex;

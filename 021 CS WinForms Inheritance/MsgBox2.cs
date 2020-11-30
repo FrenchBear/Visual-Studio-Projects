@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data;
 
 
+#pragma warning disable IDE1006 // Naming Styles
 
 public class MsgBox2 : System.Windows.Forms.Form
 {

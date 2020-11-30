@@ -75,8 +75,8 @@ Module Module1
         Implements IDisposable
 
 
-        Private _Source As IEnumerable(Of TSource)
-        Private _HeadElement As TSource
+        Private ReadOnly _Source As IEnumerable(Of TSource)
+        Private ReadOnly _HeadElement As TSource
 
         Public Sub New(ByVal Source As IEnumerable(Of TSource), ByVal HeadElement As TSource)
             _Source = Source
@@ -96,8 +96,8 @@ Module Module1
             Implements IEnumerator(Of T)
             Implements IDisposable
 
-            Private _SourceEnumerator As IEnumerator(Of T)
-            Private _HeadElement As T
+            Private ReadOnly _SourceEnumerator As IEnumerator(Of T)
+            Private ReadOnly _HeadElement As T
             Private _Position As Integer
 
             Public Sub New(ByVal Source As IEnumerable(Of T), ByVal HeadElement As T)
@@ -208,8 +208,8 @@ Module Module1
         Implements IDisposable
 
 
-        Private _Source As IEnumerable(Of TSource)
-        Private _FilterPredicate As Predicate(Of TSource)
+        Private ReadOnly _Source As IEnumerable(Of TSource)
+        Private ReadOnly _FilterPredicate As Predicate(Of TSource)
 
         Public Sub New(ByVal Source As IEnumerable(Of TSource), ByVal FilterPredicate As Predicate(Of TSource))
             _Source = Source
@@ -230,8 +230,8 @@ Module Module1
             Implements IEnumerator(Of T)
             Implements IDisposable
 
-            Private _SourceEnumerator As IEnumerator(Of T)
-            Private _FilterPredicate As Predicate(Of T)
+            Private ReadOnly _SourceEnumerator As IEnumerator(Of T)
+            Private ReadOnly _FilterPredicate As Predicate(Of T)
             Private _Position As Integer
 
             Public Sub New(ByVal Source As IEnumerable(Of T), ByVal FilterPredicate As Predicate(Of T))

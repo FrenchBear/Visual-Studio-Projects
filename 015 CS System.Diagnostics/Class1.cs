@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 public class InOut
 {
-    static int zap()
+    static int Zap()
     {
         Console.WriteLine("Stack\n{0}\n", new StackTrace());
         return -2;
@@ -21,7 +21,7 @@ public class InOut
         int i = 0;
         int j;
 
-        if (i > zap())
+        if (i > Zap())
         {
             j = 0;
         }

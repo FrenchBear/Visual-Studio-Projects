@@ -24,7 +24,7 @@ Public Class frmDocument1
         InitializeComponent()
 
         iSerial += 1
-        Me.Text = Me.Text & iSerial
+        Me.Text &= iSerial
     End Sub
 
     'Form overrides dispose to clean up the component list.
@@ -36,7 +36,7 @@ Public Class frmDocument1
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     Private WithEvents txtDoc As System.Windows.Forms.TextBox
 

@@ -32,8 +32,10 @@ namespace Crible
         static void RunCrible(int n)
         {
             BitArray tb = new BitArray(n / 2 + 1);
-            List<int> li = new List<int>();
-            li.Add(2);
+            List<int> li = new List<int>
+            {
+                2
+            };
 
             int nv = 3;
             while (nv <= n)

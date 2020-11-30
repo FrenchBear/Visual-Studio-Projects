@@ -19,8 +19,7 @@ namespace CS419
         private IEnumerable<char> drawString;
         private int angle;
         private string title;
-
-        DataBag b;
+        readonly DataBag b;
 
         public MainWindow()
         {

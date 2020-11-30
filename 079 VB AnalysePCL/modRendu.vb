@@ -16,7 +16,7 @@ Module modRenduGraphique
 
     Private imgCurrentPage As Bitmap                  ' Page courante, System.Drawing.Bitmap
     Private graCurrentPage As Graphics                ' Page courante, System.Drawing.Graphics
-    Private colPages As New System.Collections.Queue  ' Collection des pages sous forme System.Drawing.Bitmap
+    Private ReadOnly colPages As New System.Collections.Queue  ' Collection des pages sous forme System.Drawing.Bitmap
 
     Private Const iDPI As Integer = 200                                           ' Résolution X et Y du rendu
 
@@ -280,7 +280,7 @@ Module modRenduGraphique
         Dim bdaImage3 As BitmapData
 
         ' verrue 1: on remonte les images en 150 dpi...
-        If iDPIRaster = 150 Then y = y - 550
+        If iDPIRaster = 150 Then y -= 550
 
         bdaImage3 = bmpImage3.LockBits(New Rectangle(0, 0, iWidth, iHeight), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb)
         Dim pData As IntPtr = bdaImage3.Scan0
@@ -382,8 +382,7 @@ Module modRenduPCL
         staState.posY = staState.iTopMargin
     End Sub
 
-
-    Dim d850 As System.Text.Decoder = System.Text.Encoding.GetEncoding(850).GetDecoder
+    ReadOnly d850 As System.Text.Decoder = System.Text.Encoding.GetEncoding(850).GetDecoder
 
     ' Imprime un caractère imprimable
     ' En pratique, bufférise le caractère
@@ -675,7 +674,7 @@ Module modRenduPCL
         Public tabLignes As ArrayList
     End Class
 
-    Dim rasRaster As New RasterClass
+    ReadOnly rasRaster As New RasterClass
 
     Sub PCL42tR(ByVal iResolution As Integer)
         TraceWrite("[Raster Resolution {0} dpi]", iResolution)

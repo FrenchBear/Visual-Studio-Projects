@@ -3,7 +3,6 @@
 // 2016-09-05   First version
 // 2017-01-16   Updated for Visual Studio 2017 RC
 
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,12 +13,15 @@ using System.Threading.Tasks;
 using static System.Console;
 
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
+
 namespace CS601
 {
     class Program
     {
         // throw expressions
-        private Point GlobalPoint = new Point(5, 6) ??
+        private readonly Point GlobalPoint = new Point(5, 6) ??
             throw new InvalidOperationException("Could not initialize " + nameof(GlobalPoint));
 
         static void Main(string[] args)
@@ -52,7 +54,7 @@ namespace CS601
             t1 = t2;        // This is allowed, contrary to tuples created with Tuple<>
             WriteLine("t1: " + t1.ToString());
             t1.r += 1.0;    // mutable...
-            (string Alpha, string Beta) NamedStrings = ("Hello", "World");
+            (string Alpha, string Beta) = ("Hello", "World");
 
             // Following conversions are not supported...
             //Tuple<int, int> myTuple1 = (3, 4);
@@ -165,8 +167,8 @@ namespace CS601
                         break;
 
                     case object[] a when a.Length > 0:          // case conditions
-                        var t = Tally(a);
-                        Add(t.sum, t.count);
+                        var (sum, count) = Tally(a);
+                        Add(sum, count);
                         break;
 
                     case null:                                  // A null value does not match a type expression, ex: null string
@@ -216,7 +218,7 @@ namespace CS601
 
             // Positional Pattern (doesn't work)
             var r = (i: 12, j: 25);
-            // if (r is (int x, int y)) WriteLine();
+                               // if (r is (int x, int y)) WriteLine();
         }
     }
 

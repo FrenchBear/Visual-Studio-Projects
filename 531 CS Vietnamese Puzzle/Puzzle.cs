@@ -66,14 +66,14 @@ namespace CS531
             Console.WriteLine("{0}: {1} solution(s) found on {2} permutations in {3}s", f.Method.Name, ns, np, Math.Round(sw.ElapsedMilliseconds / 1000.0, 2));
 
             // Just check that the number of permutations is equal to 9!
-            if (np != fact(l.Count))
+            if (np != Fact(l.Count))
                 Console.WriteLine("We have a problem!");
         }
 
         // Quick and dirty factorial
-        static long fact(long n)
+        static long Fact(long n)
         {
-            return n <= 2 ? n : n * fact(n - 1);
+            return n <= 2 ? n : n * Fact(n - 1);
         }
 
         // A recursive iterator to produce all possible permutations of a List<T>
@@ -131,7 +131,7 @@ namespace CS531
     class StackPermutator<T> : IEnumerable<List<T>>
     {
         // Just keep a copy of the list since enumerator is retrieved later
-        private List<T> list;
+        private readonly List<T> list;
 
         public StackPermutator(List<T> l)
         {
@@ -151,7 +151,7 @@ namespace CS531
         private class MyEnumerator : IEnumerator<List<T>>
         {
             // Stack to store elements not fully permuted
-            private Stack<ListLevel<T>> stack;
+            private readonly Stack<ListLevel<T>> stack;
 
             // One element of the stack, with level items at the head of the list already permuted
             private class ListLevel<Z>

@@ -77,14 +77,16 @@ Public Class MDIMain
 #End Region
 
     Protected Sub MenuItem1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles MenuItem1.Click
-        Dim f As New F1()
-        f.MdiParent = Me
+        Dim f As New F1 With {
+            .MdiParent = Me
+        }
         f.Show()
     End Sub
 
     Protected Sub MenuItem2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles MenuItem2.Click
-        Dim f As New F2()
-        f.MdiParent = Me
+        Dim f As New F2 With {
+            .MdiParent = Me
+        }
         f.Init(g)
         f.Show()
     End Sub

@@ -20,10 +20,12 @@ namespace SerCol
         {
             // Prepare data
             List<LauncherGroup> groupsList;
-            groupsList = new List<LauncherGroup>();
-            groupsList.Add(new LauncherGroup { name = "Group 1", SquaresList = new List<LauncherSquare> { new LauncherSquare { name = "Square 1.1", image = "Image 1.1" }, new LauncherSquare { name = "Square 1.2", image = "Image 1.2" } } });
-            groupsList.Add(new LauncherGroup { name = "Group 2", SquaresList = new List<LauncherSquare> { new LauncherSquare { name = "Square 2", image = "Image 2" } } });
-            groupsList.Add(new LauncherGroup { name = "Group 3", SquaresList = new List<LauncherSquare> { new LauncherSquare { name = "Square 3.1", image = "Image 3.1" }, new LauncherSquare { name = "Square 3.2", image = "Image 3.2" }, new LauncherSquare { name = "Square 3.3", image = "Image 3.3" } } });
+            groupsList = new List<LauncherGroup>
+            {
+                new LauncherGroup { Name = "Group 1", SquaresList = new List<LauncherSquare> { new LauncherSquare { Name = "Square 1.1", Image = "Image 1.1" }, new LauncherSquare { Name = "Square 1.2", Image = "Image 1.2" } } },
+                new LauncherGroup { Name = "Group 2", SquaresList = new List<LauncherSquare> { new LauncherSquare { Name = "Square 2", Image = "Image 2" } } },
+                new LauncherGroup { Name = "Group 3", SquaresList = new List<LauncherSquare> { new LauncherSquare { Name = "Square 3.1", Image = "Image 3.1" }, new LauncherSquare { Name = "Square 3.2", Image = "Image 3.2" }, new LauncherSquare { Name = "Square 3.3", Image = "Image 3.3" } } }
+            };
 
             LauncherConfiguration Configuration = new LauncherConfiguration { GoupsList = groupsList };
 
@@ -33,9 +35,11 @@ namespace SerCol
             ns.Add("", "");
 
             // Write
-            XmlWriterSettings settings = new XmlWriterSettings();
-            //settings.OmitXmlDeclaration = true;
-            settings.Indent = true;
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                //settings.OmitXmlDeclaration = true;
+                Indent = true
+            };
             using (XmlWriter writer = XmlWriter.Create(MenuFile, settings))
             {
                 writer.WriteStartElement("MicrobiologyLauncherMenus");
@@ -73,14 +77,14 @@ namespace SerCol
 
     public class LauncherGroup
     {
-        public string name { get; set; }
+        public string Name { get; set; }
         public List<LauncherSquare> SquaresList;
     }
 
     public class LauncherSquare
     {
-        public string name { get; set; }
-        public string image { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
     }
 
 }

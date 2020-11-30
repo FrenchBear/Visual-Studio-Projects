@@ -11,7 +11,7 @@ namespace Normalized_Filesystem
 {
     class Program
     {
-        static string normalizedName = @"Où ça, là!.txt";
+        static readonly string normalizedName = @"Où ça, là!.txt";
         static string denormalizedName;
 
         static void Main(string[] args)

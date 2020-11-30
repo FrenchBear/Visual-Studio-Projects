@@ -21,7 +21,7 @@ namespace Ed850
         public static RoutedUICommand About = new RoutedUICommand("À propos de...", "About", typeof(MainWindow), new InputGestureCollection() { new KeyGesture(Key.I, ModifierKeys.Control) });
 
         private bool IsDirty;
-        private DataBag b;
+        private readonly DataBag b;
 
         public MainWindow()
         {

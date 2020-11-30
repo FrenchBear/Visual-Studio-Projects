@@ -6,6 +6,7 @@ Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Windows.Forms
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class Form1
     Inherits System.Windows.Forms.Form
@@ -30,7 +31,7 @@ Public Class Form1
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
     Private WithEvents btnAperçu As System.Windows.Forms.Button
 
     Private WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
@@ -39,7 +40,9 @@ Public Class Form1
 
 
 
+#Disable Warning IDE0052 ' Remove unread private members
     Dim WithEvents Form1 As System.Windows.Forms.Form
+#Enable Warning IDE0052 ' Remove unread private members
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  

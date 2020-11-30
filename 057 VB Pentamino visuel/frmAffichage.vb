@@ -14,7 +14,7 @@ Imports System.Windows.Forms
 Public Class frmAffichage
     Inherits System.Windows.Forms.Form
 
-    Shared tBrushes() As Brush = {
+    Shared ReadOnly tBrushes() As Brush = {
       Brushes.Red, Brushes.Black, Brushes.Yellow,
       Brushes.White, Brushes.Blue, Brushes.Orange,
       Brushes.Aquamarine, Brushes.PaleGreen, Brushes.Purple,
@@ -23,11 +23,11 @@ Public Class frmAffichage
     Dim bPause As Boolean
     Dim bStop As Boolean
 
-    Dim g As Graphics
-    Dim kEch As Integer
+    ReadOnly g As Graphics
+    ReadOnly kEch As Integer
 
     ' Collection des solutions trouvées
-    Dim alSolutions As New System.Collections.ArrayList()
+    ReadOnly alSolutions As New System.Collections.ArrayList()
 
     Friend WithEvents btnPause As System.Windows.Forms.Button
     Friend WithEvents btnStop As System.Windows.Forms.Button
@@ -74,7 +74,7 @@ Public Class frmAffichage
     Friend WithEvents pic As System.Windows.Forms.PictureBox
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  

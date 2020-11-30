@@ -11,12 +11,14 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+#pragma warning disable IDE1006 // Naming Styles
+
 
 public class MyForm : System.Windows.Forms.Form
 {
     private System.Windows.Forms.Button button1;
     private GradientButton button2;
-    private System.ComponentModel.Container components = null;
+    private readonly System.ComponentModel.Container components = null;
 
     public MyForm()
     {

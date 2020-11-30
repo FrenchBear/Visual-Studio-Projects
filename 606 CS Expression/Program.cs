@@ -139,7 +139,7 @@ namespace ExpressionApp
 
         protected override Expression VisitBinary(BinaryExpression node)
         {
-            PrintLine($"Binary {node.NodeType} {node} -> {node.Type.ToString()}");
+            PrintLine($"Binary {node.NodeType} {node} -> {node.Type}");
             //WriteLine($"Binary {node.NodeType}  |  {node.Left}  |  {node.Right}");
             s++; var v = base.VisitBinary(node); s--; return v;
         }
@@ -156,7 +156,7 @@ namespace ExpressionApp
         }
         protected override Expression VisitConstant(ConstantExpression node)
         {
-            PrintLine($"Constant {node.Type.ToString()} {node}");
+            PrintLine($"Constant {node.Type} {node}");
             s++; var v = base.VisitConstant(node); s--; return v;
         }
         protected override Expression VisitDebugInfo(DebugInfoExpression node)
@@ -201,7 +201,7 @@ namespace ExpressionApp
         }
         protected override Expression VisitLambda<T>(Expression<T> node)
         {
-            PrintLine($"Lambda<{typeof(T).ToString()}> {node}");
+            PrintLine($"Lambda<{typeof(T)}> {node}");
             s++; var v = base.VisitLambda<T>(node); s--; return v;
         }
         protected override Expression VisitListInit(ListInitExpression node)
@@ -241,7 +241,7 @@ namespace ExpressionApp
         }
         protected override Expression VisitParameter(ParameterExpression node)
         {
-            PrintLine($"Parameter {node.Type.ToString()} {node}");
+            PrintLine($"Parameter {node.Type} {node}");
             s++; var v = base.VisitParameter(node); s--; return v;
         }
         protected override Expression VisitRuntimeVariables(RuntimeVariablesExpression node)
@@ -266,7 +266,7 @@ namespace ExpressionApp
         }
         protected override Expression VisitUnary(UnaryExpression node)
         {
-            PrintLine($"Unitary {node.NodeType} {node} -> {node.Type.ToString()}");
+            PrintLine($"Unitary {node.NodeType} {node} -> {node.Type}");
             s++; var v = base.VisitUnary(node); s--; return v;
         }
 

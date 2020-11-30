@@ -10,8 +10,8 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            var pos = adder();
-            var neg = adder();
+            var pos = Adder();
+            var neg = Adder();
             for (int i = 0; i < 10; i++)
                 Console.WriteLine("{0}, {1}", pos(i), neg(-2 * i));
 
@@ -20,7 +20,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static Func<int, int> adder()
+        static Func<int, int> Adder()
         {
             int sum = 0;
             return (int x) =>

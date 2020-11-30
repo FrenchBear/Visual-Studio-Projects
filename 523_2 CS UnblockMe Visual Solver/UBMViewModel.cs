@@ -21,12 +21,11 @@ namespace CS523B_UnblockMe_Solver_Visual
 
         protected void NotifyPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private UBMModel m;
-        private UBMWindow w;
+        private readonly UBMModel m;
+        private readonly UBMWindow w;
 
         // Commands
         public ICommand SolveCommand { get; private set; }
@@ -57,7 +56,7 @@ namespace CS523B_UnblockMe_Solver_Visual
             return true;
         }
 
-        private Brush[] PieceBrushes =
+        private readonly Brush[] PieceBrushes =
         {
             Brushes.AliceBlue,
             Brushes.AntiqueWhite,

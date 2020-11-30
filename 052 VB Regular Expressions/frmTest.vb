@@ -29,7 +29,7 @@ Public Class frmTest
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
     Private WithEvents TextBox1 As System.Windows.Forms.TextBox
     Private WithEvents btnTestA As System.Windows.Forms.Button
     Private WithEvents btnTestRE As System.Windows.Forms.Button

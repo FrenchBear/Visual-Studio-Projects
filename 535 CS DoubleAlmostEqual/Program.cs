@@ -19,12 +19,12 @@ namespace DoubleAlmostEqual
     {
         static void Main(string[] args)
         {
-            t(0.0, 0.0, true);
-            t(0.0, 1.0, false);
-            t(1.0, 1.0, true);
-            t(1.0, 2.0, false);
+            T(0.0, 0.0, true);
+            T(0.0, 1.0, false);
+            T(1.0, 1.0, true);
+            T(1.0, 2.0, false);
 
-            t(0.9999999999e-24, 1e-24, true);
+            T(0.9999999999e-24, 1e-24, true);
 
             double[] values = new double[] { 0.0, 0.9999999999e-24, 1e-24, 1.00000000001e-24, 1e-23, 1e-15, 0.9999999999e-5, 1e-5, 1.00000000001e-5, 1e-1, 0.9999999999, 1.0, 1.00000000001, 1e1, 0.9999999999e5, 1e5, 1.00000000001e5, 1e15, 1e23, 0.9999999999e24, 1e24, 1.00000000001e24 };
             int[] classes = new int[] { 1, 2, 2, 2, 3, 4, 5, 5, 5, 6, 7, 7, 7, 8, 9, 9, 9, 10, 11, 12, 12, 12 };
@@ -37,7 +37,7 @@ namespace DoubleAlmostEqual
                     {
                         double d2 = values[j];
                         foreach (int s2 in new int[] { -1, 1 })
-                            t(d1 * s1, d2 * s2, ((s1 == s2 && classes[i] == classes[j])) || (d1 == 0.0 && d2 == 0.0));
+                            T(d1 * s1, d2 * s2, ((s1 == s2 && classes[i] == classes[j])) || (d1 == 0.0 && d2 == 0.0));
                     }
             }
 
@@ -46,7 +46,7 @@ namespace DoubleAlmostEqual
             Console.ReadLine();
         }
 
-        static void t(double d1, double d2, bool expectedresult)
+        static void T(double d1, double d2, bool expectedresult)
         {
             if (DoubleAlmostEqual(d1, d2) != expectedresult)
                 Console.WriteLine($"{d1}=={d2}, expected {expectedresult}, got {DoubleAlmostEqual(d1, d2)}");

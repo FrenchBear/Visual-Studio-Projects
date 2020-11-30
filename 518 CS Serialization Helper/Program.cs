@@ -20,10 +20,12 @@ namespace CS518
     {
         static void Main(string[] args)
         {
-            ba x = new ba();
-            x.val = 25;
+            Ba x = new Ba
+            {
+                Val = 25
+            };
 
-            string s1 = Serialize<ba>(x);
+            string s1 = Serialize<Ba>(x);
             string s2 = x.ToXmlString();
             Debugger.Break();
         }
@@ -35,10 +37,12 @@ namespace CS518
 
             XmlSerializer serializer = new XmlSerializer(typeof(T));
 
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Encoding = new UnicodeEncoding(false, false); // no BOM in a .NET string
-            settings.Indent = true;
-            settings.OmitXmlDeclaration = false;
+            XmlWriterSettings settings = new XmlWriterSettings
+            {
+                Encoding = new UnicodeEncoding(false, false), // no BOM in a .NET string
+                Indent = true,
+                OmitXmlDeclaration = false
+            };
 
             using (StringWriter textWriter = new StringWriter())
             {
@@ -93,12 +97,12 @@ namespace CS518
     }
 
 
-    public class ba
+    public class Ba
     {
         private int _val = 42;
 
         [DefaultValue(42)]      // Avoid serialization of default value
-        public int val
+        public int Val
         {
             get { return _val; }
             set { _val = value; }

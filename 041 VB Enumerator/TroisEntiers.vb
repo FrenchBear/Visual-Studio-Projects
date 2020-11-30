@@ -9,7 +9,7 @@ Imports System.Collections
 Public Class TroisEntiers
     Implements IEnumerable
 
-    Private i1, i2, i3 As Integer
+    Private ReadOnly i1, i2, i3 As Integer
 
     Public Sub New(ByVal i1 As Integer, ByVal i2 As Integer, ByVal i3 As Integer)
         Me.i1 = i1
@@ -24,7 +24,7 @@ Public Class TroisEntiers
     Private Class MonEnumérateur
         Implements IEnumerator
 
-        Private t As TroisEntiers
+        Private ReadOnly t As TroisEntiers
         Private iPos As Integer
 
         Public Sub New(ByVal t As TroisEntiers)

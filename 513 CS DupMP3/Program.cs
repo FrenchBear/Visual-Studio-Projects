@@ -53,7 +53,7 @@ namespace DupMP31
 
             for (int i = 0; i < AStringsList.Count; i++)
                 for (int j = i + 1; j < AStringsList.Count; j++)
-                    if (isCloseEnough(AStringsList[i], AStringsList[j], dist))
+                    if (IsCloseEnough(AStringsList[i], AStringsList[j], dist))
                         Console.WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
 
             sw.Stop();
@@ -64,7 +64,7 @@ namespace DupMP31
             Console.ReadLine();
         }
 
-        private static bool isCloseEnough(AString as1, AString as2, int dist)
+        private static bool IsCloseEnough(AString as1, AString as2, int dist)
         {
             string s1 = as1.Name;
             string s2 = as2.Name;
@@ -98,7 +98,7 @@ namespace DupMP31
 
             // dist>1: remove 1 char from s1 and do it recursively with dist-1
             for (int i = 0; i < s1.Length; i++)
-                if (isCloseEnough(as1.ReducedList[i], as2, dist - 1))
+                if (IsCloseEnough(as1.ReducedList[i], as2, dist - 1))
                     return true;
 
             // Ok, strings are definitely different

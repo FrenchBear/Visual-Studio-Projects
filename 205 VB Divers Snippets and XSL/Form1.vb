@@ -68,7 +68,7 @@ Public Class Form1
     End Enum
 
     Public Class Class1
-        Private arrayOfStrings(25) As String
+        Private ReadOnly arrayOfStrings(25) As String
 
         Default Property MyProperty(ByVal Index As Integer) As String
             Get
@@ -93,8 +93,8 @@ Public Class Form1
         x(1) = "toto"
     End Sub
 
-    Dim d As New Djctionary(Of String, Integer)
-    Dim e As New Djctionary(Of Integer, String)
+    ReadOnly d As New Djctionary(Of String, Integer)
+    ReadOnly e As New Djctionary(Of Integer, String)
 
     Public Class Djctionary(Of entryType, keyType As IComparable)
         Public Sub Add(ByVal e As entryType, ByVal k As keyType)
@@ -123,8 +123,9 @@ Public Class Form1
     End Sub
 
     Sub CopyToClipboard()
-        Dim c As New Customer
-        c.Name = "Maria"
+        Dim c As New Customer With {
+            .Name = "Maria"
+        }
         Dim ido As IDataObject = New DataObject
         ido.SetData(Customer.Format.Name, False, c)
         Clipboard.SetDataObject(ido)

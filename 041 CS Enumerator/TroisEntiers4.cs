@@ -11,7 +11,7 @@ using System.Collections;
 
 class ThreeIntegers4 : IEnumerable<int>
 {
-    private int i1, i2, i3;
+    private readonly int i1, i2, i3;
 
     public ThreeIntegers4(int i1, int i2, int i3)
     {
@@ -20,7 +20,7 @@ class ThreeIntegers4 : IEnumerable<int>
         this.i3 = i3;
     }
 
-    private IEnumerator<int> myEnumerator()
+    private IEnumerator<int> MyEnumerator()
     {
         yield return i1;
         yield return i2;
@@ -29,12 +29,12 @@ class ThreeIntegers4 : IEnumerable<int>
 
     public IEnumerator GetEnumerator()
     {
-        return myEnumerator();
+        return MyEnumerator();
     }
 
     IEnumerator<int> IEnumerable<int>.GetEnumerator()
     {
-        return myEnumerator();
+        return MyEnumerator();
     }
 
 }

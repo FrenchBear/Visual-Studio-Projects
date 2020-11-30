@@ -12,7 +12,7 @@ using System.Reflection;
 [AttributeUsage(AttributeTargets.Class)]
 public class MonAttribut : System.Attribute
 {
-    private int iPriv;
+    private readonly int iPriv;
     private string sInfo;
 
     public MonAttribut(int iVal)
@@ -33,7 +33,7 @@ public class MonAttribut : System.Attribute
         }
     }
 
-    public int iFlags
+    public int IFlags
     {
         get
         {
@@ -78,6 +78,6 @@ class MyApp
         Console.WriteLine(t.Name);
 
         MonAttribut m = (MonAttribut)t.GetCustomAttributes(typeof(MonAttribut), false)[0];
-        Console.WriteLine("{0}, {1}", m.iFlags, m.Info);
+        Console.WriteLine("{0}, {1}", m.IFlags, m.Info);
     }
 }

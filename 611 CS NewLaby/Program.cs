@@ -122,16 +122,16 @@ namespace NewLaby
 
     public class Laby
     {
-        private int rows, cols;
-        private int[,] Cells;
+        private readonly int rows, cols;
+        private readonly int[,] Cells;
 
-        private bool isDetailedBuild;
+        private readonly bool isDetailedBuild;
 
         // Bitmask for walls in Cells
         const int right = 1;
         const int bottom = 2;
 
-        private static Random rnd = new Random();
+        private static readonly Random rnd = new Random();
 
 
         public Laby(int rows, int cols, bool isDetailedBuild)

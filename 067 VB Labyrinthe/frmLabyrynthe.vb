@@ -40,7 +40,7 @@ Public Class frmLabyrinthe
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -108,9 +108,9 @@ Public Class frmLabyrinthe
 
     Public Class Cellule
         Private m_bVisité As Boolean
-        Private m_tbMur(3) As Boolean
-        Private m_l As Integer
-        Private m_c As Integer
+        Private ReadOnly m_tbMur(3) As Boolean
+        Private ReadOnly m_l As Integer
+        Private ReadOnly m_c As Integer
 
         Public Sub New(ByVal l As Integer, ByVal c As Integer)
             m_l = l
@@ -225,7 +225,7 @@ Public Class frmLabyrinthe
             ' La première cellule d'une galerie est déjà visitée, sauf pour la 1ère galerie
             If tCell(il, ic).bVisité = False Then
                 tCell(il, ic).bVisité = True
-                iReste = iReste - 1
+                iReste -= 1
                 iRet += 1
             End If
 
@@ -269,7 +269,7 @@ Public Class frmLabyrinthe
 
                 ' Ne convient pas, on tourne
                 iDir = (iDir + 1) Mod 4
-                iNbTest = iNbTest + 1
+                iNbTest += 1
                 If iNbTest = 5 Then
                     ' Toutes les directions sont bloquées: la galerie est terminée
                     'DoEvents()

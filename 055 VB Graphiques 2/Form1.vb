@@ -9,12 +9,12 @@ Imports System.Reflection
 Public Class Form1
     Inherits System.Windows.Forms.Form
 
-    Dim g As Graphics
-    Dim gp1 As Graphics
-    Dim gp2 As Graphics
+    ReadOnly g As Graphics
+    ReadOnly gp1 As Graphics
+    ReadOnly gp2 As Graphics
 
-    Dim iNbCoul As Integer
-    Dim colCouleurs As New Hashtable()
+    ReadOnly iNbCoul As Integer
+    ReadOnly colCouleurs As New Hashtable()
 
 #Region " Windows Form Designer generated code "
 
@@ -68,7 +68,7 @@ Public Class Form1
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  

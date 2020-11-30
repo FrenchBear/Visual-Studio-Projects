@@ -37,10 +37,11 @@ Public Class Form1
     End Function
 
     Public Sub WriteXML()
-        Dim introToVB As New Book()
-        introToVB.titre = "Intro to Visual Basic"
-        introToVB.auteur = "Moi"
-        introToVB.quantité = 123
+        Dim introToVB As New Book With {
+            .titre = "Intro to Visual Basic",
+            .auteur = "Moi",
+            .quantité = 123
+        }
         With introToVB.Chapites
             .Add(New Book.Chapitre(1, "Premier chapitre", 15.2))
             .Add(New Book.Chapitre(2, "Deuxième chapitre", 10))
@@ -78,7 +79,7 @@ Public Class Form1
         IterateThroughNodes()
     End Sub
 
-    Dim xmlString As String =
+    ReadOnly xmlString As String =
     "<CodeSnippet>                         " &
     "    <Title>Create a Button</Title>       " &
     "    <Keywords>                           " &

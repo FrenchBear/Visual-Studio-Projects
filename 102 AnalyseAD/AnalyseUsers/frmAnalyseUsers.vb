@@ -35,7 +35,7 @@ Public Class frmAnalyseUsers
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -306,7 +306,7 @@ Public Class frmAnalyseUsers
     Dim slSites As SortedList
 
     ' Liste des groupes business
-    Dim tsBusiness As String() = New String() {"agr", "aud", "fin", "hr", "ind", "it", "lab", "lgl", "lif", "mgt", "min", "ogc", "ssc cts", "tas"}
+    ReadOnly tsBusiness As String() = New String() {"agr", "aud", "fin", "hr", "ind", "it", "lab", "lgl", "lif", "mgt", "min", "ogc", "ssc cts", "tas"}
 
 
     ' Attributs de comptes. Piqué sur http://msdn.microsoft.com/library/default.asp?url=/library/en-us/adsi/adsi/ads_user_flag_enum.asp
@@ -551,8 +551,8 @@ End Class
 Class ListViewItemComparer
     Implements IComparer
 
-    Private col As Integer
-    Private sens As Integer
+    Private ReadOnly col As Integer
+    Private ReadOnly sens As Integer
 
     Public Sub New()
         col = 0

@@ -15,7 +15,7 @@ End Module
 
 
 Class Jeu     ' Plan de jeu
-    Private grille(,) As Byte
+    Private ReadOnly grille(,) As Byte
 
     Public Sub New()
         ReDim grille(MAXLIG - 1, MAXCOL - 1)
@@ -45,7 +45,7 @@ Class PentaminoSolveur
     Shared iNbAppelPavage As Integer = 0
     Shared Pow2() As Integer
 
-    Shared PS As PentaminoSolveur = Nothing
+    Shared ReadOnly PS As PentaminoSolveur = Nothing
 
     ' Tableau des pentaminos à utiliser pour le problème
     Shared tP() As Piece

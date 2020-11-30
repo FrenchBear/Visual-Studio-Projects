@@ -35,7 +35,7 @@ End Class
 Class Troupeau(Of T)
     Implements IAddAnimal(Of T), IEnumerable(Of T)
 
-    Private tr As New List(Of T)
+    Private ReadOnly tr As New List(Of T)
 
     Public Sub Add(a As T) Implements IAddAnimal(Of T).Add
         tr.Add(a)

@@ -7,7 +7,7 @@ Option Compare Text
 Imports vb = Microsoft.VisualBasic
 
 Public Class LaunchpadForm
-    Dim colMenus As New Generic.Dictionary(Of String, MenuCommand)
+    ReadOnly colMenus As New Generic.Dictionary(Of String, MenuCommand)
 
     Private Sub GenericClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim mc As MenuCommand = colMenus(sender.tag)
@@ -36,9 +36,10 @@ Public Class LaunchpadForm
                 ' nop
             ElseIf reader.NodeType = Xml.XmlNodeType.Element And reader.Name = "MenuCommand" Then
                 Dim iNiv As Integer = 0
-                mc = New MenuCommand
-                mc.iType = CInt(reader.GetAttribute("Type"))
-                mc.iLevel = CInt(reader.GetAttribute("Level"))
+                mc = New MenuCommand With {
+                    .iType = CInt(reader.GetAttribute("Type")),
+                    .iLevel = CInt(reader.GetAttribute("Level"))
+                }
                 While reader.Read
                     If reader.NodeType = Xml.XmlNodeType.Element Then
                         iNiv += 1
@@ -86,9 +87,10 @@ Public Class LaunchpadForm
             mc = x.Value
             Select Case mc.iType
                 Case MenuCommand.MenuCommandTypeEnum.mctMenuHeader, MenuCommand.MenuCommandTypeEnum.mctCommand, MenuCommand.MenuCommandTypeEnum.mctInternal, MenuCommand.MenuCommandTypeEnum.mctPlugIn, MenuCommand.MenuCommandTypeEnum.mctVBASub, MenuCommand.MenuCommandTypeEnum.mctVBScript
-                    tsmiCommand = New ToolStripMenuItem
-                    tsmiCommand.Text = sGetCaption(mc.sCaption)
-                    tsmiCommand.ToolTipText = sGetCaption(mc.sToolTip)
+                    tsmiCommand = New ToolStripMenuItem With {
+                        .Text = sGetCaption(mc.sCaption),
+                        .ToolTipText = sGetCaption(mc.sToolTip)
+                    }
                     If mc.sIconFile <> "" Then
                         If My.Computer.FileSystem.FileExists("..\Etc\" & mc.sIconFile) Then
                             If mc.sIconFile.EndsWith(".bmp") Then
@@ -123,9 +125,10 @@ Public Class LaunchpadForm
                                 tsMain.Items.Add(New ToolStripSeparator)
                             End If
                             Dim b As ToolStripButton
-                            b = New ToolStripButton
-                            b.Tag = mc.UserKey
-                            b.ToolTipText = sGetCaption(mc.sCaption)
+                            b = New ToolStripButton With {
+                                .Tag = mc.UserKey,
+                                .ToolTipText = sGetCaption(mc.sCaption)
+                            }
 
                             If My.Computer.FileSystem.FileExists("..\Etc\" & mc.sIconFile) Then
                                 If mc.sIconFile.EndsWith(".bmp") Then
@@ -167,7 +170,7 @@ Public Class LaunchpadForm
                 If j < Len(sName) Then isNextCarCaps = (Asc(Mid(sName, j + 1, 1)) >= 65 And Asc(Mid(sName, j + 1, 1)) <= 90) Or (Asc(Mid(sName, j + 1, 1)) >= 48 And Asc(Mid(sName, j + 1, 1)) <= 57) Else isNextCarCaps = False
                 If (Asc(Mid(sName, j, 1)) >= 65 And Asc(Mid(sName, j, 1)) <= 90) Or (Asc(Mid(sName, j, 1)) >= 48 And Asc(Mid(sName, j, 1)) <= 57) Then
                     If isLastCarCaps And isNextCarCaps Then
-                        myCastedTag = myCastedTag + Mid(sName, j, 1)
+                        myCastedTag += Mid(sName, j, 1)
                     ElseIf Not isLastCarCaps And isNextCarCaps Then
                         myCastedTag = myCastedTag + " " + Mid(sName, j, 1)
                         isLastCarCaps = True
@@ -176,7 +179,7 @@ Public Class LaunchpadForm
                         isLastCarCaps = True
                     End If
                 Else
-                    myCastedTag = myCastedTag + Mid(sName, j, 1)
+                    myCastedTag += Mid(sName, j, 1)
                     isLastCarCaps = False
                 End If
             Next j

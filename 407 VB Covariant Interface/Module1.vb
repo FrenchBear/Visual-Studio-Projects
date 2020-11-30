@@ -38,8 +38,9 @@ Public Structure TypedEurodatKey(Of T)
     Public key As EurodatKey
 
     Public Shared Widening Operator CType(ByVal key As EurodatKey) As TypedEurodatKey(Of T)
-        Dim tk = New TypedEurodatKey(Of T)
-        tk.key = key
+        Dim tk = New TypedEurodatKey(Of T) With {
+            .key = key
+        }
     End Operator
 End Structure
 

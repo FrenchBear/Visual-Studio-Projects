@@ -7,12 +7,13 @@ Public Class frmScheduler
 
         ReDim tCar(NumberOfCars - 1)
         For i As Integer = 0 To NumberOfCars - 1
-            tCar(i) = New Car
-            tCar(i).sName = "Car" & CStr(i)
-            tCar(i).sLabel = "Car " & CStr(i)
-            tCar(i).iFloor = 0          ' Ground level
-            tCar(i).iDoorStatus = 3     ' Door open
-            tCar(i).iDirection = 0      ' No direction
+            tCar(i) = New Car With {
+                .sName = "Car" & CStr(i),
+                .sLabel = "Car " & CStr(i),
+                .iFloor = 0,          ' Ground level
+                .iDoorStatus = 3,     ' Door open
+                .iDirection = 0      ' No direction
+                }
         Next
 
         frmControl.Show()

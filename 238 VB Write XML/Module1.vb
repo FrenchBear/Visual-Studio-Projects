@@ -7,7 +7,7 @@ Imports System.Xml
 
 
 Module Module1
-    Dim tsHarness() As String = {
+    ReadOnly tsHarness() As String = {
       "0001:3:3:3:3:3:Boatzee",
       "0002:5:5:2:2:2:FullHouse",
       "0003:6:5:4:3:1:SmallStraight"}
@@ -256,7 +256,7 @@ End Class
 
 
 Class Hand
-    Private tDice(4) As Die
+    Private ReadOnly tDice(4) As Die
 
     Public Sub New(ByVal d1 As Die, ByVal d2 As Die, ByVal d3 As Die, ByVal d4 As Die, ByVal d5 As Die)
         Debug.Assert(d1 IsNot Nothing)
@@ -284,7 +284,7 @@ End Class
 
 
 Class Die
-    Private value As Integer
+    Private ReadOnly value As Integer
 
     Public Sub New(ByVal v As Integer)
         Debug.Assert(v >= 1 And v <= 6)

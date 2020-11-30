@@ -68,7 +68,7 @@ namespace CS423
 
     class Timeline
     {
-        SortedQueue<double, TimelineEvent> tl = new SortedQueue<double, TimelineEvent>();
+        readonly SortedQueue<double, TimelineEvent> tl = new SortedQueue<double, TimelineEvent>();
         double nowTime = 0.0;
 
         public delegate void TimedEventHandler(double absoluteTime, TimelineEvent e);
@@ -92,8 +92,7 @@ namespace CS423
             {
                 KeyValuePair<double, TimelineEvent> kvp = tl.TakeFirst();
                 nowTime = kvp.Key;
-                if (TimedEvent != null)
-                    TimedEvent(kvp.Key, kvp.Value);
+                TimedEvent?.Invoke(kvp.Key, kvp.Value);
                 kvp.Value.ExecuteAction(nowTime);
             }
         }
@@ -103,8 +102,8 @@ namespace CS423
 
     class TimelineEvent
     {
-        private string _name;
-        private Action<double, TimelineEvent> _action;
+        private readonly string _name;
+        private readonly Action<double, TimelineEvent> _action;
 
         public TimelineEvent(string name, Action<double, TimelineEvent> action)
         {
@@ -119,8 +118,7 @@ namespace CS423
 
         public void ExecuteAction(double nowTime)
         {
-            if (_action != null)
-                _action(nowTime, this);
+            _action?.Invoke(nowTime, this);
         }
     }
 
@@ -128,9 +126,9 @@ namespace CS423
     {
         private static int numUserSource;
 
-        private int numUser;
-        private int arrivalLevel;
-        private int destinationLevel;
+        private readonly int numUser;
+        private readonly int arrivalLevel;
+        private readonly int destinationLevel;
 
         public UserArrivedEvent(int arrivalLevel, int destinationLevel, string name, Action<double, TimelineEvent> action) : base(name, action)
         {

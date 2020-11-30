@@ -42,7 +42,7 @@ Module ShellFileOperation
     Function EffaceFichierCorbeille(ByVal hwnd As Integer, ByVal sNomfic As String) As Long
         Dim DelFileOp As SHFILEOPSTRUCT
         Dim result As Long
-        While Right(sNomfic, 2) <> vbNullChar & vbNullChar : sNomfic = sNomfic & vbNullChar : End While
+        While Right(sNomfic, 2) <> vbNullChar & vbNullChar : sNomfic &= vbNullChar : End While
         With DelFileOp
             .hwnd = hwnd
             .wFunc = FO_DELETE
@@ -58,8 +58,8 @@ Module ShellFileOperation
     Function DéplaceFichier(ByVal hwnd As Integer, ByVal sSource As String, ByVal sDest As String) As Long
         Dim MoveFileOp As SHFILEOPSTRUCT
         Dim result As Long
-        While Right(sSource, 2) <> vbNullChar & vbNullChar : sSource = sSource & vbNullChar : End While
-        While Right(sDest, 2) <> vbNullChar & vbNullChar : sDest = sDest & vbNullChar : End While
+        While Right(sSource, 2) <> vbNullChar & vbNullChar : sSource &= vbNullChar : End While
+        While Right(sDest, 2) <> vbNullChar & vbNullChar : sDest &= vbNullChar : End While
         With MoveFileOp
             .hwnd = hwnd
             .wFunc = FO_MOVE

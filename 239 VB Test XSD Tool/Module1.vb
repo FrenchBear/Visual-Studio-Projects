@@ -9,19 +9,22 @@ Module Module1
         Dim t As TargetType = New TargetType
         p.Target = t
 
-        Dim m1 As TargetTypeTaskMessage = New TargetTypeTaskMessage
-        m1.Text = "Hello"
-        m1.Importance = "High"
+        Dim m1 As TargetTypeTaskMessage = New TargetTypeTaskMessage With {
+            .Text = "Hello",
+            .Importance = "High"
+        }
 
-        Dim m2 As TargetTypeTaskMkDir = New TargetTypeTaskMkDir
-        m2.Directories = "c:\temp"
+        Dim m2 As TargetTypeTaskMkDir = New TargetTypeTaskMkDir With {
+            .Directories = "c:\temp"
+        }
 
         t.Items = New TaskType() {m1, m2}
 
 
         Dim s As Xml.Serialization.XmlSerializer = New Xml.Serialization.XmlSerializer(GetType(Project))
-        Dim xtw As Xml.XmlTextWriter = New Xml.XmlTextWriter("..\..\p.xml", System.Text.Encoding.UTF8)
-        xtw.Formatting = Xml.Formatting.Indented
+        Dim xtw As Xml.XmlTextWriter = New Xml.XmlTextWriter("..\..\p.xml", System.Text.Encoding.UTF8) With {
+            .Formatting = Xml.Formatting.Indented
+        }
         s.Serialize(xtw, p)
         xtw.Close()
 

@@ -28,7 +28,7 @@ namespace CS500
             context = NavigationContext<NavigationResult>.Create(this);
         }
 
-        private INavigationContext<UC1, NavigationResult> context;
+        private readonly INavigationContext<UC1, NavigationResult> context;
 
         public INavigationContext<UC1, NavigationResult> GetNavigationContext()
         {

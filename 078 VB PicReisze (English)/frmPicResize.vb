@@ -39,7 +39,7 @@ Public Class frmPicResize
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -263,9 +263,9 @@ Public Class frmPicResize
         End If
 
         m_sSourcePath = txtSource.Text
-        If Microsoft.VisualBasic.Right(m_sSourcePath, 1) <> "\" Then m_sSourcePath = m_sSourcePath & "\"
+        If Microsoft.VisualBasic.Right(m_sSourcePath, 1) <> "\" Then m_sSourcePath &= "\"
         m_sDestinationPath = txtDestination.Text
-        If Microsoft.VisualBasic.Right(m_sDestinationPath, 1) <> "\" Then m_sDestinationPath = m_sDestinationPath & "\"
+        If Microsoft.VisualBasic.Right(m_sDestinationPath, 1) <> "\" Then m_sDestinationPath &= "\"
 
         If StrComp(m_sSourcePath, m_sDestinationPath, CompareMethod.Text) = 0 Then
             MsgBox("Les deux répertoires ne peuvent être identiques.", MsgBoxStyle.Exclamation)

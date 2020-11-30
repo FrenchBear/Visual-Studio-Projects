@@ -55,7 +55,9 @@ class MyApp
 {
     public static void Main()
     {
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
         D d = new D();
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
         Console.ReadLine();
     }
 }

@@ -16,7 +16,7 @@ Namespace EssaisILDasm
 
             Dim d As MaClasseDerivee
             d = New MaClasseDerivee()
-            AddHandler d.Bip, AddressOf d_Bip
+            AddHandler d.Bip, AddressOf D_Bip
 
 
             ' Try+Catch
@@ -83,8 +83,8 @@ Namespace EssaisILDasm
             IMI.MaMethodeBruyante2(1)
         End Sub
 
-        Private Shared Sub d_Bip(ByVal e As Object, ByVal sMsg As String)
-            Console.WriteLine("d_Bip(): {0}", sMsg)
+        Private Shared Sub D_Bip(ByVal e As Object, ByVal sMsg As String)
+            Console.WriteLine("D_Bip(): {0}", sMsg)
         End Sub
 
     End Class

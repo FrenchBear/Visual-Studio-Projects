@@ -28,7 +28,7 @@ Public Class frmDocument2
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
     Private WithEvents MonthCalendar1 As System.Windows.Forms.MonthCalendar
 
 

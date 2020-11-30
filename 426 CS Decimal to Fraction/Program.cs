@@ -20,8 +20,7 @@ namespace CS426
         {
             WriteLine("Stern-Brocot algorithm to transform a periodic decimal suite into a fraction\n");
             double f = 0.1415926535;
-            long rNum, rDen;
-            doubleToFraction(f, out rNum, out rDen);
+            doubleToFraction(f, out long rNum, out long rDen);
             Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
             f = 3.1415926535;

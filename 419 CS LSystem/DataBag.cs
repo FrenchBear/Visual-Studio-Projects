@@ -66,8 +66,10 @@ namespace CS419
                         {
                             line = line.Substring(0, p - 1).Trim();
                             if (ss != null) Debugger.Break();
-                            ss = new SourceSystem();
-                            ss.Name = line;
+                            ss = new SourceSystem
+                            {
+                                Name = line
+                            };
                             //if (ss.Name=="FlowSnake") Debugger.Break();
                             if (lineComment != "") ss.Comments = lineComment;
                             sl.Add(ss);
@@ -80,11 +82,10 @@ namespace CS419
                         line = line.Trim();
                         if (line.StartsWith("Angle", StringComparison.InvariantCultureIgnoreCase))
                         {
-                            int a;
                             int p1 = 5;
                             while (char.IsWhiteSpace(line[p1]) || line[p1] == '=')
                                 p1++;
-                            if (int.TryParse(line.Substring(p1), out a))
+                            if (int.TryParse(line.Substring(p1), out int a))
                                 ss.Angle = a;
                         }
                         else if (line.StartsWith("Axiom", StringComparison.InvariantCultureIgnoreCase))

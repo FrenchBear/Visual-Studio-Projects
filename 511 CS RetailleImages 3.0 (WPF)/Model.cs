@@ -184,8 +184,10 @@ namespace RI3
 
             // WPF resizing and save
             BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            encoder.QualityLevel = JpegQuality;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder
+            {
+                QualityLevel = JpegQuality
+            };
             encoder.Frames.Add(BitmapFrame.Create(bi2));
             using (FileStream output = new FileStream(vignettePath, FileMode.Create))
             {

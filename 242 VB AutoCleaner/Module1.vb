@@ -34,9 +34,10 @@ Module modMain
         'Console.WriteLine("$3")
         For Each sFileName As String In My.Computer.FileSystem.GetFiles(sDir)
             'Console.WriteLine("$4: {0}", sFileName)
-            fad = New FileAndDate
-            fad.sFileName = sFileName
-            fad.LastWriteTime = My.Computer.FileSystem.GetFileInfo(sFileName).LastWriteTime
+            fad = New FileAndDate With {
+                .sFileName = sFileName,
+                .LastWriteTime = My.Computer.FileSystem.GetFileInfo(sFileName).LastWriteTime
+            }
 
             Dim lle As LinkedListNode(Of FileAndDate)
             lle = llList.First

@@ -33,8 +33,7 @@ namespace RI3
 
         public void NotifyPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         // Commands public interface
@@ -59,8 +58,8 @@ namespace RI3
 
 
         // Access to Model and window
-        private Model model;
-        private MainWindow window;
+        private readonly Model model;
+        private readonly MainWindow window;
 
         //private bool isGenerateInProgress = false;
 
@@ -119,9 +118,9 @@ namespace RI3
 
             // If this dependency object is valid, check all child dependency objects
             foreach (object subnode in LogicalTreeHelper.GetChildren(node))
-                if (subnode is DependencyObject)
+                if (subnode is DependencyObject obj)
                     // If a child dependency object is invalid, return false immediately, otherwise keep checking
-                    if (!IsValid((DependencyObject)subnode)) return false;
+                    if (!IsValid(obj)) return false;
 
             // All dependency objects are valid
             return true;
@@ -154,8 +153,10 @@ namespace RI3
 
         private void SelectSourceFolderExecute(object parameter)
         {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog();
-            dialog.SelectedPath = SourceFolder;
+            var dialog = new System.Windows.Forms.FolderBrowserDialog
+            {
+                SelectedPath = SourceFolder
+            };
             System.Windows.Forms.DialogResult result = dialog.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
                 SourceFolder = dialog.SelectedPath;
@@ -270,7 +271,7 @@ namespace RI3
             }
         }
 
-        private ObservableCollection<string> tracesList = new ObservableCollection<string>();
+        private readonly ObservableCollection<string> tracesList = new ObservableCollection<string>();
         public ObservableCollection<string> TracesList
         {
             get
@@ -342,7 +343,7 @@ namespace RI3
 
     public static class ExtensionMethods
     {
-        private static Action EmptyDelegate = delegate () { };
+        private static readonly Action EmptyDelegate = delegate () { };
 
         // Extension method to force the refresh of a UIElement
         public static void Refresh(this UIElement uiElement)

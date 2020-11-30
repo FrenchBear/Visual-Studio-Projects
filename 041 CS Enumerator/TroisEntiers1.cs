@@ -11,7 +11,7 @@ using System.Collections;
 
 class ThreeIntegers1 : IEnumerable
 {
-    private int i1, i2, i3;
+    private readonly int i1, i2, i3;
 
     public ThreeIntegers1(int i1, int i2, int i3)
     {
@@ -28,7 +28,7 @@ class ThreeIntegers1 : IEnumerable
     private class MonEnumerateur : IEnumerator
     {
         private int pos;
-        private ThreeIntegers1 tcur;
+        private readonly ThreeIntegers1 tcur;
 
         public MonEnumerateur(ThreeIntegers1 t)
         {

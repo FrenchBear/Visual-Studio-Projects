@@ -32,9 +32,7 @@ namespace CS419
         {
             Title = title + " - WpfDrawing2Window (Using PathGeometry and PathFigure)";
             Wpf2LSystemRenderer wr = new Wpf2LSystemRenderer(s, angle);
-            PathFigure pf;
-            Rect r;
-            wr.Rend(0, 0, out pf, out r);
+            wr.Rend(0, 0, out PathFigure pf, out Rect r);
             double maxExtent = Math.Max(r.Width, r.Height);
             myGeometryDrawing.Pen = new Pen(Brushes.Black, Math.Sqrt(maxExtent) / 10.0);
             myPathGeometry.Figures.Add(pf);      // Generate PathFigure and add it to screen control
@@ -56,8 +54,10 @@ namespace CS419
 
             protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)
             {
-                LineSegment ls = new LineSegment(new Point(x2, y2), isStroke);
-                ls.IsSmoothJoin = true;
+                LineSegment ls = new LineSegment(new Point(x2, y2), isStroke)
+                {
+                    IsSmoothJoin = true
+                };
                 _pf.Segments.Add(ls);
             }
         }

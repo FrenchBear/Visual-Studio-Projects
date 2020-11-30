@@ -2,7 +2,7 @@
 ' 2012-02-25	PV  VS2010
 
 Public Class ucCarButtons
-    Private m_iIndex As Integer
+    Private ReadOnly m_iIndex As Integer
 
     Public ReadOnly Property iIndex() As Integer
         Get
@@ -21,16 +21,16 @@ Public Class ucCarButtons
         ' Add any initialization after the InitializeComponent() call.
         For i As Integer = 0 To NumberOfFloors - 1
             Dim cb As System.Windows.Forms.Button
-            cb = New System.Windows.Forms.Button
-
-            cb.BackColor = System.Drawing.SystemColors.Control
-            cb.Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-            cb.Location = New System.Drawing.Point(3, 60 + 36 * i)
-            cb.Name = "btn" & CStr(NumberOfFloors - 1 - i)
-            cb.Size = New System.Drawing.Size(42, 33)
-            cb.Text = CStr(NumberOfFloors - 1 - i)
-            cb.TextAlign = System.Drawing.ContentAlignment.TopCenter
-            cb.UseVisualStyleBackColor = False
+            cb = New System.Windows.Forms.Button With {
+                .BackColor = System.Drawing.SystemColors.Control,
+                .Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte)),
+                .Location = New System.Drawing.Point(3, 60 + 36 * i),
+                .Name = "btn" & CStr(NumberOfFloors - 1 - i),
+                .Size = New System.Drawing.Size(42, 33),
+                .Text = CStr(NumberOfFloors - 1 - i),
+                .TextAlign = System.Drawing.ContentAlignment.TopCenter,
+                .UseVisualStyleBackColor = False
+            }
 
             Me.Controls.Add(cb)
 

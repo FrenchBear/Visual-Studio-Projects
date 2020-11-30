@@ -10,6 +10,7 @@ Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Windows.Forms
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class FormAncrage
     Inherits System.Windows.Forms.Form
@@ -111,9 +112,9 @@ Public Class FormAncrage
         Me.TextBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Location = New System.Drawing.Point(64, 72)
+        Me.TextBox2.Location = New System.Drawing.Point(128, 133)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(244, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(88, 31)
         Me.TextBox2.TabIndex = 1
         Me.TextBox2.Text = "TextBox2"
         '
@@ -121,9 +122,9 @@ Public Class FormAncrage
         '
         Me.TextBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(8, 40)
+        Me.TextBox1.Location = New System.Drawing.Point(16, 74)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(300, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(200, 31)
         Me.TextBox1.TabIndex = 0
         Me.TextBox1.Text = "TextBox1"
         '
@@ -132,9 +133,10 @@ Public Class FormAncrage
         Me.lstTrace.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lstTrace.Location = New System.Drawing.Point(8, 104)
+        Me.lstTrace.ItemHeight = 25
+        Me.lstTrace.Location = New System.Drawing.Point(16, 192)
         Me.lstTrace.Name = "lstTrace"
-        Me.lstTrace.Size = New System.Drawing.Size(388, 121)
+        Me.lstTrace.Size = New System.Drawing.Size(376, 4)
         Me.lstTrace.TabIndex = 2
         '
         'ToolBarButton1
@@ -163,26 +165,26 @@ Public Class FormAncrage
         '
         Me.btnOk.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK
-        Me.btnOk.Location = New System.Drawing.Point(320, 40)
+        Me.btnOk.Location = New System.Drawing.Point(240, 74)
         Me.btnOk.Name = "btnOk"
         Me.btnOk.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.btnOk.Size = New System.Drawing.Size(75, 23)
+        Me.btnOk.Size = New System.Drawing.Size(150, 42)
         Me.btnOk.TabIndex = 3
         Me.btnOk.Text = "&Ok"
         '
         'StatusBar1
         '
-        Me.StatusBar1.Location = New System.Drawing.Point(0, 237)
+        Me.StatusBar1.Location = New System.Drawing.Point(0, 221)
         Me.StatusBar1.Name = "StatusBar1"
-        Me.StatusBar1.Size = New System.Drawing.Size(400, 20)
+        Me.StatusBar1.Size = New System.Drawing.Size(400, 36)
         Me.StatusBar1.TabIndex = 6
         Me.StatusBar1.Text = "StatusBar1"
         '
         'lblTxt2
         '
-        Me.lblTxt2.Location = New System.Drawing.Point(8, 80)
+        Me.lblTxt2.Location = New System.Drawing.Point(16, 148)
         Me.lblTxt2.Name = "lblTxt2"
-        Me.lblTxt2.Size = New System.Drawing.Size(48, 16)
+        Me.lblTxt2.Size = New System.Drawing.Size(96, 29)
         Me.lblTxt2.TabIndex = 5
         Me.lblTxt2.TabStop = True
         Me.lblTxt2.Text = "Texte 2 :"
@@ -207,9 +209,9 @@ Public Class FormAncrage
         '
         Me.btnAnnuler.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAnnuler.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnAnnuler.Location = New System.Drawing.Point(320, 72)
+        Me.btnAnnuler.Location = New System.Drawing.Point(240, 133)
         Me.btnAnnuler.Name = "btnAnnuler"
-        Me.btnAnnuler.Size = New System.Drawing.Size(75, 23)
+        Me.btnAnnuler.Size = New System.Drawing.Size(150, 42)
         Me.btnAnnuler.TabIndex = 4
         Me.btnAnnuler.Text = "Annuler"
         '
@@ -221,7 +223,7 @@ Public Class FormAncrage
         'FormAncrage
         '
         Me.AcceptButton = Me.btnOk
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+        Me.AutoScaleBaseSize = New System.Drawing.Size(10, 24)
         Me.CancelButton = Me.btnAnnuler
         Me.ClientSize = New System.Drawing.Size(400, 257)
         Me.Controls.Add(Me.ToolBar1)

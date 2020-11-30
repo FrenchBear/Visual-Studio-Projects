@@ -34,8 +34,8 @@ Structure Fraction
     Implements IComparable(Of Fraction)
     Implements IComparable
 
-    Private n As Long       ' = 0
-    Private d As Long       ' = 1
+    Private ReadOnly n As Long       ' = 0
+    Private ReadOnly d As Long       ' = 1
 
     Sub New(ByVal nn As Long, ByVal dd As Long)
         n = nn

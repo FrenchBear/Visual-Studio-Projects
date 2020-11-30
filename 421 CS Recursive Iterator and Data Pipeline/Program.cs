@@ -45,8 +45,10 @@ namespace CS421
         {
             if (Node == null)
             {
-                Node = new Node<T>();
-                Node.Item = item;
+                Node = new Node<T>
+                {
+                    Item = item
+                };
             }
             else
                 if ((item as IComparable).CompareTo(Node.Item as IComparable) >= 0)
@@ -95,9 +97,11 @@ namespace CS421
             tu10 = Array.ConvertAll(new double[10], x => Rnd());
             tv10 = Generate<double>(10, Rnd).ToArray();
 
-            var t = new BinaryTree<double>();
-            // The two most beautiful lines of code I've written for a long time!!!
-            t.Add(Generate<double>(10, Rnd));
+            var t = new BinaryTree<double>
+            {
+                // The two most beautiful lines of code I've written for a long time!!!
+                Generate<double>(10, Rnd)
+            };
             t.ForEach<double>(x => Console.WriteLine(x));
 
             // My first data pipeline in one line !

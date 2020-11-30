@@ -70,16 +70,16 @@ Public Class frmRotorRouter
                         Exit Do
                     Case col0.ToArgb
                         picBitmap.SetPixel(x, y, col1)
-                        y = y + 1
+                        y += 1
                     Case col1.ToArgb
                         picBitmap.SetPixel(x, y, col2)
-                        x = x + 1
+                        x += 1
                     Case col2.ToArgb
                         picBitmap.SetPixel(x, y, col3)
-                        y = y - 1
+                        y -= 1
                     Case col3.ToArgb
                         picBitmap.SetPixel(x, y, col0)
-                        x = x - 1
+                        x -= 1
                 End Select
                 'If x < 0 Or x > 2 * r Or y < 0 Or y > 2 * r Then Exit For
             Loop

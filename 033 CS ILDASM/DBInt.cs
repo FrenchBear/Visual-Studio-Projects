@@ -7,8 +7,8 @@ namespace MaBibliotheque
     public struct DBInt
     {
         public static readonly DBInt Null = new DBInt();
-        private int value;
-        private bool defined;
+        private readonly int value;
+        private readonly bool defined;
 
         public bool IsNull { get { return !defined; } }
 

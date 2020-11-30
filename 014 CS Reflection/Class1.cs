@@ -15,7 +15,7 @@ public class GetMemberMethodImpl
 {
     public static void Main()
     {
-        Type t = typeof(bar);
+        Type t = typeof(Bar);
         foreach (MethodInfo m in t.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
         {
             MethodInfo dm;
@@ -48,21 +48,21 @@ public class GetMemberMethodImpl
 }
 
 
-public class bar : ibar
+public class Bar : IBar
 {
-    void ifoo.a() { Console.WriteLine("bar.a"); }
-    void ibar.b() { Console.WriteLine("bar.b"); }
-    void ibar.c() { Console.WriteLine("bar.c"); }
+    void IFoo.A() { Console.WriteLine("bar.a"); }
+    void IBar.B() { Console.WriteLine("bar.b"); }
+    void IBar.C() { Console.WriteLine("bar.c"); }
     //  void d() { }
 }
 
-public interface ifoo
+public interface IFoo
 {
-    void a();
+    void A();
 }
 
-public interface ibar : ifoo
+public interface IBar : IFoo
 {
-    void b();
-    void c();
+    void B();
+    void C();
 }

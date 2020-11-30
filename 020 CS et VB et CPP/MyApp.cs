@@ -10,6 +10,8 @@
 
 using System;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 
 namespace Mixte20
 {

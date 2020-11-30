@@ -33,8 +33,9 @@ Module Module1
         'CaresserChiot(rex)      ' Refusé avec option strict: normal !
         CaresserChien(pif)      ' Dans ce sens, toujours accepté
 
-        Dim m1 As New MeuteDeChiens
-        m1.MaleDominant = Nothing
+        Dim m1 As New MeuteDeChiens With {
+            .MaleDominant = Nothing
+        }
         m1.Add(New Chiot)
         Dim m2 As New MeuteDeChiots
         m2.Add(New Chiot)

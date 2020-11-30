@@ -30,7 +30,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -60,9 +60,10 @@ Public Class Form1
         ' Set maximum layout size.
         Dim layoutSize As New SizeF(100.0F, 200.0F)
         ' Set string format.
-        Dim newStringFormat As New StringFormat
-        newStringFormat.FormatFlags = StringFormatFlags.DirectionVertical
-        ' Measure string.
+        Dim newStringFormat As New StringFormat With {
+            .FormatFlags = StringFormatFlags.DirectionVertical
+        }
+            ' Measure string.
         Dim charactersFitted As Integer
         Dim linesFilled As Integer
         Dim stringSize As New SizeF
@@ -89,8 +90,9 @@ Public Class Form1
         Dim height As Single = 200.0F
         Dim layoutRect As New RectangleF(x, y, width, height)
         ' Set string format.
-        Dim stringFormat As New StringFormat
-        stringFormat.FormatFlags = StringFormatFlags.DirectionVertical
+        Dim stringFormat As New StringFormat With {
+            .FormatFlags = StringFormatFlags.DirectionVertical
+        }
         stringFormat.SetMeasurableCharacterRanges(characterRanges)
         ' Draw string to screen.
         e.Graphics.DrawString(measureString, stringFont, Brushes.Black, x, y, stringFormat)

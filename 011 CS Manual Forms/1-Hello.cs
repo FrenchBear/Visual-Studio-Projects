@@ -7,9 +7,10 @@ using System.Windows.Forms;
 
 public class Hello1 : Form
 {
-    private void InitializeComponent()
+    internal void InitializeComponent()
     {
     }
+
     /// Point d'entrée du programme
     public static int Main(string[] args)
     {

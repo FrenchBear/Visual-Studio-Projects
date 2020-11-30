@@ -15,8 +15,8 @@ class TestSer
     [Serializable]
     class MaClasse
     {
-        int i;
-        String s;
+        readonly int i;
+        readonly String s;
         public MaClasse(int i, String s)
         {
             this.i = i;

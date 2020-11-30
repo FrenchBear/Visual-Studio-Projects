@@ -25,12 +25,12 @@ Namespace CodeDOMExample
 
     Public Class CodeDomExampleForm
         Inherits System.Windows.Forms.Form
-        Private run_button As New System.Windows.Forms.Button
-        Private compile_button As New System.Windows.Forms.Button
-        Private generate_button As New System.Windows.Forms.Button
-        Private textBox1 As New System.Windows.Forms.TextBox
-        Private comboBox1 As New System.Windows.Forms.ComboBox
-        Private label1 As New System.Windows.Forms.Label
+        Private ReadOnly run_button As New System.Windows.Forms.Button
+        Private ReadOnly compile_button As New System.Windows.Forms.Button
+        Private ReadOnly generate_button As New System.Windows.Forms.Button
+        Private ReadOnly textBox1 As New System.Windows.Forms.TextBox
+        Private ReadOnly comboBox1 As New System.Windows.Forms.ComboBox
+        Private ReadOnly label1 As New System.Windows.Forms.Label
 
         Private Sub Generate_button_Click(ByVal sender As Object, ByVal e As System.EventArgs)
             Dim provider As CodeDomProvider = GetCurrentProvider()

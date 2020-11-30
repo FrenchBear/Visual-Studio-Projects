@@ -1,6 +1,8 @@
 using System;
 
 #pragma warning disable 1591
+#pragma warning disable IDE0052 // Remove unread private members
+#pragma warning disable IDE0051 // Remove unused private members
 
 namespace MaBibliotheque
 {
@@ -10,7 +12,7 @@ namespace MaBibliotheque
 
         private class MaSousClasse
         {
-            private int a;
+            private readonly int a;
 
             public MaSousClasse(int a)
             {
@@ -115,7 +117,7 @@ namespace MaBibliotheque
         // Eléments spécifiques à la classe
         private int iProp;
         protected int age;
-        private MaSousClasse sc;
+        private readonly MaSousClasse sc;
 
         public MaClasseDerivee()
         {

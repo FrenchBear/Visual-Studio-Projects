@@ -14,7 +14,7 @@ namespace CS517
 {
     class Program
     {
-        static object b1 = true;
+        static readonly object b1 = true;
 
         static void Main(string[] args)
         {
@@ -57,7 +57,7 @@ namespace CS517
             Console.ReadLine();
         }
 
-        public static int? ni { get; set; }
+        public static int? Ni { get; set; }
     }
 
     public static partial class ExtensionMethods

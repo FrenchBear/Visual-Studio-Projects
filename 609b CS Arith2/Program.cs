@@ -22,7 +22,6 @@ using System.Text;
 using static System.Console;
 using System.Numerics;
 
-#pragma warning disable CS0811
 
 namespace Arith2CS
 {
@@ -170,7 +169,7 @@ namespace Arith2CS
         where MetaT : IMetaSimpleArith<T>, new()
     {
         // Metaclass is a singleton
-        private static MetaT m = new MetaT();
+        private static readonly MetaT m = new MetaT();
 
         public DA<T, MetaT> FromString(string s)
         {
@@ -199,7 +198,7 @@ namespace Arith2CS
             if (list.Length == 1)
                 ovh = new T();
             else
-                ovh = default(T);
+                ovh = default;
 
             foreach (DA<T, MetaT> item in list.Skip(1))
             {
@@ -222,10 +221,10 @@ namespace Arith2CS
             (T t2h, T t2l) = m.Mult(a.low, b.high);
             (highH, highL) = m.Mult(a.high, b.high);
 
-            T ov1, ov2, dummy;
+            T ov1, ov2;
             (ov1, lowH) = m.Plus(lowH, t1l, t2l);
             (ov2, highL) = m.Plus(highL, t1h, t2h, ov1);
-            (dummy, highH) = m.Plus(highH, ov2);
+            (_, highH) = m.Plus(highH, ov2);
 
             return (new DA<T, MetaT>(highH, highL, true), new DA<T, MetaT>(lowH, lowL, true));
         }
@@ -251,7 +250,7 @@ namespace Arith2CS
         internal T low;
 
         // Metaclass is a singleton
-        private static MetaT m = new MetaT();
+        private static readonly MetaT m = new MetaT();
 
         internal static int digits;
         public int Digits { get => digits; }
@@ -359,8 +358,8 @@ namespace Arith2CS
 
             a = m.FromString("8000");
             b = m.FromString("7000");
-            WriteLine($"a: {a.ToString()}");
-            WriteLine($"b: {b.ToString()}");
+            WriteLine($"a: {a}");
+            WriteLine($"b: {b}");
             (IntBase h, IntBase l) = m.Plus(a, b);
             WriteLine($"a+b: " + m.ToString2(h, l));
             (h, l) = m.Mult(a, b);
@@ -371,8 +370,8 @@ namespace Arith2CS
             MetaDA<IntBase, MetaIntBase> m8 = new MetaDA<IntBase, MetaIntBase>();
             a8 = m8.FromString("12345678");
             b8 = m8.FromString("87654321");
-            WriteLine($"a8: {a8.ToString()}");
-            WriteLine($"b8: {b8.ToString()}");
+            WriteLine($"a8: {a8}");
+            WriteLine($"b8: {b8}");
             (DA<IntBase, MetaIntBase> h8, DA<IntBase, MetaIntBase> l8) = m8.Plus(a8, b8);
             WriteLine($"a8+b8: " + m8.ToString2(h8, l8));
             (h8, l8) = m8.Mult(a8, b8);

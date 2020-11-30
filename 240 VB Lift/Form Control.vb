@@ -64,10 +64,11 @@ Public Class frmControl
         Next
 
         ' Ok, have to insert a starting event for this cabin
-        e = New LiftEvent
-        e.letType = LiftEvent.LiftEventType.letDoorClosed
-        e.iCar = iCar
-        e.TimeIndex = CurrentTimeIndex + DoorClosingDelay
+        e = New LiftEvent With {
+            .letType = LiftEvent.LiftEventType.letDoorClosed,
+            .iCar = iCar,
+            .TimeIndex = CurrentTimeIndex + DoorClosingDelay
+        }
 
         InsertEvent(e)
     End Sub

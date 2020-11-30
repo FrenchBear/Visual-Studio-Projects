@@ -57,8 +57,8 @@ namespace CS544SkipAtChoice
         /// <typeparam name="T"></typeparam>
         private class SkipAtEnumerator<T> : IEnumerable<T>
         {
-            private IEnumerator<T> originalEnumerator;
-            private int start, count;
+            private readonly IEnumerator<T> originalEnumerator;
+            private readonly int start, count;
             private int pos;
 
             public SkipAtEnumerator(IEnumerable<T> original, int start, int count)
@@ -69,7 +69,7 @@ namespace CS544SkipAtChoice
                 pos = 0;
             }
 
-            private IEnumerator<T> myEnumerator()
+            private IEnumerator<T> MyEnumerator()
             {
                 for (;;)
                 {
@@ -83,12 +83,12 @@ namespace CS544SkipAtChoice
 
             IEnumerator<T> IEnumerable<T>.GetEnumerator()
             {
-                return myEnumerator();
+                return MyEnumerator();
             }
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                return myEnumerator();
+                return MyEnumerator();
             }
         }
 
@@ -106,7 +106,7 @@ namespace CS544SkipAtChoice
         }
 
 
-        private static Random rnd = new Random();
+        private static readonly Random rnd = new Random();
 
         /// <summary>
         /// Returns a random element from the enumeration, version 1
@@ -237,8 +237,8 @@ namespace CS544SkipAtChoice
         /// <typeparam name="T"></typeparam>
         private class GetRangeEnumerator<T> : IEnumerable<T>
         {
-            private IEnumerator<T> originalEnumerator;
-            private int start, count;
+            private readonly IEnumerator<T> originalEnumerator;
+            private readonly int start, count;
             private int pos;
 
             public GetRangeEnumerator(IEnumerable<T> original, int start, int count)
@@ -249,7 +249,7 @@ namespace CS544SkipAtChoice
                 pos = 0;
             }
 
-            private IEnumerator<T> myEnumerator()
+            private IEnumerator<T> MyEnumerator()
             {
                 for (;;)
                 {
@@ -263,12 +263,12 @@ namespace CS544SkipAtChoice
 
             IEnumerator<T> IEnumerable<T>.GetEnumerator()
             {
-                return myEnumerator();
+                return MyEnumerator();
             }
 
             IEnumerator IEnumerable.GetEnumerator()
             {
-                return myEnumerator();
+                return MyEnumerator();
             }
         }
 

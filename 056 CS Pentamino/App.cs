@@ -22,7 +22,7 @@ class Pentamino
     // Plan de jeu
     class Jeu
     {
-        private byte[,] grille;
+        private readonly byte[,] grille;
 
         public Jeu()
         {

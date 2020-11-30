@@ -14,7 +14,7 @@ namespace UnblockMeSolver
     {
         // Describes the blocks of a specific game
         // Puzzle 1602
-        static Block[] Pieces = {
+        static readonly Block[] Pieces = {
             new Block { IsHorizontal = true, RowCol = 0, Length = 3 },
             new Block { IsHorizontal = true, RowCol = 1, Length = 2 },
             new Block { IsHorizontal = true, RowCol = 2, Length = 2 },
@@ -26,11 +26,11 @@ namespace UnblockMeSolver
             new Block { IsHorizontal = false, RowCol = 4, Length = 3 },
         };
 
-        static byte redPiece = 2;
+        static readonly byte redPiece = 2;
 
         static Config Configuration = new Config() { Length = 9, Pos = new byte[] { 0, 2, 2, 4, 0, 1, 3, 3, 0 } };
 
-        static SortedSet<int> History = new SortedSet<int>();
+        static readonly SortedSet<int> History = new SortedSet<int>();
 
         static void Main(string[] args)
         {
@@ -112,7 +112,7 @@ namespace UnblockMeSolver
             return false;
         }
 
-        static ConsoleColor[] Colors = { (ConsoleColor)1, (ConsoleColor)2, (ConsoleColor)3, (ConsoleColor)5, (ConsoleColor)6, (ConsoleColor)8, (ConsoleColor)9, (ConsoleColor)10, (ConsoleColor)11, (ConsoleColor)12, (ConsoleColor)13, (ConsoleColor)14, (ConsoleColor)15 };
+        static readonly ConsoleColor[] Colors = { (ConsoleColor)1, (ConsoleColor)2, (ConsoleColor)3, (ConsoleColor)5, (ConsoleColor)6, (ConsoleColor)8, (ConsoleColor)9, (ConsoleColor)10, (ConsoleColor)11, (ConsoleColor)12, (ConsoleColor)13, (ConsoleColor)14, (ConsoleColor)15 };
         private static void ShowConfig(Config config)
         {
             Console.WriteLine();
@@ -180,9 +180,11 @@ namespace UnblockMeSolver
 
         public Config Clone()
         {
-            Config c2 = new Config();
-            c2.Length = Length;
-            c2.Pos = (byte[])Pos.Clone();
+            Config c2 = new Config
+            {
+                Length = Length,
+                Pos = (byte[])Pos.Clone()
+            };
             return c2;
         }
 

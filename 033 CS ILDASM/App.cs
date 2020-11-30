@@ -19,7 +19,7 @@ namespace EssaisILDasm
 
             MaClasseDerivee d;
             d = new MaClasseDerivee();
-            d.Bip += new GestionnaireDeBip(d_Bip);
+            d.Bip += new GestionnaireDeBip(D_Bip);
 
             // Try+Catch
             try
@@ -85,9 +85,9 @@ namespace EssaisILDasm
             IMI.MaMethodeBruyante2(1);
         }
 
-        private static void d_Bip(object e, string sMsg)
+        private static void D_Bip(object e, string sMsg)
         {
-            Console.WriteLine("d_Bip(): {0}", sMsg);
+            Console.WriteLine("D_Bip(): {0}", sMsg);
         }
     }
 }

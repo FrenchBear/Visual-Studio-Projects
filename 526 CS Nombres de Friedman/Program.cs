@@ -62,7 +62,7 @@ namespace CS526
             Console.ReadLine();
         }
 
-        static HashSet<int> PreviousResults = new HashSet<int>();
+        static readonly HashSet<int> PreviousResults = new HashSet<int>();
         static void Found(int n)
         {
             if (!PreviousResults.Contains(n))
@@ -78,13 +78,11 @@ namespace CS526
             {
                 if (b >= 0)
                 {
-                    int c;
-                    if (int.TryParse(a.ToString() + b.ToString(), out c)) yield return c;
+                    if (int.TryParse(a.ToString() + b.ToString(), out int c)) yield return c;
                 }
                 if (a >= 0)
                 {
-                    int c;
-                    if (int.TryParse(b.ToString() + a.ToString(), out c)) yield return c;
+                    if (int.TryParse(b.ToString() + a.ToString(), out int c)) yield return c;
                 }
             }
             yield return a + b;

@@ -22,7 +22,7 @@ namespace CS508
                 Console.WriteLine(k.ToString() + " -> " + d1[k]);
             Console.WriteLine();
 
-            var d2 = getNumberDic2();
+            var d2 = GetNumberDic2();
             foreach (var k in d2.Keys)
                 Console.WriteLine(k.ToString() + " -> " + d2[k]);
             Console.WriteLine();
@@ -32,7 +32,7 @@ namespace CS508
 
 
             // ReadOnly List
-            var l = getList();
+            var l = GetList();
             //var l2 = (List<int>)l;
             //l2.Add(17);
 
@@ -49,21 +49,21 @@ namespace CS508
         }
 
         // Return IReadOnlyDictionary interface of a real dictionary
-        static IReadOnlyDictionary<int, string> getNumberDic2()
+        static IReadOnlyDictionary<int, string> GetNumberDic2()
         {
             var d = new Dictionary<int, string> { { 1, "One" }, { 2, "Two" }, { 3, "Three" } };
             return (IReadOnlyDictionary<int, string>)d;
         }
 
 
-        static ReadOnlyObservableCollection<string> getObservableCollection1()
+        static ReadOnlyObservableCollection<string> GetObservableCollection1()
         {
             var c = new ObservableCollection<string> { "Once", "upon", "a", "time" };
             return new ReadOnlyObservableCollection<string>(c);
         }
 
 
-        static IReadOnlyList<int> getList()
+        static IReadOnlyList<int> GetList()
         {
             var l = new List<int> { 2, 3, 5, 7, 11, 13 };
             // There is no ReadOnlyList class, but a list can be exposed as a ReadOnly, with no way to cast it back

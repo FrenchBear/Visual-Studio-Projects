@@ -11,8 +11,8 @@ Imports System.ComponentModel
 
 Public Class frmTest
     ' These are the Win32 error code for file not found or access denied.
-    Private ERROR_FILE_NOT_FOUND As Integer = 2
-    Private ERROR_ACCESS_DENIED As Integer = 5
+    Private ReadOnly ERROR_FILE_NOT_FOUND As Integer = 2
+    Private ReadOnly ERROR_ACCESS_DENIED As Integer = 5
 
     Private Sub btnShellExecute_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnShellExecute.Click
         Dim iRet As Integer = ShellExecute(txtCommand.Text)

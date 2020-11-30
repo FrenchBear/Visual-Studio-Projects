@@ -8,6 +8,10 @@ Imports System.Drawing
 Imports System.Windows.Forms
 
 
+#Disable Warning IDE1006 ' Naming Styles
+#Disable Warning IDE0052 ' Remove unread private members
+
+
 Public Class MyMsgBox2
     Inherits System.Windows.Forms.Form
 

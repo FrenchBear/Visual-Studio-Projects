@@ -39,7 +39,7 @@ Public Class frmTest
     Friend WithEvents txtPath As System.Windows.Forms.TextBox
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
@@ -90,11 +90,12 @@ Class MyBrowser
     Inherits FolderNameEditor
 
     Function Browse() As String
-        Dim b As New FolderBrowser()
-        b.Description = "Sélectionnez le répertoire"
-        b.Style = FolderNameEditor.FolderBrowserStyles.RestrictToFilesystem
         'b.StartLocation = FolderNameEditor.FolderBrowserFolder.Desktop
-        b.StartLocation = FolderNameEditor.FolderBrowserFolder.MyComputer
+        Dim b As New FolderBrowser With {
+            .Description = "Sélectionnez le répertoire",
+            .Style = FolderNameEditor.FolderBrowserStyles.RestrictToFilesystem,
+            .StartLocation = FolderNameEditor.FolderBrowserFolder.MyComputer
+        }
         b.ShowDialog()
         Return b.DirectoryPath
     End Function

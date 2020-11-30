@@ -84,7 +84,7 @@ End Class
 Public Class OrderCollection
     Implements IEnumerable(Of Order)
 
-    Dim items As New List(Of Order)
+    ReadOnly items As New List(Of Order)
 
     Public Property Item(ByVal index As Integer) As Order
         Get

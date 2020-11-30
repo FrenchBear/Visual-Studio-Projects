@@ -11,7 +11,7 @@ Imports System.Reflection
 
 <AttributeUsage(AttributeTargets.Class)> Public Class MonAttribut
     Inherits System.Attribute
-    Private iPriv As Integer
+    Private ReadOnly iPriv As Integer
     Private sInfo As String
 
     Public Sub New(ByVal iVal As Integer)
@@ -28,7 +28,7 @@ Imports System.Reflection
         End Set
     End Property
 
-    Public ReadOnly Property iFlags() As Integer
+    Public ReadOnly Property IFlags() As Integer
         Get
             Return iPriv
         End Get
@@ -72,7 +72,7 @@ Class MyApp
 
         Dim m As MonAttribut
         m = CType(tob.GetCustomAttributes(tat, False)(0), MonAttribut)
-        Console.WriteLine("{0}, {1}", m.iFlags, m.Info)
+        Console.WriteLine("{0}, {1}", m.IFlags, m.Info)
     End Sub
 End Class
 

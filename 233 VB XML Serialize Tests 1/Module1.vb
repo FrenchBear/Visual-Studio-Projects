@@ -89,25 +89,28 @@ Public Class Test
         Dim serializer As New XmlSerializer(GetType(AllPurchaseOrders))
         Dim writer As New StreamWriter(filename)
 
-        Dim po1 As New PurchaseOrder()
-        po1.Number = 1
-        ' Create an address to ship and bill to.
-        Dim billAddress As New Address()
-        billAddress.Name = "Teresa Atkinson"
-        billAddress.Line1 = "1 Main St."
-        billAddress.City = "AnyTown"
-        billAddress.State = "WA"
-        billAddress.Zip = "00000"
-        ' Set ShipTo and BillTo to the same addressee.
+        Dim po1 As New PurchaseOrder With {
+            .Number = 1
+        }
+            ' Create an address to ship and bill to.
+        Dim billAddress As New Address With {
+            .Name = "Teresa Atkinson",
+            .Line1 = "1 Main St.",
+            .City = "AnyTown",
+            .State = "WA",
+            .Zip = "00000"
+        }
+            ' Set ShipTo and BillTo to the same addressee.
         po1.ShipTo = billAddress
         po1.OrderDate = System.DateTime.Now.ToLongDateString()
 
         ' Create an OrderedItem object.
-        Dim i1 As New OrderedItem()
-        i1.ItemName = "Widget S"
-        i1.Description = "Small widget"
-        i1.UnitPrice = CDec(5.23)
-        i1.Quantity = 3
+        Dim i1 As New OrderedItem With {
+            .ItemName = "Widget S",
+            .Description = "Small widget",
+            .UnitPrice = CDec(5.23),
+            .Quantity = 3
+        }
         i1.Calculate()
 
         ' Insert the item into the array.
@@ -125,25 +128,28 @@ Public Class Test
         po1.TotalCost = po1.SubTotal + po1.ShipCost
 
 
-        Dim po2 As New PurchaseOrder()
-        po2.Number = 2
-        ' Create an address to ship and bill to.
-        Dim billAddress2 As New Address()
-        billAddress2.Name = "John Doe"
-        billAddress2.Line1 = "8343 Colby Pkwy"
-        billAddress2.City = "Urb"
-        billAddress2.State = "IA"
-        billAddress2.Zip = "50322"
-        ' Set ShipTo and BillTo to the same addressee.
+        Dim po2 As New PurchaseOrder With {
+            .Number = 2
+        }
+            ' Create an address to ship and bill to.
+        Dim billAddress2 As New Address With {
+            .Name = "John Doe",
+            .Line1 = "8343 Colby Pkwy",
+            .City = "Urb",
+            .State = "IA",
+            .Zip = "50322"
+        }
+            ' Set ShipTo and BillTo to the same addressee.
         po2.ShipTo = billAddress2
         po2.OrderDate = System.DateTime.Now.ToLongDateString()
 
         ' Create an OrderedItem object.
-        Dim i2 As New OrderedItem()
-        i2.ItemName = "Sprocket K"
-        i2.Description = "Small sprocket"
-        i2.UnitPrice = CDec(3.14)
-        i2.Quantity = 2
+        Dim i2 As New OrderedItem With {
+            .ItemName = "Sprocket K",
+            .Description = "Small sprocket",
+            .UnitPrice = CDec(3.14),
+            .Quantity = 2
+        }
         i2.Calculate()
 
         ' Insert the item into the array.

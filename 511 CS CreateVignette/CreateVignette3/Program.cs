@@ -27,10 +27,10 @@ namespace CreateVignette
 
     class Test
     {
-        string SourceFolder = @"D:\A_Copier\2013-06 Vacances AK et YT (Extrait) HR";
-        string TargetFolder = @"C:\Temp";
-        int LargeSideSize = 2500;
-        int JpegQuality = 90;
+        readonly string SourceFolder = @"D:\A_Copier\2013-06 Vacances AK et YT (Extrait) HR";
+        readonly string TargetFolder = @"C:\Temp";
+        readonly int LargeSideSize = 2500;
+        readonly int JpegQuality = 90;
 
         public string ConvertImage(string fileName)
         {

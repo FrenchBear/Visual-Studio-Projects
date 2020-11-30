@@ -1,8 +1,9 @@
 ﻿Module Module1
     Sub Main()
-        Dim v As maClasse = New maClasse
-        v.x = 1
-        v.y = 2
+        Dim v As maClasse = New maClasse With {
+            .x = 1,
+            .y = 2
+        }
 
         Console.Write("(Pause)")
         Console.ReadLine()

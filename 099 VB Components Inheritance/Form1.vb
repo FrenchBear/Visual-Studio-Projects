@@ -28,7 +28,7 @@ Public Class Form1
     End Sub
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
@@ -116,7 +116,7 @@ End Class
 
 ' Note: does not inherit from ListItem...
 Class ListIemPerso
-    Private m_sName As String
+    Private ReadOnly m_sName As String
 
     Sub New(ByVal sName As String)
         m_sName = sName
@@ -131,8 +131,8 @@ End Class
 Class ArticleTreeNode
     Inherits Windows.Forms.TreeNode
 
-    Private sNom As String
-    Private fPrix As Single
+    Private ReadOnly sNom As String
+    Private ReadOnly fPrix As Single
 
     Sub New(ByVal sNewNom As String, ByVal fNewPrix As Single)
         fPrix = fNewPrix

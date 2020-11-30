@@ -29,7 +29,7 @@ namespace CS422
 
     class SomeClass
     {
-        private int offset = 2;
+        private readonly int offset = 2;
 
         // test of a closure accessing instance local variable and instance class variable
         public Func<int, int> getDelegate()
@@ -62,9 +62,11 @@ namespace CS422
         public Func<int, int> getDelegate2()
         {
             DisplayClass1 locals2;
-            locals2 = new DisplayClass1();
-            locals2.__this = this;
-            locals2.sum = 0;
+            locals2 = new DisplayClass1
+            {
+                __this = this,
+                sum = 0
+            };
             return (Func<int, int>)locals2.getDelegate__0;
         }
     }

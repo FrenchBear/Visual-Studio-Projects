@@ -7,6 +7,10 @@ Imports System.Drawing
 Imports System.Windows.Forms
 
 
+#Disable Warning IDE1006 ' Naming Styles
+#Disable Warning IDE0052 ' Remove unread private members
+
+
 Public Class frmZoo
     Inherits System.Windows.Forms.Form
 
@@ -28,18 +32,18 @@ Public Class frmZoo
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
     Private WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Private WithEvents btnTypeName As System.Windows.Forms.Button
+    Private WithEvents BtnTypeName As System.Windows.Forms.Button
     Private WithEvents CheckBox1 As System.Windows.Forms.CheckBox
     Private WithEvents TabPage2 As System.Windows.Forms.TabPage
     Private WithEvents TabPage1 As System.Windows.Forms.TabPage
     Private WithEvents TabControl1 As System.Windows.Forms.TabControl
 
-    Private WithEvents lblChat As System.Windows.Forms.Label
-    Private WithEvents lblChien As System.Windows.Forms.Label
-    Private WithEvents txtChat As System.Windows.Forms.TextBox
-    Private WithEvents txtChien As System.Windows.Forms.TextBox
+    Private WithEvents LblChat As System.Windows.Forms.Label
+    Private WithEvents LblChien As System.Windows.Forms.Label
+    Private WithEvents TxtChat As System.Windows.Forms.TextBox
+    Private WithEvents TxtChien As System.Windows.Forms.TextBox
     Private WithEvents Button1 As System.Windows.Forms.Button
 
     Dim WithEvents Form1 As System.Windows.Forms.Form
@@ -48,17 +52,17 @@ Public Class frmZoo
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Me.lblChat = New System.Windows.Forms.Label()
+        Me.LblChat = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.btnTypeName = New System.Windows.Forms.Button()
-        Me.lblChien = New System.Windows.Forms.Label()
+        Me.BtnTypeName = New System.Windows.Forms.Button()
+        Me.LblChien = New System.Windows.Forms.Label()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.txtChat = New System.Windows.Forms.TextBox()
+        Me.TxtChat = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.txtChien = New System.Windows.Forms.TextBox()
+        Me.TxtChien = New System.Windows.Forms.TextBox()
         Me.TabPage2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -66,17 +70,17 @@ Public Class frmZoo
         '
         'lblChat
         '
-        Me.lblChat.AutoSize = True
-        Me.lblChat.Location = New System.Drawing.Point(40, 56)
-        Me.lblChat.Name = "lblChat"
-        Me.lblChat.Size = New System.Drawing.Size(38, 13)
-        Me.lblChat.TabIndex = 4
-        Me.lblChat.Text = "Label2"
-        Me.lblChat.Visible = False
+        Me.LblChat.AutoSize = True
+        Me.LblChat.Location = New System.Drawing.Point(40, 56)
+        Me.LblChat.Name = "lblChat"
+        Me.LblChat.Size = New System.Drawing.Size(38, 13)
+        Me.LblChat.TabIndex = 4
+        Me.LblChat.Text = "Label2"
+        Me.LblChat.Visible = False
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.AddRange(New System.Windows.Forms.Control() {Me.TextBox1, Me.btnTypeName})
+        Me.TabPage2.Controls.AddRange(New System.Windows.Forms.Control() {Me.TextBox1, Me.BtnTypeName})
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Size = New System.Drawing.Size(276, 122)
@@ -95,21 +99,21 @@ Public Class frmZoo
         '
         'btnTypeName
         '
-        Me.btnTypeName.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
-        Me.btnTypeName.Location = New System.Drawing.Point(168, 16)
-        Me.btnTypeName.Name = "btnTypeName"
-        Me.btnTypeName.Size = New System.Drawing.Size(92, 24)
-        Me.btnTypeName.TabIndex = 0
-        Me.btnTypeName.Text = "TypeName"
+        Me.BtnTypeName.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.BtnTypeName.Location = New System.Drawing.Point(168, 16)
+        Me.BtnTypeName.Name = "btnTypeName"
+        Me.BtnTypeName.Size = New System.Drawing.Size(92, 24)
+        Me.BtnTypeName.TabIndex = 0
+        Me.BtnTypeName.Text = "TypeName"
         '
         'lblChien
         '
-        Me.lblChien.AutoSize = True
-        Me.lblChien.Location = New System.Drawing.Point(40, 24)
-        Me.lblChien.Name = "lblChien"
-        Me.lblChien.Size = New System.Drawing.Size(40, 13)
-        Me.lblChien.TabIndex = 3
-        Me.lblChien.Text = "Chien :"
+        Me.LblChien.AutoSize = True
+        Me.LblChien.Location = New System.Drawing.Point(40, 24)
+        Me.LblChien.Name = "lblChien"
+        Me.LblChien.Size = New System.Drawing.Size(40, 13)
+        Me.LblChien.TabIndex = 3
+        Me.LblChien.Text = "Chien :"
         '
         'TabControl1
         '
@@ -142,10 +146,10 @@ Public Class frmZoo
         '
         'txtChat
         '
-        Me.txtChat.Location = New System.Drawing.Point(88, 48)
-        Me.txtChat.Name = "txtChat"
-        Me.txtChat.TabIndex = 2
-        Me.txtChat.Text = "Félix"
+        Me.TxtChat.Location = New System.Drawing.Point(88, 48)
+        Me.TxtChat.Name = "txtChat"
+        Me.TxtChat.TabIndex = 2
+        Me.TxtChat.Text = "Félix"
         '
         'Button1
         '
@@ -156,16 +160,16 @@ Public Class frmZoo
         '
         'txtChien
         '
-        Me.txtChien.Location = New System.Drawing.Point(88, 16)
-        Me.txtChien.Name = "txtChien"
-        Me.txtChien.TabIndex = 1
-        Me.txtChien.Text = "Rex"
+        Me.TxtChien.Location = New System.Drawing.Point(88, 16)
+        Me.TxtChien.Name = "txtChien"
+        Me.TxtChien.TabIndex = 1
+        Me.TxtChien.Text = "Rex"
         '
         'frmZoo
         '
         Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
         Me.ClientSize = New System.Drawing.Size(292, 273)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.TabControl1, Me.lblChat, Me.lblChien, Me.txtChat, Me.txtChien, Me.Button1})
+        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.TabControl1, Me.LblChat, Me.LblChien, Me.TxtChat, Me.TxtChien, Me.Button1})
         Me.Name = "frmZoo"
         Me.Text = "Zoo"
         Me.TabPage2.ResumeLayout(False)
@@ -177,15 +181,15 @@ Public Class frmZoo
 
 #End Region
 
-    Private Sub btnTypeName_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnTypeName.Click
+    Private Sub btnTypeName_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnTypeName.Click
         Dim i As Integer
         MsgBox("TypeName: " & TypeName(i))
     End Sub
 
     Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Dim Rex As New Chien(CStr(txtChien.Text))
+        Dim Rex As New Chien(CStr(TxtChien.Text))
         Dim Fluffy As New Chiot("Fluffy")
-        Dim Félix As New Chat(CStr(txtChat.Text))
+        Dim Félix As New Chat(CStr(TxtChat.Text))
         Dim Pollux As Chien = Nothing
 
         TestClasse(Rex)

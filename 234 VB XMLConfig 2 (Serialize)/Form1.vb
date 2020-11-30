@@ -39,34 +39,40 @@ Public Class Form1
 
     Public Sub LoadConfig()
         If Not My.Computer.FileSystem.FileExists(sConfigPath) Then
-            Dim c1 As New OneConfig
-            c1.sConfigName = "Config #1"
-            c1.sServer = "Server1"
-            c1.sDatabase = "Database1"
-            c1.tsSPExclusions = New String() {"Exclusion 1", "Exclusion 2", "Exclusion 3"}
-            Dim sf1 As New SourceFolder
-            sf1.sPath = "Path 1"
-            sf1.tsExtensions = New String() {"*.sql", "*.prc"}
-            Dim sf2 As New SourceFolder
-            sf2.sPath = "Path 2"
-            sf2.tsExtensions = New String() {"*.*"}
+            Dim c1 As New OneConfig With {
+                .sConfigName = "Config #1",
+                .sServer = "Server1",
+                .sDatabase = "Database1",
+                .tsSPExclusions = New String() {"Exclusion 1", "Exclusion 2", "Exclusion 3"}
+            }
+            Dim sf1 As New SourceFolder With {
+                .sPath = "Path 1",
+                .tsExtensions = New String() {"*.sql", "*.prc"}
+            }
+            Dim sf2 As New SourceFolder With {
+                .sPath = "Path 2",
+                .tsExtensions = New String() {"*.*"}
+            }
             ReDim c1.tsfSourceFolders(1)
             c1.tsfSourceFolders(0) = sf1
             c1.tsfSourceFolders(1) = sf2
 
-            Dim c2 As New OneConfig
-            c2.sConfigName = "Config #2"
-            c2.sServer = "Server2"
-            c2.sDatabase = "Database2"
-            c2.tsSPExclusions = New String() {"Exclusion 4", "Exclusion 5"}
-            Dim sf3 As New SourceFolder
-            sf3.sPath = "Path 3"
-            sf3.tsExtensions = New String() {"*.sql", "*.prc", "*.udf"}
+            Dim c2 As New OneConfig With {
+                .sConfigName = "Config #2",
+                .sServer = "Server2",
+                .sDatabase = "Database2",
+                .tsSPExclusions = New String() {"Exclusion 4", "Exclusion 5"}
+            }
+            Dim sf3 As New SourceFolder With {
+                .sPath = "Path 3",
+                .tsExtensions = New String() {"*.sql", "*.prc", "*.udf"}
+            }
             ReDim c2.tsfSourceFolders(0)
             c2.tsfSourceFolders(0) = sf3
 
-            all = New CheckSPConfigurations
-            all.savedOn = Now
+            all = New CheckSPConfigurations With {
+                .savedOn = Now
+            }
             ReDim all.Configs(1)
             all.Configs(0) = c1
             all.Configs(1) = c2

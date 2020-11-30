@@ -27,10 +27,10 @@ namespace CreateVignette
 
     class Test
     {
-        string SourceFolder = @"C:\temp\F1";
-        string TargetFolder = @"D:\Temp";
-        int LargeSideSize = 2500;
-        int JpegQuality = 90;
+        readonly string SourceFolder = @"C:\temp\F1";
+        readonly string TargetFolder = @"D:\Temp";
+        readonly int LargeSideSize = 2500;
+        readonly int JpegQuality = 90;
 
         public string ConvertImage(string fileName)
         {
@@ -77,8 +77,10 @@ namespace CreateVignette
             }
 
             BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            encoder.QualityLevel = JpegQuality;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder
+            {
+                QualityLevel = JpegQuality
+            };
             encoder.Frames.Add(BitmapFrame.Create(bi2));
             using (FileStream output = new FileStream(vignettePath, FileMode.Create))
             {

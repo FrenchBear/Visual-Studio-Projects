@@ -76,10 +76,11 @@ Public Class frmFileSystemWatch
         For Each fiFile In colFiles
             If Not lvNewFiles.Items.ContainsKey(LCase(fiFile.FullName)) Then
                 ListTrace("Add " & fiFile.FullName)
-                flvi = New FileListViewItem
-                flvi.sFullName = fiFile.FullName
-                flvi.Name = LCase(fiFile.FullName)
-                flvi.Text = fiFile.Name
+                flvi = New FileListViewItem With {
+                    .sFullName = fiFile.FullName,
+                    .Name = LCase(fiFile.FullName),
+                    .Text = fiFile.Name
+                }
                 flvi.SubItems.Add(fiFile.Length.ToString)
                 flvi.SubItems.Add(fiFile.Extension)
 

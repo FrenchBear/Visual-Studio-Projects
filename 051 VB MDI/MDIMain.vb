@@ -26,7 +26,7 @@ Public Class Form1
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
     Private WithEvents cmdWindowTileV As System.Windows.Forms.MenuItem
     Private WithEvents cmdWindowTileH As System.Windows.Forms.MenuItem
     Private WithEvents cmdWindowCascade As System.Windows.Forms.MenuItem
@@ -123,15 +123,17 @@ Public Class Form1
 #End Region
 
     Protected Sub cmdNouveau1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdNouveau1.Click
-        Dim f As New frmDocument1
-        f.MdiParent = Me
+        Dim f As New frmDocument1 With {
+            .MdiParent = Me
+        }
         f.Show()
         f.SetFont("Arial")
     End Sub
 
     Protected Sub cmdNouveau2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdNouveau2.Click
-        Dim f As New frmDocument2
-        f.MdiParent = Me
+        Dim f As New frmDocument2 With {
+            .MdiParent = Me
+        }
         f.Show()
     End Sub
 

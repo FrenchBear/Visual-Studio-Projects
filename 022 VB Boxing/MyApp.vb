@@ -6,6 +6,9 @@
 
 Imports System.Collections
 
+
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+
 Module Module1
 
     Sub Main()

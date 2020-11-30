@@ -29,13 +29,13 @@ namespace CS523B_UnblockMe_Solver_Visual
         /* From ICommand */
         public bool CanExecute(object parameter)
         {
-            return canExecute == null ? true : canExecute((T)parameter);
+            return canExecute == null || canExecute((T)parameter);
         }
 
         /* From ICommand */
         public void Execute(object parameter)
         {
-            if (execute != null) execute((T)parameter);
+            execute?.Invoke((T)parameter);
         }
 
         // The 'black magic' part: according to help, CommandManager.RequerySuggested Event occurs when the 

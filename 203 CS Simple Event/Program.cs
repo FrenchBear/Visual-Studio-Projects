@@ -96,8 +96,7 @@ namespace CS203
         // Here to simplify we raise all three events
         protected virtual void OnEngineStateChanged(EngineStateChangedEventArgs args)
         {
-            if (EngineStateChangedEvent != null)
-                EngineStateChangedEvent(this, args);
+            EngineStateChangedEvent?.Invoke(this, args);
             if (isEngineOn && EngineStartedEvent != null)
                 EngineStartedEvent(this, args);
             if (!isEngineOn && EngineStoppedEvent != null)

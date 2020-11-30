@@ -30,7 +30,7 @@ namespace CS525
             long n;
             for (n = 2; n < 100000000; n++)
             {
-                long fnp1 = fn + gcd(n, fn);
+                long fnp1 = fn + Gcd(n, fn);
                 long gn = fnp1 - fn;
                 if (gn == 191) Debugger.Break();
                 if (gn > 1)
@@ -44,7 +44,7 @@ namespace CS525
         }
 
 
-        static long gcd(long a, long b)
+        static long Gcd(long a, long b)
         {
             for (;;)
             {

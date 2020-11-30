@@ -17,9 +17,10 @@ public class Form1 : Form
 {
     private System.ComponentModel.Container components;
     private System.Windows.Forms.ListBox listBox1;
-    private Random r;
-    private SortedList s, sh;
-    private Hashtable h;
+    private readonly Random r;
+    private readonly SortedList s;
+    private SortedList sh;
+    private readonly Hashtable h;
 
     public delegate void sub();
 

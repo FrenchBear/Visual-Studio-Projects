@@ -31,9 +31,7 @@ namespace CS419
         {
             Title = title + " - WpfDrawing3Window (Using StreamGeometry)";
             Wpf3LSystemRenderer wr = new Wpf3LSystemRenderer(s, angle);
-            StreamGeometry g;
-            Rect r;
-            wr.Rend(0, 0, out g, out r);
+            wr.Rend(0, 0, out StreamGeometry g, out Rect r);
             double maxExtent = Math.Max(r.Width, r.Height);
             myGeometryDrawing.Pen = new Pen(Brushes.Black, Math.Sqrt(maxExtent) / 10.0);
             myGeometryDrawing.Geometry = g;

@@ -9,6 +9,7 @@ using System;
 using System.Collections;
 using System.Collections.Specialized;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 class TestCollections
 {
@@ -26,12 +27,13 @@ class TestCollections
 
     public static void TestHashtable()
     {
-        Hashtable h = new Hashtable();
-
-        h.Add("G", "Grenoble");
-        h.Add("R", "Fontaine");
-        h.Add("S", "Spip");
-        h.Add("H", "Roanne");
+        Hashtable h = new Hashtable
+        {
+            { "G", "Grenoble" },
+            { "R", "Fontaine" },
+            { "S", "Spip" },
+            { "H", "Roanne" }
+        };
         try
         { h.Add("G", "Grenoble"); }
         catch
@@ -46,7 +48,7 @@ class TestCollections
     }
 
 
-    class myComparer : IEqualityComparer
+    class MyComparer : IEqualityComparer
     {
         public new bool Equals(object x, object y)
         {
@@ -62,11 +64,11 @@ class TestCollections
 
     public static void TestCaseInsensitiveHashtable()
     {
-        Hashtable h = new Hashtable(new myComparer());
+        Hashtable h = new Hashtable(new MyComparer());
 
         // With IEqualityComparer:
         Hashtable h2 = new Hashtable(StringComparer.OrdinalIgnoreCase);
-        // Seee http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/StringsinNET20.asp
+                               // Seee http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/StringsinNET20.asp
 
 
         //IEqualityComparer comparer = new CaseInsensitiveComparer.Default();
@@ -93,12 +95,13 @@ class TestCollections
     // Une SortedList est triée en permanence
     public static void TestSortedList()
     {
-        SortedList s = new SortedList();
-
-        s.Add("G", "Grenoble");
-        s.Add("R", "Fontaine");
-        s.Add("S", "Spip");
-        s.Add("H", "Roanne");
+        SortedList s = new SortedList
+        {
+            { "G", "Grenoble" },
+            { "R", "Fontaine" },
+            { "S", "Spip" },
+            { "H", "Roanne" }
+        };
         try
         { s.Add("G", "Grenoble"); }
         catch

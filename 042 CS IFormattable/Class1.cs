@@ -7,7 +7,7 @@ using System;
 
 struct Complexe : IFormattable
 {
-    private double r, i;
+    private readonly double r, i;
 
     public Complexe(double r, double i)
     {

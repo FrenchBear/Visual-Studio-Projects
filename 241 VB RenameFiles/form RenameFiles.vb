@@ -99,9 +99,9 @@ Public Class frmRenameFiles
     Private Sub Analyze(ByVal sRootPath As String, ByVal sFolder As String)
         Dim s As String = sRootPath
         If sFolder <> "" Then
-            If vb.Right(s, 1) <> "\" Then s = s & "\"
-            s = s & sFolder
-            sFolder = sFolder & "\"
+            If vb.Right(s, 1) <> "\" Then s &= "\"
+            s &= sFolder
+            sFolder &= "\"
         End If
 
         For Each sFile As String In My.Computer.FileSystem.GetFiles(s)
@@ -298,7 +298,7 @@ End Class
 Class ListViewItemComparer
     Implements IComparer
 
-    Private col, ord As Integer
+    Private ReadOnly col, ord As Integer
 
     Public Sub New()
         col = 0
