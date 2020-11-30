@@ -2,14 +2,7 @@
 // Classe WinForm dérivée
 // 2001-01-27   PV
 
-
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
-
-
+#pragma warning disable IDE0052 // Remove unread private members
 
 public sealed class MsgBox3 : MsgBox2
 {
@@ -18,7 +11,6 @@ public sealed class MsgBox3 : MsgBox2
     public MsgBox3()
     {
         InitializeComponent();
-
     }
 
     private void InitializeComponent()
@@ -28,10 +20,8 @@ public sealed class MsgBox3 : MsgBox2
         this.BackColor = System.Drawing.Color.Bisque;
     }
 
-
     public override void Info(string sMsg)
     {
         base.Info("Info MsgBox3:\r\n" + sMsg);
     }
 }
-

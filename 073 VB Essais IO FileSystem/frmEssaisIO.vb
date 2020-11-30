@@ -2,8 +2,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmEssaisIO
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -18,7 +20,7 @@ Public Class frmEssaisIO
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -31,24 +33,25 @@ Public Class frmEssaisIO
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents btnEssaisIO As System.Windows.Forms.Button
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnEssaisIO = New System.Windows.Forms.Button
+    Friend WithEvents btnEssaisIO As Button
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnEssaisIO = New Button
         Me.SuspendLayout()
         '
         'btnEssaisIO
         '
-        Me.btnEssaisIO.Location = New System.Drawing.Point(200, 16)
+        Me.btnEssaisIO.Location = New Point(200, 16)
         Me.btnEssaisIO.Name = "btnEssaisIO"
         Me.btnEssaisIO.TabIndex = 0
         Me.btnEssaisIO.Text = "Essais I/O"
         '
         'frmEssaisIO
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(292, 266)
         Me.Controls.Add(Me.btnEssaisIO)
         Me.Name = "frmEssaisIO"
         Me.Text = "Essais I/O"
@@ -58,13 +61,13 @@ Public Class frmEssaisIO
 
 #End Region
 
-    Private Sub btnEssaisIO_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEssaisIO.Click
-        Dim fbm As System.IO.DirectoryInfo
-        fbm = New System.IO.DirectoryInfo("C:\Music\MP3P\Eurovision")
+    Private Sub btnEssaisIO_Click(sender As System.Object, e As EventArgs) Handles btnEssaisIO.Click
+        Dim fbm As IO.DirectoryInfo
+        fbm = New IO.DirectoryInfo("C:\Music\MP3P\Eurovision")
         MsgBox("Nb fichiers: " & fbm.GetFiles.Length)
-        For Each f As System.IO.FileInfo In fbm.GetFiles
+        For Each f As IO.FileInfo In fbm.GetFiles
             Debug.WriteLine(f.Name)
         Next
     End Sub
-End Class
 
+End Class

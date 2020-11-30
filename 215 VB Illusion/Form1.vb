@@ -3,15 +3,18 @@
 
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class Form1
     Dim picBitmap As Bitmap
     Dim g As Graphics
 
-    ReadOnly Black As System.Drawing.Color = Color.Black
-    ReadOnly White As System.Drawing.Color = Color.White
+    ReadOnly Black As Color = Color.Black
+    ReadOnly White As Color = Color.White
 
     ' Paramétrage du dessin
     Const k1_init As Single = 0.05       ' Marge des petits carrés
+
     Const k2_init As Single = 0.27        ' Taille d'un petit carré
 
     Dim k1 As Single = k1_init
@@ -20,7 +23,7 @@ Public Class Form1
     ' Module de dessin
     Dim iLastSize As Integer
 
-    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         Dim x1, y1, iSize As Integer
         x1 = Pic.Size.Width \ 15
         y1 = Pic.Size.Height \ 15
@@ -81,19 +84,19 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub Pic_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pic.Click
+    Private Sub Pic_Click(sender As System.Object, e As EventArgs) Handles Pic.Click
         Clipboard.Clear()
         Clipboard.SetImage(picBitmap)
         Beep()
     End Sub
 
-    Private Sub tbk1_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbk1.Scroll
+    Private Sub tbk1_Scroll(sender As System.Object, e As EventArgs) Handles tbk1.Scroll
         k1 = tbk1.Value / 100
         lblk1.Text = "k1 " & k1
         Redraw()
     End Sub
 
-    Private Sub tbk2_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbk2.Scroll
+    Private Sub tbk2_Scroll(sender As System.Object, e As EventArgs) Handles tbk2.Scroll
         k2 = tbk2.Value / 100
         lblk2.Text = "k2 " & k2
         Redraw()

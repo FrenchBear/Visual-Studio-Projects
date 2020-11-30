@@ -14,9 +14,8 @@ public struct DBInt
 
     public bool IsNull { get { return !defined; } }
 
-
     // Pas de constructeur sans paramètre car c'est un type struct
-    DBInt(int x)
+    private DBInt(int x)
     {
         value = x;
         defined = true;
@@ -32,6 +31,7 @@ public struct DBInt
     {
         return new DBInt(x);
     }
+
     public static explicit operator int(DBInt x)
     {
         if (x.defined)
@@ -49,8 +49,7 @@ public struct DBInt
     }
 }
 
-
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {

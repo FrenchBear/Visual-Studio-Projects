@@ -1,18 +1,14 @@
 // Application TuneTown
 // D'après MSDN Février 2001
-// 2001-02-03   PV 
+// 2001-02-03   PV
 // 2001-08-19   PV	Beta2
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
-using System.Windows.Forms;
-using System.Data;
 using System.IO;
-
+using System.Windows.Forms;
 
 public class MainForm : System.Windows.Forms.Form
 {
@@ -40,22 +36,22 @@ public class MainForm : System.Windows.Forms.Form
         this.AddButton = new System.Windows.Forms.Button();
         this.RemoveButton = new System.Windows.Forms.Button();
         this.SuspendLayout();
-        // 
+        //
         // EditButton
-        // 
+        //
         this.EditButton.Location = new System.Drawing.Point(432, 56);
         this.EditButton.Name = "EditButton";
         this.EditButton.TabIndex = 2;
         this.EditButton.Text = "&Edit";
         this.EditButton.Click += new System.EventHandler(this.OnEditButtonClicked);
-        // 
+        //
         // TitleHeader
-        // 
+        //
         this.TitleHeader.Text = "Title";
         this.TitleHeader.Width = 100;
-        // 
+        //
         // TuneView
-        // 
+        //
         this.TuneView.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
           | System.Windows.Forms.AnchorStyles.Left)
           | System.Windows.Forms.AnchorStyles.Right);
@@ -75,37 +71,37 @@ public class MainForm : System.Windows.Forms.Form
         this.TuneView.TabIndex = 0;
         this.TuneView.View = System.Windows.Forms.View.Details;
         this.TuneView.DoubleClick += new System.EventHandler(this.OnItemDoubleClicked);
-        // 
+        //
         // ArtistHeader
-        // 
+        //
         this.ArtistHeader.Text = "Artist";
         this.ArtistHeader.Width = 100;
-        // 
+        //
         // CommentHeader
-        // 
+        //
         this.CommentHeader.Text = "Comment";
         this.CommentHeader.Width = 200;
-        // 
+        //
         // AddButton
-        // 
+        //
         this.AddButton.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
         this.AddButton.Location = new System.Drawing.Point(432, 8);
         this.AddButton.Name = "AddButton";
         this.AddButton.TabIndex = 1;
         this.AddButton.Text = "&Add";
         this.AddButton.Click += new System.EventHandler(this.OnAddButtonClicked);
-        // 
+        //
         // RemoveButton
-        // 
+        //
         this.RemoveButton.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
         this.RemoveButton.Location = new System.Drawing.Point(432, 104);
         this.RemoveButton.Name = "RemoveButton";
         this.RemoveButton.TabIndex = 3;
         this.RemoveButton.Text = "&Remove";
         this.RemoveButton.Click += new System.EventHandler(this.OnRemoveButtonClicked);
-        // 
+        //
         // MainForm
-        // 
+        //
         this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
         this.ClientSize = new System.Drawing.Size(512, 261);
         this.Controls.AddRange(new System.Windows.Forms.Control[] {
@@ -116,9 +112,7 @@ public class MainForm : System.Windows.Forms.Form
         this.Name = "MainForm";
         this.Text = "TuneTown";
         this.ResumeLayout(false);
-
     }
-
 
     private void OnAddButtonClicked(object sender, EventArgs e)
     {
@@ -131,7 +125,6 @@ public class MainForm : System.Windows.Forms.Form
             item.Focused = true;
         }
     }
-
 
     private void OnEditButtonClicked(object sender, EventArgs e)
     {
@@ -153,12 +146,9 @@ public class MainForm : System.Windows.Forms.Form
                     item.SubItems[1].Text = dlg.Artist;
                     item.SubItems[2].Text = dlg.Comment;
                 }
-
             }
         }
-
     }
-
 
     private void OnRemoveButtonClicked(object sender, EventArgs e)
     {
@@ -170,12 +160,10 @@ public class MainForm : System.Windows.Forms.Form
         }
     }
 
-
     private void OnItemDoubleClicked(object sender, EventArgs e)
     {
         OnEditButtonClicked(sender, e);
     }
-
 
     protected override void OnClosing(CancelEventArgs e)
     {
@@ -209,7 +197,6 @@ public class MainForm : System.Windows.Forms.Form
             MessageBox.Show(ex1.Message);
         }
     }
-
 
     protected void InitializeListView()
     {
@@ -248,7 +235,6 @@ public class MainForm : System.Windows.Forms.Form
             // On ne fait rien, le fichier n'existe pas
         }
     }
-
 
     public static void Main(string[] args)
     {

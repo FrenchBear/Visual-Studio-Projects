@@ -2,11 +2,7 @@
 ' Unit Tests for class Fraction
 ' 2012-04-09    PV
 
-Imports System
-Imports System.Collections.Generic
-Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports VB425
-
 
 '''<summary>
 '''This is a test class for FractionTest and is intended
@@ -31,6 +27,7 @@ Public Class FractionTest
     End Property
 
 #Region "Additional test attributes"
+
     '
     'You can use the following additional attributes as you write your tests:
     '
@@ -54,8 +51,8 @@ Public Class FractionTest
     'Public Sub MyTestCleanup()
     'End Sub
     '
-#End Region
 
+#End Region
 
     '''<summary>
     '''A test for Fraction Constructor
@@ -125,7 +122,7 @@ Public Class FractionTest
     '''A test for op_Addition
     '''</summary>
     <TestMethod()>
-    Public Sub op_AdditionTest()
+    Public Sub Op_AdditionTest()
         Dim f1 As Fraction = New Fraction(1, 2)
         Dim f2 As Fraction = New Fraction(3, 4)
         Dim expected As Fraction = New Fraction(5, 4)
@@ -143,7 +140,7 @@ Public Class FractionTest
     '''A test for op_Subtraction
     '''</summary>
     <TestMethod()>
-    Public Sub op_SubtractionTest()
+    Public Sub Op_SubtractionTest()
         Dim f1 As Fraction = New Fraction(4, 3)
         Dim f2 As Fraction = New Fraction(1, 2)
         Dim expected As Fraction = New Fraction(5, 6)
@@ -171,7 +168,7 @@ Public Class FractionTest
     '''A test for op_Equality and op_Inequality
     '''</summary>
     <TestMethod()>
-    Public Sub op_EqualityTest()
+    Public Sub Op_EqualityTest()
         Dim f1 As Fraction = New Fraction(7, 11)
         Dim f2 As Fraction = New Fraction(14, 22)
         Assert.AreEqual(True, f1 = f2)

@@ -33,7 +33,8 @@ Module Module1
     End Sub
 
 #Disable Warning BC40000
-    Private Sub AddNode(ByVal Doc As XmlDataDocument, ByVal BaseNode As XmlNode, ByVal sName As String, ByVal sVal As String)
+
+    Private Sub AddNode(Doc As XmlDataDocument, BaseNode As XmlNode, sName As String, sVal As String)
         If sVal = vbNullString Then Exit Sub
         Dim PropElement As XmlElement
         PropElement = Doc.CreateElement(sName)
@@ -42,4 +43,3 @@ Module Module1
     End Sub
 
 End Module
-

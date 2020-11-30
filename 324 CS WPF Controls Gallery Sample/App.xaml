@@ -5,15 +5,15 @@
 
     <Application.Resources>
         <Style x:Key="itemHeaderStyler">
-            <Setter Property="ListBoxItem.Margin" Value="0,2,0,5"/>
-            <Setter Property="ListBoxItem.Padding" Value="2"/>
-            <Setter Property="ListBoxItem.FontFamily" Value="Verdana"/>
-            <Setter Property="ListBoxItem.FontWeight" Value="Bold"/>
-            <Setter Property="ListBoxItem.FontSize" Value="12"/>
+            <Setter Property="ListBoxItem.Margin" Value="0,2,0,5" />
+            <Setter Property="ListBoxItem.Padding" Value="2" />
+            <Setter Property="ListBoxItem.FontFamily" Value="Verdana" />
+            <Setter Property="ListBoxItem.FontWeight" Value="Bold" />
+            <Setter Property="ListBoxItem.FontSize" Value="12" />
         </Style>
 
         <Style x:Key="imageStyler">
-            <Setter Property="TextBlock.Margin" Value="15"/>
+            <Setter Property="TextBlock.Margin" Value="15" />
         </Style>
 
         <Style x:Key="HeaderStyle">

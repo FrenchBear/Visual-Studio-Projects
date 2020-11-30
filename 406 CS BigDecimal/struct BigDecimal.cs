@@ -8,17 +8,16 @@ using System;
 using System.Numerics;
 using System.Text;
 
-
 namespace BigDecimalNS
 {
-    struct BigDecimal : IComparable<BigDecimal>, IComparable
+    internal struct BigDecimal : IComparable<BigDecimal>, IComparable
     {
         // Definition of precision
         public const int Digits = 750;                   // Number of decimals
+
         static private readonly BigInteger ScaleFactor = BigInteger.Pow(10, Digits);    // Scale factor for storage in a BigInteger
 
         private BigInteger n;                              // Value and sign * scale factor
-
 
         public static implicit operator BigDecimal(int i)
         {
@@ -43,7 +42,6 @@ namespace BigDecimalNS
         {
             n = bn.n;
         }
-
 
         static public BigDecimal operator +(BigDecimal b1, BigDecimal b2)
         {
@@ -73,7 +71,6 @@ namespace BigDecimalNS
             return d;
         }
 
-
         static public bool operator ==(BigDecimal b1, BigDecimal b2)
         {
             return b1.n == b2.n;
@@ -83,7 +80,6 @@ namespace BigDecimalNS
         {
             return b1.n != b2.n;
         }
-
 
         static public bool operator >(BigDecimal b1, BigDecimal b2)
         {
@@ -104,7 +100,6 @@ namespace BigDecimalNS
         {
             return b1.n <= b2.n;
         }
-
 
         // Standard string representation
         public override string ToString()
@@ -157,7 +152,6 @@ namespace BigDecimalNS
             {
                 throw new ArgumentException("Object is not a BigDecimal");
             }
-
         }
 
         /*

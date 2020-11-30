@@ -26,7 +26,6 @@ namespace CS419
             base.OnKeyDown(e);
         }
 
-
         public WpfDrawing2Window(string title, IEnumerable<char> s, int angle)
             : this()
         {
@@ -43,7 +42,9 @@ namespace CS419
         {
             private PathFigure _pf;
 
-            public Wpf2LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle) { }
+            public Wpf2LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle)
+            {
+            }
 
             public void Rend(double rendingWidth, double rendingHeight, out PathFigure pf, out Rect r)
             {
@@ -71,6 +72,5 @@ namespace CS419
         {
             myGeometryDrawing.Brush = Brushes.Transparent;
         }
-
     }
 }

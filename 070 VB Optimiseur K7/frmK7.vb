@@ -3,8 +3,10 @@
 
 Imports System.IO
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -19,7 +21,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -32,65 +34,67 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtFichierPLS As System.Windows.Forms.TextBox
-    Friend WithEvents btnRecherche As System.Windows.Forms.Button
-    Friend WithEvents btnLire As System.Windows.Forms.Button
-    Friend WithEvents lvFichiers As System.Windows.Forms.ListView
-    Friend WithEvents colDurée As System.Windows.Forms.ColumnHeader
-    Friend WithEvents colFichier As System.Windows.Forms.ColumnHeader
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtFichierPLS = New System.Windows.Forms.TextBox()
-        Me.btnRecherche = New System.Windows.Forms.Button()
-        Me.btnLire = New System.Windows.Forms.Button()
-        Me.lvFichiers = New System.Windows.Forms.ListView()
-        Me.colFichier = New System.Windows.Forms.ColumnHeader()
-        Me.colDurée = New System.Windows.Forms.ColumnHeader()
+    Friend WithEvents Label1 As Label
+
+    Friend WithEvents txtFichierPLS As TextBox
+    Friend WithEvents btnRecherche As Button
+    Friend WithEvents btnLire As Button
+    Friend WithEvents lvFichiers As ListView
+    Friend WithEvents colDurée As ColumnHeader
+    Friend WithEvents colFichier As ColumnHeader
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.Label1 = New Label()
+        Me.txtFichierPLS = New TextBox()
+        Me.btnRecherche = New Button()
+        Me.btnLire = New Button()
+        Me.lvFichiers = New ListView()
+        Me.colFichier = New ColumnHeader()
+        Me.colDurée = New ColumnHeader()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(8, 8)
+        Me.Label1.Location = New Point(8, 8)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(65, 13)
+        Me.Label1.Size = New Size(65, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Fichier .pls :"
         '
         'txtFichierPLS
         '
-        Me.txtFichierPLS.Location = New System.Drawing.Point(8, 24)
+        Me.txtFichierPLS.Location = New Point(8, 24)
         Me.txtFichierPLS.Name = "txtFichierPLS"
-        Me.txtFichierPLS.Size = New System.Drawing.Size(288, 20)
+        Me.txtFichierPLS.Size = New Size(288, 20)
         Me.txtFichierPLS.TabIndex = 1
         Me.txtFichierPLS.Text = "C:\pl.pls"
         '
         'btnRecherche
         '
-        Me.btnRecherche.Location = New System.Drawing.Point(304, 24)
+        Me.btnRecherche.Location = New Point(304, 24)
         Me.btnRecherche.Name = "btnRecherche"
-        Me.btnRecherche.Size = New System.Drawing.Size(24, 23)
+        Me.btnRecherche.Size = New Size(24, 23)
         Me.btnRecherche.TabIndex = 2
         Me.btnRecherche.Text = "..."
         '
         'btnLire
         '
-        Me.btnLire.Location = New System.Drawing.Point(8, 56)
+        Me.btnLire.Location = New Point(8, 56)
         Me.btnLire.Name = "btnLire"
-        Me.btnLire.Size = New System.Drawing.Size(104, 23)
+        Me.btnLire.Size = New Size(104, 23)
         Me.btnLire.TabIndex = 3
         Me.btnLire.Text = "Lire le fichier .pls"
         '
         'lvFichiers
         '
-        Me.lvFichiers.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colFichier, Me.colDurée})
+        Me.lvFichiers.Columns.AddRange(New ColumnHeader() {Me.colFichier, Me.colDurée})
         Me.lvFichiers.GridLines = True
-        Me.lvFichiers.Location = New System.Drawing.Point(8, 88)
+        Me.lvFichiers.Location = New Point(8, 88)
         Me.lvFichiers.Name = "lvFichiers"
-        Me.lvFichiers.Size = New System.Drawing.Size(320, 424)
+        Me.lvFichiers.Size = New Size(320, 424)
         Me.lvFichiers.TabIndex = 4
         Me.lvFichiers.View = System.Windows.Forms.View.Details
         '
@@ -105,9 +109,9 @@ Public Class Form1
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(760, 526)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.lvFichiers, Me.btnLire, Me.btnRecherche, Me.txtFichierPLS, Me.Label1})
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(760, 526)
+        Me.Controls.AddRange(New Control() {Me.lvFichiers, Me.btnLire, Me.btnRecherche, Me.txtFichierPLS, Me.Label1})
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
@@ -116,10 +120,10 @@ Public Class Form1
 
 #End Region
 
-    Private Sub btnLire_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLire.Click
+    Private Sub btnLire_Click(sender As System.Object, e As EventArgs) Handles btnLire.Click
 
-        Dim sr As IO.StreamReader
-        Dim er As System.Exception
+        Dim sr As StreamReader
+        Dim er As Exception
 
         Try
             sr = File.OpenText(txtFichierPLS.Text)
@@ -161,4 +165,5 @@ Public Class Form1
         MsgBox("Fichier Ok")
 
     End Sub
+
 End Class

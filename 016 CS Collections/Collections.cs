@@ -7,11 +7,10 @@
 
 using System;
 using System.Collections;
-using System.Collections.Specialized;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-class TestCollections
+internal class TestCollections
 {
     public static void PrintKeysAndValues(IDictionary myCollection)
     {
@@ -23,7 +22,6 @@ class TestCollections
         }
         Console.WriteLine();
     }
-
 
     public static void TestHashtable()
     {
@@ -47,8 +45,7 @@ class TestCollections
         PrintKeysAndValues(h);
     }
 
-
-    class MyComparer : IEqualityComparer
+    private class MyComparer : IEqualityComparer
     {
         public new bool Equals(object x, object y)
         {
@@ -61,15 +58,13 @@ class TestCollections
         }
     }
 
-
     public static void TestCaseInsensitiveHashtable()
     {
         Hashtable h = new Hashtable(new MyComparer());
 
         // With IEqualityComparer:
         Hashtable h2 = new Hashtable(StringComparer.OrdinalIgnoreCase);
-                               // Seee http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/StringsinNET20.asp
-
+        // Seee http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/StringsinNET20.asp
 
         //IEqualityComparer comparer = new CaseInsensitiveComparer.Default();
         //Hashtable h = new Hashtable(comparer);
@@ -90,7 +85,6 @@ class TestCollections
         Console.WriteLine("CaseInsensitiveHashtable: {0} élément(s)", h.Count);
         PrintKeysAndValues(h);
     }
-
 
     // Une SortedList est triée en permanence
     public static void TestSortedList()
@@ -118,12 +112,9 @@ class TestCollections
         for (int i = 0; i < s.Count; i++)
             Console.WriteLine("{0}: {1} {2}", i, s.GetKey(i), s.GetByIndex(i));
     }
-
 }
 
-
-
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {
@@ -133,5 +124,4 @@ class MyApp
 
         Console.ReadLine();
     }
-
 }

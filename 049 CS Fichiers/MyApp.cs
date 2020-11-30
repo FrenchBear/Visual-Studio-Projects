@@ -5,7 +5,7 @@
 using System;
 using System.IO;
 
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {
@@ -37,5 +37,4 @@ class MyApp
 
         Console.ReadLine();
     }
-
 }

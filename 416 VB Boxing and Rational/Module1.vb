@@ -22,25 +22,24 @@ Module Module1
         Stop
     End Sub
 
-    Function A(ByVal x As Object, ByVal y As Object) As Object
+    Function A(x As Object, y As Object) As Object
         Return x + y
     End Function
 
 End Module
 
-
 Class Entier
     Private ReadOnly _n As Integer
 
-    Public Sub New(ByVal i As Integer)
+    Public Sub New(i As Integer)
         _n = i
     End Sub
 
-    Public Shared Operator +(ByVal e1 As Entier, ByVal e2 As Entier) As Entier
+    Public Shared Operator +(e1 As Entier, e2 As Entier) As Entier
         Return New Entier(e1._n + e2._n)
     End Operator
-End Class
 
+End Class
 
 <DebuggerDisplay("{_numerator}/{_denominator}")>
 Structure Rational
@@ -49,7 +48,7 @@ Structure Rational
     Private ReadOnly _numerator As Integer
     Private ReadOnly _denominator As Integer
 
-    Public Sub New(ByVal n As Integer, ByVal d As Integer)
+    Public Sub New(n As Integer, d As Integer)
         _numerator = n
         _denominator = d
     End Sub
@@ -70,26 +69,26 @@ Structure Rational
         Return _numerator.ToString & "/" & _denominator.ToString
     End Function
 
-    Public Shared Widening Operator CType(ByVal i As Integer) As Rational
+    Public Shared Widening Operator CType(i As Integer) As Rational
         Return New Rational(i, 1)
     End Operator
 
     ' Narrowing = explicit in C#
     ' Possible loss of precision and can throw exceptions
-    Public Shared Narrowing Operator CType(ByVal r As Rational) As Double
+    Public Shared Narrowing Operator CType(r As Rational) As Double
         Return CDbl(r._numerator) / CDbl(r._denominator)
     End Operator
 
-    Public Shared Operator +(ByVal lhs As Rational, ByVal rhs As Rational) As Rational
-        Dim g As Integer = gcd(lhs._denominator, rhs._denominator)
+    Public Shared Operator +(lhs As Rational, rhs As Rational) As Rational
+        Dim g As Integer = Gcd(lhs._denominator, rhs._denominator)
         Dim d2 As Integer = lhs._denominator * rhs._denominator / g
         Dim n2 As Integer = lhs._numerator * g / lhs._denominator + rhs._numerator * g / rhs._denominator
-        g = gcd(n2, d2)
+        g = Gcd(n2, d2)
         Return New Rational(n2 / g, d2 / g)
     End Operator
 
     Public Function Reduce() As Rational
-        Dim g As Integer = gcd(_numerator, _denominator)
+        Dim g As Integer = Gcd(_numerator, _denominator)
         If g = 1 Then
             Return g
         Else
@@ -100,7 +99,7 @@ Structure Rational
     ''' <summary>
     ''' Return Greatest Common Divisor using Euclidean Algorithm
     ''' </summary>
-    Private Shared Function gcd(ByVal a As Integer, ByVal b As Integer) As Integer
+    Private Shared Function Gcd(a As Integer, b As Integer) As Integer
         While b <> 0
             Dim t As Integer = b
             b = a Mod b
@@ -109,19 +108,17 @@ Structure Rational
         Return a
     End Function
 
-
-    Public Shared Operator =(ByVal lhs As Rational, ByVal rhs As Rational) As Boolean
+    Public Shared Operator =(lhs As Rational, rhs As Rational) As Boolean
         Dim r1 As Rational = lhs.Reduce
         Dim r2 As Rational = rhs.Reduce
         Return r1._numerator = r2._numerator AndAlso r1._denominator = r2._denominator
     End Operator
 
-    Public Shared Operator <>(ByVal lhs As Rational, ByVal rhs As Rational) As Boolean
+    Public Shared Operator <>(lhs As Rational, rhs As Rational) As Boolean
         Return Not lhs = rhs
     End Operator
 
-
-    Public Function ToString1(format As String, formatProvider As System.IFormatProvider) As String Implements System.IFormattable.ToString
+    Public Function ToString1(format As String, formatProvider As IFormatProvider) As String Implements IFormattable.ToString
         If format = "reduced" Then
             Return Me.Reduce.ToString
         Else

@@ -3,19 +3,15 @@
 // 2017-01-14   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS607
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            // The following code declares a lambda expression that returns 
-            // another lambda expression that adds two numbers. 
+            // The following code declares a lambda expression that returns
+            // another lambda expression that adds two numbers.
             //Func<int, Func<int, int>> addtwointegers = (x) => { return (y) => x + y; };
             Func<int, int> addtwointegers(int x) { return (y) => x + y; }
 
@@ -31,7 +27,6 @@ namespace CS607
 
             // Print the result, which is (7+8)*2.
             Console.WriteLine(answer);
-
 
             Console.WriteLine();
             Console.Write("(Pause)");

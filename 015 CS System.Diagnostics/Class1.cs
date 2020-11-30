@@ -7,10 +7,9 @@
 using System;
 using System.Diagnostics;
 
-
 public class InOut
 {
-    static int Zap()
+    private static int Zap()
     {
         Console.WriteLine("Stack\n{0}\n", new StackTrace());
         return -2;

@@ -3,7 +3,7 @@
 
 Public Class IconsForm
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Dim redBrush As New SolidBrush(Color.LightSalmon)
         Dim formGraphics As Graphics
         formGraphics = Me.CreateGraphics()
@@ -72,21 +72,20 @@ Public Class IconsForm
         formGraphics.DrawImage(bm3, 125, 120)
         formGraphics.DrawImage(bm3, 125, 220)
 
-        Dim ic1 As Drawing.Icon
+        Dim ic1 As Icon
         ic1 = New Icon("..\bmp\00002-8bit.ico")
         formGraphics.DrawIcon(ic1, 150, 50)
         formGraphics.DrawIcon(ic1, 150, 150)
         formGraphics.DrawIcon(ic1, 150, 250)
 
-        Dim ic2 As Drawing.Icon
+        Dim ic2 As Icon
         ic2 = New Icon("..\bmp\00002-32bit.ico")
         formGraphics.DrawIcon(ic2, 200, 50)
         formGraphics.DrawIcon(ic2, 200, 150)
         formGraphics.DrawIcon(ic2, 200, 250)
 
-
-
         formGraphics.Dispose()
 
     End Sub
+
 End Class

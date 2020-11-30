@@ -6,13 +6,14 @@
 ' 2006-10-01    PV  VS2005
 ' 2010-07-19	PV  VS2010
 
+#Disable Warning IDE0052 ' Remove unread private members
+#Disable Warning IDE0051 ' Remove unused private members
 
 Module Constantes
     Public Const MAXLIG As Integer = 12
     Public Const MAXCOL As Integer = 5
     Public Const MAXPIECE As Integer = 12
 End Module
-
 
 Class Jeu     ' Plan de jeu
     Private ReadOnly grille(,) As Byte
@@ -21,23 +22,24 @@ Class Jeu     ' Plan de jeu
         ReDim grille(MAXLIG - 1, MAXCOL - 1)
     End Sub
 
-    Public Sub New(ByVal j As Jeu)
+    Public Sub New(j As Jeu)
         grille = CType(j.grille.Clone(), Byte(,))
     End Sub
 
-    Default Public Property cellule(ByVal l As Integer, ByVal c As Integer) As Byte
+    Default Public Property cellule(l As Integer, c As Integer) As Byte
         Get
             Return grille(l, c)
         End Get
-        Set(ByVal Value As Byte)
+        Set(Value As Byte)
             grille(l, c) = Value
         End Set
     End Property
+
 End Class
 
-
 Class PentaminoSolveur
-    Event Solution(ByVal iNumSol As Integer, ByVal jeu As Jeu, ByRef bStop As Boolean)
+
+    Event Solution(iNumSol As Integer, jeu As Jeu, ByRef bStop As Boolean)
 
     Const MAXSOLUTION As Integer = 10000
 
@@ -108,15 +110,13 @@ Class PentaminoSolveur
         ' Plan à paver
         Dim j As Jeu = New Jeu()
 
-
         ' Pavage à proprement parler
         bStop = False
         iNbSol = 0
         Pavage(0, 0, j, Pow2(MAXPIECE) - 1)
     End Sub
 
-
-    Sub Pavage(ByVal lstart As Integer, ByVal cstart As Integer, ByVal jeu As Jeu, ByVal iMasquePieces As Integer)
+    Sub Pavage(lstart As Integer, cstart As Integer, jeu As Jeu, iMasquePieces As Integer)
         Dim l, c As Integer
         Dim bTrouvé As Boolean = False
 

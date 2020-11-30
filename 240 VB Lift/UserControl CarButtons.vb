@@ -10,9 +10,9 @@ Public Class ucCarButtons
         End Get
     End Property
 
-    Public Event CarRequest(ByVal uccb As ucCarButtons, ByVal iFloor As Integer)
+    Public Event CarRequest(uccb As ucCarButtons, iFloor As Integer)
 
-    Public Sub New(ByVal iIndex As Integer)
+    Public Sub New(iIndex As Integer)
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
 
@@ -20,13 +20,13 @@ Public Class ucCarButtons
 
         ' Add any initialization after the InitializeComponent() call.
         For i As Integer = 0 To NumberOfFloors - 1
-            Dim cb As System.Windows.Forms.Button
-            cb = New System.Windows.Forms.Button With {
+            Dim cb As Button
+            cb = New Button With {
                 .BackColor = System.Drawing.SystemColors.Control,
-                .Font = New System.Drawing.Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte)),
-                .Location = New System.Drawing.Point(3, 60 + 36 * i),
+                .Font = New Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte)),
+                .Location = New Point(3, 60 + 36 * i),
                 .Name = "btn" & CStr(NumberOfFloors - 1 - i),
-                .Size = New System.Drawing.Size(42, 33),
+                .Size = New Size(42, 33),
                 .Text = CStr(NumberOfFloors - 1 - i),
                 .TextAlign = System.Drawing.ContentAlignment.TopCenter,
                 .UseVisualStyleBackColor = False
@@ -38,21 +38,21 @@ Public Class ucCarButtons
         Next
     End Sub
 
-    Private Sub CarButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        RaiseEvent CarRequest(Me, Val(CType(sender, System.Windows.Forms.Button).Text))
+    Private Sub CarButton_Click(sender As System.Object, e As EventArgs)
+        RaiseEvent CarRequest(Me, Val(CType(sender, Button).Text))
     End Sub
 
     Public Property sLabel() As String
         Get
             Return lblCar.Text
         End Get
-        Set(ByVal value As String)
+        Set(value As String)
             lblCar.Text = value
         End Set
     End Property
 
     Public WriteOnly Property iDoorStatus() As Integer
-        Set(ByVal value As Integer)
+        Set(value As Integer)
             Select Case value
                 Case 0 : lblDoorStatus.Text = "Closed"
                 Case 1 : lblDoorStatus.Text = "Closing"
@@ -64,13 +64,13 @@ Public Class ucCarButtons
     End Property
 
     Public WriteOnly Property sCarPosition() As String
-        Set(ByVal value As String)
+        Set(value As String)
             lblCarPosition.Text = value
         End Set
     End Property
 
     Public WriteOnly Property iDirection() As Integer
-        Set(ByVal value As Integer)
+        Set(value As Integer)
             Select Case value
                 Case -1 : lblDirection.Text = "Down"
                 Case 0 : lblDirection.Text = "-"
@@ -80,11 +80,11 @@ Public Class ucCarButtons
         End Set
     End Property
 
-    Public Property bCallStatus(ByVal iFloor As Integer) As Boolean
+    Public Property bCallStatus(iFloor As Integer) As Boolean
         Get
             Return Me.Controls("btn" & CStr(iFloor)).BackColor <> System.Drawing.SystemColors.Control
         End Get
-        Set(ByVal value As Boolean)
+        Set(value As Boolean)
             Me.Controls("btn" & CStr(iFloor)).BackColor = IIf(value, Color.Lime, System.Drawing.SystemColors.Control)
         End Set
     End Property

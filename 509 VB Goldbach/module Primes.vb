@@ -3,7 +3,7 @@ Module Primes
     Public tPrimes() As Long    ' From index 0 to nPrimes-1
     Public nPrimes As Long
 
-    Public Sub GeneratePrimesList(ByVal n As Long)
+    Public Sub GeneratePrimesList(n As Long)
         tPrimes = GeneratePrimeListSieve2(n).ToArray()
         nPrimes = UBound(tPrimes) + 1
     End Sub
@@ -15,7 +15,7 @@ Module Primes
     ''' Using factorization wheel 2x3x5 eliminates multiples in a block of 30.
     ''' In the range [30k+1..30k+30], we should only check 30k+1,7,11,13,17,19,23,29, that is, we only need 8 bits
     ''' </remarks>
-    Private Function GeneratePrimeListSieve2(ByVal n As Long) As IEnumerable(Of Long)
+    Private Function GeneratePrimeListSieve2(n As Long) As IEnumerable(Of Long)
         Dim lp As New List(Of Long)
         If n < 2 Then Return lp
         lp.Add(2)

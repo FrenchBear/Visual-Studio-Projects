@@ -1,10 +1,6 @@
 // 01/10/2006 PV VS 2005
 
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
+#pragma warning disable IDE0052 // Remove unread private members
 
 public class AddEditForm : System.Windows.Forms.Form
 {
@@ -40,7 +36,6 @@ public class AddEditForm : System.Windows.Forms.Form
     {
         InitializeComponent();
     }
-
 
     /// <summary>
     ///    Required method for Designer support - do not modify

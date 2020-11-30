@@ -1,6 +1,8 @@
 ' 303 VB Test MetaColumn Names
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE0060 ' Remove unused parameter
+
 Module Module1
 
     Sub Main()
@@ -21,22 +23,21 @@ Module Module1
 End Module
 
 Class Eurodat55Exception
-    Inherits System.Exception
+    Inherits Exception
 End Class
 
 Structure NullDate
-    Public m_Date As Nullable(Of Date)
+    Public m_Date As Date?
 
-    Public Sub New(ByVal d As Date)
+    Public Sub New(d As Date)
 
     End Sub
 
-    Public Shared Narrowing Operator CType(ByVal x As NullDate) As Date
+    Public Shared Narrowing Operator CType(x As NullDate) As Date
         Return x.m_Date.Value
     End Operator
 
 End Structure
-
 
 Module stuff
     'Dim longitudeDegrees

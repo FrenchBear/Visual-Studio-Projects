@@ -6,14 +6,16 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Numerics;
+using System.Text;
 
-class Program
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
+internal class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        BigInteger number = factorial(100);
+        BigInteger number = Factorial(100);
         Console.WriteLine(number);
         Console.WriteLine();
 
@@ -39,16 +41,16 @@ class Program
         Console.ReadLine();
     }
 
-    static BigInteger factorial(BigInteger n)
+    private static BigInteger Factorial(BigInteger n)
     {
         if (n <= 1)
             return 1;
         else
-            return n * factorial(n - 1);
+            return n * Factorial(n - 1);
     }
 
     // Example of function returning two values in a Tuple
-    static Tuple<int, string> MyFunction()
+    private static Tuple<int, string> MyFunction()
     {
         var t = new Tuple<int, string>(5, "hello");
         return t;
@@ -58,4 +60,3 @@ class Program
         //i = null;
     }
 }
-

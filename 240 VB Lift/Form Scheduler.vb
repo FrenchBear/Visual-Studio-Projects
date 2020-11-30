@@ -2,7 +2,8 @@
 ' 2012-02-25	PV  VS2010
 
 Public Class frmScheduler
-    Private Sub btnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStart.Click
+
+    Private Sub btnStart_Click(sender As System.Object, e As EventArgs) Handles btnStart.Click
         Trace("Start")
 
         ReDim tCar(NumberOfCars - 1)
@@ -19,9 +20,10 @@ Public Class frmScheduler
         frmControl.Show()
     End Sub
 
-    Sub Trace(ByVal sMsg As String)
+    Sub Trace(sMsg As String)
         lbTrace.Items.Add(sMsg)
         lbTrace.SelectedIndex = lbTrace.Items.Count - 1
         lbTrace.Refresh()
     End Sub
+
 End Class

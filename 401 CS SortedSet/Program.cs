@@ -2,15 +2,12 @@
 // Tests with new generic structure SortedSet of .Net Framework 4
 // 2010-02-24 FPVI
 
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-class Program
+internal class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         // petit est présent deux fois
         SortedSet<string> myStringSet = new SortedSet<string>(new string[] { "Il", "était", "un", "petit", "petit", "navire" });

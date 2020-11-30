@@ -7,7 +7,7 @@ Public Class HScrollBarNew
         Get
             Maximum = m_realMax
         End Get
-        Set(ByVal value As Integer)
+        Set(value As Integer)
             m_realMax = value
             MyBase.Maximum = m_realMax + MyBase.LargeChange - 1
         End Set
@@ -17,7 +17,7 @@ Public Class HScrollBarNew
         Get
             LargeChange = MyBase.LargeChange
         End Get
-        Set(ByVal value As Integer)
+        Set(value As Integer)
             MyBase.LargeChange = value
             MyBase.Maximum = m_realMax + MyBase.LargeChange - 1
         End Set
@@ -25,11 +25,12 @@ Public Class HScrollBarNew
 
     Public Event ScrollNew()
 
-    Private Sub HScrollBar_Scroll(ByVal sender As Object, ByVal e As System.Windows.Forms.ScrollEventArgs) Handles Me.Scroll
+    Private Sub HScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles Me.Scroll
         Static lastValue As Integer
         If MyBase.Value <> lastValue Then
             lastValue = MyBase.Value
             RaiseEvent ScrollNew()
         End If
     End Sub
+
 End Class

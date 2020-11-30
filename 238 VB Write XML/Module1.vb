@@ -5,8 +5,8 @@
 
 Imports System.Xml
 
-
 Module Module1
+
     ReadOnly tsHarness() As String = {
       "0001:3:3:3:3:3:Boatzee",
       "0002:5:5:2:2:2:FullHouse",
@@ -203,7 +203,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim s As Xml.Serialization.XmlSerializer = New Xml.Serialization.XmlSerializer(GetType(TestResults))
+        Dim s As Serialization.XmlSerializer = New Serialization.XmlSerializer(GetType(TestResults))
         Dim xtw As XmlTextWriter = New XmlTextWriter("..\..\TestResults5.xml", System.Text.Encoding.UTF8) With {
             .Formatting = Formatting.Indented
         }
@@ -239,10 +239,11 @@ Module Module1
 End Module
 
 Public Class Result
-    <Xml.Serialization.XmlAttribute()>
+
+    <Serialization.XmlAttribute()>
     Public id As String
 
-    <Xml.Serialization.XmlElement("input")>
+    <Serialization.XmlElement("input")>
     Public input As String
 
     Public expected As String
@@ -250,15 +251,16 @@ Public Class Result
 End Class
 
 Public Class TestResults
-    <Xml.Serialization.XmlElement(ElementName:="result", Type:=GetType(Result))>
-    Public Results As ArrayList = New ArrayList
-End Class
 
+    <Serialization.XmlElement(ElementName:="result", Type:=GetType(Result))>
+    Public Results As ArrayList = New ArrayList
+
+End Class
 
 Class Hand
     Private ReadOnly tDice(4) As Die
 
-    Public Sub New(ByVal d1 As Die, ByVal d2 As Die, ByVal d3 As Die, ByVal d4 As Die, ByVal d5 As Die)
+    Public Sub New(d1 As Die, d2 As Die, d3 As Die, d4 As Die, d5 As Die)
         Debug.Assert(d1 IsNot Nothing)
         Debug.Assert(d2 IsNot Nothing)
         Debug.Assert(d3 IsNot Nothing)
@@ -280,13 +282,13 @@ Class Hand
         Next
         Return s.ToString
     End Function
-End Class
 
+End Class
 
 Class Die
     Private ReadOnly value As Integer
 
-    Public Sub New(ByVal v As Integer)
+    Public Sub New(v As Integer)
         Debug.Assert(v >= 1 And v <= 6)
         value = v
     End Sub
@@ -294,4 +296,5 @@ Class Die
     Public Overrides Function ToString() As String
         Return "[" & value.ToString & "]"
     End Function
+
 End Class

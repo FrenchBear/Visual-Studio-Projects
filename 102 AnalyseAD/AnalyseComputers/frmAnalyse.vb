@@ -4,12 +4,13 @@
 ' 11/02/04 1.1  Présentation en tableau
 ' 01/10/2006 PV VS 2005
 
-Imports VB = Microsoft.VisualBasic
 Imports System.Text.RegularExpressions
+Imports VB = Microsoft.VisualBasic
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmAnalyse
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -36,7 +37,7 @@ Public Class frmAnalyse
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -49,81 +50,82 @@ Public Class frmAnalyse
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents lblAnalyse As System.Windows.Forms.Label
-    Friend WithEvents btnAnalyse As System.Windows.Forms.Button
-    Friend WithEvents txtSite As System.Windows.Forms.TextBox
-    Friend WithEvents lblLégende As System.Windows.Forms.Label
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents tabHTML As System.Windows.Forms.TabPage
-    Friend WithEvents tabListe As System.Windows.Forms.TabPage
-    Friend WithEvents IEDoc As AxSHDocVw.AxWebBrowser
-    Friend WithEvents chPoste As System.Windows.Forms.ColumnHeader
-    Friend WithEvents chSite As System.Windows.Forms.ColumnHeader
-    Friend WithEvents chOU As System.Windows.Forms.ColumnHeader
-    Friend WithEvents chDescription As System.Windows.Forms.ColumnHeader
-    Friend WithEvents lvListe As System.Windows.Forms.ListView
-    Friend WithEvents mnuMiste As System.Windows.Forms.ContextMenu
-    Friend WithEvents cmdCopie As System.Windows.Forms.MenuItem
-    Friend WithEvents chWhenCreated As System.Windows.Forms.ColumnHeader
-    Friend WithEvents chWhenChanged As System.Windows.Forms.ColumnHeader
+    Friend WithEvents lblAnalyse As Label
 
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAnalyse))
-        Me.btnAnalyse = New System.Windows.Forms.Button()
-        Me.lblAnalyse = New System.Windows.Forms.Label()
-        Me.txtSite = New System.Windows.Forms.TextBox()
-        Me.lblLégende = New System.Windows.Forms.Label()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.tabHTML = New System.Windows.Forms.TabPage()
+    Friend WithEvents btnAnalyse As Button
+    Friend WithEvents txtSite As TextBox
+    Friend WithEvents lblLégende As Label
+    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents tabHTML As TabPage
+    Friend WithEvents tabListe As TabPage
+    Friend WithEvents IEDoc As AxSHDocVw.AxWebBrowser
+    Friend WithEvents chPoste As ColumnHeader
+    Friend WithEvents chSite As ColumnHeader
+    Friend WithEvents chOU As ColumnHeader
+    Friend WithEvents chDescription As ColumnHeader
+    Friend WithEvents lvListe As ListView
+    Friend WithEvents mnuMiste As ContextMenu
+    Friend WithEvents cmdCopie As MenuItem
+    Friend WithEvents chWhenCreated As ColumnHeader
+    Friend WithEvents chWhenChanged As ColumnHeader
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmAnalyse))
+        Me.btnAnalyse = New Button()
+        Me.lblAnalyse = New Label()
+        Me.txtSite = New TextBox()
+        Me.lblLégende = New Label()
+        Me.TabControl1 = New TabControl()
+        Me.tabHTML = New TabPage()
         Me.IEDoc = New AxSHDocVw.AxWebBrowser()
-        Me.tabListe = New System.Windows.Forms.TabPage()
-        Me.lvListe = New System.Windows.Forms.ListView()
-        Me.chPoste = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.chSite = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.chOU = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.chDescription = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.chWhenCreated = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.chWhenChanged = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.mnuMiste = New System.Windows.Forms.ContextMenu()
-        Me.cmdCopie = New System.Windows.Forms.MenuItem()
+        Me.tabListe = New TabPage()
+        Me.lvListe = New ListView()
+        Me.chPoste = CType(New ColumnHeader(), ColumnHeader)
+        Me.chSite = CType(New ColumnHeader(), ColumnHeader)
+        Me.chOU = CType(New ColumnHeader(), ColumnHeader)
+        Me.chDescription = CType(New ColumnHeader(), ColumnHeader)
+        Me.chWhenCreated = CType(New ColumnHeader(), ColumnHeader)
+        Me.chWhenChanged = CType(New ColumnHeader(), ColumnHeader)
+        Me.mnuMiste = New ContextMenu()
+        Me.cmdCopie = New MenuItem()
         Me.TabControl1.SuspendLayout()
         Me.tabHTML.SuspendLayout()
-        CType(Me.IEDoc, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IEDoc, ComponentModel.ISupportInitialize).BeginInit()
         Me.tabListe.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnAnalyse
         '
-        Me.btnAnalyse.Location = New System.Drawing.Point(466, 5)
+        Me.btnAnalyse.Location = New Point(466, 5)
         Me.btnAnalyse.Name = "btnAnalyse"
-        Me.btnAnalyse.Size = New System.Drawing.Size(90, 26)
+        Me.btnAnalyse.Size = New Size(90, 26)
         Me.btnAnalyse.TabIndex = 2
         Me.btnAnalyse.Text = "&Analyser"
         '
         'lblAnalyse
         '
         Me.lblAnalyse.AutoSize = True
-        Me.lblAnalyse.Location = New System.Drawing.Point(5, 9)
+        Me.lblAnalyse.Location = New Point(5, 9)
         Me.lblAnalyse.Name = "lblAnalyse"
-        Me.lblAnalyse.Size = New System.Drawing.Size(297, 17)
+        Me.lblAnalyse.Size = New Size(297, 17)
         Me.lblAnalyse.TabIndex = 0
         Me.lblAnalyse.Text = "Site à analyser dans Workstations && Printers :"
         '
         'txtSite
         '
-        Me.txtSite.Location = New System.Drawing.Point(293, 5)
+        Me.txtSite.Location = New Point(293, 5)
         Me.txtSite.Name = "txtSite"
-        Me.txtSite.Size = New System.Drawing.Size(163, 22)
+        Me.txtSite.Size = New Size(163, 22)
         Me.txtSite.TabIndex = 1
         '
         'lblLégende
         '
         Me.lblLégende.AutoSize = True
-        Me.lblLégende.Location = New System.Drawing.Point(5, 37)
+        Me.lblLégende.Location = New Point(5, 37)
         Me.lblLégende.Name = "lblLégende"
-        Me.lblLégende.Size = New System.Drawing.Size(446, 17)
+        Me.lblLégende.Size = New Size(446, 17)
         Me.lblLégende.TabIndex = 3
         Me.lblLégende.Text = "ou=Workstations && Printers,ou=fr,dc=eame,dc=global,dc=sgs,dc=com"
         '
@@ -131,21 +133,21 @@ Public Class frmAnalyse
         '
         Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.TabControl1.Controls.Add(Me.tabHTML)
         Me.TabControl1.Controls.Add(Me.tabListe)
-        Me.TabControl1.Location = New System.Drawing.Point(5, 55)
+        Me.TabControl1.Location = New Point(5, 55)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(726, 413)
+        Me.TabControl1.Size = New Size(726, 413)
         Me.TabControl1.TabIndex = 5
         '
         'tabHTML
         '
         Me.tabHTML.Controls.Add(Me.IEDoc)
-        Me.tabHTML.Location = New System.Drawing.Point(4, 25)
+        Me.tabHTML.Location = New Point(4, 25)
         Me.tabHTML.Name = "tabHTML"
-        Me.tabHTML.Size = New System.Drawing.Size(718, 384)
+        Me.tabHTML.Size = New Size(718, 384)
         Me.tabHTML.TabIndex = 0
         Me.tabHTML.Text = "Synthèse en couleurs"
         '
@@ -153,19 +155,19 @@ Public Class frmAnalyse
         '
         Me.IEDoc.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.IEDoc.Enabled = True
-        Me.IEDoc.Location = New System.Drawing.Point(0, 0)
-        Me.IEDoc.OcxState = CType(resources.GetObject("IEDoc.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.IEDoc.Size = New System.Drawing.Size(573, 467)
+        Me.IEDoc.Location = New Point(0, 0)
+        Me.IEDoc.OcxState = CType(resources.GetObject("IEDoc.OcxState"), AxHost.State)
+        Me.IEDoc.Size = New Size(573, 467)
         Me.IEDoc.TabIndex = 5
         '
         'tabListe
         '
         Me.tabListe.Controls.Add(Me.lvListe)
-        Me.tabListe.Location = New System.Drawing.Point(4, 25)
+        Me.tabListe.Location = New Point(4, 25)
         Me.tabListe.Name = "tabListe"
-        Me.tabListe.Size = New System.Drawing.Size(865, 456)
+        Me.tabListe.Size = New Size(865, 456)
         Me.tabListe.TabIndex = 1
         Me.tabListe.Text = "Liste"
         '
@@ -173,14 +175,14 @@ Public Class frmAnalyse
         '
         Me.lvListe.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvListe.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chPoste, Me.chSite, Me.chOU, Me.chDescription, Me.chWhenCreated, Me.chWhenChanged})
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.lvListe.Columns.AddRange(New ColumnHeader() {Me.chPoste, Me.chSite, Me.chOU, Me.chDescription, Me.chWhenCreated, Me.chWhenChanged})
         Me.lvListe.ContextMenu = Me.mnuMiste
         Me.lvListe.FullRowSelect = True
         Me.lvListe.GridLines = True
-        Me.lvListe.Location = New System.Drawing.Point(10, 9)
+        Me.lvListe.Location = New Point(10, 9)
         Me.lvListe.Name = "lvListe"
-        Me.lvListe.Size = New System.Drawing.Size(844, 431)
+        Me.lvListe.Size = New Size(844, 431)
         Me.lvListe.TabIndex = 0
         Me.lvListe.UseCompatibleStateImageBehavior = False
         Me.lvListe.View = System.Windows.Forms.View.Details
@@ -217,7 +219,7 @@ Public Class frmAnalyse
         '
         'mnuMiste
         '
-        Me.mnuMiste.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdCopie})
+        Me.mnuMiste.MenuItems.AddRange(New MenuItem() {Me.cmdCopie})
         '
         'cmdCopie
         '
@@ -226,19 +228,19 @@ Public Class frmAnalyse
         '
         'frmAnalyse
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
-        Me.ClientSize = New System.Drawing.Size(736, 470)
+        Me.AutoScaleBaseSize = New Size(6, 15)
+        Me.ClientSize = New Size(736, 470)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.lblLégende)
         Me.Controls.Add(Me.txtSite)
         Me.Controls.Add(Me.lblAnalyse)
         Me.Controls.Add(Me.btnAnalyse)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Name = "frmAnalyse"
         Me.Text = "Analyse les objets Computer dans AD"
         Me.TabControl1.ResumeLayout(False)
         Me.tabHTML.ResumeLayout(False)
-        CType(Me.IEDoc, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IEDoc, ComponentModel.ISupportInitialize).EndInit()
         Me.tabListe.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -252,9 +254,10 @@ Public Class frmAnalyse
 
     ' Expressions régulières pour séparer les machines en listes séparées
     ReadOnly r00, r95, r98 As Regex
+
     ReadOnly rNum As Regex                   ' Pour extraire le n°
 
-    ' Un site 
+    ' Un site
     Class SiteAD
         Public sSite As String            ' Le code du site
         Public sComment As String         ' Description du site
@@ -282,11 +285,8 @@ Public Class frmAnalyse
     ' Les couleurs utilisées pour les sous-OU
     ReadOnly tColor As Color() = {Color.Pink, Color.Gold, Color.Chartreuse, Color.Aqua, Color.Violet, Color.LightCoral, Color.CornflowerBlue, Color.Wheat, Color.LightGray, Color.OrangeRed, Color.MediumOrchid, Color.LightGray}
 
-
-
-
     ' Lancement de l'analyse
-    Private Sub btnAnalyse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAnalyse.Click
+    Private Sub btnAnalyse_Click(sender As System.Object, e As EventArgs) Handles btnAnalyse.Click
         IEDoc.Document.body.innerHTML = "Analyse en cours..."
         RefreshIE()
 
@@ -313,7 +313,7 @@ Public Class frmAnalyse
 
     ' Parcours récursif de AD
     ' Retour false en cas de pb lors de l'accès
-    Function ListeOU(ByVal sOU As String, ByVal sStart As String) As Boolean
+    Function ListeOU(sOU As String, sStart As String) As Boolean
         Dim objOU As Object
         Try
             objOU = GetObject("LDAP://" & sStart)
@@ -781,10 +781,9 @@ Public Class frmAnalyse
         aj("\xxx", "FRXXX0001", "PC de P.Delater chez lui (HP Vectra,"","")", "", "")
     End Sub
 
-
     ' Interface IE
     ' Initialisation propre du document IE
-    Private Sub IEDoc_DocumentComplete(ByVal sender As System.Object, ByVal e As AxSHDocVw.DWebBrowserEvents2_DocumentCompleteEvent) Handles IEDoc.DocumentComplete
+    Private Sub IEDoc_DocumentComplete(sender As System.Object, e As AxSHDocVw.DWebBrowserEvents2_DocumentCompleteEvent) Handles IEDoc.DocumentComplete
         If IEDoc.Document Is Nothing Then Exit Sub
 
         Dim d As Object
@@ -807,13 +806,9 @@ Public Class frmAnalyse
         Loop Until IEDoc.ReadyState = SHDocVw.tagREADYSTATE.READYSTATE_COMPLETE
     End Sub
 
-
-
-
-
     ' Affichage HTML
     Sub Affiche()
-        sHTML = New System.Text.StringBuilder
+        sHTML = New Text.StringBuilder
         Dim enumSites As IDictionaryEnumerator = slSitesAD.GetEnumerator()
         While enumSites.MoveNext
             AfficheUnSite(CType(enumSites.Value, SiteAD))
@@ -822,12 +817,12 @@ Public Class frmAnalyse
         sHTML = Nothing
     End Sub
 
-    Function sColorWeb(ByVal i As Integer) As String
+    Function sColorWeb(i As Integer) As String
         i = i Mod tColor.Length
         Return "#" & String.Format("{0:X02}{1:X02}{2:X02}", tColor(i).R, tColor(i).G, tColor(i).B)
     End Function
 
-    Sub AfficheUnSite(ByVal s As SiteAD)
+    Sub AfficheUnSite(s As SiteAD)
         sHTML.Append("<H1>Site: " & s.sSite & " " & s.sComment & "</H1>" & vbCrLf)
 
         ' La liste des sous-OUs
@@ -850,7 +845,7 @@ Public Class frmAnalyse
         sHTML.Append("<BR><BR>" & vbCrLf)
     End Sub
 
-    Sub AfficheMachines(ByVal slOU As SortedList, ByVal slComputers As SortedList, ByVal sSite As String, ByVal bListeXX As Boolean)
+    Sub AfficheMachines(slOU As SortedList, slComputers As SortedList, sSite As String, bListeXX As Boolean)
         ' Si la liste est vide, on dégage sans traitement
         If slComputers.Count = 0 Then Exit Sub
 
@@ -929,7 +924,7 @@ Public Class frmAnalyse
                 End If
 
                 If j >= iMin0 And j <= iMax Then
-                    If Not tComp(j - iMin0) Is Nothing Then
+                    If tComp(j - iMin0) IsNot Nothing Then
                         sHTML.Append(tComp(j - iMin0).sComputer)
                     Else
                         sHTML.Append("fr" & LCase(sSite) & String.Format("{0:D04}", j))
@@ -948,10 +943,8 @@ Public Class frmAnalyse
         sHTML.Append("</table>" & vbCrLf)
     End Sub
 
-
-
     ' Ajout d'une machine
-    Sub aj(ByVal sPos As String, ByVal sComputer As String, ByVal sDescription As String, ByVal sWhenCreated As String, ByVal sWhenChanged As String)
+    Sub aj(sPos As String, sComputer As String, sDescription As String, sWhenCreated As String, sWhenChanged As String)
         sPos = LCase(sPos)
         If VB.Left(sPos, 1) = "\" Then sPos = Mid(sPos, 2)
 
@@ -1013,14 +1006,14 @@ Public Class frmAnalyse
 
     End Sub
 
-
     ' Interface utilisateur de la liste
     Private iColTri As Integer = -1     ' Colonne de tri
+
     Private iSensTri As Integer         ' Ordre 1=ascendant, -1=descendant
 
     ' Copie dans le presse-papiers
-    Private Sub cmdCopie_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCopie.Click
-        Dim sbPP As New System.Text.StringBuilder
+    Private Sub cmdCopie_Click(sender As System.Object, e As EventArgs) Handles cmdCopie.Click
+        Dim sbPP As New Text.StringBuilder
         For i As Integer = 0 To lvListe.Columns.Count - 1
             If i > 0 Then sbPP.Append(vbTab)
             sbPP.Append(lvListe.Columns(i).Text)
@@ -1036,7 +1029,7 @@ Public Class frmAnalyse
         Clipboard.SetDataObject(sbPP.ToString)
     End Sub
 
-    Private Sub lvListe_ColumnClick(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnClickEventArgs) Handles lvListe.ColumnClick
+    Private Sub lvListe_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles lvListe.ColumnClick
         If iColTri <> e.Column Then
             iColTri = e.Column
             iSensTri = 1
@@ -1045,8 +1038,8 @@ Public Class frmAnalyse
         End If
         lvListe.ListViewItemSorter = New ListViewItemComparer(iColTri, iSensTri)
     End Sub
-End Class
 
+End Class
 
 ' Implémentation du tri de la liste par n'importe quelle colonne
 Class ListViewItemComparer
@@ -1060,22 +1053,22 @@ Class ListViewItemComparer
         sens = 1
     End Sub
 
-    Public Sub New(ByVal column As Integer)
+    Public Sub New(column As Integer)
         col = column
         sens = 1
     End Sub
 
-    Public Sub New(ByVal column As Integer, ByVal sensdetri As Integer)
+    Public Sub New(column As Integer, sensdetri As Integer)
         col = column
         sens = sensdetri
     End Sub
 
-    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements IComparer.Compare
+    Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
         If col < 4 Then
             Return sens * [String].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
         Else
             Return sens * [DateTime].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
         End If
     End Function
-End Class
 
+End Class

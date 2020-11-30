@@ -4,7 +4,9 @@
 Imports System.Xml
 
 Public Class Form1
+
     Class Book
+
         Class Chapitre
             Public numéro As Integer
             Public titre As String
@@ -13,15 +15,16 @@ Public Class Form1
             Public Sub New()
             End Sub
 
-            Public Sub New(ByVal n As Integer, ByVal t As String, ByVal p As Double)
+            Public Sub New(n As Integer, t As String, p As Double)
                 numéro = n : titre = t : paages = p
             End Sub
+
         End Class
 
         Public titre As String
         Public auteur As String
         Public quantité As Integer
-        Public Chapites As New Collections.Generic.List(Of Chapitre)
+        Public Chapites As New Generic.List(Of Chapitre)
 
         Public Overrides Function ToString() As String
             ToString = "Book:" & vbCrLf &
@@ -30,6 +33,7 @@ Public Class Form1
                     "  Qté: " & quantité & vbCrLf &
                     "  Chapites: " & Chapites.ToString
         End Function
+
     End Class
 
     Public Function AppPath() As String
@@ -48,34 +52,30 @@ Public Class Form1
             .Add(New Book.Chapitre(3, "Troisième chapitre", -7.7))
         End With
 
-        Dim writer As New System.Xml.Serialization.XmlSerializer(GetType(Book))
-        Dim file As New System.IO.StreamWriter(AppPath() & "\IntroToVB.xml")
+        Dim writer As New Serialization.XmlSerializer(GetType(Book))
+        Dim file As New IO.StreamWriter(AppPath() & "\IntroToVB.xml")
         writer.Serialize(file, introToVB)
         file.Close()
     End Sub
 
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         WriteXML()
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
         ReadXML()
     End Sub
 
     Public Sub ReadXML()
-        Dim reader As New System.Xml.Serialization.XmlSerializer(GetType(Book))
-        Dim file As New System.IO.StreamReader(AppPath() & "\IntroToVB.xml")
+        Dim reader As New Serialization.XmlSerializer(GetType(Book))
+        Dim file As New IO.StreamReader(AppPath() & "\IntroToVB.xml")
         Dim introToVB As Book
         introToVB = CType(reader.Deserialize(file), Book)
 
         MsgBox("read: " & introToVB.ToString)
     End Sub
 
-
-
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As System.Object, e As EventArgs) Handles Button3.Click
         IterateThroughNodes()
     End Sub
 
@@ -100,7 +100,7 @@ Public Class Form1
     End Sub
 
     Private Sub TraverseTree(ByRef list As String,
-        ByVal node As XmlNode, ByVal intLevel As Integer)
+node As XmlNode, intLevel As Integer)
 
         ' Print out the node name or value for the current node.
         Dim tabs As String = StrDup(intLevel, vbTab)
@@ -112,7 +112,7 @@ Public Class Form1
         End If
         list &= tabs & text & vbCrLf
 
-        ' If the current node has children, call this same procedure, 
+        ' If the current node has children, call this same procedure,
         ' passing in that node. Increase intLevel to indent the output.
         Dim child As XmlNode
         If node.HasChildNodes Then

@@ -6,7 +6,6 @@ ref class k1
 {
 };
 
-
 ref class BaseClass
 {
 public:
@@ -25,7 +24,6 @@ private:
 		return 0;
 	}
 };
-
 
 ref class DerivedClass1 : public BaseClass
 { };

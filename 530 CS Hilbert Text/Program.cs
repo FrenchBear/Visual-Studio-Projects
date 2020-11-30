@@ -8,12 +8,13 @@ using System.Collections.Generic;
 
 namespace CS530
 {
-    class Program
+    internal class Program
     {
         // All possible cells in output, based on blocks characters: horizointal, vertical, down right, ...
-        enum Blocks { hz, vt, dr, dl, ur, ul, xx };
+        private enum Blocks
+        { hz, vt, dr, dl, ur, ul, xx };
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int depth = 4;                  // Level 1 is the first drawing as an upside down U
 
@@ -86,9 +87,6 @@ namespace CS530
             Console.Write("(Pause)");
             Console.ReadLine();
         }
-
-
-
 
         // Implementation of LSystemProcessor processing using recursive iterators
         // Uses almost no memory for large output: memory use is linear(depth)

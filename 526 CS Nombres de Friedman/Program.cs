@@ -7,15 +7,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS526
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Nombres à deux chiffres
             for (int i = 1; i < 10; i++)
@@ -54,7 +51,6 @@ namespace CS526
                                 if (100 * i + 10 * j + k == c)
                                     Found(c);
                             }
-
                     }
 
             Console.WriteLine();
@@ -62,8 +58,9 @@ namespace CS526
             Console.ReadLine();
         }
 
-        static readonly HashSet<int> PreviousResults = new HashSet<int>();
-        static void Found(int n)
+        private static readonly HashSet<int> PreviousResults = new HashSet<int>();
+
+        private static void Found(int n)
         {
             if (!PreviousResults.Contains(n))
             {
@@ -72,7 +69,7 @@ namespace CS526
             }
         }
 
-        static IEnumerable<int> CombineTwoNumbers(int a, int b, bool isConcatAllowed)
+        private static IEnumerable<int> CombineTwoNumbers(int a, int b, bool isConcatAllowed)
         {
             if (isConcatAllowed)
             {
@@ -101,7 +98,7 @@ namespace CS526
         // From http://stackoverflow.com/questions/383587/how-do-you-do-integer-exponentiation-in-c
         // Negative powers are not handled
         // IntPow(0,0) returns 1 while it should be undefined or an error
-        static int IntPow(int x, int pow)
+        private static int IntPow(int x, int pow)
         {
             int ret = 1;
             while (pow != 0)
@@ -113,7 +110,5 @@ namespace CS526
             }
             return ret;
         }
-
     }
-
 }

@@ -1,20 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using System.Text;
 using static System.Console;
-
 
 namespace Normalized_Filesystem
 {
-    class Program
+    internal class Program
     {
-        static readonly string normalizedName = @"Où ça, là!.txt";
-        static string denormalizedName;
+        private static readonly string normalizedName = @"Où ça, là!.txt";
+        private static string denormalizedName;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             denormalizedName = normalizedName.Normalize(NormalizationForm.FormD);
 

@@ -4,17 +4,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UnblockMeSolver
 {
-    class Program
+    internal class Program
     {
         // Describes the blocks of a specific game
         // Puzzle 1602
-        static readonly Block[] Pieces = {
+        private static readonly Block[] Pieces = {
             new Block { IsHorizontal = true, RowCol = 0, Length = 3 },
             new Block { IsHorizontal = true, RowCol = 1, Length = 2 },
             new Block { IsHorizontal = true, RowCol = 2, Length = 2 },
@@ -26,13 +23,13 @@ namespace UnblockMeSolver
             new Block { IsHorizontal = false, RowCol = 4, Length = 3 },
         };
 
-        static readonly byte redPiece = 2;
+        private static readonly byte redPiece = 2;
 
-        static Config Configuration = new Config() { Length = 9, Pos = new byte[] { 0, 2, 2, 4, 0, 1, 3, 3, 0 } };
+        private static Config Configuration = new Config() { Length = 9, Pos = new byte[] { 0, 2, 2, 4, 0, 1, 3, 3, 0 } };
 
-        static readonly SortedSet<int> History = new SortedSet<int>();
+        private static readonly SortedSet<int> History = new SortedSet<int>();
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //for (int i = 32; i < 256; i++)
             //{
@@ -56,9 +53,10 @@ namespace UnblockMeSolver
             Console.ReadLine();
         }
 
-        static bool foundSolution = false;
-        static int nbConfig = 0;
-        static int solutionMoves = 0;
+        private static bool foundSolution = false;
+        private static int nbConfig = 0;
+        private static int solutionMoves = 0;
+
         private static bool Move(int depth, Config config)
         {
             nbConfig++;
@@ -112,7 +110,8 @@ namespace UnblockMeSolver
             return false;
         }
 
-        static readonly ConsoleColor[] Colors = { (ConsoleColor)1, (ConsoleColor)2, (ConsoleColor)3, (ConsoleColor)5, (ConsoleColor)6, (ConsoleColor)8, (ConsoleColor)9, (ConsoleColor)10, (ConsoleColor)11, (ConsoleColor)12, (ConsoleColor)13, (ConsoleColor)14, (ConsoleColor)15 };
+        private static readonly ConsoleColor[] Colors = { (ConsoleColor)1, (ConsoleColor)2, (ConsoleColor)3, (ConsoleColor)5, (ConsoleColor)6, (ConsoleColor)8, (ConsoleColor)9, (ConsoleColor)10, (ConsoleColor)11, (ConsoleColor)12, (ConsoleColor)13, (ConsoleColor)14, (ConsoleColor)15 };
+
         private static void ShowConfig(Config config)
         {
             Console.WriteLine();
@@ -161,19 +160,17 @@ namespace UnblockMeSolver
                 Console.WriteLine();
             }
         }
-
-
     }
 
     // Represents one wooden block in the game
-    class Block
+    internal class Block
     {
         public bool IsHorizontal;
         public byte RowCol;
         public byte Length;
     }
 
-    struct Config
+    internal struct Config
     {
         public byte Length;
         public byte[] Pos;
@@ -229,5 +226,4 @@ namespace UnblockMeSolver
             return true;
         }
     }
-
 }

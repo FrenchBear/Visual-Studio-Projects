@@ -9,7 +9,6 @@
 
 using namespace System;
 
-
 value class Complexe : public IFormattable
 {
 private:
@@ -32,17 +31,14 @@ public:
 		if (String::IsNullOrEmpty(sFormat)) return this->ToString();
 
 		if (String::Compare(sFormat->ToLower(), "p") == 0)
-			return  String::Concat("[", (Math::Sqrt(i*i + r*r)).ToString(), ";", (Math::Atan2(i, r) / Math::PI * 180).ToString(), "]");
+			return  String::Concat("[", (Math::Sqrt(i * i + r * r)).ToString(), ";", (Math::Atan2(i, r) / Math::PI * 180).ToString(), "]");
 
 		return ToString();
 	}
-
 };
 
-
-
 // This is the entry point for this application
-int main(array<System::String ^> ^args)
+int main(array<System::String^>^ args)
 {
 	Console::WriteLine("{0:N0}", System::Int16::MaxValue);
 	Console::WriteLine("{0:N0}", System::Int32::MaxValue);

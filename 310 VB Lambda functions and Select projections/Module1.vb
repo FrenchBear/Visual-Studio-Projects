@@ -3,7 +3,6 @@
 ' 2012-02-25    PV  VS2010
 ' 2012-03-04    List --> IEnumerable; Console output; C# version
 
-
 Module Module1
 
     Sub Main()
@@ -11,7 +10,7 @@ Module Module1
             {"apple", "passionfruit", "banana", "mango",
              "orange", "blueberry", "grape", "strawberry"}
 
-        ' Project the length of each string and 
+        ' Project the length of each string and
         ' put the length values into an enumerable object.
         Dim lengths As IEnumerable(Of Integer)
         ' With a lambda function
@@ -23,7 +22,7 @@ Module Module1
         lengths = fruits.Select(selector)
 
         ' Display the results.
-        Dim output As New System.Text.StringBuilder
+        Dim output As New Text.StringBuilder
         For Each length As Integer In lengths
             output.AppendLine(length.ToString)
         Next
@@ -32,7 +31,8 @@ Module Module1
         Console.ReadLine()
     End Sub
 
-    Private Function LengthOfString(ByVal s As String) As Integer
+    Private Function LengthOfString(s As String) As Integer
         Return s.Length
     End Function
+
 End Module

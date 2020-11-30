@@ -2,9 +2,7 @@
 ' 2006-10-01    PV  VS2005  Working again
 ' 2012-02-25	PV  VS2010  Galère again, rebuild OldDb connection string for SQL 2008 and Ok again (http://www.connectionstrings.com/sql-server-2008#p2)
 
-Imports System.Data
 Imports System.Data.OleDb
-
 
 Module Module1
 

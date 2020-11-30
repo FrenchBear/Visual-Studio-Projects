@@ -3,12 +3,14 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE1006 ' Naming Styles
+
 <AttributeUsage(AttributeTargets.Assembly)> Public Class AssemblyPVAttribute
-    Inherits System.Attribute
+    Inherits Attribute
     Private ReadOnly iPriv As Integer
     Private sInfo As String
 
-    Public Sub New(ByVal iVal As Integer)
+    Public Sub New(iVal As Integer)
         iPriv = iVal
         sInfo = ""
     End Sub
@@ -17,7 +19,7 @@
         Get
             Return sInfo
         End Get
-        Set(ByVal Value As String)
+        Set(Value As String)
             sInfo = Value
         End Set
     End Property
@@ -27,4 +29,5 @@
             Return iPriv
         End Get
     End Property
+
 End Class

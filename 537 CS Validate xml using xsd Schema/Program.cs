@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 
 namespace ValidateSchema
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             XmlReaderSettings roundingInfosSettings = new XmlReaderSettings();
             roundingInfosSettings.Schemas.Add("http://tempuri.org/RoundingInfos.xsd", "roundingInfos.xsd");
@@ -28,13 +24,12 @@ namespace ValidateSchema
                 Console.WriteLine();
             }
 
-
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
         }
 
-        static void RoundingInfosSettingsValidationEventHandler(object sender, ValidationEventArgs e)
+        private static void RoundingInfosSettingsValidationEventHandler(object sender, ValidationEventArgs e)
         {
             if (e.Severity == XmlSeverityType.Warning)
             {

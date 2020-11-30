@@ -1,14 +1,10 @@
 Imports System.Reflection
-Imports System.Runtime.CompilerServices
-Imports System.Runtime.InteropServices
 
 ' Les informations générales relatives à un assembly dépendent de l'ensemble
 ' d'attributs suivant. Pour modifier les informations associées à un assembly,
 'changez les valeurs de ces attributs
 
-
 ' TODO : contrôlez les valeurs des attributs d'assembly
-
 
 <Assembly: AssemblyTitle("Essais Scripting")>
 <Assembly: AssemblyDescription("")>
@@ -28,7 +24,4 @@ Imports System.Runtime.InteropServices
 ' Vous pouvez spécifier toutes les valeurs ou indiquer des numéros de révision et de build par défaut
 ' en utilisant '*', comme ci-dessous 
 
-
 <Assembly: AssemblyVersion("1.0.*")>
-
-

@@ -8,8 +8,7 @@ using System;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {
@@ -33,7 +32,6 @@ class MyApp
             t1[0] = a * b;
         }
         Console.WriteLine("t1[0]: {0}", t1[0]);
-
 
         object[] u1;
         u1 = null;

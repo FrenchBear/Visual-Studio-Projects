@@ -2,13 +2,10 @@
 // 2012-02-04 PV   Translation of original VB code in C#
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CS203
 {
-    class Program
+    internal class Program
     {
         // Clean example how to implement the equivalent of a WithEvents variable using
         // a property in C#
@@ -37,7 +34,7 @@ namespace CS203
             }
         }
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             _rex = new Chien("Médor");
             _rex.Exciter();
@@ -90,13 +87,16 @@ namespace CS203
         }
     }
 
-
     public abstract class EtreVivant
     {
         public System.DateTime NéLe;
+
         public event NaitEventHandler Nait;
+
         public delegate void NaitEventHandler();
+
         public event MeurtEventHandler Meurt;
+
         public delegate void MeurtEventHandler();
 
         protected EtreVivant()
@@ -124,11 +124,12 @@ namespace CS203
         }
     }
 
-
     public class Animal : EtreVivant
     {
         public string Race;
+
         public event MordreEventHandler Mordre;
+
         public delegate void MordreEventHandler();
 
         public Animal(string sRace)
@@ -160,7 +161,6 @@ namespace CS203
             Console.WriteLine("Un animal de race " + Race + " joue.");
         }
 
-
         private void Animal_Meurt()
         {
             Console.WriteLine("Un animal de race " + Race + " est mort");
@@ -177,7 +177,6 @@ namespace CS203
         }
     }
 
-
     public class Chien : Animal
     {
         public Chien(string sNom)
@@ -190,8 +189,8 @@ namespace CS203
             Nom = sNom;
         }
 
-
         protected string Nom;
+
         public event AboyerEventHandler Aboyer;
 
         public delegate void AboyerEventHandler();
@@ -216,7 +215,6 @@ namespace CS203
             Console.WriteLine("Le chien " + Nom + " joue.");
         }
 
-
         private void Chien_Aboyer()
         {
             Console.WriteLine("Le chien " + Nom + " a aboyé");
@@ -238,8 +236,7 @@ namespace CS203
         }
     }
 
-
-    class Chiot : Chien
+    internal class Chiot : Chien
     {
         public Chiot(string sNom)
             : base(sNom)
@@ -257,7 +254,6 @@ namespace CS203
         }
     }
 
-
     internal class Loup : Animal
     {
         public Loup()
@@ -266,4 +262,3 @@ namespace CS203
         }
     }
 }
-

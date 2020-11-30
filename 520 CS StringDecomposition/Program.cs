@@ -3,16 +3,13 @@
 // 2014-03-26   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace StringDecomposition
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string s = "ắ";
             Decomp(s, NormalizationForm.FormC);

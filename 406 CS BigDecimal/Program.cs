@@ -5,12 +5,11 @@
 
 using System;
 
-
 namespace BigDecimalNS
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Calcul of sqrt(r), Héron suite (u(n+1)=(u(n)+r/u(n))/2, u(0)=r/2, quadratics convergence
             BigDecimal r = 2;

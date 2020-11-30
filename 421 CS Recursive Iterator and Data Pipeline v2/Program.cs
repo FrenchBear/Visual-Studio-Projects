@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ConsoleApplication1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Old style (pedestrian, has-been, ...)
             var r = new Random();
@@ -20,7 +18,6 @@ namespace ConsoleApplication1
 
             Console.ReadLine();
 
-
             // New style
             new SortedSet<double>()
                 .Add<double>(Generate<double>(10, () => r.NextDouble()))
@@ -29,14 +26,14 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static IEnumerable<T> Generate<T>(int count, Func<T> generator)
+        private static IEnumerable<T> Generate<T>(int count, Func<T> generator)
         {
             while (count-- > 0)
                 yield return generator();
         }
     }
 
-    static class ExtensionMethods
+    internal static class ExtensionMethods
     {
         public static SortedSet<T> Add<T>(this SortedSet<T> set, IEnumerable<T> tlist)
         {

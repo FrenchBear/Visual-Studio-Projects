@@ -2,12 +2,6 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.ComponentModel
-Imports System.Drawing
-Imports System.Windows.Forms
-Imports System.Reflection
-
-
 Public Class MDIMain
     Inherits Form
 
@@ -28,6 +22,7 @@ Public Class MDIMain
 
     'Required by the Windows Form Designer
     Private components As System.ComponentModel.Container
+
     Private WithEvents MenuItem4 As MenuItem
     Private WithEvents MenuItem3 As MenuItem
     Private WithEvents MenuItem2 As MenuItem
@@ -37,10 +32,10 @@ Public Class MDIMain
     Dim WithEvents MDIMain As Form
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Me.components = New ComponentModel.Container()
         Me.MenuItem1 = New MenuItem()
         Me.MenuItem2 = New MenuItem()
         Me.MainMenu1 = New MainMenu()
@@ -67,23 +62,23 @@ Public Class MDIMain
         MenuItem3.Text = "F3"
         MenuItem3.Index = 2
         Me.Text = "Form1"
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+        Me.AutoScaleBaseSize = New Size(5, 13)
         Me.IsMdiContainer = True
         Me.Menu = MainMenu1
-        Me.ClientSize = New System.Drawing.Size(332, 333)
+        Me.ClientSize = New Size(332, 333)
 
     End Sub
 
 #End Region
 
-    Protected Sub MenuItem1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles MenuItem1.Click
+    Protected Sub MenuItem1_Click(sender As Object, e As EventArgs) Handles MenuItem1.Click
         Dim f As New F1 With {
             .MdiParent = Me
         }
         f.Show()
     End Sub
 
-    Protected Sub MenuItem2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles MenuItem2.Click
+    Protected Sub MenuItem2_Click(sender As Object, e As EventArgs) Handles MenuItem2.Click
         Dim f As New F2 With {
             .MdiParent = Me
         }
@@ -91,14 +86,14 @@ Public Class MDIMain
         f.Show()
     End Sub
 
-    Protected Sub MenuItem3_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles MenuItem3.Click
+    Protected Sub MenuItem3_Click(sender As Object, e As EventArgs) Handles MenuItem3.Click
         Dim tabo As Object()
         ReDim tabo(0)
 
         Dim x As Object
         x = My.Application.Info.DirectoryPath
 
-        Dim a As System.Reflection.Assembly
+        Dim a As Reflection.Assembly
         a = System.Reflection.Assembly.Load("F3")
         Dim t As Type
         t = a.GetType("F3")
@@ -126,10 +121,9 @@ Public Class MDIMain
 
     End Sub
 
-    Protected Sub MenuItem4_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles MenuItem4.Click
+    Protected Sub MenuItem4_Click(sender As Object, e As EventArgs) Handles MenuItem4.Click
         Close()
     End Sub
-
 
     Public Sub MDIHello()
         ' Quelques essais de UInt non pris en charge par le VB...

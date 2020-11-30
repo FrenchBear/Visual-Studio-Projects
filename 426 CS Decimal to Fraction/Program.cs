@@ -5,34 +5,30 @@
 // 2012-04-15   PV
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using static System.Console;
-
 
 namespace CS426
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             WriteLine("Stern-Brocot algorithm to transform a periodic decimal suite into a fraction\n");
             double f = 0.1415926535;
-            doubleToFraction(f, out long rNum, out long rDen);
+            DoubleToFraction(f, out long rNum, out long rDen);
             Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
             f = 3.1415926535;
-            doubleToFraction(f, out rNum, out rDen);
+            DoubleToFraction(f, out rNum, out rDen);
             Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
             f = -0.1415926535;
-            doubleToFraction(f, out rNum, out rDen);
+            DoubleToFraction(f, out rNum, out rDen);
             Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
             f = -3.1415926535;
-            doubleToFraction(f, out rNum, out rDen);
+            DoubleToFraction(f, out rNum, out rDen);
             Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
             // Check we get expected results
@@ -41,8 +37,8 @@ namespace CS426
                 for (int j = 1; j <= 1000; j++)
                 {
                     f = ((double)i) / ((double)(j));
-                    doubleToFraction(f, out rNum, out rDen);
-                    int pgdc = gcd(i, j);
+                    DoubleToFraction(f, out rNum, out rDen);
+                    int pgdc = Gcd(i, j);
                     if (i != rNum * pgdc || j != rDen * pgdc)
                         Debugger.Break();
                 }
@@ -53,11 +49,10 @@ namespace CS426
             Console.ReadLine();
         }
 
-
         /// <summary>
         /// Return Greatest Common Divisor using Euclidean Algorithm
         /// </summary>
-        private static int gcd(int a, int b)
+        private static int Gcd(int a, int b)
         {
             if (a <= 0 | b <= 0)
                 throw new ArgumentException("Negative or zero argument not supported");
@@ -70,8 +65,7 @@ namespace CS426
             return a;
         }
 
-
-        static void doubleToFraction(double f, out long rNum, out long rDen)
+        private static void DoubleToFraction(double f, out long rNum, out long rDen)
         {
             const double epsilon = 1e-6;
 
@@ -100,7 +94,7 @@ namespace CS426
             }
             long infNum = 0; long infDen = 1;
             long supNum = 1; long supDen = 0;
-            for (;;)
+            for (; ; )
             {
                 rNum = infNum + supNum;
                 rDen = infDen + supDen;

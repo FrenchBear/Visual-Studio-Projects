@@ -1,17 +1,17 @@
 ﻿// 415 CS Extension Methods
 // 2012-01-29 PV
 
+using ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ExtensionMethods;
 
 namespace _415_CS_Extension_Methods
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string s = "hello world";
             string t = s.Reverse().Concat();
@@ -26,7 +26,6 @@ namespace _415_CS_Extension_Methods
         }
     }
 }
-
 
 namespace ExtensionMethods
 {

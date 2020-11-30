@@ -49,6 +49,5 @@ namespace CS419
                 else
                     yield return c;
         }
-
     }
 }

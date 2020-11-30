@@ -2,11 +2,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.Collections
-Imports Microsoft.VisualBasic.Compatibility.VB6
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -21,7 +20,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -34,31 +33,33 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents StatusBar1 As System.Windows.Forms.StatusBar
-    Friend WithEvents btnCrible As System.Windows.Forms.Button
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnCrible = New System.Windows.Forms.Button()
-        Me.StatusBar1 = New System.Windows.Forms.StatusBar()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+    Friend WithEvents StatusBar1 As StatusBar
+
+    Friend WithEvents btnCrible As Button
+    Friend WithEvents Panel1 As Panel
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnCrible = New Button()
+        Me.StatusBar1 = New StatusBar()
+        Me.Panel1 = New Panel()
         Me.SuspendLayout()
         '
         'btnCrible
         '
-        Me.btnCrible.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCrible.Location = New System.Drawing.Point(448, 15)
+        Me.btnCrible.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.btnCrible.Location = New Point(448, 15)
         Me.btnCrible.Name = "btnCrible"
-        Me.btnCrible.Size = New System.Drawing.Size(150, 42)
+        Me.btnCrible.Size = New Size(150, 42)
         Me.btnCrible.TabIndex = 0
         Me.btnCrible.Text = "Crible"
         '
         'StatusBar1
         '
-        Me.StatusBar1.Location = New System.Drawing.Point(0, 533)
+        Me.StatusBar1.Location = New Point(0, 533)
         Me.StatusBar1.Name = "StatusBar1"
-        Me.StatusBar1.Size = New System.Drawing.Size(608, 41)
+        Me.StatusBar1.Size = New Size(608, 41)
         Me.StatusBar1.TabIndex = 1
         Me.StatusBar1.Text = "StatusBar1"
         '
@@ -66,18 +67,18 @@ Public Class Form1
         '
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.RosyBrown
-        Me.Panel1.Location = New System.Drawing.Point(16, 15)
+        Me.Panel1.Location = New Point(16, 15)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(416, 489)
+        Me.Panel1.Size = New Size(416, 489)
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(10, 24)
-        Me.ClientSize = New System.Drawing.Size(608, 574)
+        Me.AutoScaleBaseSize = New Size(10, 24)
+        Me.ClientSize = New Size(608, 574)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.StatusBar1)
         Me.Controls.Add(Me.btnCrible)
@@ -94,7 +95,7 @@ Public Class Form1
 
     Dim bResizeEnCours As Boolean = False
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCrible.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles btnCrible.Click
         t.SetAll(1)
         Dim ti As Double
         ti = Microsoft.VisualBasic.DateAndTime.Timer
@@ -122,7 +123,7 @@ Public Class Form1
         Me.Refresh()
     End Sub
 
-    Private Sub Form1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles MyBase.Paint
+    Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
         Dim myBitmap As New Bitmap(Panel1.Width, Panel1.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
         Dim nbp As Integer = 0
 
@@ -148,16 +149,14 @@ Public Class Form1
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
     End Sub
 
-    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
+    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         bResizeEnCours = True
         Me.Refresh()
         bResizeEnCours = False
     End Sub
 
-    Private Sub Form1_SizeChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.SizeChanged
+    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
         Me.Refresh()
     End Sub
 
 End Class
-
-

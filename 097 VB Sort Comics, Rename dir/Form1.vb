@@ -4,14 +4,11 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System
 Imports System.IO
 Imports System.Text.RegularExpressions
 
-
 Public Class Form1
-    Inherits System.Windows.Forms.Form
-
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -26,7 +23,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -39,35 +36,37 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
+    Friend WithEvents Button1 As Button
+
+    Friend WithEvents Button2 As Button
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.Button1 = New Button
+        Me.Button2 = New Button
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(24, 16)
+        Me.Button1.Location = New Point(24, 16)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(88, 23)
+        Me.Button1.Size = New Size(88, 23)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Move Comics"
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(24, 56)
+        Me.Button2.Location = New Point(24, 56)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(88, 23)
+        Me.Button2.Size = New Size(88, 23)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "Rename dvpt"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(292, 266)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
@@ -78,7 +77,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Const sPath As String = "F:\Documents\comics"
 
         Dim diRoot As New DirectoryInfo(sPath)
@@ -105,7 +104,7 @@ Public Class Form1
         MsgBox(nbFic & " fichiers traités" & vbCrLf & nbMatch & " images" & vbCrLf & nbMove & " déplacments" & vbCrLf & nbDir & " répertoires créés")
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
         Const sPath As String = "F:\Development\Visual Studio Projects\"
 
         Dim diRoot As New DirectoryInfo(sPath)
@@ -124,4 +123,5 @@ Public Class Form1
         Next
         MsgBox(nbDir & " répertoires")
     End Sub
+
 End Class

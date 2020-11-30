@@ -3,22 +3,16 @@
 // 2016-08-05   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
-using System.Diagnostics;
 
 namespace ConsoleApplication3
 {
-    class CSArrays
+    internal class CSArrays
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int[,,] mat3 = new int[2, 3, 4];
             int[][] jag2 = new int[2][] { new int[] { 1, 2, 3 }, new int[] { 4, 5, 6, 7, 8, 9 } };
-
 
             Write($"mat3: {mat3.Length} = ");
             for (int i = 0; i < mat3.Rank; i++)
@@ -40,7 +34,6 @@ namespace ConsoleApplication3
                 Write($"[{i}] = {jag2[i].Length}  ");
             }
             WriteLine();
-
 
             Console.WriteLine();
             Console.Write("(Pause)");

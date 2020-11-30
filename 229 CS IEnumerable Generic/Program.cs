@@ -1,17 +1,17 @@
 // 229 CS IEnumerable Generic
 // 2012-02-25   PV  VS2010
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Diagnostics;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace _101_CS_IEnumerable_Generic
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             CityCollection cities = new CityCollection();
             foreach (string city in cities.Reverse())
@@ -25,7 +25,7 @@ namespace _101_CS_IEnumerable_Generic
 
 public class CityCollection : IEnumerable<string>
 {
-    readonly string[] m_Cities = { "New York", "Paris", "London" };
+    private readonly string[] m_Cities = { "New York", "Paris", "London" };
 
     public IEnumerable<string> Reverse()
     {
@@ -45,44 +45,44 @@ public class CityCollection : IEnumerable<string>
     }
 }
 
-
-public interface Machin
+public interface IMachin
 {
     int Bidule(int i);
 }
 
-public class toto
+public class Toto
 {
-    private Machin MaFonction(int a, int b)
+    private IMachin MaFonction(int a, int b)
     {
         return new Internal(a, b);
     }
 
-    public class Internal : Machin
+    public class Internal : IMachin
     {
-        readonly int m_a, m_b;
+        private readonly int m_a, m_b;
+
         public Internal(int a, int b)
         {
             m_a = a;
             m_b = b;
         }
 
-        int Machin.Bidule(int i)
+        int IMachin.Bidule(int i)
         {
             return m_a * i + m_b;
         }
     }
 
-    public int zap(int i)
+    public int Zap(int i)
     {
         return MaFonction(2, 3).Bidule(i);
     }
 }
 
-public class c2 : Machin
+public class C2 : IMachin
 {
-    readonly LinkedList<string> l = new LinkedList<string>();
-    readonly Dictionary<int, string> d = new Dictionary<int, string>();
+    private readonly LinkedList<string> l = new LinkedList<string>();
+    private readonly Dictionary<int, string> d = new Dictionary<int, string>();
 
     public int Bidule(int i)
     {
@@ -103,5 +103,4 @@ public class c2 : Machin
 
         return 0;
     }
-
 }

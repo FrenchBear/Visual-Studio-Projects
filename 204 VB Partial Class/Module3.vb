@@ -11,4 +11,5 @@ Class Toto
         MsgBox("Toto_e1")
         RaiseEvent e1()         ' pas bien !!!
     End Sub
+
 End Class

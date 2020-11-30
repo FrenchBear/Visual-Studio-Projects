@@ -3,7 +3,7 @@
 ' 2012-02-25	PV  VS2010
 
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -18,7 +18,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -31,35 +31,37 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents SaisieNum1 As _69_VB_Contrôles.NumericTextBox
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.SaisieNum1 = New _69_VB_Contrôles.NumericTextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
+    Friend WithEvents Label1 As Label
+
+    Friend WithEvents SaisieNum1 As NumericTextBox
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.SaisieNum1 = New NumericTextBox()
+        Me.Label1 = New Label()
         Me.SuspendLayout()
         '
         'SaisieNum1
         '
-        Me.SaisieNum1.Location = New System.Drawing.Point(27, 61)
+        Me.SaisieNum1.Location = New Point(27, 61)
         Me.SaisieNum1.Name = "SaisieNum1"
-        Me.SaisieNum1.Size = New System.Drawing.Size(100, 20)
+        Me.SaisieNum1.Size = New Size(100, 20)
         Me.SaisieNum1.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(24, 45)
+        Me.Label1.Location = New Point(24, 45)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(137, 13)
+        Me.Label1.Size = New Size(137, 13)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "This box only accepts digits"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(292, 266)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.SaisieNum1)
         Me.Name = "Form1"
@@ -70,12 +72,13 @@ Public Class Form1
     End Sub
 
 #End Region
+
 End Class
 
-
 Public Class NumericTextBox
-    Inherits System.Windows.Forms.TextBox
-    Protected Overrides Sub OnKeyPress(ByVal e As System.Windows.Forms.KeyPressEventArgs)
+    Inherits TextBox
+
+    Protected Overrides Sub OnKeyPress(e As KeyPressEventArgs)
         If Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True
         Else

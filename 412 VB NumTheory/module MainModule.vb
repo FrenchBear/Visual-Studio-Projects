@@ -4,14 +4,15 @@
 
 Imports System.Runtime.CompilerServices
 
+#Disable Warning IDE0051 ' Remove unused private members
 
 Module MainModule
 
-    Private Delegate Function FunctionToTest(ByVal n As Long) As Long
-    Private Delegate Function NextPrimeDelegate(ByVal n As Long) As Long
+    Private Delegate Function FunctionToTest(n As Long) As Long
+
+    Private Delegate Function NextPrimeDelegate(n As Long) As Long
 
     ReadOnly nt As New NumTheory
-
 
     Sub Main()
         Dim np As Long = nt.NextPrimeMillerRabin(100) * nt.NextPrimeMillerRabin(200) * nt.NextPrimeMillerRabin(300)
@@ -36,8 +37,7 @@ Module MainModule
         Console.ReadLine()
     End Sub
 
-
-    Private Sub TestNextPrime(ByVal nextPrime As NextPrimeDelegate, ByVal start As Long)
+    Private Sub TestNextPrime(nextPrime As NextPrimeDelegate, start As Long)
         Dim sw = Stopwatch.StartNew
         For i = 1 To 10
             start = nextPrime(start)
@@ -49,8 +49,7 @@ Module MainModule
         Console.WriteLine()
     End Sub
 
-
-    Private Sub TimeExec(ByVal ft As FunctionToTest, ByVal n As Long)
+    Private Sub TimeExec(ft As FunctionToTest, n As Long)
         Dim sw = Stopwatch.StartNew
         Dim np As Long = ft(n)
         sw.Stop()
@@ -59,35 +58,33 @@ Module MainModule
         Console.WriteLine()
     End Sub
 
-    Private Function TestWilson(ByVal n As Long) As Long
+    Private Function TestWilson(n As Long) As Long
         Return nt.GeneratePrimeListWilson(n).Count
     End Function
 
-    Private Function TestDivision(ByVal n As Long) As Long
+    Private Function TestDivision(n As Long) As Long
         Return nt.GeneratePrimeListDivision(n).Count
     End Function
 
-    Private Function TestSieve(ByVal n As Long) As Long
+    Private Function TestSieve(n As Long) As Long
         Return nt.GeneratePrimeListSieve(n).Count
     End Function
 
-    Private Function TestSieve2(ByVal n As Long) As Long
+    Private Function TestSieve2(n As Long) As Long
         Return nt.GeneratePrimeListSieve2(n).Count
     End Function
 
-    Private Function TestSieve3(ByVal n As Long) As Long
+    Private Function TestSieve3(n As Long) As Long
         Return nt.GeneratePrimeListSieve3(n).Count
     End Function
 
-    Private Function TestMillerRabin(ByVal n As Long) As Long
+    Private Function TestMillerRabin(n As Long) As Long
         Return nt.GeneratePrimeListMillerRabin(n).Count
     End Function
 
-
-
     ' Quick helpers to print an enumaration
     <Extension()>
-    Public Sub Write(Of TSource)(ByVal source As IEnumerable(Of TSource))
+    Public Sub Write(Of TSource)(source As IEnumerable(Of TSource))
         For Each element As TSource In source
             Console.Write(element)
             Console.Write(" "c)
@@ -95,8 +92,8 @@ Module MainModule
     End Sub
 
     <Extension()>
-    Public Sub WriteLine(Of TSource)(ByVal source As IEnumerable(Of TSource))
-        Write(Of TSource)(source)
+    Public Sub WriteLine(Of TSource)(source As IEnumerable(Of TSource))
+        Write(source)
         Console.WriteLine()
     End Sub
 

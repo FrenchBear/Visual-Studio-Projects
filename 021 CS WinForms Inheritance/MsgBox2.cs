@@ -2,14 +2,6 @@
 // Simple boîte de dialogue pour des essais d'héritage
 // 2001-01-27   PV
 
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
-using System.Data;
-
-
 #pragma warning disable IDE1006 // Naming Styles
 
 public class MsgBox2 : System.Windows.Forms.Form
@@ -29,18 +21,18 @@ public class MsgBox2 : System.Windows.Forms.Form
         this.btnOk = new System.Windows.Forms.Button();
         this.txtInfo = new System.Windows.Forms.TextBox();
         this.SuspendLayout();
-        // 
+        //
         // lblInfo
-        // 
+        //
         this.lblInfo.AutoSize = true;
         this.lblInfo.Location = new System.Drawing.Point(8, 12);
         this.lblInfo.Name = "lblInfo";
         this.lblInfo.Size = new System.Drawing.Size(29, 13);
         this.lblInfo.TabIndex = 0;
         this.lblInfo.Text = "Info :";
-        // 
+        //
         // btnOk
-        // 
+        //
         this.btnOk.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         this.btnOk.Location = new System.Drawing.Point(154, 96);
         this.btnOk.Name = "btnOk";
@@ -48,9 +40,9 @@ public class MsgBox2 : System.Windows.Forms.Form
         this.btnOk.TabIndex = 2;
         this.btnOk.Text = "OK";
         this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-        // 
+        //
         // txtInfo
-        // 
+        //
         this.txtInfo.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
           | System.Windows.Forms.AnchorStyles.Left)
           | System.Windows.Forms.AnchorStyles.Right);
@@ -61,9 +53,9 @@ public class MsgBox2 : System.Windows.Forms.Form
         this.txtInfo.Size = new System.Drawing.Size(272, 80);
         this.txtInfo.TabIndex = 1;
         this.txtInfo.Text = "";
-        // 
+        //
         // MsgBox2
-        // 
+        //
         this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
         this.ClientSize = new System.Drawing.Size(328, 125);
         this.Controls.AddRange(new System.Windows.Forms.Control[] {
@@ -75,7 +67,6 @@ public class MsgBox2 : System.Windows.Forms.Form
         this.Name = "MsgBox2";
         this.Text = "Information";
         this.ResumeLayout(false);
-
     }
 
     protected void btnOk_Click(object sender, System.EventArgs e)
@@ -83,11 +74,9 @@ public class MsgBox2 : System.Windows.Forms.Form
         Close();
     }
 
-
     public virtual void Info(string sMsg)
     {
         txtInfo.Text = sMsg;
         ShowDialog();
     }
-
 }

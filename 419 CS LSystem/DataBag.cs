@@ -2,16 +2,15 @@
 // 2012-02-05   PV  First version
 // 2012-02-27   PV  Use clean data binding (DataBag class) and supports all .l files correctly
 
-
 using System;
-using System.IO;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 
 namespace CS419
 {
-    class DataBag
+    internal class DataBag
     {
         public ObservableCollection<string> SourceFiles { get; set; }
         public ObservableCollection<SourceSystem> SourceSystems { get; set; }
@@ -116,6 +115,5 @@ namespace CS419
             foreach (SourceSystem sourceSystem in sl)
                 SourceSystems.Add(sourceSystem);
         }
-
     }
 }

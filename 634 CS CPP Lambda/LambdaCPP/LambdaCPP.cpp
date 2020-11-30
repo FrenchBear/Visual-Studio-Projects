@@ -13,19 +13,18 @@ using FilterContainer = vector<function<bool(int)>>;
 
 FilterContainer filters;
 
-
 void addDivisorFilter(int d) {
 	auto divisor = min<int>(d, 100);
 	filters.emplace_back(
 		// If lambda captures by reference, no warning, but local variable is gone when lambda
 		// gets executed, so value is anything at this time.  Value capture solves the problem
 		[=](int value) {
-			return value % divisor == 0; 
+			return value % divisor == 0;
 		});
 }
 
 template<typename T>
-ostream& operator << (ostream &out, vector<T> v) {
+ostream& operator << (ostream& out, vector<T> v) {
 	bool first = true;
 	for (const auto& item : v)
 		if (first)
@@ -39,7 +38,6 @@ ostream& operator << (ostream &out, vector<T> v) {
 	return out;
 }
 
-
 int main() {
 	addDivisorFilter(5);
 	addDivisorFilter(11);
@@ -51,7 +49,6 @@ int main() {
 		new_end = remove_if(vi.begin(), new_end, predicate);
 	vi.erase(new_end, vi.end());
 	cout << vi << endl;
-
 
 	cout << "\n(Pause)";
 	cin.get();

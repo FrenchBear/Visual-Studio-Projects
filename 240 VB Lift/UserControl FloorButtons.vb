@@ -2,14 +2,16 @@
 ' 2012-02-25	PV  VS2010
 
 Public Class ucFloorButtons
-    Public Event FloorRequestUp(ByVal ucfb As ucFloorButtons)
-    Public Event FloorRequestDown(ByVal ucfb As ucFloorButtons)
 
-    Private Sub btnUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUp.Click
+    Public Event FloorRequestUp(ucfb As ucFloorButtons)
+
+    Public Event FloorRequestDown(ucfb As ucFloorButtons)
+
+    Private Sub btnUp_Click(sender As System.Object, e As EventArgs) Handles btnUp.Click
         RaiseEvent FloorRequestUp(Me)
     End Sub
 
-    Private Sub btnDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDown.Click
+    Private Sub btnDown_Click(sender As System.Object, e As EventArgs) Handles btnDown.Click
         RaiseEvent FloorRequestDown(Me)
     End Sub
 
@@ -17,7 +19,7 @@ Public Class ucFloorButtons
         Get
             Return lblFloorLabel.Text
         End Get
-        Set(ByVal value As String)
+        Set(value As String)
             lblFloorLabel.Text = value
         End Set
     End Property
@@ -26,7 +28,7 @@ Public Class ucFloorButtons
         Get
             Return btnUp.BackColor <> System.Drawing.SystemColors.Control
         End Get
-        Set(ByVal value As Boolean)
+        Set(value As Boolean)
             btnUp.BackColor = IIf(value, Color.Lime, System.Drawing.SystemColors.Control)
         End Set
     End Property
@@ -35,7 +37,7 @@ Public Class ucFloorButtons
         Get
             Return btnDown.BackColor <> System.Drawing.SystemColors.Control
         End Get
-        Set(ByVal value As Boolean)
+        Set(value As Boolean)
             btnDown.BackColor = IIf(value, Color.Lime, System.Drawing.SystemColors.Control)
         End Set
     End Property

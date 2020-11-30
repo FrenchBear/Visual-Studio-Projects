@@ -3,22 +3,20 @@
 // From http://stackoverflow.com/questions/1564718/using-stringwriter-for-xml-serialization
 // 2014-02-14   PV
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 namespace CS518
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Ba x = new Ba
             {
@@ -57,7 +55,7 @@ namespace CS518
         public static T Deserialize<T>(string xml)
         {
             if (string.IsNullOrEmpty(xml))
-                return default(T);
+                return default;
 
             XmlSerializer serializer = new XmlSerializer(typeof(T));
 
@@ -85,6 +83,7 @@ namespace CS518
                 return writer.ToString();
             }
         }
+
         public static void ToXml<T>(this T objectToSerialize, Stream stream)
         {
             new XmlSerializer(typeof(T)).Serialize(stream, objectToSerialize);
@@ -95,7 +94,6 @@ namespace CS518
             new XmlSerializer(typeof(T)).Serialize(writer, objectToSerialize);
         }
     }
-
 
     public class Ba
     {

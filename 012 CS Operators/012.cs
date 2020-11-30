@@ -7,7 +7,7 @@ using System;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-class Complexe
+internal class Complexe
 {
     protected double r, i;
 
@@ -21,14 +21,14 @@ class Complexe
         Console.WriteLine("Constructeur {0}", this);
     }
 
-    public Complexe(double r) : this(r, 0) { }
-
+    public Complexe(double r) : this(r, 0)
+    {
+    }
 
     ~Complexe()
     {
         Console.WriteLine("Destructeur {0}", this);
     }
-
 
     public static implicit operator Complexe(double d)
     {
@@ -40,16 +40,13 @@ class Complexe
         return "(" + r.ToString() + ";" + i.ToString() + ")";
     }
 
-
     public static Complexe operator +(Complexe a, Complexe b)
     {
         return new Complexe(a.r + b.r, a.i + b.i);
     }
 };
 
-
-
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {

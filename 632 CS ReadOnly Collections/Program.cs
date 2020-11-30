@@ -8,12 +8,11 @@ using System.Collections.ObjectModel;           // Namespace for RO interfaces a
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-
 namespace CS612
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // ReadOnly Dictionary
             var d1 = GetNumberDic1();
@@ -29,39 +28,35 @@ namespace CS612
             var d3 = (Dictionary<int, string>)d2;
             d3.Add(4, "Four");
 
-
             // ReadOnly List
             var l = GetList();
             //var l2 = (List<int>)l;        // This fails
             //l2.Add(17);
-
 
             Console.Write("(Pause)");
             Console.ReadLine();
         }
 
         // Build a new ReadOnlyDictionary object, that is a wrapper around the original dictionary
-        static ReadOnlyDictionary<int, string> GetNumberDic1()
+        private static ReadOnlyDictionary<int, string> GetNumberDic1()
         {
             var d = new Dictionary<int, string> { { 1, "One" }, { 2, "Two" }, { 3, "Three" }, { 4, "Four" } };
             return new ReadOnlyDictionary<int, string>(d);
         }
 
         // Return IReadOnlyDictionary interface of a real dictionary
-        static IReadOnlyDictionary<int, string> GetNumberDic2()
+        private static IReadOnlyDictionary<int, string> GetNumberDic2()
         {
             var d = new Dictionary<int, string> { { 1, "One" }, { 2, "Two" }, { 3, "Three" } };
             return (IReadOnlyDictionary<int, string>)d;
         }
 
-
-        static IReadOnlyList<int> GetList()
+        private static IReadOnlyList<int> GetList()
         {
             var l = new List<int> { 2, 3, 5, 7, 11, 13 };
             // There is no ReadOnlyList class, but a list can be exposed as a ReadOnly, with no way to cast it back
             // to a normal read/write list
             return (IReadOnlyList<int>)l.AsReadOnly();
         }
-
     }
 }

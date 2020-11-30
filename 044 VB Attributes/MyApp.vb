@@ -5,16 +5,12 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System
-Imports System.Reflection
-
-
 <AttributeUsage(AttributeTargets.Class)> Public Class MonAttribut
-    Inherits System.Attribute
+    Inherits Attribute
     Private ReadOnly iPriv As Integer
     Private sInfo As String
 
-    Public Sub New(ByVal iVal As Integer)
+    Public Sub New(iVal As Integer)
         iPriv = iVal
         sInfo = ""
     End Sub
@@ -23,7 +19,7 @@ Imports System.Reflection
         Get
             Return sInfo
         End Get
-        Set(ByVal Value As String)
+        Set(Value As String)
             sInfo = Value
         End Set
     End Property
@@ -33,25 +29,19 @@ Imports System.Reflection
             Return iPriv
         End Get
     End Property
+
 End Class
-
-
 
 <MonAttribut(1, Info:="Info de MaClasse1")> Class MaClasse1
 
-
 End Class
-
-
-
 
 <MonAttribut(7)> Class MaClasse2
 
 End Class
 
-
-
 Class MyApp
+
     Public Shared Sub Main()
         Dim o1 As New MaClasse1()
         Dim o2 As New MaClasse2()
@@ -62,7 +52,7 @@ Class MyApp
         Console.ReadLine()
     End Sub
 
-    Private Shared Sub Zap(ByVal o As Object)
+    Private Shared Sub Zap(o As Object)
         Dim tob As Type     ' Type de l'objet
         tob = o.GetType()
         Console.WriteLine(tob.Name)
@@ -74,5 +64,5 @@ Class MyApp
         m = CType(tob.GetCustomAttributes(tat, False)(0), MonAttribut)
         Console.WriteLine("{0}, {1}", m.IFlags, m.Info)
     End Sub
-End Class
 
+End Class

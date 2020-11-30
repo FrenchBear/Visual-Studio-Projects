@@ -4,9 +4,6 @@
 ' 2012-02-25	PV  VS2010
 ' 2017-05-02    PV  GitHub et VS2017
 
-Imports System.Collections
-
-
 Module modPCL
 
     Enum EtatPCL
@@ -32,13 +29,12 @@ Module modPCL
     Dim bMainFunction As Byte               ' Fonction qui suit immédiatement Esc */&/(
     Private tbData() As Byte                ' Flot de données transparentes
 
-
     Sub InitEtatPCL()
         epclEtat = EtatPCL.epclPrint
         iDataCount = 0
     End Sub
 
-    Sub AnaPCL(ByVal b As Byte)
+    Sub AnaPCL(b As Byte)
         If bLearningMacro Then
             PCLLearn(b)
         End If
@@ -122,7 +118,7 @@ Module modPCL
         sFactor = ""
     End Sub
 
-    Sub AnaPCLEscape(ByVal b As Byte)
+    Sub AnaPCLEscape(b As Byte)
         If b >= Asc("0") And b <= Asc("9") Or b = Asc(".") Or b = Asc("+") Or b = Asc("-") Then
             sFactor &= Chr(b)
             Exit Sub
@@ -164,7 +160,7 @@ Module modPCL
         epclEtat = epclNextEtat
     End Sub
 
-    Sub PCLFunction(ByVal epclEtat As EtatPCL, ByVal cMainFunction As Char, ByVal cFunction As Char, ByVal sFactor As String)
+    Sub PCLFunction(epclEtat As EtatPCL, cMainFunction As Char, cFunction As Char, sFactor As String)
         TraceWrite("<Esc>")
         Select Case epclEtat
             Case EtatPCL.epclEscapeEt : TraceWrite("&")
@@ -221,7 +217,7 @@ Module modPCL
     End Sub
 
     ' Fonctions Esc &
-    Sub PCL38(ByVal cMainFunction As Char, ByVal cFunction As Char, ByVal sFactor As String)
+    Sub PCL38(cMainFunction As Char, cFunction As Char, sFactor As String)
         Select Case cMainFunction & cFunction
             Case "?F" : PCL38F()
             Case "fY" : PCL38fY(Val(sFactor))
@@ -247,7 +243,7 @@ Module modPCL
     End Sub
 
     ' Fonctions Esc (
-    Sub PCL40(ByVal cMainFunction As Char, ByVal cFunction As Char, ByVal sFactor As String)
+    Sub PCL40(cMainFunction As Char, cFunction As Char, sFactor As String)
         Select Case cMainFunction & cFunction
             Case "?U" : PCL40U(Val(sFactor))
             Case "?S" : PCL40S()
@@ -263,7 +259,7 @@ Module modPCL
     End Sub
 
     ' Fonctions Esc *
-    Sub PCL42(ByVal cMainFunction As Char, ByVal cFunction As Char, ByVal sFactor As String)
+    Sub PCL42(cMainFunction As Char, cFunction As Char, sFactor As String)
         Select Case cMainFunction & cFunction
             Case "?C" : PCL42C()
             Case "cA" : PCL42cA(Val(sFactor))
@@ -290,12 +286,11 @@ Module modPCL
 
 End Module
 
-
 Module modMacros
     Public bLearningMacro As Boolean
 
     Private Class PCLMacro
-        Public sMacroText As New System.Text.StringBuilder
+        Public sMacroText As New Text.StringBuilder
         Public bIsRunning As Boolean
     End Class
 
@@ -303,8 +298,7 @@ Module modMacros
     Private iMacroID As Integer           ' dernier ID rencontré
     Private ReadOnly colMacros As New Hashtable    ' Macros stockées en mémoire
 
-
-    Sub PCLLearn(ByVal b As Byte)
+    Sub PCLLearn(b As Byte)
         Debug.Assert(bLearningMacro = True)
         macCurrentMacro.sMacroText.Append(Chr(b))
     End Sub
@@ -321,13 +315,13 @@ Module modMacros
     End Sub
 
     ' <Esc>&f#Y
-    Sub PCL38fY(ByVal iId As Integer)
+    Sub PCL38fY(iId As Integer)
         TraceWrite("[Macros ID #{0}]", iId)
         iMacroID = iId
     End Sub
 
     ' <Esc>&f#X
-    Sub PCL38fX(ByVal iFonction As Integer)
+    Sub PCL38fX(iFonction As Integer)
         Select Case iFonction
             Case 0
                 TraceWrite("[Macro: Start Macro Def.]")
@@ -362,7 +356,7 @@ Module modMacros
     End Sub
 
     ' Exécute une macro
-    Private Sub RunMacro(ByVal sAction As String)
+    Private Sub RunMacro(sAction As String)
         Dim m As PCLMacro
         Dim iId As Integer = iMacroID
         If bDebugMacros Then Console.WriteLine("Début {0} macro {1}", sAction, iMacroID)
@@ -390,29 +384,27 @@ Module modMacros
 
 End Module
 
-
-
 Module modPCLError
-    Sub PCLError(ByVal s As String)
+
+    Sub PCLError(s As String)
         Console.WriteLine("Erreur PCL pos {0}: {1}", GetPosition, s)
     End Sub
 
-    Sub PCLError(ByVal format As String, ByVal arg0 As Object)
+    Sub PCLError(format As String, arg0 As Object)
         Console.Write("Erreur PCL pos {0}: ", GetPosition)
         Console.WriteLine(format, arg0)
     End Sub
+
 End Module
-
-
 
 Module modTilda
     Dim sTildaText As System.Text.StringBuilder
 
     Sub TildaClearBuffer()
-        sTildaText = New System.Text.StringBuilder
+        sTildaText = New Text.StringBuilder
     End Sub
 
-    Sub TildaLearn(ByVal b As Byte)
+    Sub TildaLearn(b As Byte)
         sTildaText.Append(Chr(b))
     End Sub
 
@@ -428,4 +420,5 @@ Module modTilda
         End Select
 
     End Sub
+
 End Module

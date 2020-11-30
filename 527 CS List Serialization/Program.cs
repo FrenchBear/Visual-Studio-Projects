@@ -6,17 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace SerCol
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Prepare data
             List<LauncherGroup> groupsList;
@@ -48,7 +46,6 @@ namespace SerCol
                 writer.WriteEndElement();
             }
 
-
             // Read
             LauncherConfiguration Configuration2;
             using (XmlReader reader = XmlReader.Create(MenuFile))
@@ -62,12 +59,10 @@ namespace SerCol
                 Configuration2 = (LauncherConfiguration)serializer.Deserialize(reader);
             }
 
-
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
         }
-
     }
 
     public class LauncherConfiguration
@@ -86,7 +81,4 @@ namespace SerCol
         public string Name { get; set; }
         public string Image { get; set; }
     }
-
 }
-
-

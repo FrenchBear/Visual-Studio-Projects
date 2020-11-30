@@ -5,18 +5,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
-
 
 namespace Sort_On
 {
-    class Program
+    internal class Program
     {
-        const int maxVal = 50;
-        const int numElements = 1000;
-        static void Main(string[] args)
+        private const int maxVal = 50;
+        private const int numElements = 1000;
+
+        private static void Main(string[] args)
         {
             var rnd = new Random();
             var l = Enumerable.Range(1, numElements).Select(n => rnd.Next(0, maxVal)).ToArray();
@@ -34,14 +32,13 @@ namespace Sort_On
             var diff = Enumerable.Zip(ls, l, (x1, x2) => x1 != x2).Any(b => b);
             WriteLine("\nLists are " + (diff ? "different" : "the same"));
 
-
             WriteLine();
             Write("(Pause)");
             ReadLine();
         }
 
         // Sort algorithm in O(n)
-        static int[] Sort(int[] input)
+        private static int[] Sort(int[] input)
         {
             int[] counts = new int[numElements];
             foreach (int item in input)
@@ -63,8 +60,7 @@ namespace Sort_On
         }
     }
 
-
-    static class Extensions
+    internal static class Extensions
     {
         // Quick-and-dirty prints a list
         public static void WriteLine<T>(this IEnumerable<T> liste)
@@ -83,6 +79,5 @@ namespace Sort_On
             }
             Console.WriteLine('}');
         }
-
     }
 }

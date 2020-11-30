@@ -5,10 +5,6 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System
-Imports System.Collections
-
-
 Module Module1
 
     Sub Main()

@@ -8,14 +8,10 @@
 
 namespace Mixte20
 {
-
 #include "ClasseC.h"
 
 	C::C()
 	{
 		System::Console::WriteLine("C.ctor");
 	}
-
-
 }
-

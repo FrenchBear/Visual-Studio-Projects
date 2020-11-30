@@ -1,7 +1,8 @@
 ' 2012-02-25	PV  VS2010
 
 Public Class frmTest
-    Private Sub frmTest_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    Private Sub frmTest_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         lvNewDocuments.Items.Add(New ListViewItemDoc("C:\Pictures\Titus\Photo 039.jpg"))
         lvNewDocuments.Items.Add(New ListViewItemDoc("C:\Pictures\Titus\Photo 040.jpg"))
         lvNewDocuments.Items.Add(New ListViewItemDoc("C:\Pictures\Titus\Photo 041.jpg"))
@@ -10,10 +11,9 @@ Public Class frmTest
         lvNewDocuments.Items.Add(New ListViewItemDoc("C:\Documents\Eurofins\Italy\Systems.txt"))
     End Sub
 
-
     Dim WithEvents ge As GenericEditor
 
-    Private Sub lvNewDocuments_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvNewDocuments.Click
+    Private Sub lvNewDocuments_Click(sender As Object, e As EventArgs) Handles lvNewDocuments.Click
         '    Private Sub lvNewDocuments_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvNewDocuments.DoubleClick
         If lvNewDocuments.SelectedItems.Count <> 1 Then Exit Sub
         Dim ld As ListViewItemDoc
@@ -41,7 +41,7 @@ Public Class frmTest
                 MsgBox("Type de fichier inconnu:" & vbCrLf & ed.sPathName)
         End Select
 
-        If Not ge Is Nothing Then
+        If ge IsNot Nothing Then
             ge.Dock = DockStyle.Fill
             ge.Visible = True
             ge.DoEdit(ed)
@@ -53,7 +53,7 @@ Public Class frmTest
         gbNewDocuments.Enabled = Not ge.m_bDirty
     End Sub
 
-    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_Click(sender As System.Object, e As EventArgs) Handles btnAdd.Click
         OpenFileDialog1.CheckFileExists = True
         OpenFileDialog1.Filter = "All files (*.*)|*.*"
         OpenFileDialog1.FilterIndex = 1
@@ -66,13 +66,12 @@ Public Class frmTest
 
 End Class
 
-
 Class ListViewItemDoc
-    Inherits Windows.Forms.ListViewItem
+    Inherits ListViewItem
 
     Private ReadOnly m_sPathName
 
-    Public Sub New(ByVal sPath As String)
+    Public Sub New(sPath As String)
         m_sPathName = sPath
         Me.Text = System.IO.Path.GetFileName(sPath)
         Me.SubItems.Add(FileLen(sPath).ToString)
@@ -84,6 +83,7 @@ Class ListViewItemDoc
             sPathName = m_sPathName
         End Get
     End Property
+
 End Class
 
 Public Class EditDoc

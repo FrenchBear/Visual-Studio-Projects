@@ -4,19 +4,13 @@
 // 2006-10-01   PV  V2005
 // 2012-02-25   PV  VS2010
 
-using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
 
+#pragma warning disable IDE0052 // Remove unread private members
 
 public class Form1 : System.Windows.Forms.Form
 {
-#pragma warning disable IDE0052 // Remove unread private members
     private System.ComponentModel.Container components;
-#pragma warning restore IDE0052 // Remove unread private members
 
     public Form1()
     {

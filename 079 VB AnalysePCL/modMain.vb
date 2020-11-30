@@ -6,7 +6,6 @@
 
 Imports System.IO
 
-
 Module modMainAnaPCL
     Dim nbCar As Integer = 0
 
@@ -81,7 +80,6 @@ Module modMainAnaPCL
         RGOutput()
         t = Microsoft.VisualBasic.DateAndTime.Timer - t
 
-
         If bDebugMacros Then TraceMacros()
         If bVerbose Then Console.WriteLine("Fin, Nb Car: {0}, Durée analyse: {1:f1}s", nbCar, t)
 
@@ -92,7 +90,7 @@ Module modMainAnaPCL
     End Sub
 
     <CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")>
-    Function Analyse(ByVal sNomFic As String) As Boolean
+    Function Analyse(sNomFic As String) As Boolean
         Dim fs As FileStream
         Dim b As Byte
         Console.WriteLine("Analyse de {0}", sNomFic)
@@ -121,23 +119,21 @@ Module modMainAnaPCL
 
 End Module
 
-
 Module modDebug
     Public bDebugPCL As Boolean = False
     Public bDebugMacros As Boolean = False
     Public bVerbose As Boolean = False
     Public bDebugTilda As Boolean = False
 
-
-    Public Sub TraceWrite(ByVal s As String)
+    Public Sub TraceWrite(s As String)
         If bDebugPCL Then Console.Write(s)
     End Sub
 
-    Public Sub TraceWrite(ByVal format As String, ByVal arg0 As Object)
+    Public Sub TraceWrite(format As String, arg0 As Object)
         If bDebugPCL Then Console.Write(format, arg0)
     End Sub
 
-    Public Sub TraceWrite(ByVal format As String, ByVal arg0 As Object, ByVal arg1 As Object)
+    Public Sub TraceWrite(format As String, arg0 As Object, arg1 As Object)
         If bDebugPCL Then Console.Write(format, arg0, arg1)
     End Sub
 
@@ -145,19 +141,19 @@ Module modDebug
         If bDebugPCL Then Console.WriteLine()
     End Sub
 
-    Public Sub TraceWriteLine(ByVal s As String)
+    Public Sub TraceWriteLine(s As String)
         If bDebugPCL Then Console.WriteLine(s)
     End Sub
 
-    Public Sub TraceWriteLine(ByVal format As String, ByVal arg0 As Object)
+    Public Sub TraceWriteLine(format As String, arg0 As Object)
         If bDebugPCL Then Console.WriteLine(format, arg0)
     End Sub
 
-    Public Sub TraceWriteLine(ByVal format As String, ByVal arg0 As Object, ByVal arg1 As Object)
+    Public Sub TraceWriteLine(format As String, arg0 As Object, arg1 As Object)
         If bDebugPCL Then Console.WriteLine(format, arg0, arg1)
     End Sub
 
-    Public Sub TraceWriteLine(ByVal format As String, ByVal arg0 As Object, ByVal arg1 As Object, ByVal arg2 As Object)
+    Public Sub TraceWriteLine(format As String, arg0 As Object, arg1 As Object, arg2 As Object)
         If bDebugPCL Then Console.WriteLine(format, arg0, arg1, arg2)
     End Sub
 

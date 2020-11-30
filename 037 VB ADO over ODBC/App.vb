@@ -3,12 +3,10 @@
 ' 2006-10-01    PV  VS2005  Changed database
 ' 2012-02-25	PV  VS2010  Changed database again!
 
-Imports System
-Imports System.Data
 Imports System.Data.Odbc
 
-
 Class App
+
     Public Shared Sub Main()
 
         Dim co As OdbcConnection
@@ -30,4 +28,5 @@ Class App
         Next
         Console.ReadLine()
     End Sub
+
 End Class

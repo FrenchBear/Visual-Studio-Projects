@@ -4,56 +4,55 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 //
-// The format parameter is embedded with zero or more format items of the form, {index[,alignment][:formatString]}, where: 
+// The format parameter is embedded with zero or more format items of the form, {index[,alignment][:formatString]}, where:
 //
-// index 
-//   A zero-based integer that indicates which element in a list of objects to format. 
-//   The mandatory index component, also called a parameter specifier, is a number starting from 0 that identifies 
-//   a corresponding element in the list of values. That is, the format item whose parameter specifier is 0 formats 
-//   the first value in the list, the format item whose parameter specifier is 1 formats the second value in the list, 
-//   and so on. 
+// index
+//   A zero-based integer that indicates which element in a list of objects to format.
+//   The mandatory index component, also called a parameter specifier, is a number starting from 0 that identifies
+//   a corresponding element in the list of values. That is, the format item whose parameter specifier is 0 formats
+//   the first value in the list, the format item whose parameter specifier is 1 formats the second value in the list,
+//   and so on.
 //   Multiple format items can refer to the same element in the list of values by specifying the same parameter specifier.
 //   For example, you can format the same numeric value in hexadecimal, scientific, and number format by specifying
-//   a source string like this: "{0:X} {0:E} {0:N}". 
-//   Each format item can refer to any parameter. For example, if there are three values, you can format the second, 
-//   first, and third value by specifying a source string like this: "{1} {0} {2}". A value that is not referenced 
-//   by a format item is ignored. A runtime exception results if a parameter specifier designates an item outside 
+//   a source string like this: "{0:X} {0:E} {0:N}".
+//   Each format item can refer to any parameter. For example, if there are three values, you can format the second,
+//   first, and third value by specifying a source string like this: "{1} {0} {2}". A value that is not referenced
+//   by a format item is ignored. A runtime exception results if a parameter specifier designates an item outside
 //   the bounds of the list of values.
 //
-// alignment 
-//   An optional integer indicating the minimum width of the region to contain the formatted value. If the length of the 
-//   formatted value is less than alignment, then the region is padded with spaces. If alignment is negative, the formatted 
+// alignment
+//   An optional integer indicating the minimum width of the region to contain the formatted value. If the length of the
+//   formatted value is less than alignment, then the region is padded with spaces. If alignment is negative, the formatted
 //   value is left justified in the region; if alignment is positive, the formatted value is right justified. If alignment
-//   is not specified, the length of the region is the length of the formatted value. 
-//   The comma is required if alignment is specified. 
+//   is not specified, the length of the region is the length of the formatted value.
+//   The comma is required if alignment is specified.
 //
-// formatString 
+// formatString
 //   An optional string of formatting codes. If formatString is not specified and the corresponding argument implements
 //   the IFormattable interface, then a null reference (Nothing) is used as the IFormattable.ToString format string.
-//   Therefore, all implementations of IFormattable.ToString are required to allow a null reference (Nothing) as 
-//   a format string, and return default formatting of the object representation as a String. 
+//   Therefore, all implementations of IFormattable.ToString are required to allow a null reference (Nothing) as
+//   a format string, and return default formatting of the object representation as a String.
 //   If formatString is not specified, the general ("G") format specifier is used.
-//   The colon is required if formatString is specified. 
+//   The colon is required if formatString is specified.
 //
 //
 // Processing Order
-//   If the value to be formatted is null (Nothing in Visual Basic), an empty string ("") is returned. 
-//   If the type to be formatted implements the ICustomFormatter interface, the ICustomFormatter.Format method is called. 
-//   If the preceding step does not format the type, and the type implements the IFormattable interface, 
-//   the IFormattable.ToString method is called. 
+//   If the value to be formatted is null (Nothing in Visual Basic), an empty string ("") is returned.
+//   If the type to be formatted implements the ICustomFormatter interface, the ICustomFormatter.Format method is called.
+//   If the preceding step does not format the type, and the type implements the IFormattable interface,
+//   the IFormattable.ToString method is called.
 //	 If the preceding step does not format the type, the type's ToString method, which is inherited from the Object class,
-//   is called. 
-//   Alignment is applied after the preceding steps have been performed. 
+//   is called.
+//   Alignment is applied after the preceding steps have been performed.
 //
-// The leading and trailing brace characters, '{' and '}', are required. To specify a single literal brace character 
+// The leading and trailing brace characters, '{' and '}', are required. To specify a single literal brace character
 // in format, specify two leading or trailing brace characters; that is, "{{" or "}}".
 
-
 using System;
-using System.Threading;
 using System.Globalization;
+using System.Threading;
 
-struct Complex : IFormattable
+internal struct Complex : IFormattable
 {
     private readonly double x, y;
 
@@ -62,6 +61,7 @@ struct Complex : IFormattable
         x = r;
         y = i;
     }
+
     #region Membres de IFormattable
 
     public string ToString(string format, IFormatProvider formatProvider)
@@ -81,16 +81,16 @@ struct Complex : IFormattable
         }
     }
 
-    #endregion
+    #endregion Membres de IFormattable
 }
 
-class TestFormat
+internal class TestFormat
 {
     /// <summary>
     /// Point d'entrée principal de l'application.
     /// </summary>
     [STAThread]
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         DoOutput("Formats généraux d'entiers", 0xcafe, new string[] { "{0:G}", "{0:00000000}", "{0:########}", "{0,10}", "{0:d8}", "{0:x}", "{0:x8}", "{0:X}", "{0:n}", "{0:n0}" });
         DoOutput("Format spécifiques d'entiers", 1234567, new string[] { "{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}", "{0:[##-##-##]}" });
@@ -114,7 +114,7 @@ class TestFormat
         Console.ReadLine();
     }
 
-    static void DoOutput(string sTitre, object o, string[] tFormat)
+    private static void DoOutput(string sTitre, object o, string[] tFormat)
     {
         Console.WriteLine(sTitre);
         foreach (string sFormat in tFormat)

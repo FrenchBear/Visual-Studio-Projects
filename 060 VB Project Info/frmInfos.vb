@@ -6,8 +6,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmInfos
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     Private iRang As Integer = 0
     Private ReadOnly iInitialWidth As Integer
@@ -25,7 +27,7 @@ Public Class frmInfos
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -33,32 +35,33 @@ Public Class frmInfos
         End If
         MyBase.Dispose(disposing)
     End Sub
-    Friend WithEvents btnInfos As System.Windows.Forms.Button
+
+    Friend WithEvents btnInfos As Button
 
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnInfos = New System.Windows.Forms.Button()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnInfos = New Button()
         Me.SuspendLayout()
         '
         'btnInfos
         '
-        Me.btnInfos.Location = New System.Drawing.Point(320, 8)
+        Me.btnInfos.Location = New Point(320, 8)
         Me.btnInfos.Name = "btnInfos"
         Me.btnInfos.TabIndex = 0
         Me.btnInfos.Text = "Infos"
         '
         'frmInfos
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
+        Me.AutoScaleBaseSize = New Size(5, 13)
         Me.AutoScroll = True
-        Me.AutoScrollMargin = New System.Drawing.Size(0, 6)
-        Me.ClientSize = New System.Drawing.Size(544, 357)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.btnInfos})
+        Me.AutoScrollMargin = New Size(0, 6)
+        Me.ClientSize = New Size(544, 357)
+        Me.Controls.AddRange(New Control() {Me.btnInfos})
         Me.Name = "frmInfos"
         Me.Text = "Infos sur l'assembly"
         Me.ResumeLayout(False)
@@ -67,10 +70,10 @@ Public Class frmInfos
 
 #End Region
 
-    Private Sub btnInfos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnInfos.Click
+    Private Sub btnInfos_Click(sender As System.Object, e As EventArgs) Handles btnInfos.Click
         btnInfos.Visible = False
 
-        Dim vi As System.Diagnostics.FileVersionInfo
+        Dim vi As FileVersionInfo
         vi = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location)
 
         Info("FileName", vi.FileName)
@@ -100,9 +103,8 @@ Public Class frmInfos
         Info("ProductVersion", vi.ProductVersion)
         Info("SpecialBuild", vi.SpecialBuild)
 
-
         ' Attribut privé
-        Dim a As System.Reflection.Assembly
+        Dim a As Reflection.Assembly
         a = System.Reflection.Assembly.GetExecutingAssembly
         Dim tPV As Object()
         tPV = a.GetCustomAttributes(GetType(AssemblyPVAttribute), False)
@@ -115,9 +117,8 @@ Public Class frmInfos
             Info("PV.Info", PV.Info)
         End If
 
-
         ' On recalibre les txtInfo après l'apparition de la ScrollBar
-        Dim c As Windows.Forms.Control
+        Dim c As Control
         For Each c In Me.Controls
             If TypeOf c Is TextBox Then
                 '        Debug.WriteLine("Name: " & c.Name & " Width: " & c.Size.Width)
@@ -126,8 +127,7 @@ Public Class frmInfos
         Next
     End Sub
 
-
-    Private Sub Info(ByVal sLabel As String, ByVal sValeur As String)
+    Private Sub Info(sLabel As String, sValeur As String)
         iRang += 1
 
         Dim l As New Label()
@@ -135,20 +135,21 @@ Public Class frmInfos
 
         With l
             .AutoSize = True
-            .Location = New System.Drawing.Point(6, 22 * (iRang - 1) + 6)
+            .Location = New Point(6, 22 * (iRang - 1) + 6)
             .Name = "lblInfo" & iRang
             .Text = sLabel
         End With
 
         With t
-            .Location = New System.Drawing.Point(100, 22 * (iRang - 1) + 6)
+            .Location = New Point(100, 22 * (iRang - 1) + 6)
             .Name = "txtInfo" & iRang
-            .Size = New System.Drawing.Size(iInitialWidth, 20)
+            .Size = New Size(iInitialWidth, 20)
             .Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             .ReadOnly = True
             .Text = sValeur
         End With
 
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {t, l})
+        Me.Controls.AddRange(New Control() {t, l})
     End Sub
+
 End Class

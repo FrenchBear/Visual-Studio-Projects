@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 
 namespace CS500
@@ -10,7 +6,9 @@ namespace CS500
     public interface INavigationContext<T, TResult> where T : UIElement
     {
         Task<TResult> WaitForContinuationTask();
+
         T UIelement { get; }
+
         void Continue(TResult returnValue);
     }
 

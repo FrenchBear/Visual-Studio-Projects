@@ -12,10 +12,9 @@ using System;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-
 namespace Mixte20
 {
-    class MyApp
+    internal class MyApp
     {
         public static void Main()
         {
@@ -27,9 +26,7 @@ namespace Mixte20
         }
     }
 
-
-
-    class D1 : B
+    internal class D1 : B
     {
         public D1()
         {
@@ -37,14 +34,11 @@ namespace Mixte20
         }
     }
 
-
-    class D2 : C
+    internal class D2 : C
     {
         public D2()
         {
             Console.WriteLine("D2.ctor");
         }
     }
-
 }
-

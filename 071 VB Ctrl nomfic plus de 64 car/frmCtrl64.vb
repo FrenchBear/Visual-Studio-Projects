@@ -3,8 +3,10 @@
 
 Imports Scripting
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -19,7 +21,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -32,25 +34,26 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+    Friend WithEvents Button1 As Button
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.Button1 = New Button()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(280, 16)
+        Me.Button1.Location = New Point(280, 16)
         Me.Button1.Name = "Button1"
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Button1"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(368, 302)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.Button1})
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(368, 302)
+        Me.Controls.AddRange(New Control() {Me.Button1})
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
@@ -58,16 +61,17 @@ Public Class Form1
     End Sub
 
 #End Region
+
     ReadOnly fs As New FileSystemObject()
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Debug.AutoFlush = True
         System.Diagnostics.Debug.WriteLine("Début")
         Analyse("C:\Documents")
         System.Diagnostics.Debug.WriteLine("Fin")
     End Sub
 
-    Sub Analyse(ByVal sPath As String)
+    Sub Analyse(sPath As String)
         Dim fo As Folder
         fo = fs.GetFolder(sPath)
 
@@ -84,7 +88,7 @@ Public Class Form1
         Next
     End Sub
 
-    Private Function m64(ByVal s As String) As String
+    Private Function m64(s As String) As String
         Dim p As Integer
         p = InStrRev(s, ".")
         Return Microsoft.VisualBasic.Left(s, 64 - (Len(s) - p + 1)) & Mid(s, p)

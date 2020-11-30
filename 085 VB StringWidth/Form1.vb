@@ -4,8 +4,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -20,7 +22,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -33,14 +35,14 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(428, 430)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(428, 430)
         Me.Name = "Form1"
         Me.Text = "Form1"
 
@@ -48,12 +50,12 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Form1_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles MyBase.Paint
+    Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
         MeasureStringSizeFFormatInts(e)
         MeasureCharacterRangesRegions(e)
     End Sub
 
-    Public Sub MeasureStringSizeFFormatInts(ByVal e As PaintEventArgs)
+    Public Sub MeasureStringSizeFFormatInts(e As PaintEventArgs)
         ' Set up string.
         Dim measureString As String = "Measure String"
         Dim stringFont As New Font("Arial", 16)
@@ -63,7 +65,7 @@ Public Class Form1
         Dim newStringFormat As New StringFormat With {
             .FormatFlags = StringFormatFlags.DirectionVertical
         }
-            ' Measure string.
+        ' Measure string.
         Dim charactersFitted As Integer
         Dim linesFilled As Integer
         Dim stringSize As New SizeF
@@ -77,7 +79,7 @@ Public Class Form1
         e.Graphics.DrawString(outString, stringFont, Brushes.Black, New PointF(100, 0))
     End Sub
 
-    Public Sub MeasureCharacterRangesRegions(ByVal e As PaintEventArgs)
+    Public Sub MeasureCharacterRangesRegions(e As PaintEventArgs)
         ' Set up string.
         Dim measureString As String = "First and Second ranges"
         Dim stringFont As New Font("Times New Roman", 16.0F)

@@ -8,17 +8,13 @@
 // 2014-10-28   PV
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS525
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             //Debug.Assert(gcd(5, 7) == 1);
             //Debug.Assert(gcd(7, 5) == 1);
@@ -43,10 +39,9 @@ namespace CS525
             Console.ReadLine();
         }
 
-
-        static long Gcd(long a, long b)
+        private static long Gcd(long a, long b)
         {
-            for (;;)
+            for (; ; )
             {
                 if (b > a)
                 {

@@ -1,6 +1,6 @@
 ' Essai de moteur LVSystem de tracé de fractales, inspiré du L-System FractInt (Lindenmayer System)
-' Par rapport au L-System original, il n'y a qu'une règle de transformation à chaque étape, et 
-' S représente la séquence précédente, ~S la séquence précédente inversée (lecture ordre inverse, 
+' Par rapport au L-System original, il n'y a qu'une règle de transformation à chaque étape, et
+' S représente la séquence précédente, ~S la séquence précédente inversée (lecture ordre inverse,
 ' et permutation des - et +
 '
 ' Dans les règles, S représente la séquence précédente, ~S la séquence précédente inversée
@@ -13,9 +13,10 @@
 ' 2010-07-19    PV  VS 2010
 ' 2012-02-05    PV  Nettoyage
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class LVSystemForm
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -30,7 +31,7 @@ Public Class LVSystemForm
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -43,154 +44,156 @@ Public Class LVSystemForm
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents btnGénère As System.Windows.Forms.Button
-    Friend WithEvents lblRègles As System.Windows.Forms.Label
-    Friend WithEvents txtDépart As System.Windows.Forms.TextBox
-    Friend WithEvents lblDépart As System.Windows.Forms.Label
-    Friend WithEvents txtRègles As System.Windows.Forms.TextBox
-    Friend WithEvents txtFinal As System.Windows.Forms.TextBox
-    Friend WithEvents lblFinal As System.Windows.Forms.Label
-    Friend WithEvents lblAngle As System.Windows.Forms.Label
-    Friend WithEvents txtAngle As System.Windows.Forms.TextBox
-    Friend WithEvents txtItérations As System.Windows.Forms.TextBox
-    Friend WithEvents lblItérations As System.Windows.Forms.Label
-    Friend WithEvents txtAnalyse As System.Windows.Forms.TextBox
-    Friend WithEvents lblAnalyse As System.Windows.Forms.Label
-    Friend WithEvents ExempleHilbertButton As System.Windows.Forms.Button
-    Friend WithEvents ExempleDragonButton As System.Windows.Forms.Button
-    Friend WithEvents picOut As System.Windows.Forms.PictureBox
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnGénère = New System.Windows.Forms.Button()
-        Me.lblAngle = New System.Windows.Forms.Label()
-        Me.txtAngle = New System.Windows.Forms.TextBox()
-        Me.txtDépart = New System.Windows.Forms.TextBox()
-        Me.lblDépart = New System.Windows.Forms.Label()
-        Me.txtRègles = New System.Windows.Forms.TextBox()
-        Me.lblRègles = New System.Windows.Forms.Label()
-        Me.txtFinal = New System.Windows.Forms.TextBox()
-        Me.lblFinal = New System.Windows.Forms.Label()
-        Me.txtItérations = New System.Windows.Forms.TextBox()
-        Me.lblItérations = New System.Windows.Forms.Label()
-        Me.txtAnalyse = New System.Windows.Forms.TextBox()
-        Me.lblAnalyse = New System.Windows.Forms.Label()
-        Me.picOut = New System.Windows.Forms.PictureBox()
-        Me.ExempleHilbertButton = New System.Windows.Forms.Button()
-        Me.ExempleDragonButton = New System.Windows.Forms.Button()
-        CType(Me.picOut, System.ComponentModel.ISupportInitialize).BeginInit()
+    Friend WithEvents btnGénère As Button
+
+    Friend WithEvents lblRègles As Label
+    Friend WithEvents txtDépart As TextBox
+    Friend WithEvents lblDépart As Label
+    Friend WithEvents txtRègles As TextBox
+    Friend WithEvents txtFinal As TextBox
+    Friend WithEvents lblFinal As Label
+    Friend WithEvents lblAngle As Label
+    Friend WithEvents txtAngle As TextBox
+    Friend WithEvents txtItérations As TextBox
+    Friend WithEvents lblItérations As Label
+    Friend WithEvents txtAnalyse As TextBox
+    Friend WithEvents lblAnalyse As Label
+    Friend WithEvents ExempleHilbertButton As Button
+    Friend WithEvents ExempleDragonButton As Button
+    Friend WithEvents picOut As PictureBox
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnGénère = New Button()
+        Me.lblAngle = New Label()
+        Me.txtAngle = New TextBox()
+        Me.txtDépart = New TextBox()
+        Me.lblDépart = New Label()
+        Me.txtRègles = New TextBox()
+        Me.lblRègles = New Label()
+        Me.txtFinal = New TextBox()
+        Me.lblFinal = New Label()
+        Me.txtItérations = New TextBox()
+        Me.lblItérations = New Label()
+        Me.txtAnalyse = New TextBox()
+        Me.lblAnalyse = New Label()
+        Me.picOut = New PictureBox()
+        Me.ExempleHilbertButton = New Button()
+        Me.ExempleDragonButton = New Button()
+        CType(Me.picOut, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGénère
         '
-        Me.btnGénère.Location = New System.Drawing.Point(8, 192)
+        Me.btnGénère.Location = New Point(8, 192)
         Me.btnGénère.Name = "btnGénère"
-        Me.btnGénère.Size = New System.Drawing.Size(75, 23)
+        Me.btnGénère.Size = New Size(75, 23)
         Me.btnGénère.TabIndex = 0
         Me.btnGénère.Text = "Génère"
         '
         'lblAngle
         '
         Me.lblAngle.AutoSize = True
-        Me.lblAngle.Location = New System.Drawing.Point(8, 128)
+        Me.lblAngle.Location = New Point(8, 128)
         Me.lblAngle.Name = "lblAngle"
-        Me.lblAngle.Size = New System.Drawing.Size(41, 13)
+        Me.lblAngle.Size = New Size(41, 13)
         Me.lblAngle.TabIndex = 1
         Me.lblAngle.Text = "Angle :"
         '
         'txtAngle
         '
-        Me.txtAngle.Location = New System.Drawing.Point(64, 128)
+        Me.txtAngle.Location = New Point(64, 128)
         Me.txtAngle.Name = "txtAngle"
-        Me.txtAngle.Size = New System.Drawing.Size(56, 21)
+        Me.txtAngle.Size = New Size(56, 21)
         Me.txtAngle.TabIndex = 2
         Me.txtAngle.Text = "4"
         '
         'txtDépart
         '
-        Me.txtDépart.Location = New System.Drawing.Point(64, 8)
+        Me.txtDépart.Location = New Point(64, 8)
         Me.txtDépart.Name = "txtDépart"
-        Me.txtDépart.Size = New System.Drawing.Size(288, 21)
+        Me.txtDépart.Size = New Size(288, 21)
         Me.txtDépart.TabIndex = 4
         Me.txtDépart.Text = "+F-F-F+"
         '
         'lblDépart
         '
         Me.lblDépart.AutoSize = True
-        Me.lblDépart.Location = New System.Drawing.Point(8, 8)
+        Me.lblDépart.Location = New Point(8, 8)
         Me.lblDépart.Name = "lblDépart"
-        Me.lblDépart.Size = New System.Drawing.Size(47, 13)
+        Me.lblDépart.Size = New Size(47, 13)
         Me.lblDépart.TabIndex = 3
         Me.lblDépart.Text = "Départ :"
         '
         'txtRègles
         '
-        Me.txtRègles.Location = New System.Drawing.Point(64, 40)
+        Me.txtRègles.Location = New Point(64, 40)
         Me.txtRègles.Multiline = True
         Me.txtRègles.Name = "txtRègles"
-        Me.txtRègles.Size = New System.Drawing.Size(288, 80)
+        Me.txtRègles.Size = New Size(288, 80)
         Me.txtRègles.TabIndex = 6
         Me.txtRègles.Text = "S=+~SF-SFS-F~S+"
         '
         'lblRègles
         '
         Me.lblRègles.AutoSize = True
-        Me.lblRègles.Location = New System.Drawing.Point(8, 40)
+        Me.lblRègles.Location = New Point(8, 40)
         Me.lblRègles.Name = "lblRègles"
-        Me.lblRègles.Size = New System.Drawing.Size(46, 13)
+        Me.lblRègles.Size = New Size(46, 13)
         Me.lblRègles.TabIndex = 5
         Me.lblRègles.Text = "Règles :"
         '
         'txtFinal
         '
-        Me.txtFinal.Location = New System.Drawing.Point(64, 232)
+        Me.txtFinal.Location = New Point(64, 232)
         Me.txtFinal.Multiline = True
         Me.txtFinal.Name = "txtFinal"
         Me.txtFinal.ReadOnly = True
-        Me.txtFinal.Size = New System.Drawing.Size(288, 144)
+        Me.txtFinal.Size = New Size(288, 144)
         Me.txtFinal.TabIndex = 8
         '
         'lblFinal
         '
         Me.lblFinal.AutoSize = True
-        Me.lblFinal.Location = New System.Drawing.Point(8, 232)
+        Me.lblFinal.Location = New Point(8, 232)
         Me.lblFinal.Name = "lblFinal"
-        Me.lblFinal.Size = New System.Drawing.Size(36, 13)
+        Me.lblFinal.Size = New Size(36, 13)
         Me.lblFinal.TabIndex = 7
         Me.lblFinal.Text = "Final :"
         '
         'txtItérations
         '
-        Me.txtItérations.Location = New System.Drawing.Point(64, 160)
+        Me.txtItérations.Location = New Point(64, 160)
         Me.txtItérations.Name = "txtItérations"
-        Me.txtItérations.Size = New System.Drawing.Size(56, 21)
+        Me.txtItérations.Size = New Size(56, 21)
         Me.txtItérations.TabIndex = 10
         Me.txtItérations.Text = "1"
         '
         'lblItérations
         '
         Me.lblItérations.AutoSize = True
-        Me.lblItérations.Location = New System.Drawing.Point(8, 160)
+        Me.lblItérations.Location = New Point(8, 160)
         Me.lblItérations.Name = "lblItérations"
-        Me.lblItérations.Size = New System.Drawing.Size(61, 13)
+        Me.lblItérations.Size = New Size(61, 13)
         Me.lblItérations.TabIndex = 9
         Me.lblItérations.Text = "Itérations :"
         '
         'txtAnalyse
         '
-        Me.txtAnalyse.Location = New System.Drawing.Point(64, 384)
+        Me.txtAnalyse.Location = New Point(64, 384)
         Me.txtAnalyse.Multiline = True
         Me.txtAnalyse.Name = "txtAnalyse"
         Me.txtAnalyse.ReadOnly = True
-        Me.txtAnalyse.Size = New System.Drawing.Size(288, 80)
+        Me.txtAnalyse.Size = New Size(288, 80)
         Me.txtAnalyse.TabIndex = 12
         '
         'lblAnalyse
         '
         Me.lblAnalyse.AutoSize = True
-        Me.lblAnalyse.Location = New System.Drawing.Point(8, 384)
+        Me.lblAnalyse.Location = New Point(8, 384)
         Me.lblAnalyse.Name = "lblAnalyse"
-        Me.lblAnalyse.Size = New System.Drawing.Size(52, 13)
+        Me.lblAnalyse.Size = New Size(52, 13)
         Me.lblAnalyse.TabIndex = 11
         Me.lblAnalyse.Text = "Analyse :"
         '
@@ -198,36 +201,36 @@ Public Class LVSystemForm
         '
         Me.picOut.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.picOut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picOut.Location = New System.Drawing.Point(360, 8)
+        Me.picOut.Location = New Point(360, 8)
         Me.picOut.Name = "picOut"
-        Me.picOut.Size = New System.Drawing.Size(360, 456)
+        Me.picOut.Size = New Size(360, 456)
         Me.picOut.TabIndex = 13
         Me.picOut.TabStop = False
         '
         'ExempleHilbertButton
         '
-        Me.ExempleHilbertButton.Location = New System.Drawing.Point(238, 126)
+        Me.ExempleHilbertButton.Location = New Point(238, 126)
         Me.ExempleHilbertButton.Name = "ExempleHilbertButton"
-        Me.ExempleHilbertButton.Size = New System.Drawing.Size(114, 23)
+        Me.ExempleHilbertButton.Size = New Size(114, 23)
         Me.ExempleHilbertButton.TabIndex = 14
         Me.ExempleHilbertButton.Text = "Exemple Hilbert"
         Me.ExempleHilbertButton.UseVisualStyleBackColor = True
         '
         'ExempleDragonButton
         '
-        Me.ExempleDragonButton.Location = New System.Drawing.Point(238, 158)
+        Me.ExempleDragonButton.Location = New Point(238, 158)
         Me.ExempleDragonButton.Name = "ExempleDragonButton"
-        Me.ExempleDragonButton.Size = New System.Drawing.Size(114, 23)
+        Me.ExempleDragonButton.Size = New Size(114, 23)
         Me.ExempleDragonButton.TabIndex = 15
         Me.ExempleDragonButton.Text = "Exemple Dragon"
         Me.ExempleDragonButton.UseVisualStyleBackColor = True
         '
         'frmLVSystem
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 14)
-        Me.ClientSize = New System.Drawing.Size(728, 470)
+        Me.AutoScaleBaseSize = New Size(5, 14)
+        Me.ClientSize = New Size(728, 470)
         Me.Controls.Add(Me.ExempleDragonButton)
         Me.Controls.Add(Me.ExempleHilbertButton)
         Me.Controls.Add(Me.picOut)
@@ -244,10 +247,10 @@ Public Class LVSystemForm
         Me.Controls.Add(Me.txtAngle)
         Me.Controls.Add(Me.lblAngle)
         Me.Controls.Add(Me.btnGénère)
-        Me.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmLVSystem"
         Me.Text = "LVSystem, Application à la courbe de Hilbert"
-        CType(Me.picOut, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picOut, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -260,7 +263,7 @@ Public Class LVSystemForm
     Dim iAngle As Integer
     Dim tsRègles As String()
 
-    Private Sub btnGénère_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGénère.Click
+    Private Sub btnGénère_Click(sender As System.Object, e As EventArgs) Handles btnGénère.Click
         System.Windows.Forms.Cursor.Current = Cursors.WaitCursor
 
         sChaîne = txtDépart.Text
@@ -286,11 +289,11 @@ Public Class LVSystemForm
         System.Windows.Forms.Cursor.Current = Cursors.Default
     End Sub
 
-    Private Sub frmLSystem_Resize(sender As Object, e As System.EventArgs) Handles Me.Resize
+    Private Sub frmLSystem_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         sAnalyseEtDessine(txtFinal.Text)
     End Sub
 
-    Function sAppliqueRègles(ByVal s As String) As String
+    Function sAppliqueRègles(s As String) As String
         For Each sr As String In tsRègles
             Dim tsr As String()
             tsr = sr.Split("=")
@@ -307,9 +310,9 @@ Public Class LVSystemForm
         Return s
     End Function
 
-    Private Function sInverse(ByVal s0 As String) As String
-        Dim s As System.Text.StringBuilder
-        s = New System.Text.StringBuilder
+    Private Function sInverse(s0 As String) As String
+        Dim s As Text.StringBuilder
+        s = New Text.StringBuilder
         For i As Integer = s0.Length - 1 To 0 Step -1
             Select Case s0.Chars(i)
                 Case "+"c
@@ -323,7 +326,7 @@ Public Class LVSystemForm
         Return s.ToString
     End Function
 
-    Function sAnalyseEtDessine(ByVal s As String) As String
+    Function sAnalyseEtDessine(s As String) As String
         Dim px As Double = 0.0
         Dim py As Double = 0.0
         Dim a As Integer = 0
@@ -398,17 +401,18 @@ Public Class LVSystemForm
         Next
     End Function
 
-    Private Sub ExempleHilbertButton_Click(sender As System.Object, e As System.EventArgs) Handles ExempleHilbertButton.Click
+    Private Sub ExempleHilbertButton_Click(sender As System.Object, e As EventArgs) Handles ExempleHilbertButton.Click
         txtDépart.Text = "+F-F-F+"
         txtRègles.Text = "S=+~SF-SFS-F~S+"
         txtAngle.Text = "4"
         txtItérations.Text = "5"
     End Sub
 
-    Private Sub ExempleDragonButton_Click(sender As System.Object, e As System.EventArgs) Handles ExempleDragonButton.Click
+    Private Sub ExempleDragonButton_Click(sender As System.Object, e As EventArgs) Handles ExempleDragonButton.Click
         txtDépart.Text = "F"
         txtRègles.Text = "S=+S--~S+"
         txtAngle.Text = "8"
         txtItérations.Text = "10"
     End Sub
+
 End Class

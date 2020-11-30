@@ -1,10 +1,8 @@
-﻿
-' Generic Structure
+﻿' Generic Structure
 Structure Couple(Of t1)
     Dim x As t1
     Dim y As t1
 End Structure
-
 
 Structure NullableType(Of t As IComparable)
     Implements IComparable
@@ -23,7 +21,7 @@ Structure NullableType(Of t As IComparable)
         Dim x As Object = ty.FullName
     End Sub
 
-    Sub New(ByVal vNull As t)
+    Sub New(vNull As t)
         NullValue = vNull
     End Sub
 
@@ -31,7 +29,7 @@ Structure NullableType(Of t As IComparable)
         Get
             Return x
         End Get
-        Set(ByVal Value As t)
+        Set(Value As t)
             x = Value
             bIsNull = NullValue.CompareTo(x) = 0
         End Set
@@ -49,14 +47,14 @@ Structure NullableType(Of t As IComparable)
     End Sub
 
     ' Complètement idiot comme conversion !
-    Public Shared Widening Operator CType(ByVal v As Integer) As NullableType(Of t)
+    Public Shared Widening Operator CType(v As Integer) As NullableType(Of t)
         Dim y As NullableType(Of t)
         y.Value = CType(CType(v, Object), t)                ' ?
         Return y
     End Operator
 
-    Public Function CompareTo(ByVal obj As Object) As Integer Implements System.IComparable.CompareTo
+    Public Function CompareTo(obj As Object) As Integer Implements IComparable.CompareTo
         Return x.CompareTo(obj)
     End Function
-End Structure
 
+End Structure

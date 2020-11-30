@@ -4,14 +4,9 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
-using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
-
 
 public class GradientButton : Button
 {
@@ -33,7 +28,6 @@ public class GradientButton : Button
         format.LineAlignment = StringAlignment.Center;
     }
 
-
     public Color EndColor
     {
         get
@@ -49,7 +43,6 @@ public class GradientButton : Button
         }
     }
 
-
     public Color StartColor
     {
         get
@@ -64,7 +57,6 @@ public class GradientButton : Button
                 Invalidate();
         }
     }
-
 
     protected override void OnPaint(PaintEventArgs pe)
     {
@@ -87,4 +79,3 @@ public class GradientButton : Button
           clientRect, format);
     }
 }
-

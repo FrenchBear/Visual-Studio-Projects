@@ -4,7 +4,7 @@
 // Display φ and ϕ, shown as ϕ and φ in Consolas (and Calibri), that's a known problem with old fonts...
 //
 // From Wikipedia, https://en.wikipedia.org/wiki/Phi:
-//   Prior to Unicode version 3.0 (1998), the glyph assignments in the Unicode code charts were the reverse, 
+//   Prior to Unicode version 3.0 (1998), the glyph assignments in the Unicode code charts were the reverse,
 //   and thus older fonts may still show a loopy form φ at U+03D5
 //
 // From Unicode® Technical Report #25, Unicode Support for Mathematics http://unicode.org/reports/tr25/:
@@ -17,17 +17,15 @@
 //     more like the representative glyph shown for U+03D5(ϕ, the “straight“ form).
 //     See the Greek table in the character code charts http://www.unicode.org/charts/PDF/U0370.pdf
 
-
 using System;
 using System.Text;
 using static System.Console;
 
-
 namespace CS608
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.OutputEncoding = new UTF8Encoding();
 

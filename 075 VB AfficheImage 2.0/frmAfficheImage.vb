@@ -7,8 +7,10 @@
 Imports System.IO
 Imports System.Reflection
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmAfficheImage
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -23,7 +25,7 @@ Public Class frmAfficheImage
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -36,131 +38,133 @@ Public Class frmAfficheImage
     Private components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents cboFichiers As System.Windows.Forms.ComboBox
-    Friend WithEvents sbStatus As System.Windows.Forms.StatusBar
-    Friend WithEvents Fichier As System.Windows.Forms.StatusBarPanel
-    Friend WithEvents Réslution As System.Windows.Forms.StatusBarPanel
-    Friend WithEvents Taille As System.Windows.Forms.StatusBarPanel
-    Friend WithEvents Echelle As System.Windows.Forms.StatusBarPanel
-    Friend WithEvents cmdQuitter As System.Windows.Forms.MenuItem
-    Friend WithEvents lblPos As System.Windows.Forms.Label
-    Friend WithEvents tbBoutons As System.Windows.Forms.ToolBar
-    Friend WithEvents sep1 As System.Windows.Forms.ToolBarButton
-    Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
-    Friend WithEvents sep2 As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnPremier As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnPrécédent As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnSuivant As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnDernier As System.Windows.Forms.ToolBarButton
-    Friend WithEvents sep3 As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnAuHasard As System.Windows.Forms.ToolBarButton
-    Friend WithEvents sep4 As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnEffacer As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnOuvrir As System.Windows.Forms.ToolBarButton
-    Friend WithEvents btnRetourArrière As System.Windows.Forms.ToolBarButton
-    Friend WithEvents mnuAide As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdAPropos As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdOuvrir As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem2 As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem3 As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem8 As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem10 As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdPremier As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdPrécédent As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdSuivant As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdDernier As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdAuHasard As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdRetourArrière As System.Windows.Forms.MenuItem
-    Friend WithEvents MainMenu1 As System.Windows.Forms.MainMenu
-    Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents mnuNavigation As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdAffiche1Image As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdAffiche4Images As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuAffichage As System.Windows.Forms.MenuItem
-    Friend WithEvents paClient As System.Windows.Forms.PictureBox
-    Friend WithEvents cmd9Images As System.Windows.Forms.MenuItem
-    Friend WithEvents cmd16images As System.Windows.Forms.MenuItem
-    Friend WithEvents mnuEdition As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdCopieCheminImage As System.Windows.Forms.MenuItem
-    Friend WithEvents MenuItem1 As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdAperçuWindows As System.Windows.Forms.MenuItem
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(frmAfficheImage))
-        Me.cboFichiers = New System.Windows.Forms.ComboBox
-        Me.sbStatus = New System.Windows.Forms.StatusBar
-        Me.Fichier = New System.Windows.Forms.StatusBarPanel
-        Me.Réslution = New System.Windows.Forms.StatusBarPanel
-        Me.Taille = New System.Windows.Forms.StatusBarPanel
-        Me.Echelle = New System.Windows.Forms.StatusBarPanel
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu
-        Me.mnuNavigation = New System.Windows.Forms.MenuItem
-        Me.cmdOuvrir = New System.Windows.Forms.MenuItem
-        Me.MenuItem2 = New System.Windows.Forms.MenuItem
-        Me.cmdPremier = New System.Windows.Forms.MenuItem
-        Me.cmdPrécédent = New System.Windows.Forms.MenuItem
-        Me.cmdSuivant = New System.Windows.Forms.MenuItem
-        Me.cmdDernier = New System.Windows.Forms.MenuItem
-        Me.MenuItem8 = New System.Windows.Forms.MenuItem
-        Me.cmdAuHasard = New System.Windows.Forms.MenuItem
-        Me.MenuItem10 = New System.Windows.Forms.MenuItem
-        Me.cmdRetourArrière = New System.Windows.Forms.MenuItem
-        Me.MenuItem3 = New System.Windows.Forms.MenuItem
-        Me.cmdQuitter = New System.Windows.Forms.MenuItem
-        Me.mnuEdition = New System.Windows.Forms.MenuItem
-        Me.cmdCopieCheminImage = New System.Windows.Forms.MenuItem
-        Me.mnuAffichage = New System.Windows.Forms.MenuItem
-        Me.cmdAffiche1Image = New System.Windows.Forms.MenuItem
-        Me.cmdAffiche4Images = New System.Windows.Forms.MenuItem
-        Me.cmd9Images = New System.Windows.Forms.MenuItem
-        Me.cmd16images = New System.Windows.Forms.MenuItem
-        Me.mnuAide = New System.Windows.Forms.MenuItem
-        Me.cmdAPropos = New System.Windows.Forms.MenuItem
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog
-        Me.lblPos = New System.Windows.Forms.Label
-        Me.tbBoutons = New System.Windows.Forms.ToolBar
-        Me.sep1 = New System.Windows.Forms.ToolBarButton
-        Me.btnOuvrir = New System.Windows.Forms.ToolBarButton
-        Me.sep2 = New System.Windows.Forms.ToolBarButton
-        Me.btnPremier = New System.Windows.Forms.ToolBarButton
-        Me.btnPrécédent = New System.Windows.Forms.ToolBarButton
-        Me.btnSuivant = New System.Windows.Forms.ToolBarButton
-        Me.btnDernier = New System.Windows.Forms.ToolBarButton
-        Me.sep3 = New System.Windows.Forms.ToolBarButton
-        Me.btnRetourArrière = New System.Windows.Forms.ToolBarButton
-        Me.btnAuHasard = New System.Windows.Forms.ToolBarButton
-        Me.sep4 = New System.Windows.Forms.ToolBarButton
-        Me.btnEffacer = New System.Windows.Forms.ToolBarButton
-        Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.paClient = New System.Windows.Forms.PictureBox
-        Me.MenuItem1 = New System.Windows.Forms.MenuItem
-        Me.cmdAperçuWindows = New System.Windows.Forms.MenuItem
-        CType(Me.Fichier, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Réslution, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Taille, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Echelle, System.ComponentModel.ISupportInitialize).BeginInit()
+    Friend WithEvents cboFichiers As ComboBox
+
+    Friend WithEvents sbStatus As StatusBar
+    Friend WithEvents Fichier As StatusBarPanel
+    Friend WithEvents Réslution As StatusBarPanel
+    Friend WithEvents Taille As StatusBarPanel
+    Friend WithEvents Echelle As StatusBarPanel
+    Friend WithEvents cmdQuitter As MenuItem
+    Friend WithEvents lblPos As Label
+    Friend WithEvents tbBoutons As ToolBar
+    Friend WithEvents sep1 As ToolBarButton
+    Friend WithEvents ImageList1 As ImageList
+    Friend WithEvents sep2 As ToolBarButton
+    Friend WithEvents btnPremier As ToolBarButton
+    Friend WithEvents btnPrécédent As ToolBarButton
+    Friend WithEvents btnSuivant As ToolBarButton
+    Friend WithEvents btnDernier As ToolBarButton
+    Friend WithEvents sep3 As ToolBarButton
+    Friend WithEvents btnAuHasard As ToolBarButton
+    Friend WithEvents sep4 As ToolBarButton
+    Friend WithEvents btnEffacer As ToolBarButton
+    Friend WithEvents btnOuvrir As ToolBarButton
+    Friend WithEvents btnRetourArrière As ToolBarButton
+    Friend WithEvents mnuAide As MenuItem
+    Friend WithEvents cmdAPropos As MenuItem
+    Friend WithEvents cmdOuvrir As MenuItem
+    Friend WithEvents MenuItem2 As MenuItem
+    Friend WithEvents MenuItem3 As MenuItem
+    Friend WithEvents MenuItem8 As MenuItem
+    Friend WithEvents MenuItem10 As MenuItem
+    Friend WithEvents cmdPremier As MenuItem
+    Friend WithEvents cmdPrécédent As MenuItem
+    Friend WithEvents cmdSuivant As MenuItem
+    Friend WithEvents cmdDernier As MenuItem
+    Friend WithEvents cmdAuHasard As MenuItem
+    Friend WithEvents cmdRetourArrière As MenuItem
+    Friend WithEvents MainMenu1 As MainMenu
+    Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
+    Friend WithEvents mnuNavigation As MenuItem
+    Friend WithEvents cmdAffiche1Image As MenuItem
+    Friend WithEvents cmdAffiche4Images As MenuItem
+    Friend WithEvents mnuAffichage As MenuItem
+    Friend WithEvents paClient As PictureBox
+    Friend WithEvents cmd9Images As MenuItem
+    Friend WithEvents cmd16images As MenuItem
+    Friend WithEvents mnuEdition As MenuItem
+    Friend WithEvents cmdCopieCheminImage As MenuItem
+    Friend WithEvents MenuItem1 As MenuItem
+    Friend WithEvents cmdAperçuWindows As MenuItem
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.components = New ComponentModel.Container
+        Dim resources As Resources.ResourceManager = New Resources.ResourceManager(GetType(frmAfficheImage))
+        Me.cboFichiers = New ComboBox
+        Me.sbStatus = New StatusBar
+        Me.Fichier = New StatusBarPanel
+        Me.Réslution = New StatusBarPanel
+        Me.Taille = New StatusBarPanel
+        Me.Echelle = New StatusBarPanel
+        Me.MainMenu1 = New MainMenu
+        Me.mnuNavigation = New MenuItem
+        Me.cmdOuvrir = New MenuItem
+        Me.MenuItem2 = New MenuItem
+        Me.cmdPremier = New MenuItem
+        Me.cmdPrécédent = New MenuItem
+        Me.cmdSuivant = New MenuItem
+        Me.cmdDernier = New MenuItem
+        Me.MenuItem8 = New MenuItem
+        Me.cmdAuHasard = New MenuItem
+        Me.MenuItem10 = New MenuItem
+        Me.cmdRetourArrière = New MenuItem
+        Me.MenuItem3 = New MenuItem
+        Me.cmdQuitter = New MenuItem
+        Me.mnuEdition = New MenuItem
+        Me.cmdCopieCheminImage = New MenuItem
+        Me.mnuAffichage = New MenuItem
+        Me.cmdAffiche1Image = New MenuItem
+        Me.cmdAffiche4Images = New MenuItem
+        Me.cmd9Images = New MenuItem
+        Me.cmd16images = New MenuItem
+        Me.mnuAide = New MenuItem
+        Me.cmdAPropos = New MenuItem
+        Me.FolderBrowserDialog1 = New FolderBrowserDialog
+        Me.lblPos = New Label
+        Me.tbBoutons = New ToolBar
+        Me.sep1 = New ToolBarButton
+        Me.btnOuvrir = New ToolBarButton
+        Me.sep2 = New ToolBarButton
+        Me.btnPremier = New ToolBarButton
+        Me.btnPrécédent = New ToolBarButton
+        Me.btnSuivant = New ToolBarButton
+        Me.btnDernier = New ToolBarButton
+        Me.sep3 = New ToolBarButton
+        Me.btnRetourArrière = New ToolBarButton
+        Me.btnAuHasard = New ToolBarButton
+        Me.sep4 = New ToolBarButton
+        Me.btnEffacer = New ToolBarButton
+        Me.ImageList1 = New ImageList(Me.components)
+        Me.paClient = New PictureBox
+        Me.MenuItem1 = New MenuItem
+        Me.cmdAperçuWindows = New MenuItem
+        CType(Me.Fichier, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Réslution, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Taille, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Echelle, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboFichiers
         '
         Me.cboFichiers.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.cboFichiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboFichiers.Location = New System.Drawing.Point(312, 5)
+        Me.cboFichiers.Location = New Point(312, 5)
         Me.cboFichiers.MaxDropDownItems = 16
         Me.cboFichiers.Name = "cboFichiers"
-        Me.cboFichiers.Size = New System.Drawing.Size(336, 21)
+        Me.cboFichiers.Size = New Size(336, 21)
         Me.cboFichiers.TabIndex = 1
         '
         'sbStatus
         '
-        Me.sbStatus.Location = New System.Drawing.Point(0, 491)
+        Me.sbStatus.Location = New Point(0, 491)
         Me.sbStatus.Name = "sbStatus"
-        Me.sbStatus.Panels.AddRange(New System.Windows.Forms.StatusBarPanel() {Me.Fichier, Me.Réslution, Me.Taille, Me.Echelle})
+        Me.sbStatus.Panels.AddRange(New StatusBarPanel() {Me.Fichier, Me.Réslution, Me.Taille, Me.Echelle})
         Me.sbStatus.ShowPanels = True
-        Me.sbStatus.Size = New System.Drawing.Size(656, 22)
+        Me.sbStatus.Size = New Size(656, 22)
         Me.sbStatus.TabIndex = 5
         '
         'Fichier
@@ -170,12 +174,12 @@ Public Class frmAfficheImage
         '
         'MainMenu1
         '
-        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuNavigation, Me.mnuEdition, Me.mnuAffichage, Me.mnuAide})
+        Me.MainMenu1.MenuItems.AddRange(New MenuItem() {Me.mnuNavigation, Me.mnuEdition, Me.mnuAffichage, Me.mnuAide})
         '
         'mnuNavigation
         '
         Me.mnuNavigation.Index = 0
-        Me.mnuNavigation.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdOuvrir, Me.MenuItem2, Me.cmdPremier, Me.cmdPrécédent, Me.cmdSuivant, Me.cmdDernier, Me.MenuItem8, Me.cmdAuHasard, Me.MenuItem10, Me.cmdRetourArrière, Me.MenuItem3, Me.cmdQuitter})
+        Me.mnuNavigation.MenuItems.AddRange(New MenuItem() {Me.cmdOuvrir, Me.MenuItem2, Me.cmdPremier, Me.cmdPrécédent, Me.cmdSuivant, Me.cmdDernier, Me.MenuItem8, Me.cmdAuHasard, Me.MenuItem10, Me.cmdRetourArrière, Me.MenuItem3, Me.cmdQuitter})
         Me.mnuNavigation.Text = "&Navigation"
         '
         'cmdOuvrir
@@ -241,7 +245,7 @@ Public Class frmAfficheImage
         'mnuEdition
         '
         Me.mnuEdition.Index = 1
-        Me.mnuEdition.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdCopieCheminImage, Me.MenuItem1, Me.cmdAperçuWindows})
+        Me.mnuEdition.MenuItems.AddRange(New MenuItem() {Me.cmdCopieCheminImage, Me.MenuItem1, Me.cmdAperçuWindows})
         Me.mnuEdition.Text = "&Edition"
         '
         'cmdCopieCheminImage
@@ -252,7 +256,7 @@ Public Class frmAfficheImage
         'mnuAffichage
         '
         Me.mnuAffichage.Index = 2
-        Me.mnuAffichage.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdAffiche1Image, Me.cmdAffiche4Images, Me.cmd9Images, Me.cmd16images})
+        Me.mnuAffichage.MenuItems.AddRange(New MenuItem() {Me.cmdAffiche1Image, Me.cmdAffiche4Images, Me.cmd9Images, Me.cmd16images})
         Me.mnuAffichage.Text = "&Affichage"
         '
         'cmdAffiche1Image
@@ -278,7 +282,7 @@ Public Class frmAfficheImage
         'mnuAide
         '
         Me.mnuAide.Index = 3
-        Me.mnuAide.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdAPropos})
+        Me.mnuAide.MenuItems.AddRange(New MenuItem() {Me.cmdAPropos})
         Me.mnuAide.Text = "&?"
         '
         'cmdAPropos
@@ -294,21 +298,21 @@ Public Class frmAfficheImage
         'lblPos
         '
         Me.lblPos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.lblPos.Location = New System.Drawing.Point(216, 5)
+        Me.lblPos.Location = New Point(216, 5)
         Me.lblPos.Name = "lblPos"
-        Me.lblPos.Size = New System.Drawing.Size(88, 21)
+        Me.lblPos.Size = New Size(88, 21)
         Me.lblPos.TabIndex = 6
         Me.lblPos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'tbBoutons
         '
-        Me.tbBoutons.Buttons.AddRange(New System.Windows.Forms.ToolBarButton() {Me.sep1, Me.btnOuvrir, Me.sep2, Me.btnPremier, Me.btnPrécédent, Me.btnSuivant, Me.btnDernier, Me.sep3, Me.btnRetourArrière, Me.btnAuHasard, Me.sep4, Me.btnEffacer})
+        Me.tbBoutons.Buttons.AddRange(New ToolBarButton() {Me.sep1, Me.btnOuvrir, Me.sep2, Me.btnPremier, Me.btnPrécédent, Me.btnSuivant, Me.btnDernier, Me.sep3, Me.btnRetourArrière, Me.btnAuHasard, Me.sep4, Me.btnEffacer})
         Me.tbBoutons.DropDownArrows = True
         Me.tbBoutons.ImageList = Me.ImageList1
-        Me.tbBoutons.Location = New System.Drawing.Point(0, 0)
+        Me.tbBoutons.Location = New Point(0, 0)
         Me.tbBoutons.Name = "tbBoutons"
         Me.tbBoutons.ShowToolTips = True
-        Me.tbBoutons.Size = New System.Drawing.Size(656, 28)
+        Me.tbBoutons.Size = New Size(656, 28)
         Me.tbBoutons.TabIndex = 7
         '
         'sep1
@@ -377,19 +381,19 @@ Public Class frmAfficheImage
         '
         'ImageList1
         '
-        Me.ImageList1.ImageSize = New System.Drawing.Size(16, 16)
-        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageList1.ImageSize = New Size(16, 16)
+        Me.ImageList1.ImageStream = CType(resources.GetObject("ImageList1.ImageStream"), ImageListStreamer)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Silver
         '
         'paClient
         '
         Me.paClient.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.paClient.BackColor = System.Drawing.Color.FromArgb(CType(255, Byte), CType(224, Byte), CType(192, Byte))
-        Me.paClient.Location = New System.Drawing.Point(8, 32)
+        Me.paClient.Location = New Point(8, 32)
         Me.paClient.Name = "paClient"
-        Me.paClient.Size = New System.Drawing.Size(640, 456)
+        Me.paClient.Size = New Size(640, 456)
         Me.paClient.TabIndex = 10
         Me.paClient.TabStop = False
         Me.paClient.Visible = False
@@ -406,22 +410,22 @@ Public Class frmAfficheImage
         '
         'frmAfficheImage
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(656, 513)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(656, 513)
         Me.Controls.Add(Me.paClient)
         Me.Controls.Add(Me.lblPos)
         Me.Controls.Add(Me.cboFichiers)
         Me.Controls.Add(Me.tbBoutons)
         Me.Controls.Add(Me.sbStatus)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.KeyPreview = True
         Me.Menu = Me.MainMenu1
         Me.Name = "frmAfficheImage"
         Me.Text = "AfficheImage"
-        CType(Me.Fichier, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Réslution, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Taille, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Echelle, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Fichier, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Réslution, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Taille, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Echelle, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -430,28 +434,28 @@ Public Class frmAfficheImage
 
     ' Accès au FileSystem
     Dim sRep As String
+
     Dim fso As Scripting.FileSystemObject
 
     ' Navigation
     Dim chLastKey As Char
+
     Dim iPos As Integer
     Dim iPosPrev As Integer     ' Previous Position
 
     ' Interface d'affichage
     Dim tImage() As PictureBox
+
     Dim tImage2() As Image
     Dim iRowSize As Integer = 0
     ReadOnly iMargin As Integer = 8
 
-
     ' Historique
-    Dim PileImages As System.Collections.Stack
-
+    Dim PileImages As Stack
 
     Private Function VB6GetExeName() As String
         Return Path.GetFileName(Assembly.GetExecutingAssembly().Location)
     End Function
-
 
     Private Sub Ouvrir()
         FolderBrowserDialog1.SelectedPath = GetSetting(VB6GetExeName(), "Config", "Path", "C:\")
@@ -462,7 +466,7 @@ Public Class frmAfficheImage
         If Microsoft.VisualBasic.Right(sRep, 1) <> "\" Then sRep &= "\"
 
         cboFichiers.Items.Clear()
-        PileImages = New System.Collections.Stack
+        PileImages = New Stack
         fso = New Scripting.FileSystemObject
         Analyse1Rep("")
         fso = Nothing
@@ -471,7 +475,6 @@ Public Class frmAfficheImage
         iPosPrev = 0
         AfficheImage()
     End Sub
-
 
     Private Sub Analyse1Rep(ByRef sRel As String)
         Dim sFic As String
@@ -504,7 +507,7 @@ Public Class frmAfficheImage
         Next sfo
     End Sub
 
-    Private Sub frmAfficheImage_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmAfficheImage_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         sbStatus.Panels(0).Text = "AfficheImage " & sGetVersion()
 
         cmdOuvrir.Text = "&Ouvrir" & vbTab & "?"
@@ -522,7 +525,7 @@ Public Class frmAfficheImage
         Ouvrir()
     End Sub
 
-    Private Sub cboFichiers_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboFichiers.SelectedIndexChanged
+    Private Sub cboFichiers_SelectedIndexChanged(sender As System.Object, e As EventArgs) Handles cboFichiers.SelectedIndexChanged
         If iPos = cboFichiers.SelectedIndex Then Exit Sub
         iPosPrev = iPos
         iPos = cboFichiers.SelectedIndex
@@ -567,7 +570,7 @@ Public Class frmAfficheImage
         Next
     End Sub
 
-    Sub DoAffichageUneImage(ByVal iOff As Integer)
+    Sub DoAffichageUneImage(iOff As Integer)
         If tImage2(iOff) Is Nothing Then
             tImage(iOff).Image = Nothing
             tImage(iOff).BorderStyle = BorderStyle.FixedSingle
@@ -590,8 +593,7 @@ Public Class frmAfficheImage
         End If
     End Sub
 
-
-    Private Sub frmAfficheImage_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
+    Private Sub frmAfficheImage_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         ' On évite les problèmes en icône ou en fenêtre très réduite
         If paClient.Width <= 0 Or paClient.Height <= 0 Then Exit Sub
 
@@ -599,14 +601,14 @@ Public Class frmAfficheImage
         DoAffichage()
     End Sub
 
-    Private Sub cmdQuitter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdQuitter.Click
+    Private Sub cmdQuitter_Click(sender As System.Object, e As EventArgs) Handles cmdQuitter.Click
         Close()
     End Sub
 
     Dim cPrefix As Integer
     ReadOnly tMem(255) As Integer
 
-    Private Sub frmAfficheImage_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles MyBase.KeyPress
+    Private Sub frmAfficheImage_KeyPress(sender As Object, e As KeyPressEventArgs) Handles MyBase.KeyPress
         Dim c As Char = e.KeyChar
         Dim n As Integer = Asc(e.KeyChar)
         Select Case cPrefix
@@ -642,7 +644,7 @@ Public Class frmAfficheImage
         End Select
     End Sub
 
-    Private Sub frmAfficheImage_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+    Private Sub frmAfficheImage_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         Select Case e.KeyCode
             Case Keys.Delete : Effacer()
             Case Keys.Back : RetourArrière()
@@ -697,7 +699,7 @@ Public Class frmAfficheImage
         AfficheImage()
     End Sub
 
-    Private Sub tbBoutons_ButtonClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolBarButtonClickEventArgs) Handles tbBoutons.ButtonClick
+    Private Sub tbBoutons_ButtonClick(sender As System.Object, e As ToolBarButtonClickEventArgs) Handles tbBoutons.ButtonClick
         Select Case CStr(e.Button.Tag)
             Case "Ouvrir" : Ouvrir()
             Case "Premier" : NaviguePremier()
@@ -745,66 +747,65 @@ Public Class frmAfficheImage
         AfficheImage()
     End Sub
 
-    Private Sub cmdAPropos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAPropos.Click
+    Private Sub cmdAPropos_Click(sender As System.Object, e As EventArgs) Handles cmdAPropos.Click
         frmAPropos.DefInstance.ShowDialog()
     End Sub
 
-    Private Sub cmdOuvrir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdOuvrir.Click
+    Private Sub cmdOuvrir_Click(sender As System.Object, e As EventArgs) Handles cmdOuvrir.Click
         Ouvrir()
     End Sub
 
-    Private Sub cmdPremier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPremier.Click
+    Private Sub cmdPremier_Click(sender As System.Object, e As EventArgs) Handles cmdPremier.Click
         NaviguePremier()
     End Sub
 
-    Private Sub cmdPrécédent_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdPrécédent.Click
+    Private Sub cmdPrécédent_Click(sender As System.Object, e As EventArgs) Handles cmdPrécédent.Click
         NaviguePrécédent()
     End Sub
 
-    Private Sub cmdSuivant_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdSuivant.Click
+    Private Sub cmdSuivant_Click(sender As System.Object, e As EventArgs) Handles cmdSuivant.Click
         NavigueSuivant()
     End Sub
 
-    Private Sub cmdDernier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdDernier.Click
+    Private Sub cmdDernier_Click(sender As System.Object, e As EventArgs) Handles cmdDernier.Click
         NavigueDernier()
     End Sub
 
-    Private Sub cmdAuHasard_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAuHasard.Click
+    Private Sub cmdAuHasard_Click(sender As System.Object, e As EventArgs) Handles cmdAuHasard.Click
         NavigueAuHasard()
     End Sub
 
-    Private Sub cmdRetourArrière_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdRetourArrière.Click
+    Private Sub cmdRetourArrière_Click(sender As System.Object, e As EventArgs) Handles cmdRetourArrière.Click
         RetourArrière()
     End Sub
 
-
-    Private Sub cmdAffiche1Image_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAffiche1Image.Click
+    Private Sub cmdAffiche1Image_Click(sender As System.Object, e As EventArgs) Handles cmdAffiche1Image.Click
         DéfinitModeAffichage(1)
         AfficheImage()
     End Sub
 
-    Private Sub cmdAffiche4Images_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAffiche4Images.Click
+    Private Sub cmdAffiche4Images_Click(sender As System.Object, e As EventArgs) Handles cmdAffiche4Images.Click
         DéfinitModeAffichage(2)
         AfficheImage()
     End Sub
 
-    Private Sub cmd9Images_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd9Images.Click
+    Private Sub cmd9Images_Click(sender As System.Object, e As EventArgs) Handles cmd9Images.Click
         DéfinitModeAffichage(3)
         AfficheImage()
     End Sub
 
-    Private Sub cmd16images_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd16images.Click
+    Private Sub cmd16images_Click(sender As System.Object, e As EventArgs) Handles cmd16images.Click
         DéfinitModeAffichage(4)
         AfficheImage()
     End Sub
 
-    Sub DéfinitModeAffichage(ByVal iNewRowSize As Integer)
+    Sub DéfinitModeAffichage(iNewRowSize As Integer)
         Dim i As Integer
 
         If iNewRowSize = 0 Then iNewRowSize = 1
 
         If iRowSize <> iNewRowSize Then
-            If Not tImage Is Nothing Then
+            If tImage IsNot Nothing Then
                 'MsgBox("avant: " & Me.Controls.Count)
                 For i = iRowSize * iRowSize To UBound(tImage)
                     For j As Integer = 0 To Me.Controls.Count
@@ -842,8 +843,8 @@ Public Class frmAfficheImage
         For l As Integer = 0 To iRowSize - 1
             For c As Integer = 0 To iRowSize - 1
                 With tImage(i)
-                    .Location = New System.Drawing.Point(paClient.Left + c * (iImageWidth + iMargin), paClient.Top + l * (iImageHeight + iMargin))
-                    .Size = New System.Drawing.Size(iImageWidth, iImageHeight)
+                    .Location = New Point(paClient.Left + c * (iImageWidth + iMargin), paClient.Top + l * (iImageHeight + iMargin))
+                    .Size = New Size(iImageWidth, iImageHeight)
                 End With
                 i += 1
             Next
@@ -851,17 +852,18 @@ Public Class frmAfficheImage
 
     End Sub
 
-    Private Sub cmdCopieCheminImage_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCopieCheminImage.Click
+    Private Sub cmdCopieCheminImage_Click(sender As System.Object, e As EventArgs) Handles cmdCopieCheminImage.Click
         If cboFichiers.Items.Count = 0 Then Exit Sub
 
         Clipboard.SetDataObject(sRep & cboFichiers.Items(iPos))
     End Sub
 
-    Private Sub cmdAperçuWindows_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdAperçuWindows.Click
+    Private Sub cmdAperçuWindows_Click(sender As System.Object, e As EventArgs) Handles cmdAperçuWindows.Click
         If cboFichiers.Items.Count = 0 Then Exit Sub
 
         Dim sFile As String
         sFile = sRep & cboFichiers.Items(iPos)
         System.Diagnostics.Process.Start(sFile)
     End Sub
+
 End Class

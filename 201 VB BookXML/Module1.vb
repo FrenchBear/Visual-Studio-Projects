@@ -1,6 +1,3 @@
-﻿Imports System.Data
-
-Module Module1
-
+﻿Module Module1
 
 End Module

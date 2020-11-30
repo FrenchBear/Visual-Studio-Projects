@@ -1,7 +1,6 @@
 ﻿' 408 VB ConversionsWithLocales
 ' 2011-08-23    PV
 
-
 Imports System.Globalization
 
 Module Module1

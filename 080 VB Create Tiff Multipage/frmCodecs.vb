@@ -2,8 +2,11 @@
 
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmCodecs
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Windows Form Designer generated code "
 
@@ -18,7 +21,7 @@ Public Class frmCodecs
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -31,15 +34,15 @@ Public Class frmCodecs
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.SuspendLayout()
         '
         'frmCodecs
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(528, 526)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(528, 526)
         Me.Name = "frmCodecs"
         Me.Text = "frmCodecs"
         Me.ResumeLayout(False)
@@ -48,11 +51,11 @@ Public Class frmCodecs
 
 #End Region
 
-    Private Sub frmCodecs_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles MyBase.Paint
+    Private Sub frmCodecs_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
         GetImageEncodersExample(e)
     End Sub
 
-    Public Sub GetImageEncodersExample(ByVal e As PaintEventArgs)
+    Public Sub GetImageEncodersExample(e As PaintEventArgs)
         ' Get an array of available codecs.
         Dim myEncoders() As ImageCodecInfo
         myEncoders = ImageCodecInfo.GetImageEncoders()
@@ -98,4 +101,5 @@ Public Class frmCodecs
             New SolidBrush(foreColor), 20, 20)
         End If
     End Sub
+
 End Class

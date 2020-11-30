@@ -12,7 +12,7 @@ namespace MaBibliotheque
 
         public bool IsNull { get { return !defined; } }
 
-        DBInt(int x)
+        private DBInt(int x)
         {
             value = x;
             defined = true;

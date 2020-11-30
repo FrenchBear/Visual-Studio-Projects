@@ -3,8 +3,8 @@
 
 Public Class Form1
 
-    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim imOriginalImage As Drawing.Image
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim imOriginalImage As Image
         imOriginalImage = Image.FromFile("C:\Pictures\Baltik\DSC_0099.JPG")
         PictureBox1.Width = imOriginalImage.Width
         PictureBox1.Height = imOriginalImage.Height
@@ -13,11 +13,11 @@ Public Class Form1
         HScrollBar1.Maximum += HScrollBar1.LargeChange - 1
     End Sub
 
-    Private Sub Panel1_Scroll(ByVal sender As Object, ByVal e As System.Windows.Forms.ScrollEventArgs) Handles Panel1.Scroll
+    Private Sub Panel1_Scroll(sender As Object, e As ScrollEventArgs) Handles Panel1.Scroll
         Debug.Print(Str(e.ScrollOrientation) & " - " & Str(e.NewValue))
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         MsgBox("HS:" & vbCrLf &
           "  Value: " & Str(Panel1.HorizontalScroll.Value) & vbCrLf &
           "  Min:   " & Str(Panel1.HorizontalScroll.Minimum) & vbCrLf &
@@ -26,18 +26,17 @@ Public Class Form1
           "  LC:    " & Str(Panel1.HorizontalScroll.LargeChange))
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
         MsgBox("Pic:" & vbCrLf &
           "  Width:  " & Str(PictureBox1.Width) & vbCrLf &
           "  Height: " & Str(PictureBox1.Height))
     End Sub
 
-    Private Sub HScrollBar1_Scroll(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ScrollEventArgs) Handles HScrollBar1.Scroll
+    Private Sub HScrollBar1_Scroll(sender As System.Object, e As ScrollEventArgs) Handles HScrollBar1.Scroll
         Debug.Print(e.NewValue.ToString)
     End Sub
 
-
-    Private Sub PictureBox1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles PictureBox1.MouseDown
+    Private Sub PictureBox1_MouseDown(sender As Object, e As MouseEventArgs) Handles PictureBox1.MouseDown
         MsgBox("x=" & Str(e.X) & vbCrLf & "y=" & Str(e.Y))
     End Sub
 
@@ -45,7 +44,7 @@ Public Class Form1
         Debug.Print(HScrollBar2.Value)
     End Sub
 
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As System.Object, e As EventArgs) Handles Button3.Click
         MsgBox("HS2:" & vbCrLf &
           "  Value: " & Str(HScrollBar2.Value) & vbCrLf &
           "  Min:   " & Str(HScrollBar2.Minimum) & vbCrLf &
@@ -53,4 +52,5 @@ Public Class Form1
           "  SC:    " & Str(HScrollBar2.SmallChange) & vbCrLf &
           "  LC:    " & Str(HScrollBar2.LargeChange))
     End Sub
+
 End Class

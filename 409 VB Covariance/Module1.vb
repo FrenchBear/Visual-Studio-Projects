@@ -2,6 +2,8 @@
 ' Tests on Covariance in VB
 ' 2011-09-28 PV
 
+#Disable Warning IDE0052 ' Remove unread private members
+
 Module Module1
     ReadOnly ListBase As New List(Of Base)
 
@@ -27,7 +29,6 @@ Module Module1
 
 End Module
 
-
 Class Base
 
 End Class
@@ -35,4 +36,3 @@ End Class
 Class Derived : Inherits Base
 
 End Class
-

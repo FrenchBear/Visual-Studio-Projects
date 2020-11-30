@@ -11,8 +11,8 @@ Module Module1
 
 End Module
 
-
 Class TestClass
+
     Partial Private Sub Toto(ByRef x As Integer)
     End Sub
 
@@ -26,6 +26,5 @@ Class TestClass
         Toto(a)
         MsgBox("a: " & a)
     End Sub
-
 
 End Class

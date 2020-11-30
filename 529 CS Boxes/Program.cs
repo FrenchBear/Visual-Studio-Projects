@@ -4,16 +4,12 @@
 // 2015-05-04   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS_529
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             for (int i = 0x2574; i < 0x257c; i++)
                 Console.Write((char)i);
@@ -35,11 +31,9 @@ namespace CS_529
             string ul = "\u2518 ";
             string er = "\u2500 ";
 
-
             Console.WriteLine(box_hz + " " + box_vt + " " + box_dr + " " + box_dl + " " + box_ur + " " + box_ul);
             Console.WriteLine();
             Console.WriteLine(hz + " " + vt + " " + dr + " " + dl + " " + ur + " " + ul);
-
 
             Console.WriteLine(dr + dl + dr + dl);
             Console.WriteLine(vt + ur + ul + vt);

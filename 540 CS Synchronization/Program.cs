@@ -128,7 +128,6 @@ namespace CS540
                         });
                 });
 
-
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();

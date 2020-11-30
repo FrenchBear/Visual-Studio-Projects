@@ -3,7 +3,6 @@
 ' 2008-08-22    PV
 ' 2012-02-25	PV  VS2010
 
-
 Module Module1
 
     Sub Main()
@@ -26,7 +25,6 @@ Module Module1
 
 End Module
 
-
 Class Entier
     Implements IEquatable(Of Entier)
     Implements IEqualityComparer
@@ -34,38 +32,33 @@ Class Entier
 
     Private ReadOnly _n As Integer
 
-    Public Sub New(ByVal n As Integer)
+    Public Sub New(n As Integer)
         _n = n
     End Sub
 
-
-    Public Overrides Function Equals(ByVal obj As Object) As Boolean
+    Public Overrides Function Equals(obj As Object) As Boolean
         If obj Is Nothing Then Return False
         If obj Is Me Then Return True
         Return Equals(TryCast(obj, Entier))
     End Function
 
-
-    Public Overloads Function Equals(ByVal obj As Entier) As Boolean
+    Public Overloads Function Equals(obj As Entier) As Boolean
         Return MyBase.Equals(obj)
     End Function
 
-
-
-    Public Shared Operator =(ByVal left As Entier, ByVal right As Entier) As Boolean
+    Public Shared Operator =(left As Entier, right As Entier) As Boolean
         Return left._n = right._n
     End Operator
 
-    Public Shared Operator <>(ByVal left As Entier, ByVal right As Entier) As Boolean
+    Public Shared Operator <>(left As Entier, right As Entier) As Boolean
         Return left._n <> right._n
     End Operator
 
-
-    Public Function Equals1(ByVal other As Entier) As Boolean Implements System.IEquatable(Of Entier).Equals
+    Public Function Equals1(other As Entier) As Boolean Implements IEquatable(Of Entier).Equals
         Return _n = other._n
     End Function
 
-    Public Function Equals2(ByVal x As Object, ByVal y As Object) As Boolean Implements System.Collections.IEqualityComparer.Equals
+    Public Function Equals2(x As Object, y As Object) As Boolean Implements IEqualityComparer.Equals
         Dim o1 As Entier = TryCast(x, Entier)
         If o1 Is Nothing Then Return False
         Dim o2 As Entier = TryCast(y, Entier)
@@ -73,15 +66,15 @@ Class Entier
         Return o1._n = o2._n
     End Function
 
-    Public Function GetHashCode1(ByVal obj As Object) As Integer Implements System.Collections.IEqualityComparer.GetHashCode
+    Public Function GetHashCode1(obj As Object) As Integer Implements IEqualityComparer.GetHashCode
         Return _n.GetHashCode
     End Function
 
-    Public Function Equals3(ByVal x As Entier, ByVal y As Entier) As Boolean Implements System.Collections.Generic.IEqualityComparer(Of Entier).Equals
+    Public Function Equals3(x As Entier, y As Entier) As Boolean Implements IEqualityComparer(Of Entier).Equals
         Return x._n = y._n
     End Function
 
-    Public Function GetHashCode2(ByVal obj As Entier) As Integer Implements System.Collections.Generic.IEqualityComparer(Of Entier).GetHashCode
+    Public Function GetHashCode2(obj As Entier) As Integer Implements IEqualityComparer(Of Entier).GetHashCode
         Return _n.GetHashCode
     End Function
 

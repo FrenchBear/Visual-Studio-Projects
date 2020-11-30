@@ -7,7 +7,9 @@
 
 using System;
 
-class Animal
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
+internal class Animal
 {
     public static int Population;
 
@@ -18,8 +20,7 @@ class Animal
     }
 };
 
-
-class Chien : Animal
+internal class Chien : Animal
 {
     public string sRace;
 
@@ -29,10 +30,9 @@ class Chien : Animal
     }
 }
 
-
-class AppTest
+internal class AppTest
 {
-    static void Main()
+    private static void Main()
     {
         Chien Pollux;
 
@@ -47,5 +47,4 @@ class AppTest
 
         Console.ReadLine();
     }
-
 }

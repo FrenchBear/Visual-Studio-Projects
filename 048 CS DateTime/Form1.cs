@@ -6,12 +6,11 @@
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Drawing;
 using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
-using System.Reflection;
+
+#pragma warning disable IDE0052 // Remove unread private members
+
 
 public class Form1 : Form
 {

@@ -5,17 +5,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
-
 
 namespace CS635
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             // IComparable interface, implemented by the class being sorted
             List<Entier1> l1 = new List<Entier1>() { new Entier1(15), new Entier1(2), new Entier1(1), new Entier1(17), new Entier1(3) };
@@ -41,7 +38,7 @@ namespace CS635
             // Sort using OrderBy relies on result on Key (returned by lambda) being sorted using
             // System.Collections.Generic.Comparer<T> Default static member that returns a default
             // sort order comparer for the type specified by the generic argument.
-            // Creates internally a comparer based on type T implementation of IComparable<T>, 
+            // Creates internally a comparer based on type T implementation of IComparable<T>,
             // then on IComparable
             List<Entier3> l3 = new List<Entier3>() { new Entier3(15), new Entier3(2), new Entier3(1), new Entier3(17), new Entier3(3) };
             l3 = l3.OrderBy(e => e).ToList();
@@ -49,7 +46,6 @@ namespace CS635
             // Now with a specific object implementing IComparer<TKey>to override default
             l3 = l3.OrderBy(e => e, new Entier3Comparer()).ToList();
             WriteLine("l3b: " + l3.ToString<Entier3>());
-
 
             // Comparison with operators
             var e21 = new Entier2(2);
@@ -74,11 +70,10 @@ namespace CS635
             int myComparison(Entier3 x3, Entier3 y3) => x3.Value - y3.Value;
             int i5 = myComparison(e31, e32);
 
-
             // String comparisons
             int si1 = string.Compare("sun", "dry");
             // Trick: StringComparison is just an enum, not a static member returning a Comparison!!!
-            int si2= string.Compare("sun", "dry", StringComparison.InvariantCultureIgnoreCase);
+            int si2 = string.Compare("sun", "dry", StringComparison.InvariantCultureIgnoreCase);
             SortedSet<string> sl1 = new SortedSet<string>(StringComparer.InvariantCultureIgnoreCase);
 
             Console.WriteLine();
@@ -88,7 +83,7 @@ namespace CS635
     }
 
     // base class
-    class Entier
+    internal class Entier
     {
         private readonly int n;
 
@@ -106,9 +101,11 @@ namespace CS635
     }
 
     // IComparable, for old code
-    class Entier1 : Entier, IComparable
+    internal class Entier1 : Entier, IComparable
     {
-        public Entier1(int value) : base(value) { }
+        public Entier1(int value) : base(value)
+        {
+        }
 
         public int CompareTo(object obj)
         {
@@ -122,7 +119,7 @@ namespace CS635
     }
 
     // IComparer<T>, to build objects that implements specific sorting
-    class EntierComparer : IComparer<Entier>
+    internal class EntierComparer : IComparer<Entier>
     {
         public int Compare(Entier x, Entier y)
         {
@@ -131,26 +128,32 @@ namespace CS635
     }
 
     // Implements operators >, >=, <, <=
-    class Entier2 : Entier
+    internal class Entier2 : Entier
     {
-        public Entier2(int value) : base(value) { }
+        public Entier2(int value) : base(value)
+        {
+        }
 
         public static bool operator >(Entier2 e1, Entier2 e2) => e1.Value > e2.Value;
+
         public static bool operator >=(Entier2 e1, Entier2 e2) => e1.Value >= e2.Value;
+
         public static bool operator <(Entier2 e1, Entier2 e2) => e1.Value < e2.Value;
+
         public static bool operator <=(Entier2 e1, Entier2 e2) => e1.Value <= e2.Value;
     }
 
-
     // IComparable<int>>
     // From help:
-    // If you implement IComparable<T>, you should overload the op_GreaterThan, op_GreaterThanOrEqual, 
-    // op_LessThan, and op_LessThanOrEqual operators to return values that are consistent with CompareTo. 
-    // In addition, you should also implement IEquatable<T>. 
+    // If you implement IComparable<T>, you should overload the op_GreaterThan, op_GreaterThanOrEqual,
+    // op_LessThan, and op_LessThanOrEqual operators to return values that are consistent with CompareTo.
+    // In addition, you should also implement IEquatable<T>.
     // See the IEquatable<T> article for complete information.
-    class Entier3 : Entier, IComparable<Entier3>
+    internal class Entier3 : Entier, IComparable<Entier3>
     {
-        public Entier3(int value) : base(value) { }
+        public Entier3(int value) : base(value)
+        {
+        }
 
         public int CompareTo(Entier3 other)
         {
@@ -160,7 +163,7 @@ namespace CS635
 
     // IComparer<T>, to build objects that implements specific sorting
     // Here Entier3 is sorted using alphabetical sorting
-    class Entier3Comparer : IComparer<Entier3>
+    internal class Entier3Comparer : IComparer<Entier3>
     {
         public int Compare(Entier3 x, Entier3 y)
         {
@@ -168,9 +171,7 @@ namespace CS635
         }
     }
 
-
-
-    static class ExtensionMethods
+    internal static class ExtensionMethods
     {
         public static string ToString<T>(this IEnumerable<T> collection)
         {

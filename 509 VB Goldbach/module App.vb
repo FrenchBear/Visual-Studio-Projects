@@ -58,6 +58,7 @@ Module App
         Public Function Compare(x As Pair, y As Pair) As Integer Implements IComparer(Of Pair).Compare
             Return x.Combinations - y.Combinations
         End Function
+
     End Class
 
 End Module

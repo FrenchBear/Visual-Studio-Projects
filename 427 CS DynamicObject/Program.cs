@@ -1,22 +1,19 @@
 ﻿// 427 CS DynamicObject
 
-
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Dynamic;
 
 namespace CS427
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Creating a dynamic dictionary.
             dynamic person = new DynamicDictionary();
 
-            // Adding new dynamic properties. 
+            // Adding new dynamic properties.
             // The TrySetMember method is called.
             person.FirstName = "Ellen";
             person.LastName = "Adams";
@@ -28,7 +25,7 @@ namespace CS427
             Console.WriteLine(person.firstname + " " + person.lastname);
 
             // Getting the value of the Count property.
-            // The TryGetMember is not called, 
+            // The TryGetMember is not called,
             // because the property is defined in the class.
             Console.WriteLine("Number of dynamic properties:" + person.Count);
 
@@ -41,13 +38,11 @@ namespace CS427
         }
     }
 
-
-
     // The class derived from DynamicObject.
     public class DynamicDictionary : DynamicObject
     {
         // The inner dictionary.
-        readonly Dictionary<string, object> dictionary = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> dictionary = new Dictionary<string, object>();
 
         // This property returns the number of elements
         // in the inner dictionary.
@@ -60,7 +55,7 @@ namespace CS427
             }
         }
 
-        // If you try to get a value of a property 
+        // If you try to get a value of a property
         // not defined in the class, this method is called.
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
@@ -88,5 +83,4 @@ namespace CS427
             return true;
         }
     }
-
 }

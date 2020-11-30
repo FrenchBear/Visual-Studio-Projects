@@ -8,8 +8,8 @@
 
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <ribbon:Ribbon x:Name="Ribbon" Title="Ribbon Title">
@@ -17,10 +17,10 @@
                 <ribbon:RibbonButton SmallImageSource="Images\SmallIcon.png" />
             </ribbon:Ribbon.HelpPaneContent>
             <ribbon:Ribbon.QuickAccessToolBar>
-                <ribbon:RibbonQuickAccessToolBar >
-                    <ribbon:RibbonButton x:Name="QATButton1" 
+                <ribbon:RibbonQuickAccessToolBar>
+                    <ribbon:RibbonButton x:Name="QATButton1"
                                          SmallImageSource="Images/SmallIcon.png" />
-                    <ribbon:RibbonButton x:Name="QATButton2" 
+                    <ribbon:RibbonButton x:Name="QATButton2"
                                          SmallImageSource="Images/SmallIcon.png" />
                 </ribbon:RibbonQuickAccessToolBar>
             </ribbon:Ribbon.QuickAccessToolBar>
@@ -28,12 +28,12 @@
                 <ribbon:RibbonApplicationMenu SmallImageSource="Images\SmallIcon.png">
                     <ribbon:RibbonApplicationMenuItem Header="Hello _Ribbon"
                                                       x:Name="MenuItem1"
-                                                      ImageSource="Images\LargeIcon.png"/>
+                                                      ImageSource="Images\LargeIcon.png" />
                 </ribbon:RibbonApplicationMenu>
             </ribbon:Ribbon.ApplicationMenu>
-            <ribbon:RibbonTab x:Name="HomeTab" 
+            <ribbon:RibbonTab x:Name="HomeTab"
                               Header="Home">
-                <ribbon:RibbonGroup x:Name="Group1" 
+                <ribbon:RibbonGroup x:Name="Group1"
                                     Header="Group1">
                     <ribbon:RibbonButton x:Name="Button1"
                                          LargeImageSource="Images\LargeIcon.png"

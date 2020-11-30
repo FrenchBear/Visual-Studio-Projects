@@ -1,29 +1,31 @@
 ' 2012-02-25	PV  VS2010
 
 Option Compare Text
+
 Imports System.IO
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmFileSystemWatch
 
-    Private Sub FileSystemWatcher1_Changed(ByVal sender As System.Object, ByVal e As System.IO.FileSystemEventArgs) Handles FileSystemWatcher1.Changed
+    Private Sub FileSystemWatcher1_Changed(sender As System.Object, e As FileSystemEventArgs) Handles FileSystemWatcher1.Changed
         Trace("Changed", e.ChangeType, e.FullPath, e.Name)
 
     End Sub
 
-    Private Sub FileSystemWatcher1_Created(ByVal sender As Object, ByVal e As System.IO.FileSystemEventArgs) Handles FileSystemWatcher1.Created
+    Private Sub FileSystemWatcher1_Created(sender As Object, e As FileSystemEventArgs) Handles FileSystemWatcher1.Created
         Trace("Created", e.ChangeType, e.FullPath, e.Name)
     End Sub
 
-    Private Sub FileSystemWatcher1_Deleted(ByVal sender As Object, ByVal e As System.IO.FileSystemEventArgs) Handles FileSystemWatcher1.Deleted
+    Private Sub FileSystemWatcher1_Deleted(sender As Object, e As FileSystemEventArgs) Handles FileSystemWatcher1.Deleted
         Trace("Deleted", e.ChangeType, e.FullPath, e.Name)
     End Sub
 
-    Private Sub FileSystemWatcher1_Renamed(ByVal sender As Object, ByVal e As System.IO.RenamedEventArgs) Handles FileSystemWatcher1.Renamed
+    Private Sub FileSystemWatcher1_Renamed(sender As Object, e As RenamedEventArgs) Handles FileSystemWatcher1.Renamed
         Trace("Renamed", e.ChangeType, e.FullPath, e.Name, e.OldFullPath, e.OldName)
     End Sub
 
-    Sub Trace(ByVal sEvent As String, ByVal sChangeType As String, ByVal sFullPath As String, ByVal sName As String, Optional ByVal sOldFullPath As String = "", Optional ByVal sOldName As String = "")
+    Sub Trace(sEvent As String, sChangeType As String, sFullPath As String, sName As String, Optional sOldFullPath As String = "", Optional sOldName As String = "")
         Dim lvi As ListViewItem
         lvi = lvFS.Items.Add(sEvent)
         lvi.SubItems.Add(sChangeType)
@@ -53,10 +55,9 @@ Public Class frmFileSystemWatch
         ListTrace("timPollTimer set on " & Now.ToString)
     End Sub
 
-    Private Sub frmFileSystemWatch_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub frmFileSystemWatch_Load(sender As Object, e As EventArgs) Handles Me.Load
         PollWatchedFolders()
     End Sub
-
 
     Sub PollWatchedFolders()
         ListTrace("Poll on " & Now.ToString)
@@ -97,21 +98,21 @@ Public Class frmFileSystemWatch
         Next
     End Sub
 
-    Sub ListTrace(ByVal sMsg As String)
+    Sub ListTrace(sMsg As String)
         lstTrace.Items.Add(sMsg)
         lstTrace.SelectedIndex = lstTrace.Items.Count - 1
     End Sub
 
-    Private Sub btnPoll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPoll.Click
+    Private Sub btnPoll_Click(sender As System.Object, e As EventArgs) Handles btnPoll.Click
         PollWatchedFolders()
     End Sub
 
-    Private Sub timPollTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles timPollTimer.Tick
+    Private Sub timPollTimer_Tick(sender As System.Object, e As EventArgs) Handles timPollTimer.Tick
         timPollTimer.Enabled = False
         PollWatchedFolders()
     End Sub
-End Class
 
+End Class
 
 Class FileListViewItem
     Inherits ListViewItem

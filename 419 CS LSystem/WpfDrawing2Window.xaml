@@ -10,7 +10,7 @@
                     <DrawingImage.Drawing>
                         <GeometryDrawing x:Name="myGeometryDrawing">
                             <GeometryDrawing.Pen>
-                                <Pen Brush="Blue" Thickness="2"/>
+                                <Pen Brush="Blue" Thickness="2" />
                             </GeometryDrawing.Pen>
                             <GeometryDrawing.Geometry>
                                 <PathGeometry x:Name="myPathGeometry">

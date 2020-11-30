@@ -8,9 +8,8 @@ Option Compare Text
 Public Class TextEditor
     Inherits GenericEditor
 
-
     ' Main entry point
-    Public Overrides Sub DoEdit(ByVal ed As EditDoc)
+    Public Overrides Sub DoEdit(ed As EditDoc)
         MyBase.DoEdit(ed)
         OpenDoc()
     End Sub
@@ -38,29 +37,28 @@ Public Class TextEditor
     End Sub
 
     ' Initial load, when no document is displayed
-    Private Sub TextEditor_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub TextEditor_Load(sender As Object, e As EventArgs) Handles Me.Load
         RefreshToolBar()
     End Sub
 
-
-    Private Sub tsbRevertToSaved_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbRevertToSaved.Click
+    Private Sub tsbRevertToSaved_Click(sender As System.Object, e As EventArgs) Handles tsbRevertToSaved.Click
         OpenDoc()
     End Sub
 
-    Private Sub tsbSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSave.Click
+    Private Sub tsbSave_Click(sender As System.Object, e As EventArgs) Handles tsbSave.Click
         My.Computer.FileSystem.WriteAllText(m_doc.sPathName, txtText.Text, False)
         m_bDirty = False
         RefreshToolBar()
     End Sub
 
-    Private Sub txtText_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtText.TextChanged
+    Private Sub txtText_TextChanged(sender As System.Object, e As EventArgs) Handles txtText.TextChanged
         If Not m_bDirty Then
             m_bDirty = True
             RefreshToolBar()
         End If
     End Sub
 
-    Private Sub tsbPrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbPrint.Click
+    Private Sub tsbPrint_Click(sender As System.Object, e As EventArgs) Handles tsbPrint.Click
         If m_bDirty Then
             MsgBox("Printing a modified file is not supported." & vbCrLf &
                    "Save file, or revert changes before printing.", MsgBoxStyle.Exclamation)

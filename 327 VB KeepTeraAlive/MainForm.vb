@@ -4,26 +4,24 @@
 ' 2009-09-30    PV
 ' 2012-02-25	PV  VS2010
 
-
 Option Compare Text
 
 Public Class MainForm
 
     Private colDrives As New Collection
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         DrivesTextBox.Text = My.Settings.Drives
         PeriodTextBox.Text = My.Settings.Period.ToString
     End Sub
 
-    Private Sub StartStopButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StartStopButton.Click
+    Private Sub StartStopButton_Click(sender As System.Object, e As EventArgs) Handles StartStopButton.Click
         If StartStopButton.Text = "Start" Then
             ActionStart()
         Else
             ActionStop()
         End If
     End Sub
-
 
     Private Sub ActionStart()
         If Not IsNumeric(PeriodTextBox.Text) OrElse (CSng(PeriodTextBox.Text) < 1 Or CSng(PeriodTextBox.Text) > 2000) Then
@@ -59,7 +57,7 @@ Public Class MainForm
         StatusTextBox.AppendText(vbCrLf & "*** Stopped")
     End Sub
 
-    Private Sub PingTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PingTimer.Tick
+    Private Sub PingTimer_Tick(sender As System.Object, e As EventArgs) Handles PingTimer.Tick
         PingAction()
     End Sub
 
@@ -76,4 +74,5 @@ Public Class MainForm
             End Try
         Next
     End Sub
+
 End Class

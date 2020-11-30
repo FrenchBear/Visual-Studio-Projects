@@ -9,8 +9,10 @@ Module modGlobal
 
     ' Time/Delays in ms
     Public DoorClosingDelay = 1500
+
     Public TimeToMoveOneFloor = 1500
 
     ' Cars
     Public tCar() As Car
+
 End Module

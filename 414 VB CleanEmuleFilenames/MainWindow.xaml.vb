@@ -1,7 +1,6 @@
 ﻿' 414 VB CleanEmuleFilenames
 ' 2012-01-20    PV
 
-
 Option Compare Text
 
 Imports System.Text
@@ -9,7 +8,7 @@ Imports System.Text.RegularExpressions
 
 Class MainWindow
 
-    Private Sub OnLoad(sender As System.Object, e As System.Windows.RoutedEventArgs)
+    Private Sub OnLoad(sender As System.Object, e As RoutedEventArgs)
         Dim reEpisodeNum1 As Regex = New Regex("^[0-9]+x[0-9]+$")
         Dim reEpisodeNum2 As Regex = New Regex("^S([0-9]+)E([0-9]+)$")
         For Each sFilename As String In System.IO.Directory.EnumerateFiles("C:\Users\Pierre\Downloads\eMule\Incoming")

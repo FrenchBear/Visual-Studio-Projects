@@ -4,25 +4,19 @@
 
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
-
 
 namespace ConsoleApplication1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Version OSVer = Environment.OSVersion.Version;
             int BuildVersion = GetBuildVersion();
 
             WriteLine("OSVer: " + OSVer.ToString());
             WriteLine("Build Version: {0}", BuildVersion);
-
 
             Console.WriteLine();
             Console.Write("(Pause)");

@@ -9,26 +9,24 @@
 // Debug on long paths:
 // /s /p /f /v /n "\\TERAZ\BACKUP_SKULL\C\Eurofins\Eurofins\US\eLIMS-FGS-Trunk\Fitnesse\FitNesseRoot\FitNesse\SuiteAcceptanceTests\SuiteSlimTests\ScenarioLibraryTestSuite\ScenarioLibariesOrderTests\ScenarioLibraryOrderSuite\ScenarioLibraryOrderTestParent\ScenarioLibrary\thumbs.db"
 
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Reflection;
 using Microsoft.VisualBasic.FileIO;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 #nullable enable
 
-
 namespace PDel
 {
-    class Program
+    internal class Program
     {
-        static bool isRecurseMode;          // True when option -s is used, delete files in subfolders too
-        static bool isVerbose = false;      // Option -v
-        static bool isNoAction = false;     // Option -n
-        static bool isFinal = false;        // Option -f
-        static bool isReparsePointsFollowed = false;
-        static readonly TextWriter errorWriter = Console.Error;  // stderr
-
+        private static bool isRecurseMode;          // True when option -s is used, delete files in subfolders too
+        private static bool isVerbose = false;      // Option -v
+        private static bool isNoAction = false;     // Option -n
+        private static bool isFinal = false;        // Option -f
+        private static bool isReparsePointsFollowed = false;
+        private static readonly TextWriter errorWriter = Console.Error;  // stderr
 
         // A private structure to store an input path and pattern
         private struct InputSource
@@ -41,7 +39,7 @@ namespace PDel
         /// Main entry point of this tool
         /// Returns 0 if input was processed correctly, 1 in case of argument error
         /// </summary>
-        static int Main(string[] args)
+        private static int Main(string[] args)
         {
             var inputSourceList = new List<InputSource>();
             bool isWithFinalPause = false;
@@ -135,7 +133,6 @@ namespace PDel
                 return 1;
             }
 
-
             // Do the delete
             foreach (InputSource loopInputSource in inputSourceList)
                 PDel(loopInputSource.path, loopInputSource.pattern);
@@ -180,7 +177,7 @@ namespace PDel
             return path;                                // Other shuff (?)
         }
 
-        const int MAX_PATH = 260;
+        private const int MAX_PATH = 260;
 
         private static void PDel(string path, string pattern)
         {
@@ -273,10 +270,8 @@ namespace PDel
                                     errorWriter.Write("PDel: Can't delete long directory " + directoryName + ": " + ex.Message + '\n');
                                 }
                             }
-
                         }
                     }
-
                 }
             }
             catch (Exception ex)
@@ -285,18 +280,15 @@ namespace PDel
             }
         }
 
-
         //// Win32 file delete
         //[DllImport("kernel32.dll", EntryPoint = "DeleteFileW", SetLastError = true, CharSet = CharSet.Unicode)]
         //static extern bool DeleteFile(string lpFileName);
-
 
         private static string QuotedFile(string fileName) => fileName.Contains(" ") ? "\"" + fileName + "\"" : fileName;
 
         private static void ShowUsage() => Console.WriteLine(HelpHeader(false) + "\n\n" + Usage());
 
         private static void ShowExtendedHelp() => Console.WriteLine(HelpHeader(true) + "\n");
-
 
         private static string HelpHeader(bool includeExtendedHelp)
         {
@@ -333,6 +325,5 @@ namespace PDel
                  + "-r2    Follow reparse points (by default, they're skipped)\n"
                  ;
         }
-
     }
 }

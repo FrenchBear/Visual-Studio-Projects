@@ -2,7 +2,6 @@
 ' 2008-08-21    PV
 ' 2012-02-25	PV  VS2010
 
-
 Imports Wintellect.PowerCollections
 
 Module Module1
@@ -16,10 +15,9 @@ Module Module1
         Console.ReadLine()
     End Sub
 
-
-    ' A hashed collection of objects, without duplicates, and without an ordering. 
-    ' Adding, removing, and testing membership is fast (near constant time). 
-    ' Similar to a HashTable with no value type, but additionally having set operations 
+    ' A hashed collection of objects, without duplicates, and without an ordering.
+    ' Adding, removing, and testing membership is fast (near constant time).
+    ' Similar to a HashTable with no value type, but additionally having set operations
     ' like Union, Intersection, Difference.
     Sub TestSet()
         Dim s1 As New [Set](Of Integer) From {
@@ -77,7 +75,6 @@ Module Module1
 
     End Sub
 
-
     Sub TestPair()
         Dim C1, C2, C3 As Pair(Of Integer, String)
         C1 = New Pair(Of Integer, String)(1, "bleu")
@@ -92,4 +89,5 @@ Module Module1
 
         'Stop
     End Sub
+
 End Module

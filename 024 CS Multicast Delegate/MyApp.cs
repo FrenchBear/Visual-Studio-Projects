@@ -6,10 +6,9 @@
 
 using System;
 
-delegate void MyDelegate(string sMsg);
+internal delegate void MyDelegate(string sMsg);
 
-
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {
@@ -26,15 +25,13 @@ class MyApp
         Console.ReadLine();
     }
 
-
-    static void Sub1(string s)
+    private static void Sub1(string s)
     {
         Console.WriteLine("Sub1: " + s);
     }
 
-    static void Sub2(string s)
+    private static void Sub2(string s)
     {
         Console.WriteLine("Sub2: " + s);
     }
-
 }

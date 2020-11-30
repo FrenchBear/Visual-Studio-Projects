@@ -3,6 +3,9 @@
 ' 2004-09-25    PV
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+#Disable Warning IDE0060 ' Remove unused parameter
+
 Module Module1
 
     Sub Main()
@@ -14,7 +17,6 @@ Module Module1
         'a2.Crier()
 
         'Action(a1)
-
 
         'Dim c1, c2 As Couple(Of Double)
         'c1.x = 3
@@ -37,10 +39,11 @@ Module Module1
             .MaleDominant = Nothing
         }
         m1.Add(New Chiot)
-        Dim m2 As New MeuteDeChiots
-        m2.Add(New Chiot)
+        Dim m2 As New MeuteDeChiots From {
+            New Chiot
+        }
 
-        ' Couple d'interface paramétrées
+            ' Couple d'interface paramétrées
         Dim cmc As Couple(Of Meute(Of Chien))
         cmc.x = m1
         cmc.y = m2
@@ -56,9 +59,8 @@ Module Module1
         'a = b           ' Refusé avec option strict: normal !
         b = a           ' Ok
 
-
         ' MS Version
-        Dim j As Nullable(Of Integer)
+        Dim j As Integer?
         j = 2
 
         ' my version
@@ -73,8 +75,8 @@ Module Module1
         mi = Min(Of Integer)(aa, bb)
         ma = Max(Of Integer)(aa, bb)
 
-        Dim dMin As MinOuMax(Of Date) = New MinOuMax(Of Date)(AddressOf Min(Of Date))
-        Dim dMax As MinOuMax(Of Date) = New MinOuMax(Of Date)(AddressOf Max(Of Date))
+        Dim dMin As MinOuMax(Of Date) = New MinOuMax(Of Date)(AddressOf Min)
+        Dim dMax As MinOuMax(Of Date) = New MinOuMax(Of Date)(AddressOf Max)
         Dim d1, d2, dinf, dsup As Date
         d1 = #2/26/1965#
         d2 = #1/1/2004#
@@ -90,38 +92,47 @@ Module Module1
         Console.ReadLine()
     End Sub
 
-    Sub CaresserChien(ByVal c As Chien)
+    Sub CaresserChien(c As Chien)
     End Sub
 
-    Sub CaresserChiot(ByVal c As Chiot)
+    Sub CaresserChiot(c As Chiot)
     End Sub
 
-    Sub Action(ByVal v As IVivant)
+    Sub Action(v As IVivant)
         v.Respirer()
     End Sub
+
 End Module
 
 Interface IVivant
+
     Sub Respirer()
+
 End Interface
 
 MustInherit Class EtreVivant : Implements IVivant
+
     MustOverride Sub Naitre()
+
     Sub Mourir()
     End Sub
 
     Private Sub Respirer() Implements IVivant.Respirer
         MsgBox("Un être vivant respire")
     End Sub
+
 End Class
 
 Class Microbe : Inherits EtreVivant
+
     Public Overrides Sub Naitre()
 
     End Sub
+
 End Class
 
 Class Animal : Inherits EtreVivant
+
     Overridable Sub Crier()
         MsgBox("un animal crie")
     End Sub
@@ -129,15 +140,19 @@ Class Animal : Inherits EtreVivant
     Public Overrides Sub Naitre()
 
     End Sub
+
 End Class
 
 Class Chien : Inherits Animal
+
     Public Overrides Sub Crier()
         MsgBox("Ouah !")
     End Sub
+
 End Class
 
 NotInheritable Class Chiot : Inherits Chien
+
     Public Overrides Sub Crier()
         Japper()
     End Sub
@@ -145,6 +160,5 @@ NotInheritable Class Chiot : Inherits Chien
     Public Sub Japper()
         MsgBox("Wif! Wif!")
     End Sub
+
 End Class
-
-

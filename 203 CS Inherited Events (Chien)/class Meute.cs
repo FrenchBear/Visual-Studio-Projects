@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
+#pragma warning disable IDE0051 // Remove unused private members
 
 namespace CS203
 {
-    class Meute<T> where T : Animal
+    internal class Meute<T> where T : Animal
     {
         private readonly Collection<T> mCol;
 
@@ -33,13 +34,12 @@ namespace CS203
         }
     }
 
-
     // Custom Event Handler in C#
-    class Events
+    internal class Events
     {
-        event EventHandler PreDrawEvent;
+        private event EventHandler PreDrawEvent;
 
-        event EventHandler OnDraw
+        private event EventHandler OnDraw
         {
             add
             {
@@ -56,7 +56,5 @@ namespace CS203
                 }
             }
         }
-
     }
-
 }

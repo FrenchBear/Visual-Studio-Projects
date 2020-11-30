@@ -11,7 +11,7 @@ Partial Class Window1
         InitializeComponent()
     End Sub
 
-    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_Click(sender As System.Object, e As RoutedEventArgs) Handles btnAdd.Click
         If txtWord.Text <> "" And IsNumeric(txtPlaced.Text) Then
             If txtWord1.Text = "" Then
                 txtWord1.Text = txtWord.Text
@@ -41,11 +41,11 @@ Partial Class Window1
         End If
     End Sub
 
-    Private Sub Window1_Loaded(ByVal sender As Object, ByVal e As System.Windows.RoutedEventArgs) Handles Me.Loaded
+    Private Sub Window1_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         ClearAll()
     End Sub
 
-    Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.Windows.RoutedEventArgs) Handles btnClear.Click
+    Private Sub btnClear_Click(sender As System.Object, e As RoutedEventArgs) Handles btnClear.Click
         ClearAll()
     End Sub
 
@@ -72,7 +72,7 @@ Partial Class Window1
         lblStatus4.Content = ""
     End Sub
 
-    Private Sub txtWord_TextChanged(ByVal sender As System.Object, ByVal e As System.Windows.Controls.TextChangedEventArgs) Handles txtWord.TextChanged
+    Private Sub txtWord_TextChanged(sender As System.Object, e As TextChangedEventArgs) Handles txtWord.TextChanged
         If txtWord.Text = "" Then
             lblAnalysis.Content = ""
             ClearStatuses()
@@ -97,7 +97,7 @@ Partial Class Window1
         End If
     End Sub
 
-    Private Sub CompareWord(ByVal Word As String, ByVal Guessed As String, ByVal Placed As Integer, ByVal lblStatus As Label)
+    Private Sub CompareWord(Word As String, Guessed As String, Placed As Integer, lblStatus As Label)
         If Word.Length <> Guessed.Length Then
             lblStatus.Content = "#Err"
             lblStatus.Foreground = Brushes.Red
@@ -115,4 +115,5 @@ Partial Class Window1
             End If
         End If
     End Sub
+
 End Class

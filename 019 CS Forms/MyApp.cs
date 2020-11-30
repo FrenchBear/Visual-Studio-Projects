@@ -7,15 +7,14 @@
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Windows.Forms;
 using System.Drawing;
-
+using System.Windows.Forms;
 
 public class MyForm : Form
 {
-    readonly Button btnNew;
-    readonly Button button1;
-    readonly Button button2;
+    private readonly Button btnNew;
+    private readonly Button button1;
+    private readonly Button button2;
 
     public MyForm()
     {
@@ -31,7 +30,6 @@ public class MyForm : Form
         };
         Controls.Add(btnNew);
         btnNew.Click += new System.EventHandler(OnNewClick);
-
 
         button1 = new Button
         {
@@ -64,19 +62,18 @@ public class MyForm : Form
             MessageBox.Show("Hello Button 2");
     }
 
-
     private void OnNewClick(object sender, EventArgs evArgs)
     {
         // Application.Run(new MyForm());
         // -->
-        // System.InvalidOperationException: It is invalid to start a second 
-        // message loop on a single thread. Use Application.RunDialog or 
+        // System.InvalidOperationException: It is invalid to start a second
+        // message loop on a single thread. Use Application.RunDialog or
         // Form.ShowDialog instead.
 
         // ShowDialog(new MyForm());
         // -->
-        // System.Exception: Forms that are already visible cannot be 
-        // displayed as a modal dialog. Set the form's visible property to 
+        // System.Exception: Forms that are already visible cannot be
+        // displayed as a modal dialog. Set the form's visible property to
         // false before calling showDialog.
 
         MyForm f = new MyForm();

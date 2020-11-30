@@ -24,7 +24,6 @@ namespace MaBibliotheque
             set { iMembreDeBase = value; }
         }
 
-
         // Constructeur par défaut
         public MaClasseDeBase()
         {
@@ -40,8 +39,6 @@ namespace MaBibliotheque
         // Destructeur
         ~MaClasseDeBase()
         {
-
         }
     }
-
 }

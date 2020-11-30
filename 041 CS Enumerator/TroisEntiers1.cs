@@ -4,12 +4,10 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
-
 using System;
 using System.Collections;
 
-
-class ThreeIntegers1 : IEnumerable
+internal class ThreeIntegers1 : IEnumerable
 {
     private readonly int i1, i2, i3;
 
@@ -65,7 +63,5 @@ class ThreeIntegers1 : IEnumerable
         {
             pos = -1;
         }
-
     }
 }
-

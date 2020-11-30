@@ -9,15 +9,14 @@
 
 using System;
 using System.Diagnostics;
-using System.Text;
 using System.Security.Cryptography;
-
+using System.Text;
 
 namespace SHA_1
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine("519b CS SHA-1");
 
@@ -32,7 +31,6 @@ namespace SHA_1
             u32 = LeftRotate(u32, 5);
             Debug.Assert(u32 == 0xcafe);
 
-
             // For tests, strings are only considered as composed of simple bytes (ASCII), not unicode characters
 
             // Empty string
@@ -46,13 +44,11 @@ namespace SHA_1
             Test_sha1("The quick brown fox jumps over the lazy cog",
                 "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3");
 
-
             Console.WriteLine("All SHA-1 tests passed successfully");
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
         }
-
 
         private static void Test_sha1(string s, string hashed)
         {
@@ -71,9 +67,7 @@ namespace SHA_1
             }
         }
 
-
-
-        static void Preprocessing(string s, int blocksize, int lengthsize, out byte[] tb, out int nb)
+        private static void Preprocessing(string s, int blocksize, int lengthsize, out byte[] tb, out int nb)
         {
             // Pre-processing:
             // append the bit '1' to the message
@@ -112,7 +106,6 @@ namespace SHA_1
             Debug.Assert(j % (blocksize / 8) == 0);
             Debug.Assert(j == nb * (blocksize / 8));
         }
-
 
         // Note 1: All variables are 32 bit unsigned integers and addition is calculated modulo 2^32
         // Note 2: For each round, there is one round constant k[i] and one entry in the message schedule array w[i], 0 ≤ i ≤ 63
@@ -174,7 +167,7 @@ namespace SHA_1
                     //    f = b xor c xor d
                     //    k = 0x6ED9EBA1
                     //else if 40 ≤ i ≤ 59
-                    //    f = (b and c) or (b and d) or (c and d) 
+                    //    f = (b and c) or (b and d) or (c and d)
                     //    k = 0x8F1BBCDC
                     //else if 60 ≤ i ≤ 79
                     //    f = b xor c xor d
@@ -185,7 +178,7 @@ namespace SHA_1
                     //d = c
                     //c = b leftrotate 30
                     //b = a
-                    //a = temp                     
+                    //a = temp
 
                     uint f, k;
                     if (i <= 19)
@@ -230,13 +223,11 @@ namespace SHA_1
             return h[0].ToString("x8") + h[1].ToString("x8") + h[2].ToString("x8") + h[3].ToString("x8") + h[4].ToString("x8");
         }
 
-
         // equivalent of C++ _rotl
         // 32-bit version
-        static uint LeftRotate(uint original, int bits)
+        private static uint LeftRotate(uint original, int bits)
         {
             return (original << bits) | (original >> (32 - bits));
         }
-
     }
 }

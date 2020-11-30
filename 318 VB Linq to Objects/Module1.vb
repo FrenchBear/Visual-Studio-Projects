@@ -3,11 +3,9 @@
 ' 2008-08-31    PV
 ' 2012-02-25	PV  VS2010
 
-
 Option Compare Text
 
 Imports System.Runtime.CompilerServices
-
 
 Module Module1
 
@@ -31,10 +29,9 @@ Module Module1
         Console.ReadLine()
     End Sub
 
-
     ' Quick helpers to print an enumaration
     <Extension()>
-    Public Sub Write(Of TSource)(ByVal Source As IEnumerable(Of TSource))
+    Public Sub Write(Of TSource)(Source As IEnumerable(Of TSource))
         Dim bFirst As Boolean = True
         For Each element As TSource In Source
             If bFirst Then
@@ -47,12 +44,9 @@ Module Module1
     End Sub
 
     <Extension()>
-    Public Sub WriteLine(Of TSource)(ByVal Source As IEnumerable(Of TSource))
-        Write(Of TSource)(Source)
+    Public Sub WriteLine(Of TSource)(Source As IEnumerable(Of TSource))
+        Write(Source)
         Console.WriteLine()
     End Sub
 
-
-
 End Module
-

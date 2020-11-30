@@ -1,4 +1,7 @@
-﻿Module Module1
+﻿#Disable Warning IDE0060 ' Remove unused parameter
+
+Module Module1
+
     Sub Main()
         Dim array() As Object = New String(10) {}
         array(0) = "Hello"
@@ -41,28 +44,34 @@ Class Troupeau(Of T)
         tr.Add(a)
     End Sub
 
-    Public Function GetEnumerator() As System.Collections.Generic.IEnumerator(Of T) Implements System.Collections.Generic.IEnumerable(Of T).GetEnumerator
+    Public Function GetEnumerator() As IEnumerator(Of T) Implements IEnumerable(Of T).GetEnumerator
         Return tr.GetEnumerator
     End Function
 
-    Public Function GetEnumerator1() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
+    Public Function GetEnumerator1() As IEnumerator Implements IEnumerable.GetEnumerator
         Return tr.GetEnumerator
     End Function
+
 End Class
 
-
 Interface IAddAnimal(Of In T)
-    Sub Add(ByVal a As T)
+
+    Sub Add(a As T)
+
 End Interface
 
 Class TroupeauDeAnimal
-    Public Sub Add(ByVal a As Animal)
+
+    Public Sub Add(a As Animal)
 
     End Sub
+
 End Class
 
 Class TroupeauDeChien
-    Public Sub Add(ByVal c As Chien)
+
+    Public Sub Add(c As Chien)
 
     End Sub
+
 End Class

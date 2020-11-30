@@ -6,20 +6,18 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
 
 namespace DupMP31
 {
-    class AString
+    internal class AString
     {
         public string FullPath;     // only for main objects
         public string Name;
 
         private List<AString> reducedList;
+
         public List<AString> ReducedList
         {
             get
@@ -36,12 +34,12 @@ namespace DupMP31
         }
     }
 
-    class Program
+    internal class Program
     {
-        const string folder = @"C:\MusicGD\MP3P\Divers\Noël";
-        const int dist = 2;
+        private const string folder = @"C:\MusicGD\MP3P\Divers\Noël";
+        private const int dist = 2;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             List<AString> AStringsList = new List<AString>();
 
@@ -104,6 +102,5 @@ namespace DupMP31
             // Ok, strings are definitely different
             return false;
         }
-
     }
 }

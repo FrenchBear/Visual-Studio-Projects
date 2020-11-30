@@ -2,20 +2,16 @@
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Messaging;
+using System.Windows.Forms;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+#pragma warning disable IDE1006 // Naming Styles
 
 namespace FPVI.MessageQueueTest
 {
     public partial class Form1 : Form
     {
-
         public Form1()
         {
             InitializeComponent();
@@ -32,8 +28,6 @@ namespace FPVI.MessageQueueTest
             MessageQueue myQueue = new MessageQueue(@"c:\temp");
             object m;
             m = myQueue.Receive();
-
         }
-
     }
 }

@@ -1,12 +1,8 @@
 ' 233 VB XML Serialize Tests 1
 ' 2012-02-25	PV  VS2010
 
-Imports System
-Imports System.Xml
-Imports System.Xml.Serialization
 Imports System.IO
-Imports Microsoft.VisualBasic
-
+Imports System.Xml.Serialization
 
 ' The XmlRootAttribute allows you to set an alternate name
 ' (PurchaseOrder) of the XML element, the element namespace; by
@@ -14,48 +10,54 @@ Imports Microsoft.VisualBasic
 ' also allows you to set the XML namespace for the element.  Lastly,
 ' the attribute sets the IsNullable property, which specifies whether
 ' the xsi:null attribute appears if the class instance is set to
-' a null reference. 
+' a null reference.
 
-'<XmlRootAttribute("AllPurchaseOrders", Namespace:="http://www.cpandl.com", IsNullable:=False)> 
+'<XmlRootAttribute("AllPurchaseOrders", Namespace:="http://www.cpandl.com", IsNullable:=False)>
 
 Public Class AllPurchaseOrders
-    <XmlArrayAttribute("Orders")>
+
+    <XmlArray("Orders")>
     Public Orders() As PurchaseOrder
+
 End Class
 
 Public Class PurchaseOrder
+
     <XmlAttribute()>
     Public Number As Integer
 
     Public ShipTo As Address
     Public OrderDate As String
+
     ' The XmlArrayAttribute changes the XML element name
-    ' from the default of "OrderedItems" to "Items". 
-    <XmlArrayAttribute("Items")>
+    ' from the default of "OrderedItems" to "Items".
+    <XmlArray("Items")>
     Public OrderedItems() As OrderedItem
+
     Public SubTotal As Decimal
     Public ShipCost As Decimal
     Public TotalCost As Decimal
 End Class 'PurchaseOrder
 
-
 Public Class Address
+
     ' The XmlAttribute instructs the XmlSerializer to serialize the Name
     ' field as an XML attribute instead of an XML element (the default
-    ' behavior). 
+    ' behavior).
     <XmlAttribute()>
     Public Name As String
+
     Public Line1 As String
 
     ' Setting the IsNullable property to false instructs the
     ' XmlSerializer that the XML attribute will not appear if
-    ' the City field is set to a null reference. 
-    <XmlElementAttribute(IsNullable:=False)>
+    ' the City field is set to a null reference.
+    <XmlElement(IsNullable:=False)>
     Public City As String
+
     Public State As String
     Public Zip As String
 End Class 'Address
-
 
 Public Class OrderedItem
     Public ItemName As String
@@ -65,12 +67,12 @@ Public Class OrderedItem
     Public LineTotal As Decimal
 
     ' Calculate is a custom method that calculates the price per item,
-    ' and stores the value in a field. 
+    ' and stores the value in a field.
     Public Sub Calculate()
         LineTotal = UnitPrice * Quantity
     End Sub 'Calculate
-End Class 'OrderedItem
 
+End Class 'OrderedItem
 
 Public Class Test
 
@@ -83,7 +85,7 @@ Public Class Test
         Console.ReadLine()
     End Sub 'Main
 
-    Private Sub CreatePO(ByVal filename As String)
+    Private Sub CreatePO(filename As String)
         ' Create an instance of the XmlSerializer class;
         ' specify the type of object to serialize.
         Dim serializer As New XmlSerializer(GetType(AllPurchaseOrders))
@@ -92,7 +94,7 @@ Public Class Test
         Dim po1 As New PurchaseOrder With {
             .Number = 1
         }
-            ' Create an address to ship and bill to.
+        ' Create an address to ship and bill to.
         Dim billAddress As New Address With {
             .Name = "Teresa Atkinson",
             .Line1 = "1 Main St.",
@@ -100,7 +102,7 @@ Public Class Test
             .State = "WA",
             .Zip = "00000"
         }
-            ' Set ShipTo and BillTo to the same addressee.
+        ' Set ShipTo and BillTo to the same addressee.
         po1.ShipTo = billAddress
         po1.OrderDate = System.DateTime.Now.ToLongDateString()
 
@@ -127,11 +129,10 @@ Public Class Test
         po1.ShipCost = CDec(12.51)
         po1.TotalCost = po1.SubTotal + po1.ShipCost
 
-
         Dim po2 As New PurchaseOrder With {
             .Number = 2
         }
-            ' Create an address to ship and bill to.
+        ' Create an address to ship and bill to.
         Dim billAddress2 As New Address With {
             .Name = "John Doe",
             .Line1 = "8343 Colby Pkwy",
@@ -139,7 +140,7 @@ Public Class Test
             .State = "IA",
             .Zip = "50322"
         }
-            ' Set ShipTo and BillTo to the same addressee.
+        ' Set ShipTo and BillTo to the same addressee.
         po2.ShipTo = billAddress2
         po2.OrderDate = System.DateTime.Now.ToLongDateString()
 
@@ -166,8 +167,6 @@ Public Class Test
         po2.ShipCost = CDec(12.51)
         po2.TotalCost = po2.SubTotal + po2.ShipCost
 
-
-
         Dim apo As New AllPurchaseOrders
         ReDim apo.Orders(2)
         apo.Orders(0) = po1
@@ -179,15 +178,15 @@ Public Class Test
         'Stop
     End Sub 'CreatePO
 
-    Protected Sub ReadPO(ByVal filename As String)
+    Protected Sub ReadPO(filename As String)
         ' Create an instance of the XmlSerializer class;
         ' specify the type of object to be deserialized.
         Dim serializer As New XmlSerializer(GetType(AllPurchaseOrders))
         ' If the XML document has been altered with unknown
         ' nodes or attributes, handle them with the
         ' UnknownNode and UnknownAttribute events.
-        AddHandler serializer.UnknownNode, AddressOf serializer_UnknownNode
-        AddHandler serializer.UnknownAttribute, AddressOf serializer_UnknownAttribute
+        AddHandler serializer.UnknownNode, AddressOf Serializer_UnknownNode
+        AddHandler serializer.UnknownAttribute, AddressOf Serializer_UnknownAttribute
 
         ' A FileStream is needed to read the XML document.
         Dim fs As New FileStream(filename, FileMode.Open)
@@ -221,7 +220,7 @@ Public Class Test
         " Total" & New String(ControlChars.Tab, 2) & po.TotalCost)
     End Sub 'ReadPO
 
-    Protected Sub ReadAddress(ByVal a As Address, ByVal label As String)
+    Protected Sub ReadAddress(a As Address, label As String)
         ' Read the fields of the Address object.
         Console.WriteLine(label)
         Console.WriteLine(ControlChars.Tab & a.Name)
@@ -232,14 +231,13 @@ Public Class Test
         Console.WriteLine()
     End Sub 'ReadAddress
 
-    Private Sub serializer_UnknownNode(ByVal sender As Object, ByVal e As XmlNodeEventArgs)
+    Private Sub Serializer_UnknownNode(sender As Object, e As XmlNodeEventArgs)
         Console.WriteLine(("Unknown Node:" & e.Name & ControlChars.Tab & e.Text))
     End Sub 'serializer_UnknownNode
 
-
-    Private Sub serializer_UnknownAttribute(ByVal sender As Object, ByVal e As XmlAttributeEventArgs)
-        Dim attr As System.Xml.XmlAttribute = e.Attr
+    Private Sub Serializer_UnknownAttribute(sender As Object, e As XmlAttributeEventArgs)
+        Dim attr As Xml.XmlAttribute = e.Attr
         Console.WriteLine(("Unknown attribute " & attr.Name & "='" & attr.Value & "'"))
     End Sub 'serializer_UnknownAttribute
-End Class 'Test
 
+End Class 'Test

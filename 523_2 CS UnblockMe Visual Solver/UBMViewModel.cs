@@ -2,12 +2,7 @@
 // ViewModel for UnblockMe Solver
 // 2014-07-22 PV
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -15,7 +10,7 @@ using System.Windows.Shapes;
 
 namespace CS523B_UnblockMe_Solver_Visual
 {
-    class UBMViewModel : INotifyPropertyChanged
+    internal class UBMViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,7 +25,6 @@ namespace CS523B_UnblockMe_Solver_Visual
         // Commands
         public ICommand SolveCommand { get; private set; }
 
-
         // Constructor
         public UBMViewModel(UBMWindow w)
         {
@@ -42,7 +36,6 @@ namespace CS523B_UnblockMe_Solver_Visual
             // Binding commands with behavior
             SolveCommand = new RelayCommand<object>(SolveExecute, CanSolve);
         }
-
 
         // Solve: Automatic resolution of labyrinth
         public void SolveExecute(object parameter)

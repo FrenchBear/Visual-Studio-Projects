@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 
 namespace RI3
 {
-
     public class Model
     {
         // Initialization
@@ -38,29 +37,27 @@ namespace RI3
             JpegQuality = 90;           // Good compression without losing quality
         }
 
-
         // ViewModel
         private ViewModel vm;
+
         public void SetViewModel(ViewModel vm)
         {
             this.vm = vm;
         }
 
-
         // Variables exposed to ViewModel
         public string SourceFolder;
+
         public string TargetFolder;
         public bool IncludeSubFolders;
         public int LargeSideSize;
         public int JpegQuality;
-
 
         // Processed files and cache
         private string[] processedFilesList;                // List of filenames being converted
 
         // Multitasking
         private readonly int MAX_PARALLISM;
-
 
         public void DoGenerate(CancellationToken cancelToken, IProgress<ProgressInfo> progress)
         {
@@ -125,18 +122,15 @@ namespace RI3
                                 lf.Add(t);
                                 n--;
                                 progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
-
                             }
                         foreach (var t in lf)
                             lt.Remove(t);
                     }
                 }
 
-                ExitGenerate:
+            ExitGenerate:
                 ;
-
             }, cancelToken);
-
         }
 
         public string ConvertImage(string fileName)
@@ -215,9 +209,7 @@ namespace RI3
                     return encoders[j];
             return null;
         }
-
     }
-
 
     // For IProgress
     public class ProgressInfo
@@ -233,5 +225,4 @@ namespace RI3
         public int Total;
         public string FileName;
     }
-
 }

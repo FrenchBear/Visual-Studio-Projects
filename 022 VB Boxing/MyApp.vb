@@ -4,9 +4,6 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.Collections
-
-
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
 
 Module Module1
@@ -18,7 +15,6 @@ Module Module1
         o = 3
         i = CInt(o)
         Console.WriteLine("i = {0}", i)
-
 
         Dim p As New PileEntier()
 
@@ -35,13 +31,14 @@ Module Module1
 
 End Module
 
-
 Class PileEntier : Inherits Stack
-    Public Sub Empile(ByVal i As Integer)
+
+    Public Sub Empile(i As Integer)
         MyBase.Push(i)
     End Sub
 
     Public Function Dépile() As Integer
         Return CInt(MyBase.Pop())
     End Function
+
 End Class

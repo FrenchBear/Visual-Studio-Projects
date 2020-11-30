@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-class MyApp
+internal class MyApp
 {
     [DllImport("Kernel32", EntryPoint = "GetSystemDirectory")]
     public static extern uint GSD(System.Text.StringBuilder str, int len);

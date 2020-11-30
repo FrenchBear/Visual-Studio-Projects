@@ -21,20 +21,19 @@ Module Module1
 
         Dim I As Short, J As Integer, K As Long, X As Decimal, Y As Single
         Dim Z As Double, L As UShort, M As UInteger, N As ULong, Q As Char
-        I = 347S    ' Short 
-        J = 347I    ' Integer 
-        K = 347L    ' Long 
-        X = 347D    ' Decimal 
-        Y = 347.0F  ' Single 
-        Z = 347.0R  ' Double 
-        L = 347US   ' UShort 
-        M = 347UI   ' UInteger 
-        N = 347UL   ' ULong 
-        Q = "."c    ' Char 
+        I = 347S    ' Short
+        J = 347I    ' Integer
+        K = 347L    ' Long
+        X = 347D    ' Decimal
+        Y = 347.0F  ' Single
+        Z = 347.0R  ' Double
+        L = 347US   ' UShort
+        M = 347UI   ' UInteger
+        N = 347UL   ' ULong
+        Q = "."c    ' Char
 
         Dim da As Date
         da = #2/26/1965 8:20:00 AM#
-
 
         Dim t() As MaClasse = {New MaClasse, New MaClasse(2), New MaClasse("abc")}
         t(1).v = 0
@@ -54,7 +53,6 @@ Module Module1
 
 End Module
 
-
 Class MaClasse
     Friend v As Integer
 
@@ -62,19 +60,20 @@ Class MaClasse
 
     End Sub
 
-    Sub New(ByVal sv0 As String)
+    Sub New(sv0 As String)
         v = sv0.Length
     End Sub
 
-    Sub New(ByVal v0 As Integer)
+    Sub New(v0 As Integer)
         v = v0
     End Sub
 
-    Default Property p(ByVal i As Integer) As Integer
+    Default Property p(i As Integer) As Integer
         Get
             Return 0
         End Get
-        Set(ByVal value As Integer)
+        Set(value As Integer)
         End Set
     End Property
+
 End Class

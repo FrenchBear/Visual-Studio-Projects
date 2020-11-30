@@ -6,10 +6,10 @@
 
 Option Explicit On
 
-Imports System.Collections
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmElimineDoublons
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -24,7 +24,7 @@ Public Class frmElimineDoublons
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -37,21 +37,23 @@ Public Class frmElimineDoublons
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents btnEliminer As System.Windows.Forms.Button
-    Friend WithEvents lstTrace As System.Windows.Forms.ListBox
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnEliminer = New System.Windows.Forms.Button()
-        Me.lstTrace = New System.Windows.Forms.ListBox()
+    Friend WithEvents btnEliminer As Button
+
+    Friend WithEvents lstTrace As ListBox
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnEliminer = New Button()
+        Me.lstTrace = New ListBox()
         Me.SuspendLayout()
         '
         'btnEliminer
         '
-        Me.btnEliminer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnEliminer.Location = New System.Drawing.Point(312, 9)
+        Me.btnEliminer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.btnEliminer.Location = New Point(312, 9)
         Me.btnEliminer.Name = "btnEliminer"
-        Me.btnEliminer.Size = New System.Drawing.Size(90, 27)
+        Me.btnEliminer.Size = New Size(90, 27)
         Me.btnEliminer.TabIndex = 0
         Me.btnEliminer.Text = "Eliminer !"
         '
@@ -59,17 +61,17 @@ Public Class frmElimineDoublons
         '
         Me.lstTrace.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.lstTrace.ItemHeight = 16
-        Me.lstTrace.Location = New System.Drawing.Point(10, 9)
+        Me.lstTrace.Location = New Point(10, 9)
         Me.lstTrace.Name = "lstTrace"
-        Me.lstTrace.Size = New System.Drawing.Size(292, 228)
+        Me.lstTrace.Size = New Size(292, 228)
         Me.lstTrace.TabIndex = 1
         '
         'frmElimineDoublons
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 15)
-        Me.ClientSize = New System.Drawing.Size(408, 266)
+        Me.AutoScaleBaseSize = New Size(6, 15)
+        Me.ClientSize = New Size(408, 266)
         Me.Controls.Add(Me.lstTrace)
         Me.Controls.Add(Me.btnEliminer)
         Me.Name = "frmElimineDoublons"
@@ -85,7 +87,7 @@ Public Class frmElimineDoublons
     Const sDirOld As String = "D:\StreamRipper\Old"
 
     <CLSCompliant(False)>
-    Function sNomRéduit(ByVal f As Scripting.File) As String
+    Function sNomRéduit(f As Scripting.File) As String
         Dim sClé As String
         sClé = f.Name
         Dim p As Integer
@@ -117,9 +119,9 @@ Public Class frmElimineDoublons
         End Try
     End Sub
 
-    Private Sub btnEliminer_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEliminer.Click
-        Dim dicFic As New System.Collections.Hashtable
-        Dim lstFic As New System.Collections.Queue
+    Private Sub btnEliminer_Click(sender As System.Object, e As EventArgs) Handles btnEliminer.Click
+        Dim dicFic As New Hashtable
+        Dim lstFic As New Queue
 
         Dim fso As New Scripting.FileSystemObject
         Dim fldTemp, fldSave As Scripting.Folder
@@ -183,8 +185,7 @@ Public Class frmElimineDoublons
         btnEliminer.Enabled = True
     End Sub
 
-
-    Private Sub Trace(ByVal sMsg As String)
+    Private Sub Trace(sMsg As String)
         lstTrace.Items.Add(sMsg)
         lstTrace.SetSelected(lstTrace.Items.Count - 1, True)
         lstTrace.Refresh()

@@ -5,10 +5,9 @@
 ' 2012-02-25	PV  VS2010
 ' 2017-05-02    PV  GitHub et VS2017
 
-
-Imports System.Drawing
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
 
 Module modRenduGraphique
     Public bTIFFCouleur As Boolean
@@ -16,7 +15,7 @@ Module modRenduGraphique
 
     Private imgCurrentPage As Bitmap                  ' Page courante, System.Drawing.Bitmap
     Private graCurrentPage As Graphics                ' Page courante, System.Drawing.Graphics
-    Private ReadOnly colPages As New System.Collections.Queue  ' Collection des pages sous forme System.Drawing.Bitmap
+    Private ReadOnly colPages As New Queue  ' Collection des pages sous forme System.Drawing.Bitmap
 
     Private Const iDPI As Integer = 200                                           ' Résolution X et Y du rendu
 
@@ -32,10 +31,10 @@ Module modRenduGraphique
             bPageEnCouleur = False
             imgPage = imgCurrentPage
         End Sub
+
     End Class
 
     Private PageEnCours As UnePage
-
 
     Private Sub CreateNewPage()
         imgCurrentPage = New Bitmap(iOutWidth, iOutHeight, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
@@ -123,8 +122,7 @@ Module modRenduGraphique
         multi.SaveAdd(myEncoderParameters)
     End Sub
 
-
-    Private Function GetEncoderInfo(ByVal mimeType As String) As ImageCodecInfo
+    Private Function GetEncoderInfo(mimeType As String) As ImageCodecInfo
         Dim j As Integer
         Dim encoders() As ImageCodecInfo
         encoders = ImageCodecInfo.GetImageEncoders()
@@ -136,7 +134,6 @@ Module modRenduGraphique
         Return Nothing
     End Function
 
-
     Private fCurrentFont As Font
     Private sFontName As String
     Private fFontSize As Single
@@ -147,48 +144,47 @@ Module modRenduGraphique
     Private iGRHMI As Integer                 ' HMI moyen de la police
     Private iGRWMI As Integer
 
-    Private Sub SetFontName(ByVal sNewFontName As String)
+    Private Sub SetFontName(sNewFontName As String)
         If sNewFontName <> sFontName Then
             fCurrentFont = Nothing
             sFontName = sNewFontName
         End If
     End Sub
 
-    Private Sub SetFontSize(ByVal fNewFontSize As Single)
+    Private Sub SetFontSize(fNewFontSize As Single)
         If fNewFontSize <> fFontSize Then
             fCurrentFont = Nothing
             fFontSize = fNewFontSize
         End If
     End Sub
 
-    Private Sub SetFontBold(ByVal bNewFontBold As Boolean)
+    Private Sub SetFontBold(bNewFontBold As Boolean)
         If bNewFontBold <> bFontBold Then
             fCurrentFont = Nothing
             bFontBold = bNewFontBold
         End If
     End Sub
 
-    Private Sub SetFontItalic(ByVal bNewFontItalic As Boolean)
+    Private Sub SetFontItalic(bNewFontItalic As Boolean)
         If bNewFontItalic <> bFontItalic Then
             fCurrentFont = Nothing
             bFontItalic = bNewFontItalic
         End If
     End Sub
 
-    Private Sub SetFontUnderline(ByVal bNewFontUnderline As Boolean)
+    Private Sub SetFontUnderline(bNewFontUnderline As Boolean)
         If bNewFontUnderline <> bFontUnderline Then
             fCurrentFont = Nothing
             bFontUnderline = bNewFontUnderline
         End If
     End Sub
 
-    Private Sub SetFontNarrow(ByVal bNewFontNarrow As Boolean)
+    Private Sub SetFontNarrow(bNewFontNarrow As Boolean)
         If bNewFontNarrow <> bFontNarrow Then
             fCurrentFont = Nothing
             bFontNarrow = bNewFontNarrow
         End If
     End Sub
-
 
     Private Function GetFont() As Font
         If fCurrentFont Is Nothing Then
@@ -201,7 +197,7 @@ Module modRenduGraphique
             If bFontNarrow And sFN = "Arial" Then sFN = "Arial Narrow"
 
             Dim rFontSize As Single = CSng(fFontSize * 0.96)
-            fCurrentFont = New System.Drawing.Font(sFN, rFontSize, fs, GraphicsUnit.Point, 255)
+            fCurrentFont = New Font(sFN, rFontSize, fs, GraphicsUnit.Point, 255)
 
             Dim sf As SizeF
             sf = graCurrentPage.MeasureString(" ", fCurrentFont)
@@ -211,12 +207,12 @@ Module modRenduGraphique
         Return fCurrentFont
     End Function
 
-    Function DpToPx(ByVal l As Integer) As Integer
+    Function DpToPx(l As Integer) As Integer
         Return Int(0.5 + l / 720 * iDPI)
     End Function
 
     ' Retourne la taille horizontale du texte en decipoints
-    Function RGTextOut(ByVal sFontName As String, ByVal fFontSize As Single, ByVal bFontBold As Boolean, ByVal bFontItalic As Boolean, ByVal bFontUnderline As Boolean, ByVal bFontNarrow As Boolean, ByVal x As Integer, ByVal y As Integer, ByVal sText As String) As Integer
+    Function RGTextOut(sFontName As String, fFontSize As Single, bFontBold As Boolean, bFontItalic As Boolean, bFontUnderline As Boolean, bFontNarrow As Boolean, x As Integer, y As Integer, sText As String) As Integer
         If imgCurrentPage Is Nothing Then CreateNewPage()
         SetFontName(sFontName)
         SetFontSize(fFontSize)
@@ -235,7 +231,7 @@ Module modRenduGraphique
         ' Calcul de la taille
         Dim l As Integer
 
-        Dim fmt As New Drawing.StringFormat
+        Dim fmt As New StringFormat
         Dim cr As CharacterRange() = {New CharacterRange(0, Len(sText))}
         fmt.SetMeasurableCharacterRanges(cr)
         Dim layoutRect As New RectangleF(xpx, ypx, iOutWidth, 200)
@@ -254,14 +250,14 @@ Module modRenduGraphique
         Return l
     End Function
 
-    Function RGNextTab(ByVal x As Integer) As Integer
+    Function RGNextTab(x As Integer) As Integer
         Dim xp As Integer = DpToPx(x)
         If xp Mod (8 * iGRHMI) <> 0 Then xp = (xp \ (8 * iGRHMI)) * (8 * iGRHMI)
         xp += 8 * iGRHMI
         Return Int(xp / iDPI * 720 + 0.5)
     End Function
 
-    Sub RGRectangle(ByVal x As Integer, ByVal y As Integer, ByVal w As Integer, ByVal h As Integer, ByVal iFillType As Integer)
+    Sub RGRectangle(x As Integer, y As Integer, w As Integer, h As Integer, iFillType As Integer)
         If imgCurrentPage Is Nothing Then CreateNewPage()
 
         Dim br As Brush
@@ -274,7 +270,7 @@ Module modRenduGraphique
         graCurrentPage.FillRectangle(br, New RectangleF(DpToPx(x), DpToPx(y), DpToPx(w), DpToPx(h)))
     End Sub
 
-    Sub RGPaintBitmap(ByVal x As Integer, ByVal y As Integer, ByRef tbByte As ArrayList, ByVal iWidth As Integer, ByVal iHeight As Integer, ByVal iDPIRaster As Integer)
+    Sub RGPaintBitmap(x As Integer, y As Integer, ByRef tbByte As ArrayList, iWidth As Integer, iHeight As Integer, iDPIRaster As Integer)
         Dim bmpImage3 As New Bitmap(iWidth, iHeight, PixelFormat.Format24bppRgb)
         bmpImage3.SetResolution(iDPIRaster, iDPIRaster)
         Dim bdaImage3 As BitmapData
@@ -317,8 +313,7 @@ Module modRenduGraphique
         graCurrentPage.DrawImage(bmpImage3, DpToPx(x), DpToPx(y))
     End Sub
 
-
-    Sub RGPaintBitmap(ByVal x As Integer, ByVal y As Integer, ByVal sNomfic As String)
+    Sub RGPaintBitmap(x As Integer, y As Integer, sNomfic As String)
         Dim bmpImage2 As Bitmap
         Try
             bmpImage2 = Image.FromFile(sNomfic)
@@ -333,10 +328,8 @@ Module modRenduGraphique
 
 End Module
 
-
-
 Module modRenduPCL
-    Private sPCLText As New System.Text.StringBuilder
+    Private sPCLText As New Text.StringBuilder
 
     Class PCLState
         Public posX, posY As Integer              ' Coordonnées en decipoints
@@ -386,7 +379,7 @@ Module modRenduPCL
 
     ' Imprime un caractère imprimable
     ' En pratique, bufférise le caractère
-    Sub PCLPrint(ByVal b As Byte)
+    Sub PCLPrint(b As Byte)
         Select Case b
             Case 12
                 ' Saut de page
@@ -434,7 +427,7 @@ Module modRenduPCL
 
         staState.posX += RGTextOut(staState.sFont, staState.fFontSize, staState.bFontBold, staState.bFontItalic, staState.bFontUnderline, staState.bFontNarrow, staState.iLeftOffset + staState.posX, staState.iTopOffset + staState.posY, sPCLText.ToString)
 
-        sPCLText = New System.Text.StringBuilder
+        sPCLText = New Text.StringBuilder
     End Sub
 
     ' "Ejecte" la page PCL = ferme la page du rendu graphique, et met à jour l'état PCL
@@ -444,15 +437,12 @@ Module modRenduPCL
         PCLInitPage()
     End Sub
 
-
-
-
     ' <Esc>&a
     Sub PCL38A()
         TraceWrite("[Info: <Esc>&a]")
     End Sub
 
-    Sub PCL38aH(ByVal sPosition As String)
+    Sub PCL38aH(sPosition As String)
         TraceWrite("[Horizontal position {0} decipoints]", sPosition)
         If Left(sPosition, 1) = "+" Or Left(sPosition, 1) = "-" Then
             staState.posX += Val(sPosition)
@@ -461,7 +451,7 @@ Module modRenduPCL
         End If
     End Sub
 
-    Sub PCL38aV(ByVal sPosition As String)
+    Sub PCL38aV(sPosition As String)
         TraceWrite("[Vertical position {0} decipoints]", sPosition)
         If Left(sPosition, 1) = "+" Or Left(sPosition, 1) = "-" Then
             staState.posY += Val(sPosition)
@@ -470,44 +460,43 @@ Module modRenduPCL
         End If
     End Sub
 
-    Sub PCL38aL(ByVal iMarge As Integer)
+    Sub PCL38aL(iMarge As Integer)
         TraceWrite("[Marge gauche texte = {0} caractères]", iMarge)
     End Sub
-
 
     ' <Esc>&l
     Sub PCL38L()
         TraceWrite("[Info: <Esc>&l]")
     End Sub
 
-    Sub PCL38lX(ByVal iNbCopies As Integer)
+    Sub PCL38lX(iNbCopies As Integer)
         TraceWrite("[Nb Copies: {0}]", iNbCopies)
     End Sub
 
-    Sub PCL38lD(ByVal fLineSpacing As Single)
+    Sub PCL38lD(fLineSpacing As Single)
         TraceWrite("[Set line spacing {0} lines/inch]", fLineSpacing)
         staState.VMI = 720 / fLineSpacing
     End Sub
 
-    Sub PCL38lP(ByVal iTaillePage As Integer)
+    Sub PCL38lP(iTaillePage As Integer)
         TraceWrite("[Page size: {0} lines]", iTaillePage)
     End Sub
 
-    Sub PCL38lU(ByVal iOffset As Integer)
+    Sub PCL38lU(iOffset As Integer)
         TraceWrite("[Long-Edge (Left) Offset Registration: {0} decipoints]", iOffset)
         staState.iLeftOffset = iOffset
     End Sub
 
-    Sub PCL38lZ(ByVal iOffset As Integer)
+    Sub PCL38lZ(iOffset As Integer)
         TraceWrite("[Short Edge (Top) Offset Registration: {0} decipoints]", iOffset)
         staState.iTopOffset = iOffset
     End Sub
 
-    Sub PCL38lE(ByVal iTopMargin As Integer)
+    Sub PCL38lE(iTopMargin As Integer)
         TraceWrite("[Top Marginmargin: {0} lines]", iTopMargin)
     End Sub
 
-    Sub PCL38lL(ByVal iSkip As Integer)
+    Sub PCL38lL(iSkip As Integer)
         Select Case iSkip
             Case 0 : TraceWrite("[Perforation Skip Disable]")
             Case 1 : TraceWrite("[Perforation Skip Enable]")
@@ -515,13 +504,12 @@ Module modRenduPCL
         End Select
     End Sub
 
-
     ' <Esc>&d
     Sub PCL38D()
         TraceWrite("[Info: <Esc>&d]")
     End Sub
 
-    Sub PCL38dD(ByVal iTypeSoul As Integer)
+    Sub PCL38dD(iTypeSoul As Integer)
         Select Case iTypeSoul
             Case 0
                 TraceWrite("[Fixed Underline]")
@@ -541,9 +529,8 @@ Module modRenduPCL
         staState.bFontUnderline = False
     End Sub
 
-
     ' <Esc>(#U
-    Sub PCL40U(ByVal iJeuCar As Integer)
+    Sub PCL40U(iJeuCar As Integer)
         TraceWrite("[Jeu de caractères {0}]", iJeuCar)
         Select Case iJeuCar
             Case 10
@@ -559,7 +546,7 @@ Module modRenduPCL
     End Sub
 
     ' <Esc>(s#P
-    Sub PCL40sP(ByVal iType As Integer)
+    Sub PCL40sP(iType As Integer)
         Select Case iType
             Case 0
                 TraceWrite("[Sélection police fixe]")
@@ -573,19 +560,19 @@ Module modRenduPCL
     End Sub
 
     ' <Esc>(s#H
-    Sub PCL40sH(ByVal fPitch As Single)
+    Sub PCL40sH(fPitch As Single)
         TraceWrite("[Sélection pas horizontal police {0} points/pouce]", fPitch)
         staState.fFontSize = 120 / fPitch
     End Sub
 
     ' <Esc>(s#V
-    Sub PCL40sV(ByVal fHauteur As Single)
+    Sub PCL40sV(fHauteur As Single)
         TraceWrite("[Sélection hauteur police {0} points]", fHauteur)
         staState.fFontSize = fHauteur
     End Sub
 
     ' <Esc>(s#S
-    Sub PCL40sS(ByVal iItalique As Single)
+    Sub PCL40sS(iItalique As Single)
         Select Case iItalique
             Case 0
                 TraceWrite("[Sélection police normale (pas italique)]")
@@ -603,7 +590,7 @@ Module modRenduPCL
     End Sub
 
     ' <Esc>(s#B
-    Sub PCL40sB(ByVal iGraise As Integer)
+    Sub PCL40sB(iGraise As Integer)
         Select Case iGraise
             Case 0
                 TraceWrite("[Sélection police normale (non grasse)]")
@@ -620,40 +607,38 @@ Module modRenduPCL
     End Sub
 
     ' <Esc>(s#T
-    Sub PCL40sT(ByVal iFont As Integer)
+    Sub PCL40sT(iFont As Integer)
         TraceWrite("[Sélection police n° {0}]", iFont)
         ' On ignore pour l'instant
         ' Police fixe: courier new, Police proportionnelle: arial
     End Sub
-
-
 
     ' <Esc>*c
     Sub PCL42C()
         TraceWrite("[Info: <Esc>&c]")
     End Sub
 
-    Sub PCL42cA(ByVal iSize As Integer)
+    Sub PCL42cA(iSize As Integer)
         TraceWrite("[Rectangle width {0} dots]", iSize)
         staState.iRecWidth = iSize * 720 / 300
     End Sub
 
-    Sub PCL42cB(ByVal iSize As Integer)
+    Sub PCL42cB(iSize As Integer)
         TraceWrite("[Rectangle height {0} dots]", iSize)
         staState.iRectHeight = iSize * 720 / 300
     End Sub
 
-    Sub PCL42cH(ByVal iSize As Integer)
+    Sub PCL42cH(iSize As Integer)
         TraceWrite("[Rectangle width {0} decipoints]", iSize)
         staState.iRecWidth = iSize
     End Sub
 
-    Sub PCL42cV(ByVal iSize As Integer)
+    Sub PCL42cV(iSize As Integer)
         TraceWrite("[Rectangle height {0} decipoints]", iSize)
         staState.iRectHeight = iSize
     End Sub
 
-    Sub PCL42cP(ByVal iFillType As Integer)
+    Sub PCL42cP(iFillType As Integer)
         TraceWrite("[Fill Rectangle, type {0}]", iFillType)
         If iFillType = 0 Or iFillType = 1 Then
             RGRectangle(staState.posX, staState.posY, staState.iRecWidth, staState.iRectHeight, iFillType)
@@ -661,7 +646,6 @@ Module modRenduPCL
             PCLError("Fill Rectangle, Fill type " & iFillType.ToString & " non pris en charge")
         End If
     End Sub
-
 
     ' <Esc>*t
     Sub PCL42T()
@@ -676,13 +660,12 @@ Module modRenduPCL
 
     ReadOnly rasRaster As New RasterClass
 
-    Sub PCL42tR(ByVal iResolution As Integer)
+    Sub PCL42tR(iResolution As Integer)
         TraceWrite("[Raster Resolution {0} dpi]", iResolution)
         rasRaster.iResolution = iResolution
         rasRaster.iWidth = 0
         rasRaster.iHeight = 0
     End Sub
-
 
     ' <Esc>*p
     Sub PCL42P()
@@ -690,7 +673,7 @@ Module modRenduPCL
     End Sub
 
     ' dot = 1/300è de pouce
-    Sub PCL42pX(ByVal sPosition As String)
+    Sub PCL42pX(sPosition As String)
         TraceWrite("[Cursor Horizontal Position {0} dots]", sPosition)
         If Left(sPosition, 1) = "+" Or Left(sPosition, 1) = "-" Then
             staState.posX += Val(sPosition) / 300 * 720
@@ -699,7 +682,7 @@ Module modRenduPCL
         End If
     End Sub
 
-    Sub PCL42pY(ByVal sPosition As Integer)
+    Sub PCL42pY(sPosition As Integer)
         TraceWrite("[Cursor Vertical Position {0} dots]", sPosition)
         If Left(sPosition, 1) = "+" Or Left(sPosition, 1) = "-" Then
             staState.posY += Val(sPosition) / 300 * 720
@@ -708,13 +691,12 @@ Module modRenduPCL
         End If
     End Sub
 
-
     ' <Esc>*r
     Sub PCL42R()
         TraceWrite("[Info: <Esc>*r]")
     End Sub
 
-    Sub PCL42rA(ByVal iLeftPos As Integer)
+    Sub PCL42rA(iLeftPos As Integer)
         Select Case iLeftPos
             Case 0 : TraceWrite("[Start Raster Graphics: Left Raster Graphics Margin]")
             Case 1 : TraceWrite("[Start Raster Graphics: Current Cursor]")
@@ -756,23 +738,22 @@ Module modRenduPCL
 
     End Sub
 
-    Sub PCL42rS(ByVal iWidth As Integer)
+    Sub PCL42rS(iWidth As Integer)
         TraceWrite("[Raster Width: {0} pixels of specified resolution]", iWidth)
         rasRaster.iWidth = iWidth
     End Sub
 
-    Sub PCL42rT(ByVal iHeight As Integer)
+    Sub PCL42rT(iHeight As Integer)
         TraceWrite("[Raster Height: {0} rows]", iHeight)
         rasRaster.iHeight = iHeight
     End Sub
-
 
     ' <Esc>*b
     Sub PCL42B()
         TraceWrite("[Info: <Esc>*b]")
     End Sub
 
-    Sub PCL42bW(ByVal iBytes As Integer)
+    Sub PCL42bW(iBytes As Integer)
         TraceWrite("[Séquence graphique {0} octets]", iBytes)
     End Sub
 
@@ -786,14 +767,11 @@ Module modRenduPCL
         rasRaster.tabLignes.Add(tbData)
     End Sub
 
-
-    Sub PCLTildaInsèrePhoto(ByVal sNomfic As String)
+    Sub PCLTildaInsèrePhoto(sNomfic As String)
         RGPaintBitmap(staState.posX, staState.posY, sNomfic)
     End Sub
 
 End Module
-
-
 
 ' Conversion 'bestiale' d'image 24 bits en 1 bit
 ' On travaille sur les séquences d'octets, c'est ce qu'il y a de plus rapide
@@ -808,7 +786,6 @@ Module modConversionImage1Bit
         Dim b1d As BitmapData = b1.LockBits(New Rectangle(0, 0, b1.Width, b1.Height), ImageLockMode.ReadWrite, PixelFormat.Format1bppIndexed)
 
         Dim b24d As BitmapData = imgSource.LockBits(New Rectangle(0, 0, b1.Width, b1.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb)
-
 
         Dim pData1 As IntPtr = b1d.Scan0
         Dim pData24 As IntPtr = b24d.Scan0
@@ -854,4 +831,5 @@ Module modConversionImage1Bit
 
         Return b1
     End Function
+
 End Module

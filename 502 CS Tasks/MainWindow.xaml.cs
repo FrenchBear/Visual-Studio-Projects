@@ -7,18 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+#pragma warning disable IDE1006 // Naming Styles
 
 namespace CS502
 {
@@ -36,7 +29,7 @@ namespace CS502
             button5.Click += button5_Click;
         }
 
-        void DoWork(CancellationToken cancelToken, IProgress<string> progress)
+        private void DoWork(CancellationToken cancelToken, IProgress<string> progress)
         {
             int i = 0;
             Task.Run(async () =>
@@ -94,7 +87,7 @@ namespace CS502
                     Debug.WriteLine("A task1 has ended, waited for {0}", w * 1000);
                 });
             // Note that you must start it before unwrapping it, doing the reverse
-            // generates an InvalidOperationException: Start may not be called on a promise-style task. 
+            // generates an InvalidOperationException: Start may not be called on a promise-style task.
             t.Start();
             return t.Unwrap();
         }
@@ -132,9 +125,7 @@ namespace CS502
             Debug.WriteLine("A task4 has ended, waited for {0}", w * 1000);
         }
 
-
-
-        delegate Task GetTask(int w);
+        private delegate Task GetTask(int w);
 
         // Note that interface is frozen until 1st task is terminated if the 1st Task.WaitAny
         // is not executed using await
@@ -213,6 +204,5 @@ namespace CS502
         {
             Array.ForEach((await ParallelCalcAsync()).ToArray(), d => AddTrace(d.ToString()));
         }
-
     }
 }

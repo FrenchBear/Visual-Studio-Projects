@@ -7,6 +7,7 @@
 Imports System.Runtime.CompilerServices
 
 Module Module1
+
     Sub Main()
         TestConcat()
         TestRangeRepeat()
@@ -38,7 +39,7 @@ Module Module1
 
     ' Quick helpers to print an enumaration
     <Extension()>
-    Public Sub Write(Of TSource)(ByVal Source As IEnumerable(Of TSource))
+    Public Sub Write(Of TSource)(Source As IEnumerable(Of TSource))
         For Each element As TSource In Source
             Console.Write(element)
             Console.Write(" "c)
@@ -46,11 +47,10 @@ Module Module1
     End Sub
 
     <Extension()>
-    Public Sub WriteLine(Of TSource)(ByVal Source As IEnumerable(Of TSource))
-        Write(Of TSource)(Source)
+    Public Sub WriteLine(Of TSource)(Source As IEnumerable(Of TSource))
+        Write(Source)
         Console.WriteLine()
     End Sub
-
 
     ' Simple concatenation of two IEnumerable(Of T)
     ' Does not eliminate duplicates, use Union for that purpose
@@ -158,7 +158,7 @@ Module Module1
         Console.WriteLine(pets.Max)
     End Sub
 
-    ' This class implements IComparable 
+    ' This class implements IComparable
     ' and has a custom 'CompareTo' implementation.
     Class Pet
         Implements IComparable(Of Pet)
@@ -170,7 +170,7 @@ Module Module1
         ''' <param name="other">The Pet to compare this Pet to.</param>
         ''' <returns>-1 if this Pet's sum is 'less' than the other Pet, 0 if they are equal,
         ''' or 1 if this Pet's sum is 'greater' than the other Pet.</returns>
-        Function CompareTo(ByVal other As Pet) As Integer _
+        Function CompareTo(other As Pet) As Integer _
             Implements IComparable(Of Pet).CompareTo
 
             If (other.Age + other.Name.Length > Me.Age + Me.Name.Length) Then
@@ -185,9 +185,8 @@ Module Module1
         Public Overrides Function ToString() As String
             Return Name & ":" & Age.ToString
         End Function
+
     End Class
-
-
 
     ' Standard set operations applied to IEnumerable(Of T)
     ' Uses the default equality comparer
@@ -209,7 +208,6 @@ Module Module1
         Enumerable.Except(t1, t2).WriteLine()
     End Sub
 
-
     ' Runs an aggregation function Func(Of TSource, TSource, TSource) on each element of a sequence
     ' Limit: aggreate value must be the same type as an element of the sequence
     ' Note: on first call of aggregation function, aggregated contains the value of the first element,
@@ -227,14 +225,13 @@ Module Module1
         Console.WriteLine(s)
     End Sub
 
-    Function ProcessWord(ByVal aggregated As String, ByVal element As String) As String
+    Function ProcessWord(aggregated As String, element As String) As String
         If aggregated = "" Then
             Return element
         Else
             Return element & " " & aggregated
         End If
     End Function
-
 
     ' Test a boolean function on all elements of a sequence
     Sub TestAll()
@@ -252,7 +249,7 @@ Module Module1
 
     ' Returns True if lngNumber is a prime
     ' Divides by odd nubers from 3 to lngNummber square root
-    Private Function IsPrime(ByVal lngNumber As Long) As Boolean
+    Private Function IsPrime(lngNumber As Long) As Boolean
         If lngNumber <= 2 Then Return True ' Returns 1 and 2 as prime...
         If lngNumber Mod 2 = 0 Then Return False
         For n As Long = 3 To CLng(Math.Sqrt(lngNumber)) Step 2
@@ -260,7 +257,6 @@ Module Module1
         Next
         Return True
     End Function
-
 
     ' With no argument, simply returns True if the list contains at list one element (= isEmpty)
     ' With an argument, returns True if the function is at least true for one element
@@ -280,7 +276,6 @@ Module Module1
         Console.WriteLine(t.Any(AddressOf IsPrime))
     End Sub
 
-
     ' Transforms an IEnumerable(Of X) into IEnumerable(Of T)
     ' Throws an exception if an element is not convertible, see OfType(Of T) to get elements of type T with no error
     Sub TestCast()
@@ -295,18 +290,18 @@ Module Module1
         l.WriteLine()
     End Sub
 
-
     ' Returns a sublist based on type
     ' In this example, 8.2, 15@ (decimal), CType(6, Short) and CType(7, Byte) are NOT returned
     ' In object example, a Puppy is returned by OfType(Of Dog)
     Sub TestOfType()
-        Dim t As Object() = New Object() {"Hello", 12, False, 5, #8/25/2008#, 8.2, 15@, New System.Text.StringBuilder, CType(6, Short), CType(7, Byte)}
+        Dim t As Object() = New Object() {"Hello", 12, False, 5, #8/25/2008#, 8.2, 15@, New Text.StringBuilder, CType(6, Short), CType(7, Byte)}
         Dim li As IEnumerable(Of Integer) = t.OfType(Of Integer)()
 
-        Dim ld As New List(Of Dog)
-        ld.Add(New Dog("Titus"))
-        ld.Add(New Dog("Athos"))
-        ld.Add(New Puppy("Baltik"))
+        Dim ld As New List(Of Dog) From {
+            New Dog("Titus"),
+            New Dog("Athos"),
+            New Puppy("Baltik")
+        }
 
         Console.WriteLine()
         Console.WriteLine("OfType ------------------")
@@ -325,20 +320,24 @@ Module Module1
 
     Class Dog
         Private ReadOnly _name As String
-        Public Sub New(ByVal name As String)
+
+        Public Sub New(name As String)
             _name = name
         End Sub
+
         Public Overrides Function ToString() As String
             Return _name
         End Function
+
     End Class
 
     Class Puppy : Inherits Dog
-        Public Sub New(ByVal name As String)
+
+        Public Sub New(name As String)
             MyBase.New(name)
         End Sub
-    End Class
 
+    End Class
 
     ' Tests whether a sequence contains a given element
     ' Can provide a specific comparer
@@ -355,8 +354,7 @@ Module Module1
         Console.WriteLine(colors.Contains("Red", StringComparer.InvariantCultureIgnoreCase))
     End Sub
 
-
-    ' No argument, counts elements in a sequence.  
+    ' No argument, counts elements in a sequence.
     ' Note: not to be confused with count property of List(Of T) for instance, since it needs to run through the enumerator to compute the number of elements
     ' Can be used to determine how many elements of a sequence match a given predicate
     Sub TestCount()
@@ -371,7 +369,6 @@ Module Module1
         Console.Write("l.Count(AddressOf IsPrime): ")
         Console.WriteLine(l.Count(AddressOf IsPrime))
     End Sub
-
 
     ' Returns distinct values of a sequence
     Sub TestDistinct()
@@ -414,7 +411,6 @@ Module Module1
         lc.Distinct.WriteLine()
     End Sub
 
-
     ' Sorts a sequence using a provided function that returns an integer rank for each element of the series
     ' Note: there is no overload that would use CompareTo of IComparable(Of T) such as the one used by Max()
     Sub TestOrderBy()
@@ -432,8 +428,6 @@ Module Module1
         Console.Write("li.OrderBy(Function(s) s.length): ")
         ts.OrderBy(Function(s) s.Length).WriteLine()
     End Sub
-
-
 
     Structure TornadoEvent
         Public startingDate As Date
@@ -520,7 +514,6 @@ Module Module1
         Next
     End Sub
 
-
     Structure Person
         Public Name As String
     End Structure
@@ -529,7 +522,6 @@ Module Module1
         Public Name As String
         Public Owner As Person
     End Structure
-
 
     ' Correlates the elements of two sequences based on matching keys using the default equality comparer to compare keys
     Sub TestJoin()
@@ -546,7 +538,7 @@ Module Module1
         Dim animals As New List(Of Animal)(New Animal() {barley, boots, whiskers, daisy})
 
         ' Create a list of Person-Animal pairs, where each element is an
-        ' anonymous type that contains a Animal's name and the name of the 
+        ' anonymous type that contains a Animal's name and the name of the
         ' Person that owns the Animal.
         ' Join is used as as extension of IEnumerable(of People)
         ' TOuter = Person, outer = people
@@ -561,10 +553,9 @@ Module Module1
                         Function(animal) animal.Owner,
                         Function(person, Animal) New With {.OwnerName = person.Name, .Animal = Animal.Name})
 
-
         ' With complete typing:
         Dim query2 As IEnumerable(Of OwnerAnimal) =
-            people.Join(Of Animal, Person, OwnerAnimal) _
+            people.Join _
                 (animals,
                 Function(person As Person) person,
                 Function(animal As Animal) animal.Owner,
@@ -582,8 +573,6 @@ Module Module1
         Public AnimalName As String
     End Structure
 
-
-
     Sub TestGroupJoin()
         Dim magnus As New Person With {.Name = "Hedlund, Magnus"}
         Dim terry As New Person With {.Name = "Adams, Terry"}
@@ -598,7 +587,7 @@ Module Module1
         Dim Animals As New List(Of Animal)(New Animal() {barley, boots, whiskers, daisy})
 
         ' Create a collection where each element is an anonymous type
-        ' that contains a Person's name and a collection of names of 
+        ' that contains a Person's name and a collection of names of
         ' the Animals that are owned by them.
         Dim query =
             people.GroupJoin(Animals,
@@ -624,7 +613,6 @@ Module Module1
 
     End Sub
 
-
     ' Simply reverses a sequence
     ' Internally, it's copied to a Buffer array
     Sub TestReverse()
@@ -637,7 +625,6 @@ Module Module1
         Console.Write("WeekDays.Reverse: ")
         WeekDays.Reverse.WriteLine()
     End Sub
-
 
     ' Select extensions apply a transformation function on an enumeration
     ' Select transforms 1 element in 1 element
@@ -656,9 +643,6 @@ Module Module1
         Console.Write("ts.SelectMany(Function(s) s.ToCharArray): ")
         ilc.WriteLine()
     End Sub
-
-
-
 
     Class BaseBloke
         Public Name As String
@@ -688,8 +672,6 @@ Module Module1
         Dim dbb As Dictionary(Of String, BaseBloke) = tb.ToDictionary(Function(b As Bloke) b.Name, Function(b As Bloke) New BaseBloke With {.Name = b.Name, .Age = b.Age})
     End Sub
 
-
-
     ' Awful implementation of Eratosthene's sieve using Enumerable extensions
     ' to show clearly the dark side of this kind of programming
     '
@@ -717,7 +699,7 @@ Module Module1
 
     ' Note that with a "yield return" statement we could return directly the prime sequence
     ' without building a list
-    Function CribleWithSequence(ByVal pMax As Integer) As IEnumerable(Of Integer)
+    Function CribleWithSequence(pMax As Integer) As IEnumerable(Of Integer)
         Dim li As IEnumerable(Of Integer) = Enumerable.Range(2, pMax - 1)
         Dim lp As New List(Of Integer)
         Do While li.Any                     ' .Any = not .isEmpty (contains at least one element)
@@ -738,10 +720,11 @@ Module Module1
     ' More than 1000 times faster for pMax=400, and it gets much worse when pMax is greater!
     ' Reverse the usual bit convention to avoid the initialization of all bits to true (can
     ' be done by the constructor, but takes 0.1s for list with more than 10 million bits...)
-    Function CribleTraditional(ByVal pMax As Integer) As IEnumerable(Of Integer)
+    Function CribleTraditional(pMax As Integer) As IEnumerable(Of Integer)
         Dim tb = New BitArray(pMax / 2 + 1)                 ' Don't test even numbers
-        Dim lp = New List(Of Integer)
-        lp.Add(2)
+        Dim lp = New List(Of Integer) From {
+            2
+        }
         Dim nv = 3                                          ' Start at 3
         While nv <= pMax
             If (Not tb((nv - 1) / 2)) Then
@@ -759,5 +742,3 @@ Module Module1
     End Function
 
 End Module
-
-

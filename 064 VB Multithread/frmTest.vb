@@ -5,9 +5,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmTest
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Windows Form Designer generated code "
 
@@ -22,7 +23,7 @@ Public Class frmTest
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -30,39 +31,40 @@ Public Class frmTest
         End If
         MyBase.Dispose(disposing)
     End Sub
-    Friend WithEvents btnDelegate As System.Windows.Forms.Button
-    Friend WithEvents btnThread As System.Windows.Forms.Button
+
+    Friend WithEvents btnDelegate As Button
+    Friend WithEvents btnThread As Button
 
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnThread = New System.Windows.Forms.Button()
-        Me.btnDelegate = New System.Windows.Forms.Button()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnThread = New Button()
+        Me.btnDelegate = New Button()
         Me.SuspendLayout()
         '
         'btnThread
         '
-        Me.btnThread.Location = New System.Drawing.Point(8, 52)
+        Me.btnThread.Location = New Point(8, 52)
         Me.btnThread.Name = "btnThread"
         Me.btnThread.TabIndex = 1
         Me.btnThread.Text = "Thread"
         '
         'btnDelegate
         '
-        Me.btnDelegate.Location = New System.Drawing.Point(8, 12)
+        Me.btnDelegate.Location = New Point(8, 12)
         Me.btnDelegate.Name = "btnDelegate"
         Me.btnDelegate.TabIndex = 1
         Me.btnDelegate.Text = "Delegate"
         '
         'frmTest
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(296, 273)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.btnThread, Me.btnDelegate})
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(296, 273)
+        Me.Controls.AddRange(New Control() {Me.btnThread, Me.btnDelegate})
         Me.Name = "frmTest"
         Me.Text = "Tests SyncLock"
         Me.ResumeLayout(False)
@@ -71,10 +73,9 @@ Public Class frmTest
 
 #End Region
 
-    Sub Trace(ByVal sMsg As String)
+    Sub Trace(sMsg As String)
         Debug.WriteLine(sMsg)
     End Sub
-
 
     Shared ReadOnly m As New Mutex()
 
@@ -98,11 +99,9 @@ Public Class frmTest
         Trace("Fin Proc2")
     End Sub
 
-
-
     Delegate Sub Procédure()
 
-    Private Sub btnDelegate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelegate.Click
+    Private Sub btnDelegate_Click(sender As System.Object, e As EventArgs) Handles btnDelegate.Click
         Dim p1 As Procédure = AddressOf Proc1
         Dim p2 As Procédure = New Procédure(AddressOf Proc2)
 
@@ -121,10 +120,10 @@ Public Class frmTest
         Trace("Terminé")
     End Sub
 
-    Private Sub btnThread_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnThread.Click
-        Dim t1, t2 As System.Threading.Thread
-        t1 = New System.Threading.Thread(AddressOf Proc1)
-        t2 = New System.Threading.Thread(AddressOf Proc2)
+    Private Sub btnThread_Click(sender As System.Object, e As EventArgs) Handles btnThread.Click
+        Dim t1, t2 As Threading.Thread
+        t1 = New Threading.Thread(AddressOf Proc1)
+        t2 = New Threading.Thread(AddressOf Proc2)
 
         Trace("Start Proc1")
         t1.Start()
@@ -149,7 +148,6 @@ Public Class frmTest
     End Sub
 
 End Class
-
 
 Public Class Mutex
 

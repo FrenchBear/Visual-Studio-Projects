@@ -946,4 +946,5 @@ Module module_Database
         Orders.Add(New Order With {.OrderID = 11076, .CustomerID = "BONAP", .EmployeeID = 4, .Freight = 38.28})
         Orders.Add(New Order With {.OrderID = 11077, .CustomerID = "RATTC", .EmployeeID = 1, .Freight = 8.53})
     End Sub
+
 End Module

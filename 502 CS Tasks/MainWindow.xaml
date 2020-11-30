@@ -4,7 +4,7 @@
         Title="502 CS Tasks" Height="413" Width="577">
     <Grid>
         <Button Name="button1" Content="Start" HorizontalAlignment="Left" Margin="21,24,0,0" VerticalAlignment="Top" Width="75" Click="button1_Click" />
-        <ListBox Name="listBox" Margin="249,10,10,10"/>
+        <ListBox Name="listBox" Margin="249,10,10,10" />
         <TextBlock HorizontalAlignment="Left" Margin="21,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="53" Width="209">Do some work in a separate task that can be interrupted, with notification of progress</TextBlock>
         <Button Name="button3" Content="Button3" HorizontalAlignment="Left" Margin="22,110,0,0" VerticalAlignment="Top" Width="75" Click="button3_Click" />
         <TextBlock HorizontalAlignment="Left" Margin="21,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="153">Starts three separate tasks, and wait for completion</TextBlock>
@@ -14,9 +14,9 @@
             <ListBoxItem>GetTask3</ListBoxItem>
             <ListBoxItem>GetTask4</ListBoxItem>
         </ListBox>
-        <Button x:Name="button4" Content="Button4" HorizontalAlignment="Left" Margin="21,273,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button4" Content="Button4" HorizontalAlignment="Left" Margin="21,273,0,0" VerticalAlignment="Top" Width="75" />
         <TextBlock HorizontalAlignment="Left" Margin="21,300,0,-3" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="140">Task.Dely(1000)</TextBlock>
-        <Button x:Name="button5" Content="Button5" HorizontalAlignment="Left" Margin="21,333,0,-37" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button5" Content="Button5" HorizontalAlignment="Left" Margin="21,333,0,-37" VerticalAlignment="Top" Width="75" />
         <TextBlock HorizontalAlignment="Left" Margin="21,360,0,-63" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="140">ParallelCalcAsync</TextBlock>
     </Grid>
 </Window>

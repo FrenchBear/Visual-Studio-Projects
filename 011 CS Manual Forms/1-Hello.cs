@@ -2,7 +2,6 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
-using System;
 using System.Windows.Forms;
 
 public class Hello1 : Form
@@ -17,7 +16,6 @@ public class Hello1 : Form
         Application.Run(new Hello1());
         return 0;
     }
-
 
     /// Constructeur de la fenêtre
     public Hello1()

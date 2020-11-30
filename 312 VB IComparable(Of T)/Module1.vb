@@ -2,7 +2,6 @@
 ' 2008-08-20    PV
 ' 2012-02-25	PV  VS2010
 
-
 Module Module1
 
     Sub Main()
@@ -29,16 +28,17 @@ Module Module1
 
         Private ReadOnly _n As Integer
 
-        Public Sub New(ByVal n As Integer)
+        Public Sub New(n As Integer)
             _n = n
         End Sub
 
-        Public Function CompareTo(ByVal other As CO) As Integer Implements System.IComparable(Of CO).CompareTo
+        Public Function CompareTo(other As CO) As Integer Implements IComparable(Of CO).CompareTo
             Return _n - other._n
         End Function
+
     End Class
 
-    Function Min(Of T As IComparable(Of T))(ByVal a As T, ByVal b As T) As T
+    Function Min(Of T As IComparable(Of T))(a As T, b As T) As T
         If a.CompareTo(b) < 0 Then
             Return a
         Else

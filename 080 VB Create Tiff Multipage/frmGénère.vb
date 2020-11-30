@@ -3,7 +3,7 @@
 Imports System.Drawing.Imaging
 
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -18,7 +18,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -31,35 +31,37 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents btnListCodecs As System.Windows.Forms.Button
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.btnListCodecs = New System.Windows.Forms.Button
+    Friend WithEvents Button1 As Button
+
+    Friend WithEvents btnListCodecs As Button
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.Button1 = New Button
+        Me.btnListCodecs = New Button
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(8, 8)
+        Me.Button1.Location = New Point(8, 8)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(120, 23)
+        Me.Button1.Size = New Size(120, 23)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Génère"
         '
         'btnListCodecs
         '
-        Me.btnListCodecs.Location = New System.Drawing.Point(8, 40)
+        Me.btnListCodecs.Location = New Point(8, 40)
         Me.btnListCodecs.Name = "btnListCodecs"
-        Me.btnListCodecs.Size = New System.Drawing.Size(120, 23)
+        Me.btnListCodecs.Size = New Size(120, 23)
         Me.btnListCodecs.TabIndex = 1
         Me.btnListCodecs.Text = "List Imaging codecs"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(292, 266)
         Me.Controls.Add(Me.btnListCodecs)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
@@ -70,7 +72,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Dim multi As Bitmap
         Dim page2 As Bitmap
         Dim page3 As Bitmap
@@ -91,8 +93,8 @@ Public Class Form1
         g2.Clear(Color.FromKnownColor(KnownColor.AliceBlue))
         g3.Clear(Color.FromKnownColor(KnownColor.Chartreuse))
 
-        Dim f As System.Drawing.Font
-        f = New System.Drawing.Font("Arial", 12)
+        Dim f As Font
+        f = New Font("Arial", 12)
 
         g1.DrawString("Page 1", f, System.Drawing.Brushes.Black, 25, 25)
         g2.DrawString("Page 2", f, System.Drawing.Brushes.Black, 25, 25)
@@ -102,7 +104,7 @@ Public Class Form1
         'Declare Function CharToOem Lib "user32" Alias "CharToOemA" (ByVal lpszSrc As String, ByVal lpszDst As String) As Long
 
         For i As Integer = 0 To 255
-            f = New System.Drawing.Font("Courier New", 14, FontStyle.Regular, GraphicsUnit.Pixel, i)
+            f = New Font("Courier New", 14, FontStyle.Regular, GraphicsUnit.Pixel, i)
             g1.DrawString(ChrW(&H251C) & f.GdiCharSet().ToString, f, System.Drawing.Brushes.Black, 250 * (1 + i Mod 6), 2100 / 255 * i)
         Next
 
@@ -141,7 +143,7 @@ Public Class Form1
         MsgBox("Enregistré --> C:\Multiframe.tiff")
     End Sub
 
-    Function GetEncoderInfo(ByVal mimeType As String) As ImageCodecInfo
+    Function GetEncoderInfo(mimeType As String) As ImageCodecInfo
         Dim j As Integer
         Dim encoders() As ImageCodecInfo
         encoders = ImageCodecInfo.GetImageEncoders()
@@ -153,8 +155,9 @@ Public Class Form1
         Return Nothing
     End Function
 
-    Private Sub btnListCodecs_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnListCodecs.Click
+    Private Sub btnListCodecs_Click(sender As System.Object, e As EventArgs) Handles btnListCodecs.Click
         Dim f As New frmCodecs
         f.Show()
     End Sub
+
 End Class

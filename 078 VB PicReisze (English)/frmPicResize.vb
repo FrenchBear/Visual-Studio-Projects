@@ -6,11 +6,12 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010; .Net Framework Client Profile 4.0
 
-Imports System.Drawing
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmPicResize
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     Dim m_iGrandCote As Integer
     Dim m_sSourcePath As String
@@ -29,7 +30,7 @@ Public Class frmPicResize
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -42,51 +43,53 @@ Public Class frmPicResize
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents lstTrace As System.Windows.Forms.ListBox
-    Friend WithEvents lblSource As System.Windows.Forms.Label
-    Friend WithEvents txtSource As System.Windows.Forms.TextBox
-    Friend WithEvents txtDestination As System.Windows.Forms.TextBox
-    Friend WithEvents lblDestination As System.Windows.Forms.Label
-    Friend WithEvents btnLookupSource As System.Windows.Forms.Button
-    Friend WithEvents btnLookupDestination As System.Windows.Forms.Button
-    Friend WithEvents FolderBrowser As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents lblQuality As System.Windows.Forms.Label
-    Friend WithEvents btnGo As System.Windows.Forms.Button
-    Friend WithEvents lblSize As System.Windows.Forms.Label
-    Friend WithEvents txtQuality As System.Windows.Forms.TextBox
-    Friend WithEvents txtSize As System.Windows.Forms.TextBox
-    Friend WithEvents tbQuality As System.Windows.Forms.TrackBar
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(frmPicResize))
-        Me.btnGo = New System.Windows.Forms.Button
-        Me.lstTrace = New System.Windows.Forms.ListBox
-        Me.lblSource = New System.Windows.Forms.Label
-        Me.txtSource = New System.Windows.Forms.TextBox
-        Me.txtDestination = New System.Windows.Forms.TextBox
-        Me.lblDestination = New System.Windows.Forms.Label
-        Me.lblSize = New System.Windows.Forms.Label
-        Me.txtSize = New System.Windows.Forms.TextBox
-        Me.btnLookupSource = New System.Windows.Forms.Button
-        Me.btnLookupDestination = New System.Windows.Forms.Button
-        Me.FolderBrowser = New System.Windows.Forms.FolderBrowserDialog
-        Me.txtQuality = New System.Windows.Forms.TextBox
-        Me.lblQuality = New System.Windows.Forms.Label
-        Me.tbQuality = New System.Windows.Forms.TrackBar
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        CType(Me.tbQuality, System.ComponentModel.ISupportInitialize).BeginInit()
+    Friend WithEvents lstTrace As ListBox
+
+    Friend WithEvents lblSource As Label
+    Friend WithEvents txtSource As TextBox
+    Friend WithEvents txtDestination As TextBox
+    Friend WithEvents lblDestination As Label
+    Friend WithEvents btnLookupSource As Button
+    Friend WithEvents btnLookupDestination As Button
+    Friend WithEvents FolderBrowser As FolderBrowserDialog
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblQuality As Label
+    Friend WithEvents btnGo As Button
+    Friend WithEvents lblSize As Label
+    Friend WithEvents txtQuality As TextBox
+    Friend WithEvents txtSize As TextBox
+    Friend WithEvents tbQuality As TrackBar
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Dim resources As Resources.ResourceManager = New Resources.ResourceManager(GetType(frmPicResize))
+        Me.btnGo = New Button
+        Me.lstTrace = New ListBox
+        Me.lblSource = New Label
+        Me.txtSource = New TextBox
+        Me.txtDestination = New TextBox
+        Me.lblDestination = New Label
+        Me.lblSize = New Label
+        Me.txtSize = New TextBox
+        Me.btnLookupSource = New Button
+        Me.btnLookupDestination = New Button
+        Me.FolderBrowser = New FolderBrowserDialog
+        Me.txtQuality = New TextBox
+        Me.lblQuality = New Label
+        Me.tbQuality = New TrackBar
+        Me.Label1 = New Label
+        Me.Label2 = New Label
+        CType(Me.tbQuality, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGo
         '
-        Me.btnGo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnGo.Location = New System.Drawing.Point(328, 8)
+        Me.btnGo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.btnGo.Location = New Point(328, 8)
         Me.btnGo.Name = "btnGo"
-        Me.btnGo.Size = New System.Drawing.Size(104, 32)
+        Me.btnGo.Size = New Size(104, 32)
         Me.btnGo.TabIndex = 12
         Me.btnGo.Text = "Go"
         '
@@ -94,101 +97,101 @@ Public Class frmPicResize
         '
         Me.lstTrace.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lstTrace.Location = New System.Drawing.Point(8, 172)
+                    Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.lstTrace.Location = New Point(8, 172)
         Me.lstTrace.Name = "lstTrace"
-        Me.lstTrace.Size = New System.Drawing.Size(312, 225)
+        Me.lstTrace.Size = New Size(312, 225)
         Me.lstTrace.TabIndex = 11
         '
         'lblSource
         '
-        Me.lblSource.Location = New System.Drawing.Point(8, 8)
+        Me.lblSource.Location = New Point(8, 8)
         Me.lblSource.Name = "lblSource"
-        Me.lblSource.Size = New System.Drawing.Size(100, 16)
+        Me.lblSource.Size = New Size(100, 16)
         Me.lblSource.TabIndex = 0
         Me.lblSource.Text = "Source Folder :"
         '
         'txtSource
         '
         Me.txtSource.HideSelection = False
-        Me.txtSource.Location = New System.Drawing.Point(8, 24)
+        Me.txtSource.Location = New Point(8, 24)
         Me.txtSource.Name = "txtSource"
-        Me.txtSource.Size = New System.Drawing.Size(280, 20)
+        Me.txtSource.Size = New Size(280, 20)
         Me.txtSource.TabIndex = 1
         Me.txtSource.Text = ""
         '
         'txtDestination
         '
         Me.txtDestination.HideSelection = False
-        Me.txtDestination.Location = New System.Drawing.Point(8, 64)
+        Me.txtDestination.Location = New Point(8, 64)
         Me.txtDestination.Name = "txtDestination"
-        Me.txtDestination.Size = New System.Drawing.Size(280, 20)
+        Me.txtDestination.Size = New Size(280, 20)
         Me.txtDestination.TabIndex = 4
         Me.txtDestination.Text = ""
         '
         'lblDestination
         '
-        Me.lblDestination.Location = New System.Drawing.Point(8, 48)
+        Me.lblDestination.Location = New Point(8, 48)
         Me.lblDestination.Name = "lblDestination"
-        Me.lblDestination.Size = New System.Drawing.Size(128, 16)
+        Me.lblDestination.Size = New Size(128, 16)
         Me.lblDestination.TabIndex = 3
         Me.lblDestination.Text = "Target Folder :"
         '
         'lblSize
         '
-        Me.lblSize.Location = New System.Drawing.Point(8, 96)
+        Me.lblSize.Location = New Point(8, 96)
         Me.lblSize.Name = "lblSize"
-        Me.lblSize.Size = New System.Drawing.Size(136, 16)
+        Me.lblSize.Size = New Size(136, 16)
         Me.lblSize.TabIndex = 6
         Me.lblSize.Text = "Large dimension (pixels) :"
         '
         'txtSize
         '
-        Me.txtSize.Location = New System.Drawing.Point(148, 92)
+        Me.txtSize.Location = New Point(148, 92)
         Me.txtSize.Name = "txtSize"
-        Me.txtSize.Size = New System.Drawing.Size(56, 20)
+        Me.txtSize.Size = New Size(56, 20)
         Me.txtSize.TabIndex = 7
         Me.txtSize.Text = ""
         '
         'btnLookupSource
         '
-        Me.btnLookupSource.Location = New System.Drawing.Point(296, 24)
+        Me.btnLookupSource.Location = New Point(296, 24)
         Me.btnLookupSource.Name = "btnLookupSource"
-        Me.btnLookupSource.Size = New System.Drawing.Size(24, 23)
+        Me.btnLookupSource.Size = New Size(24, 23)
         Me.btnLookupSource.TabIndex = 2
         Me.btnLookupSource.Text = "..."
         '
         'btnLookupDestination
         '
-        Me.btnLookupDestination.Location = New System.Drawing.Point(296, 64)
+        Me.btnLookupDestination.Location = New Point(296, 64)
         Me.btnLookupDestination.Name = "btnLookupDestination"
-        Me.btnLookupDestination.Size = New System.Drawing.Size(24, 23)
+        Me.btnLookupDestination.Size = New Size(24, 23)
         Me.btnLookupDestination.TabIndex = 5
         Me.btnLookupDestination.Text = "..."
         '
         'txtQuality
         '
-        Me.txtQuality.Location = New System.Drawing.Point(148, 132)
+        Me.txtQuality.Location = New Point(148, 132)
         Me.txtQuality.Name = "txtQuality"
-        Me.txtQuality.Size = New System.Drawing.Size(56, 20)
+        Me.txtQuality.Size = New Size(56, 20)
         Me.txtQuality.TabIndex = 9
         Me.txtQuality.Text = ""
         '
         'lblQuality
         '
         Me.lblQuality.AutoSize = True
-        Me.lblQuality.Location = New System.Drawing.Point(8, 136)
+        Me.lblQuality.Location = New Point(8, 136)
         Me.lblQuality.Name = "lblQuality"
-        Me.lblQuality.Size = New System.Drawing.Size(118, 16)
+        Me.lblQuality.Size = New Size(118, 16)
         Me.lblQuality.TabIndex = 8
         Me.lblQuality.Text = "JPEG Quality (0-100) :"
         '
         'tbQuality
         '
-        Me.tbQuality.Location = New System.Drawing.Point(216, 124)
+        Me.tbQuality.Location = New Point(216, 124)
         Me.tbQuality.Maximum = 100
         Me.tbQuality.Name = "tbQuality"
-        Me.tbQuality.Size = New System.Drawing.Size(220, 45)
+        Me.tbQuality.Size = New Size(220, 45)
         Me.tbQuality.TabIndex = 10
         Me.tbQuality.TickFrequency = 5
         Me.tbQuality.TickStyle = System.Windows.Forms.TickStyle.TopLeft
@@ -196,26 +199,26 @@ Public Class frmPicResize
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(216, 104)
+        Me.Label1.Location = New Point(216, 104)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(63, 16)
+        Me.Label1.Size = New Size(63, 16)
         Me.Label1.TabIndex = 13
         Me.Label1.Text = "Low Quality"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(368, 104)
+        Me.Label2.Location = New Point(368, 104)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(66, 16)
+        Me.Label2.Size = New Size(66, 16)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "High Quality"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'frmPicResize
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(440, 414)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(440, 414)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tbQuality)
@@ -231,17 +234,17 @@ Public Class frmPicResize
         Me.Controls.Add(Me.lblSource)
         Me.Controls.Add(Me.lstTrace)
         Me.Controls.Add(Me.btnGo)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Name = "frmPicResize"
         Me.Text = "Picture Resize Tool"
-        CType(Me.tbQuality, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbQuality, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
 #End Region
 
-    Private Sub btnGo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGo.Click
+    Private Sub btnGo_Click(sender As System.Object, e As EventArgs) Handles btnGo.Click
 
         If Not System.IO.Directory.Exists(txtSource.Text) Then
             MsgBox("Répertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
@@ -275,9 +278,9 @@ Public Class frmPicResize
         btnGo.Enabled = False
         Trace("Début de la génération")
 
-        Dim dir As System.IO.DirectoryInfo
-        dir = New System.IO.DirectoryInfo(txtSource.Text)
-        Dim fic As System.IO.FileInfo
+        Dim dir As IO.DirectoryInfo
+        dir = New IO.DirectoryInfo(txtSource.Text)
+        Dim fic As IO.FileInfo
 
         For Each fic In dir.GetFiles("*.jpg")
             Try
@@ -292,8 +295,7 @@ Public Class frmPicResize
         btnGo.Enabled = True
     End Sub
 
-
-    Sub GénèreVignette(ByVal sNomfic As String)
+    Sub GénèreVignette(sNomfic As String)
         Dim sPathImg As String
         Dim sPathVignette As String
 
@@ -333,14 +335,13 @@ Public Class frmPicResize
         Trace(sNomfic)
     End Sub
 
-
-    Sub Trace(ByVal sMsg As String)
+    Sub Trace(sMsg As String)
         lstTrace.Items.Add(sMsg)
         lstTrace.SelectedIndex = lstTrace.Items.Count - 1
         lstTrace.Refresh()
     End Sub
 
-    Private Sub btnLookupSource_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLookupSource.Click
+    Private Sub btnLookupSource_Click(sender As System.Object, e As EventArgs) Handles btnLookupSource.Click
         FolderBrowser.SelectedPath = txtSource.Text
         FolderBrowser.ShowNewFolderButton = False
         FolderBrowser.Description = "Sélectionnez le dossier contenant les images source :"
@@ -351,7 +352,7 @@ Public Class frmPicResize
         End If
     End Sub
 
-    Private Sub btnLookupDestination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLookupDestination.Click
+    Private Sub btnLookupDestination_Click(sender As System.Object, e As EventArgs) Handles btnLookupDestination.Click
         FolderBrowser.SelectedPath = txtDestination.Text
         FolderBrowser.ShowNewFolderButton = True
         FolderBrowser.Description = "Sélectionnez le dossier de destination pour les vignettes :"
@@ -362,7 +363,7 @@ Public Class frmPicResize
         End If
     End Sub
 
-    Private Function GetEncoderInfo(ByVal mimeType As String) As ImageCodecInfo
+    Private Function GetEncoderInfo(mimeType As String) As ImageCodecInfo
         Dim j As Integer
         Dim encoders As ImageCodecInfo()
         encoders = ImageCodecInfo.GetImageEncoders()
@@ -374,15 +375,15 @@ Public Class frmPicResize
         Return Nothing
     End Function
 
-    Private Sub txtQuality_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtQuality.TextChanged
+    Private Sub txtQuality_TextChanged(sender As System.Object, e As EventArgs) Handles txtQuality.TextChanged
         tbQuality.Value = Val(txtQuality.Text)
     End Sub
 
-    Private Sub tbQuality_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbQuality.Scroll
+    Private Sub tbQuality_Scroll(sender As System.Object, e As EventArgs) Handles tbQuality.Scroll
         txtQuality.Text = Format(tbQuality.Value)
     End Sub
 
-    Private Sub frmVignettes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmVignettes_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         txtQuality.Text = "90"
     End Sub
 

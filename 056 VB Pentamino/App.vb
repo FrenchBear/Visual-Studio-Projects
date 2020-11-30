@@ -25,23 +25,23 @@ Module Pentamino
             ReDim grille(MAXLIG - 1, MAXCOL - 1)
         End Sub
 
-        Public Sub New(ByVal j As Jeu)
+        Public Sub New(j As Jeu)
             grille = CType(j.grille.Clone(), Byte(,))
         End Sub
 
-        Default Public Property cellule(ByVal l As Integer, ByVal c As Integer) As Byte
+        Default Public Property cellule(l As Integer, c As Integer) As Byte
             Get
                 Return grille(l, c)
             End Get
-            Set(ByVal Value As Byte)
+            Set(Value As Byte)
                 grille(l, c) = Value
             End Set
         End Property
+
     End Class
 
     ' Tableau des pentaminos à utiliser pour le problème
     Dim tP() As Piece
-
 
     Public Sub Main()
         Pow2 = New Integer() {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096}
@@ -98,12 +98,11 @@ Module Pentamino
         ' Plan à paver
         Dim j As Jeu = New Jeu()
 
-
         ' Pavage
         Dim t0 As System.DateTime = System.DateTime.Now
         Pavage(0, 0, j, Pow2(MAXPIECE) - 1)
         Dim t1 As System.DateTime = System.DateTime.Now
-        Dim t As System.TimeSpan = t1.Subtract(t0)
+        Dim t As TimeSpan = t1.Subtract(t0)
 
         Console.WriteLine("{0} pour {1} solutions\n", t, iNbSol)
         Console.WriteLine("{0} appels à Pavage\n", iNbAppelPavage)
@@ -111,8 +110,7 @@ Module Pentamino
         Console.ReadLine()
     End Sub
 
-
-    Sub Pavage(ByVal lstart As Integer, ByVal cstart As Integer, ByVal jeu As Jeu, ByVal iMasquePieces As Integer)
+    Sub Pavage(lstart As Integer, cstart As Integer, jeu As Jeu, iMasquePieces As Integer)
         Dim l, c As Integer
         Dim bTrouvé As Boolean = False
 

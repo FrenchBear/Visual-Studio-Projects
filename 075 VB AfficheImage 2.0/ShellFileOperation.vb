@@ -5,13 +5,11 @@
 '  5/08/99 PV EffaceFichierCorbeille envoie réellement dans la corbeille !!!
 ' 20/05/03 PV Portage VB.Net
 
-
 Module ShellFileOperation
     Public Const FO_MOVE As Long = &H1
     Public Const FO_COPY As Long = &H2
     Public Const FO_DELETE As Long = &H3
     Public Const FO_RENAME As Long = &H4
-
 
     Public Const FOF_MULTIDESTFILES As Long = &H1
     Public Const FOF_CONFIRMMOUSE As Long = &H2
@@ -36,10 +34,9 @@ Module ShellFileOperation
         Dim lpszProgressTitle As String
     End Structure
 
+    Declare Ansi Function SHFileOperation Lib "Shell32.dll" Alias "SHFileOperationA" (lpFileOp As SHFILEOPSTRUCT) As Long
 
-    Declare Ansi Function SHFileOperation Lib "Shell32.dll" Alias "SHFileOperationA" (ByVal lpFileOp As SHFILEOPSTRUCT) As Long
-
-    Function EffaceFichierCorbeille(ByVal hwnd As Integer, ByVal sNomfic As String) As Long
+    Function EffaceFichierCorbeille(hwnd As Integer, sNomfic As String) As Long
         Dim DelFileOp As SHFILEOPSTRUCT
         Dim result As Long
         While Right(sNomfic, 2) <> vbNullChar & vbNullChar : sNomfic &= vbNullChar : End While
@@ -55,7 +52,7 @@ Module ShellFileOperation
         EffaceFichierCorbeille = result
     End Function
 
-    Function DéplaceFichier(ByVal hwnd As Integer, ByVal sSource As String, ByVal sDest As String) As Long
+    Function DéplaceFichier(hwnd As Integer, sSource As String, sDest As String) As Long
         Dim MoveFileOp As SHFILEOPSTRUCT
         Dim result As Long
         While Right(sSource, 2) <> vbNullChar & vbNullChar : sSource &= vbNullChar : End While

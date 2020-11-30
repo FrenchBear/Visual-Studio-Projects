@@ -1,6 +1,6 @@
 // 17 C# delegates
 // Essai pour voir si un delegate sur une méthode d'instance virtuelle
-// fonctionne correctement. 
+// fonctionne correctement.
 // Résultat Ok: le programme affiche MaDérivée.F(2)
 // 2001-01-15   PV
 // 2001-01-28   PV  Zap() pour voir en MSIL la différence entre un delegate de méthode statique
@@ -10,7 +10,7 @@
 
 using System;
 
-class MaClasse
+internal class MaClasse
 {
     public virtual void F(int i)
     {
@@ -18,7 +18,7 @@ class MaClasse
     }
 }
 
-class MaDérivée : MaClasse
+internal class MaDérivée : MaClasse
 {
     public override void F(int i)
     {
@@ -26,11 +26,9 @@ class MaDérivée : MaClasse
     }
 }
 
+internal delegate void MyDelegate(int x);
 
-delegate void MyDelegate(int x);
-
-
-class Test
+internal class Test
 {
     public static void Main()
     {
@@ -45,10 +43,8 @@ class Test
         Console.ReadLine();
     }
 
-    static void Zap(int iValeur)
+    private static void Zap(int iValeur)
     {
         Console.WriteLine("Zap({0})", iValeur);
     }
 }
-
-

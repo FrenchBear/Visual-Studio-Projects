@@ -2,5 +2,4 @@
 
 Public Class ucInherited
 
-
 End Class

@@ -6,6 +6,8 @@
 
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmRotorRouter
     ReadOnly col0 As Color = Color.Red
     ReadOnly col1 As Color = Color.Blue
@@ -25,7 +27,7 @@ Public Class frmRotorRouter
 
     ReadOnly picScale As Integer = 2
 
-    Private Sub btnStart_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStart.Click
+    Private Sub btnStart_Click(sender As System.Object, e As EventArgs) Handles btnStart.Click
         btnStart.Enabled = False
 
         Dim picBitmap As Bitmap = New Bitmap(2 * r + 1, 2 * r + 1, PixelFormat.Format24bppRgb)
@@ -37,7 +39,6 @@ Public Class frmRotorRouter
 
         ' Create rectangle for displaying image.
         Dim destRect As New Rectangle(0, 0, picScale * (2 * r + 1), picScale * (2 * r + 1))
-
 
         For i As Integer = 0 To n
             If i Mod nRefresh = 0 Then
@@ -90,7 +91,7 @@ Public Class frmRotorRouter
     End Sub
 
     ' Because of DoEvents
-    Private Sub frmRotorRouter_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
+    Private Sub frmRotorRouter_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         End
     End Sub
 

@@ -4,10 +4,9 @@ using System;
 
 namespace MaBibliotheque
 {
-
     public class Pile
     {
-        class Noeud
+        private class Noeud
         {
             public object element;
             public Noeud suivant;
@@ -19,7 +18,7 @@ namespace MaBibliotheque
             }
         }
 
-        Noeud tete = null;
+        private Noeud tete = null;
 
         public object Depile()
         {
@@ -38,5 +37,4 @@ namespace MaBibliotheque
             tete = new Noeud(o, tete);
         }
     }
-
 }

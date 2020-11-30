@@ -1,7 +1,6 @@
 ' 301 VB ODBC to SQL Client
 ' 2012-02-25	PV  VS2010; App 32-bit
 
-
 Module Module1
 
     Sub Main()
@@ -20,13 +19,12 @@ Module Module1
         sDataSource = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\Software\ODBC\ODBC.INI\dsnEurodat50", "Server", "")
         sDatabase = My.Computer.Registry.GetValue("HKEY_LOCAL_MACHINE\Software\ODBC\ODBC.INI\dsnEurodat50", "Database", "")
 
-
         Dim s As String
         s = "Data Source=" & sDataSource & ";Initial Catalog=" & sDatabase & ";Persist Security Info=True;User ID=EurodatOnLine;Password=madeinchina"
-        Dim conSQL As System.Data.SqlClient.SqlConnection
-        conSQL = New System.Data.SqlClient.SqlConnection(s)
+        Dim conSQL As SqlClient.SqlConnection
+        conSQL = New SqlClient.SqlConnection(s)
         conSQL.Open()
-        Dim cmdSQL As System.Data.SqlClient.SqlCommand
+        Dim cmdSQL As SqlClient.SqlCommand
         cmdSQL = conSQL.CreateCommand
         cmdSQL.CommandText = "SELECT COUNT(*) FROM Operators"
         Dim n As Integer = cmdSQL.ExecuteScalar

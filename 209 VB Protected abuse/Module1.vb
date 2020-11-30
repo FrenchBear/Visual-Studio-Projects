@@ -3,23 +3,27 @@
 ' 2012-02-25	PV  VS2010
 
 Module Module1
+
     Sub Main()
-        Dim x As c1 = New c1
-        CType(x, c2).pp = 3         ' Can't cast to a more derived type of course!
+        Dim x As C1 = New C1
+        CType(x, C2).Pp = 3         ' Can't cast to a more derived type of course!
     End Sub
 
-    Class c2 : Inherits c1
-        Property pp() As Integer
+    Class C2 : Inherits C1
+
+        Property Pp() As Integer
             Get
                 Return p
             End Get
-            Set(ByVal value As Integer)
+            Set(value As Integer)
                 p = value
             End Set
         End Property
+
     End Class
+
 End Module
 
-Class c1
+Class C1
     Protected p As Integer
 End Class

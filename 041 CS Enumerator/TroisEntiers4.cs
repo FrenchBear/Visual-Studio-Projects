@@ -3,13 +3,10 @@
 // 2012-02-25   PV  VS2010   First implementation
 // 2012-03-03   PV  Finally found a way to implement IEnumerable<T> (which implements IEnumerable> with an iterator
 
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 
-
-class ThreeIntegers4 : IEnumerable<int>
+internal class ThreeIntegers4 : IEnumerable<int>
 {
     private readonly int i1, i2, i3;
 
@@ -36,5 +33,4 @@ class ThreeIntegers4 : IEnumerable<int>
     {
         return MyEnumerator();
     }
-
 }

@@ -4,9 +4,9 @@
 ' 2012-02-25	PV  VS2010
 
 Imports System.IO
-Imports VB = Microsoft.VisualBasic
 Imports System.Runtime.InteropServices
 
+#Disable Warning IDE0051 ' Remove unused private members
 
 Module Module1
 
@@ -19,14 +19,13 @@ Module Module1
         Console.ReadLine()
     End Sub
 
-
     ' 1st method: using DirectoryInfo.GetFiles and DirectoryInfo.GetFolders
     ' $1: 0:00.000s
     ' $2: 0:37.475s
     ' $3: 1:15.261s
     ' $4: 1:15.271s
     ' $5: 1:15.282s
-    Private Sub AnalyzeFolder1(ByVal sSource As String)
+    Private Sub AnalyzeFolder1(sSource As String)
         Dim t1 As DateTime = DateTime.Now
         Dim ts As TimeSpan
         Dim dSource As DirectoryInfo = New DirectoryInfo(sSource)
@@ -42,8 +41,8 @@ Module Module1
         Console.WriteLine(String.Format("$3: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
 
         ' Build dictionaries with files/subdirectories infos
-        Dim dicFilesSource As New Generic.Dictionary(Of String, FileInfo)(tFilesSource.Length, StringComparer.OrdinalIgnoreCase)
-        Dim dicSubdirectoriesSource As New Generic.Dictionary(Of String, DirectoryInfo)(tSubdirectoriesSource.Length, StringComparer.OrdinalIgnoreCase)
+        Dim dicFilesSource As New Dictionary(Of String, FileInfo)(tFilesSource.Length, StringComparer.OrdinalIgnoreCase)
+        Dim dicSubdirectoriesSource As New Dictionary(Of String, DirectoryInfo)(tSubdirectoriesSource.Length, StringComparer.OrdinalIgnoreCase)
 
         For Each fiSource As FileInfo In tFilesSource
             dicFilesSource.Add(fiSource.Name, fiSource)
@@ -69,7 +68,7 @@ NextSource:
     ' 8832 files(s), 9 folder(s)
     ' 1:15 = exactly sum of calling GetFiles and GetFolders
     ' ==> implementation of getFileSystemInfos is simply calling GetFiles and GetFolders, enumerating files twice
-    Private Sub AnalyzeFolder2(ByVal sSource As String)
+    Private Sub AnalyzeFolder2(sSource As String)
         Dim dSource As DirectoryInfo = New DirectoryInfo(sSource)
         Dim t1 As DateTime = DateTime.Now
         Dim ts As TimeSpan
@@ -98,7 +97,7 @@ NextSource:
     ' 8832 files(s), 11 folder(s)
     ' Ok, this is the most efficient method
     ' Note: Returns . and .. folders
-    Private Sub AnalyzeFolder3(ByVal sSource As String)
+    Private Sub AnalyzeFolder3(sSource As String)
         Dim t1 As DateTime = DateTime.Now
         Dim ts As TimeSpan
 
@@ -142,7 +141,6 @@ NextSource:
         Console.WriteLine(String.Format("{0} files(s), {1} folder(s)", colFiles.Count, colFolders.Count))
     End Sub
 
-
     ' -----------------------------------------------------------------
     ' Win32 system calls
 
@@ -168,18 +166,15 @@ NextSource:
 
     'Declare Function FindFirstFile Lib "kernel32" Alias "FindFirstFileA" (ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATA) As Integer
     'Declare Function FindNextFile Lib "kernel32" Alias "FindNextFileA" (ByVal hFindFile As Integer, ByRef lpFindFileData As WIN32_FIND_DATA) As Integer
-    Declare Function FindClose Lib "kernel32" (ByVal hFindFile As Integer) As Integer
+    Declare Function FindClose Lib "kernel32" (hFindFile As Integer) As Integer
 
-
-
-    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Public Function FindFirstFileW(ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
+    <DllImport("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
+    Public Function FindFirstFileW(lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
     End Function
 
     <DllImport("kernel32.dll", EntryPoint:="FindNextFileW", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Public Function FindNextFileW(ByVal hFindFile As Integer, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
+    Public Function FindNextFileW(hFindFile As Integer, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
     End Function
-
 
     <StructLayout(LayoutKind.Sequential, CharSet:=CharSet.Unicode)>
     Structure WIN32_FIND_DATAW
@@ -191,12 +186,14 @@ NextSource:
         Dim nFileSizeLow As Integer
         Dim dwReserved0 As Integer
         Dim dwReserved1 As Integer
-        ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode  
-        <VBFixedString(520), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
-        ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode  
-        <VBFixedString(28), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
-    End Structure
 
+        ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode
+        <VBFixedString(520), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
+
+        ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode
+        <VBFixedString(28), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
+
+    End Structure
 
     Sub EnumWin32()
         Dim hsearch As Long  ' handle to the file search
@@ -221,5 +218,5 @@ NextSource:
         ' Close the file search handle
         retval = FindClose(hsearch)
     End Sub
-End Module
 
+End Module

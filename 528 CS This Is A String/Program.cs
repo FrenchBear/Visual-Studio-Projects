@@ -7,9 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace This_Is_A_String
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string s = "this is a string";
             Regex r = new Regex(@"(\s|^)\w");

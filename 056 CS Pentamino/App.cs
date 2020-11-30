@@ -7,20 +7,19 @@
 
 using System;
 
-class Pentamino
+internal class Pentamino
 {
-    const int MAXLIG = 12;
-    const int MAXCOL = 5;
-    const int MAXPIECE = 12;
+    private const int MAXLIG = 12;
+    private const int MAXCOL = 5;
+    private const int MAXPIECE = 12;
 
-    const int MAXSOLUTION = 1000;
+    private const int MAXSOLUTION = 1000;
 
-    static int iNbSol = 0;
-    static int iNbAppelPavage = 0;
-
+    private static int iNbSol = 0;
+    private static int iNbAppelPavage = 0;
 
     // Plan de jeu
-    class Jeu
+    private class Jeu
     {
         private readonly byte[,] grille;
 
@@ -42,10 +41,9 @@ class Pentamino
     }
 
     // Tableau des pentaminos à utiliser pour le problème
-    static Piece[] tP;
+    private static Piece[] tP;
 
-
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         // Préparation des pièces
         Piece P1 = new Piece(1, 'I', 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -104,7 +102,6 @@ class Pentamino
         // Plan à paver
         Jeu j = new Jeu();
 
-
         // Pavage
         System.DateTime t0 = System.DateTime.Now;
         Pavage(0, 0, j, (1 << MAXPIECE) - 1);
@@ -117,8 +114,7 @@ class Pentamino
         Console.ReadLine();
     }
 
-
-    static void Pavage(int lstart, int cstart, Jeu jeu, int iMasquePieces)
+    private static void Pavage(int lstart, int cstart, Jeu jeu, int iMasquePieces)
     {
         int l, c = 0;
         bool bTrouvé = false;
@@ -210,5 +206,4 @@ class Pentamino
                     }
                 }
     }
-
 }

@@ -4,10 +4,9 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
-
 using System;
 
-abstract class B
+internal abstract class B
 {
     protected B()
     {
@@ -16,18 +15,16 @@ abstract class B
 
     protected virtual void SomeVirtualMethod()
     {
-
     }
 
     protected abstract void AnAbstractMehod();
 
     protected void NonVirtualMethod()
     {
-
     }
 }
 
-class D : B
+internal class D : B
 {
     public D()
     {
@@ -36,22 +33,18 @@ class D : B
 
     protected override void SomeVirtualMethod()
     {
-
     }
 
     protected override void AnAbstractMehod()
     {
-
     }
 
     protected new void NonVirtualMethod()
     {
-
     }
 }
 
-
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {

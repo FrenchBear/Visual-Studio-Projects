@@ -11,7 +11,6 @@ using System.Windows.Interop;
 
 namespace RI3
 {
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -47,6 +46,7 @@ namespace RI3
         }
 
         #region Win32 API Stuff
+
         // Define the Win32 API methods we are going to use
         [DllImport("user32.dll")]
         private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
@@ -56,9 +56,11 @@ namespace RI3
 
         /// Define our Constants we will use
         private const int WmSyscommand = 0x112;
+
         private const int MfSeparator = 0x800;
         private const int MfByposition = 0x400;
-        #endregion
+
+        #endregion Win32 API Stuff
 
         // The constants we'll use to identify our custom system menu items
         private const int SettingsSysMenuId = 1000;
@@ -99,6 +101,5 @@ namespace RI3
             if (((ListBox)sender).SelectedItem != null)
                 ((ListBox)sender).ScrollIntoView(((ListBox)sender).SelectedItem);
         }
-
     }
 }

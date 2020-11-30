@@ -6,11 +6,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.Windows.Forms
 Imports System.Drawing
+Imports System.Windows.Forms
 
 #Disable Warning IDE1006 ' Naming Styles
-
 
 Public Class MyForm
     Inherits Form
@@ -43,12 +42,11 @@ Public Class MyForm
         Me.Controls.Add(button2)
     End Sub
 
-
-    Private Sub Button1_Click(ByVal sender As Object, ByVal evArgs As EventArgs) Handles button1.Click
+    Private Sub Button1_Click(sender As Object, evArgs As EventArgs) Handles button1.Click
         'Disable button1 - we only want to add one button
         button1.Enabled = False
 
-        'Add the new button and add an event handler using AddHandler                             
+        'Add the new button and add an event handler using AddHandler
         Dim newButton As New Button()
         newButton = New Button With {
             .Location = New Point(300, 64),
@@ -61,19 +59,15 @@ Public Class MyForm
         AddHandler newButton.Click, AddressOf Me.clickNewbutton
     End Sub
 
-
     'The event handling method for button2 - registered using Handles
-    Private Sub OnButton2Click(ByVal sender As Object, ByVal evArgs As EventArgs) Handles button2.Click
+    Private Sub OnButton2Click(sender As Object, evArgs As EventArgs) Handles button2.Click
         MessageBox.Show("Hello de Bouton 2")
     End Sub
 
-
     'The event handling method for the new button -  registered using AddHandler
-    Private Sub clickNewbutton(ByVal sender As Object, ByVal evArgs As EventArgs)
+    Private Sub clickNewbutton(sender As Object, evArgs As EventArgs)
         MessageBox.Show("Hello de Bouton 3")
     End Sub
-
-
 
     ' Point d'entrée de l'appli
     Shared Sub Main()

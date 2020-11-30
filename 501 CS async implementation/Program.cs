@@ -1,29 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApplication2
 {
-    class Program
+    internal class Program
     {
-        static event EventHandler SomeEvent;
+        private static event EventHandler SomeEvent;
 
-        static void Main()
+        private static void Main()
         {
             SomeEvent += Program_SomeEvent;
             SomeEvent(null, null);
         }
 
-        static async void Program_SomeEvent(object sender, EventArgs e)
+        private static async void Program_SomeEvent(object sender, EventArgs e)
         {
             await new Awaitable();
         }
     }
 
-    class Awaitable
+    internal class Awaitable
     {
         public Awaiter GetAwaiter()
         {
@@ -31,7 +27,7 @@ namespace ConsoleApplication2
         }
     }
 
-    class Awaiter : INotifyCompletion
+    internal class Awaiter : INotifyCompletion
     {
         public bool BeginAwait(Action continuation)
         {

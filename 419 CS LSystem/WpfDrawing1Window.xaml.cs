@@ -6,12 +6,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 using Brushes = System.Windows.Media.Brushes;
-
 
 namespace CS419
 {
@@ -47,7 +44,6 @@ namespace CS419
             base.OnKeyDown(e);
         }
     }
-
 
     public class MyVisualHost : FrameworkElement
     {
@@ -91,14 +87,15 @@ namespace CS419
             return _children[index];
         }
 
-
         // Implementation of renderer for WFP1
         private class Wpf1LSystemRenderer : LSystemRenderer
         {
             private DrawingContext _dc;
             private readonly Pen blackPen = new Pen(Brushes.Black, 2);
 
-            public Wpf1LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle) { }
+            public Wpf1LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle)
+            {
+            }
 
             public void Rend(DrawingContext dc, double rendingWidth, double rendingHeight)
             {
@@ -112,7 +109,5 @@ namespace CS419
                     _dc.DrawLine(blackPen, new Point(x1, y1), new Point(x2, y2));
             }
         }
-
-
     }
 }

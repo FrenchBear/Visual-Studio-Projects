@@ -2,18 +2,18 @@
 
 using System;
 
-class Carre55
+internal class Carre55
 {
     public bool[,] tMotif;
     public int lmax, cmax;		// Encombrement de la pièce
     public int iOffsetCol;		// Décalage de colonne pour occuper la cellule [0, 0]
 
-    bool B(int x)
+    private bool B(int x)
     {
         return x != 0;
     }
 
-    Carre55()
+    private Carre55()
     {
         tMotif = new bool[5, 5];
         for (int l = 0; l < 5; l++)
@@ -48,10 +48,9 @@ class Carre55
         MkOffset();
     }
 
-
     // Détermine la propriété iOffsetCol, c'est à dire le nombre de colonnes qu'il
     // faut translater le dessin à gauche pour occuper la cellule [0, 0]
-    void MkOffset()
+    private void MkOffset()
     {
         if (tMotif[0, 0])
             iOffsetCol = 0;
@@ -65,7 +64,6 @@ class Carre55
             iOffsetCol = 4;
     }
 
-
     // Opérateur de comparaison
     public static bool Egalite(Carre55 l, Carre55 k)
     {
@@ -77,11 +75,10 @@ class Carre55
         l.tMotif[4, 0] == k.tMotif[4, 0] && l.tMotif[4, 1] == k.tMotif[4, 1] && l.tMotif[4, 2] == k.tMotif[4, 2] && l.tMotif[4, 3] == k.tMotif[4, 3] && l.tMotif[4, 4] == k.tMotif[4, 4];
     }
 
-
     // Transformations
 
-    // Transformation de ligne  
-    int TL(int iT, int l, int c)
+    // Transformation de ligne
+    private int TL(int iT, int l, int c)
     {
         switch (iT)
         {
@@ -97,7 +94,7 @@ class Carre55
     }
 
     // Transformation de colonne
-    int TC(int iT, int l, int c)
+    private int TC(int iT, int l, int c)
     {
         switch (iT)
         {
@@ -147,7 +144,6 @@ class Carre55
         return ct;
     }
 
-
     public void Dessin()
     {
         int l, c;
@@ -160,5 +156,4 @@ class Carre55
         }
         Console.WriteLine("Offset: {0}", iOffsetCol);
     }
-
 }

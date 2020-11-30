@@ -4,8 +4,7 @@
 
 using System;
 
-
-struct Complexe : IFormattable
+internal struct Complexe : IFormattable
 {
     private readonly double r, i;
 
@@ -15,12 +14,10 @@ struct Complexe : IFormattable
         this.i = i;
     }
 
-
     public override string ToString()
     {
         return String.Format("({0},{1})", r, i);
     }
-
 
     public String ToString(String sFormat, IFormatProvider fp)
     {
@@ -34,7 +31,7 @@ struct Complexe : IFormattable
     }
 }
 
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {

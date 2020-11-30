@@ -7,14 +7,14 @@ using System.Collections.Specialized;
 
 namespace CS541_BitVector32
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Creates and initializes a BitVector32 with all bit flags set to FALSE.
             BitVector32 myBVb = new BitVector32(0);
 
-            // Creates masks to isolate each of the first five bit flags. 
+            // Creates masks to isolate each of the first five bit flags.
             int myBit1 = BitVector32.CreateMask();
             int myBit2 = BitVector32.CreateMask(myBit1);
             int myBit3 = BitVector32.CreateMask(myBit2);
@@ -36,7 +36,7 @@ namespace CS541_BitVector32
             // Creates and initializes a BitVector32.
             BitVector32 myBVs = new BitVector32(0);
 
-            // Creates four sections in the BitVector32 with maximum values 6, 3, 1, and 15. 
+            // Creates four sections in the BitVector32 with maximum values 6, 3, 1, and 15.
             // mySect3, which uses exactly one bit, can also be used as a bit flag.
             BitVector32.Section mySect1 = BitVector32.CreateSection(6);
             BitVector32.Section mySect2 = BitVector32.CreateSection(3, mySect1);
@@ -69,11 +69,9 @@ namespace CS541_BitVector32
             Console.WriteLine("\tmySect3: {0}", myBVs[mySect3]);
             Console.WriteLine("\tmySect4: {0}", myBVs[mySect4]);
 
-
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
         }
     }
-
 }

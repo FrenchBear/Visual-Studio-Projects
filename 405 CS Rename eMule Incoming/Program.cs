@@ -1,20 +1,15 @@
 ﻿// 405 Rename eMule Incoming
 // 2011-05-16   PV
 
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.IO;
-
+using System.Text.RegularExpressions;
 
 namespace Rename_eMule_Incoming
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var d = new DirectoryInfo(@"F:\eMule\Incoming");
             Regex r = new Regex(@"^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
@@ -29,7 +24,6 @@ namespace Rename_eMule_Incoming
                         string newName = f.DirectoryName + "\\" + Clean(m.Groups["p"].Value) + " - " + m.Groups["e"].Value + " - " + Clean(m.Groups["s"].Value) + Path.GetExtension(f.Name);
                         if (newName != f.FullName)
                             File.Move(f.FullName, newName);
-
                     }
                 }
 
@@ -38,7 +32,7 @@ namespace Rename_eMule_Incoming
             Console.ReadLine();
         }
 
-        static string Clean(string s)
+        private static string Clean(string s)
         {
             return s.Replace('.', ' ').Trim(new char[] { ' ', '-' });
 

@@ -2,17 +2,16 @@
 // Model for UnblockMe Solver
 // 2014-07-22 PV
 
+#pragma warning disable IDE0052 // Remove unread private members
+#pragma warning disable IDE0051 // Remove unused private members
+
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS523B_UnblockMe_Solver_Visual
 {
     public class UBMModel
     {
-
         // Describes the blocks of a specific game
         // Puzzle 1602
         public Block[] Pieces = {
@@ -33,7 +32,7 @@ namespace CS523B_UnblockMe_Solver_Visual
 
         private readonly SortedSet<int> History = new SortedSet<int>();
 
-        void UBModel()
+        private void UBModel()
         {
             /*
             ShowConfig(Configuration);
@@ -56,6 +55,7 @@ namespace CS523B_UnblockMe_Solver_Visual
         private bool foundSolution = false;
         private int nbConfig = 0;
         private int solutionMoves = 0;
+
         private bool Move(int depth, Config config)
         {
             nbConfig++;
@@ -110,6 +110,7 @@ namespace CS523B_UnblockMe_Solver_Visual
         }
 
         private readonly ConsoleColor[] Colors = { (ConsoleColor)1, (ConsoleColor)2, (ConsoleColor)3, (ConsoleColor)5, (ConsoleColor)6, (ConsoleColor)8, (ConsoleColor)9, (ConsoleColor)10, (ConsoleColor)11, (ConsoleColor)12, (ConsoleColor)13, (ConsoleColor)14, (ConsoleColor)15 };
+
         private void ShowConfig(Config config)
         {
             Console.WriteLine();
@@ -158,8 +159,6 @@ namespace CS523B_UnblockMe_Solver_Visual
                 Console.WriteLine();
             }
         }
-
-
     }
 
     // Represents one wooden block in the game
@@ -226,5 +225,4 @@ namespace CS523B_UnblockMe_Solver_Visual
             return true;
         }
     }
-
 }

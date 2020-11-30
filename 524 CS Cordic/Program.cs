@@ -3,17 +3,12 @@
 // Sine, Cosine calculations using CORDIC algorithm
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cordic
 {
-    class Program
+    internal class Program
     {
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             const int n = 15;
             double[] ta, tsin, tcos;

@@ -3,21 +3,8 @@
 // From http://www.microsoft.com/france/mstechdays/programmes/parcours.aspx?SessionID=002cf2d5-9d45-48a6-b8e0-9eafd0b8a6f9#&fbid=FVmAPqmbr6b
 // 2012-03-17   PV
 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CS500
 {
@@ -35,7 +22,7 @@ namespace CS500
         // Implement a simple state machine
         private ApplicationState state = ApplicationState.UC1;
 
-        async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             /*
             var r = await NavigateTo(new UC1());

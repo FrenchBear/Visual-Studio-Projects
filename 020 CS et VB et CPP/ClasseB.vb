@@ -8,16 +8,14 @@
 ' 2012-02-25	PV  VS2010
 ' 2017-04-30    PV  VS2017, Git
 
-Imports System
-
-
 Namespace Mixte20
 
     Public Class B
+
         Public Sub New()
             Console.WriteLine("B.ctor")
         End Sub
-    End Class
 
+    End Class
 
 End Namespace

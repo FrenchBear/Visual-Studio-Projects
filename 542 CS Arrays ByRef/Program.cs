@@ -3,17 +3,12 @@
 // 2016-08-04   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Console;
 
 namespace ConsoleApplication1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int[] a = new int[] { 0, 1, 2, 3, 4, 5 };
             a.WriteLine();
@@ -25,13 +20,13 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static void Test(int[] a)
+        private static void Test(int[] a)
         {
             a[2] = 12;
         }
     }
 
-    static class Extensions
+    internal static class Extensions
     {
         public static void WriteLine<T>(this T[] a)
         {

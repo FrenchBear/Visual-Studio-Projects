@@ -1,11 +1,8 @@
 ﻿using CS428;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace TestProject
 {
-
-
     /// <summary>
     ///This is a test class for SlicedNumberTest and is intended
     ///to contain all SlicedNumberTest Unit Tests
@@ -13,8 +10,6 @@ namespace TestProject
     [TestClass()]
     public class SlicedNumberTest
     {
-
-
         private TestContext testContextInstance;
 
         /// <summary>
@@ -34,7 +29,8 @@ namespace TestProject
         }
 
         #region Additional test attributes
-        // 
+
+        //
         //You can use the following additional attributes as you write your tests:
         //
         //Use ClassInitialize to run code before running the first test in the class
@@ -61,8 +57,8 @@ namespace TestProject
         //{
         //}
         //
-        #endregion
 
+        #endregion Additional test attributes
 
         /// <summary>
         ///A test for SlicedNumber Constructor
@@ -231,7 +227,6 @@ namespace TestProject
             Assert.AreEqual(new SlicedNumber("12345").ToString(), b.ToString());
         }
 
-
         /// <summary>
         ///A test for AbsCompare
         ///</summary>
@@ -308,7 +303,6 @@ namespace TestProject
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
 
-
         /// <summary>
         ///A test for FastMult
         ///</summary>
@@ -358,6 +352,5 @@ namespace TestProject
             actual = SlicedNumber.FastMult(n1, n2);
             Assert.AreEqual(expected.ToString(), actual.ToString());
         }
-
     }
 }

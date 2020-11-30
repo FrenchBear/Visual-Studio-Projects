@@ -3,12 +3,12 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmLabyrinthe
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     Const kSize As Integer = 10
     Shared Largeur As Integer
@@ -30,7 +30,7 @@ Public Class frmLabyrinthe
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -43,23 +43,25 @@ Public Class frmLabyrinthe
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents btnGénère As System.Windows.Forms.Button
-    Friend WithEvents pic As System.Windows.Forms.PictureBox
-    Friend WithEvents lblDimensions As System.Windows.Forms.Label
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnGénère = New System.Windows.Forms.Button()
-        Me.pic = New System.Windows.Forms.PictureBox()
-        Me.lblDimensions = New System.Windows.Forms.Label()
-        CType(Me.pic, System.ComponentModel.ISupportInitialize).BeginInit()
+    Friend WithEvents btnGénère As Button
+
+    Friend WithEvents pic As PictureBox
+    Friend WithEvents lblDimensions As Label
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnGénère = New Button()
+        Me.pic = New PictureBox()
+        Me.lblDimensions = New Label()
+        CType(Me.pic, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGénère
         '
-        Me.btnGénère.Location = New System.Drawing.Point(16, 15)
+        Me.btnGénère.Location = New Point(16, 15)
         Me.btnGénère.Name = "btnGénère"
-        Me.btnGénère.Size = New System.Drawing.Size(150, 42)
+        Me.btnGénère.Size = New Size(150, 42)
         Me.btnGénère.TabIndex = 0
         Me.btnGénère.Text = "Génère"
         '
@@ -67,31 +69,31 @@ Public Class frmLabyrinthe
         '
         Me.pic.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pic.Location = New System.Drawing.Point(176, 15)
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.pic.Location = New Point(176, 15)
         Me.pic.Name = "pic"
-        Me.pic.Size = New System.Drawing.Size(336, 332)
+        Me.pic.Size = New Size(336, 332)
         Me.pic.TabIndex = 2
         Me.pic.TabStop = False
         '
         'lblDimensions
         '
-        Me.lblDimensions.Location = New System.Drawing.Point(16, 133)
+        Me.lblDimensions.Location = New Point(16, 133)
         Me.lblDimensions.Name = "lblDimensions"
-        Me.lblDimensions.Size = New System.Drawing.Size(144, 29)
+        Me.lblDimensions.Size = New Size(144, 29)
         Me.lblDimensions.TabIndex = 3
         Me.lblDimensions.Text = "Taille"
         '
         'frmLabyrinthe
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(10, 24)
-        Me.ClientSize = New System.Drawing.Size(528, 358)
+        Me.AutoScaleBaseSize = New Size(10, 24)
+        Me.ClientSize = New Size(528, 358)
         Me.Controls.Add(Me.lblDimensions)
         Me.Controls.Add(Me.pic)
         Me.Controls.Add(Me.btnGénère)
         Me.Name = "frmLabyrinthe"
         Me.Text = "Labyrinthe"
-        CType(Me.pic, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pic, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -105,14 +107,13 @@ Public Class frmLabyrinthe
         kmBas = 3
     End Enum
 
-
     Public Class Cellule
         Private m_bVisité As Boolean
         Private ReadOnly m_tbMur(3) As Boolean
         Private ReadOnly m_l As Integer
         Private ReadOnly m_c As Integer
 
-        Public Sub New(ByVal l As Integer, ByVal c As Integer)
+        Public Sub New(l As Integer, c As Integer)
             m_l = l
             m_c = c
             m_bVisité = False
@@ -155,17 +156,17 @@ Public Class frmLabyrinthe
             Get
                 Return m_bVisité
             End Get
-            Set(ByVal Value As Boolean)
+            Set(Value As Boolean)
                 m_bVisité = Value
                 Dessine()
             End Set
         End Property
 
-        Public Property bMur(ByVal km As ConstMur) As Boolean
+        Public Property bMur(km As ConstMur) As Boolean
             Get
                 Return m_tbMur(km)
             End Get
-            Set(ByVal Value As Boolean)
+            Set(Value As Boolean)
                 m_tbMur(km) = Value
                 If km = ConstMur.kmHaut And m_l > 0 Then tCell(m_l - 1, m_c).m_tbMur(ConstMur.kmBas) = Value
                 If km = ConstMur.kmBas And m_l < Hauteur - 1 Then tCell(m_l + 1, m_c).m_tbMur(ConstMur.kmHaut) = Value
@@ -174,9 +175,10 @@ Public Class frmLabyrinthe
                 Dessine()
             End Set
         End Property
+
     End Class
 
-    Private Sub btnGénère_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGénère.Click
+    Private Sub btnGénère_Click(sender As System.Object, e As EventArgs) Handles btnGénère.Click
         Dim l, c As Integer
         For l = 0 To Hauteur - 1
             For c = 0 To Largeur - 1
@@ -199,7 +201,6 @@ Public Class frmLabyrinthe
             If iCreuse(i, j) > 0 Then pic.Refresh()
         Loop
 
-
         ' On efface l'entrée et la sortie
         'Cells(2, Int(2 + Largeur * Rnd())).Borders(xlEdgeTop).LineStyle = xlNone
         'Cells(1 + Hauteur, Int(2 + Largeur * Rnd())).Borders(xlEdgeBottom).LineStyle = xlNone
@@ -208,9 +209,8 @@ Public Class frmLabyrinthe
 
     End Sub
 
-
     ' Creusage d'une galerie
-    Private Function iCreuse(ByVal il As Integer, ByVal ic As Integer) As Integer
+    Private Function iCreuse(il As Integer, ic As Integer) As Integer
         Dim iRet As Integer = 0
 
         ' Direction d'exploration (au hasard)
@@ -287,7 +287,7 @@ Public Class frmLabyrinthe
 
     End Function
 
-    Private Sub frmLabyrinthe_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Resize
+    Private Sub frmLabyrinthe_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
         Largeur = (pic.Size.Width - 4) \ kSize
         Hauteur = (pic.Size.Height - 4) \ kSize
         lblDimensions.Text = CStr(Hauteur) & " x " & CStr(Largeur)

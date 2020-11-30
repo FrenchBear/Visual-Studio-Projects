@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Drawing.Imaging;
-
 
 namespace CreateVignette
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var testc = new Test();
             testc.ConvertImage("DSC_09786.JPG");
@@ -25,12 +20,12 @@ namespace CreateVignette
         }
     }
 
-    class Test
+    internal class Test
     {
-        readonly string SourceFolder = @"C:\Temp\F1";
-        readonly string TargetFolder = @"D:\Temp";
-        readonly int LargeSideSize = 2500;
-        readonly int JpegQuality = 90;
+        private readonly string SourceFolder = @"C:\Temp\F1";
+        private readonly string TargetFolder = @"D:\Temp";
+        private readonly int LargeSideSize = 2500;
+        private readonly int JpegQuality = 90;
 
         public string ConvertImage(string fileName)
         {
@@ -86,7 +81,6 @@ namespace CreateVignette
             eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
             ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
 
-
             vignette.Save(vignettePath, ici, eps);
             Debugger.Break();
 
@@ -107,7 +101,6 @@ namespace CreateVignette
 
         private static void DumpPropItems(System.Drawing.Image image)
         {
-
             PropertyItem[] propItems = image.PropertyItems;
             int count = 0;
             foreach (PropertyItem propItem in propItems)

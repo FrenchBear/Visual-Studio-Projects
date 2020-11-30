@@ -6,9 +6,9 @@ using System;
 
 namespace ConsoleApplication1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var pos = Adder();
             var neg = Adder();
@@ -20,7 +20,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static Func<int, int> Adder()
+        private static Func<int, int> Adder()
         {
             int sum = 0;
             return (int x) =>
@@ -50,6 +50,5 @@ namespace ConsoleApplication1
         //        return sum;
         //    };
         //}
-
     }
 }

@@ -1,8 +1,6 @@
 ﻿' 425 VB Egyptian Fractions
 ' Finds the decomposition of a fraction in Egyptian Fractions (numerator=1)
 
-Imports System.Globalization
-
 Module Module1
 
     Sub Main()
@@ -44,7 +42,6 @@ Module Module1
         Console.ReadLine()
     End Sub
 
-
     Public Function Decompose(f As Fraction) As List(Of Fraction)
         If f.Numerator = 1 Then
             Return New List(Of Fraction) From {f}
@@ -58,7 +55,4 @@ Module Module1
         Return l
     End Function
 
-
 End Module
-
-

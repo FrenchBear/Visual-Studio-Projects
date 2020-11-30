@@ -3,57 +3,65 @@
 ' From http://www.codeproject.com/vb/net/SubclassedSystemMenu.asp
 ' 2006-05-03 FPVI
 
-
 ''' <summary>
 ''' A convenient class to manage system menu commands
 ''' </summary>
 ''' <remarks>From http://www.codeproject.com/vb/net/SubclassedSystemMenu.asp</remarks>
 Public Class SubclassedSystemMenu
-    Inherits System.Windows.Forms.NativeWindow
+    Inherits NativeWindow
     Implements IDisposable
 
 #Region "Win32 API Declares"
-    Private Declare Function GetSystemMenu Lib "user32" (ByVal hwnd As Int32,
-                                                         ByVal bRevert As Boolean) As Int32
 
-    Private Declare Function AppendMenu Lib "user32" Alias "AppendMenuA" (ByVal hMenu As Int32,
-                                                                          ByVal wFlags As Int32,
-                                                                          ByVal wIDNewItem As Int32,
-                                                                          ByVal lpNewItem As String) As Int32
+    Private Declare Function GetSystemMenu Lib "user32" (hwnd As Int32,
+bRevert As Boolean) As Int32
+
+    Private Declare Function AppendMenu Lib "user32" Alias "AppendMenuA" (hMenu As Int32,
+wFlags As Int32,
+wIDNewItem As Int32,
+lpNewItem As String) As Int32
+
 #End Region
 
 #Region "Constants"
+
     Private Const MF_STRING As Int32 = &H0       ' Menu string format
     Private Const MF_SEPARATOR As Int32 = &H800  ' Menu separator
-    Private Const WM_SYSCOMMAND As Int32 = &H112 ' System menu 
+    Private Const WM_SYSCOMMAND As Int32 = &H112 ' System menu
     Private Const ID_ABOUT As Int32 = 1000       ' Our ID for the new menu item
+
 #End Region
 
 #Region "Member Variables"
+
     Private ReadOnly mintSystemMenu As Int32 = 0                 ' Parent system menu handle
     Private ReadOnly mintHandle As Int32 = 0                     ' Local parent window handle
     Private ReadOnly mstrMenuItemText As String = String.Empty   ' New menu item text
+
 #End Region
 
 #Region "Events"
+
     Public Event LaunchDialog()
+
 #End Region
 
 #Region "Constructor"
+
     '========================================================
     '
     '   Method Name:        New
     '	Description:	    Constructor. Creates menu items and assigns subclass
     '
-    '   Inputs:             intWindowHandle : Parent window handle for message 
-    '                                         subclass and adding new menu items 
+    '   Inputs:             intWindowHandle : Parent window handle for message
+    '                                         subclass and adding new menu items
     '                                         to parent system menu
     '
     '   Return Value:       None
     '
     '========================================================
-    Public Sub New(ByVal intWindowHandle As Int32,
-                   ByVal strMenuItemText As String)
+    Public Sub New(intWindowHandle As Int32,
+strMenuItemText As String)
 
         Me.AssignHandle(New IntPtr(intWindowHandle))
 
@@ -68,11 +76,13 @@ Public Class SubclassedSystemMenu
         End If
 
     End Sub
+
 #End Region
 
 #Region "Methods"
-    <System.Diagnostics.DebuggerStepThrough()>
-    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+
+    <DebuggerStepThrough()>
+    Protected Overrides Sub WndProc(ByRef m As Message)
         Select Case m.Msg
             Case WM_SYSCOMMAND
 
@@ -89,8 +99,8 @@ Public Class SubclassedSystemMenu
         End Select
     End Sub
 
-    <System.Diagnostics.DebuggerStepThrough()>
-    Public Sub Dispose() Implements System.IDisposable.Dispose
+    <DebuggerStepThrough()>
+    Public Sub Dispose() Implements IDisposable.Dispose
         If Not Me.Handle.Equals(IntPtr.Zero) Then
             Me.ReleaseHandle()
         End If
@@ -104,7 +114,6 @@ Public Class SubclassedSystemMenu
         Try
             ' Append the extra system menu items
             Return AppendToSystemMenu(mintSystemMenu, mstrMenuItemText)
-
         Catch ex As Exception
             Return False
         End Try
@@ -116,7 +125,7 @@ Public Class SubclassedSystemMenu
     ''' <param name="intHandle">System Menu handle</param>
     ''' <param name="strText">Text for new menu item</param>
     ''' <returns>True if successful, False else</returns>
-    Private Function AppendToSystemMenu(ByVal intHandle As Int32, ByVal strText As String) As Boolean
+    Private Function AppendToSystemMenu(intHandle As Int32, strText As String) As Boolean
         Try
             ' Add the seperator menu item
             Dim intRet As Int32 = AppendMenu(intHandle, MF_SEPARATOR, 0, String.Empty)
@@ -129,11 +138,11 @@ Public Class SubclassedSystemMenu
             Else
                 Return False
             End If
-
         Catch ex As Exception
             Return False
         End Try
     End Function
+
 #End Region
 
 End Class

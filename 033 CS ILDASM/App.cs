@@ -4,14 +4,12 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
-using System;
 using MaBibliotheque;
-
+using System;
 
 namespace EssaisILDasm
 {
-
-    class MyApp
+    internal class MyApp
     {
         public static void Main(String[] args)
         {
@@ -68,10 +66,8 @@ namespace EssaisILDasm
             Console.WriteLine("y = {0}", y);
             Console.WriteLine("z = {0}", z);
 
-
             Console.ReadLine();
         }
-
 
         protected static void ActionBase(MaClasseDeBase b, int iVal)
         {
@@ -91,4 +87,3 @@ namespace EssaisILDasm
         }
     }
 }
-

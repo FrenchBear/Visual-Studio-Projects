@@ -2,18 +2,14 @@
 // New possibilities in .Net Framework 4 to intialize objects and collections
 // 2010-02-24 FPVI
 
-//using Microsoft.VisualBasic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 // For extension method
-using System.Runtime.CompilerServices;
-
-
-static class Module1
+internal static class Module1
 {
     public static void Main()
     {
@@ -75,10 +71,9 @@ static class Module1
     {
         genericList.Add(new Customer(id, name, orders));
     }
-
 }
 
-class Complexe
+internal class Complexe
 {
     public double real;
     public double imaginary;
@@ -114,7 +109,7 @@ public class Order
 
 public class OrderCollection : IEnumerable<Order>
 {
-    readonly List<Order> items = new List<Order>();
+    private readonly List<Order> items = new List<Order>();
 
     public Order this[int index]
     {
@@ -136,10 +131,9 @@ public class OrderCollection : IEnumerable<Order>
     {
         return this.GetEnumerator();
     }
+
     IEnumerator IEnumerable.GetEnumerator()
     {
         return GetEnumerator1();
     }
 }
-
-

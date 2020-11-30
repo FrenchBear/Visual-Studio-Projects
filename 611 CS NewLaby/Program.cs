@@ -9,7 +9,6 @@
 using System;
 using static System.Console;
 
-
 /*
 C:\DevelopmentGD\Visual Studio Projects\611 CS NewLaby\bin\Debug>NewLaby.exe
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+  +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
@@ -101,12 +100,11 @@ rows: 20, cols: 40
 
 */
 
-
 namespace NewLaby
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             int rows = 15;
             int cols = 30;
@@ -128,11 +126,11 @@ namespace NewLaby
         private readonly bool isDetailedBuild;
 
         // Bitmask for walls in Cells
-        const int right = 1;
-        const int bottom = 2;
+        private const int right = 1;
+
+        private const int bottom = 2;
 
         private static readonly Random rnd = new Random();
-
 
         public Laby(int rows, int cols, bool isDetailedBuild)
         {
@@ -162,7 +160,6 @@ namespace NewLaby
                 Cells[0, 1 + rnd.Next(cols)] &= ~bottom;
                 Cells[rows, 1 + rnd.Next(cols)] &= ~bottom;
             }
-
         }
 
         public void PrintLabyrinth()

@@ -3,31 +3,23 @@
 // 2008-12-01 FPVI
 // 2012-02-25   PV  VS2010
 
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using System.Runtime.InteropServices;
-
+using System.Text;
 
 namespace ConsoleApplication2
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string[] ts = GetServers();
             foreach (string s in ts)
             {
-
                 Console.WriteLine(s);
             }
             Console.ReadLine();
         }
-
-
 
         [DllImport("odbc32.dll")]
         private static extern short SQLAllocHandle(short hType, IntPtr inputHandle, out IntPtr outputHandle);
@@ -43,7 +35,6 @@ namespace ConsoleApplication2
             short inStringLength, StringBuilder outString, short outStringLength,
             out short outLengthNeeded);
 
-
         private const short SQL_HANDLE_ENV = 1;
         private const short SQL_HANDLE_DBC = 2;
         private const int SQL_ATTR_ODBC_VERSION = 200;
@@ -52,8 +43,6 @@ namespace ConsoleApplication2
         private const short SQL_NEED_DATA = 99;
         private const short DEFAULT_RESULT_SIZE = 1024;
         private const string SQL_DRIVER_STR = "DRIVER=SQL SERVER";
-
-
 
         /// <summary>
         /// Gets the sql servers instances in the network

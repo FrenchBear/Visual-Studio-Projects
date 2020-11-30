@@ -1,13 +1,11 @@
-﻿
-Public Class CDemo
+﻿Public Class CDemo
 
     Public ReadOnly InstanceID As Integer
 
     Private Shared NextInstanceID As Integer = 0
     Private Shared ClassInstanceCount As Long = 0
 
-
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <DebuggerNonUserCode()>
     Public Sub New()
         MyBase.New()
 
@@ -23,12 +21,10 @@ Public Class CDemo
         ClassInstanceCount -= 1
     End Sub
 
-
     Public Shared ReadOnly Property InstanceCount() As Long
         Get
             Return ClassInstanceCount
         End Get
     End Property
-
 
 End Class

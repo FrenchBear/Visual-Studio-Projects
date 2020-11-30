@@ -6,10 +6,8 @@ using System;
 
 namespace MaBibliotheque
 {
-
     public class MaClasseDerivee : MaClasseDeBase, MonInterface
     {
-
         private class MaSousClasse
         {
             private readonly int a;
@@ -33,7 +31,6 @@ namespace MaBibliotheque
             [Obsolete("Ne plus utiliser !")]
             private void MethodeObsolete()
             {
-
             }
         }
 
@@ -98,8 +95,6 @@ namespace MaBibliotheque
             set { iProp = value; }
         }
 
-
-
         // Héritage de MaClasseDeBase
         public override void Action()
         {
@@ -112,10 +107,9 @@ namespace MaBibliotheque
             base.Action();
         }
 
-
-
         // Eléments spécifiques à la classe
         private int iProp;
+
         protected int age;
         private readonly MaSousClasse sc;
 
@@ -129,7 +123,6 @@ namespace MaBibliotheque
             Console.WriteLine("Constructeur statique de MaClasseDerivee");
         }
 
-
         ~MaClasseDerivee()
         {
             Console.WriteLine("~MaClasseDerivee()");
@@ -140,6 +133,7 @@ namespace MaBibliotheque
             get { return age; }
             set { age = value; }
         }
+
         public void TrucDangereux(int q)
         {
             try
@@ -160,6 +154,7 @@ namespace MaBibliotheque
         }
 
         private static int iCompteurGlobal;
+
         public static void MaMethodeStatique()
         {
             iCompteurGlobal = 0;

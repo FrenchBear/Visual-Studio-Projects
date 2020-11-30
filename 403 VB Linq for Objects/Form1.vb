@@ -3,14 +3,13 @@
 ' Note: Linq in C# is different! (no aggregate, no group join)
 ' 2011-05-06 FPVI
 
-
 Public Class Form1
 
     Public custList As List(Of Customer)
     Public counList As List(Of Country)
     Public persList As List(Of Person)
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         custList = New List(Of Customer) From {
                  New Customer With {.custId = 1, .custName = "Strawberry Fields", .custCountryId = 1},
                  New Customer With {.custId = 2, .custName = "Joe Banana", .custCountryId = 1},
@@ -28,7 +27,7 @@ Public Class Form1
              }
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         ' By default, it's a simple cartesian product
         OutText.AppendText("Test 1, cartesian product" & vbCrLf)
         Dim qry1 = From cu In custList, co In counList
@@ -62,7 +61,6 @@ Public Class Form1
             Next
         Next
 
-
         ' Join: combine a second collection with a first one
         OutText.AppendText(vbCrLf & "Test 4, join" & vbCrLf)
         Dim qry4 = From cu In custList
@@ -72,7 +70,6 @@ Public Class Form1
         For Each x In qry4
             OutText.AppendText(x.co.counName & ",  " & x.cu.custName & vbCrLf)
         Next
-
 
         ' Group By, simple grouping
         OutText.AppendText(vbCrLf & "Test 5, group by" & vbCrLf)
@@ -90,7 +87,6 @@ Public Class Form1
             Next
         Next
 
-
         ' Aggregate
         OutText.AppendText(vbCrLf & "Test 6, aggregate" & vbCrLf)
         Dim qry6 = From co In counList
@@ -101,7 +97,6 @@ Public Class Form1
         For Each x In qry6
             OutText.AppendText(x.co.counName & ",  " & x.nbCust.ToString & vbCrLf)
         Next
-
 
         ' Take whi
         OutText.AppendText(vbCrLf & "Test 7, take while" & vbCrLf)
@@ -124,8 +119,8 @@ Public Class Form1
             OutText.AppendText(x.custId.ToString & " " & x.custName & vbCrLf)
         Next
 
-
     End Sub
+
 End Class
 
 Public Class Customer

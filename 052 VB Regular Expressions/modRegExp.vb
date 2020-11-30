@@ -3,13 +3,13 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-
 Imports System.Text.RegularExpressions
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Module modRegExp
 
-    Public Function bCtrlFournisseurRE(ByVal sFour As String) As Boolean
+    Public Function bCtrlFournisseurRE(sFour As String) As Boolean
         Dim r As Regex
         r = New Regex("^[A-Z]{1,8}\.([0-9]{1,3}|2A|2B)(\.[0-9]{1,3}){1,3}(\.CEE)?(-.*)?")
         bCtrlFournisseurRE = r.IsMatch(sFour)
@@ -17,18 +17,13 @@ Module modRegExp
 
 End Module
 
-
-
-
 Module AnalyseTexte
     Private sText As String     ' Texte à analyser
     Private iPos As Integer     ' Position courante
 
-
     Private Function Terminé() As Boolean
         Terminé = iPos > Len(sText)
     End Function
-
 
     Private Sub Abort()
         Err.Raise(1000)
@@ -38,9 +33,7 @@ Module AnalyseTexte
         Err.Raise(1001)
     End Sub
 
-
-
-    Private Sub Avance(ByVal c As String)
+    Private Sub Avance(c As String)
         If Mid(sText, iPos, Len(c)) = c Then
             iPos += Len(c)
         Else
@@ -64,8 +57,7 @@ Module AnalyseTexte
         End If
     End Sub
 
-
-    Private Function Suivant(ByVal c As String) As Boolean
+    Private Function Suivant(c As String) As Boolean
         Suivant = Mid(sText, iPos, Len(c)) = c
     End Function
 
@@ -73,10 +65,7 @@ Module AnalyseTexte
         SuivantChiffre = Mid(sText, iPos, 1) Like "#"
     End Function
 
-
-
-
-    Public Function bCtrlFournisseurA(ByVal sFour As String) As Boolean
+    Public Function bCtrlFournisseurA(sFour As String) As Boolean
         sText = sFour
         iPos = 1
 
@@ -125,12 +114,11 @@ Module AnalyseTexte
 
                 End Select
             Loop
-
         Catch
             bCtrlFournisseurA = Err.Number = 1001
 
         End Try
 
     End Function
-End Module
 
+End Module

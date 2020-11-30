@@ -15,7 +15,11 @@ namespace CS92
 
         //public Complex() { r = 0.0;  i = 0.0; }
         public Complex(double r0) { r = r0; i = 0.0; }
-        public Complex(double r0, double i0) { r = r0; i = i0; }
+
+        public Complex(double r0, double i0)
+        {
+            r = r0; i = i0;
+        }
 
         public static implicit operator Complex(double d)
         {
@@ -57,8 +61,6 @@ namespace CS92
             return new Complex(a.r * d, a.i * d);
         }
 
-
-
         public static Complex operator /(Complex a, Complex b)
         {
             return 1 / (b.r * b.r + b.i * b.i) * new Complex(a.r * b.r + a.i * b.i, a.i * b.r - a.r * b.i);
@@ -74,8 +76,6 @@ namespace CS92
             return d / (c.r * c.r + c.i * c.i) * new Complex(c.r, -c.i);
         }
 
-
-
         public static Complex Pow(double x, double y)
         {
             return Math.Pow(x, y);
@@ -85,7 +85,6 @@ namespace CS92
         {
             return Exp(p * Ln(c));
         }
-
 
         public static Complex Ln(Complex c)
         {
@@ -101,7 +100,6 @@ namespace CS92
         {
             return Exp(0.5 * Ln(c));
         }
-
 
         public override string ToString()
         {

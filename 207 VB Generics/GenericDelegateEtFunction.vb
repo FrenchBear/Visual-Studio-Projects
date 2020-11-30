@@ -1,9 +1,9 @@
-﻿
-' Generic implementation of Min and Max using IComparable
+﻿' Generic implementation of Min and Max using IComparable
 Module MinMax
-    Public Delegate Function MinOuMax(Of t)(ByVal x1 As IComparable, ByVal x2 As IComparable) As t
 
-    Public Function Min(Of t)(ByVal t1 As IComparable, ByVal t2 As IComparable) As t
+    Public Delegate Function MinOuMax(Of t)(x1 As IComparable, x2 As IComparable) As t
+
+    Public Function Min(Of t)(t1 As IComparable, t2 As IComparable) As t
         If t1.CompareTo(t2) < 0 Then
             Return CType(t1, t)
         Else
@@ -11,15 +11,15 @@ Module MinMax
         End If
     End Function
 
-    Public Function Max(Of t)(ByVal t1 As IComparable, ByVal t2 As IComparable) As t
+    Public Function Max(Of t)(t1 As IComparable, t2 As IComparable) As t
         If t1.CompareTo(t2) > 0 Then
             Return CType(t1, t)
         Else
             Return CType(t2, t)
         End If
     End Function
-End Module
 
+End Module
 
 ' Generic implementation of Min and Max using >
 ' Doesn't work, but why ?

@@ -35,7 +35,7 @@ namespace CS419
 
         private void GdiDrawingForm_Resize(object sender, EventArgs e)
         {
-            if (_s!=null)
+            if (_s != null)
                 GdiDraw();
         }
 
@@ -51,14 +51,14 @@ namespace CS419
             gr.Rend(ref graOut, picOut.Size.Width, picOut.Size.Height);
         }
 
-
-
         // Implementation of rendered for GDI
         private class GdiLSystemRenderer : LSystemRenderer
         {
             private Graphics _graOut;
 
-            public GdiLSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle) { }
+            public GdiLSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle)
+            {
+            }
 
             public void Rend(ref Graphics graOut, double rendingWidth, double rendingHeight)
             {
@@ -80,7 +80,5 @@ namespace CS419
             if (e.KeyCode == Keys.Escape)
                 Close();
         }
-
     }   // class GdiDrawingForm
-
 }

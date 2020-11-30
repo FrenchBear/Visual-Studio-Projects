@@ -14,11 +14,12 @@ Module Module1
     End Sub
 
     Sub Test2()
-        Dim Savane As New Collections.Generic.List(Of Animal)
-        Savane.Add(New Girafe("Lea"))
-        Savane.Add(New Lion("Mufasa"))
-        Savane.Add(New Lion("Sarabi"))
-        Savane.Add(New Lionceau("Simba"))
+        Dim Savane As New List(Of Animal) From {
+            New Girafe("Lea"),
+            New Lion("Mufasa"),
+            New Lion("Sarabi"),
+            New Lionceau("Simba")
+        }
 
         Dim x As Animal
         For Each x In Savane
@@ -43,58 +44,72 @@ Module Module1
         l.Crier(1)
 
         Dim MethodName As String = "Crier"
-        Dim MethodArgList As New List(Of Object)
-        MethodArgList.Add("iNb")
+        Dim MethodArgList As New List(Of Object) From {
+            "iNb"
+        }
 
         Dim MethodArgs As Object() = MethodArgList.ToArray()
 
         'Dim Result = NewLateBinding.LateCall(l, Nothing, MethodName, New Object() {1}, New String() {"iNb"}, New System.Type() {1.GetType}, New Boolean() {False}, True)
         Dim Result = NewLateBinding.LateCall(l, Nothing, MethodName, New Object() {1}, New String() {"iNb"}, Nothing, New Boolean() {False}, True)
     End Sub
+
 End Module
 
 Class Animal
     Public Name As String
     Public isMale As Boolean
-    Sub New(ByVal newName As String)
+
+    Sub New(newName As String)
         Name = newName
     End Sub
+
     Public Sub Dormir()
     End Sub
+
     Public Sub Manger()
     End Sub
-    Public Overridable Sub Crier(ByVal iNb As Integer)
+
+    Public Overridable Sub Crier(iNb As Integer)
     End Sub
+
 End Class
 
 Class Girafe
     Inherits Animal
-    Sub New(ByVal newName As String)
+
+    Sub New(newName As String)
         MyBase.New(newName)
     End Sub
+
 End Class
 
 Class Lion
     Inherits Animal
-    Sub New(ByVal newName As String)
+
+    Sub New(newName As String)
         MyBase.New(newName)
     End Sub
-    Public Overrides Sub Crier(ByVal iNb As Integer)
+
+    Public Overrides Sub Crier(iNb As Integer)
         For i As Integer = 1 To iNb
             Console.WriteLine("{0}: Roaaaar!", Name)
         Next
     End Sub
+
 End Class
 
 Class Lionceau
     Inherits Lion
-    Sub New(ByVal newName As String)
+
+    Sub New(newName As String)
         MyBase.New(newName)
     End Sub
-    Public Overrides Sub Crier(ByVal iNb As Integer)
+
+    Public Overrides Sub Crier(iNb As Integer)
         For i As Integer = 1 To iNb
             Console.WriteLine("{0}: Miaooow!", Name)
         Next
     End Sub
-End Class
 
+End Class

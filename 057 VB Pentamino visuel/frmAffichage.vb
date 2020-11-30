@@ -4,15 +4,14 @@
 ' 2006-10-01    PV  VS2005
 ' 2010-07-19	PV  VS2010
 
-
 Imports System.Drawing
-Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.Windows.Forms
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmAffichage
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     Shared ReadOnly tBrushes() As Brush = {
       Brushes.Red, Brushes.Black, Brushes.Yellow,
@@ -27,12 +26,12 @@ Public Class frmAffichage
     ReadOnly kEch As Integer
 
     ' Collection des solutions trouvées
-    ReadOnly alSolutions As New System.Collections.ArrayList()
+    ReadOnly alSolutions As New ArrayList()
 
-    Friend WithEvents btnPause As System.Windows.Forms.Button
-    Friend WithEvents btnStop As System.Windows.Forms.Button
-    Friend WithEvents vsSol As System.Windows.Forms.VScrollBar
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnPause As Button
+    Friend WithEvents btnStop As Button
+    Friend WithEvents vsSol As VScrollBar
+    Friend WithEvents Button1 As Button
     Dim WithEvents app As PentaminoSolveur
 
 #Region " Windows Form Designer generated code "
@@ -61,7 +60,7 @@ Public Class frmAffichage
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -69,39 +68,40 @@ Public Class frmAffichage
         End If
         MyBase.Dispose(disposing)
     End Sub
-    Friend WithEvents btnAnalyse As System.Windows.Forms.Button
-    Friend WithEvents txtSolution As System.Windows.Forms.TextBox
-    Friend WithEvents pic As System.Windows.Forms.PictureBox
+
+    Friend WithEvents btnAnalyse As Button
+    Friend WithEvents txtSolution As TextBox
+    Friend WithEvents pic As PictureBox
 
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnPause = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.pic = New System.Windows.Forms.PictureBox()
-        Me.btnStop = New System.Windows.Forms.Button()
-        Me.btnAnalyse = New System.Windows.Forms.Button()
-        Me.txtSolution = New System.Windows.Forms.TextBox()
-        Me.vsSol = New System.Windows.Forms.VScrollBar()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnPause = New Button()
+        Me.Button1 = New Button()
+        Me.pic = New PictureBox()
+        Me.btnStop = New Button()
+        Me.btnAnalyse = New Button()
+        Me.txtSolution = New TextBox()
+        Me.vsSol = New VScrollBar()
         Me.SuspendLayout()
         '
         'btnPause
         '
         Me.btnPause.Enabled = False
-        Me.btnPause.Location = New System.Drawing.Point(8, 40)
+        Me.btnPause.Location = New Point(8, 40)
         Me.btnPause.Name = "btnPause"
         Me.btnPause.TabIndex = 1
         Me.btnPause.Text = "Pause"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(32, 136)
+        Me.Button1.Location = New Point(32, 136)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(48, 23)
+        Me.Button1.Size = New Size(48, 23)
         Me.Button1.TabIndex = 5
         Me.Button1.Text = "Button1"
         Me.Button1.Visible = False
@@ -109,49 +109,49 @@ Public Class frmAffichage
         'pic
         '
         Me.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pic.Location = New System.Drawing.Point(96, 8)
+        Me.pic.Location = New Point(96, 8)
         Me.pic.Name = "pic"
-        Me.pic.Size = New System.Drawing.Size(208, 424)
+        Me.pic.Size = New Size(208, 424)
         Me.pic.TabIndex = 1
         Me.pic.TabStop = False
         '
         'btnStop
         '
         Me.btnStop.Enabled = False
-        Me.btnStop.Location = New System.Drawing.Point(8, 72)
+        Me.btnStop.Location = New Point(8, 72)
         Me.btnStop.Name = "btnStop"
         Me.btnStop.TabIndex = 2
         Me.btnStop.Text = "Stop"
         '
         'btnAnalyse
         '
-        Me.btnAnalyse.Location = New System.Drawing.Point(8, 8)
+        Me.btnAnalyse.Location = New Point(8, 8)
         Me.btnAnalyse.Name = "btnAnalyse"
         Me.btnAnalyse.TabIndex = 0
         Me.btnAnalyse.Text = "&Analyse"
         '
         'txtSolution
         '
-        Me.txtSolution.Location = New System.Drawing.Point(8, 104)
+        Me.txtSolution.Location = New Point(8, 104)
         Me.txtSolution.Name = "txtSolution"
         Me.txtSolution.ReadOnly = True
-        Me.txtSolution.Size = New System.Drawing.Size(80, 20)
+        Me.txtSolution.Size = New Size(80, 20)
         Me.txtSolution.TabIndex = 3
         Me.txtSolution.Text = ""
         '
         'vsSol
         '
-        Me.vsSol.Location = New System.Drawing.Point(8, 136)
+        Me.vsSol.Location = New Point(8, 136)
         Me.vsSol.Name = "vsSol"
-        Me.vsSol.Size = New System.Drawing.Size(16, 296)
+        Me.vsSol.Size = New Size(16, 296)
         Me.vsSol.TabIndex = 4
         Me.vsSol.Visible = False
         '
         'frmAffichage
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(320, 447)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.Button1, Me.vsSol, Me.btnStop, Me.btnPause, Me.txtSolution, Me.pic, Me.btnAnalyse})
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(320, 447)
+        Me.Controls.AddRange(New Control() {Me.Button1, Me.vsSol, Me.btnStop, Me.btnPause, Me.txtSolution, Me.pic, Me.btnAnalyse})
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.Name = "frmAffichage"
@@ -162,7 +162,7 @@ Public Class frmAffichage
 
 #End Region
 
-    Private Sub btnAnalyse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAnalyse.Click
+    Private Sub btnAnalyse_Click(sender As System.Object, e As EventArgs) Handles btnAnalyse.Click
         btnAnalyse.Enabled = False
         btnPause.Enabled = True
         btnStop.Enabled = True
@@ -182,8 +182,7 @@ Public Class frmAffichage
         Beep()
     End Sub
 
-
-    Private Sub SolutionTrouvée(ByVal iNumSol As Integer, ByVal jeu As Jeu, ByRef bStopMoteur As Boolean) Handles app.Solution
+    Private Sub SolutionTrouvée(iNumSol As Integer, jeu As Jeu, ByRef bStopMoteur As Boolean) Handles app.Solution
         alSolutions.Add(jeu)
         DessineUneSolution(iNumSol, jeu)
         Application.DoEvents()
@@ -193,8 +192,7 @@ Public Class frmAffichage
         bStopMoteur = bStop
     End Sub
 
-
-    Private Sub DessineUneSolution(ByVal iNumSol As Integer, ByVal jeu As Jeu)
+    Private Sub DessineUneSolution(iNumSol As Integer, jeu As Jeu)
         txtSolution.Text = "Solution " & iNumSol
         g.Clear(Color.FromKnownColor(KnownColor.Control))
         Dim l, c As Integer
@@ -206,8 +204,7 @@ Public Class frmAffichage
         pic.Refresh()
     End Sub
 
-
-    Private Sub btnPause_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPause.Click
+    Private Sub btnPause_Click(sender As System.Object, e As EventArgs) Handles btnPause.Click
         If bPause Then
             bPause = False
             btnPause.Text = "Pause"
@@ -219,8 +216,7 @@ Public Class frmAffichage
         End If
     End Sub
 
-
-    Private Sub btnStop_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStop.Click
+    Private Sub btnStop_Click(sender As System.Object, e As EventArgs) Handles btnStop.Click
         bStop = True
         If bPause Then
             bPause = False
@@ -229,7 +225,7 @@ Public Class frmAffichage
         ModeNavigation()
     End Sub
 
-    Private Sub vsSol_Scroll(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ScrollEventArgs) Handles vsSol.Scroll
+    Private Sub vsSol_Scroll(sender As System.Object, e As ScrollEventArgs) Handles vsSol.Scroll
         txtSolution.Text = "Valeur: " & vsSol.Value
         DessineUneSolution(vsSol.Value, CType(alSolutions(vsSol.Value - 1), Jeu))
     End Sub
@@ -243,12 +239,12 @@ Public Class frmAffichage
         End With
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         MsgBox("Min: " & vsSol.Minimum & vbCrLf & "Max: " & vsSol.Maximum & vbCrLf & "Val: " & vsSol.Value)
     End Sub
 
     ' Au cas où on ferme la feuille en mode pause
-    Private Sub OnFormClose(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
+    Private Sub OnFormClose(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
         bStop = True
     End Sub
 

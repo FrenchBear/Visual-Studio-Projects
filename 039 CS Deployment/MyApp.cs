@@ -3,9 +3,8 @@
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Reflection;
 
-class MyApp
+internal class MyApp
 {
     static public void Main()
     {

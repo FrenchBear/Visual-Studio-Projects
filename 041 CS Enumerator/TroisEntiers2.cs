@@ -8,8 +8,7 @@
 using System;
 using System.Collections;
 
-
-class ThreeIntegers2 : IEnumerable
+internal class ThreeIntegers2 : IEnumerable
 {
     private readonly int i1, i2, i3;
 
@@ -88,7 +87,6 @@ class ThreeIntegers2 : IEnumerable
             }
         }
 
-
         public DictionaryEntry Entry
         {
             get
@@ -101,7 +99,5 @@ class ThreeIntegers2 : IEnumerable
         {
             pos = -1;
         }
-
     }
 }
-

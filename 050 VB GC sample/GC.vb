@@ -5,6 +5,8 @@
 Option Explicit On
 Option Strict On
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+
 '=====================================================================
 '  File:      GC.vb
 '
@@ -27,7 +29,6 @@ Option Strict On
 '
 
 ' Add the classes in the following namespaces to our namespace
-Imports System
 Imports System.Threading
 Imports Microsoft.VisualBasic.ControlChars
 
@@ -35,20 +36,19 @@ Imports Microsoft.VisualBasic.ControlChars
 
 Public Module ModMain
 
-
     ' Note that deriving from Object is optional since it is always implied
     Public Class BaseObj
         Inherits Object
 
         Private ReadOnly name As String   ' Each object has a name to help identify it
 
-        Public Sub New(ByVal name As String)
+        Public Sub New(name As String)
             MyBase.New()
             Me.name = name
             Display("BaseObj Constructor")
         End Sub
 
-        Public Sub Display(ByVal status As String)
+        Public Sub Display(status As String)
             Application.Display(System.String.Format("Obj({0}): {1}", name, status))
         End Sub
 
@@ -59,38 +59,37 @@ Public Module ModMain
 
             ' If possible, do not have a Finalize method for your class. Finalize
             ' methods usually run when the heap is low on available storage
-            ' and needs to be garbage collected. This can hurt application 
+            ' and needs to be garbage collected. This can hurt application
             ' performance significantly.
 
             ' If you must implement a Finalize method, make it run fast, avoid
-            ' synchronizing on other threads, do not block, and 
-            ' avoid raising any exceptions (although the Finalizer thread 
+            ' synchronizing on other threads, do not block, and
+            ' avoid raising any exceptions (although the Finalizer thread
             ' automatically recovers from any unhandled exceptions).
 
-            ' NOTE: In the future, exceptions may be caught using an 
+            ' NOTE: In the future, exceptions may be caught using an
             ' AppDomain-registered unhandled Finalize Exception Handler
 
             ' While discouraged, you may call methods on object's referred
             ' to by this object. However, you must be aware that the other
-            ' objects may have already had their Finalize method called 
+            ' objects may have already had their Finalize method called
             ' causing these objects to be in an unpredictable state.
             ' This is because the system does not guarantees that
             ' Finalizers will be called in any particular order.
         End Sub
-    End Class
 
+    End Class
 
     '///////////////////////////////////////////////////////////////////////////////
 
-
     ' This class shows how to derive a class from another class and how base class
-    ' Finalize methods are NOT automatically called. By contrast, base class 
-    ' destructors (in unmanaged code) are automatically called. 
+    ' Finalize methods are NOT automatically called. By contrast, base class
+    ' destructors (in unmanaged code) are automatically called.
     ' This is one example of how destructors and Finalize methods differ.
     Public Class DerivedObj
         Inherits BaseObj
 
-        Public Sub New(ByVal s As String)
+        Public Sub New(s As String)
             MyBase.New(s)
             Display("DerivedObj Constructor")
         End Sub
@@ -98,19 +97,18 @@ Public Module ModMain
         Protected Overrides Sub Finalize()
             Display("DerivedObj Finalize")
 
-            ' The GC has a special thread dedicated to executing Finalize 
-            ' methods. You can tell that this thread is different from the 
+            ' The GC has a special thread dedicated to executing Finalize
+            ' methods. You can tell that this thread is different from the
             ' application's main thread by comparing the thread's hash codes.
             Display("Finalize thread's hash code: " & Thread.CurrentThread.GetHashCode())
 
             ' BaseObj's Finalize is NOT called unless you execute the line below
             MyBase.Finalize()
         End Sub
+
     End Class
 
-
     '///////////////////////////////////////////////////////////////////////////////
-
 
     ' This class shows how an object can resurrect itself
     Public Class ResurrectObj
@@ -119,12 +117,12 @@ Public Module ModMain
         ' Indicates if object should resurrect itself when collected
         Private allowResurrection As Boolean = True   ' Assume resurrection
 
-        Public Sub New(ByVal s As String)
+        Public Sub New(s As String)
             MyBase.New(s)
             Display("ResurrectObj Constructor")
         End Sub
 
-        Public Sub SetResurrection(ByVal allowResurrection As Boolean)
+        Public Sub SetResurrection(allowResurrection As Boolean)
             Me.allowResurrection = allowResurrection
         End Sub
 
@@ -136,10 +134,10 @@ Public Module ModMain
                 Application.ResObjHolder = Me
 
                 ' When the GC calls an object's Finalize method, it assumes that
-                ' there is no need to ever call it again. However, we've now 
+                ' there is no need to ever call it again. However, we've now
                 ' resurrected this object and the line below forces the GC to call
                 ' this object's Finalize again when the object is destroyed again.
-                ' BEWARE: If ReRegisterForFinalize is called multiple times, the 
+                ' BEWARE: If ReRegisterForFinalize is called multiple times, the
                 ' object's Finalize method will be called multiple times.
                 GC.ReRegisterForFinalize(Me)
 
@@ -149,22 +147,20 @@ Public Module ModMain
                 ' the referenced object to be resurrected as well. This object
                 ' can continue to use the referenced object even though it was
                 ' finalized.
-
             Else
                 Display("This object is NOT being resurrected")
             End If
         End Sub
+
     End Class
 
-
     '///////////////////////////////////////////////////////////////////////////////
-
 
     ' This class shows how the GC improves performance using generations
     Public Class GenObj
         Inherits BaseObj
 
-        Public Sub New(ByVal s As String)
+        Public Sub New(s As String)
             MyBase.New(s)
             Display("GenObj Constructor")
         End Sub
@@ -172,22 +168,21 @@ Public Module ModMain
         Public Sub DisplayGeneration()
             Display(System.String.Format("Generation: {0}", GC.GetGeneration(Me)))
         End Sub
+
     End Class
 
-
     '///////////////////////////////////////////////////////////////////////////////
-
 
     ' This class shows the proper way to implement explicit cleanup.
     Public Class DisposeObj
         Inherits BaseObj
 
-        Public Sub New(ByVal s As String)
+        Public Sub New(s As String)
             MyBase.New(s)
             Display("DisposeObj Constructor")
         End Sub
 
-        ' When an object of this type wants to be explicitly cleaned-up, the user 
+        ' When an object of this type wants to be explicitly cleaned-up, the user
         ' of this object should call Dispose at the desired code location.
         Public Sub Dispose()
             Display("DisposeObj Dispose")
@@ -207,17 +202,16 @@ Public Module ModMain
             ' If called by Dispose, the application's thread executes this code
             ' If called by the GC, then a special GC thread executes this code
         End Sub
+
     End Class
 
-
     '///////////////////////////////////////////////////////////////////////////////
-
 
     ' This class represents the application itself
     Class Application
         Private Shared indent As Integer = 0
 
-        Public Overloads Shared Sub Display(ByVal s As String)
+        Public Overloads Shared Sub Display(s As String)
             Dim x As Integer
             For x = 0 To indent * 3 - 1
                 Console.Write(" ")
@@ -225,7 +219,7 @@ Public Module ModMain
             Console.WriteLine(s)
         End Sub
 
-        Public Overloads Shared Sub Display(ByVal preIndent As Integer, ByVal s As String, ByVal postIndent As Integer)
+        Public Overloads Shared Sub Display(preIndent As Integer, s As String, postIndent As Integer)
             indent += preIndent
             Display(s)
             indent += postIndent
@@ -236,7 +230,7 @@ Public Module ModMain
             GC.Collect()
         End Sub
 
-        Public Overloads Shared Sub Collect(ByVal generation As Integer)
+        Public Overloads Shared Sub Collect(generation As Integer)
             Display(0, "Forcing a garbage collection of generation " & generation, 0)
             GC.Collect(generation)
         End Sub
@@ -260,12 +254,12 @@ Public Module ModMain
             ' The object is unreachable so forcing a GC causes it to be finalized.
             Collect()
 
-            ' Wait for the GC's Finalize thread to finish 
-            ' executing all queued Finalize methods.        
+            ' Wait for the GC's Finalize thread to finish
+            ' executing all queued Finalize methods.
 
             WaitForFinalizers()
 
-            ' NOTE: The GC calls the most-derived (farthest away from 
+            ' NOTE: The GC calls the most-derived (farthest away from
             ' the Object base class) Finalize only.
             ' Base class Finalize functions are called only if the most-derived
             ' Finalize method explicitly calls its base class's Finalize method.
@@ -278,18 +272,16 @@ Public Module ModMain
             Collect()
             WaitForFinalizers()
 
-            ' Notice that we get identical results as above: the Finalize method 
-            ' runs because the jitter's optimizer knows that obj is not 
+            ' Notice that we get identical results as above: the Finalize method
+            ' runs because the jitter's optimizer knows that obj is not
             ' referenced later in this function.
 
             Display(-1, "Demo stop: Introduction to Garbage Collection.", 0)
         End Sub
 
-
         ' This reference is accessed in the ResurrectObj.Finalize method and
         ' is used to create a strong reference to an object (resurrecting it).
         Public Shared ResObjHolder As ResurrectObj    ' Defaults to Nothing
-
 
         ' This method demonstrates how the GC supports resurrection.
         ' NOTE: Resurrection is discouraged.
@@ -306,15 +298,15 @@ Public Module ModMain
             Collect()
             WaitForFinalizers() ' You should see the Finalize method called.
 
-            ' However, the ResurrectionObj's Finalize method 
-            ' resurrects the object keeping it alive. It does this by placing a 
+            ' However, the ResurrectionObj's Finalize method
+            ' resurrects the object keeping it alive. It does this by placing a
             ' reference to the dying-object in Application.ResObjHolder
 
             ' You can see that ResurrectionObj still exists because
             ' the following line doesn't raise an exception.
             ResObjHolder.Display("Still alive after Finalize called")
 
-            ' Prevent the ResurrectionObj object from resurrecting itself again, 
+            ' Prevent the ResurrectionObj object from resurrecting itself again,
             ResObjHolder.SetResurrection(False)
 
             ' Now, let's destroy this last reference to the ResurrectionObj
@@ -325,7 +317,6 @@ Public Module ModMain
             WaitForFinalizers() ' You should see the Finalize method called.
             Display(-1, "Demo stop: Object Resurrection.", 0)
         End Sub
-
 
         ' This method demonstrates how to implement a type that allows its users
         ' to explicitly dispose/close the object. For many object's this paradigm
@@ -345,14 +336,13 @@ Public Module ModMain
             Display(-1, "Demo stop: Disposing an object versus Finalize.", 0)
         End Sub
 
-
         ' This method demonstrates the unbalanced nature of ReRegisterForFinalize
         ' and SuppressFinalize. The main point is if your code makes multiple
-        ' calls to ReRegisterForFinalize (without intervening calls to 
+        ' calls to ReRegisterForFinalize (without intervening calls to
         ' SuppressFinalize) the Finalize method may get called multiple times.
         Private Shared Sub FinalizationQDemo()
             Display(0, CrLf & "Demo start: Suppressing and ReRegistering for Finalize.", 1)
-            ' Since this object has a Finalize method, a reference to the object 
+            ' Since this object has a Finalize method, a reference to the object
             ' will be added to the finalization queue.
             Dim obj As New BaseObj("Finalization Queue")
 
@@ -367,7 +357,7 @@ Public Module ModMain
             GC.SuppressFinalize(obj)
 
             ' There are now 3 references to this object on the finalization queue.
-            ' If the object were unreachable, the 1st call to this object's Finalize 
+            ' If the object were unreachable, the 1st call to this object's Finalize
             ' method will be discarded but the 2nd & 3rd calls to Finalize will execute.
 
             ' Sets the same bit effectively doing nothing!
@@ -382,7 +372,6 @@ Public Module ModMain
             WaitForFinalizers()
             Display(-1, "Demo stop: Suppressing and ReRegistering for Finalize.", 0)
         End Sub
-
 
         ' This method demonstrates how objects are promoted between generations.
         ' Applications could take advantage of this info to improve performance
@@ -423,14 +412,13 @@ Public Module ModMain
             Display(-1, "Demo stop: Understanding Generations.", 0)
         End Sub
 
-
         ' This method demonstrates how weak references (WR) work. A WR allows
         ' the GC to collect objects if the managed heap is low on memory.
         ' WRs are useful to apps that have large amounts of easily-reconstructed
-        ' data that they want to keep around to improve performance. But, if the 
+        ' data that they want to keep around to improve performance. But, if the
         ' system is low on memory, the objects can be destroyed and replaced when
         ' the app knows that it needs it again.
-        Private Shared Sub WeakRefDemo(ByVal trackResurrection As Boolean)
+        Private Shared Sub WeakRefDemo(trackResurrection As Boolean)
             If trackResurrection Then
                 Display(0, CrLf & CrLf & "Demo start: WeakReferences that track resurrections.", 1)
             Else
@@ -452,7 +440,7 @@ Public Module ModMain
             obj = Nothing     ' Destroy strong reference to this object
 
             ' The following line creates a strong reference to the object
-            obj = CType(wr.Target, ModMain.BaseObj)
+            obj = CType(wr.Target, BaseObj)
             If obj IsNot Nothing Then
                 Display("Strong reference to object obtained: True")
             Else
@@ -470,7 +458,7 @@ Public Module ModMain
             ' If wr is tracking resurrection, wr thinks the object is still alive
 
             ' NOTE: If the object referred to by wr doesn't have a Finalize method,
-            ' then wr would think that the object is dead regardless of whether 
+            ' then wr would think that the object is dead regardless of whether
             ' wr is tracking resurrection or not. For example:
             '    Object obj = new Object()   ' Object doesn't have a Finalize method
             '    WeakReference wr = new WeakReference(obj, true)
@@ -480,7 +468,7 @@ Public Module ModMain
             '    obj = wr.Target  ' returns Nothing
 
             ' The following line attempts to create a strong reference to the object
-            obj = CType(wr.Target, ModMain.BaseObj)
+            obj = CType(wr.Target, BaseObj)
             If obj IsNot Nothing Then
                 Display("Strong reference to object obtained: True")
             Else
@@ -488,7 +476,7 @@ Public Module ModMain
             End If
 
             If obj IsNot Nothing Then
-                ' The strong reference was obtained so this wr must be 
+                ' The strong reference was obtained so this wr must be
                 ' tracking resurrection. At this point we have a strong
                 ' reference to an object that has been finalized but its memory
                 ' has not yet been reclaimed by the collector.
@@ -496,12 +484,12 @@ Public Module ModMain
 
                 obj = Nothing ' Destroy the strong reference to the object
 
-                ' Collect reclaims the object's memory since this object 
+                ' Collect reclaims the object's memory since this object
                 ' has no Finalize method registered for it anymore.
                 Collect()
                 WaitForFinalizers()  ' We should see nothing here
 
-                obj = CType(wr.Target, ModMain.BaseObj)  ' This now returns Nothing
+                obj = CType(wr.Target, BaseObj)  ' This now returns Nothing
                 If obj IsNot Nothing Then
                     Display("Strong reference to object obtained: True")
                 Else
@@ -511,13 +499,13 @@ Public Module ModMain
 
             ' Cleanup everything about this demo so there is no affect on the next demo
             obj = Nothing           ' Destroy strong reference (if it exists)
-            wr = Nothing            ' Destroy the WeakReference object (optional) 
+            wr = Nothing            ' Destroy the WeakReference object (optional)
             Collect()
             WaitForFinalizers()
 
             ' NOTE: You are dicouraged from using the WeakReference.IsAlive property
             ' because the object may be killed immediately after IsAlive returns
-            ' making the return value incorrect. If the Target property returns 
+            ' making the return value incorrect. If the Target property returns
             ' a non-Nothing value, then the object is alive and will stay alive
             ' since you have a reference to it. If Target returns Nothing, then the
             ' object is dead.
@@ -527,7 +515,6 @@ Public Module ModMain
                 Display(-1, "Demo stop: WeakReferences that do not track resurrections.", 0)
             End If
         End Sub
-
 
         Public Shared Sub Main()
             Dim args() As String = Environment.GetCommandLineArgs
@@ -544,10 +531,10 @@ Public Module ModMain
             DisposeDemo()       ' Demos the use of Dispose & Finalize
             FinalizationQDemo() ' Demos the use of SuppressFinalize & ReRegisterForFinalize
             GenerationDemo()    ' Demos GC generations
-            WeakRefDemo(False)  ' Demos WeakReferences without resurrection tracking 
-            WeakRefDemo(True)   ' Demos WeakReferences with resurrection tracking 
+            WeakRefDemo(False)  ' Demos WeakReferences without resurrection tracking
+            WeakRefDemo(True)   ' Demos WeakReferences with resurrection tracking
 
-            ' Demos Finalize on Shutdown symantics (this demo is inline) 
+            ' Demos Finalize on Shutdown symantics (this demo is inline)
             Display(0, CrLf & CrLf & "Demo start: Finalize on shutdown.", 1)
 
             ' Normally, when an application terminates, the GC does NOT collect and run finalizers.
@@ -566,6 +553,7 @@ Public Module ModMain
         End Sub
 
     End Class
+
 End Module
 
 '//////////////////////////////// End of File /////////////////////////////////

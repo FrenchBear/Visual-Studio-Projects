@@ -1,1 +1,1 @@
-﻿<Assembly: System.Runtime.CompilerServices.InternalsVisibleTo("VB425TestProject")>
+﻿<Assembly: Runtime.CompilerServices.InternalsVisibleTo("VB425TestProject")>

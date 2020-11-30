@@ -7,4 +7,3 @@ public ref class C
 public:
 	C();
 };
-

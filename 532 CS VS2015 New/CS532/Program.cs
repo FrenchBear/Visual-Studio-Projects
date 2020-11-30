@@ -1,20 +1,19 @@
 ﻿// VS 2015 What's New
 // 2015-07-22   PC
 
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;                // Using Static
-using Newtonsoft.Json.Linq;
-
 
 namespace CS532
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // String interpolation and nameof
             WriteLine($"{nameof(ThreeTimes)}(1234) = {ThreeTimes(1234)}");
@@ -27,7 +26,6 @@ namespace CS532
 
             // Null-conditional operators ?[ and ?. (note that ?[ is useless on a dictionary since it'll raise an exception if the index does not exist...)
             int? i = directory?["Pierre"].Company?.Length;
-
 
             string jsonText = @"{
                 'ForegroundColor': {
@@ -45,14 +43,13 @@ namespace CS532
             if (Enum.TryParse<ConsoleColor>(colorText, out color))
                 Console.ForegroundColor = color;
 
-
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
         }
 
         // Single expression (lambda) function body
-        static double ThreeTimes(double x) => 3 * x;
+        private static double ThreeTimes(double x) => 3 * x;
     }
 
     public struct Person
@@ -75,5 +72,4 @@ namespace CS532
         public string LastName { get; set; }
         public string Company { get; set; }
     }
-
 }

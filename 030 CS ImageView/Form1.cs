@@ -3,18 +3,17 @@
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 public class StartUp
 {
     [STAThread]
-    static void Main()
+    private static void Main()
     {
         Application.Run(new MyForm());
     }
 }
-
 
 public class MyForm : Form
 {
@@ -102,7 +101,6 @@ public class MyForm : Form
         }
     }
 
-
     private void OnNativeSize(object sender, EventArgs e)
     {
         _NativeSize = true;
@@ -114,7 +112,6 @@ public class MyForm : Form
             Invalidate();
         }
     }
-
 
     private void OnExit(object sender, EventArgs e)
     {
@@ -133,10 +130,8 @@ public class MyForm : Form
         }
     }
 
-
     public static void Main()
     {
         Application.Run(new MyForm());
     }
 }
-

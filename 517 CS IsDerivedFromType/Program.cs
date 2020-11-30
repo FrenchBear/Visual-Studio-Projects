@@ -3,20 +3,17 @@
 // 201-09-05    PV
 
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace CS517
 {
-    class Program
+    internal class Program
     {
-        static readonly object b1 = true;
+        private static readonly object b1 = true;
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Nullable<bool> b2 = true;
 
@@ -68,5 +65,4 @@ namespace CS517
             return t1 == t2 || t1.IsSubclassOf(t2);
         }
     }
-
 }

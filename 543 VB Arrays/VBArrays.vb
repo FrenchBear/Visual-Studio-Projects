@@ -30,7 +30,6 @@ Module VBArrays
         Next
         WriteLine()
 
-
         Console.WriteLine()
         Console.Write("(Pause)")
         Console.ReadLine()

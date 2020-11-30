@@ -10,13 +10,13 @@ namespace CS_Path
     /// <summary>
     /// Description résumée de Class1.
     /// </summary>
-    class Class1
+    internal class Class1
     {
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string sPath1 = "filename.ext";
             string sPath2 = Path.ChangeExtension(sPath1, ".zap");

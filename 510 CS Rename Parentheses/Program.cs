@@ -3,18 +3,14 @@
 // 2013-07-03   PV      Sophisticated algorithm to rename including a suffix a to z, aa to zz, aaa to zzz if new name already exists
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace RenameParen
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Regex r = new Regex(@"( *\([0-9]+\))\.");         // number between parentheses at the end of filename
             //Regex r = new Regex(@" *~[0-9]+");                // ~#
@@ -72,7 +68,6 @@ namespace RenameParen
                     System.IO.File.Move(file, newFile);
                 }
             }
-
 
             Console.WriteLine();
             Console.Write("(Pause)");

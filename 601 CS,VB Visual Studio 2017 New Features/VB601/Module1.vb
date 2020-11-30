@@ -12,7 +12,6 @@ Imports System.Text
 
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
 
-
 Module VB601
     ' Throw expressions not supported in VB
     'Private GlobalPoint As Point = If(New Point(5, 6), Throw New InvalidOperationException("Could not initialize " + NameOf(GlobalPoint)))
@@ -64,7 +63,6 @@ Module VB601
         Dim ttt As (sum As Integer, count As Integer) = Tally(numbers)
         WriteLine($"Sum: {ttt.sum}, Count: {ttt.count}")
 
-
         Dim p = New Point(3.14, 2.71)
         Dim X, Y As Double
         p.Deconstruct(X, Y)                           ' Class supporting a Deconstruct method
@@ -88,7 +86,6 @@ Module VB601
         WriteLine()
         'TestPatternMatching()
 
-
         '' Out variables declared in method call
         'If Double.TryParse("3,1416", byref dval as double) Then
         '    WriteLine($"dval={dval}")
@@ -101,7 +98,6 @@ Module VB601
         ReadLine()
 
     End Sub
-
 
     ' Pattern matching is not supported
     Function Tally(values As Object()) As (sum As Integer, count As Integer)     ' tuple types
@@ -122,11 +118,10 @@ Module VB601
     End Function
 
     ' No local functions in VB
-    Private Sub Add(ByRef r As (Integer, Integer), ByVal s As Integer, ByVal c As Integer)
+    Private Sub Add(ByRef r As (Integer, Integer), s As Integer, c As Integer)
         r.Item1 += s
         r.Item2 += c
     End Sub
-
 
     ' function returning a reference, does not work in VB...
     Public Function Choose(Of TValue)(condition As Boolean, ByRef left As TValue, ByRef right As TValue) As TValue
@@ -135,7 +130,6 @@ Module VB601
     End Function
 
 End Module
-
 
 ' Example of class supporting Tuple deconstruction
 Public Class Point
@@ -152,35 +146,36 @@ Public Class Point
         x = Me.X
         y = Me.Y
     End Sub
+
 End Class
 
 Module ExtensionMethods
 
     <Extension()>
-    Public Sub Deconstruct(ByVal t As Tuple(Of Integer, Integer), ByRef Left As Integer, ByRef Right As Integer)
+    Public Sub Deconstruct(t As Tuple(Of Integer, Integer), ByRef Left As Integer, ByRef Right As Integer)
         Left = t.Item1
         Right = t.Item2
     End Sub
 
     <Extension()>
-    Public Sub Deconstruct(ByVal t As ValueTuple(Of Integer, Integer), ByRef Left As Integer, ByRef Right As Integer)
+    Public Sub Deconstruct(t As ValueTuple(Of Integer, Integer), ByRef Left As Integer, ByRef Right As Integer)
         Left = t.Item1
         Right = t.Item2
     End Sub
 
     ' Also show expression-bodied member
     <Extension()>
-    Public Function Construct(ByVal pair As (x As Integer, y As Integer)) As Tuple(Of Integer, Integer)
+    Public Function Construct(pair As (x As Integer, y As Integer)) As Tuple(Of Integer, Integer)
         Return New Tuple(Of Integer, Integer)(pair.x, pair.y)
     End Function
 
     ' Idem
     <Extension()>
-    Public Function GetT9Enumerator(Of T)(ByVal bigTuple As (s1 As T, s2 As T, s3 As T, s4 As T, s5 As T, s6 As T, s7 As T, s8 As T, s9 As T)) As T9Enumerator(Of T)
+    Public Function GetT9Enumerator(Of T)(bigTuple As (s1 As T, s2 As T, s3 As T, s4 As T, s5 As T, s6 As T, s7 As T, s8 As T, s9 As T)) As T9Enumerator(Of T)
         Return New T9Enumerator(Of T)(bigTuple)
     End Function
-End Module
 
+End Module
 
 Public Class T9Enumerator(Of T) : Implements IEnumerable(Of T)
     Dim localTuple As (s1 As T, s2 As T, s3 As T, s4 As T, s5 As T, s6 As T, s7 As T, s8 As T, s9 As T)

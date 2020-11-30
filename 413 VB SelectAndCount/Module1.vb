@@ -1,7 +1,6 @@
 ﻿' 413 VB SelectAndCount
 ' 2011-10-23    PV
 
-
 Module Module1
 
     Sub Main()

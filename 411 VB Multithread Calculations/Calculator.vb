@@ -1,12 +1,16 @@
 ﻿' 411 Multithread VB Calculations
 ' 2011-10-22    PV
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+
 Public Class Calculator
+
     ' Declares the variables you will use to hold your thread objects.
-    Public FactorialThread As System.Threading.Thread
-    Public FactorialMinusOneThread As System.Threading.Thread
-    Public AddTwoThread As System.Threading.Thread
-    Public LoopThread As System.Threading.Thread
+    Public FactorialThread As Threading.Thread
+
+    Public FactorialMinusOneThread As Threading.Thread
+    Public AddTwoThread As Threading.Thread
+    Public LoopThread As Threading.Thread
 
     Public varAddTwo As Integer
     Public varFact1 As Integer
@@ -14,13 +18,15 @@ Public Class Calculator
     Public varLoopValue As Integer
     Public varTotalCalculations As Double = 0
 
-    Public Event FactorialComplete(ByVal Factorial As Double, ByVal TotalCalculations As Double)
-    Public Event FactorialMinusComplete(ByVal Factorial As Double, ByVal TotalCalculations As Double)
-    Public Event AddTwoComplete(ByVal Result As Integer, ByVal TotalCalculations As Double)
-    Public Event LoopComplete(ByVal TotalCalculations As Double, ByVal Counter As Integer)
+    Public Event FactorialComplete(Factorial As Double, TotalCalculations As Double)
 
+    Public Event FactorialMinusComplete(Factorial As Double, TotalCalculations As Double)
 
-    ' This sub will calculate the value of a number minus 1 factorial 
+    Public Event AddTwoComplete(Result As Integer, TotalCalculations As Double)
+
+    Public Event LoopComplete(TotalCalculations As Double, Counter As Integer)
+
+    ' This sub will calculate the value of a number minus 1 factorial
     ' (varFact2-1!).
     Public Sub FactorialMinusOne()
         Dim varX As Integer = 1
@@ -36,8 +42,8 @@ Public Class Calculator
                 varTotalAsOfNow = varTotalCalculations
             End SyncLock
         Next varX
-        ' Signals that the method has completed, and communicates the 
-        ' result and a value of total calculations performed up to this 
+        ' Signals that the method has completed, and communicates the
+        ' result and a value of total calculations performed up to this
         ' point
         RaiseEvent FactorialMinusComplete(varResult, varTotalAsOfNow)
     End Sub
@@ -88,25 +94,24 @@ Public Class Calculator
         RaiseEvent LoopComplete(varTotalAsOfNow, varX - 1)
     End Sub
 
-
-
-    Public Sub ChooseThreads(ByVal threadNumber As Integer)
+    Public Sub ChooseThreads(threadNumber As Integer)
         ' Determines which thread to start based on the value it receives.
         Select Case threadNumber
             Case 1
                 ' Sets the thread using the AddressOf the subroutine where the thread will start.
-                FactorialThread = New System.Threading.Thread(AddressOf Factorial)
+                FactorialThread = New Threading.Thread(AddressOf Factorial)
                 ' Starts the thread.
                 FactorialThread.Start()
             Case 2
-                FactorialMinusOneThread = New System.Threading.Thread(AddressOf FactorialMinusOne)
+                FactorialMinusOneThread = New Threading.Thread(AddressOf FactorialMinusOne)
                 FactorialMinusOneThread.Start()
             Case 3
-                AddTwoThread = New System.Threading.Thread(AddressOf AddTwo)
+                AddTwoThread = New Threading.Thread(AddressOf AddTwo)
                 AddTwoThread.Start()
             Case 4
-                LoopThread = New System.Threading.Thread(AddressOf RunALoop)
+                LoopThread = New Threading.Thread(AddressOf RunALoop)
                 LoopThread.Start()
         End Select
     End Sub
+
 End Class

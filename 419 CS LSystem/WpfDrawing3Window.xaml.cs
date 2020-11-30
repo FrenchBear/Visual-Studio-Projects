@@ -25,7 +25,6 @@ namespace CS419
             base.OnKeyDown(e);
         }
 
-
         public WpfDrawing3Window(string title, IEnumerable<char> s, int angle)
             : this()
         {
@@ -41,7 +40,10 @@ namespace CS419
         private class Wpf3LSystemRenderer : LSystemRenderer
         {
             private StreamGeometryContext _context;
-            public Wpf3LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle) { }
+
+            public Wpf3LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle)
+            {
+            }
 
             public void Rend(double rendingWidth, double rendingHeight, out StreamGeometry g, out Rect r)
             {
@@ -60,6 +62,5 @@ namespace CS419
                 _context.LineTo(new Point(x2, y2), isStroked, true);
             }
         }
-
     }
 }

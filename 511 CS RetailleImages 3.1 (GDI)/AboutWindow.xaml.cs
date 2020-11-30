@@ -42,7 +42,7 @@ namespace RI3
     /// Simple extension for ico, let you choose icon with specific size.
     /// Usage sample: Image Stretch="None" Source="{common:Icon /ControlsTester;component/icons/custom-reports.ico, 16}"
     /// Or: Image Source="{common:Icon Source={Binding IconResource},Size=16} "
-    /// </summary> 
+    /// </summary>
     public class IconExtension : MarkupExtension
     {
         private string source;
@@ -79,7 +79,8 @@ namespace RI3
             this.Size = size;
         }
 
-        public IconExtension() { }
+        public IconExtension()
+        {
+        }
     }
-
 }

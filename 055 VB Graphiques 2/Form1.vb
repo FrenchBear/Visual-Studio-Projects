@@ -2,12 +2,13 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.Reflection
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     ReadOnly g As Graphics
     ReadOnly gp1 As Graphics
@@ -39,7 +40,7 @@ Public Class Form1
         Panel1.BackgroundImage = picBitmap1
 
         Dim t As Type
-        t = GetType(System.Drawing.KnownColor)
+        t = GetType(KnownColor)
         Dim f As FieldInfo
         For Each f In t.GetFields(BindingFlags.Static Or BindingFlags.Public)
             colCouleurs.Add(CInt(f.GetValue(Nothing)), f.Name)
@@ -54,7 +55,7 @@ Public Class Form1
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -62,35 +63,36 @@ Public Class Form1
         End If
         MyBase.Dispose(disposing)
     End Sub
-    Friend WithEvents btnDessine As System.Windows.Forms.Button
-    Friend WithEvents pic As System.Windows.Forms.PictureBox
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+
+    Friend WithEvents btnDessine As Button
+    Friend WithEvents pic As PictureBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Panel2 As Panel
 
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.pic = New System.Windows.Forms.PictureBox()
-        Me.btnDessine = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.pic = New PictureBox()
+        Me.btnDessine = New Button()
+        Me.Panel1 = New Panel()
+        Me.Panel2 = New Panel()
         Me.SuspendLayout()
         '
         'pic
         '
-        Me.pic.Location = New System.Drawing.Point(8, 48)
+        Me.pic.Location = New Point(8, 48)
         Me.pic.Name = "pic"
-        Me.pic.Size = New System.Drawing.Size(248, 312)
+        Me.pic.Size = New Size(248, 312)
         Me.pic.TabIndex = 1
         Me.pic.TabStop = False
         '
         'btnDessine
         '
-        Me.btnDessine.Location = New System.Drawing.Point(8, 8)
+        Me.btnDessine.Location = New Point(8, 8)
         Me.btnDessine.Name = "btnDessine"
         Me.btnDessine.TabIndex = 0
         Me.btnDessine.Text = "Dessine"
@@ -99,24 +101,24 @@ Public Class Form1
         '
         Me.Panel1.AutoScroll = True
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Location = New System.Drawing.Point(272, 8)
+        Me.Panel1.Location = New Point(272, 8)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(304, 200)
+        Me.Panel1.Size = New Size(304, 200)
         Me.Panel1.TabIndex = 2
         '
         'Panel2
         '
         Me.Panel2.AutoScroll = True
-        Me.Panel2.Location = New System.Drawing.Point(272, 216)
+        Me.Panel2.Location = New Point(272, 216)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(304, 256)
+        Me.Panel2.Size = New Size(304, 256)
         Me.Panel2.TabIndex = 2
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(584, 477)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.Panel2, Me.Panel1, Me.pic, Me.btnDessine})
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(584, 477)
+        Me.Controls.AddRange(New Control() {Me.Panel2, Me.Panel1, Me.pic, Me.btnDessine})
         Me.Name = "Form1"
         Me.Text = "Essais graphiques en VB - V2"
         Me.ResumeLayout(False)
@@ -125,7 +127,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub btnDessine_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDessine.Click
+    Private Sub btnDessine_Click(sender As System.Object, e As EventArgs) Handles btnDessine.Click
         g.Clear(Color.FromKnownColor(KnownColor.MistyRose))
         g.FillRectangle(New SolidBrush(Color.Red), 40, 40, 140, 140)
         g.DrawString("Hello World", Me.Font, New SolidBrush(Color.Black), 10, 10)
@@ -138,15 +140,15 @@ Public Class Form1
         Next
         Panel1.Refresh()
 
-        Dim colCouleursTriée As New System.Collections.SortedList(colCouleurs)
+        Dim colCouleursTriée As New SortedList(colCouleurs)
         Dim de As DictionaryEntry
         i = 0
         For Each de In colCouleursTriée
             Dim sVal, sKey As String
             sKey = CType(de.Key, String)
             sVal = CType(de.Value, String)
-            Dim iCoul As System.Drawing.KnownColor
-            iCoul = CType(sKey, System.Drawing.KnownColor)
+            Dim iCoul As KnownColor
+            iCoul = CType(sKey, KnownColor)
             gp2.DrawString(sKey, Me.Font, Brushes.Black, 2, 14 * i + 7)
             gp2.DrawString(sVal, Me.Font, Brushes.Black, 25, 14 * i + 7)
             gp2.FillRectangle(New SolidBrush(Color.FromKnownColor(iCoul)), 135, 14 * i + 7, 140, 13)

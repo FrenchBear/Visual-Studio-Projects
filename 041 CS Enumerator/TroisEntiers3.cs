@@ -8,8 +8,7 @@
 using System;
 using System.Collections;
 
-
-class ThreeIntegers3 : IDictionary
+internal class ThreeIntegers3 : IDictionary
 {
     private readonly int i1, i2, i3;
 
@@ -28,9 +27,13 @@ class ThreeIntegers3 : IDictionary
 
     //Interface ICollection (IDictionary implémente cette interface)
     int ICollection.Count { get { return 3; } }
+
     bool ICollection.IsSynchronized { get { return true; } }
     object ICollection.SyncRoot { get { return null; } }
-    void ICollection.CopyTo(Array array, int index) { }
+
+    void ICollection.CopyTo(Array array, int index)
+    {
+    }
 
     // Interface IDictionary
     IDictionaryEnumerator IDictionary.GetEnumerator()
@@ -41,13 +44,26 @@ class ThreeIntegers3 : IDictionary
     object IDictionary.this[object key] { get { return null; } set { } }
     ICollection IDictionary.Keys { get { return null; } }
     ICollection IDictionary.Values { get { return null; } }
-    void IDictionary.Add(object key, object value) { }
-    void IDictionary.Clear() { }
-    bool IDictionary.Contains(object key) { return false; }
-    void IDictionary.Remove(object key) { }
+
+    void IDictionary.Add(object key, object value)
+    {
+    }
+
+    void IDictionary.Clear()
+    {
+    }
+
+    bool IDictionary.Contains(object key)
+    {
+        return false;
+    }
+
+    void IDictionary.Remove(object key)
+    {
+    }
+
     bool IDictionary.IsFixedSize { get { return true; } }
     bool IDictionary.IsReadOnly { get { return true; } }
-
 
     // Trucs internes à la classe (énumérateur)
     private class MonEnumerateur : IDictionaryEnumerator
@@ -108,7 +124,6 @@ class ThreeIntegers3 : IDictionary
             }
         }
 
-
         public DictionaryEntry Entry
         {
             get
@@ -121,7 +136,5 @@ class ThreeIntegers3 : IDictionary
         {
             pos = -1;
         }
-
     }
 }
-

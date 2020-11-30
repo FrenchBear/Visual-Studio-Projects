@@ -9,23 +9,21 @@ Module Module1
         Console.ReadLine()
     End Sub
 
-
-
-    Sub T(ByVal d As Date)
+    Sub T(d As Date)
         Console.WriteLine("{0}  {1}  {2}  {3}", d.ToString, LocalToUTC(d).ToString, UTCToLocal(d).ToString, LocalToUTC(UTCToLocal(d)).ToString)
     End Sub
+
 End Module
-
-
 
 Module modTimeZone
     ReadOnly localZone As TimeZone = TimeZone.CurrentTimeZone
 
-    Function LocalToUTC(ByVal dLocal As Date) As Date
+    Function LocalToUTC(dLocal As Date) As Date
         Return localZone.ToUniversalTime(dLocal)
     End Function
 
-    Function UTCToLocal(ByVal dUTC As Date) As Date
+    Function UTCToLocal(dUTC As Date) As Date
         Return localZone.ToLocalTime(dUTC)
     End Function
+
 End Module

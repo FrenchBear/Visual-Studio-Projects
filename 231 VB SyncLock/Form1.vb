@@ -3,8 +3,11 @@
 
 Option Compare Text
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmVB231
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Dim country As New Country
         With country
             .Name = "France" : .Area = 55000000
@@ -15,13 +18,15 @@ Public Class frmVB231
         End SyncLock
         Stop
     End Sub
+
 End Class
 
 Class Country
     Public Name As String
     Public Area As Double
     Public Population As Integer
-    Default Public ReadOnly Property machin(ByVal sProperty As String) As String
+
+    Default Public ReadOnly Property machin(sProperty As String) As String
         Get
             Select Case sProperty
                 Case "Name" : Return Name
@@ -31,4 +36,5 @@ Class Country
             Return "Unknown property <" & sProperty & ">"
         End Get
     End Property
+
 End Class

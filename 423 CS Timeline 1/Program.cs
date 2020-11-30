@@ -4,15 +4,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CS423
 {
-    class Program
+    internal class Program
     {
-        const int maxLevel = 10;
-        static void Main(string[] args)
+        private const int maxLevel = 10;
+
+        private static void Main(string[] args)
         {
             var t = new Timeline();
             var e1 = new TimelineEvent("start", null);
@@ -33,7 +32,7 @@ namespace CS423
                 t.AddAbsoluteEvent(Math.Round(r.NextDouble() * 30, 1), e);
             }
 
-            t.TimedEvent += new Timeline.TimedEventHandler(t_TimedEvent);
+            t.TimedEvent += new Timeline.TimedEventHandler(TimedEvent);
 
             t.StartSimulation();
 
@@ -42,19 +41,17 @@ namespace CS423
             Console.ReadLine();
         }
 
-        static void t_TimedEvent(double absoluteTime, TimelineEvent e)
+        private static void TimedEvent(double absoluteTime, TimelineEvent e)
         {
-            Console.WriteLine("TimedEvent t={0}, e={1}", absoluteTime, e.name);
-            UserArrivedEvent uae = e as UserArrivedEvent;
-            if (uae != null)
+            Console.WriteLine("TimedEvent t={0}, e={1}", absoluteTime, e.Name);
+            if (e is UserArrivedEvent uae)
             {
                 Console.WriteLine("User {0} arrived on level {1}, going to level {2}", uae.NumUser, uae.ArrivalLevel, uae.DestinationLevel);
             }
         }
-
     }
 
-    class SortedQueue<TKey, TValue> : SortedList<TKey, TValue>
+    internal class SortedQueue<TKey, TValue> : SortedList<TKey, TValue>
     {
         public KeyValuePair<TKey, TValue> TakeFirst()
         {
@@ -66,12 +63,13 @@ namespace CS423
         }
     }
 
-    class Timeline
+    internal class Timeline
     {
-        readonly SortedQueue<double, TimelineEvent> tl = new SortedQueue<double, TimelineEvent>();
-        double nowTime = 0.0;
+        private readonly SortedQueue<double, TimelineEvent> tl = new SortedQueue<double, TimelineEvent>();
+        private double nowTime = 0.0;
 
         public delegate void TimedEventHandler(double absoluteTime, TimelineEvent e);
+
         public event TimedEventHandler TimedEvent;
 
         public void AddAbsoluteEvent(double absoluteTime, TimelineEvent e)
@@ -98,9 +96,7 @@ namespace CS423
         }
     }
 
-
-
-    class TimelineEvent
+    internal class TimelineEvent
     {
         private readonly string _name;
         private readonly Action<double, TimelineEvent> _action;
@@ -111,7 +107,7 @@ namespace CS423
             _action = action;
         }
 
-        public string name
+        public string Name
         {
             get { return _name; }
         }
@@ -122,7 +118,7 @@ namespace CS423
         }
     }
 
-    class UserArrivedEvent : TimelineEvent
+    internal class UserArrivedEvent : TimelineEvent
     {
         private static int numUserSource;
 
@@ -152,5 +148,4 @@ namespace CS423
             get { return destinationLevel; }
         }
     }
-
 }

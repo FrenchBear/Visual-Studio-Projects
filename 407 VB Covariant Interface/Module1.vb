@@ -2,7 +2,6 @@
 ' Tests on covariance
 ' 2011-07-12    PV
 
-
 Module Module1
 
     Sub Main()
@@ -19,8 +18,6 @@ Module Module1
 
 End Module
 
-
-
 Public Structure EurodatKey
     Public SqlId As Int16
     Public IncId As Int32
@@ -31,19 +28,18 @@ Public Interface ITypedEurodatKey(Of Out T)
 
 End Interface
 
-
 Public Structure TypedEurodatKey(Of T)
     Implements ITypedEurodatKey(Of T)
 
     Public key As EurodatKey
 
-    Public Shared Widening Operator CType(ByVal key As EurodatKey) As TypedEurodatKey(Of T)
+    Public Shared Widening Operator CType(key As EurodatKey) As TypedEurodatKey(Of T)
         Dim tk = New TypedEurodatKey(Of T) With {
             .key = key
         }
     End Operator
-End Structure
 
+End Structure
 
 Class BC1
     Inherits BC

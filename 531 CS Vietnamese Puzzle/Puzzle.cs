@@ -24,9 +24,9 @@ using System.Diagnostics;
 
 namespace CS531
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // For Vietnamese puzzle we have to use the digits from 1 to 9
             List<double> t = new List<double> { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
@@ -41,12 +41,12 @@ namespace CS531
         }
 
         // Relay helper to transform object creation in a function call to be usable by Test
-        static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l)
+        private static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l)
         {
             return new StackPermutator<T>(l);
         }
 
-        static void Test(Func<List<double>, IEnumerable<List<double>>> f, List<double> l)
+        private static void Test(Func<List<double>, IEnumerable<List<double>>> f, List<double> l)
         {
             int np = 0;                  // Number of permutations
             int ns = 0;                  // Number of solutions
@@ -71,14 +71,14 @@ namespace CS531
         }
 
         // Quick and dirty factorial
-        static long Fact(long n)
+        private static long Fact(long n)
         {
             return n <= 2 ? n : n * Fact(n - 1);
         }
 
         // A recursive iterator to produce all possible permutations of a List<T>
         // Short and readable, but 3 times slower than the stack-based version...
-        static IEnumerable<List<T>> IteratorPermutator<T>(List<T> l)
+        private static IEnumerable<List<T>> IteratorPermutator<T>(List<T> l)
         {
             if (l.Count == 1)
                 // If there's only one element in the list, then the permutation is the list itself
@@ -95,14 +95,12 @@ namespace CS531
                     {
                         permut.Insert(0, element);
                         yield return permut;
-
                     }
                 }
-
         }
 
         // A simple permutator returning a list of permutations
-        static IEnumerable<List<T>> ListOfPermut<T>(List<T> l)
+        private static IEnumerable<List<T>> ListOfPermut<T>(List<T> l)
         {
             if (l.Count == 1)
                 return new List<List<T>> { l };
@@ -124,11 +122,10 @@ namespace CS531
             }
             return r;
         }
-
     }
 
     // Stack-based permutator
-    class StackPermutator<T> : IEnumerable<List<T>>
+    internal class StackPermutator<T> : IEnumerable<List<T>>
     {
         // Just keep a copy of the list since enumerator is retrieved later
         private readonly List<T> list;
@@ -171,17 +168,17 @@ namespace CS531
             {
                 get
                 {
-                    for (;;)
+                    for (; ; )
                     {
                         var x = stack.Peek() as ListLevel<T>;
-                        // If all the elements of the list have been permuted, 
+                        // If all the elements of the list have been permuted,
                         // the element is valid and can be returned
                         if (x.level == x.list.Count - 1)
                             return x.list;
                         // Of, not valid.  Remove it from the stack
                         stack.Pop();
                         // And take one by one all remaining elements not permuted in the list,
-                        // and push a list with this element added to the list of already 
+                        // and push a list with this element added to the list of already
                         // permuted elements, remaining one
                         // less element in the non-permuted part
                         for (int i = x.list.Count - 1; i >= x.level; i--)
@@ -221,8 +218,7 @@ namespace CS531
         }
     }
 
-
-    static class ExtensionMethods
+    internal static class ExtensionMethods
     {
         // Print an enumeration
         public static void ConsoleWrite<T>(this IEnumerable<T> source)

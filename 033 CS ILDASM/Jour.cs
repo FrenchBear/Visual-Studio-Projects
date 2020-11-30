@@ -1,5 +1,3 @@
-using System;
-
 #pragma warning disable 1591
 
 namespace MaBibliotheque
@@ -9,5 +7,4 @@ namespace MaBibliotheque
         Dimanche = 0,
         Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi
     };
-
 }

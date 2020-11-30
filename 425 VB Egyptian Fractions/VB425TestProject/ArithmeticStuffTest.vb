@@ -2,9 +2,7 @@
 ' Unit Tests for module ArithmeticStuff
 ' 2012-04-09    PV
 
-Imports Microsoft.VisualStudio.TestTools.UnitTesting
 Imports VB425
-
 
 '''<summary>
 '''This is a test class for ArithmeticStuffTest and is intended
@@ -29,6 +27,7 @@ Public Class ArithmeticStuffTest
     End Property
 
 #Region "Additional test attributes"
+
     '
     'You can use the following additional attributes as you write your tests:
     '
@@ -52,63 +51,62 @@ Public Class ArithmeticStuffTest
     'Public Sub MyTestCleanup()
     'End Sub
     '
-#End Region
 
+#End Region
 
     '''<summary>
     '''A test for gcd
     '''</summary>
     <TestMethod()>
-    Public Sub gcdTest()
+    Public Sub GcdTest()
         Dim a As Long = 7 * 43
         Dim b As Long = 13 * 43
         Dim expected As Long = 43
         Dim actual As Long
-        actual = ArithmeticStuff.gcd(a, b)
+        actual = ArithmeticStuff.Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 13 * 43
         b = 7 * 43
-        actual = ArithmeticStuff.gcd(a, b)
+        actual = ArithmeticStuff.Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 7
         b = 13
         expected = 1
-        actual = ArithmeticStuff.gcd(a, b)
+        actual = ArithmeticStuff.Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 13
         b = 7
-        actual = ArithmeticStuff.gcd(a, b)
+        actual = ArithmeticStuff.Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         b = -13
         Try
-            actual = ArithmeticStuff.gcd(a, b)
+            actual = ArithmeticStuff.Gcd(a, b)
             Assert.Fail("gcd was expected to thow an exception and did not")
         Catch ex As Exception
             Assert.IsTrue(TypeOf ex Is ArgumentException)
         End Try
     End Sub
 
-
     '''<summary>
     '''A test for scm
     '''</summary>
     <TestMethod()>
-    Public Sub scmTest()
+    Public Sub ScmTest()
         Dim a As Long = 7 * 43
         Dim b As Long = 13 * 43
         Dim expected As Long = 7 * 13 * 43
         Dim actual As Long
-        actual = ArithmeticStuff.scm(a, b)
+        actual = ArithmeticStuff.Scm(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 7
         b = 13
         expected = 7 * 13
-        actual = ArithmeticStuff.scm(a, b)
+        actual = ArithmeticStuff.Scm(a, b)
         Assert.AreEqual(expected, actual)
 
         'a = 0
@@ -119,4 +117,5 @@ Public Class ArithmeticStuffTest
         '    Assert.IsTrue(TypeOf ex Is ArgumentException)
         'End Try
     End Sub
+
 End Class

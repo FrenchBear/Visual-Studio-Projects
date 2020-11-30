@@ -1,4 +1,4 @@
-// This is the main project file for VC++ application project 
+// This is the main project file for VC++ application project
 // generated using an Application Wizard.
 // 2001 PV
 // 2006-10-01   PV  VS2005
@@ -7,7 +7,6 @@
 #using <mscorlib.dll>
 
 using namespace System;
-
 
 class MaClasseDeBase
 {
@@ -24,7 +23,6 @@ public:
 	{
 		Console::WriteLine("MaClasseDebase::MaMethode");
 	}
-
 };
 
 class MaClasse : public MaClasseDeBase
@@ -44,8 +42,7 @@ public:
 	}
 };
 
-
-void Zap2(MaClasseDeBase *b)
+void Zap2(MaClasseDeBase* b)
 {
 	b->MaMethode();
 }
@@ -58,7 +55,6 @@ void Zap()
 	Zap2(&b);
 	Zap2(&c);
 }
-
 
 // This is the entry point for this application
 int main(void)

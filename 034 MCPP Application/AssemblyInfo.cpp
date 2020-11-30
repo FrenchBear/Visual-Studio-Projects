@@ -12,13 +12,13 @@ using namespace System::Security::Permissions;
 // associated with an assembly.
 //
 [assembly:AssemblyTitleAttribute("x2")];
-[assembly:AssemblyDescriptionAttribute("")];
-[assembly:AssemblyConfigurationAttribute("")];
-[assembly:AssemblyCompanyAttribute("")];
-[assembly:AssemblyProductAttribute("x2")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c)  2006")];
-[assembly:AssemblyTrademarkAttribute("")];
-[assembly:AssemblyCultureAttribute("")];
+[assembly:AssemblyDescriptionAttribute("")] ;
+[assembly:AssemblyConfigurationAttribute("")] ;
+[assembly:AssemblyCompanyAttribute("")] ;
+[assembly:AssemblyProductAttribute("x2")] ;
+[assembly:AssemblyCopyrightAttribute("Copyright (c)  2006")] ;
+[assembly:AssemblyTrademarkAttribute("")] ;
+[assembly:AssemblyCultureAttribute("")] ;
 
 //
 // Version information for an assembly consists of the following four values:
@@ -33,6 +33,6 @@ using namespace System::Security::Permissions;
 
 [assembly:AssemblyVersionAttribute("1.0.*")];
 
-[assembly:ComVisible(false)];
+[assembly:ComVisible(false)] ;
 
-[assembly:CLSCompliantAttribute(true)];
+[assembly:CLSCompliantAttribute(true)] ;

@@ -46,12 +46,14 @@
     Private Sub Rex_Nait() Handles rex.Nait
         Console.WriteLine("Rex est né le " & rex.NéLe)
     End Sub
-End Module
 
+End Module
 
 Public MustInherit Class EtreVivant
     Public NéLe As Date
+
     Event Nait()
+
     Event Meurt()
 
     Protected Sub New()
@@ -70,14 +72,15 @@ Public MustInherit Class EtreVivant
     Private Sub EtreVivant_Nait() Handles Me.Nait
         Console.WriteLine("Un être vivant est né")
     End Sub
-End Class
 
+End Class
 
 Public Class Animal : Inherits EtreVivant
     Public Race As String
+
     Event Mordre()
 
-    Public Sub New(ByVal sRace As String)
+    Public Sub New(sRace As String)
         MyBase.New()
         Race = sRace
     End Sub
@@ -98,7 +101,6 @@ Public Class Animal : Inherits EtreVivant
         Console.WriteLine("Un animal de race " & Race & " joue.")
     End Sub
 
-
     Private Sub Animal_Meurt() Handles Me.Meurt
         Console.WriteLine("Un animal de race " & Race & " est mort")
     End Sub
@@ -110,11 +112,12 @@ Public Class Animal : Inherits EtreVivant
     Private Sub Animal_Nait() Handles Me.Nait
         Console.WriteLine("Un animal de race " & Race & " est né")
     End Sub
+
 End Class
 
-
 Public Class Chien : Inherits Animal
-    Sub New(ByVal sNom As String)
+
+    Sub New(sNom As String)
         MyBase.New("Canis")
         Nom = sNom
     End Sub
@@ -139,7 +142,6 @@ Public Class Chien : Inherits Animal
         Console.WriteLine("Le chien " & Nom & " joue.")
     End Sub
 
-
     Private Sub Chien_Aboyer() Handles Me.Aboyer
         Console.WriteLine("Le chien " & Nom & " a aboyé")
     End Sub
@@ -155,11 +157,12 @@ Public Class Chien : Inherits Animal
     Private Sub Chien_Nait() Handles Me.Nait
         Console.WriteLine("Le chien " & Nom & " est né")
     End Sub
+
 End Class
 
-
 Class Chiot : Inherits Chien
-    Sub New(ByVal sNom As String)
+
+    Sub New(sNom As String)
         MyBase.New(sNom)
     End Sub
 
@@ -174,11 +177,13 @@ Class Chiot : Inherits Chien
     Overloads Sub Jouer()
         Console.WriteLine("Le chiot " & Nom & " joue.")
     End Sub
+
 End Class
 
-
 Friend Class Loup : Inherits Animal
+
     Sub New()
         MyBase.New("Lupus")
     End Sub
+
 End Class

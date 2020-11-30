@@ -1,4 +1,3 @@
-
 Public Class Piece
     Public hNumPiece As Short   ' N° dans le jeu Katamino
     Public cPiece As Char   ' Lettre
@@ -9,10 +8,10 @@ Public Class Piece
     ' Construction/Destruction
     '''''''''''''''''''''''''''''''''''
 
-    Public Sub New(ByVal hNP As Short, ByVal cP As Char,
-        ByVal i00 As Integer, ByVal i01 As Integer, ByVal i02 As Integer, ByVal i03 As Integer, ByVal i04 As Integer,
-        ByVal i10 As Integer, ByVal i11 As Integer, ByVal i12 As Integer, ByVal i13 As Integer, ByVal i14 As Integer,
-        ByVal i20 As Integer, ByVal i21 As Integer, ByVal i22 As Integer, ByVal i23 As Integer, ByVal i24 As Integer)
+    Public Sub New(hNP As Short, cP As Char,
+i00 As Integer, i01 As Integer, i02 As Integer, i03 As Integer, i04 As Integer,
+i10 As Integer, i11 As Integer, i12 As Integer, i13 As Integer, i14 As Integer,
+i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
         ReDim c(8 - 1)
         hNumPiece = hNP
         cPiece = cP
@@ -39,8 +38,6 @@ Public Class Piece
             End If
         Next
     End Sub
-
-
 
     ' Traces
     Public Sub Dessin()

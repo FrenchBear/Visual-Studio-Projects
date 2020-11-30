@@ -1,17 +1,16 @@
-Imports System.Windows.Forms
-Imports Office = Microsoft.Office.Core
-Imports Word = Microsoft.Office.Interop.Word
 Imports System.IO
 Imports Microsoft.Office.Interop.Word.WdBuiltInProperty
+Imports Word = Microsoft.Office.Interop.Word
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class Form1
     Private app As Word.Application
     Private doc As Word.Document
 
     Private Sub Form1_FormClosing(
-     ByVal sender As Object,
-      ByVal e As System.Windows.Forms.FormClosingEventArgs) _
+sender As Object,
+e As FormClosingEventArgs) _
       Handles Me.FormClosing
 
         My.Settings.Size = Me.Size
@@ -20,8 +19,8 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(
-     ByVal sender As System.Object,
-     ByVal e As System.EventArgs) _
+sender As System.Object,
+e As EventArgs) _
      Handles MyBase.Load
 
         MySettingsBindingSource.DataSource = My.Settings
@@ -62,8 +61,8 @@ Public Class Form1
     End Sub
 
     Private Sub folderButton_Click(
-     ByVal sender As System.Object,
-     ByVal e As System.EventArgs) _
+sender As System.Object,
+e As EventArgs) _
      Handles folderButton.Click
 
         ' Select the folder for the document
@@ -76,8 +75,8 @@ Public Class Form1
         My.Settings.Folder = fbd.SelectedPath
     End Sub
 
-    Private Sub HandleDocs(ByVal path As String,
-     ByVal e As System.ComponentModel.DoWorkEventArgs)
+    Private Sub HandleDocs(path As String,
+e As System.ComponentModel.DoWorkEventArgs)
 
         Try
             If bgw.CancellationPending Then
@@ -102,17 +101,16 @@ Public Class Form1
                 End If
                 OnFileFound(fi)
             Next
-
         Catch ex As UnauthorizedAccessException
-            ' Don't do anything at all, just quietly 
-            ' get out. This means you weren't meant to 
+            ' Don't do anything at all, just quietly
+            ' get out. This means you weren't meant to
             ' be in this folder.
-            ' All other exceptions will bubble back out 
+            ' All other exceptions will bubble back out
             ' to the caller.
         End Try
     End Sub
 
-    Private Sub OnFileFound(ByVal fi As FileInfo)
+    Private Sub OnFileFound(fi As FileInfo)
         Try
             bgw.ReportProgress(0, fi.Name)
 
@@ -174,18 +172,17 @@ Public Class Form1
                 cmt.Delete()
             Next
 
-            ' Add any other final cleanup you want to 
+            ' Add any other final cleanup you want to
             ' do here, as well.
 
             ' Close the document and save changes.
             doc.Close(True)
-
         Catch ex As Exception
             MessageBox.Show("Unable to change properties: " & ex.Message)
         End Try
     End Sub
 
-    Private Function FixPath(ByVal path As String) As String
+    Private Function FixPath(path As String) As String
         If path.EndsWith("\") Then
             Return path
         Else
@@ -194,8 +191,8 @@ Public Class Form1
     End Function
 
     Private Sub makeChangesButton_Click(
-     ByVal sender As System.Object,
-     ByVal e As System.EventArgs) _
+sender As System.Object,
+e As EventArgs) _
      Handles makeChangesButton.Click
         makeChangesButton.Enabled = False
         cancelSearchButton.Enabled = True
@@ -203,15 +200,15 @@ Public Class Form1
     End Sub
 
     Private Sub cancelButton_Click(
-     ByVal sender As System.Object,
-     ByVal e As System.EventArgs) Handles cancelSearchButton.Click
+sender As System.Object,
+e As EventArgs) Handles cancelSearchButton.Click
 
         bgw.CancelAsync()
     End Sub
 
     Private Sub bgw_DoWork(
-     ByVal sender As System.Object,
-     ByVal e As System.ComponentModel.DoWorkEventArgs) _
+sender As System.Object,
+e As System.ComponentModel.DoWorkEventArgs) _
      Handles bgw.DoWork
 
         ' Open Word, and handle the documents
@@ -229,16 +226,16 @@ Public Class Form1
     End Sub
 
     Private Sub bgw_ProgressChanged(
-     ByVal sender As Object,
-     ByVal e As System.ComponentModel.ProgressChangedEventArgs) _
+sender As Object,
+e As System.ComponentModel.ProgressChangedEventArgs) _
      Handles bgw.ProgressChanged
 
         statusLabel.Text = "Updating " & e.UserState.ToString
     End Sub
 
     Private Sub bgw_RunWorkerCompleted(
-     ByVal sender As Object,
-     ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) _
+sender As Object,
+e As System.ComponentModel.RunWorkerCompletedEventArgs) _
      Handles bgw.RunWorkerCompleted
 
         Dim statusText As String = "Ready"
@@ -251,9 +248,9 @@ Public Class Form1
     End Sub
 
     Private Sub SetProperty(
-     ByVal chk As CheckBox,
-     ByVal prop As Word.WdBuiltInProperty,
-     ByVal txt As TextBox)
+chk As CheckBox,
+prop As Word.WdBuiltInProperty,
+txt As TextBox)
 
         ' If the supplied CheckBox control is checked,
         ' then set the Word property to the supplied value.
@@ -261,4 +258,5 @@ Public Class Form1
             doc.BuiltInDocumentProperties(prop).Value = txt.Text
         End If
     End Sub
+
 End Class

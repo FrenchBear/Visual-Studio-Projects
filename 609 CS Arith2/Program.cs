@@ -9,40 +9,43 @@
 // 2017-01-22   PV  Verification using BigInteger
 // 2017-01-24   PV  Chronométrage du test
 
-
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Console;
 using System.Numerics;
-
-
+using System.Text;
+using static System.Console;
 
 namespace Arith2CS
 {
+    using Int1024d = DA<DA<DA<DA<DA<DA<DA<DA<Int4d>>>>>>>>;
+    using Int128d = DA<DA<DA<DA<DA<Int4d>>>>>;
+    using Int256d = DA<DA<DA<DA<DA<DA<Int4d>>>>>>;
+
     // Repacking for simplified use, arithmetic on 64 digits
     // Note that using Int64d = DA<Int32d>; is not accepted
     using Int32d = DA<DA<DA<Int4d>>>;
-    using Int64d = DA<DA<DA<DA<Int4d>>>>;
-    using Int128d = DA<DA<DA<DA<DA<Int4d>>>>>;
-    using Int256d = DA<DA<DA<DA<DA<DA<Int4d>>>>>>;
     using Int512d = DA<DA<DA<DA<DA<DA<DA<Int4d>>>>>>>;
-    using Int1024d = DA<DA<DA<DA<DA<DA<DA<DA<Int4d>>>>>>>>;
+    using Int64d = DA<DA<DA<DA<Int4d>>>>;
 
     // Interface of a simple arithmetic class providing support for Plus and Mult
     public interface ISimpleArith<T>
     {
         int Digits { get; }
+
         void FromString(string s);
+
         void FromOther(T other);
+
         bool IsZero();
+
         (T high, T low) Plus(params T[] list);
+
         (T high, T low) Mult(T other);
+
         string ToString();
+
         string ToStringWithLeadingZeros();
+
         string ToString2(T b);
     }
 
@@ -55,6 +58,7 @@ namespace Arith2CS
 
         // Just for example
         private const int digits = 4;
+
         private const int k = 10000;        // 10^digits
         public int Digits { get => digits; }
 
@@ -127,7 +131,6 @@ namespace Arith2CS
         }
     }
 
-
     // Double Arithmetic: provides twice the capacity of type T that implements ISimpleArith
     // and this class in turn also implements ISimpleArith
     // so it's Ok to instantiate DA<Int4d>, DA<DA<Int4d>>, DA<DA<DA<Int4d>>>...
@@ -183,7 +186,6 @@ namespace Arith2CS
             (high = new T()).FromOther(other.high);
             (low = new T()).FromOther(other.low);
         }
-
 
         public (DA<T> high, DA<T> low) Plus(params DA<T>[] list)
         {
@@ -248,11 +250,9 @@ namespace Arith2CS
         }
     }
 
-
-
-    class Program
+    internal class Program
     {
-        static void Test<T>() where T : ISimpleArith<T>, new()
+        private static void Test<T>() where T : ISimpleArith<T>, new()
         {
             int d = (new T()).Digits;
             var rnd = new Random();
@@ -295,8 +295,7 @@ namespace Arith2CS
             WriteLine();
         }
 
-
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Int4d a, b;
             (a = new Int4d()).FromString("8000");

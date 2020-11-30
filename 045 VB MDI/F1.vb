@@ -2,12 +2,7 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.Drawing
-Imports System.Windows.Forms
-
-
-Imports System.ComponentModel
-
+#Disable Warning IDE0052 ' Remove unread private members
 
 Public Class F1
     Inherits Form
@@ -31,20 +26,19 @@ Public Class F1
     Dim WithEvents F1 As Form
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
+        Me.components = New ComponentModel.Container()
         '@design Me.TrayHeight = 0
         '@design Me.TrayLargeIcon = False
         '@design Me.TrayAutoArrange = True
         Me.Text = "F1"
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(228, 209)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(228, 209)
 
     End Sub
 
 #End Region
-
 
 End Class

@@ -3,8 +3,6 @@
 Class Form2
     Inherits Form
 
-
-
     Public Sub New2()
         ' Create a new ToolStrip control.
         Dim ts As New ToolStrip()
@@ -21,7 +19,7 @@ Class Form2
             .Dock = DockStyle.Top
         }
 
-            ' Add the top-level menu items.
+        ' Add the top-level menu items.
         ms.Items.Add("File")
         ms.Items.Add("Edit")
         ms.Items.Add("View")
@@ -38,12 +36,12 @@ Class Form2
     ' This event handler is invoked when the "Change colors"
     ' ToolStripItem is clicked. It assigns the Renderer
     ' property for the ToolStrip control.
-    Sub ChangeColors_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Sub ChangeColors_Click(sender As Object, e As EventArgs)
         'ToolStripManager.Renderer = New ToolStripProfessionalRenderer(New CustomProfessionalColors())
     End Sub
 
-    Private Sub Form2_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub Form2_Load(sender As Object, e As EventArgs) Handles Me.Load
         New2()
     End Sub
-End Class
 
+End Class

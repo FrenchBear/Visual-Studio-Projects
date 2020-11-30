@@ -7,14 +7,16 @@
 using System;
 using System.IO;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 namespace NSFile
 {
     /// <summary>
     /// Summary description for Class1.
     /// </summary>
-    class ClsFile
+    internal class ClsFile
     {
-        static bool isAscii(byte c)
+        private static bool IsAscii(byte c)
         {
             return c >= 1 && c < 127;
         }
@@ -23,7 +25,7 @@ namespace NSFile
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string sType;
             bool bRename = false;
@@ -47,9 +49,9 @@ namespace NSFile
 
                     if (tbBuffer[0] == 0xFF && tbBuffer[1] == 0xFE)
                         sType = "Unicode";
-                    else if (isAscii(tbBuffer[0]) && isAscii(tbBuffer[1]) && isAscii(tbBuffer[2]) && isAscii(tbBuffer[3]))
+                    else if (IsAscii(tbBuffer[0]) && IsAscii(tbBuffer[1]) && IsAscii(tbBuffer[2]) && IsAscii(tbBuffer[3]))
                         sType = "ASCII";
-                    else if (isAscii(tbBuffer[0]) && tbBuffer[1] == 0 && isAscii(tbBuffer[2]) && tbBuffer[3] == 0)
+                    else if (IsAscii(tbBuffer[0]) && tbBuffer[1] == 0 && IsAscii(tbBuffer[2]) && tbBuffer[3] == 0)
                         sType = "Unicode";
                     else
                         sType = "?";
@@ -79,7 +81,6 @@ namespace NSFile
                         }
 
                         bRename=true;
-
                     }
                     */
                 }

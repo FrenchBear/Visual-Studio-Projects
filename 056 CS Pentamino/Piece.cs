@@ -2,7 +2,7 @@
 
 using System;
 
-class Piece
+internal class Piece
 {
     public short hNumPiece;		// N° dans le jeu Katamino
     public char cPiece;			// Lettre
@@ -42,12 +42,9 @@ class Piece
         }
     }
 
-
-
     // Traces
     public void Dessin()
     {
         Console.WriteLine("Pièce {0} {1} iNbt={2}", hNumPiece, cPiece, iNbt);
     }
-
 }

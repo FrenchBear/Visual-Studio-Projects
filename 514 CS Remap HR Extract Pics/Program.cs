@@ -3,17 +3,14 @@
 // 2013-07-23   PV  Second version, the first one has been deleted by accident...
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.Diagnostics;
+using System.IO;
 
 namespace _514_CS_Remap_HR_Extract_Pics
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             const string extractLRPath = @"C:\PicturesSD\2011\2011-08 Florida (Extrait)";
             const string extractHRPath = @"D:\PicturesSkull\2011\2011-08 Florida (Extrait) HR";
@@ -30,7 +27,6 @@ namespace _514_CS_Remap_HR_Extract_Pics
                 File.Copy(source, dest);
                 Console.WriteLine(extractFile);
             }
-
 
             Console.WriteLine();
             Console.Write("(Pause)");

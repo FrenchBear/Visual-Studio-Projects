@@ -5,8 +5,8 @@
 ' For extension method
 Imports System.Runtime.CompilerServices
 
-
 Module Module1
+
     Sub Main()
         ' Object initializer (with)
         Dim z1 As New Complexe With {.real = 2.3, .imaginary = 3.5}
@@ -40,10 +40,10 @@ Module Module1
     End Sub
 
     <Extension()>
-    Sub Add(ByVal genericList As List(Of Customer),
-            ByVal id As Integer,
-            ByVal name As String,
-            ByVal orders As OrderCollection)
+    Sub Add(genericList As List(Of Customer),
+id As Integer,
+name As String,
+orders As OrderCollection)
 
         genericList.Add(New Customer(id, name, orders))
     End Sub
@@ -60,11 +60,12 @@ Public Class Customer
     Public Property Name As String
     Public Property Orders As OrderCollection
 
-    Public Sub New(ByVal id As Integer, ByVal name As String, ByVal orders As OrderCollection)
+    Public Sub New(id As Integer, name As String, orders As OrderCollection)
         Me.Id = id
         Me.Name = name
         Me.Orders = orders
     End Sub
+
 End Class
 
 Public Class Order
@@ -72,13 +73,14 @@ Public Class Order
     Public Property CustomerId As Integer
     Public Property OrderDate As DateTime
 
-    Public Sub New(ByVal id As Integer,
-                   ByVal customerId As Integer,
-                   ByVal orderDate As DateTime)
+    Public Sub New(id As Integer,
+customerId As Integer,
+orderDate As DateTime)
         Me.Id = id
         Me.CustomerId = customerId
         Me.OrderDate = orderDate
     End Sub
+
 End Class
 
 Public Class OrderCollection
@@ -86,16 +88,16 @@ Public Class OrderCollection
 
     ReadOnly items As New List(Of Order)
 
-    Public Property Item(ByVal index As Integer) As Order
+    Public Property Item(index As Integer) As Order
         Get
             Return CType(Me(index), Order)
         End Get
-        Set(ByVal value As Order)
+        Set(value As Order)
             items(index) = value
         End Set
     End Property
 
-    Public Sub Add(ByVal id As Integer, ByVal customerID As Integer, ByVal orderDate As DateTime)
+    Public Sub Add(id As Integer, customerID As Integer, orderDate As DateTime)
         items.Add(New Order(id, customerID, orderDate))
     End Sub
 
@@ -106,6 +108,5 @@ Public Class OrderCollection
     Public Function GetEnumerator1() As IEnumerator Implements IEnumerable.GetEnumerator
         Return Me.GetEnumerator()
     End Function
+
 End Class
-
-

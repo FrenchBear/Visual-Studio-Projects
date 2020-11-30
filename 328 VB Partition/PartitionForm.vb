@@ -4,11 +4,10 @@
 ' 2010-01-26    PV
 ' 2012-02-25	PV  VS2010
 
-
 Imports System.Drawing.Imaging
 
-
 Public Class PartitionForm
+
     'ReadOnly colBackground As Color = Color.PaleGoldenrod
     ReadOnly colBackground As Color = Color.White
 
@@ -23,7 +22,7 @@ Public Class PartitionForm
     ReadOnly MeasureWidth As Integer = 200
     ReadOnly TempsWidth As Integer = 50
 
-    Private Sub StartButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles StartButton.Click
+    Private Sub StartButton_Click(sender As System.Object, e As EventArgs) Handles StartButton.Click
         Dim w As Integer = 2 * xOff + KeyWidth + 4 * MeasureWidth
         Dim h As Integer = 2 * yOff + 4 * RowHeight + KeyHeight + 50
         Dim picBitmap As Bitmap = New Bitmap(w, h, PixelFormat.Format24bppRgb)
@@ -48,7 +47,7 @@ Public Class PartitionForm
         pic.BackgroundImage.Save("c:\Partition.png", System.Drawing.Imaging.ImageFormat.Png)
     End Sub
 
-    Private Sub DrawArmature(ByVal g As Graphics, ByVal nRow As Integer)
+    Private Sub DrawArmature(g As Graphics, nRow As Integer)
         DrawScore(g, xOff, xOff + KeyWidth, yOff + RowHeight * nRow)
         DrawScore(g, xOff, xOff + KeyWidth, yOff + KeyHeight + RowHeight * nRow)
         g.DrawLine(Pens.Black, xOff, yOff + RowHeight * nRow, xOff, yOff + KeyHeight + RowHeight * nRow + 4 * LineHeight)
@@ -67,13 +66,13 @@ Public Class PartitionForm
         g.DrawString("{", f, Brushes.Black, xOff - 42, yOff + RowHeight * nRow - 140)
     End Sub
 
-    Private Sub DrawScore(ByVal g As Graphics, ByVal x1 As Integer, ByVal xDelta As Integer, ByVal y As Integer)
+    Private Sub DrawScore(g As Graphics, x1 As Integer, xDelta As Integer, y As Integer)
         For l As Integer = 0 To 4
             g.DrawLine(Pens.Black, x1, y + l * LineHeight, x1 + xDelta, y + l * LineHeight)
         Next
     End Sub
 
-    Private Sub DrawRandomMeasure(ByVal g As Graphics, ByVal nRow As Integer, ByVal nCol As Integer)
+    Private Sub DrawRandomMeasure(g As Graphics, nRow As Integer, nCol As Integer)
         DrawScore(g, xOff + KeyWidth + nCol * MeasureWidth, MeasureWidth, yOff + RowHeight * nRow)
         DrawScore(g, xOff + KeyWidth + nCol * MeasureWidth, MeasureWidth, yOff + KeyHeight + RowHeight * nRow)
         g.DrawLine(Pens.Black, xOff + KeyWidth + (nCol + 1) * MeasureWidth, yOff + RowHeight * nRow, xOff + KeyWidth + (nCol + 1) * MeasureWidth, yOff + KeyHeight + RowHeight * nRow + 4 * LineHeight)
@@ -99,7 +98,7 @@ Public Class PartitionForm
         Next
     End Sub
 
-    Private Sub DrawNote(ByVal g As Graphics, ByVal nRow As Integer, ByVal nCol As Integer, ByVal nKey As Integer, ByVal nTemps As Integer, ByVal p As Integer, ByVal br As Brush, ByVal pe As Pen)
+    Private Sub DrawNote(g As Graphics, nRow As Integer, nCol As Integer, nKey As Integer, nTemps As Integer, p As Integer, br As Brush, pe As Pen)
         Dim x As Single = xOff + KeyWidth + nCol * MeasureWidth + TempsWidth / 2 + nTemps * TempsWidth - LineHeight / 2
         Dim y As Single = yOff + RowHeight * nRow + KeyHeight * nKey + (3.5 - p / 2) * LineHeight
 

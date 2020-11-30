@@ -5,29 +5,21 @@
 // Sine, Cosine calculations using CORDIC algorithm
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Numerics;
 using static System.Console;
-using System.Diagnostics;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-
 namespace CordicHalfTrig
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             const int n = 15;
             double[] ta, tsin, tcos;
             ta = new double[n];
             tsin = new double[n];
             tcos = new double[n];
-
 
             for (double z = -10.0; z < 10.0; z += 0.25)
             {
@@ -46,15 +38,15 @@ namespace CordicHalfTrig
             Console.WriteLine("Maple:  c=0.378740326955891541643393287014\ts=0.925502979323861698653734026619");
 
             // Maple answer with 30 digits
-            // cos = 
-            // sin = 
+            // cos =
+            // sin =
 
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
         }
 
-        static double SinCordic(double angle)
+        private static double SinCordic(double angle)
         {
             bool invertSign = false;
 
@@ -79,11 +71,11 @@ namespace CordicHalfTrig
         }
 
 #pragma warning disable IDE0051 // Remove unused private members
-        static double CosCordic(double angle)
+
+        private static double CosCordic(double angle)
         {
             return SinCordic(angle + Math.PI / 2);
         }
-
 
         // Actual computing algorithm, sin and cos at the same time
         // Angle must be between 0 and π/2
@@ -102,7 +94,7 @@ namespace CordicHalfTrig
             // Start with horizontal unitary vector for result
             cos = 1;
             sin = 0;
-            for (;;)
+            for (; ; )
             {
                 // If angle remaining to rotate is more than currently computed angle/s/c, we do the rotation
                 if (angle >= a)
@@ -126,7 +118,6 @@ namespace CordicHalfTrig
                 c = Math.Sqrt((c + 1.0) / 2.0);
                 s /= Math.Sqrt(2 * (1.0 + c2));
             }
-
         }
     }
 }

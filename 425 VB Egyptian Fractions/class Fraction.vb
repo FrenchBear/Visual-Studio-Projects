@@ -14,7 +14,7 @@ Public Class Fraction : Implements IFormattable, IEquatable(Of Fraction)
             n = 0                                               ' Unique convention for 0
             d = 1
         Else
-            Dim pgdc As Long = gcd(Numerator, Denominator)      ' Only store reduced fractions
+            Dim pgdc As Long = Gcd(Numerator, Denominator)      ' Only store reduced fractions
             If Denominator < 0 Then
                 Numerator = -Numerator                          ' Sign is at Numerator
                 Denominator = -Denominator                      ' Denominator is always > 0
@@ -40,12 +40,11 @@ Public Class Fraction : Implements IFormattable, IEquatable(Of Fraction)
         End Get
     End Property
 
-
     Public Overrides Function ToString() As String
         Return ToString("G", CultureInfo.CurrentCulture)
     End Function
 
-    Public Overloads Function ToString(fmt As String, provider As System.IFormatProvider) As String Implements System.IFormattable.ToString
+    Public Overloads Function ToString(fmt As String, provider As IFormatProvider) As String Implements IFormattable.ToString
         If String.IsNullOrEmpty(fmt) Then fmt = "G"
         If provider Is Nothing Then provider = CultureInfo.CurrentCulture
         Select Case fmt.ToUpperInvariant()
@@ -59,18 +58,18 @@ Public Class Fraction : Implements IFormattable, IEquatable(Of Fraction)
     End Function
 
     Shared Operator +(f1 As Fraction, f2 As Fraction) As Fraction
-        Dim pgdc As Long = gcd(f1.d, f2.d)
+        Dim pgdc As Long = Gcd(f1.d, f2.d)
         Dim ppmc As Long = f1.d * f2.d / pgdc
         Return New Fraction(f1.n * f2.d / pgdc + f2.n * f1.d / pgdc, ppmc)
     End Operator
 
     Shared Operator -(f1 As Fraction, f2 As Fraction) As Fraction
-        Dim pgdc As Long = gcd(f1.d, f2.d)
+        Dim pgdc As Long = Gcd(f1.d, f2.d)
         Dim ppmc As Long = f1.d * f2.d / pgdc
         Return New Fraction(f1.n * f2.d / pgdc - f2.n * f1.d / pgdc, ppmc)
     End Operator
 
-    Public Function Equals1(other As Fraction) As Boolean Implements System.IEquatable(Of Fraction).Equals
+    Public Function Equals1(other As Fraction) As Boolean Implements IEquatable(Of Fraction).Equals
         Return n = other.n AndAlso d = other.d
     End Function
 
@@ -86,4 +85,5 @@ Public Class Fraction : Implements IFormattable, IEquatable(Of Fraction)
     Shared Operator <>(f1 As Fraction, f2 As Fraction) As Boolean
         Return Not f1.Equals1(f2)
     End Operator
+
 End Class

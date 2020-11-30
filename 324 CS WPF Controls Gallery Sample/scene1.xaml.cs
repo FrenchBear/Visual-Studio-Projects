@@ -1,14 +1,12 @@
-﻿namespace SdkXamlBrowser
+﻿#pragma warning disable IDE1006 // Naming Styles
+
+namespace SdkXamlBrowser
 {
     using System;
-    using System.Windows;
     using System.IO;
-    using System.Windows.Markup;
-    using System.Windows.Documents;
+    using System.Windows;
     using System.Windows.Controls;
-    using System.ComponentModel;
-    using System.Xml;
-
+    using System.Windows.Markup;
 
     public partial class Scene1
     {
@@ -18,7 +16,7 @@
         {
         }
 
-        void HandleSelectionChanged(object sender, SelectionChangedEventArgs args)
+        private void HandleSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
             if (sender == null)
                 return;
@@ -47,14 +45,12 @@
                     object content = XamlReader.Load(ms);
                     if (content != null)
                     {
-
                         cc.Children.Clear();
                         cc.Children.Add((UIElement)content);
                     }
                     TextBox1.Foreground = System.Windows.Media.Brushes.Black;
                     ErrorText.Text = "";
                 }
-
                 catch (XamlParseException xpe)
                 {
                     TextBox1.Foreground = System.Windows.Media.Brushes.Red;
@@ -67,25 +63,28 @@
                 return;
             }
         }
+
         protected void onClickParseButton(object sender, RoutedEventArgs args)
         {
             ParseCurrentBuffer();
         }
+
         protected void ShowPreview(object sender, RoutedEventArgs args)
         {
             PreviewRow.Height = new GridLength(1, GridUnitType.Star);
             CodeRow.Height = new GridLength(0);
         }
+
         protected void ShowCode(object sender, RoutedEventArgs args)
         {
             PreviewRow.Height = new GridLength(0);
             CodeRow.Height = new GridLength(1, GridUnitType.Star);
         }
+
         protected void ShowSplit(object sender, RoutedEventArgs args)
         {
             PreviewRow.Height = new GridLength(1, GridUnitType.Star);
             CodeRow.Height = new GridLength(1, GridUnitType.Star);
         }
-
     }
 }

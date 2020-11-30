@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-
-using static System.Math;
+using System.Linq;
 using static System.Console;
+using static System.Math;
 using static System.Threading.Interlocked;
-using static System.Threading.Tasks.Parallel;
-
 
 namespace String_Distance
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             /*
             Debug.Assert(StringDistance("abcd", "abce", 1));
@@ -48,7 +41,7 @@ namespace String_Distance
             Console.ReadLine();
         }
 
-        static bool StringDistance(string s1, string s2, int distance = 1)
+        private static bool StringDistance(string s1, string s2, int distance = 1)
         {
             if (Abs(s1.Length - s2.Length) > distance)
                 return false;
@@ -80,6 +73,4 @@ namespace String_Distance
             return false;
         }
     }
-
-
 }

@@ -3,7 +3,6 @@
 ' 2001-02-03    PV
 ' 2012-02-25	PV  VS2010
 
-Imports System
 Imports MaBibliotheque
 
 Namespace EssaisILDasm
@@ -17,7 +16,6 @@ Namespace EssaisILDasm
             Dim d As MaClasseDerivee
             d = New MaClasseDerivee()
             AddHandler d.Bip, AddressOf D_Bip
-
 
             ' Try+Catch
             Try
@@ -69,21 +67,20 @@ Namespace EssaisILDasm
             Console.WriteLine("y = {0}", y)
             Console.WriteLine("z = {0}", z)
 
-
             Console.ReadLine()
         End Sub
 
-        Protected Shared Sub ActionBase(ByVal b As MaClasseDeBase, ByVal iVal As Integer)
+        Protected Shared Sub ActionBase(b As MaClasseDeBase, iVal As Integer)
             b.MembreDeBase = iVal
             b.Action()
         End Sub
 
-        Public Shared Sub ActionInterface(ByVal IMI As MonInterface)
+        Public Shared Sub ActionInterface(IMI As MonInterface)
             IMI.MaMethodeBruyante1(1)
             IMI.MaMethodeBruyante2(1)
         End Sub
 
-        Private Shared Sub D_Bip(ByVal e As Object, ByVal sMsg As String)
+        Private Shared Sub D_Bip(e As Object, sMsg As String)
             Console.WriteLine("D_Bip(): {0}", sMsg)
         End Sub
 

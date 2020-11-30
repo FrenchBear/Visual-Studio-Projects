@@ -5,9 +5,13 @@
 
 using System;
 
-class MaClasse
+#pragma warning disable IDE0052 // Remove unread private members
+#pragma warning disable IDE0051 // Remove unused private members
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
+internal class MaClasse
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         TestInterface();
         Console.WriteLine("---------------------");
@@ -18,7 +22,7 @@ class MaClasse
         Console.ReadLine();
     }
 
-    static void TestEgalite()
+    private static void TestEgalite()
     {
         string s1 = "hello";
         string s2 = string.Copy(s1);
@@ -33,17 +37,17 @@ class MaClasse
         int[] b = new int[5];
     }
 
-    static void TestInterface()
+    private static void TestInterface()
     {
-        cla2 C2 = new cla2();
-        cla1 C1 = C2;
+        Cla2 C2 = new Cla2();
+        Cla1 C1 = C2;
         C1.H();
 
         C2.F();
-        ((inter)C2).F();
+        ((IInter)C2).F();
     }
 
-    static void TestDecimal()
+    private static void TestDecimal()
     {
         decimal d = 0;
         for (int i = 0; i < 100; i++)
@@ -66,15 +70,44 @@ class MaClasse
     }
 }
 
+internal enum Couleur
+{ bleu, blanc, rouge };
 
-enum couleur { bleu, blanc, rouge };
-struct complex { readonly double x, y; complex(double r) { x = r; y = r; } }
-interface inter { void F(); }
-interface deriv : inter { void G(); }
-class cla1 { public virtual void H() { Console.WriteLine("cla1.H()"); } }
-class cla2 : cla1, inter
+internal struct Complex
+{ private readonly double x, y; private Complex(double r)
+    {
+        x = r; y = r;
+    }
+}
+
+internal interface IInter
+{ void F(); }
+
+internal interface IDeriv : IInter
+{ void G(); }
+
+internal class Cla1
 {
-    public override void H() { Console.WriteLine("cla2.H()"); }
-    public void F() { Console.WriteLine("cla2.F()"); }
-    void inter.F() { Console.WriteLine("cla2.inter.F()"); }
+    public virtual void H()
+    {
+        Console.WriteLine("cla1.H()");
+    }
+}
+
+internal class Cla2 : Cla1, IInter
+{
+    public override void H()
+    {
+        Console.WriteLine("cla2.H()");
+    }
+
+    public void F()
+    {
+        Console.WriteLine("cla2.F()");
+    }
+
+    void IInter.F()
+    {
+        Console.WriteLine("cla2.inter.F()");
+    }
 }

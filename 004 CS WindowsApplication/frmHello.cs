@@ -2,14 +2,11 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
+#pragma warning disable IDE0052 // Remove unread private members
+
 namespace WindowsApplication2_CSharp
 {
-    using System;
-    using System.Drawing;
-    using System.Collections;
-    using System.ComponentModel;
     using System.Windows.Forms;
-    using System.Data;
 
 #pragma warning disable IDE1006 // Naming Styles
 
@@ -18,9 +15,7 @@ namespace WindowsApplication2_CSharp
         /// <summary>
         ///    Required designer variable.
         /// </summary>
-#pragma warning disable IDE0052 // Remove unread private members
         private System.ComponentModel.Container components;
-#pragma warning restore IDE0052 // Remove unread private members
 
         private System.Windows.Forms.Button btnHello;
 
@@ -53,7 +48,6 @@ namespace WindowsApplication2_CSharp
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.Controls.Add(this.btnHello);
         }
-
 
         /// <summary>
         /// Une fonction événement qui affiche une boîte de message 'Hello'

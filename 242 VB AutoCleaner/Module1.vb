@@ -52,7 +52,7 @@ Module modMain
         Next
 
         ' Delete files starting with the older until 25% of the disk is available
-        Dim di As System.IO.DriveInfo
+        Dim di As IO.DriveInfo
         'Console.WriteLine("$5")
         For Each fad In llList
             di = My.Computer.FileSystem.GetDriveInfo(Left(sDir, 2))

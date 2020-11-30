@@ -3,8 +3,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010  Updated paths
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Windows Form Designer generated code "
 
@@ -19,7 +21,7 @@ Public Class Form1
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -27,30 +29,31 @@ Public Class Form1
         End If
         MyBase.Dispose(disposing)
     End Sub
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents btnLoad As System.Windows.Forms.Button
-    Friend WithEvents btnKill As System.Windows.Forms.Button
-    Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents btnGC As System.Windows.Forms.Button
+
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents btnLoad As Button
+    Friend WithEvents btnKill As Button
+    Friend WithEvents btnClear As Button
+    Friend WithEvents btnGC As Button
 
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnLoad = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.btnKill = New System.Windows.Forms.Button()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.btnGC = New System.Windows.Forms.Button()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnLoad = New Button()
+        Me.PictureBox1 = New PictureBox()
+        Me.btnKill = New Button()
+        Me.btnClear = New Button()
+        Me.btnGC = New Button()
         Me.SuspendLayout()
         '
         'btnLoad
         '
         Me.btnLoad.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
-        Me.btnLoad.Location = New System.Drawing.Point(284, 12)
+        Me.btnLoad.Location = New Point(284, 12)
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.TabIndex = 1
         Me.btnLoad.Text = "Load"
@@ -61,9 +64,9 @@ Public Class Form1
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right)
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 12)
+        Me.PictureBox1.Location = New Point(8, 12)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(264, 246)
+        Me.PictureBox1.Size = New Size(264, 246)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
@@ -71,7 +74,7 @@ Public Class Form1
         'btnKill
         '
         Me.btnKill.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
-        Me.btnKill.Location = New System.Drawing.Point(284, 108)
+        Me.btnKill.Location = New Point(284, 108)
         Me.btnKill.Name = "btnKill"
         Me.btnKill.TabIndex = 1
         Me.btnKill.Text = "Kill"
@@ -79,7 +82,7 @@ Public Class Form1
         'btnClear
         '
         Me.btnClear.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
-        Me.btnClear.Location = New System.Drawing.Point(284, 44)
+        Me.btnClear.Location = New Point(284, 44)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.TabIndex = 1
         Me.btnClear.Text = "Clear"
@@ -87,16 +90,16 @@ Public Class Form1
         'btnGC
         '
         Me.btnGC.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
-        Me.btnGC.Location = New System.Drawing.Point(284, 76)
+        Me.btnGC.Location = New Point(284, 76)
         Me.btnGC.Name = "btnGC"
         Me.btnGC.TabIndex = 1
         Me.btnGC.Text = "Collect"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(368, 265)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.btnGC, Me.btnClear, Me.btnKill, Me.btnLoad, Me.PictureBox1})
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(368, 265)
+        Me.Controls.AddRange(New Control() {Me.btnGC, Me.btnClear, Me.btnKill, Me.btnLoad, Me.PictureBox1})
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
@@ -108,7 +111,7 @@ Public Class Form1
     Private Const sSoucePath As String = "C:\Pictures\Escher\BondOfUnion.jpg"
     Private Const sCopyPath As String = "C:\Temp\BondOfUnion.jpg"
 
-    Private Sub btnLoad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLoad.Click
+    Private Sub btnLoad_Click(sender As System.Object, e As EventArgs) Handles btnLoad.Click
         Try
             FileCopy(sSoucePath, sCopyPath)
         Catch er As Exception
@@ -119,15 +122,15 @@ Public Class Form1
         PictureBox1.Image = System.Drawing.Image.FromFile(sCopyPath)
     End Sub
 
-    Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
+    Private Sub btnClear_Click(sender As System.Object, e As EventArgs) Handles btnClear.Click
         PictureBox1.Image = Nothing
     End Sub
 
-    Private Sub btnGC_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGC.Click
+    Private Sub btnGC_Click(sender As System.Object, e As EventArgs) Handles btnGC.Click
         System.GC.Collect()
     End Sub
 
-    Private Sub btnKill_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnKill.Click
+    Private Sub btnKill_Click(sender As System.Object, e As EventArgs) Handles btnKill.Click
         Try
             Kill(sCopyPath)
         Catch er As Exception

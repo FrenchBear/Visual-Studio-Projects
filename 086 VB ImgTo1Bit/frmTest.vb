@@ -6,8 +6,10 @@
 
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -22,7 +24,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -35,37 +37,39 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
+    Friend WithEvents PictureBox1 As PictureBox
+
+    Friend WithEvents PictureBox2 As PictureBox
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.PictureBox1 = New PictureBox
+        Me.PictureBox2 = New PictureBox
         Me.SuspendLayout()
         '
         'PictureBox1
         '
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 8)
+        Me.PictureBox1.Location = New Point(8, 8)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(284, 264)
+        Me.PictureBox1.Size = New Size(284, 264)
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'PictureBox2
         '
         Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox2.Location = New System.Drawing.Point(300, 8)
+        Me.PictureBox2.Location = New Point(300, 8)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(284, 264)
+        Me.PictureBox2.Size = New Size(284, 264)
         Me.PictureBox2.TabIndex = 1
         Me.PictureBox2.TabStop = False
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(588, 278)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(588, 278)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.MinimizeBox = False
@@ -77,15 +81,16 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         PictureBox1.Image = Image.FromFile("..\pv.jpg")
         PictureBox2.Image = imgTo1Bit(PictureBox1.Image)
     End Sub
+
 End Class
 
-
 Module ConversionImages
-    Public Function imgTo1Bit(ByVal imgSource As Bitmap) As Bitmap
+
+    Public Function imgTo1Bit(imgSource As Bitmap) As Bitmap
         Dim bm As New Bitmap(imgSource.Width, imgSource.Height, Imaging.PixelFormat.Format1bppIndexed)
         Dim bmd As BitmapData = bm.LockBits(New Rectangle(0, 0, bm.Width, bm.Height), ImageLockMode.ReadWrite, PixelFormat.Format1bppIndexed)
 
@@ -119,9 +124,6 @@ Module ConversionImages
 
         Return bm
     End Function
-
-
-
 
     'Sub RGPaintBitmap(ByVal x As Integer, ByVal y As Integer, ByRef tbByte As ArrayList, ByVal iWidth As Integer, ByVal iHeight As Integer, ByVal iDPIRaster As Integer)
     '  Dim bmpImage3 As New Bitmap(iWidth, iHeight, PixelFormat.Format24bppRgb)

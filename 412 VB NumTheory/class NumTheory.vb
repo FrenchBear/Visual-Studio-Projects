@@ -2,13 +2,12 @@
 ' Essais de code sur les nombres premiers
 ' 2011-10-22 PV
 
-
 Class NumTheory
 
     ''' <summary>
     ''' Computes n factorial mod b
     ''' </summary>
-    Public Function FactMod(ByVal n As Long, ByVal b As Long) As Long
+    Public Function FactMod(n As Long, b As Long) As Long
         Dim r As Long = 1
         While n > 1
             r = (r * n) Mod b
@@ -17,21 +16,20 @@ Class NumTheory
         Return r
     End Function
 
-
     ''' <summary>
     ''' Returns if a number is prime using Wilson's theorem
     ''' </summary>
-    ''' <remarks> 
+    ''' <remarks>
     ''' p is prime if and only if (p-1)! = -1 (mod p)
     '''</remarks>
-    Private Function IsPrimeWilson(ByVal n As Long) As Boolean
+    Private Function IsPrimeWilson(n As Long) As Boolean
         Return FactMod(n - 1, n) = n - 1
     End Function
 
     ''' <summary>
     ''' Generate a list of primes using Wilson's theorem, but practically this is too slow
     ''' </summary>
-    Function GeneratePrimeListWilson(ByVal n As Long) As IEnumerable(Of Long)
+    Function GeneratePrimeListWilson(n As Long) As IEnumerable(Of Long)
         Dim lp As New List(Of Long)
         If n < 2 Then Return lp
         lp.Add(2)
@@ -42,11 +40,10 @@ Class NumTheory
         Return lp
     End Function
 
-
     ''' <summary>
     ''' Returns next prime using Wilson's Theorem prime detection algorithm
     ''' </summary>
-    Function NextPrimeWilson(ByVal n As Long) As Long
+    Function NextPrimeWilson(n As Long) As Long
         If n Mod 2 = 0 Then n += 1 Else n += 2
         While Not IsPrimeWilson(n)
             n += 2
@@ -54,11 +51,10 @@ Class NumTheory
         Return n
     End Function
 
-
     ''' <summary>
     ''' Return a list of primes based on successive divisions
     ''' </summary>
-    Function GeneratePrimeListDivision(ByVal n As Long) As IEnumerable(Of Long)
+    Function GeneratePrimeListDivision(n As Long) As IEnumerable(Of Long)
         Dim lp As New List(Of Long)
         If n < 2 Then Return lp
         lp.Add(2)
@@ -80,7 +76,7 @@ Class NumTheory
     ''' <summary>
     ''' Return a list of primes based on simple Erathostenes sieve (eliminating even numbers)
     ''' </summary>
-    Function GeneratePrimeListSieve(ByVal n As Long) As IEnumerable(Of Long)
+    Function GeneratePrimeListSieve(n As Long) As IEnumerable(Of Long)
         Dim lp As New List(Of Long)
         If n < 2 Then Return lp
         lp.Add(2)
@@ -105,7 +101,6 @@ Class NumTheory
         Return lp
     End Function
 
-
     ''' <summary>
     ''' Return a list of primes based on Erathostenes sieve, using factorization wheel (2x3x5)
     ''' </summary>
@@ -113,7 +108,7 @@ Class NumTheory
     ''' Using factorization wheel 2x3x5 eliminates multiples in a block of 30.
     ''' In the range [30k+1..30k+30], we should only check 30k+1,7,11,13,17,19,23,29, that is, we only need 8 bits
     ''' </remarks>
-    Function GeneratePrimeListSieve2(ByVal n As Long) As IEnumerable(Of Long)
+    Function GeneratePrimeListSieve2(n As Long) As IEnumerable(Of Long)
         Dim lp As New List(Of Long)
         If n < 2 Then Return lp
         lp.Add(2)
@@ -158,8 +153,6 @@ Class NumTheory
         Return lp
     End Function
 
-
-
     ''' <summary>
     ''' Return a list of primes based on Erathostenes sieve, using factorization wheel (2x3x5) but storing all even numbers
     ''' </summary>
@@ -167,7 +160,7 @@ Class NumTheory
     ''' Using factorization wheel 2x3x5 eliminates multiples in a block of 30.
     ''' In the range [30k+1..30k+30], we should only check 30k+1,7,11,13,17,19,23,29
     ''' </remarks>
-    Function GeneratePrimeListSieve3(ByVal n As Long) As IEnumerable(Of Long)
+    Function GeneratePrimeListSieve3(n As Long) As IEnumerable(Of Long)
         Dim lp As New List(Of Long)
         If n < 2 Then Return lp
         lp.Add(2)
@@ -201,11 +194,10 @@ Class NumTheory
         Return lp
     End Function
 
-
     ''' <summary>
     ''' Computes a power n modulo b using binary exponentiation
     ''' </summary>
-    Private Function PwrMod(ByVal a As Long, ByVal n As Long, ByVal b As Long) As Long
+    Private Function PwrMod(a As Long, n As Long, b As Long) As Long
         Dim v, r, p, res As Long
         res = 1
         p = a
@@ -220,13 +212,12 @@ Class NumTheory
         Return res
     End Function
 
-
     ''' <summary>
     ''' Miller–Rabin probabilistic primality test
     ''' </summary>
     ''' <returns>false if n is composite, true if n is probably prime</returns>
     ''' <remarks>http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test</remarks>
-    Public Function isPrimeMillerRabin(ByVal n As Long) As Boolean
+    Public Function isPrimeMillerRabin(n As Long) As Boolean
         If n <= 3 Then Return True
         If n Mod 2 = 0 Then Return False
         Dim d As Long = n - 1
@@ -253,7 +244,7 @@ NextLoop:
     ''' <summary>
     ''' Return a list of primes built using Miller-Rabin algorithm
     ''' </summary>
-    Function GeneratePrimeListMillerRabin(ByVal n As Long) As IEnumerable(Of Long)
+    Function GeneratePrimeListMillerRabin(n As Long) As IEnumerable(Of Long)
         Dim lp As New List(Of Long)
         If n < 2 Then Return lp
         lp.Add(2)
@@ -267,7 +258,7 @@ NextLoop:
     ''' <summary>
     ''' Returns next prime using Miller-Rabin probabilist prime detection algorithm
     ''' </summary>
-    Function NextPrimeMillerRabin(ByVal n As Long) As Long
+    Function NextPrimeMillerRabin(n As Long) As Long
         If n Mod 2 = 0 Then n += 1 Else n += 2
         While Not isPrimeMillerRabin(n)
             n += 2
@@ -275,11 +266,10 @@ NextLoop:
         Return n
     End Function
 
-
     ''' <summary>
     ''' Return Greatest Common Divisor using Euclidean Algorithm
     ''' </summary>
-    Function gcd(ByVal a As Long, ByVal b As Long) As Long
+    Function gcd(a As Long, b As Long) As Long
         While b <> 0
             Dim t As Long = b
             b = a Mod b
@@ -288,8 +278,7 @@ NextLoop:
         Return a
     End Function
 
-
-    Function factors(ByVal n As Long) As IEnumerable(Of Long)
+    Function factors(n As Long) As IEnumerable(Of Long)
         Dim lf As New List(Of Long)
         If isPrimeMillerRabin(n) Then
             lf.Add(n)
@@ -312,7 +301,7 @@ NextLoop:
         Return lf
     End Function
 
-    Public Function PollardRho(ByVal n As Long) As Long
+    Public Function PollardRho(n As Long) As Long
         Dim x As Long = 2
         Dim y As Long = 2
         Dim d As Long = 1

@@ -8,14 +8,17 @@
 
 Option Compare Text
 
-Imports vb = Microsoft.VisualBasic
 Imports System.Text.RegularExpressions
+Imports vb = Microsoft.VisualBasic
+
+#Disable Warning IDE1006 ' Naming Styles
 
 
 ''' <summary>
 ''' Main form of RenameFiles
 ''' </summary>
 Public Class frmRenameFiles
+
     ''' <summary>About command in System menu</summary>
     Private WithEvents mobjSubclassedSystemMenu As SubclassedSystemMenu
 
@@ -25,7 +28,7 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Form initialization
     ''' </summary>
-    Private Sub frmRenameFiles_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub frmRenameFiles_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' About command in System menu
         mobjSubclassedSystemMenu = New SubclassedSystemMenu(Me.Handle.ToInt32, "&About...")
     End Sub
@@ -38,11 +41,10 @@ Public Class frmRenameFiles
         frmNew.ShowDialog(Me)
     End Sub
 
-
     ''' <summary>
     ''' Folder selection through windows standard folder selection dialog box
     ''' </summary>
-    Private Sub btnSelectFolder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelectFolder.Click
+    Private Sub btnSelectFolder_Click(sender As System.Object, e As EventArgs) Handles btnSelectFolder.Click
         FolderBrowserDialog1.SelectedPath = txtFolder.Text
         If FolderBrowserDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             txtFolder.Text = FolderBrowserDialog1.SelectedPath
@@ -52,7 +54,7 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Action OnClick Preview button
     ''' </summary>
-    Private Sub btnPreview_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreview.Click
+    Private Sub btnPreview_Click(sender As System.Object, e As EventArgs) Handles btnPreview.Click
         tsslText.Text = "Working..."
         StatusStrip1.Refresh()
         nbFile = 0
@@ -65,7 +67,7 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Action onClick Rename button
     ''' </summary>
-    Private Sub btnRename_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRename.Click
+    Private Sub btnRename_Click(sender As System.Object, e As EventArgs) Handles btnRename.Click
         tsslText.Text = "Working..."
         StatusStrip1.Refresh()
         If lvPreview.Items.Count = 0 Then PrepareRename()
@@ -96,7 +98,7 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Analyzes recursively files from filesystem
     ''' </summary>
-    Private Sub Analyze(ByVal sRootPath As String, ByVal sFolder As String)
+    Private Sub Analyze(sRootPath As String, sFolder As String)
         Dim s As String = sRootPath
         If sFolder <> "" Then
             If vb.Right(s, 1) <> "\" Then s &= "\"
@@ -265,7 +267,7 @@ Public Class frmRenameFiles
     ''' ^u = Searched textm, Uppercase
     ''' ^l = Seached text, Lowercase
     ''' </remarks>
-    Function sGetReplacement(ByVal sFound As String, ByVal sReplaceExpression As String)
+    Function sGetReplacement(sFound As String, sReplaceExpression As String)
         sReplaceExpression = Replace(sReplaceExpression, "^^", "^")
         sReplaceExpression = Replace(sReplaceExpression, "^&", sFound)
         sReplaceExpression = Replace(sReplaceExpression, "^u", UCase(sFound))
@@ -276,7 +278,7 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Action OnClick of header column - Change sort order
     ''' </summary>
-    Private Sub lvPreview_ColumnClick(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnClickEventArgs) Handles lvPreview.ColumnClick
+    Private Sub lvPreview_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles lvPreview.ColumnClick
         Static iCurCol As Integer
         Static iOrder As Integer
 
@@ -291,7 +293,6 @@ Public Class frmRenameFiles
 
 End Class
 
-
 ''' <summary>
 ''' Implements ListView column sorting
 ''' </summary>
@@ -304,13 +305,14 @@ Class ListViewItemComparer
         col = 0
     End Sub
 
-    Public Sub New(ByVal column As Integer, ByVal order As Integer)
+    Public Sub New(column As Integer, order As Integer)
         col = column
         ord = order
     End Sub
 
-    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer _
+    Public Function Compare(x As Object, y As Object) As Integer _
        Implements IComparer.Compare
         Return [String].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text) * ord
     End Function
+
 End Class

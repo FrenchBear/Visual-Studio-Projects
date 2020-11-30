@@ -1,7 +1,7 @@
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-' General Information about an assembly is controlled through the following 
+' General Information about an assembly is controlled through the following
 ' set of attributes. Change these attribute values to modify the information
 ' associated with an assembly.
 
@@ -15,8 +15,7 @@ Imports System.Runtime.InteropServices
 
 ' Ajouts PV
 <Assembly: AssemblyInformationalVersion("1.2.3.4")>
-'<Assembly: AssemblyFlags(0)> 
-
+'<Assembly: AssemblyFlags(0)>
 
 ' Attributs privés
 <Assembly: AssemblyPV(47, Info:="Attribut PV")>
@@ -26,10 +25,10 @@ Imports System.Runtime.InteropServices
 
 ' Version information for an assembly consists of the following four values:
 '      Major Version
-'      Minor Version 
+'      Minor Version
 '      Build Number
 '      Revision
-' You can specify all the values or you can default the Build and Revision Numbers 
+' You can specify all the values or you can default the Build and Revision Numbers
 ' by using the '*' as shown below:
 
 <Assembly: AssemblyVersion("3.5.*")>

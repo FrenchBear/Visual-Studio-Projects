@@ -4,16 +4,16 @@
 // http://stackoverflow.com/questions/826398/is-it-possible-to-dynamically-compile-and-execute-c-sharp-code-fragments
 // 2013-09-15   PV
 
+using Microsoft.CSharp;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.CSharp;
-using System.CodeDom.Compiler;
 using System.Reflection;
 
-class Program
+internal class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         // v4.0 actually means 4.5, see http://stackoverflow.com/questions/13253967/how-to-target-net-4-5-with-csharpcodeprovider
 

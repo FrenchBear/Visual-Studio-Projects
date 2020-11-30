@@ -3,11 +3,12 @@
 
 Public Class Form1
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         WebBrowser1.Url = New Uri("C:\Documents\Doc tech\All about application icons.htm")
     End Sub
 
-    Private Sub WebBrowser1_DocumentCompleted(ByVal sender As System.Object, ByVal e As System.Windows.Forms.WebBrowserDocumentCompletedEventArgs) Handles WebBrowser1.DocumentCompleted
+    Private Sub WebBrowser1_DocumentCompleted(sender As System.Object, e As WebBrowserDocumentCompletedEventArgs) Handles WebBrowser1.DocumentCompleted
         MsgBox("Chargé !")
     End Sub
+
 End Class

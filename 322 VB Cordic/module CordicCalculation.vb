@@ -3,7 +3,6 @@
 ' 2008-12-28    PV
 ' 2012-02-25	PV  VS2010
 
-
 Module CordicCalculation
 
     ' Precision
@@ -26,7 +25,7 @@ Module CordicCalculation
     End Sub
 
     ' Accept any angle
-    Function CordicTanRadian(ByVal Θ As Double) As Double
+    Function CordicTanRadian(Θ As Double) As Double
         If Θ = 0 Then Return 0
         Dim s As SByte = Math.Sign(Θ)
         Θ = Math.Abs(Θ)
@@ -40,7 +39,7 @@ Module CordicCalculation
 
     ' Cordic algorithm
     ' Only accepts angles between 0 and Pi/2
-    Function CordicTanCore(ByVal Θ As Double) As Double
+    Function CordicTanCore(Θ As Double) As Double
         Dim i As Integer
         Dim x, y, k As Double
         x = 1.0

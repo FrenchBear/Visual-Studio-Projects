@@ -6,10 +6,12 @@ Option Compare Text
 
 Imports vb = Microsoft.VisualBasic
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class LaunchpadForm
     ReadOnly colMenus As New Generic.Dictionary(Of String, MenuCommand)
 
-    Private Sub GenericClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub GenericClick(sender As System.Object, e As EventArgs)
         Dim mc As MenuCommand = colMenus(sender.tag)
 
         'If mc.iType = MenuCommand.MenuCommandTypeEnum.mctCommand Then
@@ -18,17 +20,16 @@ Public Class LaunchpadForm
         MsgBox("GenericClick on " & sender.tag & vbCrLf & "Command: " & mc.sCommand)
     End Sub
 
-    Private Sub GenericMouseEnter(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub GenericMouseEnter(sender As Object, e As EventArgs)
         sbMain.Text = colMenus(sender.tag).sToolTip
     End Sub
 
-    Private Sub GenericMouseLeave(ByVal sender As Object, ByVal e As System.EventArgs)
+    Private Sub GenericMouseLeave(sender As Object, e As EventArgs)
         sbMain.Text = ""
     End Sub
 
-
-    Private Sub LaunchpadForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim reader As New System.Xml.XmlTextReader("..\Menu.xml")
+    Private Sub LaunchpadForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Dim reader As New Xml.XmlTextReader("..\Menu.xml")
         Dim mc As MenuCommand
         While reader.Read()
             reader.MoveToContent()
@@ -78,7 +79,7 @@ Public Class LaunchpadForm
         reader.Close()
         'reader.Dispose()
 
-        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.QuitterToolStripMenuItem})
+        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {Me.QuitterToolStripMenuItem})
 
         'MsgBox("Found: " & colMenus.Count & " menus")
         Dim tsmiHead(4), tsmiCommand As ToolStripMenuItem
@@ -88,8 +89,8 @@ Public Class LaunchpadForm
             Select Case mc.iType
                 Case MenuCommand.MenuCommandTypeEnum.mctMenuHeader, MenuCommand.MenuCommandTypeEnum.mctCommand, MenuCommand.MenuCommandTypeEnum.mctInternal, MenuCommand.MenuCommandTypeEnum.mctPlugIn, MenuCommand.MenuCommandTypeEnum.mctVBASub, MenuCommand.MenuCommandTypeEnum.mctVBScript
                     tsmiCommand = New ToolStripMenuItem With {
-                        .Text = sGetCaption(mc.sCaption),
-                        .ToolTipText = sGetCaption(mc.sToolTip)
+                        .Text = GetCaption(mc.sCaption),
+                        .ToolTipText = GetCaption(mc.sToolTip)
                     }
                     If mc.sIconFile <> "" Then
                         If My.Computer.FileSystem.FileExists("..\Etc\" & mc.sIconFile) Then
@@ -127,7 +128,7 @@ Public Class LaunchpadForm
                             Dim b As ToolStripButton
                             b = New ToolStripButton With {
                                 .Tag = mc.UserKey,
-                                .ToolTipText = sGetCaption(mc.sCaption)
+                                .ToolTipText = GetCaption(mc.sCaption)
                             }
 
                             If My.Computer.FileSystem.FileExists("..\Etc\" & mc.sIconFile) Then
@@ -158,7 +159,7 @@ Public Class LaunchpadForm
         Next
     End Sub
 
-    Private Function sGetCaption(ByVal sName As String) As String
+    Private Function GetCaption(sName As String) As String
         Dim myCastedTag As String
         Dim isCastedTag, isLastCarCaps, isNextCarCaps As Boolean
         isCastedTag = False
@@ -183,20 +184,21 @@ Public Class LaunchpadForm
                     isLastCarCaps = False
                 End If
             Next j
-            sGetCaption = myCastedTag
+            GetCaption = myCastedTag
         Else
-            sGetCaption = sName
+            GetCaption = sName
         End If
 
     End Function
 
-    Private Sub cmdExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdExit.Click
+    Private Sub cmdExit_Click(sender As System.Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub
+
 End Class
 
-
 Class MenuCommand
+
     ' Type of command in a IMenuCommand object
     Public Enum MenuCommandTypeEnum
         mctNothing = 0

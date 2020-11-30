@@ -5,7 +5,6 @@
 using System;
 using System.Reflection;
 
-
 public class MaClasse
 {
     public MaClasse()
@@ -64,12 +63,10 @@ public class MyLib
             Console.WriteLine("  " + an.FullName);
         Console.WriteLine();
 
-
         // Accès direct
         AssemblyCompanyAttribute z1 = (AssemblyCompanyAttribute)a.GetCustomAttributes(typeof(AssemblyCompanyAttribute), true)[0];
         Console.WriteLine(z1.Company);
         AssemblyCopyrightAttribute z2 = (AssemblyCopyrightAttribute)a.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), true)[0];
         Console.WriteLine(z2.Copyright);
-
     }
 }

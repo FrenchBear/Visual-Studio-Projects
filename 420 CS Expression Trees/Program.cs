@@ -3,17 +3,14 @@
 // 2012-03-04   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Linq.Expressions;
 using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace CS420
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Expression<Func<int, int>> Signe = x => x == 0 ? 0 : x > 0 ? 1 : -1;
 
@@ -50,7 +47,7 @@ namespace CS420
             // Creating a parameter expression.
             ParameterExpression value = Expression.Parameter(typeof(int), "value");
 
-            // Creating an expression to hold a local variable. 
+            // Creating an expression to hold a local variable.
             ParameterExpression result = Expression.Parameter(typeof(int), "result");
 
             // Creating a label to jump to from a loop.
@@ -85,7 +82,6 @@ namespace CS420
             int factorial = Expression.Lambda<Func<int, int>>(block, value).Compile()(5);
 
             Console.WriteLine(factorial);
-
 
             Debugger.Break();
         }

@@ -5,12 +5,11 @@
 // 2011-12-30   PV  VS2010  Updated connection string
 
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 public class Form1 : System.Windows.Forms.Form
 {
@@ -18,6 +17,7 @@ public class Form1 : System.Windows.Forms.Form
     private System.Windows.Forms.DataGrid dataGrid2;
     private System.Windows.Forms.Label label2;
     private System.Windows.Forms.Label label1;
+
     /// <summary>
     /// Variable nécessaire au concepteur.
     /// </summary>
@@ -42,6 +42,7 @@ public class Form1 : System.Windows.Forms.Form
     }
 
     #region Code généré par le Concepteur Windows Form
+
     /// <summary>
     /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
     /// le contenu de cette méthode avec l'éditeur de code.
@@ -55,45 +56,45 @@ public class Form1 : System.Windows.Forms.Form
         ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
         ((System.ComponentModel.ISupportInitialize)(this.dataGrid2)).BeginInit();
         this.SuspendLayout();
-        // 
+        //
         // dataGrid1
-        // 
+        //
         this.dataGrid1.DataMember = "";
         this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
         this.dataGrid1.Location = new System.Drawing.Point(8, 24);
         this.dataGrid1.Name = "dataGrid1";
         this.dataGrid1.Size = new System.Drawing.Size(448, 228);
         this.dataGrid1.TabIndex = 0;
-        // 
+        //
         // dataGrid2
-        // 
+        //
         this.dataGrid2.DataMember = "";
         this.dataGrid2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
         this.dataGrid2.Location = new System.Drawing.Point(8, 284);
         this.dataGrid2.Name = "dataGrid2";
         this.dataGrid2.Size = new System.Drawing.Size(276, 228);
         this.dataGrid2.TabIndex = 2;
-        // 
+        //
         // label2
-        // 
+        //
         this.label2.AutoSize = true;
         this.label2.Location = new System.Drawing.Point(8, 264);
         this.label2.Name = "label2";
         this.label2.Size = new System.Drawing.Size(155, 16);
         this.label2.TabIndex = 3;
         this.label2.Text = "DataTable créée dans le code";
-        // 
+        //
         // label1
-        // 
+        //
         this.label1.AutoSize = true;
         this.label1.Location = new System.Drawing.Point(8, 8);
         this.label1.Name = "label1";
         this.label1.Size = new System.Drawing.Size(224, 16);
         this.label1.TabIndex = 4;
         this.label1.Text = "DataSet lu dans la base via un DataAdapter";
-        // 
+        //
         // Form1
-        // 
+        //
         this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
         this.ClientSize = new System.Drawing.Size(744, 530);
         this.Controls.Add(this.label1);
@@ -106,13 +107,13 @@ public class Form1 : System.Windows.Forms.Form
         ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
         ((System.ComponentModel.ISupportInitialize)(this.dataGrid2)).EndInit();
         this.ResumeLayout(false);
-
     }
-    #endregion
+
+    #endregion Code généré par le Concepteur Windows Form
 
     /// Point d'entrée principal de l'application.
     [STAThread]
-    static void Main()
+    private static void Main()
     {
         Application.Run(new Form1());
     }
@@ -144,10 +145,8 @@ public class Form1 : System.Windows.Forms.Form
         dataGrid1.DataSource = myDataSet;
         dataGrid1.DataMember = "Customers";
 
-
         // On crée un dataview
         //DataView myDataView = new DataView(myDataSet.Tables["Suppliers"], "Country = 'UK'", "CompanyName", DataViewRowState.CurrentRows);
-
     }
 
     // DataTable créée dans le code
@@ -167,5 +166,4 @@ public class Form1 : System.Windows.Forms.Form
         DataView myDataView = new DataView(myTable);
         dataGrid2.DataSource = myDataView;
     }
-
 }

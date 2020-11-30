@@ -11,21 +11,21 @@
 // 2016-08-06   PV  1.1 Choice
 // 2016-08-13   PV  1.2 Shuffle and GetRange
 
-
 using System;
-using System.Collections.Generic;
-using static System.Console;
-using System.Diagnostics;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using static System.Console;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace CS544SkipAtChoice
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             IEnumerable<int> e = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
             WriteLine($"e: {e.AsString()}");
@@ -71,7 +71,7 @@ namespace CS544SkipAtChoice
 
             private IEnumerator<T> MyEnumerator()
             {
-                for (;;)
+                for (; ; )
                 {
                     if (!originalEnumerator.MoveNext())
                         yield break;
@@ -105,7 +105,6 @@ namespace CS544SkipAtChoice
             return new SkipAtEnumerator<T>(e, start, count);
         }
 
-
         private static readonly Random rnd = new Random();
 
         /// <summary>
@@ -134,7 +133,7 @@ namespace CS544SkipAtChoice
             // If list contains 3 elements, probability element 3 is selected = 1/3 (and 2/3 to remain the one chosen before)
             // ...
             int count = 0;
-            T current = default(T);
+            T current = default;
             foreach (T item in e)
             {
                 count++;
@@ -157,8 +156,6 @@ namespace CS544SkipAtChoice
             return e.Aggregate((T aggregated, T item) => { return (rnd.NextDouble() < 1.0 / ++count) ? item : aggregated; });
         }
 
-
-
         /// <summary>
         /// Prints the enumeration including end-of-line
         /// </summary>
@@ -168,7 +165,6 @@ namespace CS544SkipAtChoice
         {
             Console.WriteLine(e.AsString());
         }
-
 
         /// <summary>
         /// Returns a string version of the enumeration
@@ -195,10 +191,6 @@ namespace CS544SkipAtChoice
             return sb.ToString();
         }
 
-
-
-
-
         /// <summary>
         /// A quick-and-dirty shuffler for an enumerable, but slow (needs a sort in n.log(n))
         /// </summary>
@@ -212,7 +204,7 @@ namespace CS544SkipAtChoice
         }
 
         /// <summary>
-        /// A list shuffler in-place (no return value) using Fisher-Yates shuffle (swapping n random pairs).  
+        /// A list shuffler in-place (no return value) using Fisher-Yates shuffle (swapping n random pairs).
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="list">A list in a given order</param>
@@ -228,8 +220,6 @@ namespace CS544SkipAtChoice
                 list[n] = value;
             }
         }
-
-
 
         /// <summary>
         /// Internal enumerable class providing the object returned by GetRange extension
@@ -251,7 +241,7 @@ namespace CS544SkipAtChoice
 
             private IEnumerator<T> MyEnumerator()
             {
-                for (;;)
+                for (; ; )
                 {
                     if (pos >= start + count || !originalEnumerator.MoveNext())
                         yield break;
@@ -284,12 +274,10 @@ namespace CS544SkipAtChoice
         {
             return new GetRangeEnumerator<T>(e, start, count);
         }
-
     }
 
-
     /// <summary>
-    /// Helper to get a better random generator without using System.Security.Cryptography 
+    /// Helper to get a better random generator without using System.Security.Cryptography
     /// and RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
     /// </summary>
     public static class ThreadSafeRandom
@@ -302,5 +290,4 @@ namespace CS544SkipAtChoice
             get { return Local ?? (Local = new Random(unchecked(Environment.TickCount * 31 + Thread.CurrentThread.ManagedThreadId))); }
         }
     }
-
 }

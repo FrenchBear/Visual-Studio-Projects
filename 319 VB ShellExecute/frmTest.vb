@@ -3,23 +3,23 @@
 ' 2009-06-03    PV  Added ExpandEnvironmentVariables
 ' 2012-02-25	PV  VS2010
 
-
-Imports System
-Imports System.Diagnostics
 Imports System.ComponentModel
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmTest
+
     ' These are the Win32 error code for file not found or access denied.
     Private ReadOnly ERROR_FILE_NOT_FOUND As Integer = 2
+
     Private ReadOnly ERROR_ACCESS_DENIED As Integer = 5
 
-    Private Sub btnShellExecute_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnShellExecute.Click
+    Private Sub btnShellExecute_Click(sender As System.Object, e As EventArgs) Handles btnShellExecute.Click
         Dim iRet As Integer = ShellExecute(txtCommand.Text)
         MsgBox("Ret: " & iRet)
     End Sub
 
-    Private Function ShellExecute(ByVal sCommand As String) As Integer
+    Private Function ShellExecute(sCommand As String) As Integer
         ' Find first blank to split command and arguments
         Dim p As Integer = 0
         Dim bInQuote As Boolean = False
@@ -39,11 +39,9 @@ Public Class frmTest
 
         Try
             myProcess.Start()
-
         Catch ex As Win32Exception
             If ex.NativeErrorCode = ERROR_FILE_NOT_FOUND Then
                 Console.WriteLine((ex.Message + ". Check the path."))
-
             Else
                 If ex.NativeErrorCode = ERROR_ACCESS_DENIED Then
                     ' Note that if your word processor might generate exceptions

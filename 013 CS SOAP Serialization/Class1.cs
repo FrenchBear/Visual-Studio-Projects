@@ -4,19 +4,18 @@
 
 using System;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+
 //using System.Runtime.Serialization.Formatters.Soap;
 
-
-class TestSer
+internal class TestSer
 {
-
     [Serializable]
-    class MaClasse
+    private class MaClasse
     {
-        readonly int i;
-        readonly String s;
+        private readonly int i;
+        private readonly String s;
+
         public MaClasse(int i, String s)
         {
             this.i = i;
@@ -28,8 +27,6 @@ class TestSer
             return "i:" + i + ", s:" + s;
         }
     }
-
-
 
     public static void Main(string[] args)
     {

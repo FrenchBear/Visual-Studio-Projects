@@ -1,20 +1,18 @@
 ' 234 VB XMLConfig 2 (Serialize)
 ' 2012-02-25	PV  VS2010
 
-
 Option Compare Text
 
-Imports System.Xml
-Imports System.Xml.Serialization
 Imports System.IO
+Imports System.Xml.Serialization
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class Form1
     Dim sConfigPath As String
     Dim all As CheckSPConfigurations
 
-
-    Private Sub btnExecute_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExecute.Click
+    Private Sub btnExecute_Click(sender As System.Object, e As EventArgs) Handles btnExecute.Click
         'If txtServer.Text = "" Or txtDatabase.Text = "" Then
         '    MsgBox("Invalid config, Server or Database empty", MsgBoxStyle.Exclamation)
         '    Exit Sub
@@ -26,7 +24,7 @@ Public Class Form1
         MsgBox("Config saved")
     End Sub
 
-    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Const sConfigFile As String = "my configuration 2.xml"
         sConfigPath = Replace(Replace(My.Application.Info.DirectoryPath & "\" & sConfigFile, "\bin\debug\", "\"), "\bin\release\", "\")
 
@@ -94,15 +92,14 @@ Public Class Form1
 
     End Sub
 
-    Private Sub serializer_UnknownNode(ByVal sender As Object, ByVal e As XmlNodeEventArgs)
+    Private Sub serializer_UnknownNode(sender As Object, e As XmlNodeEventArgs)
         MsgBox("Unknown Node:" & e.Name & ControlChars.Tab & e.Text)
     End Sub
 
-    Private Sub serializer_UnknownAttribute(ByVal sender As Object, ByVal e As XmlAttributeEventArgs)
-        Dim attr As System.Xml.XmlAttribute = e.Attr
+    Private Sub serializer_UnknownAttribute(sender As Object, e As XmlAttributeEventArgs)
+        Dim attr As Xml.XmlAttribute = e.Attr
         MsgBox("Unknown attribute " & attr.Name & "='" & attr.Value & "'")
     End Sub
-
 
     Public Sub SaveConfig()
         ' Rename old config file .bak
@@ -124,13 +121,13 @@ Public Class Form1
 
 End Class
 
-
 Public Class CheckSPConfigurations
     Public savedOn As Date
     Public Configs() As OneConfig
 End Class
 
 Public Class OneConfig
+
     <XmlAttribute("Name")>
     Public sConfigName As String
 

@@ -5,7 +5,6 @@
 
 Imports System.Runtime.CompilerServices
 
-
 Module Module1
 
     Sub Main()
@@ -16,12 +15,11 @@ Module Module1
         Dim ExtendedList As IEnumerable(Of String) = fruits.AddHeadElement("pinapple")
 
         ' Display the results.
-        Dim output As New System.Text.StringBuilder
+        Dim output As New Text.StringBuilder
         For Each fruit As String In ExtendedList
             output.AppendLine(fruit)
         Next
         MsgBox(output.ToString() & "(count=" & ExtendedList.Compte.ToString & ")")
-
 
         ' Create a collection of sequential integers
         ' from 1 to 10 and project their squares.
@@ -30,19 +28,18 @@ Module Module1
             Enumerable.Range(1, 10).Select(Function(x) x * x).AddHeadElement(473)
 
         ' Display the output.
-        output = New System.Text.StringBuilder
+        output = New Text.StringBuilder
         For Each num As Integer In squares
             output.AppendLine(num)
         Next
         MsgBox(output.ToString())
-
 
         ' Filter this list to retain even numbers
         'Dim FindEvenNumber As Predicate(Of Integer) = AddressOf IsEvenInteger
         'Dim EvenList As IEnumerable(Of Integer) = squares.Filter(FindEvenNumber)
         Dim EvenList As IEnumerable(Of Integer) = squares.Filter(Function(n As Integer) (n And 1) = 0)
 
-        output = New System.Text.StringBuilder
+        output = New Text.StringBuilder
         For Each num As Integer In EvenList
             output.AppendLine(num)
         Next
@@ -57,16 +54,14 @@ Module Module1
         'P2 = Function(n As Integer) n <> 0
     End Sub
 
-    Function IsEvenInteger(ByVal n As Integer) As Boolean
+    Function IsEvenInteger(n As Integer) As Boolean
         Return (n And 1) = 0
     End Function
 
-
-
     ' Extension of IEnumerable(T)
 
-    <ExtensionAttribute()>
-    Public Function AddHeadElement(Of TSource)(ByVal source As IEnumerable(Of TSource), ByVal HeadElement As TSource) As IEnumerable(Of TSource)
+    <Extension()>
+    Public Function AddHeadElement(Of TSource)(source As IEnumerable(Of TSource), HeadElement As TSource) As IEnumerable(Of TSource)
         Return New ExtendedEnumeration(Of TSource)(source, HeadElement)
     End Function
 
@@ -74,23 +69,21 @@ Module Module1
         Implements IEnumerable(Of TSource)
         Implements IDisposable
 
-
         Private ReadOnly _Source As IEnumerable(Of TSource)
         Private ReadOnly _HeadElement As TSource
 
-        Public Sub New(ByVal Source As IEnumerable(Of TSource), ByVal HeadElement As TSource)
+        Public Sub New(Source As IEnumerable(Of TSource), HeadElement As TSource)
             _Source = Source
             _HeadElement = HeadElement
         End Sub
 
-        Public Function GetEnumerator() As System.Collections.Generic.IEnumerator(Of TSource) Implements System.Collections.Generic.IEnumerable(Of TSource).GetEnumerator
+        Public Function GetEnumerator() As IEnumerator(Of TSource) Implements IEnumerable(Of TSource).GetEnumerator
             Return New ExtendedEnumerator(Of TSource)(_Source, _HeadElement)
         End Function
 
-        Public Function GetEnumerator1() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
+        Public Function GetEnumerator1() As IEnumerator Implements IEnumerable.GetEnumerator
             Return New ExtendedEnumerator(Of TSource)(_Source, _HeadElement)
         End Function
-
 
         Private Class ExtendedEnumerator(Of T)
             Implements IEnumerator(Of T)
@@ -100,14 +93,13 @@ Module Module1
             Private ReadOnly _HeadElement As T
             Private _Position As Integer
 
-            Public Sub New(ByVal Source As IEnumerable(Of T), ByVal HeadElement As T)
+            Public Sub New(Source As IEnumerable(Of T), HeadElement As T)
                 _SourceEnumerator = Source.GetEnumerator
                 _HeadElement = HeadElement
                 _Position = -2
             End Sub
 
-
-            Public ReadOnly Property Current() As T Implements System.Collections.Generic.IEnumerator(Of T).Current
+            Public ReadOnly Property Current() As T Implements IEnumerator(Of T).Current
                 Get
                     If _Position = -2 Then
                         Throw New InvalidOperationException("InvalidOperation_EnumNotStarted")
@@ -120,13 +112,13 @@ Module Module1
                 End Get
             End Property
 
-            Public ReadOnly Property Current1() As Object Implements System.Collections.IEnumerator.Current
+            Public ReadOnly Property Current1() As Object Implements IEnumerator.Current
                 Get
                     Return Current
                 End Get
             End Property
 
-            Public Function MoveNext() As Boolean Implements System.Collections.IEnumerator.MoveNext
+            Public Function MoveNext() As Boolean Implements IEnumerator.MoveNext
                 If _Position = -2 Then
                     _Position = -1
                     Return True             ' HeadElement can always be returned
@@ -134,16 +126,15 @@ Module Module1
                 Return _SourceEnumerator.MoveNext
             End Function
 
-            Public Sub Reset() Implements System.Collections.IEnumerator.Reset
+            Public Sub Reset() Implements IEnumerator.Reset
                 _Position = -2
                 _SourceEnumerator.Reset()
             End Sub
 
-
             Private disposedValue As Boolean = False        ' To detect redundant calls
 
             ' IDisposable
-            Protected Overridable Sub Dispose(ByVal disposing As Boolean)
+            Protected Overridable Sub Dispose(disposing As Boolean)
                 If Not Me.disposedValue Then
                     If disposing Then
                         ' TODO: free other state (managed objects).
@@ -156,21 +147,22 @@ Module Module1
             End Sub
 
 #Region " IDisposable Support "
+
             ' This code added by Visual Basic to correctly implement the disposable pattern.
             Public Sub Dispose() Implements IDisposable.Dispose
                 ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
                 Dispose(True)
                 GC.SuppressFinalize(Me)
             End Sub
+
 #End Region
 
         End Class
 
-
         Private disposedValue As Boolean = False        ' To detect redundant calls
 
         ' IDisposable
-        Protected Overridable Sub Dispose(ByVal disposing As Boolean)
+        Protected Overridable Sub Dispose(disposing As Boolean)
             If Not Me.disposedValue Then
                 If disposing Then
                     ' TODO: free other state (managed objects).
@@ -183,23 +175,23 @@ Module Module1
         End Sub
 
 #Region " IDisposable Support "
+
         ' This code added by Visual Basic to correctly implement the disposable pattern.
         Public Sub Dispose() Implements IDisposable.Dispose
             ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
             Dispose(True)
             GC.SuppressFinalize(Me)
         End Sub
+
 #End Region
 
     End Class
 
-
-
     ' Extension of IEnumerable(Of T)
     ' Returns only elements that match a given predicate
 
-    <ExtensionAttribute()>
-    Public Function Filter(Of TSource)(ByVal source As IEnumerable(Of TSource), ByVal FilterPredicate As Predicate(Of TSource)) As IEnumerable(Of TSource)
+    <Extension()>
+    Public Function Filter(Of TSource)(source As IEnumerable(Of TSource), FilterPredicate As Predicate(Of TSource)) As IEnumerable(Of TSource)
         Return New FilteredEnumeration(Of TSource)(source, FilterPredicate)
     End Function
 
@@ -207,24 +199,21 @@ Module Module1
         Implements IEnumerable(Of TSource)
         Implements IDisposable
 
-
         Private ReadOnly _Source As IEnumerable(Of TSource)
         Private ReadOnly _FilterPredicate As Predicate(Of TSource)
 
-        Public Sub New(ByVal Source As IEnumerable(Of TSource), ByVal FilterPredicate As Predicate(Of TSource))
+        Public Sub New(Source As IEnumerable(Of TSource), FilterPredicate As Predicate(Of TSource))
             _Source = Source
             _FilterPredicate = FilterPredicate
         End Sub
 
-
-        Public Function GetEnumerator() As System.Collections.Generic.IEnumerator(Of TSource) Implements System.Collections.Generic.IEnumerable(Of TSource).GetEnumerator
+        Public Function GetEnumerator() As IEnumerator(Of TSource) Implements IEnumerable(Of TSource).GetEnumerator
             Return New FilteredEnumerator(Of TSource)(_Source, _FilterPredicate)
         End Function
 
-        Public Function GetEnumerator1() As System.Collections.IEnumerator Implements System.Collections.IEnumerable.GetEnumerator
+        Public Function GetEnumerator1() As IEnumerator Implements IEnumerable.GetEnumerator
             Return New FilteredEnumerator(Of TSource)(_Source, _FilterPredicate)
         End Function
-
 
         Private Class FilteredEnumerator(Of T)
             Implements IEnumerator(Of T)
@@ -234,14 +223,13 @@ Module Module1
             Private ReadOnly _FilterPredicate As Predicate(Of T)
             Private _Position As Integer
 
-            Public Sub New(ByVal Source As IEnumerable(Of T), ByVal FilterPredicate As Predicate(Of T))
+            Public Sub New(Source As IEnumerable(Of T), FilterPredicate As Predicate(Of T))
                 _SourceEnumerator = Source.GetEnumerator
                 _FilterPredicate = FilterPredicate
                 _Position = -1
             End Sub
 
-
-            Public ReadOnly Property Current() As T Implements System.Collections.Generic.IEnumerator(Of T).Current
+            Public ReadOnly Property Current() As T Implements IEnumerator(Of T).Current
                 Get
                     If _Position = -1 Then
                         Throw New InvalidOperationException("InvalidOperation_EnumNotStarted")
@@ -252,13 +240,13 @@ Module Module1
                 End Get
             End Property
 
-            Public ReadOnly Property Current1() As Object Implements System.Collections.IEnumerator.Current
+            Public ReadOnly Property Current1() As Object Implements IEnumerator.Current
                 Get
                     Return Current
                 End Get
             End Property
 
-            Public Function MoveNext() As Boolean Implements System.Collections.IEnumerator.MoveNext
+            Public Function MoveNext() As Boolean Implements IEnumerator.MoveNext
                 If _Position = 1 Then Return False ' Already reached end of list
                 _Position = 0
                 Do
@@ -275,16 +263,15 @@ Module Module1
                 Loop
             End Function
 
-            Public Sub Reset() Implements System.Collections.IEnumerator.Reset
+            Public Sub Reset() Implements IEnumerator.Reset
                 _Position = -1
                 _SourceEnumerator.Reset()
             End Sub
 
-
             Private disposedValue As Boolean = False        ' To detect redundant calls
 
             ' IDisposable
-            Protected Overridable Sub Dispose(ByVal disposing As Boolean)
+            Protected Overridable Sub Dispose(disposing As Boolean)
                 If Not Me.disposedValue Then
                     If disposing Then
                         ' TODO: free other state (managed objects).
@@ -297,22 +284,22 @@ Module Module1
             End Sub
 
 #Region " IDisposable Support "
+
             ' This code added by Visual Basic to correctly implement the disposable pattern.
             Public Sub Dispose() Implements IDisposable.Dispose
                 ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
                 Dispose(True)
                 GC.SuppressFinalize(Me)
             End Sub
+
 #End Region
 
         End Class
 
-
-
         Private disposedValue As Boolean = False        ' To detect redundant calls
 
         ' IDisposable
-        Protected Overridable Sub Dispose(ByVal disposing As Boolean)
+        Protected Overridable Sub Dispose(disposing As Boolean)
             If Not Me.disposedValue Then
                 If disposing Then
                     ' TODO: free other state (managed objects).
@@ -325,28 +312,29 @@ Module Module1
         End Sub
 
 #Region " IDisposable Support "
+
         ' This code added by Visual Basic to correctly implement the disposable pattern.
         Public Sub Dispose() Implements IDisposable.Dispose
             ' Do not change this code.  Put cleanup code in Dispose(ByVal disposing As Boolean) above.
             Dispose(True)
             GC.SuppressFinalize(Me)
         End Sub
+
 #End Region
 
     End Class
 
-
     ' Efficient implementation of count
-    <ExtensionAttribute()>
-    Public Function Compte(Of TSource)(ByVal source As IEnumerable(Of TSource)) As Integer
+    <Extension()>
+    Public Function Compte(Of TSource)(source As IEnumerable(Of TSource)) As Integer
         If source Is Nothing Then Throw New ArgumentNullException("source")
 
         ' If the real object supports ICollection then it implements count, use it
         Dim is2 As ICollection(Of TSource) = TryCast(source, ICollection(Of TSource))
-        If (Not is2 Is Nothing) Then Return is2.Count
+        If (is2 IsNot Nothing) Then Return is2.Count
         ' Non-generic version
         Dim is3 As ICollection = TryCast(source, ICollection)
-        If (Not is3 Is Nothing) Then Return is3.Count
+        If (is3 IsNot Nothing) Then Return is3.Count
 
         Dim num As Integer = 0
         Using enumerator As IEnumerator(Of TSource) = source.GetEnumerator

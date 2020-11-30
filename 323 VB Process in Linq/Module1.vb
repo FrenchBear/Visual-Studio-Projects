@@ -1,9 +1,6 @@
 ﻿' 323 VB Process in Linq
 ' 2012-02-25	PV  VS2010
 
-
-Imports System.Diagnostics
-
 Module Module1
 
     Sub Main()

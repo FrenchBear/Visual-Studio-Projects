@@ -2,11 +2,12 @@
 
 Public Class ucTemplate
 
-    Private Sub ToolStripButton1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub ToolStripButton1_Click(sender As System.Object, e As EventArgs)
         If GroupBox1.Dock = DockStyle.None Then
             GroupBox1.Dock = DockStyle.Top
         Else
             GroupBox1.Dock = DockStyle.None
         End If
     End Sub
+
 End Class

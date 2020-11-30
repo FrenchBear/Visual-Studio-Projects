@@ -1,15 +1,19 @@
 ' 240 VB Lift
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmControl
-    Private Sub frmControl_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+    Private Sub frmControl_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' Create floor buttons
         For i As Integer = 0 To NumberOfFloors - 1
             Dim fb As ucFloorButtons
             fb = New ucFloorButtons
 
             paFloorButtons.Controls.Add(fb)
-            fb.Location = New System.Drawing.Point(3, 3 + i * (fb.Height + 3))
+            fb.Location = New Point(3, 3 + i * (fb.Height + 3))
             fb.Name = "FloorButton" & Str(NumberOfFloors - 1 - i)
             fb.FloorLabel = "Floor " & CStr(NumberOfFloors - 1 - i)
 
@@ -23,7 +27,7 @@ Public Class frmControl
             cb = New ucCarButtons(i)
 
             paCarButtons.Controls.Add(cb)
-            cb.Location = New System.Drawing.Point(3 + i * (cb.Width + 3), 3)
+            cb.Location = New Point(3 + i * (cb.Width + 3), 3)
             cb.Name = tCar(i).sName             ' From Control
             cb.sLabel = tCar(i).sLabel
             cb.iDoorStatus = tCar(i).iDoorStatus
@@ -37,17 +41,17 @@ Public Class frmControl
         llEvents = New LinkedList(Of LiftEvent)
     End Sub
 
-    Private Sub UcFloorButtons_FloorRequestUp(ByVal ucfb As ucFloorButtons)
+    Private Sub UcFloorButtons_FloorRequestUp(ucfb As ucFloorButtons)
         frmScheduler.Trace("FloorRequestUp " & ucfb.FloorLabel)
         ucfb.CallStatusUp = Not ucfb.CallStatusUp
     End Sub
 
-    Private Sub UcFloorButtons_FloorRequestDown(ByVal ucfb As ucFloorButtons)
+    Private Sub UcFloorButtons_FloorRequestDown(ucfb As ucFloorButtons)
         frmScheduler.Trace("FloorRequestDown " & ucfb.FloorLabel)
         ucfb.CallStatusDown = Not ucfb.CallStatusDown
     End Sub
 
-    Private Sub UcCarButtons_CarRequest(ByVal uccb As ucCarButtons, ByVal iFloor As Integer)
+    Private Sub UcCarButtons_CarRequest(uccb As ucCarButtons, iFloor As Integer)
         frmScheduler.Trace("CarRequest from " & uccb.sLabel & " for Floor " & iFloor)
         uccb.bCallStatus(iFloor) = Not uccb.bCallStatus(iFloor)
         SetInMotion(uccb.iIndex)
@@ -55,7 +59,7 @@ Public Class frmControl
 
     Dim llEvents As LinkedList(Of LiftEvent)
 
-    Sub SetInMotion(ByVal iCar As Integer)
+    Sub SetInMotion(iCar As Integer)
         ' Already an event in the queue for this cabin ?
         Dim bFound As Boolean = False
         Dim e As LiftEvent
@@ -90,10 +94,11 @@ Public Class frmControl
         ' List empty, or TimeIndex greated to all TimeIndex
         llEvents.AddLast(eNew)
     End Sub
+
 End Class
 
-
 Class LiftEvent
+
     Enum LiftEventType As Integer
         letDoorOpened
         letDoorClosed

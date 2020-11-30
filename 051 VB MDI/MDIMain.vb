@@ -2,13 +2,14 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-
-Imports System.ComponentModel
-Imports System.Drawing
 Imports System.Windows.Forms
 
+#Disable Warning IDE1006 ' Naming Styles
+#Disable Warning IDE0052 ' Remove unread private members
+#Disable Warning IDE0051 ' Remove unused private members
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     Public Sub New()
         MyBase.New()
@@ -20,50 +21,51 @@ Public Class Form1
 
         AddHandler Me.MdiChildActivate, AddressOf Me.MDIChildActivated
 
-
     End Sub
 
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
-    Private WithEvents cmdWindowTileV As System.Windows.Forms.MenuItem
-    Private WithEvents cmdWindowTileH As System.Windows.Forms.MenuItem
-    Private WithEvents cmdWindowCascade As System.Windows.Forms.MenuItem
-    Private WithEvents mnuWindow As System.Windows.Forms.MenuItem
-    Private WithEvents mnuFichier As System.Windows.Forms.MenuItem
-    Private MainMenu1 As System.Windows.Forms.MainMenu
 
-    Dim WithEvents Form1 As System.Windows.Forms.Form
+    Private WithEvents cmdWindowTileV As MenuItem
+    Private WithEvents cmdWindowTileH As MenuItem
+    Private WithEvents cmdWindowCascade As MenuItem
+    Private WithEvents mnuWindow As MenuItem
+    Private WithEvents mnuFichier As MenuItem
+    Private MainMenu1 As MainMenu
+
+    Dim WithEvents Form1 As Form
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    Friend WithEvents MenuItem4 As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdQuitter As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdNouveau1 As System.Windows.Forms.MenuItem
-    Friend WithEvents cmdNouveau2 As System.Windows.Forms.MenuItem
+    Friend WithEvents MenuItem4 As MenuItem
+
+    Friend WithEvents cmdQuitter As MenuItem
+    Friend WithEvents cmdNouveau1 As MenuItem
+    Friend WithEvents cmdNouveau2 As MenuItem
 
     Private Sub InitializeComponent()
-        Me.MainMenu1 = New System.Windows.Forms.MainMenu
-        Me.mnuFichier = New System.Windows.Forms.MenuItem
-        Me.cmdNouveau1 = New System.Windows.Forms.MenuItem
-        Me.cmdNouveau2 = New System.Windows.Forms.MenuItem
-        Me.MenuItem4 = New System.Windows.Forms.MenuItem
-        Me.cmdQuitter = New System.Windows.Forms.MenuItem
-        Me.mnuWindow = New System.Windows.Forms.MenuItem
-        Me.cmdWindowCascade = New System.Windows.Forms.MenuItem
-        Me.cmdWindowTileH = New System.Windows.Forms.MenuItem
-        Me.cmdWindowTileV = New System.Windows.Forms.MenuItem
+        Me.MainMenu1 = New MainMenu
+        Me.mnuFichier = New MenuItem
+        Me.cmdNouveau1 = New MenuItem
+        Me.cmdNouveau2 = New MenuItem
+        Me.MenuItem4 = New MenuItem
+        Me.cmdQuitter = New MenuItem
+        Me.mnuWindow = New MenuItem
+        Me.cmdWindowCascade = New MenuItem
+        Me.cmdWindowTileH = New MenuItem
+        Me.cmdWindowTileV = New MenuItem
         '
         'MainMenu1
         '
-        Me.MainMenu1.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.mnuFichier, Me.mnuWindow})
+        Me.MainMenu1.MenuItems.AddRange(New MenuItem() {Me.mnuFichier, Me.mnuWindow})
         '
         'mnuFichier
         '
         Me.mnuFichier.Index = 0
-        Me.mnuFichier.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdNouveau1, Me.cmdNouveau2, Me.MenuItem4, Me.cmdQuitter})
+        Me.mnuFichier.MenuItems.AddRange(New MenuItem() {Me.cmdNouveau1, Me.cmdNouveau2, Me.MenuItem4, Me.cmdQuitter})
         Me.mnuFichier.Text = "Fichier"
         '
         'cmdNouveau1
@@ -91,7 +93,7 @@ Public Class Form1
         '
         Me.mnuWindow.Index = 1
         Me.mnuWindow.MdiList = True
-        Me.mnuWindow.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdWindowCascade, Me.cmdWindowTileH, Me.cmdWindowTileV})
+        Me.mnuWindow.MenuItems.AddRange(New MenuItem() {Me.cmdWindowCascade, Me.cmdWindowTileH, Me.cmdWindowTileV})
         Me.mnuWindow.Text = "&Window"
         '
         'cmdWindowCascade
@@ -111,8 +113,8 @@ Public Class Form1
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(396, 273)
+        Me.AutoScaleBaseSize = New Drawing.Size(5, 13)
+        Me.ClientSize = New Drawing.Size(396, 273)
         Me.IsMdiContainer = True
         Me.Menu = Me.MainMenu1
         Me.Name = "Form1"
@@ -122,7 +124,7 @@ Public Class Form1
 
 #End Region
 
-    Protected Sub cmdNouveau1_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdNouveau1.Click
+    Protected Sub cmdNouveau1_Click(sender As Object, e As EventArgs) Handles cmdNouveau1.Click
         Dim f As New frmDocument1 With {
             .MdiParent = Me
         }
@@ -130,33 +132,30 @@ Public Class Form1
         f.SetFont("Arial")
     End Sub
 
-    Protected Sub cmdNouveau2_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdNouveau2.Click
+    Protected Sub cmdNouveau2_Click(sender As Object, e As EventArgs) Handles cmdNouveau2.Click
         Dim f As New frmDocument2 With {
             .MdiParent = Me
         }
         f.Show()
     End Sub
 
-    Protected Sub cmdQuitter_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdQuitter.Click
+    Protected Sub cmdQuitter_Click(sender As Object, e As EventArgs) Handles cmdQuitter.Click
         Close()
     End Sub
 
-
-    Protected Sub cmdWindowCascade_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdWindowCascade.Click
+    Protected Sub cmdWindowCascade_Click(sender As Object, e As EventArgs) Handles cmdWindowCascade.Click
         Me.LayoutMdi(MdiLayout.Cascade)
     End Sub
 
-    Protected Sub cmdWindowTileH_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdWindowTileH.Click
+    Protected Sub cmdWindowTileH_Click(sender As Object, e As EventArgs) Handles cmdWindowTileH.Click
         Me.LayoutMdi(MdiLayout.TileHorizontal)
     End Sub
 
-
-    Protected Sub cmdWindowTileV_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles cmdWindowTileV.Click
+    Protected Sub cmdWindowTileV_Click(sender As Object, e As EventArgs) Handles cmdWindowTileV.Click
         Me.LayoutMdi(MdiLayout.TileVertical)
     End Sub
 
-
-    Protected Sub MDIChildActivated(ByVal sender As Object, ByVal e As System.EventArgs)
+    Protected Sub MDIChildActivated(sender As Object, e As EventArgs)
         If (Not (Me.ActiveMdiChild Is Nothing)) Then
             Me.Text = "MDI App - [" & Me.ActiveMdiChild.Text & "]"
         Else

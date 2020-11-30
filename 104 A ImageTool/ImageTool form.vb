@@ -7,6 +7,9 @@ Option Compare Text
 
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE0060 ' Remove unused parameter
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmImageTool
     Private m_doc As EditDoc
 
@@ -21,7 +24,7 @@ Public Class frmImageTool
     Dim m_fRatio As Single                          ' 0.5 if image is displayed at 50%
     Dim sZoom As String                             ' Auto or number
 
-    Public Sub OpenEditDoc(ByVal ed As EditDoc)
+    Public Sub OpenEditDoc(ed As EditDoc)
         Visible = True
         m_doc = ed
         Text = ed.sPathName & " - Image Tool"
@@ -61,12 +64,12 @@ Public Class frmImageTool
         End If
     End Sub
 
-    Private Sub frmImageTool_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub frmImageTool_Load(sender As Object, e As EventArgs) Handles Me.Load
         RefreshToolBar()
     End Sub
 
-    Private Sub frmImageTool_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
-        If Not m_bmpOriginalImage Is Nothing Then RefreshImage()
+    Private Sub frmImageTool_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+        If m_bmpOriginalImage IsNot Nothing Then RefreshImage()
     End Sub
 
     Sub RefreshImage()
@@ -144,7 +147,7 @@ Public Class frmImageTool
         pbDisplayedPic.Image = imgOutput
     End Sub
 
-    Sub RefreshSelection(ByVal h As Graphics)
+    Sub RefreshSelection(h As Graphics)
         Dim p As New Pen(Brushes.Yellow, 4)
         h.DrawRectangle(p, m_rectSelection.X * m_fRatio, m_rectSelection.Y * m_fRatio, m_rectSelection.Width * m_fRatio, m_rectSelection.Height * m_fRatio)
         p.Dispose()
@@ -152,7 +155,7 @@ Public Class frmImageTool
 
     Private bDoNotProcessZoomEvents As Boolean
 
-    Private Sub tscboZoom_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles tscboZoom.SelectedIndexChanged
+    Private Sub tscboZoom_SelectedIndexChanged(sender As Object, e As EventArgs) Handles tscboZoom.SelectedIndexChanged
         If Not bDoNotProcessZoomEvents Then
             bDoNotProcessZoomEvents = True
             AfterZoomChange(tscboZoom.Items(tscboZoom.SelectedIndex))
@@ -161,7 +164,7 @@ Public Class frmImageTool
         End If
     End Sub
 
-    Private Sub tscboZoom_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles tscboZoom.KeyDown
+    Private Sub tscboZoom_KeyDown(sender As Object, e As KeyEventArgs) Handles tscboZoom.KeyDown
         If e.KeyCode = 13 And e.Modifiers = 0 Then
             e.SuppressKeyPress = True
             If bValidZoom() Then
@@ -178,7 +181,7 @@ Public Class frmImageTool
         End If
     End Sub
 
-    Private Sub tscboZoom_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles tscboZoom.LostFocus
+    Private Sub tscboZoom_LostFocus(sender As Object, e As EventArgs) Handles tscboZoom.LostFocus
         If Not bDoNotProcessZoomEvents Then bValidZoom()
     End Sub
 
@@ -202,7 +205,7 @@ Public Class frmImageTool
         bValidZoom = False
     End Function
 
-    Private Sub tsbZoomReduce_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbZoomReduce.Click
+    Private Sub tsbZoomReduce_Click(sender As System.Object, e As EventArgs) Handles tsbZoomReduce.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * m_fRatio + 0.5
@@ -214,7 +217,7 @@ Public Class frmImageTool
         If tscboZoom.Text <> Str(z) & "%" Then AfterZoomChange(Str(z) & "%")
     End Sub
 
-    Private Sub tsbZoomEnlarge_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbZoomEnlarge.Click
+    Private Sub tsbZoomEnlarge_Click(sender As System.Object, e As EventArgs) Handles tsbZoomEnlarge.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * m_fRatio + 0.5
@@ -226,31 +229,26 @@ Public Class frmImageTool
         If tscboZoom.Text <> Str(z) & "%" Then AfterZoomChange(Str(z) & "%")
     End Sub
 
-    Sub AfterZoomChange(ByVal sZ As String)
+    Sub AfterZoomChange(sZ As String)
         tscboZoom.Text = sZ
         sZoom = tscboZoom.Text
         RefreshImage()
     End Sub
 
-
-
-    Private Sub vsScrollBar_Scroll(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ScrollEventArgs) Handles vsScrollBar.Scroll
+    Private Sub vsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles vsScrollBar.Scroll
         If vsScrollBar.Value <> -pbDisplayedPic.Top Then pbDisplayedPic.Top = -vsScrollBar.Value
     End Sub
 
-    Private Sub hsScrollBar_Scroll(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ScrollEventArgs) Handles hsScrollBar.Scroll
+    Private Sub hsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles hsScrollBar.Scroll
         If hsScrollBar.Value <> -pbDisplayedPic.Left Then pbDisplayedPic.Left = -hsScrollBar.Value
     End Sub
 
-
-
-
-    Private Sub tsbHandTool_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbHandTool.Click
+    Private Sub tsbHandTool_Click(sender As System.Object, e As EventArgs) Handles tsbHandTool.Click
         m_bHandMode = True
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbSelectionTool_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSelectionTool.Click
+    Private Sub tsbSelectionTool_Click(sender As System.Object, e As EventArgs) Handles tsbSelectionTool.Click
         m_bHandMode = False
         RefreshToolBar()
     End Sub
@@ -258,7 +256,7 @@ Public Class frmImageTool
     Dim xStart, yStart As Integer
     Dim hs0, vs0 As Integer
 
-    Private Sub pbDisplayedPic_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pbDisplayedPic.MouseDown
+    Private Sub pbDisplayedPic_MouseDown(sender As Object, e As MouseEventArgs) Handles pbDisplayedPic.MouseDown
         xStart = e.X
         yStart = e.Y
         m_bSelectionInProgress = True
@@ -270,18 +268,18 @@ Public Class frmImageTool
         RefreshToolBar()
     End Sub
 
-    Sub SelectionTool_MouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)
+    Sub SelectionTool_MouseDown(e As MouseEventArgs)
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Cross
     End Sub
 
-    Sub HandTool_MouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)
+    Sub HandTool_MouseDown(e As MouseEventArgs)
         'System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Hand
         System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.NoMove2D
         hs0 = hsScrollBar.Value + pbDisplayedPic.Left
         vs0 = vsScrollBar.Value + pbDisplayedPic.Top
     End Sub
 
-    Private Sub pbDisplayedPic_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pbDisplayedPic.MouseMove
+    Private Sub pbDisplayedPic_MouseMove(sender As Object, e As MouseEventArgs) Handles pbDisplayedPic.MouseMove
         If m_bSelectionInProgress Then
             If m_bHandMode Then
                 HandTool_MouseMove(e)
@@ -291,7 +289,7 @@ Public Class frmImageTool
         End If
     End Sub
 
-    Sub SelectionTool_MouseMove(ByVal e As System.Windows.Forms.MouseEventArgs)
+    Sub SelectionTool_MouseMove(e As MouseEventArgs)
         Dim imgOutput As Bitmap
         imgOutput = New Bitmap(m_bmpOriginalImage.Width * m_fRatio, m_bmpOriginalImage.Height * m_fRatio, Graphics.FromImage(m_bmpOriginalImage))
         Dim h As Graphics = Graphics.FromImage(imgOutput)
@@ -314,7 +312,7 @@ Public Class frmImageTool
         pbDisplayedPic.Refresh()
     End Sub
 
-    Sub HandTool_MouseMove(ByVal e As System.Windows.Forms.MouseEventArgs)
+    Sub HandTool_MouseMove(e As MouseEventArgs)
         If hsScrollBar.Visible Then
             Dim hs1 As Integer = hs0 + xStart - e.X - pbDisplayedPic.Left
             If hs1 < 0 Then hs1 = 0
@@ -336,8 +334,7 @@ Public Class frmImageTool
         End If
     End Sub
 
-
-    Private Sub pbDisplayedPic_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles pbDisplayedPic.MouseUp
+    Private Sub pbDisplayedPic_MouseUp(sender As Object, e As MouseEventArgs) Handles pbDisplayedPic.MouseUp
         If m_bSelectionInProgress Then
             m_bSelectionInProgress = False
             If m_bHandMode Then
@@ -350,7 +347,7 @@ Public Class frmImageTool
         RefreshToolBar()
     End Sub
 
-    Sub SelectionTool_MouseUp(ByVal e As System.Windows.Forms.MouseEventArgs)
+    Sub SelectionTool_MouseUp(e As MouseEventArgs)
         If m_rectSelection.Width < 50 Or m_rectSelection.Height < 50 Then
             ClearSelection()
         Else
@@ -358,13 +355,11 @@ Public Class frmImageTool
         End If
     End Sub
 
-    Sub HandTool_MouseUp(ByVal e As System.Windows.Forms.MouseEventArgs)
+    Sub HandTool_MouseUp(e As MouseEventArgs)
 
     End Sub
 
-
-
-    Private Sub tsbRotate90Left_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbRotate90Left.Click
+    Private Sub tsbRotate90Left_Click(sender As System.Object, e As EventArgs) Handles tsbRotate90Left.Click
         m_bDirty = True
         If m_bSelectionAvailable Then
             Dim xp1, yp1, xp2, yp2 As Integer
@@ -378,7 +373,7 @@ Public Class frmImageTool
         RefreshImage()
     End Sub
 
-    Private Sub tsbRotate90Right_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbRotate90Right.Click
+    Private Sub tsbRotate90Right_Click(sender As System.Object, e As EventArgs) Handles tsbRotate90Right.Click
         m_bDirty = True
         If m_bSelectionAvailable Then
             Dim xp1, yp1, xp2, yp2 As Integer
@@ -397,12 +392,12 @@ Public Class frmImageTool
         RefreshImage()
     End Sub
 
-    Private Sub tsbClearSelection_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbClearSelection.Click
+    Private Sub tsbClearSelection_Click(sender As System.Object, e As EventArgs) Handles tsbClearSelection.Click
         ClearSelection()
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbCropSelection_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbCropSelection.Click
+    Private Sub tsbCropSelection_Click(sender As System.Object, e As EventArgs) Handles tsbCropSelection.Click
         m_bDirty = True
         Dim imgCroppedImage As Bitmap
         imgCroppedImage = New Bitmap(m_rectSelection.Width, m_rectSelection.Height, Graphics.FromImage(m_bmpOriginalImage))
@@ -416,7 +411,7 @@ Public Class frmImageTool
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsbSave.Click
+    Private Sub tsbSave_Click(sender As System.Object, e As EventArgs) Handles tsbSave.Click
         ' Quqlity Control
         Dim eps As EncoderParameters = New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(80))
@@ -432,7 +427,7 @@ Public Class frmImageTool
         RefreshToolBar()
     End Sub
 
-    Private Function GetEncoderInfo(ByVal mimeType As String) As ImageCodecInfo
+    Private Function GetEncoderInfo(mimeType As String) As ImageCodecInfo
         Dim j As Integer
         Dim encoders As ImageCodecInfo()
         encoders = ImageCodecInfo.GetImageEncoders()

@@ -1,23 +1,20 @@
 ﻿// 428 CS Fast Multiplication
-// Big number multipication 
+// Big number multipication
 // Mostly a programming exercise to explore algorithms, since using dynamic objects for multiplication kills any performance!
 // 2012-05-01   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Numerics;
 using System.Diagnostics;
-
+using System.Numerics;
+using System.Text;
 
 namespace CS428
 {
     public class Program
     {
-        static readonly Random rnd = new Random();
+        private static readonly Random rnd = new Random();
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             const int digits = 50000;
 
@@ -68,16 +65,14 @@ namespace CS428
         }
     }
 
-
-
     public class SlicedNumber
     {
         internal long[] slices;
         internal int nslices;
         internal int sign;
 
-        const int digitsPerSlice = 9;
-        const long range = 1000000000;
+        private const int digitsPerSlice = 9;
+        private const long range = 1000000000;
 
         protected SlicedNumber(int nslices)
         {

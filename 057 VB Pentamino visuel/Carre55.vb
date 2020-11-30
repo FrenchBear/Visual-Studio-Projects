@@ -1,10 +1,9 @@
-
 Public Class Carre55
     Public tMotif(,) As Boolean
     Public lmax, cmax As Integer  ' Encombrement de la pièce
     Public iOffsetCol As Integer  ' Décalage de colonne pour occuper la cellule (0, 0)
 
-    Function B(ByVal x As Integer) As Boolean
+    Function B(x As Integer) As Boolean
         Return x <> 0
     End Function
 
@@ -21,9 +20,9 @@ Public Class Carre55
         iOffsetCol = 0
     End Sub
 
-    Sub New(ByVal i00 As Integer, ByVal i01 As Integer, ByVal i02 As Integer, ByVal i03 As Integer, ByVal i04 As Integer,
-    ByVal i10 As Integer, ByVal i11 As Integer, ByVal i12 As Integer, ByVal i13 As Integer, ByVal i14 As Integer,
-    ByVal i20 As Integer, ByVal i21 As Integer, ByVal i22 As Integer, ByVal i23 As Integer, ByVal i24 As Integer)
+    Sub New(i00 As Integer, i01 As Integer, i02 As Integer, i03 As Integer, i04 As Integer,
+i10 As Integer, i11 As Integer, i12 As Integer, i13 As Integer, i14 As Integer,
+i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
 
         ReDim tMotif(5 - 1, 5 - 1)
 
@@ -46,7 +45,6 @@ Public Class Carre55
         MkOffset()
     End Sub
 
-
     ' Détermine la propriété iOffsetCol, c'est à dire le nombre de colonnes qu'il
     ' faut translater le dessin à gauche pour occuper la cellule (0, 0)
     Sub MkOffset()
@@ -63,9 +61,8 @@ Public Class Carre55
         End If
     End Sub
 
-
     ' Opérateur de comparaison
-    Public Shared Function Egalite(ByVal l As Carre55, ByVal k As Carre55) As Boolean
+    Public Shared Function Egalite(l As Carre55, k As Carre55) As Boolean
         Return l.lmax = k.lmax And l.cmax = k.cmax And
         l.tMotif(0, 0) = k.tMotif(0, 0) And l.tMotif(0, 1) = k.tMotif(0, 1) And l.tMotif(0, 2) = k.tMotif(0, 2) And l.tMotif(0, 3) = k.tMotif(0, 3) And l.tMotif(0, 4) = k.tMotif(0, 4) And
         l.tMotif(1, 0) = k.tMotif(1, 0) And l.tMotif(1, 1) = k.tMotif(1, 1) And l.tMotif(1, 2) = k.tMotif(1, 2) And l.tMotif(1, 3) = k.tMotif(1, 3) And l.tMotif(1, 4) = k.tMotif(1, 4) And
@@ -74,11 +71,10 @@ Public Class Carre55
         l.tMotif(4, 0) = k.tMotif(4, 0) And l.tMotif(4, 1) = k.tMotif(4, 1) And l.tMotif(4, 2) = k.tMotif(4, 2) And l.tMotif(4, 3) = k.tMotif(4, 3) And l.tMotif(4, 4) = k.tMotif(4, 4)
     End Function
 
-
     ' Transformations
 
-    ' Transformation de ligne  
-    Function TL(ByVal iT As Integer, ByVal l As Integer, ByVal c As Integer) As Integer
+    ' Transformation de ligne
+    Function TL(iT As Integer, l As Integer, c As Integer) As Integer
         Select Case iT
             Case 1 : Return c
             Case 2 : If l < lmax Then Return lmax - 1 - l Else Return l
@@ -92,7 +88,7 @@ Public Class Carre55
     End Function
 
     ' Transformation de colonne
-    Function TC(ByVal iT As Integer, ByVal l As Integer, ByVal c As Integer) As Integer
+    Function TC(iT As Integer, l As Integer, c As Integer) As Integer
         Select Case iT
             Case 1 : If l < lmax Then Return lmax - 1 - l Else Return l
             Case 2 : If c < cmax Then Return cmax - 1 - c Else Return c
@@ -115,7 +111,7 @@ Public Class Carre55
     ' 6: miroir Hz + 180°
     ' 7: miroir Hz + 270° sens horaire
 
-    Public Function Transformation(ByVal iT As Integer) As Carre55
+    Public Function Transformation(iT As Integer) As Carre55
         Dim ct As Carre55 = New Carre55()
         Dim l, c As Integer
 
@@ -137,7 +133,6 @@ Public Class Carre55
 
         Return ct
     End Function
-
 
     Public Sub Dessin()
         Dim l, c As Integer

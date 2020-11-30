@@ -5,17 +5,13 @@
 // 2013-08-22   PV
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS515
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             RE_ExtraData e1 = new RE_ExtraData { BaseData = 3.14 };
             RE_ExtraData e2 = new RE_ExtraData { BaseData = 3.14 };
@@ -40,11 +36,9 @@ namespace CS515
     {
         public double BaseData { get; set; }
 
-
         public override bool Equals(Object obj)
         {
-            RE_ExtraData other = obj as RE_ExtraData;
-            if ((object)other == null) return false;
+            if (!(obj is RE_ExtraData other)) return false;
             return BaseData == other.BaseData;
         }
 
@@ -52,8 +46,6 @@ namespace CS515
         {
             return BaseData.GetHashCode();
         }
-
-
     }
 
     // Specialized version for chemistry
@@ -61,11 +53,9 @@ namespace CS515
     {
         public double Uncertainty { get; set; }
 
-
         public override bool Equals(Object obj)
         {
-            RE_ExtraDataChemistry other = obj as RE_ExtraDataChemistry;
-            if ((object)other == null) return false;
+            if (!(obj is RE_ExtraDataChemistry other)) return false;
             if (!base.Equals(obj)) return false;
 
             return Uncertainty == other.Uncertainty;
@@ -75,8 +65,5 @@ namespace CS515
         {
             return base.GetHashCode() ^ Uncertainty.GetHashCode();
         }
-
     }
-
-
 }

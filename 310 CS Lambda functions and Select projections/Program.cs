@@ -4,13 +4,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CS310
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             string[] fruits = {
                 "apple",
@@ -22,7 +21,7 @@ namespace CS310
                 "grape",
                 "strawberry"};
 
-            // Project the length of each string and 
+            // Project the length of each string and
             // put the length values into an enumerable object.
             IEnumerable<int> lengths;
             // With a lambda function

@@ -15,15 +15,14 @@
 // 2016-12-30   PV
 // 2019-04-10   PV      Doesn't work anymore?  Should document config update more in detail and check it in the code...
 
-
 using System;
 using System.IO;
 
 namespace CS604
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             string reallyLongDirectory = @"C:\Temp\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             reallyLongDirectory += @"\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -31,7 +30,6 @@ namespace CS604
 
             Console.WriteLine($"Creating a directory that is {reallyLongDirectory.Length} characters long");
             Directory.CreateDirectory(reallyLongDirectory);
-
 
             Console.WriteLine();
             Console.Write("(Pause)");

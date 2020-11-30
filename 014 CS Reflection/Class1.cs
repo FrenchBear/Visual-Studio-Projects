@@ -47,12 +47,23 @@ public class GetMemberMethodImpl
     }
 }
 
-
 public class Bar : IBar
 {
-    void IFoo.A() { Console.WriteLine("bar.a"); }
-    void IBar.B() { Console.WriteLine("bar.b"); }
-    void IBar.C() { Console.WriteLine("bar.c"); }
+    void IFoo.A()
+    {
+        Console.WriteLine("bar.a");
+    }
+
+    void IBar.B()
+    {
+        Console.WriteLine("bar.b");
+    }
+
+    void IBar.C()
+    {
+        Console.WriteLine("bar.c");
+    }
+
     //  void d() { }
 }
 
@@ -64,5 +75,6 @@ public interface IFoo
 public interface IBar : IFoo
 {
     void B();
+
     void C();
 }

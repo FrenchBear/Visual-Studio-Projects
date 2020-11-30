@@ -8,9 +8,10 @@
 ' For awful (really) array.sort performances:
 ' http://msdn.microsoft.com/newsgroups/default.aspx?dg=microsoft.public.dotnet.framework&mid=11166612-1b5a-4fc7-a40a-0f673b92beef
 
+Imports System.IO
 
-Imports System.IO                                  ' StreamReader
-Imports VB = Microsoft.VisualBasic
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+#Disable Warning IDE0060 ' Remove unused parameter
 
 Public Class Form1
     Declare Sub QueryPerformanceCounter Lib "Kernel32.dll" (ByRef perfcount As Long)
@@ -28,8 +29,7 @@ Public Class Form1
         Return freq
     End Function
 
-
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Dim c1 As Long = QueryPerformanceCounter()
 
         For i As Integer = 1 To 1
@@ -45,7 +45,7 @@ Public Class Form1
                "Encrypt in " & t2_ms.ToString & "ms")
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
         Dim sw As New Stopwatch
         sw.Start()
         Analyze()
@@ -58,20 +58,20 @@ Public Class Form1
     ReadOnly tdDoubleProb(126 - 32)() As Double     ' Cumuled probability
     ReadOnly tiDoubleChar(126 - 32)() As Integer    ' Character code
 
-    Function isFiller(ByVal i As Integer) As Boolean
+    Function IsFiller(i As Integer) As Boolean
         Static aldRand As New ArrayList
         If i >= aldRand.Count Then aldRand.Add(Rnd)
-        isFiller = aldRand.Item(i) < 0
+        IsFiller = aldRand.Item(i) < 0
     End Function
 
-    Sub Encrypt(ByVal s As String)
+    Sub Encrypt(s As String)
         Dim i, j, i0 As Integer, c As Integer, bFiller As Boolean
         Do
-            If isFiller(i0) Then
+            If IsFiller(i0) Then
                 If i = 0 Then
                     c = GetRandomChar()
                 Else
-                    If isFiller(i0 + 1) Or i >= s.Length Then
+                    If IsFiller(i0 + 1) Or i >= s.Length Then
                         c = GetRandomChar(c)
                     Else
                         c = GetRandomChar(c, Asc(s.Chars(i)))
@@ -212,7 +212,7 @@ Public Class Form1
         GetRandomChar = tiSingleChar(j)
     End Function
 
-    Function GetRandomChar(ByVal FirstChar As Integer) As Integer
+    Function GetRandomChar(FirstChar As Integer) As Integer
         Static myDoubleAscComparer As New DoubleAscComparer
         Dim j As Integer
         j = Array.BinarySearch(tdDoubleProb(FirstChar - 32), Rnd(), myDoubleAscComparer)
@@ -220,7 +220,7 @@ Public Class Form1
         GetRandomChar = tiDoubleChar(FirstChar - 32)(j)
     End Function
 
-    Function GetRandomChar(ByVal FirstChar As Integer, ByVal NextChar As Integer) As Integer
+    Function GetRandomChar(FirstChar As Integer, NextChar As Integer) As Integer
         Static myDoubleAscComparer As New DoubleAscComparer
         Dim j, k As Integer
         Do
@@ -362,38 +362,40 @@ Public Class Form1
     End Class
 
     Class TempClassDescComparer
-        Implements System.Collections.IComparer
+        Implements IComparer
 
-        Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements System.Collections.IComparer.Compare
+        Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
             Compare = Math.Sign(CType(y, TempClass).Prob - CType(x, TempClass).Prob)
             iCall += 1
         End Function
+
     End Class
 
 End Class
 
-
 Class DoubleDescComparer
-    Implements System.Collections.IComparer
+    Implements IComparer
 
-    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements System.Collections.IComparer.Compare
+    Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
         Compare = Math.Sign(CType(y, Double) - CType(x, Double))
     End Function
+
 End Class
 
 Class DoubleDescComparer2
-    Implements System.Collections.IComparer
+    Implements IComparer
 
-    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements System.Collections.IComparer.Compare
+    Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
         Compare = Math.Sign(y - x)
     End Function
+
 End Class
 
-
 Class DoubleAscComparer
-    Implements System.Collections.IComparer
+    Implements IComparer
 
-    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements System.Collections.IComparer.Compare
+    Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
         Compare = Math.Sign(x - y)
     End Function
+
 End Class

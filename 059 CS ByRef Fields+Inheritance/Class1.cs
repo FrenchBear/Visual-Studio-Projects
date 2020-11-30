@@ -6,26 +6,30 @@
 
 using System;
 
-
 public abstract class Zap
 {
     public Zap()
     {
         Console.WriteLine("Zap.New()");
     }
+
     public void MH()
     {
         Console.WriteLine("Zap.MH()");
     }
+
     public virtual void OV1()
     {
         Console.WriteLine("Zap.OV1()");
     }
+
     public virtual void OV2()
     {
         Console.WriteLine("Zap.OV2()");
     }
+
     public abstract void MO1();
+
     public abstract void MO2();
 }
 
@@ -52,6 +56,7 @@ public class Couleur : Zap
         B = bb;
         m_A = 0;
     }
+
     public override string ToString()
     {
         return "{" + m_A.ToString() + ", " + R.ToString() + ", " + G.ToString() + ", " + B.ToString() + "}";
@@ -94,32 +99,32 @@ public class Couleur : Zap
     }
 }
 
-
 public sealed class CouleurClaire : Couleur
 {
     public CouleurClaire()
     {
         Console.WriteLine("CouleurClaire.New()");
     }
+
     public new void S1()
     {
         Console.WriteLine("CouleurClaire.S1()");
     }
+
     public override void MO2()
     {
         Console.WriteLine("CouleurClaire.MO2()");
     }
+
     public new void OV1()
     {
         Console.WriteLine("CouleurClaire.OV1()");
     }
 }
 
-
 public class Module1
 {
-
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         Console.WriteLine("Module1.Main()");
 
@@ -178,9 +183,8 @@ public class Module1
         Console.ReadLine();
     }
 
-    static void Complément255(ref int x)
+    private static void Complément255(ref int x)
     {
         x = 255 - x;
     }
-
 }

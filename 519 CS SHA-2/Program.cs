@@ -1,6 +1,6 @@
 ﻿// 519 CS SHA-2
 // Example of implementation of SHA-2 protocol
-// Notes: 
+// Notes:
 // - This is just to understand SHA-2, not a performance/reference implementation, use .Net provided version for that!
 // - Length is only managed in bytes (multiple of 8 bits)
 //
@@ -9,18 +9,16 @@
 // 2014-03-25   PV  SHA512 & 385; .Net version
 // 2019-10-14   PV  VS2019; Added Go examples "x" and "X"
 
-
 using System;
 using System.Diagnostics;
-using System.Text;
 using System.Security.Cryptography;
-
+using System.Text;
 
 namespace SHA_2
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Console.WriteLine("CS 519 SHA-2");
 
@@ -43,7 +41,6 @@ namespace SHA_2
             u64 = RightRotate(u64, 10);
             Debug.Assert(u64 == 0xcafe);
 
-
             // For tests, strings are only considered as composed of simple bytes (ASCII), not unicode characters
 
             // Empty string
@@ -65,8 +62,6 @@ namespace SHA_2
             Test_sha_256("x", "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881");
             Test_sha_256("X", "4b68ab3847feda7d6c62c1fbcbeebfa35eab7351ed5e78f4ddadea5df64b8015");
 
-
-
             // Empty string
             Test_sha_512("",
                 "cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e");
@@ -84,8 +79,6 @@ namespace SHA_2
             Test_sha_512("abcdefghbcdefghicdefghijdefghijkefghijklfghijklmghijklmnhijklmnoijklmnopjklmnopqklmnopqrlmnopqrsmnopqrstnopqrstu",
                 "8e959b75dae313da8cf4f72814fc143f8f7779c6eb9f7fa17299aeadb6889018501d289e4900f7e4331b99dec4b5433ac7d329eeb6dd26545e96e55b874be909");
 
-
-
             // Empty string
             Test_sha_224("",
                 "d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f");
@@ -97,8 +90,6 @@ namespace SHA_2
             // Empty string
             Test_sha_224("The quick brown fox jumps over the lazy dog.",
                 "619cba8e8e05826e9b8c519c0a5c68f4fb653e8a3d8aa04bb2c8cd4c");
-
-
 
             // Empty string
             Test_sha_384("",
@@ -113,14 +104,11 @@ namespace SHA_2
             Test_sha_384("The quick brown fox jumps over the lazy dog.",
                 "ed892481d8272ca6df370bf706e4d7bc1b5739fa2177aae6c50e946678718fc67a7af2819a021c2fc34e91bdb63409d7");
 
-
-
             Console.WriteLine("All tests passed successfully");
             Console.WriteLine();
             Console.Write("(Pause)");
             Console.ReadLine();
         }
-
 
         private static void Test_sha_256(string s, string hashed)
         {
@@ -181,9 +169,7 @@ namespace SHA_2
             }
         }
 
-
-
-        static void Preprocessing(string s, int blocksize, int lengthsize, out byte[] tb, out int nb)
+        private static void Preprocessing(string s, int blocksize, int lengthsize, out byte[] tb, out int nb)
         {
             // Pre-processing:
             // append the bit '1' to the message
@@ -223,7 +209,6 @@ namespace SHA_2
             Debug.Assert(j == nb * (blocksize / 8));
         }
 
-
         private static string SHA_256(string s)
         {
             // Initialize hash values:
@@ -261,7 +246,6 @@ namespace SHA_2
 
             return SHA_256_224(s, h).Substring(0, 56);
         }
-
 
         // Note 1: All variables are 32 bit unsigned integers and addition is calculated modulo 2^32
         // Note 2: For each round, there is one round constant k[i] and one entry in the message schedule array w[i], 0 ≤ i ≤ 63
@@ -369,7 +353,6 @@ namespace SHA_2
             return h[0].ToString("x8") + h[1].ToString("x8") + h[2].ToString("x8") + h[3].ToString("x8") + h[4].ToString("x8") + h[5].ToString("x8") + h[6].ToString("x8") + h[7].ToString("x8");
         }
 
-
         private static string SHA_512(string s)
         {
             // Initialize hash values:
@@ -388,7 +371,6 @@ namespace SHA_2
 
             return SHA_512_384(s, h);
         }
-
 
         private static string SHA_384(string s)
         {
@@ -409,10 +391,8 @@ namespace SHA_2
             return SHA_512_384(s, h).Substring(0, 96);
         }
 
-
         private static string SHA_512_384(string s, ulong[] h)
         {
-
             // Initialize array of round constants:
             // First 64 bits of the fractional parts of he cube roots of the first 80 primes 2..409:
             // k[0..79]
@@ -521,16 +501,15 @@ namespace SHA_2
             return h[0].ToString("x16") + h[1].ToString("x16") + h[2].ToString("x16") + h[3].ToString("x16") + h[4].ToString("x16") + h[5].ToString("x16") + h[6].ToString("x16") + h[7].ToString("x16");
         }
 
-
         // equivalent of C++ _rotr
         // 32-bit version
-        static uint RightRotate(uint original, int bits)
+        private static uint RightRotate(uint original, int bits)
         {
             return (original >> bits) | (original << (32 - bits));
         }
 
         // 64-bit version
-        static ulong RightRotate(ulong original, int bits)
+        private static ulong RightRotate(ulong original, int bits)
         {
             return (original >> bits) | (original << (64 - bits));
         }

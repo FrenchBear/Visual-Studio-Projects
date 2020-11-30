@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:CS419"
         Title="WpfDrawing1Window (Using a DrawingVisual)" Height="600" Width="600"
-        SizeChanged="Window_SizeChanged" >
+        SizeChanged="Window_SizeChanged">
     <Grid Name="myGrid">
-        <local:MyVisualHost x:Name="myDrawingVisual"/>
+        <local:MyVisualHost x:Name="myDrawingVisual" />
     </Grid>
 </Window>

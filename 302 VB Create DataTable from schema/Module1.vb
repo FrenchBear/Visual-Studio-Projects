@@ -1,8 +1,6 @@
 ' 302 VB Create DataTable from schema
 ' 2012-02-25	PV  VS2010
 
-
-Imports System.Data.Common
 Imports System.Data.SqlClient
 
 Module Module1

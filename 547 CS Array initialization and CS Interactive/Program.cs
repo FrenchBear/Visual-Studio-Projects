@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 namespace ConsoleApplication1
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var f1 = 3.14d;     // double
             var f2 = 3.14f;     // float
@@ -22,20 +24,22 @@ namespace ConsoleApplication1
         }
     }
 
-
-    interface I1
+    internal interface I1
     {
         void Method1();
+
         void Method2();
+
         void Method3();
     }
 
-    interface I2
+    internal interface I2
     {
         void Method1();
-        void Method2();
-        void Method4();
 
+        void Method2();
+
+        void Method4();
     }
 
     public class MyClass : I1, I2

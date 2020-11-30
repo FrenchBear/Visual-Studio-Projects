@@ -1,6 +1,5 @@
 ﻿Imports System.Collections.ObjectModel
 
-
 Class Meute(Of T As Animal)
     Private ReadOnly mCol As Collection(Of T)
 
@@ -8,12 +7,13 @@ Class Meute(Of T As Animal)
         mCol = New Collection(Of T)
     End Sub
 
-    Sub New(ByVal a1 As T)
-        mCol = New Collection(Of T)
-        mCol.Add(a1)
+    Sub New(a1 As T)
+        mCol = New Collection(Of T) From {
+            a1
+        }
     End Sub
 
-    Sub Add(ByVal a1 As T)
+    Sub Add(a1 As T)
         mCol.Add(a1)
     End Sub
 
@@ -24,7 +24,6 @@ Class Meute(Of T As Animal)
     End Sub
 
 End Class
-
 
 '' Custom Event Handler in VB
 'Class Events

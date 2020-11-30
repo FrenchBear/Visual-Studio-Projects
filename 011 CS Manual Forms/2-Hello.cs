@@ -2,11 +2,10 @@
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-class Hello2
+internal class Hello2
 {
     public static void Main()
     {
@@ -38,6 +37,4 @@ class Hello2
         // Display the form as a modal dialog box.
         form1.ShowDialog();
     }
-
 }
-

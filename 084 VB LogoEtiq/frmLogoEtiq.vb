@@ -4,8 +4,10 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmAnalyse
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -20,7 +22,7 @@ Public Class frmAnalyse
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -33,32 +35,34 @@ Public Class frmAnalyse
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents btnAnalyse As System.Windows.Forms.Button
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents btnEncode As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents btnVérifie As System.Windows.Forms.Button
-    Friend WithEvents PictureBox3 As System.Windows.Forms.PictureBox
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnAnalyse = New System.Windows.Forms.Button
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
-        Me.btnEncode = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.btnVérifie = New System.Windows.Forms.Button
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox
+    Friend WithEvents btnAnalyse As Button
+
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents btnEncode As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents btnVérifie As Button
+    Friend WithEvents PictureBox3 As PictureBox
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.btnAnalyse = New Button
+        Me.PictureBox1 = New PictureBox
+        Me.PictureBox2 = New PictureBox
+        Me.btnEncode = New Button
+        Me.Label1 = New Label
+        Me.Label2 = New Label
+        Me.Label3 = New Label
+        Me.btnVérifie = New Button
+        Me.PictureBox3 = New PictureBox
         Me.SuspendLayout()
         '
         'btnAnalyse
         '
-        Me.btnAnalyse.Location = New System.Drawing.Point(128, 24)
+        Me.btnAnalyse.Location = New Point(128, 24)
         Me.btnAnalyse.Name = "btnAnalyse"
         Me.btnAnalyse.TabIndex = 0
         Me.btnAnalyse.Text = "Analyse"
@@ -66,24 +70,24 @@ Public Class frmAnalyse
         'PictureBox1
         '
         Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox1.Location = New System.Drawing.Point(8, 24)
+        Me.PictureBox1.Location = New Point(8, 24)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(112, 112)
+        Me.PictureBox1.Size = New Size(112, 112)
         Me.PictureBox1.TabIndex = 1
         Me.PictureBox1.TabStop = False
         '
         'PictureBox2
         '
         Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox2.Location = New System.Drawing.Point(8, 168)
+        Me.PictureBox2.Location = New Point(8, 168)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(112, 112)
+        Me.PictureBox2.Size = New Size(112, 112)
         Me.PictureBox2.TabIndex = 2
         Me.PictureBox2.TabStop = False
         '
         'btnEncode
         '
-        Me.btnEncode.Location = New System.Drawing.Point(128, 168)
+        Me.btnEncode.Location = New Point(128, 168)
         Me.btnEncode.Name = "btnEncode"
         Me.btnEncode.TabIndex = 3
         Me.btnEncode.Text = "Encode"
@@ -91,36 +95,36 @@ Public Class frmAnalyse
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label1.Location = New System.Drawing.Point(8, 8)
+        Me.Label1.Font = New Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Location = New Point(8, 8)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(131, 16)
+        Me.Label1.Size = New Size(131, 16)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "Décodage logo original"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label2.Location = New System.Drawing.Point(8, 152)
+        Me.Label2.Font = New Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Location = New Point(8, 152)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(110, 16)
+        Me.Label2.Size = New Size(110, 16)
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Encodage logo SGS"
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.Label3.Location = New System.Drawing.Point(216, 152)
+        Me.Label3.Font = New Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Location = New Point(216, 152)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(195, 16)
+        Me.Label3.Size = New Size(195, 16)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = "Décodage du nouveau logo généré"
         '
         'btnVérifie
         '
-        Me.btnVérifie.Location = New System.Drawing.Point(336, 168)
+        Me.btnVérifie.Location = New Point(336, 168)
         Me.btnVérifie.Name = "btnVérifie"
         Me.btnVérifie.TabIndex = 7
         Me.btnVérifie.Text = "Vérifie"
@@ -128,16 +132,16 @@ Public Class frmAnalyse
         'PictureBox3
         '
         Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PictureBox3.Location = New System.Drawing.Point(216, 168)
+        Me.PictureBox3.Location = New Point(216, 168)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(112, 112)
+        Me.PictureBox3.Size = New Size(112, 112)
         Me.PictureBox3.TabIndex = 6
         Me.PictureBox3.TabStop = False
         '
         'frmAnalyse
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(416, 286)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(416, 286)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnVérifie)
         Me.Controls.Add(Me.PictureBox3)
@@ -154,6 +158,7 @@ Public Class frmAnalyse
     End Sub
 
 #End Region
+
 #Region " Définition tsBmp "
 
     ReadOnly tsBmp() As String = {
@@ -386,7 +391,7 @@ Public Class frmAnalyse
 
 #End Region
 
-    Private Sub btnAnalyse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAnalyse.Click
+    Private Sub btnAnalyse_Click(sender As System.Object, e As EventArgs) Handles btnAnalyse.Click
         Dim bmp As New Bitmap(112, 112, Imaging.PixelFormat.Format24bppRgb)
 
         Dim l, c, c2, col As Integer
@@ -409,9 +414,9 @@ Public Class frmAnalyse
         PictureBox1.Image = bmp
     End Sub
 
-    Private Sub btnEncode_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEncode.Click
+    Private Sub btnEncode_Click(sender As System.Object, e As EventArgs) Handles btnEncode.Click
         Dim sPath As String = My.Application.Info.DirectoryPath.Replace("\bin", "")
-        Dim sw As New System.IO.StreamWriter(sPath & "\LogoSGS.txt")
+        Dim sw As New IO.StreamWriter(sPath & "\LogoSGS.txt")
         Dim bmp As Bitmap
         bmp = PictureBox2.Image
         bmp.RotateFlip(RotateFlipType.Rotate180FlipX)
@@ -428,12 +433,12 @@ Public Class frmAnalyse
         sw.Close()
     End Sub
 
-    Private Sub frmAnalyse_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmAnalyse_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         Dim sPath As String = My.Application.Info.DirectoryPath.Replace("\bin", "")
         PictureBox2.Image = Image.FromFile(sPath & "\LogoSGS.bmp")
     End Sub
 
-    Private Sub btnVérifie_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnVérifie.Click
+    Private Sub btnVérifie_Click(sender As System.Object, e As EventArgs) Handles btnVérifie.Click
         Dim bmp As New Bitmap(112, 112, Imaging.PixelFormat.Format24bppRgb)
 
         Dim l, c, c2, col As Integer
@@ -453,4 +458,5 @@ Public Class frmAnalyse
         PictureBox3.Image = bmp
 
     End Sub
+
 End Class

@@ -31,7 +31,7 @@ public class MyMath
 
 public class MyApp
 {
-    static void F(params int[] targ)
+    private static void F(params int[] targ)
     {
         Console.WriteLine("# of arguments: {0}", targ.Length);
         for (int i = 0; i < targ.Length; i++)
@@ -40,13 +40,12 @@ public class MyApp
         }
     }
 
-    static void Swap(ref object x, ref object y)
+    private static void Swap(ref object x, ref object y)
     {
         object temp = x;
         x = y;
         y = temp;
     }
-
 
     public static void Main()
     {

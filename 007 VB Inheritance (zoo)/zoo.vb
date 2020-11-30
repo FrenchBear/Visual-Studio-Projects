@@ -5,13 +5,13 @@
 Public Class Animal
     Private sNom As String
 
-    Public Sub New(ByVal s As String)
+    Public Sub New(s As String)
         MyBase.New()
         sNom = s
     End Sub
 
     ' Constructeur copie
-    Public Sub New(ByVal bestiole As Animal)
+    Public Sub New(bestiole As Animal)
         MyBase.New()
         sNom = bestiole.sNom
     End Sub
@@ -24,39 +24,48 @@ Public Class Animal
         Get
             Nom = sNom
         End Get
-        Set(ByVal Value As String)
+        Set(Value As String)
             sNom = Nom
         End Set
     End Property
+
 End Class
 
 Public Class Chat
     Inherits Animal
+
     Overrides Sub Cri()
         MsgBox(Nom & ": Miaou !")
     End Sub
 
-    Public Sub New(ByVal s As String)
+    Public Sub New(s As String)
         MyBase.New(s)
     End Sub
+
 End Class
 
 Class Chien
     Inherits Animal
+
     Overrides Sub Cri()
         MsgBox(Nom & ": Ouah! Ouah!")
     End Sub
-    Public Sub New(ByVal s As String)
+
+    Public Sub New(s As String)
         MyBase.New(s)
     End Sub
+
 End Class
 
 Class Chiot
     Inherits Chien
+
     Overrides Sub Cri()
         MsgBox(Nom & ": Wif ! Wif !")
     End Sub
-    Public Sub New(ByVal s As String)
+
+    Public Sub New(s As String)
         MyBase.New(s)
     End Sub
+
 End Class

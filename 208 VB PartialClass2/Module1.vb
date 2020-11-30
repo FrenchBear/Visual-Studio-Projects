@@ -1,6 +1,7 @@
 ﻿Module Module1
+
     Sub Main()
-        Dim v As maClasse = New maClasse With {
+        Dim v As MaClasse = New MaClasse With {
             .x = 1,
             .y = 2
         }
@@ -8,10 +9,9 @@
         Console.Write("(Pause)")
         Console.ReadLine()
     End Sub
+
 End Module
 
-
-Partial Class maClasse
+Partial Class MaClasse
     Public x As Integer
 End Class
-

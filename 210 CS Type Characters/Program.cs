@@ -1,16 +1,13 @@
 ﻿// 210 CS Type Characters
 // 2012-02-25   PV  First version
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace _210_CS_Type_Characters
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Ignore variable unused warning
 #pragma warning disable 0219

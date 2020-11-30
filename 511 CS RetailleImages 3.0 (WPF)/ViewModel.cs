@@ -3,26 +3,15 @@
 // 2013-07-14   PV  First version 3, rewrite in C#, WPF anv MVVM
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-using System.Windows.Input;
-
-using System.Xml.Linq;
-using System.Xml;
-using System.Xml.Schema;
-using System.IO;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Collections.ObjectModel;
-using System.Windows;
-using System.Windows.Threading;
-using System.Threading.Tasks;
-using System.Threading;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
+using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace RI3
 {
@@ -38,6 +27,7 @@ namespace RI3
 
         // Commands public interface
         public ICommand GenerateCommand { get; private set; }
+
         public ICommand SelectSourceFolderCommand { get; private set; }
         public ICommand SelectTargetFolderCommand { get; private set; }
 
@@ -56,21 +46,21 @@ namespace RI3
             GenerateButtonCaption = GenerateActionCaption;
         }
 
-
         // Access to Model and window
         private readonly Model model;
+
         private readonly MainWindow window;
 
         //private bool isGenerateInProgress = false;
 
-
         // Interface strings
-        const string GenerateActionCaption = "Générer";
-        const string StopActionCaption = "Stop";
+        private const string GenerateActionCaption = "Générer";
 
+        private const string StopActionCaption = "Stop";
 
         // Commands private implementation
         private CancellationTokenSource cts;
+
         private void GenerateExecute(object parameter)
         {
             if (GenerateButtonCaption == GenerateActionCaption)
@@ -104,7 +94,7 @@ namespace RI3
             if (node != null)
             {
                 // Check if dependency object is valid.
-                // NOTE: Validation.GetHasError works for controls that have validation rules attached 
+                // NOTE: Validation.GetHasError works for controls that have validation rules attached
                 bool isValid = !Validation.GetHasError(node);
                 if (!isValid)
                 {
@@ -150,7 +140,6 @@ namespace RI3
             // Event SelectionChanged in code behind view will make sure selected item is visible
         }
 
-
         private void SelectSourceFolderExecute(object parameter)
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog
@@ -161,7 +150,6 @@ namespace RI3
             if (result == System.Windows.Forms.DialogResult.OK)
                 SourceFolder = dialog.SelectedPath;
         }
-
 
         private void SelectTargetFolderExecute(object parameter)
         {
@@ -175,9 +163,9 @@ namespace RI3
                 TargetFolder = dialog.SelectedPath;
         }
 
-
         // Properties for view binding
         private string generateButtonCaption = "";
+
         public string GenerateButtonCaption
         {
             get { return generateButtonCaption; }
@@ -244,6 +232,7 @@ namespace RI3
         }
 
         private double generateProgressValue;
+
         public double GenerateProgressValue
         {
             get { return generateProgressValue; }
@@ -258,6 +247,7 @@ namespace RI3
         }
 
         private string generateProgressText;
+
         public string GenerateProgressText
         {
             get { return generateProgressText; }
@@ -272,6 +262,7 @@ namespace RI3
         }
 
         private readonly ObservableCollection<string> tracesList = new ObservableCollection<string>();
+
         public ObservableCollection<string> TracesList
         {
             get
@@ -281,6 +272,7 @@ namespace RI3
         }
 
         private int traceSelectedIndex;
+
         public int TraceSelectedIndex
         {
             get
@@ -296,7 +288,6 @@ namespace RI3
                 }
             }
         }
-
 
         // IDataErrorInfo
         // Gets an error message indicating what is wrong with this object.
@@ -338,7 +329,6 @@ namespace RI3
                 return string.Empty;
             }
         }
-
     }
 
     public static class ExtensionMethods
@@ -348,7 +338,7 @@ namespace RI3
         // Extension method to force the refresh of a UIElement
         public static void Refresh(this UIElement uiElement)
         {
-            // By calling Dispatcher.Invoke, the code essentially asks the system to execute all operations that are Render or higher priority, 
+            // By calling Dispatcher.Invoke, the code essentially asks the system to execute all operations that are Render or higher priority,
             // thus the control will then render itself (drawing the new content).  Afterwards, it will then execute the provided delegate,
             // which is our empty method.
             uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);

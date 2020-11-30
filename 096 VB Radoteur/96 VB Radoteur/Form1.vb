@@ -4,12 +4,14 @@
 ' 2006-10-01    PV  VS2005
 ' 2011-09-26	PV  VS2010 and reading words from a file --> doesn't work, should not be recursive...
 
-Imports Microsoft.VisualBasic
-Imports System.IO
 Imports System.Collections.Generic
+Imports System.IO
+
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -24,7 +26,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -37,54 +39,56 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents lstPropositions As System.Windows.Forms.ListBox
-    Friend WithEvents lstWords As System.Windows.Forms.ListBox
-    Friend WithEvents btnGo As System.Windows.Forms.Button
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.lstPropositions = New System.Windows.Forms.ListBox()
-        Me.btnGo = New System.Windows.Forms.Button()
-        Me.lstWords = New System.Windows.Forms.ListBox()
+    Friend WithEvents lstPropositions As ListBox
+
+    Friend WithEvents lstWords As ListBox
+    Friend WithEvents btnGo As Button
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.lstPropositions = New ListBox()
+        Me.btnGo = New Button()
+        Me.lstWords = New ListBox()
         Me.SuspendLayout()
         '
         'lstPropositions
         '
         Me.lstPropositions.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
         Me.lstPropositions.ItemHeight = 25
-        Me.lstPropositions.Location = New System.Drawing.Point(364, 15)
+        Me.lstPropositions.Location = New Point(364, 15)
         Me.lstPropositions.Name = "lstPropositions"
-        Me.lstPropositions.Size = New System.Drawing.Size(291, 429)
+        Me.lstPropositions.Size = New Size(291, 429)
         Me.lstPropositions.Sorted = True
         Me.lstPropositions.TabIndex = 1
         '
         'btnGo
         '
-        Me.btnGo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnGo.Location = New System.Drawing.Point(675, 15)
+        Me.btnGo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.btnGo.Location = New Point(675, 15)
         Me.btnGo.Name = "btnGo"
-        Me.btnGo.Size = New System.Drawing.Size(150, 42)
+        Me.btnGo.Size = New Size(150, 42)
         Me.btnGo.TabIndex = 2
         Me.btnGo.Text = "Go"
         '
         'lstWords
         '
         Me.lstWords.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left), AnchorStyles)
         Me.lstWords.ItemHeight = 25
-        Me.lstWords.Location = New System.Drawing.Point(24, 15)
+        Me.lstWords.Location = New Point(24, 15)
         Me.lstWords.Name = "lstWords"
-        Me.lstWords.Size = New System.Drawing.Size(326, 429)
+        Me.lstWords.Size = New Size(326, 429)
         Me.lstWords.Sorted = True
         Me.lstWords.TabIndex = 3
         '
         'Form1
         '
         Me.AcceptButton = Me.btnGo
-        Me.AutoScaleBaseSize = New System.Drawing.Size(10, 24)
-        Me.ClientSize = New System.Drawing.Size(837, 485)
+        Me.AutoScaleBaseSize = New Size(10, 24)
+        Me.ClientSize = New Size(837, 485)
         Me.Controls.Add(Me.lstWords)
         Me.Controls.Add(Me.btnGo)
         Me.Controls.Add(Me.lstPropositions)
@@ -102,7 +106,7 @@ Public Class Form1
     Const isFromFile As Boolean = True
 
     ' Initialize words list and show it
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         If isFromFile Then
             ' Read words from c:\radoteur.txt
             tsWords = New List(Of String)()
@@ -162,8 +166,7 @@ Public Class Form1
         Debug.WriteLine("Source: nm:" & nm.ToString & "  nw:" & nw.ToString & " = " & (nm / nw).ToString("0.00%"))
     End Sub
 
-
-    Private Sub btnGo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnGo.Click
+    Private Sub btnGo_Click(sender As System.Object, e As EventArgs) Handles btnGo.Click
         ' Radoteur
         iMaxWords = tsWords.Count - 1
 
@@ -213,13 +216,13 @@ Public Class Form1
                     f = 1
                 Else
                     Dim p1, p2 As Integer
-                    Dim lp As Generic.List(Of Integer) = Nothing
+                    Dim lp As List(Of Integer) = Nothing
                     p1 = 1
                     Do
                         p2 = InStr(p1, tsWords(p), sAnchor, CompareMethod.Text)
                         If p2 = 0 Then Exit Do
                         If p2 + lChunkSize > Len(tsWords(p)) Then Exit Do
-                        If lp Is Nothing Then lp = New Generic.List(Of Integer)
+                        If lp Is Nothing Then lp = New List(Of Integer)
                         lp.Add(p2)
                         p1 = p2 + 1
                     Loop

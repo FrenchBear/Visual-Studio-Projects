@@ -1,20 +1,20 @@
-<!-- 
-This stylesheet has been tested with Microsoft IE 5.0 
+<!--
+This stylesheet has been tested with Microsoft IE 5.0
 and MSXML30 SP1 in REPLACE MODE (use xmlinst.exe)
 Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<xsl:output method="html"/>
+<xsl:output method="html" />
 
    <!--
    ////////////////////////////////////////////////////////////////////////
                                Main Template
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="/">
-   
+
       <html>
 
          <head>
@@ -45,7 +45,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
          </head>
 
          <body>
-            Note: If you do not see data in the report of below, you need to install Microsoft XML Parser 3.0 Service 
+            Note: If you do not see data in the report of below, you need to install Microsoft XML Parser 3.0 Service
             Pack 1 or higher installed in REPLACE MODE with the xmlinst.exe utility provided by Microsoft.
             See the MSDN Knowledge Base article Q278969: "INFO: How to Redistribute the Microsoft XML Parser"
 
@@ -59,11 +59,8 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
 
             <!-- This template applies to File level documentation only -->
             <xsl:apply-templates select="File" />
-
          </body>
-
        </html>
-   
    </xsl:template>
 
    <!--
@@ -71,26 +68,23 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for ProjectGroup
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="ProjectGroup">
-      
-      <h1>Project Group <xsl:value-of select="FileName"/></h1>
+
+      <h1>Project Group <xsl:value-of select="FileName" /></h1>
 
       <p class="Header1Paragraph">
-      
+
          <!-- Build the projects table -->
          <xsl:apply-templates select="Projects" />
-
       </p>
 
       <!-- Build the documentation section for each project -->
       <xsl:for-each select="Projects/Project">
 
          <!-- Apply template for Project -->
-         <xsl:apply-templates select="."/>
-
+         <xsl:apply-templates select="." />
       </xsl:for-each>
-   
    </xsl:template>
 
    <!--
@@ -98,7 +92,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for Project
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="Project">
 
       <!-- Save the name of the project in a variable for later use -->
@@ -116,47 +110,43 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
             </xsl:attribute>
          </a>
 
-         Project <xsl:value-of select="Name"/>
-
+         Project <xsl:value-of select="Name" />
       </h2>
-   
+
       <p class="Header2Paragraph">
 
          <!-- Build some properties of the project-->
-         <span class='PropertyName'>Filename: </span><xsl:value-of select="FileName"/><br/>
-         <span class='PropertyName'>Type: </span><xsl:value-of select="Type"/><br/>
-         <span class='PropertyName'>BuildFilename: </span><xsl:value-of select="BuildFileName"/><br/>
-         <br/>
+         <span class='PropertyName'>Filename: </span><xsl:value-of select="FileName" /><br />
+         <span class='PropertyName'>Type: </span><xsl:value-of select="Type" /><br />
+         <span class='PropertyName'>BuildFilename: </span><xsl:value-of select="BuildFileName" /><br />
+         <br />
 
          <!-- Build the references table -->
          <xsl:apply-templates select="References" />
 
-         <br/>
-      
+         <br />
+
          <!-- Build the files table -->
-         <xsl:apply-templates select="Files" >
+         <xsl:apply-templates select="Files">
             <xsl:with-param name="ProjectName"><xsl:value-of select="Name" /></xsl:with-param>
          </xsl:apply-templates>
 
-         <br/>
-      
+         <br />
+
          <!-- Build the documentation section for each file -->
          <xsl:for-each select="Files/File">
-            <xsl:sort select="Type"/>
-            <xsl:sort select="Name"/>
+            <xsl:sort select="Type" />
+            <xsl:sort select="Name" />
             <!-- Apply template for File -->
             <xsl:apply-templates select=".">
                <xsl:with-param name="ProjectName"><xsl:value-of select="$ProjectName" /></xsl:with-param>
             </xsl:apply-templates>
-     
          </xsl:for-each>
-
       </p>
-   
-      <br/>
-      <hr/>
-      <br/>
-   
+
+      <br />
+      <hr />
+      <br />
    </xsl:template>
 
    <!--
@@ -164,16 +154,16 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for File
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="File">
-      <xsl:param name="ProjectName"></xsl:param>   
+      <xsl:param name="ProjectName"></xsl:param>
 
       <!-- Save the name of the file in a variable for later use -->
       <xsl:variable name="FileName"><xsl:value-of select="Name" /></xsl:variable>
 
       <!-- Check if it is a true VB file -->
       <xsl:if test="Type != 'RelatedDocument' and Type != 'ResFile' ">
-   
+
          <h3>
 
             <!-- Build a bookmark name -->
@@ -193,13 +183,12 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
             <xsl:text> </xsl:text>
 
             <!-- Add the logical name and the file name -->
-            <xsl:value-of select="Name"/>
+            <xsl:value-of select="Name" />
             <xsl:if test="FileName != '' ">
                <xsl:text> (</xsl:text>
-               <xsl:value-of select="FileName"/>
+               <xsl:value-of select="FileName" />
                <xsl:text>)</xsl:text>
             </xsl:if>
-
          </h3>
 
          <p class="Header3Paragraph">
@@ -207,30 +196,29 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
             <span class='PropertyName'>Comment: </span>
 
             <xsl:choose>
-               <xsl:when test="count(CodeModule/CommentLines/CommentLine) = 0"> None<br/><br/></xsl:when>
+               <xsl:when test="count(CodeModule/CommentLines/CommentLine) = 0"> None<br /><br /></xsl:when>
                <xsl:otherwise>
-                  <br/>
-                  <br/>
+                  <br />
+                  <br />
                   <xsl:for-each select="CodeModule/CommentLines/CommentLine">
-                     <xsl:value-of select="."/>
-                     <br/>
+                     <xsl:value-of select="." />
+                     <br />
                   </xsl:for-each>
-                  <br/>
+                  <br />
                </xsl:otherwise>
             </xsl:choose>
 
-            <span class='PropertyName'>Count of declaration lines: </span><xsl:value-of select="CodeModule/CountOfDeclarationLines"/><br/>
-            <span class='PropertyName'>Count of lines: </span><xsl:value-of select="CodeModule/CountOfLines"/><br/>
-      
+            <span class='PropertyName'>Count of declaration lines: </span><xsl:value-of select="CodeModule/CountOfDeclarationLines" /><br />
+            <span class='PropertyName'>Count of lines: </span><xsl:value-of select="CodeModule/CountOfLines" /><br />
+
             <!-- Include the list of properties -->
             <xsl:apply-templates select="Properties" />
 
             <!-- If it is a file with visual interface, we include the list of controls -->
-            <xsl:if test="Type = 'VBForm' or Type = 'VBMDIForm' or Type = 'UserControl' or 
+            <xsl:if test="Type = 'VBForm' or Type = 'VBMDIForm' or Type = 'UserControl' or
                              Type = 'DocObject' or Type = 'PropPage' or Type = 'MSForm' ">
 
                <xsl:apply-templates select="Controls" />
-         
             </xsl:if>
 
             <!-- Build the Interfaces table -->
@@ -245,7 +233,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                <xsl:with-param name="FileName"><xsl:value-of select="Name" /></xsl:with-param>
             </xsl:apply-templates>
 
-            <br/>
+            <br />
 
             <!-- Build the documentation section for each procedure -->
             <xsl:for-each select="CodeModule/Procedures/Procedure">
@@ -257,12 +245,9 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                   <xsl:with-param name="ProjectName"><xsl:value-of select="$ProjectName" /></xsl:with-param>
                   <xsl:with-param name="FileName"><xsl:value-of select="$FileName" /></xsl:with-param>
                </xsl:apply-templates>
-             
             </xsl:for-each>
-
          </p>
       </xsl:if>
-   
    </xsl:template>
 
    <!--
@@ -272,8 +257,8 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
    -->
 
    <xsl:template match="Procedure">
-      <xsl:param name="ProjectName"></xsl:param>   
-      <xsl:param name="FileName"></xsl:param>   
+      <xsl:param name="ProjectName"></xsl:param>
+      <xsl:param name="FileName"></xsl:param>
 
       <!-- Build the header -->
       <h4>
@@ -290,48 +275,45 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
             </xsl:attribute>
          </a>
 
-         Procedure <xsl:value-of select="Name"/>
-
+         Procedure <xsl:value-of select="Name" />
       </h4>
-   
+
       <p class="Header4Paragraph">
 
          <!-- Build some properties of the procedure-->
          <span class='PropertyName'>Type: </span><xsl:apply-templates select="Type" />
-         <br/>
-         <span class='PropertyName'>Scope: </span><xsl:value-of select="Scope"/>
-         <br/>
-         <span class='PropertyName'>Count of lines: </span><xsl:value-of select="CountOfLines"/>
-         <br/>
-         <br/>
+         <br />
+         <span class='PropertyName'>Scope: </span><xsl:value-of select="Scope" />
+         <br />
+         <span class='PropertyName'>Count of lines: </span><xsl:value-of select="CountOfLines" />
+         <br />
+         <br />
          <span class='PropertyName'>Declaration: </span>
-         <br/>
-         <br/>
-         <xsl:value-of select="Declaration"/>
-         <br/>
-         <br/>
+         <br />
+         <br />
+         <xsl:value-of select="Declaration" />
+         <br />
+         <br />
          <xsl:apply-templates select="Parameters" />
-         
-         <br/>
-         <br/>
+
+         <br />
+         <br />
          <span class='PropertyName'>Comment: </span>
 
          <xsl:choose>
-            <xsl:when test="count(CommentLines/CommentLine) = 0"> None<br/><br/></xsl:when>
+            <xsl:when test="count(CommentLines/CommentLine) = 0"> None<br /><br /></xsl:when>
             <xsl:otherwise>
-               <br/>
-               <br/>
+               <br />
+               <br />
                <xsl:for-each select="CommentLines/CommentLine">
-                  <xsl:value-of select="."/>
-                  <br/>
+                  <xsl:value-of select="." />
+                  <br />
                </xsl:for-each>
             </xsl:otherwise>
          </xsl:choose>
 
-         <br/>
-
+         <br />
       </p>
-
    </xsl:template>
 
    <!--
@@ -354,9 +336,9 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
 
       <xsl:for-each select="Project">
 
-         <xsl:sort select="Type"/>
-         <xsl:sort select="Name"/>
-       
+         <xsl:sort select="Type" />
+         <xsl:sort select="Name" />
+
          <tr>
             <td>
                <!-- We add a hyperlink to a bookmark with information about of the project -->
@@ -370,14 +352,11 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                   <xsl:value-of select="Name" />
                </a>
             </td>
-            <td><xsl:value-of select="FileName"/></td>
-            <td><xsl:value-of select="Type"/></td>
+            <td><xsl:value-of select="FileName" /></td>
+            <td><xsl:value-of select="Type" /></td>
          </tr>
-
        </xsl:for-each>
-
       </table>
-
    </xsl:template>
 
    <!--
@@ -388,7 +367,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
 
    <xsl:template match="Files">
 
-      <xsl:param name="ProjectName"></xsl:param>   
+      <xsl:param name="ProjectName"></xsl:param>
 
       <span class='ListHeader'>Files:</span>
 
@@ -417,15 +396,13 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                      <xsl:value-of select="Name" />
                   </a>
                </td>
-               <td><xsl:value-of select="FileName"/></td>
+               <td><xsl:value-of select="FileName" /></td>
                <td>
-                  <xsl:apply-templates select="Type"/>
+                  <xsl:apply-templates select="Type" />
                </td>
             </tr>
          </xsl:for-each>
-
       </table>
-
    </xsl:template>
 
    <!--
@@ -447,21 +424,18 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
          <th>Type</th>
          <th>Version</th>
       </tr>
-          
+
       <xsl:for-each select="Reference">
 
          <tr>
-            <td><xsl:value-of select="Name"/></td>
-            <td><xsl:value-of select="FileName"/></td>
-            <td><xsl:value-of select="Description"/></td>
-            <td><xsl:value-of select="Type"/></td>
-            <td><xsl:value-of select="Major"/>.<xsl:value-of select="Minor"/></td>
+            <td><xsl:value-of select="Name" /></td>
+            <td><xsl:value-of select="FileName" /></td>
+            <td><xsl:value-of select="Description" /></td>
+            <td><xsl:value-of select="Type" /></td>
+            <td><xsl:value-of select="Major" />.<xsl:value-of select="Minor" /></td>
          </tr>
-
       </xsl:for-each>
-
       </table>
-
    </xsl:template>
 
    <!--
@@ -469,24 +443,24 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for Controls list
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="Controls">
 
-      <br/><span class='ListHeader'>Controls:</span>
-     
+      <br /><span class='ListHeader'>Controls:</span>
+
       <table border="0" width="90%">
-         
+
          <tr>
             <th>Name</th>
             <th>ProgID</th>
             <th>Caption</th>
          </tr>
-            
+
          <xsl:for-each select="Control">
-            <xsl:sort select="Name"/>
+            <xsl:sort select="Name" />
             <tr>
-               <td><xsl:value-of select="Name"/></td>
-               <td><xsl:value-of select="ProgId"/></td>
+               <td><xsl:value-of select="Name" /></td>
+               <td><xsl:value-of select="ProgId" /></td>
                   <td>
                      <xsl:choose>
                         <xsl:when test="Properties/Property[Name='Caption']/Value">
@@ -499,9 +473,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                   </td>
                </tr>
          </xsl:for-each>
-
       </table>
-
    </xsl:template>
 
    <!--
@@ -515,7 +487,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
       <!-- If there is at least one element -->
       <xsl:if test="Event != '' ">
 
-         <br/><span class='ListHeader'>Events:</span>
+         <br /><span class='ListHeader'>Events:</span>
 
          <table border="0" width="90%">
 
@@ -526,15 +498,12 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
 
          <xsl:for-each select="Event">
             <tr>
-               <td><xsl:value-of select="Name"/></td>
-               <td><xsl:value-of select="Declaration"/></td>
+               <td><xsl:value-of select="Name" /></td>
+               <td><xsl:value-of select="Declaration" /></td>
             </tr>
          </xsl:for-each>
-
          </table>
-
       </xsl:if>
-
    </xsl:template>
 
    <!--
@@ -547,8 +516,8 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
 
       <!-- If there is at least one element -->
       <xsl:if test="Interface != '' ">
-        
-         <br/><span class='ListHeader'>Implemented Interfaces:</span>
+
+         <br /><span class='ListHeader'>Implemented Interfaces:</span>
 
          <table border="0" width="90%">
 
@@ -558,14 +527,11 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
 
          <xsl:for-each select="Interface">
             <tr>
-               <td><xsl:value-of select="."/></td>
+               <td><xsl:value-of select="." /></td>
             </tr>
          </xsl:for-each>
-
          </table>
-
       </xsl:if>
-
    </xsl:template>
 
    <!--
@@ -573,12 +539,12 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for Procedures list
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="Procedures">
-      <xsl:param name="ProjectName"></xsl:param>   
-      <xsl:param name="FileName"></xsl:param>   
-        
-      <br/><span class='ListHeader'>Procedures:</span>
+      <xsl:param name="ProjectName"></xsl:param>
+      <xsl:param name="FileName"></xsl:param>
+
+      <br /><span class='ListHeader'>Procedures:</span>
 
       <!-- If there is at least one element -->
       <xsl:choose>
@@ -614,17 +580,13 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                            <xsl:value-of select="Name" />
                         </a>
                      </td>
-                     <td><xsl:value-of select="Scope"/></td>
+                     <td><xsl:value-of select="Scope" /></td>
                      <td><xsl:apply-templates select="Type" /></td>
                   </tr>
                </xsl:for-each>
-
             </table>
-
          </xsl:otherwise>
-
       </xsl:choose>
-
    </xsl:template>
 
    <!--
@@ -632,28 +594,26 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for Properties list
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="Properties">
 
-      <br/><span class='ListHeader'>Properties:</span>
-        
+      <br /><span class='ListHeader'>Properties:</span>
+
       <table border="0" width="90%">
-            
+
          <tr>
             <th>Name</th>
             <th>Value</th>
          </tr>
-          
+
          <xsl:for-each select="Property">
-            <xsl:sort select="Name"/>
+            <xsl:sort select="Name" />
             <tr>
-               <td><xsl:value-of select="Name"/></td>
-               <td><xsl:value-of select="Value"/></td>
+               <td><xsl:value-of select="Name" /></td>
+               <td><xsl:value-of select="Value" /></td>
             </tr>
          </xsl:for-each>
-
       </table>
-
    </xsl:template>
 
    <!--
@@ -661,7 +621,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for Parameters list
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="Parameters">
 
       <span class='ListHeader'>Parameters:</span>
@@ -674,18 +634,18 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
          <xsl:otherwise>
 
             <table border="0" width="90%">
-                  
+
                <tr>
                   <th>Name</th>
                   <th>Type</th>
                   <th>ByVal/ByRef</th>
                   <th>Optional (Default Value)</th>
                </tr>
-                
+
                <xsl:for-each select="Parameter">
                   <tr>
-                     <td><xsl:value-of select="Name"/></td>
-                     <td><xsl:value-of select="Type"/></td>
+                     <td><xsl:value-of select="Name" /></td>
+                     <td><xsl:value-of select="Type" /></td>
                      <td>
                         <xsl:choose>
                            <xsl:when test="IsByVal='True'">ByVal</xsl:when>
@@ -700,13 +660,9 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                      </td>
                   </tr>
                </xsl:for-each>
-
             </table>
-
          </xsl:otherwise>
-
       </xsl:choose>
-      
    </xsl:template>
 
    <!--
@@ -714,7 +670,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for FileType
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="File/Type">
 
       <xsl:choose>
@@ -733,9 +689,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
          <xsl:when test=". = 'RelatedDocument' ">Related Document</xsl:when>
          <xsl:when test=". = 'ActiveXDesigner' ">ActiveX Designer</xsl:when>
          <xsl:when test=". = 'VBADocument' ">VBA Document</xsl:when>
-
       </xsl:choose>
-
    </xsl:template>
 
    <!--
@@ -743,7 +697,7 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for ProcedureType
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template match="Procedure/Type">
 
       <xsl:choose>
@@ -755,43 +709,39 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
          <xsl:when test=". = 'PropertyGet' ">Property Get</xsl:when>
          <xsl:when test=". = 'PropertyLet' ">Property Let</xsl:when>
          <xsl:when test=". = 'PropertySet' ">Property Set</xsl:when>
-
       </xsl:choose>
-
    </xsl:template>
-   
+
    <!--
    ////////////////////////////////////////////////////////////////////////
                                Template for Project Bookmark
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template name="ProjectBookmarkName">
-      <xsl:param name="ProjectName"></xsl:param>   
+      <xsl:param name="ProjectName"></xsl:param>
 
       <!-- Build a bookmark name with the pattern "ProjectName_Bookmark" -->
       <xsl:value-of select="$ProjectName" />
       <xsl:text>_Bookmark</xsl:text>
-
    </xsl:template>
- 
+
    <!--
    ////////////////////////////////////////////////////////////////////////
                                Template for File Bookmark
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template name="FileBookmarkName">
 
-      <xsl:param name="ProjectName"></xsl:param>   
-      <xsl:param name="FileName"></xsl:param>   
+      <xsl:param name="ProjectName"></xsl:param>
+      <xsl:param name="FileName"></xsl:param>
 
       <!-- Build a bookmark name with the pattern "ProjectName_FileName_Bookmark" -->
       <xsl:value-of select="$ProjectName" />
       <xsl:text>_</xsl:text>
-      <xsl:value-of select="$FileName"/>
+      <xsl:value-of select="$FileName" />
       <xsl:text>_Bookmark</xsl:text>
-
    </xsl:template>
 
    <!--
@@ -799,26 +749,22 @@ Search "Installing MSXML 3.0 for XSLT Support" in the MSDN Library
                                Template for Procudure Bookmark
    ////////////////////////////////////////////////////////////////////////
    -->
-   
+
    <xsl:template name="ProcedureBookmarkName">
 
-      <xsl:param name="ProjectName"></xsl:param>   
-      <xsl:param name="FileName"></xsl:param>   
-      <xsl:param name="ProcedureName"></xsl:param>   
-      <xsl:param name="ProcedureType"></xsl:param>   
+      <xsl:param name="ProjectName"></xsl:param>
+      <xsl:param name="FileName"></xsl:param>
+      <xsl:param name="ProcedureName"></xsl:param>
+      <xsl:param name="ProcedureType"></xsl:param>
 
       <!-- Build a bookmark name with the pattern "ProjectName_FileName_ProcedureName_ProcedureType_Bookmark" -->
       <xsl:value-of select="$ProjectName" />
       <xsl:text>_</xsl:text>
-      <xsl:value-of select="$FileName"/>
+      <xsl:value-of select="$FileName" />
       <xsl:text>_</xsl:text>
-      <xsl:value-of select="$ProcedureName"/>
+      <xsl:value-of select="$ProcedureName" />
       <xsl:text>_</xsl:text>
-      <xsl:value-of select="$ProcedureType"/>
+      <xsl:value-of select="$ProcedureType" />
       <xsl:text>_Bookmark</xsl:text>
-
    </xsl:template>
-
 </xsl:stylesheet>
-
-

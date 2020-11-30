@@ -1,11 +1,13 @@
 ' 236 VB Printing
 ' 2012-02-25	PV  VS2010
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class Form1
 
     Public iPrintedPage As Integer
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPreview.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles btnPreview.Click
         ActionPrint()
     End Sub
 
@@ -24,7 +26,7 @@ Public Class Form1
     End Sub
 
     ' Printing
-    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+    Private Sub PrintDocument1_PrintPage(sender As System.Object, e As Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
         iPrintedPage += 1
 
         Dim rOut As Rectangle
@@ -35,15 +37,15 @@ Public Class Form1
         e.Graphics.DrawLine(p, 0, 0, rOut.Width, rOut.Height)
         e.Graphics.DrawLine(p, rOut.Width, 0, 0, rOut.Height)
 
-        Dim f As System.Drawing.Font = New System.Drawing.Font("Arial", 36, FontStyle.Bold)
+        Dim f As Font = New Font("Arial", 36, FontStyle.Bold)
         e.Graphics.DrawString("Page " & iPrintedPage.ToString, f, Brushes.Black, 100, 100)
 
         e.HasMorePages = iPrintedPage <= 2
     End Sub
 
-    Private Sub btnPageSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPageSetup.Click
-        PageSetupDialog1.PageSettings = New System.Drawing.Printing.PageSettings
-        PageSetupDialog1.PrinterSettings = New System.Drawing.Printing.PrinterSettings
+    Private Sub btnPageSetup_Click(sender As System.Object, e As EventArgs) Handles btnPageSetup.Click
+        PageSetupDialog1.PageSettings = New Drawing.Printing.PageSettings
+        PageSetupDialog1.PrinterSettings = New Drawing.Printing.PrinterSettings
 
         PageSetupDialog1.AllowMargins = False
         PageSetupDialog1.AllowPrinter = False

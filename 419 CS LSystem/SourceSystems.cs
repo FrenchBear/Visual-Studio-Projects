@@ -1,17 +1,12 @@
 // 419 CS LSystem
 // 2012-02-05   PV
 
-
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 
 namespace CS419
 {
-    class SourceSystem
+    internal class SourceSystem
     {
         public string Name { get; set; }
         public int Angle { get; set; }
@@ -25,12 +20,11 @@ namespace CS419
         }
     }
 
-    class SourceSystemComparer : IComparer<SourceSystem>
+    internal class SourceSystemComparer : IComparer<SourceSystem>
     {
         public int Compare(SourceSystem x, SourceSystem y)
         {
             return string.Compare(x.Name, y.Name, true, CultureInfo.InvariantCulture);
         }
     }
-
 }

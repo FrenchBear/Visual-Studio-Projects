@@ -8,17 +8,14 @@
 // 2017-05-01   PV
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CS_Populate_Array
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             //int n = 1000000000;
             int n = 32000 * 8;
@@ -43,7 +40,6 @@ namespace CS_Populate_Array
             InitializeArray2(tb, true);
             sw4.Stop();
             Console.WriteLine("InitializeArray2: " + sw4.Elapsed.ToString());
-
 
             Console.WriteLine();
             Console.Write("(Pause)");
@@ -87,10 +83,9 @@ namespace CS_Populate_Array
             Task.WaitAll(initializers);
         }
 
-
         public static void InitializeArray2<T>(T[] array, T value)
         {
-            var cores = Environment.ProcessorCount-1;
+            var cores = Environment.ProcessorCount - 1;
             var al = array.Length;
             var step = al / cores;
 
@@ -126,7 +121,7 @@ namespace CS_Populate_Array
         // there is no need for synchronization (but still have to wait that all threads are terminated to continue)
         public static void PopulateParallel<T>(this T[] array, T value)
         {
-            var cores = Environment.ProcessorCount-1;
+            var cores = Environment.ProcessorCount - 1;
             var al = array.Length;
             var step = al / cores;
             var tasks = new Task[cores];
@@ -144,6 +139,5 @@ namespace CS_Populate_Array
             }
             Task.WaitAll(tasks);
         }
-
     }
 }

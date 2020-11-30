@@ -5,9 +5,7 @@
 // 2016-09-26   PV
 // 2018-09-01   PV      œ example
 
-
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -16,18 +14,16 @@ using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-
 namespace CS549
 {
-    class Program
+    internal class Program
     {
-        const string file = @"Colorisation de BD - Du traditionnel au numérique (2005) - Cœur de Presse - Baril, Naïts.pdf";
+        private const string file = @"Colorisation de BD - Du traditionnel au numérique (2005) - Cœur de Presse - Baril, Naïts.pdf";
 
-        static void Main()
+        private static void Main()
         {
             string s1 = "MaÏs";
             string s2 = "Mais";
-
 
             //string s1 = "Cœur";
             //string s2 = "Coeur";
@@ -45,7 +41,6 @@ namespace CS549
             WriteLine();
             Write("(Pause)");
             ReadLine();
-
         }
 
         // StringContains both Accent Insensitive and Case Insensitive
@@ -55,10 +50,9 @@ namespace CS549
             return RemoveDiacritics(searched).IndexOf(RemoveDiacritics(value), StringComparison.InvariantCultureIgnoreCase) >= 0;
         }
 
+        private delegate string StringToString(string s);
 
-        delegate string StringToString(string s);
-
-        static void TimeExec(StringToString f)
+        private static void TimeExec(StringToString f)
         {
             Stopwatch sw = Stopwatch.StartNew();
             for (int i = 0; i < 100000; i++)
@@ -69,8 +63,7 @@ namespace CS549
             WriteLine($"Time: {sw.Elapsed}");
         }
 
-
-        static string RemoveDiacritics(string text)
+        private static string RemoveDiacritics(string text)
         {
             StringBuilder sb = new StringBuilder();
             foreach (char ch in text.Normalize(NormalizationForm.FormD))
@@ -78,7 +71,8 @@ namespace CS549
                     sb.Append(ch);
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
-        static string RemoveDiacritics2(string text)
+
+        private static string RemoveDiacritics2(string text)
         {
             return string.Concat(
                 text.Normalize(NormalizationForm.FormD)

@@ -4,22 +4,21 @@
 // 2012-03-04   PV
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace CS421
 {
-    class Node<T>
+    internal class Node<T>
     {
         public Node<T> LeftNode, RightNode;
         public T Item;
     }
 
     // Simple binary tree, unbalanced...
-    class BinaryTree<T> : IEnumerable<T>
+    internal class BinaryTree<T> : IEnumerable<T>
         where T : IComparable
     {
         private Node<T> m_Root;
@@ -80,16 +79,15 @@ namespace CS421
                         yield return item;
             }
         }
-
     }
 
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             Random r = new Random();
-            Func<double> Rnd = delegate { return r.NextDouble(); };
-            Func<double> Rnd2 = () => r.NextDouble();
+            double Rnd() { return r.NextDouble(); }
+            double Rnd2() => r.NextDouble();
 
             // tests of Array global initialization
             double[] tr10, tu10, tv10;
@@ -113,15 +111,14 @@ namespace CS421
         }
 
         // An elegant way to use an iterator to get an IEnumerable of count calls to a generator...
-        static IEnumerable<T> Generate<T>(int count, Func<T> generator)
+        private static IEnumerable<T> Generate<T>(int count, Func<T> generator)
         {
             while (count-- > 0)
                 yield return generator();
         }
     }
 
-
-    static class MyExtensions
+    internal static class MyExtensions
     {
         // Iterate an action on an IEnumerable
         static public void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
@@ -129,6 +126,5 @@ namespace CS421
             foreach (T item in collection)
                 action(item);
         }
-
     }
 }

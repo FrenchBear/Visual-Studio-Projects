@@ -6,18 +6,13 @@
 //
 // 2015-09-15   FPVI    First version
 
-
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DoubleAlmostEqual
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             T(0.0, 0.0, true);
             T(0.0, 1.0, false);
@@ -46,14 +41,14 @@ namespace DoubleAlmostEqual
             Console.ReadLine();
         }
 
-        static void T(double d1, double d2, bool expectedresult)
+        private static void T(double d1, double d2, bool expectedresult)
         {
             if (DoubleAlmostEqual(d1, d2) != expectedresult)
                 Console.WriteLine($"{d1}=={d2}, expected {expectedresult}, got {DoubleAlmostEqual(d1, d2)}");
         }
 
         // My own version of double comparison for units coefficients
-        static bool DoubleAlmostEqual(double d1, double d2)
+        private static bool DoubleAlmostEqual(double d1, double d2)
         {
             if (d1 == d2) return true;                              // simple case, if binary equality, done.
             if (d1 == 0.0 || d2 == 0.0) return false;               // 0.0 compared to not 0.0 s always false here

@@ -4,14 +4,9 @@
 // To access ConfigurationManager, add a reference to System.Configuration and namespace System.Configuration
 
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArithmeticNamespace
 {
@@ -21,7 +16,6 @@ namespace ArithmeticNamespace
         {
             return a + b;
         }
-
 
         // Return applicationSetting from dll.config
         public string GetApplicationSetting(string settingName)
@@ -52,14 +46,12 @@ namespace ArithmeticNamespace
             return (string)ArithmeticNamespace.Properties.Settings.Default[settingName];
         }
 
-
         // Return appSetting from dll.config
         public string GetAppSetting(string settingName)
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(this.GetType().Assembly.Location);
             return config.AppSettings.Settings[settingName].Value;
         }
-
 
         // Returns a string embedded in dll resources
         public string GetStringResource(string stringName)
@@ -77,6 +69,5 @@ namespace ArithmeticNamespace
             _imageStream = _assembly.GetManifestResourceStream(MyNameSpace + "." + imageName);
             return _imageStream;
         }
-
     }
 }

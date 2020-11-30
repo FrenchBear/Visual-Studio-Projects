@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Drawing.Imaging;
-
 
 namespace CreateVignette
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var testc = new Test();
             testc.ConvertImage("DSC_09785.JPG");
@@ -25,12 +21,12 @@ namespace CreateVignette
         }
     }
 
-    class Test
+    internal class Test
     {
-        readonly string SourceFolder = @"D:\A_Copier\2013-06 Vacances AK et YT (Extrait) HR";
-        readonly string TargetFolder = @"C:\Temp";
-        readonly int LargeSideSize = 2500;
-        readonly int JpegQuality = 90;
+        private readonly string SourceFolder = @"D:\A_Copier\2013-06 Vacances AK et YT (Extrait) HR";
+        private readonly string TargetFolder = @"C:\Temp";
+        private readonly int LargeSideSize = 2500;
+        private readonly int JpegQuality = 90;
 
         public string ConvertImage(string fileName)
         {

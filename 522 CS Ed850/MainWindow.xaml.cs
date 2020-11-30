@@ -33,7 +33,7 @@ namespace Ed850
             CommandBindings.Add(new CommandBinding(About, AboutExecuted));
         }
 
-        void NewExecuted(object sender, ExecutedRoutedEventArgs e)
+        private void NewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             var z = CanContinue();
             if (!z) return;
@@ -43,7 +43,7 @@ namespace Ed850
             b.FileName = null;
         }
 
-        void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
+        private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             var z = CanContinue();
             if (!z) return;
@@ -59,7 +59,7 @@ namespace Ed850
             // Show open file dialog box
             bool? result = dlg.ShowDialog();
 
-            // Process open file dialog box results 
+            // Process open file dialog box results
             if (result == true)
             {
                 try
@@ -94,12 +94,10 @@ namespace Ed850
             this.Close();
         }
 
-
         private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             IsDirty = true;
         }
-
 
         private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -129,21 +127,20 @@ namespace Ed850
             {
                 FileName = "", // Default file name
                 DefaultExt = ".bat", // Default file extension
-                Filter = "Commandes (.bat,*.cmd)|*.bat;*.cmd|Tous les fichiers (*.*)|*.*"  // Filter files by extension 
+                Filter = "Commandes (.bat,*.cmd)|*.bat;*.cmd|Tous les fichiers (*.*)|*.*"  // Filter files by extension
             };
 
             // Show save file dialog box
             bool? result = dlg.ShowDialog();
 
-            // Process save file dialog box results 
+            // Process save file dialog box results
             if (result == true)
             {
-                // Save document 
+                // Save document
                 b.FileName = dlg.FileName;
                 SaveExecuted(sender, e);
             }
         }
-
 
         protected override void OnClosing(CancelEventArgs e)
         {
@@ -163,9 +160,7 @@ namespace Ed850
             else
                 return true;
         }
-
     }
-
 
     public class DataBag : INotifyPropertyChanged
     {
@@ -177,6 +172,7 @@ namespace Ed850
         }
 
         private string _FileName;
+
         public string FileName
         {
             get { return _FileName; }
@@ -201,6 +197,5 @@ namespace Ed850
                     return "ED850 - " + _FileName;
             }
         }
-
     }
 }

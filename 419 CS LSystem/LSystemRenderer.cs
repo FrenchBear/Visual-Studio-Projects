@@ -41,7 +41,6 @@ namespace CS419
             double x0 = 0.0;                        // xmin for pass2
             double y0 = 0.0;                        // ymin for pass2
 
-
             if (rendingHeight == 0 && rendingWidth == 0)
             {
                 pass = 1;

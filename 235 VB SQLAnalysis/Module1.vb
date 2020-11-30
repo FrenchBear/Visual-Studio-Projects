@@ -1,7 +1,6 @@
 ' 235 VB SQLAnalysis
 ' 2012-02-25	PV  VS2010
 
-
 Imports System.Text.RegularExpressions
 
 Module Module1
@@ -76,7 +75,7 @@ Module Module1
         End If
     End Sub
 
-    Private Sub ProcessSQLBlock(ByVal sSource As String, ByVal sMasked As String)
+    Private Sub ProcessSQLBlock(sSource As String, sMasked As String)
         Dim re As Regex = New Regex("(\s|^)CREATE\s+((?<1>P)ROC(EDURE)?|(?<1>F)UNCTION)\s+(\[?[A-Z_][A-Z0-9_\$#@]*\]?\.)?(\[?(?<2>[A-Z_][A-Z0-9_\$#@]*)\]?)(\s|\()", RegexOptions.ExplicitCapture Or RegexOptions.IgnoreCase)
         Dim m As Match = re.Match(sMasked)
         If m.Success Then

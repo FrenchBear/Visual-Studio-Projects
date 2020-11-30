@@ -9,7 +9,7 @@
     <xsd:complexType>
       <xsd:sequence>
         <xsd:element name="ConfigVersion" type="xsd:string" />
-        <xsd:element ref="WRoundingInfos"/>
+        <xsd:element ref="WRoundingInfos" />
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
@@ -18,7 +18,7 @@
   <xsd:element name="WRoundingInfos">
     <xsd:complexType>
       <xsd:choice minOccurs="1" maxOccurs="unbounded">
-        <xsd:element ref="RoundingInfo"/>
+        <xsd:element ref="RoundingInfo" />
         <!--<xsd:any namespace="##other" processContents="lax" />-->
       </xsd:choice>
       <!--<xsd:anyAttribute namespace="##other" processContents="lax" />-->
@@ -38,5 +38,4 @@
       <!--<xsd:anyAttribute namespace="##other" processContents="lax" />-->
     </xsd:complexType>
   </xsd:element>
-
 </xsd:schema>

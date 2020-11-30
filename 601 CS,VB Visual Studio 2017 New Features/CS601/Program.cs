@@ -12,25 +12,23 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
-
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 
 namespace CS601
 {
-    class Program
+    internal class Program
     {
         // throw expressions
         private readonly Point GlobalPoint = new Point(5, 6) ??
             throw new InvalidOperationException("Could not initialize " + nameof(GlobalPoint));
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.OutputEncoding = new UTF8Encoding();
             // Just to display φ, although it's shown as ϕ in Consolas (and Calibri), that's a known problem with old fonts...
 
             // From Wikipedia, https://en.wikipedia.org/wiki/Phi:
-            // Prior to Unicode version 3.0 (1998), the glyph assignments in the Unicode code charts were the reverse, 
+            // Prior to Unicode version 3.0 (1998), the glyph assignments in the Unicode code charts were the reverse,
             // and thus older fonts may still show a loopy form φ at U+03D5
 
             // From Unicode® Technical Report #25, Unicode Support for Mathematics http://unicode.org/reports/tr25/:
@@ -43,9 +41,7 @@ namespace CS601
             // more like the representative glyph shown for U+03D5(ϕ, the “straight“ form).
             // See the Greek table in the character code charts http://www.unicode.org/charts/PDF/U0370.pdf
 
-
             WriteLine("Tests en C# 2017\n");
-
 
             // Tuples
             var t1 =
@@ -59,11 +55,8 @@ namespace CS601
             // Following conversions are not supported...
             //Tuple<int, int> myTuple1 = (3, 4);
 
-
             //Tuple<int, int> myTuple2 = (Tuple<int, int>)(3, 4);
             Tuple<int, int> myTuple3 = (3, 4).Construct();      // An extension method can be used
-
-
 
             // Actually, real type is ValueTuple
             ValueTuple<int, int> myValueTuple1 = (2, 7);
@@ -96,13 +89,12 @@ namespace CS601
             Tuple<int, int> t78 = new Tuple<int, int>(7, 8);
             (int Z, int T) = t78;                               // Deconstruction using extension method
             WriteLine($"Z={Z}, T={T}");
-            var (Z1, _) = t78;                                  // Discard element during deconstruction    
+            var (Z1, _) = t78;                                  // Discard element during deconstruction
 
             // Deconstruction using an extension method
             Complex z = new Complex(3.0, 4.0);
             var (zr, zi) = z;
             WriteLine($"zr={zr}, zi={zi}");
-
 
             // Function returning a reference (but intellisense does not show it)
             string s1 = "Hello";
@@ -133,8 +125,6 @@ namespace CS601
             ReadLine();
         }
 
-
-
         // Local function and tuples
         public int Fibonacci(int x)
         {
@@ -149,8 +139,7 @@ namespace CS601
             }
         }
 
-
-        static (int sum, int count) Tally(object[] values)      // tuple types
+        private static (int sum, int count) Tally(object[] values)      // tuple types
         {
             var r = (s: 0, c: 0);                               // tuple literals
             void Add(int s, int c) { r = (r.s + s, r.c + c); }  // local functions
@@ -218,10 +207,9 @@ namespace CS601
 
             // Positional Pattern (doesn't work)
             var r = (i: 12, j: 25);
-                               // if (r is (int x, int y)) WriteLine();
+            // if (r is (int x, int y)) WriteLine();
         }
     }
-
 
     // Example of class supporting Tuple deconstruction
     public class Point
@@ -269,7 +257,7 @@ namespace CS601
 
     public class T9Enumerator<T> : IEnumerable<T>
     {
-        (T s1, T s2, T s3, T s4, T s5, T s6, T s7, T s8, T s9) localTuple;
+        private (T s1, T s2, T s3, T s4, T s5, T s6, T s7, T s8, T s9) localTuple;
 
         public T9Enumerator((T s1, T s2, T s3, T s4, T s5, T s6, T s7, T s8, T s9) bigTuple) =>
             localTuple = bigTuple;
@@ -292,5 +280,4 @@ namespace CS601
 
         IEnumerator IEnumerable.GetEnumerator() => MyEnumerator();
     }
-
 }

@@ -4,10 +4,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 using System.Windows;
-using WpfApplication2;
 
 namespace CS419
 {
@@ -19,7 +17,7 @@ namespace CS419
         private IEnumerable<char> drawString;
         private int angle;
         private string title;
-        readonly DataBag b;
+        private readonly DataBag b;
 
         public MainWindow()
         {
@@ -41,7 +39,6 @@ namespace CS419
             //drawString = LSystemProcessor.LSystemIterator(4, axiom, rules);
         }
 
-
         // Prepare a call to LSystemProcessor
         // Retruns false in case of a problem, otherwise returns true and variables drawString and angle are filled
         private bool OkGenerate()
@@ -57,8 +54,7 @@ namespace CS419
                 return false;
             }
 
-            SourceSystem ss = SystemsListBox.SelectedItem as SourceSystem;
-            if (ss == null)
+            if (!(SystemsListBox.SelectedItem is SourceSystem ss))
             {
                 MessageBox.Show("Select a system first", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
@@ -152,6 +148,5 @@ namespace CS419
             Window w = new HelpWindow();
             w.Show();
         }
-
     }
 }

@@ -4,8 +4,7 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Delegate Sub MyDelegate(ByVal sMsg As String)
-
+Delegate Sub MyDelegate(sMsg As String)
 
 Class MyApp
 
@@ -22,12 +21,11 @@ Class MyApp
         Console.ReadLine()
     End Sub
 
-
-    Shared Sub Sub1(ByVal s As String)
+    Shared Sub Sub1(s As String)
         Console.WriteLine("Sub1: " & s)
     End Sub
 
-    Shared Sub Sub2(ByVal s As String)
+    Shared Sub Sub2(s As String)
         Console.WriteLine("Sub2: " & s)
     End Sub
 

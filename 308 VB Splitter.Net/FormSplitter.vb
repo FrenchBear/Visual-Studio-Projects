@@ -3,13 +3,17 @@
 
 Option Strict Off
 Option Explicit On
+
+#Disable Warning IDE0059 ' Unnecessary assignment of a value
+#Disable Warning IDE1006 ' Naming Styles
+
 Friend Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     Private mbMoving As Boolean
     Private y0 As Integer
 
-    Private Sub imgSplitter_MouseDown(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles imgSplitter.MouseDown
+    Private Sub imgSplitter_MouseDown(eventSender As System.Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseDown
         With imgSplitter
             picSplitter.SetBounds(.Left, .Top, .Width, .Height)
         End With
@@ -18,7 +22,7 @@ Friend Class Form1
         mbMoving = True
     End Sub
 
-    Private Sub imgSplitter_MouseMove(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles imgSplitter.MouseMove
+    Private Sub imgSplitter_MouseMove(eventSender As System.Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseMove
         Dim iPos As Integer
         Dim iTableTop As Integer = 100
         Dim iSplitLimit As Integer = 10
@@ -33,8 +37,7 @@ Friend Class Form1
         End If
     End Sub
 
-
-    Private Sub imgSplitter_MouseUp(ByVal eventSender As System.Object, ByVal eventArgs As System.Windows.Forms.MouseEventArgs) Handles imgSplitter.MouseUp
+    Private Sub imgSplitter_MouseUp(eventSender As System.Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseUp
         Dim iPos As Integer
 
         Dim iTableTop As Integer = 100
@@ -48,4 +51,5 @@ Friend Class Form1
         'ucTable.Height = 15 * ((sglPos - ucTableTop) \ 15)
         'Redisplay
     End Sub
+
 End Class

@@ -4,8 +4,7 @@
         xmlns:local="clr-namespace:RI3"
         Title="RetailleImages 3.1" Height="450" Width="650"
         Name="RI3Window" Icon="retaille.ico"
-        FocusManager.FocusedElement="{Binding ElementName=SourceFolderTextBox}"
-        >
+        FocusManager.FocusedElement="{Binding ElementName=SourceFolderTextBox}">
 
     <Window.Resources>
         <BitmapImage x:Key="ErrorImage" UriSource="00463.TraceError.16x16.png" />
@@ -15,14 +14,14 @@
             <Setter Property="Validation.ErrorTemplate">
                 <Setter.Value>
                     <ControlTemplate TargetType="Control">
-                        <Grid ClipToBounds="False" >
+                        <Grid ClipToBounds="False">
                             <Border BorderBrush="Red" BorderThickness="1" Margin="-1">
                                 <AdornedElementPlaceholder Name="adornedElement" />
                             </Border>
-                            <Image HorizontalAlignment="Right" VerticalAlignment="Top" 
-                               Width="16" Height="16" Margin="0,-8,-8,0" 
-                               Source="{StaticResource ErrorImage}" 
-                               ToolTip="{Binding ErrorContent}"/>
+                            <Image HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Width="16" Height="16" Margin="0,-8,-8,0"
+                               Source="{StaticResource ErrorImage}"
+                               ToolTip="{Binding ErrorContent}" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -32,11 +31,10 @@
                 <Trigger Property="Validation.HasError" Value="True">
                     <Setter Property="ToolTip"
                         Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                    Path=(Validation.Errors)[0].ErrorContent}" />
                 </Trigger>
             </Style.Triggers>
         </Style>
-
     </Window.Resources>
 
     <Grid Margin="0,6,6,6" IsSharedSizeScope="True">
@@ -55,9 +53,9 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" SharedSizeGroup="myLabels" />
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
             <Label Content="Répertoire _source" Target="{Binding ElementName=SourceFolderTextBox}" />
@@ -81,9 +79,9 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" SharedSizeGroup="myLabels"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="myLabels" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <Label Content="_Taille grand coté (pixels)" Target="{Binding ElementName=LargeSideSizeTextBox}" />
@@ -97,7 +95,7 @@
             <Slider Grid.Row="1" Grid.Column="2" Value="{Binding JpegQuality}" Margin="5,5,0,0" VerticalAlignment="Center" Maximum="100" LargeChange="10" AutoToolTipPlacement="TopLeft" TickFrequency="10" TickPlacement="BottomRight" />
         </Grid>
 
-        <ProgressBar Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding GenerateProgressValue, Mode=OneWay}" Margin="6,5,0,0"/>
+        <ProgressBar Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding GenerateProgressValue, Mode=OneWay}" Margin="6,5,0,0" />
         <TextBlock Padding="3" Grid.Row="2" Text="{Binding GenerateProgressText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" />
 
         <ListBox Name="TracesListBox" Grid.Row="3" Margin="6,5,0,0" ItemsSource="{Binding TracesList}" SelectedIndex="{Binding TraceSelectedIndex}" SelectionChanged="ListBox_SelectionChanged" />

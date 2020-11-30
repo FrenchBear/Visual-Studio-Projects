@@ -4,11 +4,11 @@
 ' 01/10/2006 PV VS 2005
 
 Imports VB = Microsoft.VisualBasic
-Imports System.Text.RegularExpressions
 
+#Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmAnalyseUsers
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -25,7 +25,7 @@ Public Class frmAnalyseUsers
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -38,61 +38,62 @@ Public Class frmAnalyseUsers
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents lblAnalyse As System.Windows.Forms.Label
-    Friend WithEvents btnAnalyse As System.Windows.Forms.Button
-    Friend WithEvents txtSite As System.Windows.Forms.TextBox
-    Friend WithEvents lblLégende As System.Windows.Forms.Label
-    Friend WithEvents mnuMiste As System.Windows.Forms.ContextMenu
-    Friend WithEvents cmdCopie As System.Windows.Forms.MenuItem
-    Friend WithEvents lvUsers As System.Windows.Forms.ListView
-    Friend WithEvents chCN As System.Windows.Forms.ColumnHeader
-    Friend WithEvents chAccount As System.Windows.Forms.ColumnHeader
-    Friend WithEvents sbStatus As System.Windows.Forms.StatusBar
-    Friend WithEvents chOU As System.Windows.Forms.ColumnHeader
-    Friend WithEvents chRemarques As System.Windows.Forms.ColumnHeader
-    Friend WithEvents gbTester As System.Windows.Forms.GroupBox
-    Friend WithEvents chkScriptOuverture As System.Windows.Forms.CheckBox
-    Friend WithEvents chkCompteDésactivé As System.Windows.Forms.CheckBox
-    Friend WithEvents chkChangeMDPInterdit As System.Windows.Forms.CheckBox
-    Friend WithEvents chkMdPExpiré As System.Windows.Forms.CheckBox
-    Friend WithEvents chkGrpfr_allusers_g As System.Windows.Forms.CheckBox
-    Friend WithEvents chkGrpSite As System.Windows.Forms.CheckBox
-    Friend WithEvents chkGrpBusiness As System.Windows.Forms.CheckBox
-    Friend WithEvents chkCompteVerrouillé As System.Windows.Forms.CheckBox
-    Friend WithEvents chkMdpPeutExpirer As System.Windows.Forms.CheckBox
+    Friend WithEvents lblAnalyse As Label
 
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.Resources.ResourceManager = New System.Resources.ResourceManager(GetType(frmAnalyseUsers))
-        Me.btnAnalyse = New System.Windows.Forms.Button
-        Me.lblAnalyse = New System.Windows.Forms.Label
-        Me.txtSite = New System.Windows.Forms.TextBox
-        Me.lblLégende = New System.Windows.Forms.Label
-        Me.mnuMiste = New System.Windows.Forms.ContextMenu
-        Me.cmdCopie = New System.Windows.Forms.MenuItem
-        Me.lvUsers = New System.Windows.Forms.ListView
-        Me.chCN = New System.Windows.Forms.ColumnHeader
-        Me.chOU = New System.Windows.Forms.ColumnHeader
-        Me.chAccount = New System.Windows.Forms.ColumnHeader
-        Me.chRemarques = New System.Windows.Forms.ColumnHeader
-        Me.sbStatus = New System.Windows.Forms.StatusBar
-        Me.gbTester = New System.Windows.Forms.GroupBox
-        Me.chkCompteVerrouillé = New System.Windows.Forms.CheckBox
-        Me.chkGrpBusiness = New System.Windows.Forms.CheckBox
-        Me.chkGrpSite = New System.Windows.Forms.CheckBox
-        Me.chkGrpfr_allusers_g = New System.Windows.Forms.CheckBox
-        Me.chkMdPExpiré = New System.Windows.Forms.CheckBox
-        Me.chkChangeMDPInterdit = New System.Windows.Forms.CheckBox
-        Me.chkCompteDésactivé = New System.Windows.Forms.CheckBox
-        Me.chkScriptOuverture = New System.Windows.Forms.CheckBox
-        Me.chkMdpPeutExpirer = New System.Windows.Forms.CheckBox
+    Friend WithEvents btnAnalyse As Button
+    Friend WithEvents txtSite As TextBox
+    Friend WithEvents lblLégende As Label
+    Friend WithEvents mnuMiste As ContextMenu
+    Friend WithEvents cmdCopie As MenuItem
+    Friend WithEvents lvUsers As ListView
+    Friend WithEvents chCN As ColumnHeader
+    Friend WithEvents chAccount As ColumnHeader
+    Friend WithEvents sbStatus As StatusBar
+    Friend WithEvents chOU As ColumnHeader
+    Friend WithEvents chRemarques As ColumnHeader
+    Friend WithEvents gbTester As GroupBox
+    Friend WithEvents chkScriptOuverture As CheckBox
+    Friend WithEvents chkCompteDésactivé As CheckBox
+    Friend WithEvents chkChangeMDPInterdit As CheckBox
+    Friend WithEvents chkMdPExpiré As CheckBox
+    Friend WithEvents chkGrpfr_allusers_g As CheckBox
+    Friend WithEvents chkGrpSite As CheckBox
+    Friend WithEvents chkGrpBusiness As CheckBox
+    Friend WithEvents chkCompteVerrouillé As CheckBox
+    Friend WithEvents chkMdpPeutExpirer As CheckBox
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Dim resources As Resources.ResourceManager = New Resources.ResourceManager(GetType(frmAnalyseUsers))
+        Me.btnAnalyse = New Button
+        Me.lblAnalyse = New Label
+        Me.txtSite = New TextBox
+        Me.lblLégende = New Label
+        Me.mnuMiste = New ContextMenu
+        Me.cmdCopie = New MenuItem
+        Me.lvUsers = New ListView
+        Me.chCN = New ColumnHeader
+        Me.chOU = New ColumnHeader
+        Me.chAccount = New ColumnHeader
+        Me.chRemarques = New ColumnHeader
+        Me.sbStatus = New StatusBar
+        Me.gbTester = New GroupBox
+        Me.chkCompteVerrouillé = New CheckBox
+        Me.chkGrpBusiness = New CheckBox
+        Me.chkGrpSite = New CheckBox
+        Me.chkGrpfr_allusers_g = New CheckBox
+        Me.chkMdPExpiré = New CheckBox
+        Me.chkChangeMDPInterdit = New CheckBox
+        Me.chkCompteDésactivé = New CheckBox
+        Me.chkScriptOuverture = New CheckBox
+        Me.chkMdpPeutExpirer = New CheckBox
         Me.gbTester.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnAnalyse
         '
-        Me.btnAnalyse.Location = New System.Drawing.Point(276, 8)
+        Me.btnAnalyse.Location = New Point(276, 8)
         Me.btnAnalyse.Name = "btnAnalyse"
         Me.btnAnalyse.TabIndex = 2
         Me.btnAnalyse.Text = "&Analyser"
@@ -100,32 +101,32 @@ Public Class frmAnalyseUsers
         'lblAnalyse
         '
         Me.lblAnalyse.AutoSize = True
-        Me.lblAnalyse.Location = New System.Drawing.Point(4, 12)
+        Me.lblAnalyse.Location = New Point(4, 12)
         Me.lblAnalyse.Name = "lblAnalyse"
-        Me.lblAnalyse.Size = New System.Drawing.Size(123, 16)
+        Me.lblAnalyse.Size = New Size(123, 16)
         Me.lblAnalyse.TabIndex = 0
         Me.lblAnalyse.Text = "Site à analyser dans fr :"
         '
         'txtSite
         '
-        Me.txtSite.Location = New System.Drawing.Point(132, 8)
+        Me.txtSite.Location = New Point(132, 8)
         Me.txtSite.Name = "txtSite"
-        Me.txtSite.Size = New System.Drawing.Size(136, 20)
+        Me.txtSite.Size = New Size(136, 20)
         Me.txtSite.TabIndex = 1
         Me.txtSite.Text = ""
         '
         'lblLégende
         '
         Me.lblLégende.AutoSize = True
-        Me.lblLégende.Location = New System.Drawing.Point(4, 32)
+        Me.lblLégende.Location = New Point(4, 32)
         Me.lblLégende.Name = "lblLégende"
-        Me.lblLégende.Size = New System.Drawing.Size(30, 16)
+        Me.lblLégende.Size = New Size(30, 16)
         Me.lblLégende.TabIndex = 3
         Me.lblLégende.Text = "ou=fr"
         '
         'mnuMiste
         '
-        Me.mnuMiste.MenuItems.AddRange(New System.Windows.Forms.MenuItem() {Me.cmdCopie})
+        Me.mnuMiste.MenuItems.AddRange(New MenuItem() {Me.cmdCopie})
         '
         'cmdCopie
         '
@@ -136,12 +137,12 @@ Public Class frmAnalyseUsers
         '
         Me.lvUsers.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvUsers.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chCN, Me.chOU, Me.chAccount, Me.chRemarques})
+                    Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.lvUsers.Columns.AddRange(New ColumnHeader() {Me.chCN, Me.chOU, Me.chAccount, Me.chRemarques})
         Me.lvUsers.ContextMenu = Me.mnuMiste
-        Me.lvUsers.Location = New System.Drawing.Point(4, 112)
+        Me.lvUsers.Location = New Point(4, 112)
         Me.lvUsers.Name = "lvUsers"
-        Me.lvUsers.Size = New System.Drawing.Size(728, 328)
+        Me.lvUsers.Size = New Size(728, 328)
         Me.lvUsers.TabIndex = 4
         Me.lvUsers.View = System.Windows.Forms.View.Details
         '
@@ -167,9 +168,9 @@ Public Class frmAnalyseUsers
         '
         'sbStatus
         '
-        Me.sbStatus.Location = New System.Drawing.Point(0, 448)
+        Me.sbStatus.Location = New Point(0, 448)
         Me.sbStatus.Name = "sbStatus"
-        Me.sbStatus.Size = New System.Drawing.Size(736, 22)
+        Me.sbStatus.Size = New Size(736, 22)
         Me.sbStatus.TabIndex = 5
         '
         'gbTester
@@ -183,9 +184,9 @@ Public Class frmAnalyseUsers
         Me.gbTester.Controls.Add(Me.chkChangeMDPInterdit)
         Me.gbTester.Controls.Add(Me.chkCompteDésactivé)
         Me.gbTester.Controls.Add(Me.chkScriptOuverture)
-        Me.gbTester.Location = New System.Drawing.Point(356, 4)
+        Me.gbTester.Location = New Point(356, 4)
         Me.gbTester.Name = "gbTester"
-        Me.gbTester.Size = New System.Drawing.Size(376, 100)
+        Me.gbTester.Size = New Size(376, 100)
         Me.gbTester.TabIndex = 6
         Me.gbTester.TabStop = False
         Me.gbTester.Text = "&Tester"
@@ -194,9 +195,9 @@ Public Class frmAnalyseUsers
         '
         Me.chkCompteVerrouillé.Checked = True
         Me.chkCompteVerrouillé.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCompteVerrouillé.Location = New System.Drawing.Point(172, 16)
+        Me.chkCompteVerrouillé.Location = New Point(172, 16)
         Me.chkCompteVerrouillé.Name = "chkCompteVerrouillé"
-        Me.chkCompteVerrouillé.Size = New System.Drawing.Size(156, 16)
+        Me.chkCompteVerrouillé.Size = New Size(156, 16)
         Me.chkCompteVerrouillé.TabIndex = 7
         Me.chkCompteVerrouillé.Text = "Compte verrouillé"
         '
@@ -204,9 +205,9 @@ Public Class frmAnalyseUsers
         '
         Me.chkGrpBusiness.Checked = True
         Me.chkGrpBusiness.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkGrpBusiness.Location = New System.Drawing.Point(172, 64)
+        Me.chkGrpBusiness.Location = New Point(172, 64)
         Me.chkGrpBusiness.Name = "chkGrpBusiness"
-        Me.chkGrpBusiness.Size = New System.Drawing.Size(192, 16)
+        Me.chkGrpBusiness.Size = New Size(192, 16)
         Me.chkGrpBusiness.TabIndex = 6
         Me.chkGrpBusiness.Text = "Attaché à 1 groupe business"
         '
@@ -214,9 +215,9 @@ Public Class frmAnalyseUsers
         '
         Me.chkGrpSite.Checked = True
         Me.chkGrpSite.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkGrpSite.Location = New System.Drawing.Point(172, 48)
+        Me.chkGrpSite.Location = New Point(172, 48)
         Me.chkGrpSite.Name = "chkGrpSite"
-        Me.chkGrpSite.Size = New System.Drawing.Size(192, 16)
+        Me.chkGrpSite.Size = New Size(192, 16)
         Me.chkGrpSite.TabIndex = 5
         Me.chkGrpSite.Text = "Attaché à 1 groupe site"
         '
@@ -224,9 +225,9 @@ Public Class frmAnalyseUsers
         '
         Me.chkGrpfr_allusers_g.Checked = True
         Me.chkGrpfr_allusers_g.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkGrpfr_allusers_g.Location = New System.Drawing.Point(172, 32)
+        Me.chkGrpfr_allusers_g.Location = New Point(172, 32)
         Me.chkGrpfr_allusers_g.Name = "chkGrpfr_allusers_g"
-        Me.chkGrpfr_allusers_g.Size = New System.Drawing.Size(192, 16)
+        Me.chkGrpfr_allusers_g.Size = New Size(192, 16)
         Me.chkGrpfr_allusers_g.TabIndex = 4
         Me.chkGrpfr_allusers_g.Text = "Attaché au groupe fr_allusers_g"
         '
@@ -234,9 +235,9 @@ Public Class frmAnalyseUsers
         '
         Me.chkMdPExpiré.Checked = True
         Me.chkMdPExpiré.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkMdPExpiré.Location = New System.Drawing.Point(4, 64)
+        Me.chkMdPExpiré.Location = New Point(4, 64)
         Me.chkMdPExpiré.Name = "chkMdPExpiré"
-        Me.chkMdPExpiré.Size = New System.Drawing.Size(156, 16)
+        Me.chkMdPExpiré.Size = New Size(156, 16)
         Me.chkMdPExpiré.TabIndex = 3
         Me.chkMdPExpiré.Text = "MdP expiré"
         '
@@ -244,9 +245,9 @@ Public Class frmAnalyseUsers
         '
         Me.chkChangeMDPInterdit.Checked = True
         Me.chkChangeMDPInterdit.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkChangeMDPInterdit.Location = New System.Drawing.Point(4, 48)
+        Me.chkChangeMDPInterdit.Location = New Point(4, 48)
         Me.chkChangeMDPInterdit.Name = "chkChangeMDPInterdit"
-        Me.chkChangeMDPInterdit.Size = New System.Drawing.Size(156, 16)
+        Me.chkChangeMDPInterdit.Size = New Size(156, 16)
         Me.chkChangeMDPInterdit.TabIndex = 2
         Me.chkChangeMDPInterdit.Text = "Changement MdP interdit"
         '
@@ -254,9 +255,9 @@ Public Class frmAnalyseUsers
         '
         Me.chkCompteDésactivé.Checked = True
         Me.chkCompteDésactivé.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkCompteDésactivé.Location = New System.Drawing.Point(4, 32)
+        Me.chkCompteDésactivé.Location = New Point(4, 32)
         Me.chkCompteDésactivé.Name = "chkCompteDésactivé"
-        Me.chkCompteDésactivé.Size = New System.Drawing.Size(124, 16)
+        Me.chkCompteDésactivé.Size = New Size(124, 16)
         Me.chkCompteDésactivé.TabIndex = 1
         Me.chkCompteDésactivé.Text = "Compte désactivé"
         '
@@ -264,24 +265,24 @@ Public Class frmAnalyseUsers
         '
         Me.chkScriptOuverture.Checked = True
         Me.chkScriptOuverture.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkScriptOuverture.Location = New System.Drawing.Point(4, 16)
+        Me.chkScriptOuverture.Location = New Point(4, 16)
         Me.chkScriptOuverture.Name = "chkScriptOuverture"
-        Me.chkScriptOuverture.Size = New System.Drawing.Size(124, 16)
+        Me.chkScriptOuverture.Size = New Size(124, 16)
         Me.chkScriptOuverture.TabIndex = 0
         Me.chkScriptOuverture.Text = "Script d'ouverture"
         '
         'chkMdpPeutExpirer
         '
-        Me.chkMdpPeutExpirer.Location = New System.Drawing.Point(4, 80)
+        Me.chkMdpPeutExpirer.Location = New Point(4, 80)
         Me.chkMdpPeutExpirer.Name = "chkMdpPeutExpirer"
-        Me.chkMdpPeutExpirer.Size = New System.Drawing.Size(156, 16)
+        Me.chkMdpPeutExpirer.Size = New Size(156, 16)
         Me.chkMdpPeutExpirer.TabIndex = 8
         Me.chkMdpPeutExpirer.Text = "MdP peut expirer"
         '
         'frmAnalyseUsers
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(736, 470)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(736, 470)
         Me.Controls.Add(Me.gbTester)
         Me.Controls.Add(Me.sbStatus)
         Me.Controls.Add(Me.lvUsers)
@@ -289,7 +290,7 @@ Public Class frmAnalyseUsers
         Me.Controls.Add(Me.txtSite)
         Me.Controls.Add(Me.lblAnalyse)
         Me.Controls.Add(Me.btnAnalyse)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Name = "frmAnalyseUsers"
         Me.Text = "Analyse les objets User dans AD"
         Me.gbTester.ResumeLayout(False)
@@ -307,7 +308,6 @@ Public Class frmAnalyseUsers
 
     ' Liste des groupes business
     ReadOnly tsBusiness As String() = New String() {"agr", "aud", "fin", "hr", "ind", "it", "lab", "lgl", "lif", "mgt", "min", "ogc", "ssc cts", "tas"}
-
 
     ' Attributs de comptes. Piqué sur http://msdn.microsoft.com/library/default.asp?url=/library/en-us/adsi/adsi/ads_user_flag_enum.asp
     Enum ADS_USER_FLAG_ENUM
@@ -334,9 +334,8 @@ Public Class frmAnalyseUsers
         ADS_UF_TRUSTED_TO_AUTHENTICATE_FOR_DELEGATION = &H1000000
     End Enum
 
-
     ' Lancement de l'analyse
-    Private Sub btnAnalyse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAnalyse.Click
+    Private Sub btnAnalyse_Click(sender As System.Object, e As EventArgs) Handles btnAnalyse.Click
         btnAnalyse.Enabled = False
         lvUsers.Items.Clear()
 
@@ -372,7 +371,7 @@ Public Class frmAnalyseUsers
 
     ' Parcours récursif de AD
     ' Retour false en cas de pb lors de l'accès
-    Sub AnalyseOU(ByVal sPos As String, ByVal sStart As String)
+    Sub AnalyseOU(sPos As String, sStart As String)
         Dim objOU As Object
         Try
             objOU = GetObject("LDAP://" & sStart)
@@ -393,7 +392,7 @@ Public Class frmAnalyseUsers
         Next
     End Sub
 
-    Sub AnalyseUser(ByVal sPos As String, ByVal u As Object)
+    Sub AnalyseUser(sPos As String, u As Object)
         Dim lvi As ListViewItem
 
         lvi = lvUsers.Items.Add(u.cn)
@@ -404,7 +403,6 @@ Public Class frmAnalyseUsers
 
         Dim sAnalyse As String
         sAnalyse = ""
-
 
         ' Test du script d'ouverture
         If chkScriptOuverture.Checked Then
@@ -441,7 +439,6 @@ Public Class frmAnalyseUsers
                 sAnalyse += ", Changement de MdP interdit"
             End If
         End If
-
 
         ' Récupération de la liste des groupes
         Dim tMemberOf As Object
@@ -499,7 +496,6 @@ Public Class frmAnalyseUsers
             If iNbBusiness = 0 Then sAnalyse += ", Rattaché à aucun groupe-business"
         End If
 
-
         ' Intégration de l'analyse dans la liste
         Dim x As ListViewItem.ListViewSubItem
         If Len(sAnalyse) > 0 Then
@@ -508,15 +504,14 @@ Public Class frmAnalyseUsers
         End If
     End Sub
 
-
-
     ' Interface utilisateur de la liste
     Private iColTri As Integer = -1     ' Colonne de tri
+
     Private iSensTri As Integer         ' Ordre 1=ascendant, -1=descendant
 
     ' Copie dans le presse-papiers
-    Private Sub cmdCopie_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdCopie.Click
-        Dim sbPP As New System.Text.StringBuilder
+    Private Sub cmdCopie_Click(sender As System.Object, e As EventArgs) Handles cmdCopie.Click
+        Dim sbPP As New Text.StringBuilder
         For i As Integer = 0 To lvUsers.Columns.Count - 1
             If i > 0 Then sbPP.Append(vbTab)
             sbPP.Append(lvUsers.Columns(i).Text)
@@ -532,7 +527,7 @@ Public Class frmAnalyseUsers
         Clipboard.SetDataObject(sbPP.ToString)
     End Sub
 
-    Private Sub lvUsers_ColumnClick(ByVal sender As Object, ByVal e As System.Windows.Forms.ColumnClickEventArgs) Handles lvUsers.ColumnClick
+    Private Sub lvUsers_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles lvUsers.ColumnClick
         If iColTri <> e.Column Then
             iColTri = e.Column
             iSensTri = 1
@@ -543,9 +538,6 @@ Public Class frmAnalyseUsers
     End Sub
 
 End Class
-
-
-
 
 ' Implémentation du tri de la liste par n'importe quelle colonne
 Class ListViewItemComparer
@@ -559,22 +551,22 @@ Class ListViewItemComparer
         sens = 1
     End Sub
 
-    Public Sub New(ByVal column As Integer)
+    Public Sub New(column As Integer)
         col = column
         sens = 1
     End Sub
 
-    Public Sub New(ByVal column As Integer, ByVal sensdetri As Integer)
+    Public Sub New(column As Integer, sensdetri As Integer)
         col = column
         sens = sensdetri
     End Sub
 
-    Public Function Compare(ByVal x As Object, ByVal y As Object) As Integer Implements IComparer.Compare
+    Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
         If col < 4 Then
             Return sens * [String].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
         Else
             Return sens * [DateTime].Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text)
         End If
     End Function
-End Class
 
+End Class

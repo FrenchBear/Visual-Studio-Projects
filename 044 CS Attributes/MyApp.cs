@@ -6,8 +6,6 @@
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Reflection;
-
 
 [AttributeUsage(AttributeTargets.Class)]
 public class MonAttribut : System.Attribute
@@ -42,24 +40,17 @@ public class MonAttribut : System.Attribute
     }
 }
 
-
 [MonAttribut(1, Info = "Info de MaClasse1")]
-class MaClasse1
+internal class MaClasse1
 {
-
 }
-
-
 
 [MonAttribut(7)]
-class MaClasse2
+internal class MaClasse2
 {
-
 }
 
-
-
-class MyApp
+internal class MyApp
 {
     public static void Main()
     {

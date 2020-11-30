@@ -3,18 +3,16 @@
 // 2013-01-28   PV
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace _505_CS_Caller_Info
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             TracedFunction(1);
             InternalFunction();
@@ -25,7 +23,7 @@ namespace _505_CS_Caller_Info
             Console.ReadLine();
         }
 
-        static void InternalFunction()
+        private static void InternalFunction()
         {
             TracedFunction(2);
         }
@@ -42,10 +40,10 @@ namespace _505_CS_Caller_Info
             Console.WriteLine();
         }
 
-
         // ========================================
         // Practical use for WPF Properties
         private string _userName;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public string UserName
@@ -54,7 +52,7 @@ namespace _505_CS_Caller_Info
             set
             {
                 _userName = value;
-                RaisePropertyChanged();  // no more RaisePropertyChanged(“UserName”)!   
+                RaisePropertyChanged();  // no more RaisePropertyChanged(“UserName”)!
             }
         }
 
@@ -62,6 +60,7 @@ namespace _505_CS_Caller_Info
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
         }
+
         // ========================================
     }
 
@@ -72,5 +71,4 @@ namespace _505_CS_Caller_Info
             Program.TracedFunction(3);
         }
     }
-
 }

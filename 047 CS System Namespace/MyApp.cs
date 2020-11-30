@@ -3,15 +3,15 @@
 // 2012-02-25   PV  VS2010
 
 using System;
-using System.Reflection;
 using System.Collections;
 using System.IO;
+using System.Reflection;
 
-class MyApp
+internal class MyApp
 {
-    static Hashtable dicMain;
-    static Hashtable dic;
-    static SortedList slNameSpaces;
+    private static Hashtable dicMain;
+    private static Hashtable dic;
+    private static SortedList slNameSpaces;
 
     public static void Main()
     {
@@ -57,7 +57,6 @@ class MyApp
         AnalyseAssembly("System.Xml.Serialization.dll");
         AnalyseAssembly("System.Management.dll");
         */
-
 
         StreamWriter writer;
         try
@@ -109,8 +108,7 @@ class MyApp
         Console.ReadLine();
     }
 
-
-    static void AnalyseAssembly(string sNomAssembly)
+    private static void AnalyseAssembly(string sNomAssembly)
     {
         dic = new Hashtable();
         dicMain.Add(sNomAssembly, dic);
@@ -121,16 +119,15 @@ class MyApp
             AnalyseModule(m);
     }
 
-    static void AnalyseModule(Module m)
+    private static void AnalyseModule(Module m)
     {
         Console.WriteLine("Module {0}", m.Name);
 
         foreach (Type t in m.GetTypes())
             AnalyseType(t);
-
     }
 
-    static void AnalyseType(Type t)
+    private static void AnalyseType(Type t)
     {
         /*
         Console.Write("  ");
@@ -204,7 +201,5 @@ class MyApp
         }
 
         s.Add(bn, null);
-
     }
-
 }

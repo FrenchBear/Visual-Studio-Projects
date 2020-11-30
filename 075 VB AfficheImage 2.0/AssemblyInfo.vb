@@ -1,9 +1,10 @@
-Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
-' Les informations générales relatives à un assembly dépendent de l'ensemble 
-' d'attributs suivant. Pour modifier les informations associées à un assembly, 
+#Disable Warning IDE1006 ' Naming Styles
+
+' Les informations générales relatives à un assembly dépendent de l'ensemble
+' d'attributs suivant. Pour modifier les informations associées à un assembly,
 'changez les valeurs de ces attributs.
 
 ' Vérifiez les valeurs des attributs de l'assembly
@@ -22,17 +23,19 @@ Imports System.Runtime.InteropServices
 ' Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 '
 '      Version principale
-'      Version secondaire 
+'      Version secondaire
 '      Numéro de build
 '      Révision
 '
-' Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut 
+' Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut
 ' en utilisant '*', comme indiqué ci-dessous :
 
 <Assembly: AssemblyVersion("2.0.*")>
 
 Public Module InfoVersion
+
     Function sGetVersion() As String
         Return System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).FileMajorPart & "." & System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).FileMinorPart & "." & System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).FileBuildPart
     End Function
+
 End Module

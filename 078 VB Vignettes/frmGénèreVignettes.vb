@@ -6,11 +6,12 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System.Drawing
 Imports System.Drawing.Imaging
 
+#Disable Warning IDE0051 ' Remove unused private members
+
 Public Class Form1
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Code généré par le Concepteur Windows Form "
 
@@ -25,7 +26,7 @@ Public Class Form1
     End Sub
 
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -38,21 +39,23 @@ Public Class Form1
     Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
+    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
     'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents BtnGénère As System.Windows.Forms.Button
-    Friend WithEvents LstTrace As System.Windows.Forms.ListBox
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.BtnGénère = New System.Windows.Forms.Button
-        Me.LstTrace = New System.Windows.Forms.ListBox
+    Friend WithEvents BtnGénère As Button
+
+    Friend WithEvents LstTrace As ListBox
+
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.BtnGénère = New Button
+        Me.LstTrace = New ListBox
         Me.SuspendLayout()
         '
         'btnGénère
         '
-        Me.BtnGénère.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.BtnGénère.Location = New System.Drawing.Point(328, 8)
+        Me.BtnGénère.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.BtnGénère.Location = New Point(328, 8)
         Me.BtnGénère.Name = "btnGénère"
-        Me.BtnGénère.Size = New System.Drawing.Size(104, 32)
+        Me.BtnGénère.Size = New Size(104, 32)
         Me.BtnGénère.TabIndex = 0
         Me.BtnGénère.Text = "Génère"
         '
@@ -60,16 +63,16 @@ Public Class Form1
         '
         Me.LstTrace.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                 Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LstTrace.Location = New System.Drawing.Point(8, 8)
+                Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.LstTrace.Location = New Point(8, 8)
         Me.LstTrace.Name = "lstTrace"
-        Me.LstTrace.Size = New System.Drawing.Size(312, 394)
+        Me.LstTrace.Size = New Size(312, 394)
         Me.LstTrace.TabIndex = 1
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(440, 414)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(440, 414)
         Me.Controls.Add(Me.LstTrace)
         Me.Controls.Add(Me.BtnGénère)
         Me.Name = "Form1"
@@ -80,7 +83,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub BtnGénère_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnGénère.Click
+    Private Sub BtnGénère_Click(sender As System.Object, e As EventArgs) Handles BtnGénère.Click
         BtnGénère.Enabled = False
         Trace("Début de la génération")
 
@@ -94,7 +97,6 @@ Public Class Form1
             BtnGénère.Enabled = True
         End Try
     End Sub
-
 
     Sub GénèreVignette(ByRef i As Integer)
         Dim sImg As String
@@ -133,13 +135,12 @@ Public Class Form1
         Trace(sPathImg & " -> " & sPathVignette)
     End Sub
 
-
-    Sub Trace(ByVal sMsg As String)
+    Sub Trace(sMsg As String)
         LstTrace.Items.Add(sMsg)
         LstTrace.SelectedIndex = LstTrace.Items.Count - 1
     End Sub
 
-    Private Function GetEncoderInfo(ByVal mimeType As String) As ImageCodecInfo
+    Private Function GetEncoderInfo(mimeType As String) As ImageCodecInfo
         Dim j As Integer
         Dim encoders As ImageCodecInfo()
         encoders = ImageCodecInfo.GetImageEncoders()
@@ -151,7 +152,7 @@ Public Class Form1
         Return Nothing
     End Function
 
-    Private Sub SaveJPGWithCompressionSetting(ByVal image As Image, ByVal szFileName As String, ByVal lCompression As Long)
+    Private Sub SaveJPGWithCompressionSetting(image As Image, szFileName As String, lCompression As Long)
         Dim eps As EncoderParameters = New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, lCompression)
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")

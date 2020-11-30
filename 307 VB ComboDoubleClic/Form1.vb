@@ -3,13 +3,12 @@
 ' 2008-05-11    PV
 ' 2012-02-25	PV  VS2010
 
-
 Public Class Form1
 
     ' Record the last click with the current time
     Dim lastClick As Date = Now
 
-    Private Sub ComboBox1_MouseClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles ComboBox1.MouseClick
+    Private Sub ComboBox1_MouseClick(sender As System.Object, e As MouseEventArgs) Handles ComboBox1.MouseClick
         ' Test if in the last time plus the milliseconds it takes for a double click
         ' there was another click, activate the code (there was a double click)
         If Now < lastClick.AddMilliseconds(SystemInformation.DoubleClickTime) Then
@@ -25,7 +24,7 @@ Public Class Form1
     End Sub
 
     ' Just-in-time fill
-    Private Sub ComboBox1_DropDown(ByVal sender As Object, ByVal e As System.EventArgs) Handles ComboBox1.DropDown
+    Private Sub ComboBox1_DropDown(sender As Object, e As EventArgs) Handles ComboBox1.DropDown
         If ComboBox1.Items.Count = 0 Then
             For i As Integer = 1 To 100
                 ComboBox1.Items.Add(i.ToString)

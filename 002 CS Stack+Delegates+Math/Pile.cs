@@ -7,7 +7,7 @@ using System;
 
 public class Pile
 {
-    class Noeud
+    private class Noeud
     {
         public object élément;
         public Noeud suivant;
@@ -19,7 +19,7 @@ public class Pile
         }
     }
 
-    Noeud tête = null;
+    private Noeud tête = null;
 
     public object Dépile()
     {

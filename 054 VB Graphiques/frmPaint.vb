@@ -8,8 +8,10 @@ Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 Imports System.Drawing.Text
 
+#Disable Warning IDE1006 ' Naming Styles
+
 Public Class frmPaint
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
 #Region " Windows Form Designer generated code "
 
@@ -24,7 +26,7 @@ Public Class frmPaint
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
+    Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
                 components.Dispose()
@@ -32,41 +34,42 @@ Public Class frmPaint
         End If
         MyBase.Dispose(disposing)
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents pic As System.Windows.Forms.PictureBox
+
+    Friend WithEvents Button1 As Button
+    Friend WithEvents pic As PictureBox
 
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
 
     'NOTE: The following procedure is required by the Windows Form Designer
-    'It can be modified using the Windows Form Designer.  
+    'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.pic = New System.Windows.Forms.PictureBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+    <DebuggerStepThrough()> Private Sub InitializeComponent()
+        Me.pic = New PictureBox()
+        Me.Button1 = New Button()
         Me.SuspendLayout()
         '
         'pic
         '
         Me.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pic.Location = New System.Drawing.Point(184, 8)
+        Me.pic.Location = New Point(184, 8)
         Me.pic.Name = "pic"
-        Me.pic.Size = New System.Drawing.Size(280, 184)
+        Me.pic.Size = New Size(280, 184)
         Me.pic.TabIndex = 1
         Me.pic.TabStop = False
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(192, 200)
+        Me.Button1.Location = New Point(192, 200)
         Me.Button1.Name = "Button1"
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Button1"
         '
         'frmPaint
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(296, 273)
-        Me.Controls.AddRange(New System.Windows.Forms.Control() {Me.pic, Me.Button1})
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(296, 273)
+        Me.Controls.AddRange(New Control() {Me.pic, Me.Button1})
         Me.Name = "frmPaint"
         Me.Text = "Paint Test"
         Me.ResumeLayout(False)
@@ -75,14 +78,13 @@ Public Class frmPaint
 
 #End Region
 
-    Private Sub pic_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles pic.Paint
+    Private Sub pic_Paint(sender As Object, e As PaintEventArgs) Handles pic.Paint
         Dim g As Graphics
 
         g = e.Graphics
         ' Simply fill a rectangle with red.
         g.FillRectangle(New SolidBrush(Color.Red), 40, 10, 100, 140)
         g.FillRectangle(New SolidBrush(Color.FromArgb(180, Color.Yellow)), 10, 40, 140, 100)
-
 
         ' Create a pen 5 pixels wide that is and purple and partially transparent.
         ' Make it a dashed pen.
@@ -93,7 +95,7 @@ Public Class frmPaint
             .EndCap = LineCap.Round
         }
 
-            ' Now draw a curve using the pen
+        ' Now draw a curve using the pen
         g.DrawCurve(penExample, New Point() {
                 New Point(200, 14),
                 New Point(70, 240),
@@ -104,7 +106,7 @@ Public Class frmPaint
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Dim newBitmap As Bitmap = New Bitmap(300, 300, PixelFormat.Format32bppArgb)
         Dim g As Graphics = Graphics.FromImage(newBitmap)
         g.Clear(Color.Aquamarine)
@@ -145,4 +147,5 @@ Public Class frmPaint
 
         Me.BackgroundImage = newBitmap
     End Sub
+
 End Class

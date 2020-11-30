@@ -3,15 +3,12 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
-Imports System
-Imports System.Collections
-
 Public Class TroisEntiers
     Implements IEnumerable
 
     Private ReadOnly i1, i2, i3 As Integer
 
-    Public Sub New(ByVal i1 As Integer, ByVal i2 As Integer, ByVal i3 As Integer)
+    Public Sub New(i1 As Integer, i2 As Integer, i3 As Integer)
         Me.i1 = i1
         Me.i2 = i2
         Me.i3 = i3
@@ -27,7 +24,7 @@ Public Class TroisEntiers
         Private ReadOnly t As TroisEntiers
         Private iPos As Integer
 
-        Public Sub New(ByVal t As TroisEntiers)
+        Public Sub New(t As TroisEntiers)
             Me.t = t
             iPos = -1
         End Sub
@@ -57,4 +54,5 @@ Public Class TroisEntiers
         End Function
 
     End Class
+
 End Class
