@@ -104,7 +104,7 @@ namespace NewLaby
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
             int rows = 15;
             int cols = 30;
@@ -112,9 +112,9 @@ namespace NewLaby
             var l = new Laby(rows, cols, false);
             l.PrintLabyrinth();
 
-            Console.WriteLine();
-            Console.Write("(Pause)");
-            Console.ReadLine();
+            WriteLine();
+            Write("(Pause)");
+            ReadLine();
         }
     }
 

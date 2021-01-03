@@ -22,9 +22,9 @@ namespace CS601
         private readonly Point GlobalPoint = new Point(5, 6) ??
             throw new InvalidOperationException("Could not initialize " + nameof(GlobalPoint));
 
-        private static void Main(string[] args)
+        private static void Main()
         {
-            Console.OutputEncoding = new UTF8Encoding();
+            OutputEncoding = new UTF8Encoding();
             // Just to display φ, although it's shown as ϕ in Consolas (and Calibri), that's a known problem with old fonts...
 
             // From Wikipedia, https://en.wikipedia.org/wiki/Phi:
@@ -44,8 +44,7 @@ namespace CS601
             WriteLine("Tests en C# 2017\n");
 
             // Tuples
-            var t1 =
-                (r: 3.14, i: -2.5);
+            var t1 = (r: 3.14, i: -2.5);
             var t2 = (r: 2.718, j: 1.414);
             t1 = t2;        // This is allowed, contrary to tuples created with Tuple<>
             WriteLine("t1: " + t1.ToString());
@@ -71,9 +70,8 @@ namespace CS601
             WriteLine();
 
             // Binary literals and digit separators
-            object[] numbers =
-                { 0b1, 0b10, new object[] { 0b100, 0b1000 },    // binary literals
-                  "Tally_Test", (string)null, 0b1_0000, 0b10_0000 };          // digit separators
+            object[] numbers = { 0b1, 0b10, new object[] { 0b100, 0b1000 },     // binary literals
+                               "Tally_Test", null, 0b1_0000, 0b10_0000 };       // digit separators
             const double AvogadroConstant = 6.022_140_857_747_474e23;
             const decimal φ = 1.618_033_988_749_894_848_204_586_834_365_638_117_720_309_179M;
             WriteLine($"Avogadro: {AvogadroConstant}");
@@ -162,7 +160,7 @@ namespace CS601
 
                     case null:                                  // A null value does not match a type expression, ex: null string
                         break;
-                    //throw new ArgumentNullException();
+                        //throw new ArgumentNullException();
 
                     default:
                         //throw new InvalidOperationException("unknown item type");
@@ -219,15 +217,15 @@ namespace CS601
 
         public Point(double x, double y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
         }
 
         // Deconstruct method provides a set of out arguments for each of the properties you want to extract
         public void Deconstruct(out double x, out double y)
         {
-            x = this.X;
-            y = this.Y;
+            x = X;
+            y = Y;
         }
     }
 

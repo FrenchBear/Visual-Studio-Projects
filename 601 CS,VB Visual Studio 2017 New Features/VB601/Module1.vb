@@ -17,7 +17,7 @@ Module VB601
     'Private GlobalPoint As Point = If(New Point(5, 6), Throw New InvalidOperationException("Could not initialize " + NameOf(GlobalPoint)))
 
     Sub Main()
-        Console.OutputEncoding = New UTF8Encoding()
+        OutputEncoding = New UTF8Encoding()
         WriteLine("Tests en VB 2017" + vbCrLf)
 
         Dim t1 = (r:=3.14, i:=-2.5)
@@ -100,14 +100,14 @@ Module VB601
     End Sub
 
     ' Pattern matching is not supported
-    Function Tally(values As Object()) As (sum As Integer, count As Integer)     ' tuple types
-        Dim r = (s:=0, c:=0)                               ' tuple literals
+    Function Tally(values As Object()) As (sum As Integer, count As Integer)        ' tuple types
+        Dim r = (s:=0, c:=0)                                                        ' tuple literals
         For Each v In values
             If TypeOf v Is Integer Then
-                Add(r, CType(v, Integer), 1)
-            ElseIf TypeOf v Is String Then                              ' Just a stupid test
+                Add(r, v, 1)
+            ElseIf TypeOf v Is String Then                                          ' Just a stupid test
                 WriteLine(CType(v, String))
-            ElseIf TypeOf v Is Object() AndAlso CType(v, Object()).Length > 0 Then        ' case conditions
+            ElseIf TypeOf v Is Object() AndAlso CType(v, Object()).Length > 0 Then  ' case conditions
                 Dim t = Tally(CType(v, Object()))
                 Add(r, t.sum, t.count)
             Else
