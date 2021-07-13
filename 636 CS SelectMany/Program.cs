@@ -1,14 +1,17 @@
 ﻿// SelectMany
 // Linq experiments
+//
+// SelectMany: Projects each element of a sequence to an IEnumerable<T> and flattens the resulting sequences into one sequence.
+//
 // 2017-08-09   PV
+// 2021-14-13   PV      .Net 4.8
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApp1
+
+namespace SelectMany
 {
     class Program
     {
@@ -43,7 +46,7 @@ namespace ConsoleApp1
             // Framework version
             var l4 = odds.SelectMany(
                 o => evens,
-                (o, e) => (o, e));
+                (o, e) => (1000 + o, 1000 + e));
             foreach (var item in l4)
                 Console.WriteLine(item);
             Console.WriteLine();
@@ -51,7 +54,7 @@ namespace ConsoleApp1
             // My version
             var l5 = odds.MySelectMany(
                 o => evens,
-                (o, e) => (o, e));
+                (o, e) => (1000 + o, 1000 + e));
             foreach (var item in l5)
                 Console.WriteLine(item);
             Console.WriteLine();
