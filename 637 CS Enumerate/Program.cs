@@ -2,12 +2,11 @@
 // Similar to Python, to add an index to an existing enumeration with optional start
 // Produces more compact/readable use than iterating over a range and using indexed access
 // 2017-08-28   PV
+// 2021-07-13   PV      .Net 4.8
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace EnumerateApp
 {
