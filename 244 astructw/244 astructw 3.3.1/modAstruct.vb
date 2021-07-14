@@ -19,7 +19,7 @@ Module modAstruct
     Dim nbDirectories As Integer
     Dim nbFilesCopied As Integer
     Dim nbFilesDeleted As Integer
-    Dim colErrors As New Collection
+    ReadOnly colErrors As New Collection
 
     Public bVerbose As Boolean
     Public bDisableTimeCheck As Boolean             ' For interactive trace
@@ -27,7 +27,7 @@ Module modAstruct
     Public bFollowLinks As Boolean                  ' Copy what is behind a reparse point (a junction/HTFS link)
     Public bMultiThread As Boolean                  ' Enumerates folder contents in separate threads
     Public bDotNetCalls As Boolean                  ' Use .Net and not Win32
-    Public bNoWidePaths As Boolean                  ' Do not use wide paths extension (sWidePath function)
+    Public bNoWidePaths As Boolean                  ' Do not use wide paths extension (WidePathString function)
     Public bCreateTarget As Boolean                 ' Create destination folder if if does not exist
 
     Public colExclusions As New Collection          ' List of patterns to ignore
@@ -54,9 +54,9 @@ Module modAstruct
         Dim dwReserved0 As Integer
         Dim dwReserved1 As Integer
         ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode  
-        <VBFixedString(520), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
+        <VBFixedString(520), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
         ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode  
-        <VBFixedString(28), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
+        <VBFixedString(28), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
     End Structure
 
     <StructLayout(LayoutKind.Sequential)> _
@@ -66,7 +66,7 @@ Module modAstruct
         Public bInheritHandle As Integer
     End Structure
 
-    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
     Public Function FindFirstFileW(ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
     End Function
 
@@ -109,18 +109,18 @@ Module modAstruct
     End Class
 
 
-    Public Sub astruct(ByVal sSource As String, ByVal sDest As String)
+    Public Sub Astruct(ByVal sSource As String, ByVal sDest As String)
         ' If we used options, then show them explicitly
         Dim sOptions As String = ""
-        If bVerbose Then sOptions = sOptions & ", Verbose"
-        If bDisableTimeCheck Then sOptions = sOptions & ", NoTimeCheck"
-        If bNoAction Then sOptions = sOptions & ", NoAction"
-        If bFollowLinks Then sOptions = sOptions & ", FollowLinks"
-        If bMultiThread Then sOptions = sOptions & ", MultiThread"
-        If bDotNetCalls Then sOptions = sOptions & ", DotNetCalls"
-        If bNoWidePaths Then sOptions = sOptions & ", NoWidePaths"
+        If bVerbose Then sOptions &= ", Verbose"
+        If bDisableTimeCheck Then sOptions &= ", NoTimeCheck"
+        If bNoAction Then sOptions &= ", NoAction"
+        If bFollowLinks Then sOptions &= ", FollowLinks"
+        If bMultiThread Then sOptions &= ", MultiThread"
+        If bDotNetCalls Then sOptions &= ", DotNetCalls"
+        If bNoWidePaths Then sOptions &= ", NoWidePaths"
         If sOptions.Length > 0 Then
-            Console.WriteLine(sHelpHeader() & " (" & sOptions.Substring(2) & ")")
+            Console.WriteLine(HelpHeaderString() & " (" & sOptions.Substring(2) & ")")
         End If
 
         ' Create target folder if it does not exist and option /c has been specified
@@ -129,19 +129,19 @@ Module modAstruct
                 My.Computer.FileSystem.CreateDirectory(sDest)
             End If
         Catch ex As Exception
-            Trace("Error creating target folder " & sQuote(sDest))
+            Trace("Error creating target folder " & QuoteString(sDest))
             Trace(ex.Message)
         End Try
 
         Dim bProblem As Boolean = False
-        If Not bCheckFolder(sSource, "source") Then bProblem = True
-        If Not bCheckFolder(sDest, "destination") Then bProblem = True
+        If Not IsCheckFolder(sSource, "source") Then bProblem = True
+        If Not IsCheckFolder(sDest, "destination") Then bProblem = True
         If bProblem Then Exit Sub
 
         If VB.Right(sSource, 1) <> "\" Then sSource &= "\"
         If VB.Right(sDest, 1) <> "\" Then sDest &= "\"
         If Not bDisableTimeCheck Then
-            If Not bTimeCheck(sSource, sDest) Then Exit Sub
+            If Not IsTimeCheck(sSource, sDest) Then Exit Sub
         End If
 
         Dim t1 As DateTime = DateTime.Now
@@ -149,7 +149,7 @@ Module modAstruct
         nbDirectories = 0
         nbFilesCopied = 0
         nbFilesDeleted = 0
-        Trace("astructw " & sQuote(sSource) & " -> " & sQuote(sDest))
+        Trace("astructw " & QuoteString(sSource) & " -> " & QuoteString(sDest))
 
         DoAstruct(sSource, sDest)
         Dim t2 As DateTime = DateTime.Now
@@ -167,12 +167,12 @@ Module modAstruct
         End If
     End Sub
 
-    Private Function bCheckFolder(ByVal sFolder As String, ByVal sPosition As String) As Boolean
+    Private Function IsCheckFolder(ByVal sFolder As String, ByVal sPosition As String) As Boolean
         Try
             If My.Computer.FileSystem.DirectoryExists(sFolder) Then Return True
-            CLShowError("Can't find " & sPosition & " folder " & sQuote(sFolder))
+            CLShowError("Can't find " & sPosition & " folder " & QuoteString(sFolder))
         Catch ex As Exception
-            Trace("Error accessing " & sPosition & " folder " & sQuote(sFolder))
+            Trace("Error accessing " & sPosition & " folder " & QuoteString(sFolder))
             Trace(ex.Message)
         End Try
         Return False
@@ -192,7 +192,7 @@ Module modAstruct
         End If
     End Sub
 
-    Function s(ByVal n As Integer) As String
+    Function S(ByVal n As Integer) As String
         If n > 1 Then
             Return "s"
         Else
@@ -201,7 +201,7 @@ Module modAstruct
     End Function
 
 
-    Function sQuote(ByVal s As String)
+    Function QuoteString(ByVal s As String)
         If s.Contains(" ") Then
             Return Chr(34) & s & Chr(34)
         Else
@@ -221,7 +221,7 @@ Module modAstruct
         ' Enumerate source and destination
         If bMultiThread Then
             Dim p1 As EnumProc = AddressOf Enumerate
-            Dim p2 As EnumProc = New EnumProc(AddressOf Enumerate)
+            Dim p2 As New EnumProc(AddressOf Enumerate)
             Dim ar1 As IAsyncResult = p1.BeginInvoke(sSource, colFoldersSource, colFilesSource, Nothing, Nothing)
             Dim ar2 As IAsyncResult = p2.BeginInvoke(sDest, colFoldersDest, colFilesDest, Nothing, Nothing)
             p1.EndInvoke(ar1)
@@ -232,7 +232,7 @@ Module modAstruct
         End If
 
         If bVerbose Then
-            Trace("-- Source folder " & sQuote(sSource) & ": " & colFilesSource.Count.ToString & " file" & s(colFilesSource.Count.ToString) & ", " & colFoldersSource.Count.ToString & " folder" & s(colFoldersSource.Count.ToString))
+            Trace("-- Source folder " & QuoteString(sSource) & ": " & colFilesSource.Count.ToString & " file" & s(colFilesSource.Count.ToString) & ", " & colFoldersSource.Count.ToString & " folder" & s(colFoldersSource.Count.ToString))
         End If
 
         Dim sCmd As String
@@ -240,8 +240,8 @@ Module modAstruct
         For Each fiSource As MyFileInfo In colFilesSource
             nbFiles += 1
             If Not colFilesDest.Contains(fiSource.Name) Then
-                sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
-                If bVerbose Then Trace("-- Source file " & sQuote(sSource & fiSource.Name) & " does not exist in dest folder " & sQuote(sDest) & " --> Copy")
+                sCmd = "copy " & QuoteString(sSource & fiSource.Name) & " " & QuoteString(sDest & fiSource.Name)
+                If bVerbose Then Trace("-- Source file " & QuoteString(sSource & fiSource.Name) & " does not exist in dest folder " & QuoteString(sDest) & " --> Copy")
                 Trace(sCmd)
                 nbFilesCopied += 1
                 If Not bNoAction Then
@@ -253,7 +253,7 @@ Module modAstruct
                             colErrors.Add(sCmd & "|" & ex.Message)
                         End Try
                     Else
-                        Dim bRet As Integer = CopyFile(sWidePath(sSource & fiSource.Name), sWidePath(sDest & fiSource.Name), False)
+                        Dim bRet As Integer = CopyFile(WidePathString(sSource & fiSource.Name), WidePathString(sDest & fiSource.Name), False)
                         If bRet = 0 Then TraceWin32Error(sCmd)
                     End If
                 End If
@@ -263,21 +263,21 @@ Module modAstruct
                 Dim bToCopy As Boolean = False
                 If fiSource.FileSize <> fiDest.FileSize Then
                     If bVerbose Then
-                        Trace("-- Source size " & sQuote(sSource & fiSource.Name) & ": " & fiSource.FileSize.ToString)
-                        Trace("-- Dest size " & sQuote(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
+                        Trace("-- Source size " & QuoteString(sSource & fiSource.Name) & ": " & fiSource.FileSize.ToString)
+                        Trace("-- Dest size " & QuoteString(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
                     End If
                     bToCopy = True
                 ElseIf Math.Abs((fiSource.LastWriteTime - fiDest.LastWriteTime) / 10000000) > 2 Then
                     If bVerbose Then
-                        Trace("-- Source timestamp " & sQuote(sSource & fiSource.Name) & ": " & fiSource.LastWriteTime / 10000000)
-                        Trace("-- Dest timestamp " & sQuote(sDest & fiDest.Name) & ": " & fiDest.LastWriteTime / 10000000 & " --> Copy")
+                        Trace("-- Source timestamp " & QuoteString(sSource & fiSource.Name) & ": " & fiSource.LastWriteTime / 10000000)
+                        Trace("-- Dest timestamp " & QuoteString(sDest & fiDest.Name) & ": " & fiDest.LastWriteTime / 10000000 & " --> Copy")
                     End If
                     bToCopy = True
                 End If
                 If bToCopy AndAlso Not bNoAction Then
                     ' If dest exists and is readonly, remove attribute first
                     If (fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
-                        sCmd = "attrib -h " & sQuote(sDest & fiDest.Name)
+                        sCmd = "attrib -h " & QuoteString(sDest & fiDest.Name)
                         Trace(sCmd)
                         If bDotNetCalls Then
                             Try
@@ -287,11 +287,11 @@ Module modAstruct
                                 colErrors.Add(sCmd & "|" & ex.Message)
                             End Try
                         Else
-                            Dim bRet As Integer = SetFileAttributes(sWidePath(sDest & fiDest.Name), fiDest.Attributes And Not FileAttributes.ReadOnly)
+                            Dim bRet As Integer = SetFileAttributes(WidePathString(sDest & fiDest.Name), fiDest.Attributes And Not FileAttributes.ReadOnly)
                             If bRet = 0 Then TraceWin32Error(sCmd)
                         End If
                     End If
-                    sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
+                    sCmd = "copy " & QuoteString(sSource & fiSource.Name) & " " & QuoteString(sDest & fiSource.Name)
                     Trace(sCmd)
                     nbFilesCopied += 1
                     If bDotNetCalls Then
@@ -302,7 +302,7 @@ Module modAstruct
                             colErrors.Add(sCmd & "|" & ex.Message)
                         End Try
                     Else
-                        Dim bRet As Integer = CopyFile(sWidePath(sSource & fiSource.Name), sWidePath(sDest & fiSource.Name), False)
+                        Dim bRet As Integer = CopyFile(WidePathString(sSource & fiSource.Name), WidePathString(sDest & fiSource.Name), False)
                         If bRet = 0 Then TraceWin32Error(sCmd)
                     End If
                 End If
@@ -314,7 +314,7 @@ Module modAstruct
             If Not colFilesSource.Contains(fiDest.Name) Then
                 ' If dest exists and is readonly, remove attribute first
                 If (Not bNoAction) And ((fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly OrElse (fiDest.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden OrElse (fiDest.Attributes And FileAttributes.System) = FileAttributes.System) Then
-                    sCmd = "attrib -rhs " & sQuote(sDest & fiDest.Name)
+                    sCmd = "attrib -rhs " & QuoteString(sDest & fiDest.Name)
                     Trace(sCmd)
                     If bDotNetCalls Then
                         Try
@@ -325,11 +325,11 @@ Module modAstruct
                             colErrors.Add(sCmd & "|" & ex.Message)
                         End Try
                     Else
-                        Dim bRet As Integer = SetFileAttributes(sWidePath(sDest & fiDest.Name), FileAttributes.Normal)
+                        Dim bRet As Integer = SetFileAttributes(WidePathString(sDest & fiDest.Name), FileAttributes.Normal)
                         If bRet = 0 Then TraceWin32Error(sCmd)
                     End If
                 End If
-                sCmd = "del " & sQuote(sDest & fiDest.Name)
+                sCmd = "del " & QuoteString(sDest & fiDest.Name)
                 Trace(sCmd)
                 nbFilesDeleted += 1
                 If Not bNoAction Then
@@ -341,7 +341,7 @@ Module modAstruct
                             colErrors.Add(sCmd & "|" & ex.Message)
                         End Try
                     Else
-                        Dim bRet As Boolean = DeleteFile(sWidePath(sDest & fiDest.Name))
+                        Dim bRet As Boolean = DeleteFile(WidePathString(sDest & fiDest.Name))
                         If bRet = 0 Then TraceWin32Error(sCmd)
                     End If
                 End If
@@ -352,7 +352,7 @@ Module modAstruct
         For Each sSubfolder As String In colFoldersSource
             nbDirectories += 1
             If Not colFoldersDest.Contains(sSubfolder) Then
-                sCmd = "mkdir " & sQuote(sDest & sSubfolder)
+                sCmd = "mkdir " & QuoteString(sDest & sSubfolder)
                 Trace(sCmd)
                 If Not bNoAction Then
                     If bDotNetCalls Then
@@ -365,7 +365,7 @@ Module modAstruct
                             Continue For
                         End Try
                     Else
-                        Dim bRet As Boolean = CreateDirectory(sWidePath(sDest & sSubfolder), Nothing)
+                        Dim bRet As Boolean = CreateDirectory(WidePathString(sDest & sSubfolder), Nothing)
                         If bRet = 0 Then TraceWin32Error(sCmd)
                     End If
                 End If
@@ -377,7 +377,7 @@ Module modAstruct
         For Each sSubfolder As String In colFoldersDest
             If Not colFoldersSource.Contains(sSubfolder) Then
                 If bNoAction Then
-                    sCmd = "rd /s " & sQuote(sDest & sSubfolder)
+                    sCmd = "rd /s " & QuoteString(sDest & sSubfolder)
                     Trace(sCmd)
                 Else
                     RecurseDeleteDirectory(sDest & sSubfolder)
@@ -392,7 +392,7 @@ Module modAstruct
         Dim colFiles As New Collection
         Dim colFolders As New Collection
 
-        If Right(sPath, 1) <> "\" Then sPath = sPath & "\"
+        If Right(sPath, 1) <> "\" Then sPath &= "\"
         Enumerate(sPath, colFolders, colFiles)
         For Each sFolderName As String In colFolders
             RecurseDeleteDirectory(sPath & sFolderName & "\")
@@ -400,7 +400,7 @@ Module modAstruct
         Dim sCmd As String
         For Each f As MyFileInfo In colFiles
             If (f.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly OrElse (f.Attributes And FileAttributes.Hidden) = FileAttributes.Hidden OrElse (f.Attributes And FileAttributes.System) = FileAttributes.System Then
-                sCmd = "attrib -rhs " & sQuote(f.FullName)
+                sCmd = "attrib -rhs " & QuoteString(f.FullName)
                 Trace(sCmd)
                 ' No need to check bNoAction since if it's False, RecurseDeleteDirectory is not called
                 If bDotNetCalls Then
@@ -411,11 +411,11 @@ Module modAstruct
                         colErrors.Add(sCmd & "|" & ex.Message)
                     End Try
                 Else
-                    Dim bRet As Integer = SetFileAttributes(sWidePath(f.FullName), FileAttributes.Normal)
+                    Dim bRet As Integer = SetFileAttributes(WidePathString(f.FullName), FileAttributes.Normal)
                     If bRet = 0 Then TraceWin32Error(sCmd)
                 End If
             End If
-            sCmd = "del " & sQuote(f.FullName)
+            sCmd = "del " & QuoteString(f.FullName)
             Trace(sCmd)
             If bDotNetCalls Then
                 Try
@@ -425,11 +425,11 @@ Module modAstruct
                     colErrors.Add(sCmd & "|" & ex.Message)
                 End Try
             Else
-                Dim bRet As Boolean = DeleteFile(sWidePath(f.FullName))
+                Dim bRet As Boolean = DeleteFile(WidePathString(f.FullName))
                 If bRet = 0 Then TraceWin32Error(sCmd)
             End If
         Next
-        sCmd = "rd " & sQuote(sPath)
+        sCmd = "rd " & QuoteString(sPath)
         Trace(sCmd)
         If bDotNetCalls Then
             Try
@@ -439,12 +439,12 @@ Module modAstruct
                 colErrors.Add(sCmd & "|" & ex.Message)
             End Try
         Else
-            Dim bRet As Boolean = RemoveDirectory(sWidePath(sPath))
+            Dim bRet As Boolean = RemoveDirectory(WidePathString(sPath))
             If bRet = 0 Then TraceWin32Error(sCmd)
         End If
     End Sub
 
-    Private Function bTimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
+    Private Function IsTimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
         Dim sPathSource As String = sSource & sNomficTTO
         Dim sPathDest As String = sDest & sNomficTTO
 
@@ -458,9 +458,9 @@ Module modAstruct
                 Return False
             End Try
 
-            Dim fiSource As FileInfo = New System.IO.FileInfo(sPathSource)
+            Dim fiSource As New FileInfo(sPathSource)
             My.Computer.FileSystem.CopyFile(sPathSource, sPathDest)
-            Dim fiDest As FileInfo = New System.IO.FileInfo(sPathDest)
+            Dim fiDest As New FileInfo(sPathDest)
 
             Dim dt As TimeSpan = fiSource.LastWriteTimeUtc - fiDest.LastWriteTimeUtc
             If Math.Abs(dt.TotalSeconds) <= 2 Then
@@ -477,7 +477,7 @@ Module modAstruct
             My.Computer.FileSystem.DeleteFile(sPathDest)
 
         Catch ex As Exception
-            Trace("Unexpected error in bTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
+            Trace("Unexpected error in IsTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
             Return False
 
         End Try
@@ -486,7 +486,7 @@ Module modAstruct
     End Function
 
     Private Sub TraceWin32Error(ByVal sCmd As String)
-        Dim sErr As String = Marshal.GetLastWin32Error.ToString & ": " & (New System.ComponentModel.Win32Exception().Message)
+        Dim sErr As String = Marshal.GetLastWin32Error.ToString & ": " & (New ComponentModel.Win32Exception().Message)
         If InStr(sErr, vbCr) > 0 Then sErr = Replace(sErr, vbCr, " ")
         If InStr(sErr, vbLf) > 0 Then sErr = Replace(sErr, vbLf, " ")
         sErr = Trim(sErr)
@@ -502,7 +502,7 @@ Module modAstruct
     ''' the Universal Naming Convention (UNC) format. The "\\?\" is ignored as part of the path. For example, "\\?\C:\myworld\private"
     ''' is seen as "C:\myworld\private", and "\\?\UNC\bill_g_1\hotstuff\coolapps" is seen as "\\bill_g_1\hotstuff\coolapps". 
     ''' </summary>
-    Private Function sWidePath(ByVal sPath As String) As String
+    Private Function WidePathString(ByVal sPath As String) As String
         If bNoWidePaths Then        ' Option to deactivate this mechanism
             Return sPath
         ElseIf sPath.Length > 1 AndAlso sPath(1) = ":"c Then
@@ -524,7 +524,7 @@ Module modAstruct
         Dim success As Long  ' will be 1 if successive searches are successful, 0 if not
         Dim retval As Long  ' generic return value
 
-        Dim s As String = sWidePath(sPath) & "*"
+        Dim s As String = WidePathString(sPath) & "*"
 #Disable Warning BC42108
         hsearch = FindFirstFileW(s, findinfo)
         If hsearch <> -1 Then  ' no files match the search string
@@ -544,12 +544,13 @@ Module modAstruct
                     End If
                 Else
                     Dim fi As MyFileInfo
-                    fi = New MyFileInfo
-                    fi.Name = findinfo.cFileName
-                    fi.FullName = sPath & findinfo.cFileName
-                    fi.Attributes = findinfo.dwFileAttributes
-                    fi.FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow
-                    fi.LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                    fi = New MyFileInfo With {
+                        .Name = findinfo.cFileName,
+                        .FullName = sPath & findinfo.cFileName,
+                        .Attributes = findinfo.dwFileAttributes,
+                        .FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow,
+                        .LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                    }
                     colFilesSource.Add(fi, fi.Name)
                 End If
 NextFile:

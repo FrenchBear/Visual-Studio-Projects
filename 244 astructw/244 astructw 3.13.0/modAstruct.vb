@@ -39,7 +39,7 @@ Friend Module modAstruct
     Dim nbFilesCopied As Integer
     Dim nbFilesRenamed As Integer
     Dim nbFilesDeleted As Integer
-    Dim colErrors As New Collection
+    ReadOnly colErrors As New Collection
 
     Public bVerbose As Boolean
     Public iFolderTraceLevel As Integer                 ' Maximum depth for folder trace, 0=no trace
@@ -49,7 +49,7 @@ Friend Module modAstruct
     Public bCopyDirectoryReparsePointContent As Boolean ' Copy what is behind a reparse point (a junction on NTFS volumes)
     Public bMultiThread As Boolean                      ' Enumerates folder contents in separate threads
     Public bDotNetCalls As Boolean                      ' Use .Net and not Win32
-    Public bNoWidePaths As Boolean                      ' Do not use wide paths extension (sWidePath function)
+    Public bNoWidePaths As Boolean                      ' Do not use wide paths extension (WidePathString function)
     Public bCreateTarget As Boolean                     ' Create destination folder if it does not exist
     Public bOneHourDifferenceAccepted As Boolean        ' Consider files identical if they have 1hr difference (and same size)
     Public bIgnoreDatetimeDifferences As Boolean        ' Only checks presence/absence and size
@@ -72,17 +72,17 @@ Friend Module modAstruct
     Public Sub Astruct(ByVal sSource As String, ByVal sDest As String)
         ' If we used options, then show them explicitly
         Dim sOptions As String = ""
-        If bVerbose Then sOptions = sOptions & ", Verbose"
+        If bVerbose Then sOptions &= ", Verbose"
         If iFolderTraceLevel Then sOptions = sOptions & ", TraceFoldersLevel" & CStr(iFolderTraceLevel)
-        If bDisableTimeCheck Then sOptions = sOptions & ", NoTimeCheck"
-        If bNoAction Then sOptions = sOptions & ", NoAction"
-        If bOneHourDifferenceAccepted Then sOptions = sOptions & ", OneHourDifference"
-        If bIgnoreDatetimeDifferences Then sOptions = sOptions & ", IgnoreDatetimeDifference"
-        If bAddUpdate Then sOptions = sOptions & ", AddUpdate"
-        If bCopyDirectoryReparsePointContent Then sOptions = sOptions & ", CopyDirectoryReparsePointContent"
-        If bMultiThread Then sOptions = sOptions & ", MultiThread"
-        If bDotNetCalls Then sOptions = sOptions & ", DotNetCalls"
-        If bNoWidePaths Then sOptions = sOptions & ", NoWidePaths"
+        If bDisableTimeCheck Then sOptions &= ", NoTimeCheck"
+        If bNoAction Then sOptions &= ", NoAction"
+        If bOneHourDifferenceAccepted Then sOptions &= ", OneHourDifference"
+        If bIgnoreDatetimeDifferences Then sOptions &= ", IgnoreDatetimeDifference"
+        If bAddUpdate Then sOptions &= ", AddUpdate"
+        If bCopyDirectoryReparsePointContent Then sOptions &= ", CopyDirectoryReparsePointContent"
+        If bMultiThread Then sOptions &= ", MultiThread"
+        If bDotNetCalls Then sOptions &= ", DotNetCalls"
+        If bNoWidePaths Then sOptions &= ", NoWidePaths"
         If sOptions.Length > 0 Then
             Console.WriteLine(HelpHeader() & " (" & sOptions.Substring(2) & ")")
         End If
@@ -187,7 +187,7 @@ Friend Module modAstruct
         ' Enumerate source and destination
         If bMultiThread Then
             Dim p1 As EnumProc = AddressOf Enumerate
-            Dim p2 As EnumProc = New EnumProc(AddressOf Enumerate)
+            Dim p2 As New EnumProc(AddressOf Enumerate)
             Dim ar1 As IAsyncResult = p1.BeginInvoke(sSource, colFoldersSource, colFilesSource, Nothing, Nothing)
             Dim ar2 As IAsyncResult = p2.BeginInvoke(sDest, colFoldersDest, colFilesDest, Nothing, Nothing)
             p1.EndInvoke(ar1)
@@ -374,7 +374,7 @@ Label1:
         Dim colFiles As New Kollection(Of MyFileInfo)
         Dim colFolders As New Kollection(Of String)
 
-        If Right(sPath, 1) <> "\" Then sPath = sPath & "\"
+        If Right(sPath, 1) <> "\" Then sPath &= "\"
         Enumerate(sPath, colFolders, colFiles)
         For Each sFolderName As String In colFolders
             RecurseDeleteDirectory(sPath & sFolderName & "\")
@@ -440,9 +440,9 @@ Label1:
                 Return False
             End Try
 
-            Dim fiSource As FileInfo = New System.IO.FileInfo(sPathSource)
+            Dim fiSource As New FileInfo(sPathSource)
             MyCopyFile(sPathSource, sPathDest)
-            Dim fiDest As FileInfo = New System.IO.FileInfo(sPathDest)
+            Dim fiDest As New FileInfo(sPathDest)
 
             Dim dt As TimeSpan = fiSource.LastWriteTimeUtc - fiDest.LastWriteTimeUtc
             If Math.Abs(dt.TotalSeconds) <= 2 Then
@@ -458,7 +458,7 @@ Label1:
             My.Computer.FileSystem.DeleteFile(sPathSource)
             My.Computer.FileSystem.DeleteFile(sPathDest)
         Catch ex As Exception
-            Trace("Unexpected error in bTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
+            Trace("Unexpected error in IsTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
             Return False
 
         End Try
@@ -510,7 +510,7 @@ Label1:
     End Sub
 
     Private Sub TraceWin32Error(ByVal sCmd As String)
-        Dim sErr As String = Marshal.GetLastWin32Error.ToString & ": " & (New System.ComponentModel.Win32Exception().Message)
+        Dim sErr As String = Marshal.GetLastWin32Error.ToString & ": " & (New ComponentModel.Win32Exception().Message)
         If InStr(sErr, vbCr) > 0 Then sErr = Replace(sErr, vbCr, " ")
         If InStr(sErr, vbLf) > 0 Then sErr = Replace(sErr, vbLf, " ")
         sErr = Trim(sErr)

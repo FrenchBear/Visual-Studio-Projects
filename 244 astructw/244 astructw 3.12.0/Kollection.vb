@@ -5,7 +5,7 @@
 Class Kollection
     Implements IEnumerable
 
-    Private d As Dictionary(Of String, Object) = New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
+    Private ReadOnly d As New Dictionary(Of String, Object)(StringComparer.OrdinalIgnoreCase)
 
     Public Sub Add(ByVal Item As Object, ByVal Key As String)
         d.Add(Key, Item)

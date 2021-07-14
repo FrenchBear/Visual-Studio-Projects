@@ -14,7 +14,7 @@ Module modAstruct
     Dim nbDirectories As Integer
     Dim nbFilesCopied As Integer
     Dim nbFilesDeleted As Integer
-    Dim colErrors As New Collection
+    ReadOnly colErrors As New Collection
 
     Public bVerbose As Boolean
     Public bDisableTimeCheck As Boolean     ' For interactive trace
@@ -44,12 +44,12 @@ Structure WIN32_FIND_DATAW
         Dim dwReserved0 As Integer
         Dim dwReserved1 As Integer
         ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode  
-        <VBFixedString(520), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
+        <VBFixedString(520), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
         ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode  
-        <VBFixedString(28), System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
+        <VBFixedString(28), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
     End Structure
 
-    <DllImportAttribute("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
+    <DllImport("kernel32.dll", EntryPoint:="FindFirstFileW", SetLastError:=True, CharSet:=CharSet.Unicode)> _
     Public Function FindFirstFileW(ByVal lpFileName As String, ByRef lpFindFileData As WIN32_FIND_DATAW) As Integer
     End Function
 
@@ -69,17 +69,17 @@ Structure WIN32_FIND_DATAW
     End Class
 
 
-    Public Sub astruct(ByVal sSource As String, ByVal sDest As String)
-        If bNoAction Then Console.WriteLine(sHelpHeader() & " (noaction)")
+    Public Sub Astruct(ByVal sSource As String, ByVal sDest As String)
+        If bNoAction Then Console.WriteLine(HelpHeaderString() & " (noaction)")
         Dim bProblem As Boolean = False
-        If Not bCheckFolder(sSource, "source") Then bProblem = True
-        If Not bCheckFolder(sDest, "destination") Then bProblem = True
+        If Not IsCheckFolder(sSource, "source") Then bProblem = True
+        If Not IsCheckFolder(sDest, "destination") Then bProblem = True
         If bProblem Then Exit Sub
 
         If VB.Right(sSource, 1) <> "\" Then sSource &= "\"
         If VB.Right(sDest, 1) <> "\" Then sDest &= "\"
         If Not bDisableTimeCheck Then
-            If Not bTimeCheck(sSource, sDest) Then Exit Sub
+            If Not IsTimeCheck(sSource, sDest) Then Exit Sub
         End If
 
         Dim t1 As DateTime = DateTime.Now
@@ -87,7 +87,7 @@ Structure WIN32_FIND_DATAW
         nbDirectories = 0
         nbFilesCopied = 0
         nbFilesDeleted = 0
-        Trace("astructw " & sQuote(sSource) & " -> " & sQuote(sDest))
+        Trace("astructw " & QuoteString(sSource) & " -> " & QuoteString(sDest))
         DoAstruct(sSource, sDest)
         Dim t2 As DateTime = DateTime.Now
         Dim ts As TimeSpan = t2 - t1
@@ -104,12 +104,12 @@ Structure WIN32_FIND_DATAW
         End If
     End Sub
 
-    Private Function bCheckFolder(ByVal sFolder As String, ByVal sPosition As String) As Boolean
+    Private Function IsCheckFolder(ByVal sFolder As String, ByVal sPosition As String) As Boolean
         Try
             If My.Computer.FileSystem.DirectoryExists(sFolder) Then Return True
-            CLShowError("Can't find " & sPosition & " folder " & sQuote(sFolder))
+            CLShowError("Can't find " & sPosition & " folder " & QuoteString(sFolder))
         Catch ex As Exception
-            Trace("Error accessing " & sPosition & " folder " & sQuote(sFolder))
+            Trace("Error accessing " & sPosition & " folder " & QuoteString(sFolder))
             Trace(ex.Message)
         End Try
         Return False
@@ -129,7 +129,7 @@ Structure WIN32_FIND_DATAW
         End If
     End Sub
 
-    Function s(ByVal n As Integer) As String
+    Function S(ByVal n As Integer) As String
         If n > 1 Then
             Return "s"
         Else
@@ -138,7 +138,7 @@ Structure WIN32_FIND_DATAW
     End Function
 
 
-    Function sQuote(ByVal s As String)
+    Function QuoteString(ByVal s As String)
         If s.Contains(" ") Then
             Return Chr(34) & s & Chr(34)
         Else
@@ -163,7 +163,7 @@ Structure WIN32_FIND_DATAW
 
 
         If bVerbose Then
-            Trace("-- Source folder " & sQuote(sSource) & ": " & colFilesSource.Count.ToString & " file" & s(colFilesSource.Count.ToString) & ", " & colFoldersSource.Count.ToString & " folder" & s(colFoldersSource.Count.ToString))
+            Trace("-- Source folder " & QuoteString(sSource) & ": " & colFilesSource.Count.ToString & " file" & s(colFilesSource.Count.ToString) & ", " & colFoldersSource.Count.ToString & " folder" & s(colFoldersSource.Count.ToString))
         End If
 
         Dim sCmd As String
@@ -171,8 +171,8 @@ Structure WIN32_FIND_DATAW
         For Each fiSource As MyFileInfo In colFilesSource
             nbFiles += 1
             If Not colFilesDest.Contains(fiSource.Name) Then
-                sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
-                If bVerbose Then Trace("-- Source file " & sQuote(sSource & fiSource.Name) & " does not exist in dest folder " & sQuote(sDest) & " --> Copy")
+                sCmd = "copy " & QuoteString(sSource & fiSource.Name) & " " & QuoteString(sDest & fiSource.Name)
+                If bVerbose Then Trace("-- Source file " & QuoteString(sSource & fiSource.Name) & " does not exist in dest folder " & QuoteString(sDest) & " --> Copy")
                 Trace(sCmd)
                 nbFilesCopied += 1
                 If Not bNoAction Then
@@ -189,21 +189,21 @@ Structure WIN32_FIND_DATAW
                 Dim bToCopy As Boolean = False
                 If fiSource.FileSize <> fiDest.FileSize Then
                     If bVerbose Then
-                        Trace("-- Source size " & sQuote(sSource & fiSource.Name) & ": " & fiSource.FileSize.ToString)
-                        Trace("-- Dest size " & sQuote(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
+                        Trace("-- Source size " & QuoteString(sSource & fiSource.Name) & ": " & fiSource.FileSize.ToString)
+                        Trace("-- Dest size " & QuoteString(sDest & fiDest.Name) & ": " & fiDest.FileSize.ToString & " --> Copy")
                     End If
                     bToCopy = True
                 ElseIf Math.Abs((fiSource.LastWriteTime - fiDest.LastWriteTime) / 10000000) > 2 Then
                     If bVerbose Then
-                        Trace("-- Source timestamp " & sQuote(sSource & fiSource.Name) & ": " & fiSource.LastWriteTime / 10000000)
-                        Trace("-- Dest timestamp " & sQuote(sDest & fiDest.Name) & ": " & fiDest.LastWriteTime / 10000000 & " --> Copy")
+                        Trace("-- Source timestamp " & QuoteString(sSource & fiSource.Name) & ": " & fiSource.LastWriteTime / 10000000)
+                        Trace("-- Dest timestamp " & QuoteString(sDest & fiDest.Name) & ": " & fiDest.LastWriteTime / 10000000 & " --> Copy")
                     End If
                     bToCopy = True
                 End If
                 If bToCopy AndAlso Not bNoAction Then
                     ' If dest exists and is readonly, remove attribute first
                     If (fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
-                        sCmd = "attrib -h " & sQuote(sDest & fiDest.Name)
+                        sCmd = "attrib -h " & QuoteString(sDest & fiDest.Name)
                         Trace(sCmd)
                         Try
                             System.IO.File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not FileAttributes.ReadOnly)
@@ -212,7 +212,7 @@ Structure WIN32_FIND_DATAW
                             colErrors.Add(sCmd & "|" & ex.Message)
                         End Try
                     End If
-                    sCmd = "copy " & sQuote(sSource & fiSource.Name) & " " & sQuote(sDest & fiSource.Name)
+                    sCmd = "copy " & QuoteString(sSource & fiSource.Name) & " " & QuoteString(sDest & fiSource.Name)
                     Trace(sCmd)
                     nbFilesCopied += 1
                     Try
@@ -230,7 +230,7 @@ Structure WIN32_FIND_DATAW
             If Not colFilesSource.Contains(fiDest.Name) Then
                 ' If dest exists and is readonly, remove attribute first
                 If (Not bNoAction) And (fiDest.Attributes And FileAttributes.ReadOnly) = FileAttributes.ReadOnly Then
-                    sCmd = "attrib -h " & sQuote(sDest & fiDest.Name)
+                    sCmd = "attrib -h " & QuoteString(sDest & fiDest.Name)
                     Trace(sCmd)
                     Try
                         System.IO.File.SetAttributes(sDest & fiDest.Name, fiDest.Attributes And Not FileAttributes.ReadOnly)
@@ -239,7 +239,7 @@ Structure WIN32_FIND_DATAW
                         colErrors.Add(sCmd & "|" & ex.Message)
                     End Try
                 End If
-                sCmd = "del " & sQuote(sDest & fiDest.Name)
+                sCmd = "del " & QuoteString(sDest & fiDest.Name)
                 Trace(sCmd)
                 nbFilesDeleted += 1
                 If Not bNoAction Then
@@ -257,7 +257,7 @@ Structure WIN32_FIND_DATAW
         For Each sSubfolder As String In colFoldersSource
             nbDirectories += 1
             If Not colFoldersDest.Contains(sSubfolder) Then
-                sCmd = "mkdir " & sQuote(sDest & sSubfolder)
+                sCmd = "mkdir " & QuoteString(sDest & sSubfolder)
                 Trace(sCmd)
                 If Not bNoAction Then
                     Try
@@ -276,7 +276,7 @@ Structure WIN32_FIND_DATAW
         ' 4. Remove extra subdirectories on dest
         For Each sSubfolder As String In colFoldersDest
             If Not colFoldersSource.Contains(sSubfolder) Then
-                sCmd = "rd /s " & sQuote(sDest & sSubfolder)
+                sCmd = "rd /s " & QuoteString(sDest & sSubfolder)
                 Trace(sCmd)
                 If Not bNoAction Then
                     Try
@@ -290,7 +290,7 @@ Structure WIN32_FIND_DATAW
         Next
     End Sub
 
-    Private Function bTimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
+    Private Function IsTimeCheck(ByVal sSource As String, ByVal sDest As String) As Boolean
         Dim sPathSource As String = sSource & sNomficTTO
         Dim sPathDest As String = sDest & sNomficTTO
 
@@ -304,9 +304,9 @@ Structure WIN32_FIND_DATAW
                 Return False
             End Try
 
-            Dim fiSource As FileInfo = New System.IO.FileInfo(sPathSource)
+            Dim fiSource As New FileInfo(sPathSource)
             My.Computer.FileSystem.CopyFile(sPathSource, sPathDest)
-            Dim fiDest As FileInfo = New System.IO.FileInfo(sPathDest)
+            Dim fiDest As New FileInfo(sPathDest)
 
             Dim dt As TimeSpan = fiSource.LastWriteTimeUtc - fiDest.LastWriteTimeUtc
             If Math.Abs(dt.TotalSeconds) <= 2 Then
@@ -323,7 +323,7 @@ Structure WIN32_FIND_DATAW
             My.Computer.FileSystem.DeleteFile(sPathDest)
 
         Catch ex As Exception
-            Trace("Unexpected error in bTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
+            Trace("Unexpected error in IsTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
             Return False
 
         End Try
@@ -363,11 +363,12 @@ Structure WIN32_FIND_DATAW
                     End If
                 Else
                     Dim fi As MyFileInfo
-                    fi = New MyFileInfo
-                    fi.Name = findinfo.cFileName
-                    fi.Attributes = findinfo.dwFileAttributes
-                    fi.FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow
-                    fi.LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                    fi = New MyFileInfo With {
+                        .Name = findinfo.cFileName,
+                        .Attributes = findinfo.dwFileAttributes,
+                        .FileSize = findinfo.nFileSizeHigh * 4294967296 + findinfo.nFileSizeLow,
+                        .LastWriteTime = findinfo.ftLastWriteTime.dwHighDateTime * 4294967296 + findinfo.ftLastWriteTime.dwLowDateTime
+                    }
                     colFilesSource.Add(fi, fi.Name)
                 End If
 NextFile:

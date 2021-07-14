@@ -8,7 +8,7 @@
 Friend Class Kollection(Of T)
     Implements IEnumerable(Of T)
 
-    Private ReadOnly d As Dictionary(Of String, T) = New Dictionary(Of String, T)(StringComparer.OrdinalIgnoreCase)
+    Private ReadOnly d As New Dictionary(Of String, T)(StringComparer.OrdinalIgnoreCase)
 
     Public Sub Add(ByVal Item As T, ByVal Key As String)
         d.Add(Key, Item)

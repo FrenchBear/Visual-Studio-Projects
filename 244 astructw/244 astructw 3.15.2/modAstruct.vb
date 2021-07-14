@@ -47,7 +47,7 @@ Friend Module modAstruct
     Public bCopyDirectoryReparsePointContent As Boolean ' Copy what is behind a reparse point (a junction on NTFS volumes)
     Public bMultiThread As Boolean                      ' Enumerates folder contents in separate threads
     Public bDotNetCalls As Boolean                      ' Use .Net and not Win32
-    Public bNoWidePaths As Boolean                      ' Do not use wide paths extension (sWidePath function)
+    Public bNoWidePaths As Boolean                      ' Do not use wide paths extension (WidePathString function)
     Public bCreateTarget As Boolean                     ' Create destination folder if it does not exist
     Public bOneHourDifferenceAccepted As Boolean        ' Consider files identical if they have 1hr difference (and same size)
     Public bIgnoreDateDifferences As Boolean        ' Only checks presence/absence and size
@@ -200,7 +200,7 @@ Friend Module modAstruct
         ' Enumerate source and destination
         If bMultiThread Then
             Dim p1 As EnumProc = AddressOf Enumerate
-            Dim p2 As EnumProc = New EnumProc(AddressOf Enumerate)
+            Dim p2 As New EnumProc(AddressOf Enumerate)
             Dim ar1 As IAsyncResult = p1.BeginInvoke(sSource, colFoldersSource, colFilesSource, Nothing, Nothing)
             Dim ar2 As IAsyncResult = p2.BeginInvoke(sDest, colFoldersDest, colFilesDest, Nothing, Nothing)
             p1.EndInvoke(ar1)
@@ -453,9 +453,9 @@ Label1:
                 Return False
             End Try
 
-            Dim fiSource As FileInfo = New FileInfo(sPathSource)
+            Dim fiSource As New FileInfo(sPathSource)
             MyCopyFile(sPathSource, sPathDest)
-            Dim fiDest As FileInfo = New FileInfo(sPathDest)
+            Dim fiDest As New FileInfo(sPathDest)
 
             Dim dt As TimeSpan = fiSource.LastWriteTimeUtc - fiDest.LastWriteTimeUtc
             If Math.Abs(dt.TotalSeconds) <= 2 Then
@@ -471,7 +471,7 @@ Label1:
             My.Computer.FileSystem.DeleteFile(sPathSource)
             My.Computer.FileSystem.DeleteFile(sPathDest)
         Catch ex As Exception
-            Trace("Unexpected error in bTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
+            Trace("Unexpected error in IsTimeCheck: " & ex.Message & vbCrLf & "Use option /t to disable this check.")
             Return False
 
         End Try

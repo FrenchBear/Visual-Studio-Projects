@@ -101,19 +101,19 @@ Sortie:
     End Sub
 
     Sub CLShowExtendedHelp()
-        Console.WriteLine(sHelpHeader() & vbCrLf & vbCrLf & sExtendedHelp())
+        Console.WriteLine(HelpHeaderString() & vbCrLf & vbCrLf & ExtendedHelpString())
     End Sub
 
     Sub CLShowHelp()
-        Console.WriteLine(sHelpHeader() & vbCrLf & vbCrLf & sUsage())
+        Console.WriteLine(HelpHeaderString() & vbCrLf & vbCrLf & UsageString())
     End Sub
 
 
-    Function sHelpHeader() As String
+    Function HelpHeaderString() As String
         Return "astructw " & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Revision & vbCrLf & My.Application.Info.Description
     End Function
 
-    Function sUsage() As String
+    Function UsageString() As String
         Return "Usage: astructw [/?] [/??] [/option ...] source destination" & vbCrLf & _
                "Source and destination must be valid and existing folders" & vbCrLf & _
                "Options: /v     Verbose mode, detailed output" & vbCrLf & _
@@ -123,7 +123,7 @@ Sortie:
                "         /_     Do not copy files and folders beginning with _ (same as /x _*)"
     End Function
 
-    Function sExtendedHelp() As String
+    Function ExtendedHelpString() As String
         Return "Copyright " & My.Application.Info.Copyright & vbCrLf & vbCrLf & _
           "Advanced Options:" & vbCrLf & _
           "/d  Use DotNet calls for filesystem operations instead of Win32 calls" & vbCrLf & _

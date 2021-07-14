@@ -194,14 +194,14 @@ Sortie:
     End Sub
 
     Sub CLShowHelp()
-        Console.WriteLine(HelpHeader() & vbCrLf & vbCrLf & Usage())
+        Console.WriteLine(HelpHeader() & vbCrLf & vbCrLf & UsageString())
     End Sub
 
     Function HelpHeader() As String
         Return "astructw " & My.Application.Info.Version.Major & "." & My.Application.Info.Version.Minor & "." & My.Application.Info.Version.Revision & vbCrLf & My.Application.Info.Description
     End Function
 
-    Function Usage() As String
+    Function UsageString() As String
         Return "Usage: astructw [/?] [/??] [/option ...] source destination" & vbCrLf &
                "Source and destination must be valid and existing folders" & vbCrLf & vbCrLf &
                "Common Options:" & vbCrLf &
