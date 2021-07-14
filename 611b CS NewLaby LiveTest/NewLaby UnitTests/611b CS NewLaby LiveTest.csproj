@@ -82,9 +82,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\611 CS NewLaby\611 CS NewLaby.csproj">
+    <ProjectReference Include="..\611 CS NewLaby\CS611 NewLaby.csproj">
       <Project>{5d1334b2-e3fa-46c9-a98a-491ff64917b5}</Project>
-      <Name>611 CS NewLaby</Name>
+      <Name>CS611 NewLaby</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

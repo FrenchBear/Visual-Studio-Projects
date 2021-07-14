@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D1334B2-E3FA-46C9-A98A-491FF64917B5}</ProjectGuid>
+    <ProjectGuid>{D0849441-3864-461A-AEC7-0959B934294E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NewLaby</RootNamespace>
