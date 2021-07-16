@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelectMany", "SelectMany.csproj", "{ED22F135-4AB9-40CE-AD4C-8C06A9F4E545}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "636 CS SelectMany", "636 CS SelectMany.csproj", "{ED22F135-4AB9-40CE-AD4C-8C06A9F4E545}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E485F42-8BC6-414E-8CB2-4EEB79DB7D44}
 	EndGlobalSection
 EndGlobal

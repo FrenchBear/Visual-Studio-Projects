@@ -67,7 +67,7 @@ Module VB601
         Dim X, Y As Double
         p.Deconstruct(X, Y)                           ' Class supporting a Deconstruct method
         WriteLine($"X={X}, Y={Y}")
-        Dim t78 As Tuple(Of Integer, Integer) = New Tuple(Of Integer, Integer)(7, 8)
+        Dim t78 As New Tuple(Of Integer, Integer)(7, 8)
         Dim Z, T As Integer
         t78.Deconstruct(Z, T)                               ' Deconstruction using extension method
         WriteLine($"Z={Z}, T={T}")
