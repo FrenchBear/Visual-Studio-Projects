@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "42 CS IFormattable", "42 CS IFormattable.csproj", "{B14E00B4-950F-4797-8CD9-D711078E7724}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B14E00B4-950F-4797-8CD9-D711078E7724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B14E00B4-950F-4797-8CD9-D711078E7724}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B14E00B4-950F-4797-8CD9-D711078E7724}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B14E00B4-950F-4797-8CD9-D711078E7724}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

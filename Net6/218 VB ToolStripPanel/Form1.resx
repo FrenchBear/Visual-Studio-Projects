@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <metadata name="MenuStrip1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="fileToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="newToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="ToolStripMenuItem1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="ToolStripMenuItem2.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="ToolStripMenuItem3.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAERJREFUOE9jYKAy
+        +A80Dx8maN1/XADJYLyG4DUAJAk1CKchxLgAryE4DUCWwOeKUQOAiYgYMMgDkUBeQM4nBPMFfRQAAE9F
+        mHa8P0uiAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="openToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAG9JREFUOE+9U1sO
+        wCAI4+jenI0h6BTDysdI8N1SUIl+NL5jmcNhBTibzdd1iHhTg0jczrIaaTtyjcahTAcbSdR34hPBUHAi
+        SQhU/sc08hq0Rpz5rOgVOQPK/pqOV78Clqo+jFWwEyT3X/4H0PuGD1/34/EzekWnggAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
+  <metadata name="toolStripSeparator.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="saveToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="saveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAFtJREFUOE9jYKAS
+        +A80hxwMt/5/QwPEgAMHDuDFMDVQC8kzAMm15BkAcy1y8JHkhUFsAJLTcEYpSA1OL8AkiaGxRiMxLgBp
+        xOsCXCkSlsAGrwGgREVRZiI7UwMACXFkDZul3iAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="saveAsToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="saveAsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAFtJREFUOE9jYKAS
+        +A80hxwMt/5/QwPEgAMHDuDFMDVQC8kzAMm15BkAcy1y8JHkhUFsAJLTcEYpSA1OL8AkiaGxRiMxLgBp
+        xOsCXCkSlsAGrwGgREVRZiI7UwMACXFkDZul3iAAAAAASUVORK5CYII=
+</value>
+  </data>
+  <metadata name="toolStripSeparator1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="printToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="printToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAHdJREFUOE+1UwsK
+        wCAI7egezZtZ1hwamTZaIEHg+2ml/HSo4UblUlN0HvA9wEoBA6eadwpSAAG7zsbYiKz3RkQ0tyBEiXvN
+        /D5QM+UpSLHrXIRMAnXZAYCkdJPk8Pr35Lep8+R7TaxmHz5ZmPfhOMTVHp8oufeHKxTSeQLsDNFRAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="printPreviewToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="printPreviewToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAINJREFUOE/Nk10K
+        wCAMg+vNPVpv5owYcdJK9UmhoNuSff0xiUipcbLS+nGJLu9nUT1ITdrHDTo28c9SgDjnXFS1BfZWHcwa
+        UCz1LYIGlolrABHFNGjPlm5sDYh/ZTDnDxKcwykAyytiNxkTvR2ktY0TwWjpzST+5mI+RPZEd+/GydWW
+        D8T5Gz1GlZgJAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="toolStripSeparator2.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="exitToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="editToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="undoToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="redoToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="toolStripSeparator3.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="cutToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="cutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAFRJREFUOE9jYKAh
+        +I9mNjqfoNWDwwCYK0A0yV4A+RHZAIJ+xqYAZjNZtsMMpERzA9QFYJocANMIomGYKHPQNSC7gKBrsCke
+        eANA/iYrDIgKMMoUAQAqwjZX15oapQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="copyToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="copyToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAH1JREFUOE+1ktsO
+        wCAIQ/10/1zdkMilCA+bCYkh5thCW/vojMVBVcYPewSwBIGAp7lBKeQF8K/n3lcPlec5BQTpQBkDNUQp
+        OP4xgOEScVWgrVlLhCkrkD/RfATAr5IsoIxYG0GQ/AwiBcGe6wquADjhveYkYVGQZD8N6c8PJmE9Y70r
+        51X3AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="pasteToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <data name="pasteToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAJxJREFUOE+1k4sN
+        gCAMRDs6o7FZpWC/tGJMJGlQ5I7XMwD8OHB42zoeFQWICLOCEb87Q2ytjYI5k8AK+Zm/03ybiokT994x
+        KxLZQyyCEBS40gaTlgQW07YV1xMDzUAxKY+qZg57Bj6oNsLch5o6g5ygMqD1ZbSGpJsR2DZUyK2JwXsC
+        pvpEwDSxhdnGXnmIGUFxUZ5+o8/geNOqDRdq1Xx6UZWhkAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="toolStripSeparator4.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="selectAllToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="toolsToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="customizeToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="optionsToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="helpToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="contentsToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="indexToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="searchToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="toolStripSeparator5.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="aboutToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="Button1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="topToolStripPanel.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="ToolStrip1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="B1ToolStripButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="B2ToolStripButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="LabelToolStripLabel.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="SBToolStripSplitButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="X1ToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="DDBToolStripDropDownButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="X2ToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="ComboToolStripComboBox.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="TextBoxToolStripTextBox.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="PbToolStripProgressBar.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="ToolStrip1.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="B1ToolStripButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="B2ToolStripButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="LabelToolStripLabel.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="SBToolStripSplitButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="X1ToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="DDBToolStripDropDownButton.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="X2ToolStripMenuItem.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="ComboToolStripComboBox.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="TextBoxToolStripTextBox.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="PbToolStripProgressBar.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+  <metadata name="bottomToolStripPanel.Modifiers" type="System.CodeDom.MemberAttributes, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>Assembly</value>
+  </metadata>
+</root>

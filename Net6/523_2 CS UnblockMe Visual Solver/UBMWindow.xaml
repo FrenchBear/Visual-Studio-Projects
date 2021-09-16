@@ -1,0 +1,42 @@
+﻿<Window x:Class="CS523B_UnblockMe_Solver_Visual.UBMWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="523 UnblockMe" Height="350" Width="525">
+
+    <Grid Margin="6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <Label Content="Unblock Me" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Background="PowderBlue" Foreground="Blue" />
+            <Button Command="{Binding Path=SolveCommand}" VerticalAlignment="Top" Margin="0,10,0,5" IsDefault="True">_Solve</Button>
+            <Slider AutoToolTipPlacement="TopLeft" LargeChange="10" SmallChange="1" TickFrequency="10" Value="{Binding Step}" />
+        </StackPanel>
+
+        <Viewbox Grid.Column="1">
+            <Grid Name="myGrid" Background="Black">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Viewbox>
+    </Grid>
+</Window>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <titre>Intro to Visual Basic</titre>
+  <auteur>Moi</auteur>
+  <quantité>123</quantité>
+  <Chapites>
+    <Chapitre>
+      <numéro>1</numéro>
+      <titre>Premier chapitre</titre>
+      <paages>15.2</paages>
+    </Chapitre>
+    <Chapitre>
+      <numéro>2</numéro>
+      <titre>Deuxième chapitre</titre>
+      <paages>10</paages>
+    </Chapitre>
+    <Chapitre>
+      <numéro>3</numéro>
+      <titre>Troisième chapitre</titre>
+      <paages>-7.7</paages>
+    </Chapitre>
+  </Chapites>
+</Book>
