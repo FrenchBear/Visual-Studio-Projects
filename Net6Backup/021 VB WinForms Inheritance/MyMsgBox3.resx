@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" targetNamespace="" xmlns="" xmlns:xsd="http://www.w3.org/1999/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="data">
+      <xsd:complexType content="mixed">
+        <xsd:all>
+          <xsd:element name="value" minOccurs="0" type="xsd:string"/>
+        </xsd:all>
+        <xsd:attribute name="name" type="xsd:string"/>
+        <xsd:attribute name="type" type="xsd:string"/>
+        <xsd:attribute name="mimetype" type="xsd:string"/>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="resheader">
+      <xsd:complexType content="mixed">
+        <xsd:all>
+          <xsd:element name="value" minOccurs="0" type="xsd:string"/>
+        </xsd:all>
+        <xsd:attribute name="name" use="required" type="xsd:string"/>
+      </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="root" msdata:IsDataSet="True">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element ref="data"/>
+          <xsd:element ref="resheader"/>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <data name="PictureBox1.Image" mimetype="text/microsoft-urt/psuedoml-serialized/base64">
+    <value>AAEAAAD/////AQAAAAAAAAAMAgAAADxTeXN0ZW0uRHJhd2luZywgVmVyPTEuMC4yMjA0LjIxLCBMb2M9IiIsIFNOPTAzNjg5MTE2ZDNhNGFlMzMFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEDDVN5c3RlbS5CeXRlW10CAAAACQMAAAAHAwAAAAABAAAA9gAAAAACiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAHRJREFUOE/Nk1EKwCAMQ73/qXqzTue6JZti6tcEKYiJL5WW8uflFW60JeaZGM+nRoq43ckbmNkmgbuf4lqvviRe/4oT+CAOAogxpKAGkijM+tfqEd4mqx4055tihyDQugljL38Acz1iMTuLeQYiFlZpHqRLBxvotrBWalD6AAAAAElFTkSuQmCCCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</value>
+  </data>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter</value>
+  </resheader>
+</root>

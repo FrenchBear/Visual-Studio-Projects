@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<Schema
+    name="Order Entry Test"
+    xmlns="urn:schemas-microsoft-com:xml-data"
+    xmlns:dt="urn:schemas-microsoft-com:datatypes">
+
+    <AttributeType name="ID" content="textOnly" dt:type="i4" />
+    <ElementType name="Quantity" content="textOnly" dt:type="i4" />
+    <ElementType name="Name" content="textOnly" dt:type="string" />
+    <ElementType name="Description" content="textOnly" dt:type="string" />
+    <ElementType name="Location" content="textOnly" dt:type="string" />
+    <ElementType name="Telephone" content="textOnly" dt:type="string" />
+    <ElementType name="CreatedDate" content="textOnly" dt:type="dateTime" />
+    <ElementType name="DueDate" content="textOnly" dt:type="dateTime" />
+    <ElementType name="Contact" content="textOnly" dt:type="string" />
+    <ElementType name="Address" content="textOnly" dt:type="string" />
+    <ElementType name="City" content="textOnly" dt:type="string" />
+    <ElementType name="State" content="textOnly" dt:type="string" />
+    <ElementType name="ZIP" content="textOnly" dt:type="string" />
+
+    <ElementType name="Customer" content="eltOnly" model="closed">
+        <attribute type="ID" />
+        <element type="Name" minOccurs="1" maxOccurs="1" />
+        <element type="Address" minOccurs="1" maxOccurs="1" />
+        <element type="City" minOccurs="1" maxOccurs="1" />
+        <element type="State" minOccurs="1" maxOccurs="1" />
+        <element type="ZIP" minOccurs="1" maxOccurs="1" />
+        <element type="Telephone" minOccurs="1" maxOccurs="1" />
+    </ElementType>
+
+    <ElementType name="OrderItem" content="eltOnly" model="closed">
+        <element type="Name" minOccurs="1" maxOccurs="1" />
+        <element type="Description" minOccurs="1" maxOccurs="1" />
+        <element type="Quantity" minOccurs="1" maxOccurs="1" />
+        <element type="Location" minOccurs="1" maxOccurs="1" />
+        <attribute type="ID" />
+    </ElementType>
+
+    <ElementType name="OrderItems" content="eltOnly" model="closed">
+        <element type="OrderItem" minOccurs="0" maxOccurs="*" />
+    </ElementType>
+
+    <ElementType name="Order" content="eltOnly" model="closed">
+        <element type="OrderItems" minOccurs="1" maxOccurs="1" />
+        <element type="Customer" minOccurs="1" maxOccurs="1" />
+        <element type="DueDate" minOccurs="1" maxOccurs="1" />
+        <element type="CreatedDate" minOccurs="1" maxOccurs="1" />
+        <element type="Contact" minOccurs="1" maxOccurs="1" />
+        <attribute type="ID" />
+    </ElementType>
+</Schema>

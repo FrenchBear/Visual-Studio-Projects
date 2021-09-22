@@ -1,0 +1,26 @@
+copy "\\zeus\users\andersthomsen\The Last 2 months\2006-05-14\My Documents\QA and Safety\From Brad's PC\Old - to be deleted\Safety Manual 2004-10\Local Requirements\State Hood Requirements\California Code of Regulations Ventilation Requirements\arrow_marble_left.gif" 
+"d:\users\andersthomsen\The Last 2 months\2006-05-14\My Documents\QA and Safety\From Brad's PC\Old - to be deleted\Safety Manual 2004-10\Local Requirements\State Hood Requirements\California Code of Regulations Ventilation Requirements\arrow_marble_left.gif" 
+
+==> The specified path, file name, or both are too long. The fully qualified file name must be less than 260 char
+
+
+
+2 errors:
+copy "\\zeus\users\PierreViolent\Kheops Backup\SVN\US-Archive\Trunk\DirectoryBro
+wser.root\DirectoryBrowser\Documents and Settings\JMinnick\My Documents\Visual S
+tudio Projects\DirectoryBrowser\DirectoryBrowserSetup\.svn\text-base\DirectoryBr
+owserSetup.vdproj.svn-base" "d:\Users\PierreViolent\Kheops Backup\SVN\US-Archive
+\Trunk\DirectoryBrowser.root\DirectoryBrowser\Documents and Settings\JMinnick\My
+ Documents\Visual Studio Projects\DirectoryBrowser\DirectoryBrowserSetup\.svn\te
+xt-base\DirectoryBrowserSetup.vdproj.svn-base" ==> The specified path, file name
+, or both are too long. The fully qualified file name must be less than 260 char
+acters, and the directory name must be less than 248 characters.
+copy "\\zeus\users\PierreViolent\Kheops Backup\SVN\US-Archive\Trunk\DirectoryBro
+wser.root\DirectoryBrowser\Documents and Settings\JMinnick\My Documents\Visual S
+tudio Projects\DirectoryBrowser\DirectoryBrowserSetup\.svn\text-base\DirectoryBr
+owserSetup.vdproj.vspscc.svn-base" "d:\Users\PierreViolent\Kheops Backup\SVN\US-
+Archive\Trunk\DirectoryBrowser.root\DirectoryBrowser\Documents and Settings\JMin
+nick\My Documents\Visual Studio Projects\DirectoryBrowser\DirectoryBrowserSetup\
+.svn\text-base\DirectoryBrowserSetup.vdproj.vspscc.svn-base" ==> The specified p
+ath, file name, or both are too long. The fully qualified file name must be less
+ than 260 characters, and the directory name must be less than 248 characters.

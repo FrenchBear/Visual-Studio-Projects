@@ -1,0 +1,3 @@
+Ceci est un texte
+Contenu dans TextFile1.txt
+dans les ressources

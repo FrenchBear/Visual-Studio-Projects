@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "55 VB Graphiques 2", "55 VB Graphiques 2.vbproj", "{E95925E0-EAC1-4B2A-A3C4-BE4C0603C5BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E95925E0-EAC1-4B2A-A3C4-BE4C0603C5BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E95925E0-EAC1-4B2A-A3C4-BE4C0603C5BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E95925E0-EAC1-4B2A-A3C4-BE4C0603C5BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E95925E0-EAC1-4B2A-A3C4-BE4C0603C5BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

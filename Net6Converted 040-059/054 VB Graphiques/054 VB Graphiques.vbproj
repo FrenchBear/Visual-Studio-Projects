@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<AssemblyName>VB054</AssemblyName>
+		<RootNamespace>VB054</RootNamespace>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Copyright>Copyright ©2001-2021 Pierre Violent</Copyright>
+		<UseWindowsForms>true</UseWindowsForms>
+		<StartupObject>VB054.frmPaint</StartupObject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="My Project\" />
+	</ItemGroup>
+</Project>

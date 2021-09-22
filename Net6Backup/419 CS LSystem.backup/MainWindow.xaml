@@ -1,0 +1,128 @@
+﻿<Window x:Class="CS419.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:src="clr-namespace:CS419"
+        Title="LSystem" Height="367" Width="570">
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Margin="0,0,0,10">
+            <MenuItem Header="_File">
+                <MenuItem Header="Help" Click="HelpCommand_Click" />
+                <MenuItem Header="Exit" Click="ExitCommand_Click" />
+            </MenuItem>
+        </Menu>
+
+        <Border BorderThickness="1" BorderBrush="Blue" DockPanel.Dock="Left">
+            <Grid Width="110" Name="myGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0">Source file:</TextBlock>
+                <ComboBox  Grid.Row="1" Name="SourceFileComboBox" IsEditable="False" ItemsSource="{Binding Path=SourceFiles}"
+                           SelectedValue="fractint.l"
+                           SelectionChanged="SourceFileComboBox_SelectionChanged">
+                </ComboBox>
+                <TextBlock Grid.Row="2" Margin="0,10,0,0">Systems:</TextBlock>
+                <ListBox Grid.Row="3" Name="SystemsListBox" VerticalAlignment="Stretch"
+                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                         ItemsSource="{Binding Path=SourceSystems}"></ListBox>
+            </Grid>
+        </Border>
+
+        <Border BorderThickness="1" BorderBrush="Red" DockPanel.Dock="Right">
+            <Grid Width="120">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0"  Margin="5">Level</TextBlock>
+                <TextBox Name="LevelTextBox" Grid.Row="0" Grid.Column="1"  Margin="4" >2</TextBox>
+
+                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="GDIDrawing" Margin="3" HorizontalAlignment="Stretch" Name="GDIDrawingButton" Click="GDIDrawingButton_Click" />
+                <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" HorizontalAlignment="Stretch" Name="WPFDrawing1Button" Click="WPFDrawing1Button_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <TextBlock Text="WPFDrawing1" />
+                            <TextBlock Text="DrawingContext" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" HorizontalAlignment="Stretch" Name="WPFDrawing2Button" Click="WPFDrawing2Button_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <TextBlock Text="WPFDrawing2" />
+                            <TextBlock Text="PathGeometry" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="3" HorizontalAlignment="Stretch" Name="WPFDrawing3Button" Click="WPFDrawing3Button_Click">
+                    <Button.Content>
+                        <StackPanel>
+                            <TextBlock Text="WPFDrawing3" />
+                            <TextBlock Text="StreamGeometry" />
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+
+                <TextBox Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Name="OutStringTextBox" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible">
+                </TextBox>
+            </Grid>
+        </Border>
+
+        <Border BorderThickness="1" BorderBrush="Green" Margin="10,0,10,0">
+            <Grid Width="Auto" MinWidth="200">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0">Name</TextBlock>
+                <TextBox Grid.Column="1" Name="SystemTextBox"
+                         IsReadOnly="True"
+                         Height="23"
+                     Text="{Binding ElementName=SystemsListBox, Path=SelectedItem}" />
+
+                <TextBlock Grid.Row="1" Grid.Column="0">Angle</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Name="AngleTextBox"
+                     Height="23"
+                     Text="{Binding ElementName=SystemsListBox, Path=SelectedItem.Angle}" />
+
+                <TextBlock Grid.Row="2" Grid.Column="0">Axiom</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="AxiomTextBox"
+                     Height="23"
+                     Text="{Binding ElementName=SystemsListBox, Path=SelectedItem.Axiom}" />
+
+                <TextBlock Grid.Row="3" Grid.Column="0">Comments</TextBlock>
+                <TextBox Grid.Row="3" Grid.Column="1" Name="CommentsTextBox"
+                         Height="63"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                         Text="{Binding ElementName=SystemsListBox, Path=SelectedItem.Comments}" />
+
+                <TextBlock Grid.Row="4" Grid.Column="0">Rules</TextBlock>
+                <TextBox Grid.Row="4" Grid.Column="1" Name="RulesTextBox" IsReadOnly="True"
+                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                         ScrollViewer.VerticalScrollBarVisibility="Visible"
+                     Text="{Binding ElementName=SystemsListBox, Path=SelectedItem.Rules}" />
+            </Grid>
+        </Border>
+    </DockPanel>
+</Window>
