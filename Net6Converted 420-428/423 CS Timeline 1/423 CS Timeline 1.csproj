@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>_423_CS_Timeline_1</RootNamespace>
+        <AssemblyName>CS423</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>423 CS Timeline 1</Title>
+        <Copyright>Copyright ©2012-2021 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

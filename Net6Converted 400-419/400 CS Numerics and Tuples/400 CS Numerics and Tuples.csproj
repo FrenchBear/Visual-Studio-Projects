@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>NumericsAndTuples</RootNamespace>
+        <AssemblyName>NumericsAndTuples</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>BigInt</Title>
+        <Copyright>Copyright ©2010-2021 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

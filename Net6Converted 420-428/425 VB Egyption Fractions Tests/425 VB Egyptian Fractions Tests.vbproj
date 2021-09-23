@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<OutputType>Library</OutputType>
+		<RootNamespace>VB425TestProject</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
+		<PackageReference Include="coverlet.collector" Version="3.1.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <ProjectReference Include="..\425 VB Egyptian Fractions\425 VB Egyptian Fractions.vbproj" />
+	</ItemGroup>
+</Project>
