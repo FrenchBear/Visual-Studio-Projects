@@ -37,3 +37,4 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("CS Populate Array.Tests")]
 [assembly: InternalsVisibleTo("CS Populate Array.Explorables")]
 [assembly: InternalsVisibleTo("CS Populate Array.IntelliTests")]
+[assembly: InternalsVisibleTo("619 CS Populate Array.Tests")]

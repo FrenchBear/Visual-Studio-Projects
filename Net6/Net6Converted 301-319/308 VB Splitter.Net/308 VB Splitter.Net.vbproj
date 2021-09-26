@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>VB308</RootNamespace>
+        <AssemblyName>VB308</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Copyright>Copyright ©2012-2021 Pierre Violent</Copyright>
+		<Description>VB308 Splitter.Net</Description>
+        <UseWindowsForms>true</UseWindowsForms>
+        <MyType>WindowsForms</MyType>
+        <StartupObject>VB308.Form1</StartupObject>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="My Project\**" />
+      <EmbeddedResource Remove="My Project\**" />
+      <None Remove="My Project\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <Import Include="System.Data" />
+        <Import Include="System.Drawing" />
+        <Import Include="System.Windows.Forms" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="My Project\" />
+    </ItemGroup>
+</Project>

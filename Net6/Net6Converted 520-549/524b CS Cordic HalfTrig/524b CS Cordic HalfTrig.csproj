@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS524b</RootNamespace>
+        <AssemblyName>CS524b</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS524b Cordic HalfTrig</Title>
+        <Description>Test of Cordic algorithm</Description>
+        <Copyright>Copyright ©2014 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>
