@@ -13,15 +13,15 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <ProjectReference Include="..\611 CS NewLaby\CS611 NewLaby.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.*" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.1.13" />
     <PackageReference Include="MSTest.TestFramework" Version="1.1.13" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.242703">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\611 CS NewLaby\611 CS NewLaby.csproj" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

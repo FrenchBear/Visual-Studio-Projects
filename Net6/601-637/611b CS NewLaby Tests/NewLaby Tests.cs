@@ -10,7 +10,7 @@ namespace NewLaby.Tests
         [TestMethod()]
         public void LabyTest()
         {
-            var l = new NewLaby.Laby(10, 20);
+            var l = new NewLaby.Laby(10, 20, false);
             Assert.IsNotNull(l);
             //Program.MethodToTest();
         }
