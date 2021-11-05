@@ -239,7 +239,7 @@ namespace SHA_2
                 0xbefa4fa4
             };
 
-            return SHA_256_224(s, h).Substring(0, 56);
+            return SHA_256_224(s, h)[..56];
         }
 
         // Note 1: All variables are 32 bit unsigned integers and addition is calculated modulo 2^32
@@ -383,7 +383,7 @@ namespace SHA_2
                 0x47b5481dbefa4fa4
             };
 
-            return SHA_512_384(s, h).Substring(0, 96);
+            return SHA_512_384(s, h)[..96];
         }
 
         private static string SHA_512_384(string s, ulong[] h)

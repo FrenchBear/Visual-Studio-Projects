@@ -220,7 +220,7 @@ Public Class Test
         " Total" & New String(ControlChars.Tab, 2) & po.TotalCost)
     End Sub 'ReadPO
 
-    Protected Sub ReadAddress(a As Address, label As String)
+    Protected Shared Sub ReadAddress(a As Address, label As String)
         ' Read the fields of the Address object.
         Console.WriteLine(label)
         Console.WriteLine(ControlChars.Tab & a.Name)

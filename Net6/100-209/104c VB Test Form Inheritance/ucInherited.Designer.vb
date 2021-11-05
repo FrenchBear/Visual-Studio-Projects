@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class ucInherited
+Partial Class InheritedUserControl
     Inherits Test_Form_Inheritance.TemplateUserControl
 
     'Form overrides dispose to clean up the component list.
@@ -20,7 +20,7 @@ Partial Class ucInherited
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ucInherited))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(InheritedUserControl))
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.TextBox3 = New System.Windows.Forms.TextBox
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip

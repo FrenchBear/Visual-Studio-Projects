@@ -202,28 +202,22 @@ e As EventArgs)
             Dim start As New CodeEntryPointMethod
 
             ' Create a type reference for the System.Console class.
-            Dim csSystemConsoleType As New CodeTypeReferenceExpression(
-                "System.Console")
+            Dim csSystemConsoleType As New CodeTypeReferenceExpression("System.Console")
 
             ' Build a Console.WriteLine statement.
-            Dim cs1 As New CodeMethodInvokeExpression(
-                csSystemConsoleType, "WriteLine",
-                New CodePrimitiveExpression("Hello World!"))
+            Dim cs1 As New CodeMethodInvokeExpression(csSystemConsoleType, "WriteLine", New CodePrimitiveExpression("Hello World!"))
 
             ' Add the WriteLine call to the statement collection.
             start.Statements.Add(cs1)
 
             ' Build another Console.WriteLine statement.
-            Dim cs2 As New CodeMethodInvokeExpression(
-                csSystemConsoleType, "WriteLine",
-                New CodePrimitiveExpression("Press the Enter key to continue."))
+            Dim cs2 As New CodeMethodInvokeExpression(csSystemConsoleType, "WriteLine", New CodePrimitiveExpression("Press the Enter key to continue."))
 
             ' Add the WriteLine call to the statement collection.
             start.Statements.Add(cs2)
 
             ' Build a call to System.Console.ReadLine.
-            Dim csReadLine As New CodeMethodInvokeExpression(
-                csSystemConsoleType, "ReadLine")
+            Dim csReadLine As New CodeMethodInvokeExpression(csSystemConsoleType, "ReadLine")
 
             ' Add the ReadLine statement.
             start.Statements.Add(csReadLine)

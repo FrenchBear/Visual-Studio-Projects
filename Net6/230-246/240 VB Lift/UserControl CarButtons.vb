@@ -3,7 +3,7 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
 
-Public Class ucCarButtons
+Public Class CarButtonsUserControl
     Private ReadOnly m_iIndex As Integer
 
     Public ReadOnly Property Index() As Integer
@@ -12,7 +12,7 @@ Public Class ucCarButtons
         End Get
     End Property
 
-    Public Event CarRequest(uccb As ucCarButtons, iFloor As Integer)
+    Public Event CarRequest(uccb As CarButtonsUserControl, iFloor As Integer)
 
     Public Sub New(iIndex As Integer)
         ' This call is required by the Windows Form Designer.

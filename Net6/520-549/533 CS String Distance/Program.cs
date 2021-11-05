@@ -65,7 +65,7 @@ namespace String_Distance
             if (s1.Length == s2.Length)
                 for (int i = 0; i < s1.Length; i++)
                 {
-                    string s1b = s1.Substring(0, i) + s2[i] + s1[(i + 1)..];
+                    string s1b = s1[..i] + s2[i] + s1[(i + 1)..];
                     if (StringDistance(s1b, s2, distance - 1)) return true;
                 }
             return false;

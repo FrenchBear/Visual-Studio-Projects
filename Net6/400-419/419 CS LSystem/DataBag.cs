@@ -48,7 +48,7 @@ namespace CS419
                         if (startComment == 0)
                             line = "";
                         else
-                            line = line.Substring(0, startComment);
+                            line = line[..startComment];
 
                         if (ss != null)
                         {
@@ -64,7 +64,7 @@ namespace CS419
                     int p = line.IndexOf('{');
                     if (p >= 0)
                     {
-                        line = line.Substring(0, p - 1).Trim();
+                        line = line[..(p - 1)].Trim();
                         if (ss != null) Debugger.Break();
                         ss = new SourceSystem
                         {

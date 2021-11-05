@@ -25,8 +25,8 @@ Public Class frmControl
 
         ' Create cars
         For i As Integer = 0 To NumberOfCars - 1
-            Dim cb As ucCarButtons
-            cb = New ucCarButtons(i)
+            Dim cb As CarButtonsUserControl
+            cb = New CarButtonsUserControl(i)
 
             paCarButtons.Controls.Add(cb)
             cb.Location = New Point(3 + i * (cb.Width + 3), 3)
@@ -53,7 +53,7 @@ Public Class frmControl
         ucfb.CallStatusDown = Not ucfb.CallStatusDown
     End Sub
 
-    Private Sub UcCarButtons_CarRequest(uccb As ucCarButtons, iFloor As Integer)
+    Private Sub UcCarButtons_CarRequest(uccb As CarButtonsUserControl, iFloor As Integer)
         SchedulerForm.Trace("CarRequest from " & uccb.Label & " for Floor " & iFloor)
         uccb.CallStatus(iFloor) = Not uccb.CallStatus(iFloor)
         SetInMotion(uccb.Index)

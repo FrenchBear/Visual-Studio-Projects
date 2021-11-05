@@ -170,7 +170,7 @@ namespace Arith2CS
             if (string.IsNullOrEmpty(x) || x.Length > digits) throw new ArgumentException("Invalid constructor call");
             if (x.Length > digits / 2)
             {
-                (high = new T()).FromString(x.Substring(0, x.Length - digits / 2));
+                (high = new T()).FromString(x[..^(digits / 2)]);
                 (low = new T()).FromString(x[^(digits / 2)..]);
             }
             else

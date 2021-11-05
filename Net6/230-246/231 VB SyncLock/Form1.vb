@@ -5,7 +5,7 @@
 
 Option Compare Text
 
-Public Class frmVB231
+Public Class VB231Form
 
     Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Dim country As New Country

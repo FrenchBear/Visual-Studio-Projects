@@ -175,7 +175,7 @@ namespace Arith2CS
                 throw new ArgumentException("Invalid constructor call");
 
             if (s.Length > DA<T, MetaT>.digits / 2)
-                return new DA<T, MetaT>(m.FromString(s.Substring(0, s.Length - DA<T, MetaT>.digits / 2)),
+                return new DA<T, MetaT>(m.FromString(s[..^(DA<T, MetaT>.digits / 2)]),
                                         m.FromString(s[^(DA<T, MetaT>.digits / 2)..]), true);
             else
                 return new DA<T, MetaT>(new T(), m.FromString(s), true);

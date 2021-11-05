@@ -29,7 +29,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     '<System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.UcInherited1 = New Test_Form_Inheritance.ucInherited
+        Me.UcInherited1 = New Test_Form_Inheritance.InheritedUserControl
         Me.SuspendLayout()
         '
         'UcInherited1
@@ -51,6 +51,6 @@ Partial Class Form1
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents UcInherited1 As Test_Form_Inheritance.ucInherited
+    Friend WithEvents UcInherited1 As Test_Form_Inheritance.InheritedUserControl
 
 End Class

@@ -69,7 +69,7 @@ internal struct Complex : IFormattable
         if (format == null)
             format = "G";
 
-        char cFormat = format.Substring(0, 1).ToUpper().ToCharArray()[0];
+        char cFormat = format[..1].ToUpper().ToCharArray()[0];
 
         return cFormat switch
         {
