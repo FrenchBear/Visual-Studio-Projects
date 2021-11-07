@@ -6,41 +6,40 @@
 
 using System;
 
-namespace ConsoleApplication1
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            int[] a = new int[] { 0, 1, 2, 3, 4, 5 };
-            a.WriteLine();
-            Test(a);
-            a.WriteLine();
-        }
+namespace ConsoleApplication1;
 
-        private static void Test(int[] a)
-        {
-            a[2] = 12;
-        }
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        int[] a = new int[] { 0, 1, 2, 3, 4, 5 };
+        a.WriteLine();
+        Test(a);
+        a.WriteLine();
     }
 
-    internal static class Extensions
+    private static void Test(int[] a)
     {
-        public static void WriteLine<T>(this T[] a)
+        a[2] = 12;
+    }
+}
+
+internal static class Extensions
+{
+    public static void WriteLine<T>(this T[] a)
+    {
+        bool bFirst = true;
+        foreach (T e in a)
         {
-            bool bFirst = true;
-            foreach (T e in a)
+            if (bFirst)
             {
-                if (bFirst)
-                {
-                    Console.Write("[");
-                    bFirst = false;
-                }
-                else
-                    Console.Write(", ");
-                Console.Write(e);
+                Console.Write("[");
+                bFirst = false;
             }
-            Console.WriteLine("]");
+            else
+                Console.Write(", ");
+            Console.Write(e);
         }
+        Console.WriteLine("]");
     }
 }

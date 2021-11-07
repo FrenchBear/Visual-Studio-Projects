@@ -1,9 +1,8 @@
 
-namespace MaBibliotheque
+namespace MaBibliotheque;
+
+public enum Jour
 {
-    public enum Jour
-    {
-        Dimanche = 0,
-        Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi
-    };
-}
+    Dimanche = 0,
+    Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi
+};

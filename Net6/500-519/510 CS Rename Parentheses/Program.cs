@@ -8,64 +8,63 @@ using System;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace RenameParen
+namespace RenameParen;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
+        Regex r = new(@"( *\([0-9]+\))\.");         // number between parentheses at the end of filename
+        const string SearchRoot = @"C:\Music\Humour";
+
+        foreach (string file in System.IO.Directory.GetFiles(SearchRoot, "*.*", System.IO.SearchOption.AllDirectories))
         {
-            Regex r = new(@"( *\([0-9]+\))\.");         // number between parentheses at the end of filename
-            const string SearchRoot = @"C:\Music\Humour";
-
-            foreach (string file in System.IO.Directory.GetFiles(SearchRoot, "*.*", System.IO.SearchOption.AllDirectories))
+            Match m = r.Match(file);
+            if (m.Success)
             {
-                Match m = r.Match(file);
-                if (m.Success)
-                {
-                    Console.WriteLine(file);
-                    string newFile = r.Replace(file, "a");
-                    System.IO.File.Move(file, newFile);
-                    continue;
+                Console.WriteLine(file);
+                string newFile = r.Replace(file, "a");
+                System.IO.File.Move(file, newFile);
+                continue;
 
-                    // Ignore unreachable code warning
+                // Ignore unreachable code warning
 #pragma warning disable 0162
-                    // Rename mechanism
-                    const string replace = ".jpg";
+                // Rename mechanism
+                const string replace = ".jpg";
 
-                    string newFile2 = r.Replace(file, replace);  // file; // file.Replace('(', '[').Replace(')', ']');
-                    char c0 = '`';
-                    char c1 = '`';
-                    char c2 = 'a';
-                    while (File.Exists(newFile))
+                string newFile2 = r.Replace(file, replace);  // file; // file.Replace('(', '[').Replace(')', ']');
+                char c0 = '`';
+                char c1 = '`';
+                char c2 = 'a';
+                while (File.Exists(newFile))
+                {
+                    if (c0 != '`')
+                        newFile = r.Replace(file, (new string(c0, 1)) + (new string(c1, 1)) + (new string(c2, 1)) + replace);
+                    else if (c1 != '`')
+                        newFile = r.Replace(file, (new string(c1, 1)) + (new string(c2, 1)) + replace);
+                    else
+                        newFile = r.Replace(file, c2 + replace);
+
+                    if (c2 == 'z')
                     {
-                        if (c0 != '`')
-                            newFile = r.Replace(file, (new string(c0, 1)) + (new string(c1, 1)) + (new string(c2, 1)) + replace);
-                        else if (c1 != '`')
-                            newFile = r.Replace(file, (new string(c1, 1)) + (new string(c2, 1)) + replace);
-                        else
-                            newFile = r.Replace(file, c2 + replace);
-
-                        if (c2 == 'z')
+                        c2 = 'a';
+                        c1++;
+                        if (c1 == 'z')
                         {
-                            c2 = 'a';
-                            c1++;
-                            if (c1 == 'z')
-                            {
-                                c1 = 'a';
-                                c0++;
-                            }
+                            c1 = 'a';
+                            c0++;
                         }
-                        else
-                            c2++;
                     }
-
-                    Console.WriteLine(file);
-                    Console.WriteLine(newFile);
-                    Console.WriteLine();
-                    System.IO.File.Move(file, newFile);
+                    else
+                        c2++;
                 }
-            }
 
+                Console.WriteLine(file);
+                Console.WriteLine(newFile);
+                Console.WriteLine();
+                System.IO.File.Move(file, newFile);
+            }
         }
+
     }
 }

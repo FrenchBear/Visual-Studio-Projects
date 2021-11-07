@@ -10,63 +10,62 @@ using System.Runtime.CompilerServices;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-namespace _505_CS_Caller_Info
+namespace _505_CS_Caller_Info;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            TracedFunction(1);
-            InternalFunction();
-            var v = new InternalObject();
-        }
-
-        private static void InternalFunction()
-        {
-            TracedFunction(2);
-        }
-
-        public static void TracedFunction(int i,
-                                          [CallerMemberName] string memberName = "",
-                                          [CallerFilePath] string sourceFilePath = "",
-                                          [CallerLineNumber] int sourceLineNumber = 0)
-        {
-            Console.WriteLine("member name: " + memberName);
-            Console.WriteLine("source file path: " + sourceFilePath);
-            Console.WriteLine("source line number: " + sourceLineNumber);
-            Console.WriteLine(i);
-            Console.WriteLine();
-        }
-
-        // ========================================
-        // Practical use for WPF Properties
-        private string _userName;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string UserName
-        {
-            get { return _userName; }
-            set
-            {
-                _userName = value;
-                RaisePropertyChanged();  // no more RaisePropertyChanged(“UserName”)!
-            }
-        }
-
-        protected void RaisePropertyChanged([CallerMemberName] string member = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
-        }
-
-        // ========================================
+        TracedFunction(1);
+        InternalFunction();
+        var v = new InternalObject();
     }
 
-    public class InternalObject
+    private static void InternalFunction()
     {
-        public InternalObject()
+        TracedFunction(2);
+    }
+
+    public static void TracedFunction(int i,
+        [CallerMemberName] string memberName = "",
+        [CallerFilePath] string sourceFilePath = "",
+        [CallerLineNumber] int sourceLineNumber = 0)
+    {
+        Console.WriteLine("member name: " + memberName);
+        Console.WriteLine("source file path: " + sourceFilePath);
+        Console.WriteLine("source line number: " + sourceLineNumber);
+        Console.WriteLine(i);
+        Console.WriteLine();
+    }
+
+    // ========================================
+    // Practical use for WPF Properties
+    private string _userName;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public string UserName
+    {
+        get { return _userName; }
+        set
         {
-            Program.TracedFunction(3);
+            _userName = value;
+            RaisePropertyChanged();  // no more RaisePropertyChanged(“UserName”)!
         }
+    }
+
+    protected void RaisePropertyChanged([CallerMemberName] string member = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
+    }
+
+    // ========================================
+}
+
+public class InternalObject
+{
+    public InternalObject()
+    {
+        Program.TracedFunction(3);
     }
 }

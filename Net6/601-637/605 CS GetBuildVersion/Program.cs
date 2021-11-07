@@ -10,67 +10,66 @@ using static System.Console;
 
 #pragma warning disable CA1416 // Validate platform compatibility
 
-namespace CS605
+namespace CS605;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
+        Version OSVer = Environment.OSVersion.Version;
+        int BuildVersion = GetBuildVersion();
+
+        WriteLine("OSVer: " + OSVer);
+        WriteLine("Build Version: {0}", BuildVersion);
+    }
+
+    static public int GetBuildVersion()
+    {
+        return int.Parse(RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuildNumber", "0"));
+    }
+
+    private static string RegistryRead(string RegistryPath, string Field, string DefaultValue)
+    {
+        string rtn = "";
+        string backSlash = "";
+        string newRegistryPath = "";
+
+        try
         {
-            Version OSVer = Environment.OSVersion.Version;
-            int BuildVersion = GetBuildVersion();
+            RegistryKey OurKey = null;
+            string[] split_result = RegistryPath.Split('\\');
 
-            WriteLine("OSVer: " + OSVer.ToString());
-            WriteLine("Build Version: {0}", BuildVersion);
-        }
-
-        static public int GetBuildVersion()
-        {
-            return int.Parse(RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuildNumber", "0"));
-        }
-
-        private static string RegistryRead(string RegistryPath, string Field, string DefaultValue)
-        {
-            string rtn = "";
-            string backSlash = "";
-            string newRegistryPath = "";
-
-            try
+            if (split_result.Length > 0)
             {
-                RegistryKey OurKey = null;
-                string[] split_result = RegistryPath.Split('\\');
+                split_result[0] = split_result[0].ToUpper();        // Make the first entry uppercase...
 
-                if (split_result.Length > 0)
+                if (split_result[0] == "HKEY_CLASSES_ROOT") OurKey = Registry.ClassesRoot;
+                else if (split_result[0] == "HKEY_CURRENT_USER") OurKey = Registry.CurrentUser;
+                else if (split_result[0] == "HKEY_LOCAL_MACHINE") OurKey = Registry.LocalMachine;
+                else if (split_result[0] == "HKEY_USERS") OurKey = Registry.Users;
+                else if (split_result[0] == "HKEY_CURRENT_CONFIG") OurKey = Registry.CurrentConfig;
+
+                if (OurKey != null)
                 {
-                    split_result[0] = split_result[0].ToUpper();        // Make the first entry uppercase...
-
-                    if (split_result[0] == "HKEY_CLASSES_ROOT") OurKey = Registry.ClassesRoot;
-                    else if (split_result[0] == "HKEY_CURRENT_USER") OurKey = Registry.CurrentUser;
-                    else if (split_result[0] == "HKEY_LOCAL_MACHINE") OurKey = Registry.LocalMachine;
-                    else if (split_result[0] == "HKEY_USERS") OurKey = Registry.Users;
-                    else if (split_result[0] == "HKEY_CURRENT_CONFIG") OurKey = Registry.CurrentConfig;
-
-                    if (OurKey != null)
+                    for (int i = 1; i < split_result.Length; i++)
                     {
-                        for (int i = 1; i < split_result.Length; i++)
-                        {
-                            newRegistryPath += backSlash + split_result[i];
-                            backSlash = "\\";
-                        }
+                        newRegistryPath += backSlash + split_result[i];
+                        backSlash = "\\";
+                    }
 
-                        if (newRegistryPath != "")
-                        {
-                            //rtn = (string)Registry.GetValue(RegistryPath, "CurrentVersion", DefaultValue);
+                    if (newRegistryPath != "")
+                    {
+                        //rtn = (string)Registry.GetValue(RegistryPath, "CurrentVersion", DefaultValue);
 
-                            OurKey = OurKey.OpenSubKey(newRegistryPath);
-                            rtn = (string)OurKey.GetValue(Field, DefaultValue);
-                            OurKey.Close();
-                        }
+                        OurKey = OurKey.OpenSubKey(newRegistryPath);
+                        rtn = (string)OurKey.GetValue(Field, DefaultValue);
+                        OurKey.Close();
                     }
                 }
             }
-            catch { }
-
-            return rtn;
         }
+        catch { }
+
+        return rtn;
     }
 }

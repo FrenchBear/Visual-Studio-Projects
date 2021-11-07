@@ -5,57 +5,56 @@ using System.Collections.ObjectModel;
 
 #pragma warning disable IDE0051 // Remove unused private members
 
-namespace CS203
+namespace CS203;
+
+internal class Meute<T> where T : Animal
 {
-    internal class Meute<T> where T : Animal
+    private readonly Collection<T> mCol;
+
+    public Meute()
     {
-        private readonly Collection<T> mCol;
-
-        public Meute()
-        {
-            mCol = new Collection<T>();
-        }
-
-        public Meute(T a1)
-        {
-            // Using a Collection Initializer
-            mCol = new Collection<T> { a1 };
-        }
-
-        public void Add(T a1)
-        {
-            mCol.Add(a1);
-        }
-
-        public void Enerver()
-        {
-            foreach (T a in mCol)
-            {
-                a.Enerver();
-            }
-        }
+        mCol = new Collection<T>();
     }
 
-    // Custom Event Handler in C#
-    internal class Events
+    public Meute(T a1)
     {
-        private event EventHandler PreDrawEvent;
+        // Using a Collection Initializer
+        mCol = new Collection<T> { a1 };
+    }
 
-        private event EventHandler OnDraw
+    public void Add(T a1)
+    {
+        mCol.Add(a1);
+    }
+
+    public void Enerver()
+    {
+        foreach (T a in mCol)
         {
-            add
+            a.Enerver();
+        }
+    }
+}
+
+// Custom Event Handler in C#
+internal class Events
+{
+    private event EventHandler PreDrawEvent;
+
+    private event EventHandler OnDraw
+    {
+        add
+        {
+            lock (PreDrawEvent)
             {
-                lock (PreDrawEvent)
-                {
-                    PreDrawEvent += value;
-                }
+                PreDrawEvent += value;
             }
-            remove
+        }
+        remove
+        {
+            lock (PreDrawEvent)
             {
-                lock (PreDrawEvent)
-                {
-                    PreDrawEvent -= value;
-                }
+                PreDrawEvent -= value;
             }
         }
     }

@@ -10,99 +10,98 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interop;
 
-namespace RI3
+namespace RI3;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();
+
+        var m = new Model();
+        var vm = new ViewModel(m, this);
+        m.SetViewModel(vm);
+        DataContext = vm;
+
+        // Initial focus, but better done in Xaml using FocusManager.FocusedElement
+        //Loaded += (s, e) =>
+        //{
+        //    SourceFolderTextBox.Focus();
+        //};
+        Loaded += (s, e) =>
         {
-            InitializeComponent();
+            // Get the Handle for the Forms System Menu
+            var systemMenuHandle = GetSystemMenu(Handle, false);
 
-            var m = new Model();
-            var vm = new ViewModel(m, this);
-            m.SetViewModel(vm);
-            DataContext = vm;
+            // Create our new System Menu items just before the Close menu item
+            InsertMenu(systemMenuHandle, 5, MfByposition | MfSeparator, 0, string.Empty); // <-- Add a menu separator
+            InsertMenu(systemMenuHandle, 6, MfByposition, SettingsSysMenuId, "&A propos de Retaille Images...");
 
-            // Initial focus, but better done in Xaml using FocusManager.FocusedElement
-            //Loaded += (s, e) =>
-            //{
-            //    SourceFolderTextBox.Focus();
-            //};
-            Loaded += (s, e) =>
-            {
-                // Get the Handle for the Forms System Menu
-                var systemMenuHandle = GetSystemMenu(Handle, false);
+            // Attach our WindowCommandHandler handler to this Window
+            var source = HwndSource.FromHwnd(Handle);
+            source.AddHook(WindowCommandHandler);
+        };
+    }
 
-                // Create our new System Menu items just before the Close menu item
-                InsertMenu(systemMenuHandle, 5, MfByposition | MfSeparator, 0, string.Empty); // <-- Add a menu separator
-                InsertMenu(systemMenuHandle, 6, MfByposition, SettingsSysMenuId, "&A propos de Retaille Images...");
+    #region Win32 API Stuff
 
-                // Attach our WindowCommandHandler handler to this Window
-                var source = HwndSource.FromHwnd(Handle);
-                source.AddHook(WindowCommandHandler);
-            };
-        }
-
-        #region Win32 API Stuff
-
-        // Define the Win32 API methods we are going to use
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
+    // Define the Win32 API methods we are going to use
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
 #pragma warning disable CA2101 // Specify marshaling for P/Invoke string arguments
-        [DllImport("user32.dll")]
+    [DllImport("user32.dll")]
 #pragma warning restore CA2101 // Specify marshaling for P/Invoke string arguments
-        private static extern bool InsertMenu(IntPtr hMenu, Int32 wPosition, Int32 wFlags, Int32 wIDNewItem, string lpNewItem);
+    private static extern bool InsertMenu(IntPtr hMenu, Int32 wPosition, Int32 wFlags, Int32 wIDNewItem, string lpNewItem);
 
-        /// Define our Constants we will use
-        private const int WmSyscommand = 0x112;
+    /// Define our Constants we will use
+    private const int WmSyscommand = 0x112;
 
-        private const int MfSeparator = 0x800;
-        private const int MfByposition = 0x400;
+    private const int MfSeparator = 0x800;
+    private const int MfByposition = 0x400;
 
-        #endregion Win32 API Stuff
+    #endregion Win32 API Stuff
 
-        // The constants we'll use to identify our custom system menu items
-        private const int SettingsSysMenuId = 1000;
+    // The constants we'll use to identify our custom system menu items
+    private const int SettingsSysMenuId = 1000;
 
-        /// <summary>
-        /// This is the Win32 Interop Handle for this Window
-        /// </summary>
-        public IntPtr Handle
+    /// <summary>
+    /// This is the Win32 Interop Handle for this Window
+    /// </summary>
+    public IntPtr Handle
+    {
+        get { return new WindowInteropHelper(this).Handle; }
+    }
+
+    private IntPtr WindowCommandHandler(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+    {
+        // Check if a System Command has been executed
+        if (msg == WmSyscommand && wParam.ToInt32() == SettingsSysMenuId)
         {
-            get { return new WindowInteropHelper(this).Handle; }
+            var aw = new AboutWindow();
+            aw.ShowDialog();
+
+            handled = true;
         }
 
-        private IntPtr WindowCommandHandler(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            // Check if a System Command has been executed
-            if (msg == WmSyscommand && wParam.ToInt32() == SettingsSysMenuId)
-            {
-                var aw = new AboutWindow();
-                aw.ShowDialog();
+        return IntPtr.Zero;
+    }
 
-                handled = true;
-            }
+    // Quick app exit, bypassing ViewModel
+    private void QuitButton_Click(object sender, RoutedEventArgs e)
+    {
+        Application.Current.Shutdown();
+    }
 
-            return IntPtr.Zero;
-        }
-
-        // Quick app exit, bypassing ViewModel
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        // Make sure selected item is visible
-        // Since it can be considered as a view-only issue, it's Ok to have code behind
-        // For other methods: http://stackoverflow.com/questions/8827489/scroll-wpf-listbox-to-the-selecteditem-set-in-code-in-a-view-model
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (((ListBox)sender).SelectedItem != null)
-                ((ListBox)sender).ScrollIntoView(((ListBox)sender).SelectedItem);
-        }
+    // Make sure selected item is visible
+    // Since it can be considered as a view-only issue, it's Ok to have code behind
+    // For other methods: http://stackoverflow.com/questions/8827489/scroll-wpf-listbox-to-the-selecteditem-set-in-code-in-a-view-model
+    private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (((ListBox)sender).SelectedItem != null)
+            ((ListBox)sender).ScrollIntoView(((ListBox)sender).SelectedItem);
     }
 }

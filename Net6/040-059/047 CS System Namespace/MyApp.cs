@@ -70,7 +70,7 @@ internal class MyApp
         SortedList slMain = new(dicMain);
         IDictionaryEnumerator enuMain = slMain.GetEnumerator();
         while (enuMain.MoveNext())
-            writer.Write("<TH>{0}</TH>", enuMain.Key.ToString());
+            writer.Write("<TH>{0}</TH>", enuMain.Key);
         writer.WriteLine("</TD>");
 
         IDictionaryEnumerator enuNameSpaces = slNameSpaces.GetEnumerator();

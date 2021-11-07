@@ -8,14 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ConsoleApplication1
+namespace ConsoleApplication1;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            IEnumerable<int> r = Enumerable.Range(10, 10).DoubleListe();
-            r.WriteLine();
-        }
+        IEnumerable<int> r = Enumerable.Range(10, 10).DoubleListe();
+        r.WriteLine();
     }
 }

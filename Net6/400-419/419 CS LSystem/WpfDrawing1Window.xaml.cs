@@ -11,104 +11,103 @@ using System.Windows;
 using System.Windows.Media;
 using Brushes = System.Windows.Media.Brushes;
 
-namespace CS419
+namespace CS419;
+
+/// <summary>
+/// Interaction logic for WpfDrawing1Window.xaml
+/// </summary>
+public partial class WpfDrawing1Window : Window
 {
-    /// <summary>
-    /// Interaction logic for WpfDrawing1Window.xaml
-    /// </summary>
-    public partial class WpfDrawing1Window : Window
+    private IEnumerable<char> _s;
+    private int _angle;
+
+    public WpfDrawing1Window()
     {
-        private IEnumerable<char> _s;
-        private int _angle;
-
-        public WpfDrawing1Window()
-        {
-            InitializeComponent();
-        }
-
-        public void DrawString(string title, ref IEnumerable<char> s, int angle)
-        {
-            _s = s;
-            _angle = angle;
-            Title = title + " - WpfDrawing1Window (Using a DrawingVisual)";
-            Show();
-        }
-
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            myDrawingVisual.AddDrawing(myGrid.ActualWidth, myGrid.ActualHeight, _s, _angle);
-        }
-
-        protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.Escape) Close();
-            base.OnKeyDown(e);
-        }
+        InitializeComponent();
     }
 
-    public class MyVisualHost : FrameworkElement
+    public void DrawString(string title, ref IEnumerable<char> s, int angle)
     {
-        private readonly VisualCollection _children;
+        _s = s;
+        _angle = angle;
+        Title = title + " - WpfDrawing1Window (Using a DrawingVisual)";
+        Show();
+    }
 
-        public MyVisualHost()
+    private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        myDrawingVisual.AddDrawing(myGrid.ActualWidth, myGrid.ActualHeight, _s, _angle);
+    }
+
+    protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
+    {
+        if (e.Key == System.Windows.Input.Key.Escape) Close();
+        base.OnKeyDown(e);
+    }
+}
+
+public class MyVisualHost : FrameworkElement
+{
+    private readonly VisualCollection _children;
+
+    public MyVisualHost()
+    {
+        _children = new VisualCollection(this);
+    }
+
+    public void AddDrawing(double aw, double ah, IEnumerable<char> s, int angle)
+    {
+        _children.Clear();
+        // In case area is too small
+        if (aw <= 1 || ah <= 1) return;
+
+        DrawingVisual drawingVisual = new();
+        // Retrieve the DrawingContext in order to create new drawing content.
+        using (DrawingContext dc = drawingVisual.RenderOpen())
         {
-            _children = new VisualCollection(this);
+            Wpf1LSystemRenderer wr = new(s, angle);
+            wr.Rend(dc, aw, ah);
+        }
+        _children.Add(drawingVisual);
+    }
+
+    // Provide a required override for the VisualChildrenCount property.
+    protected override int VisualChildrenCount
+    {
+        get { return _children.Count; }
+    }
+
+    // Provide a required override for the GetVisualChild method.
+    protected override Visual GetVisualChild(int index)
+    {
+        if (index < 0 || index >= _children.Count)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index));
         }
 
-        public void AddDrawing(double aw, double ah, IEnumerable<char> s, int angle)
-        {
-            _children.Clear();
-            // In case area is too small
-            if (aw <= 1 || ah <= 1) return;
+        return _children[index];
+    }
 
-            DrawingVisual drawingVisual = new();
-            // Retrieve the DrawingContext in order to create new drawing content.
-            using (DrawingContext dc = drawingVisual.RenderOpen())
-            {
-                Wpf1LSystemRenderer wr = new(s, angle);
-                wr.Rend(dc, aw, ah);
-            }
-            _children.Add(drawingVisual);
+    // Implementation of renderer for WFP1
+    private class Wpf1LSystemRenderer : LSystemRenderer
+    {
+        private DrawingContext _dc;
+        private readonly Pen blackPen = new(Brushes.Black, 2);
+
+        public Wpf1LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle)
+        {
         }
 
-        // Provide a required override for the VisualChildrenCount property.
-        protected override int VisualChildrenCount
+        public void Rend(DrawingContext dc, double rendingWidth, double rendingHeight)
         {
-            get { return _children.Count; }
+            _dc = dc;
+            Rend(rendingWidth, rendingHeight);
         }
 
-        // Provide a required override for the GetVisualChild method.
-        protected override Visual GetVisualChild(int index)
+        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)
         {
-            if (index < 0 || index >= _children.Count)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index));
-            }
-
-            return _children[index];
-        }
-
-        // Implementation of renderer for WFP1
-        private class Wpf1LSystemRenderer : LSystemRenderer
-        {
-            private DrawingContext _dc;
-            private readonly Pen blackPen = new(Brushes.Black, 2);
-
-            public Wpf1LSystemRenderer(IEnumerable<char> s, int angle) : base(s, angle)
-            {
-            }
-
-            public void Rend(DrawingContext dc, double rendingWidth, double rendingHeight)
-            {
-                _dc = dc;
-                Rend(rendingWidth, rendingHeight);
-            }
-
-            protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)
-            {
-                if (isStroke)
-                    _dc.DrawLine(blackPen, new Point(x1, y1), new Point(x2, y2));
-            }
+            if (isStroke)
+                _dc.DrawLine(blackPen, new Point(x1, y1), new Point(x2, y2));
         }
     }
 }

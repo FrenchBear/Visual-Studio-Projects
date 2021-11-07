@@ -7,16 +7,15 @@
 using System;
 using System.Text.RegularExpressions;
 
-namespace This_Is_A_String
+namespace This_Is_A_String;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            string s = "this is a string";
-            Regex r = new(@"(\s|^)\w");
-            string t = r.Replace(s, m => m.Value.ToUpperInvariant());
-            Console.WriteLine(t);
-        }
+        string s = "this is a string";
+        Regex r = new(@"(\s|^)\w");
+        string t = r.Replace(s, m => m.Value.ToUpperInvariant());
+        Console.WriteLine(t);
     }
 }

@@ -66,7 +66,7 @@ public class Couleur : Zap
 
     public override string ToString()
     {
-        return "{" + m_A.ToString() + ", " + R.ToString() + ", " + G.ToString() + ", " + B.ToString() + "}";
+        return "{" + m_A + ", " + R + ", " + G + ", " + B + "}";
     }
 
     public int A

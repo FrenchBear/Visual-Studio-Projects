@@ -92,7 +92,7 @@ Module MainModule
 
     <Extension()>
     Public Sub WriteLine(Of TSource)(source As IEnumerable(Of TSource))
-        Write(source)
+        source.Write()
         Console.WriteLine()
     End Sub
 

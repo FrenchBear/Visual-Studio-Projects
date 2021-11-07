@@ -10,27 +10,26 @@ using System;
 using System.Collections.Generic;
 
 
-namespace EnumerateApp
+namespace EnumerateApp;
+
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
+        List<string> flavors = new() { "Chocolat", "Vanille", "Fraise", "Citron" };
+        foreach (var (index, flavor) in flavors.Enumerate(1))
         {
-            List<string> flavors = new() { "Chocolat", "Vanille", "Fraise", "Citron" };
-            foreach (var (index, flavor) in flavors.Enumerate(1))
-            {
-                Console.WriteLine($"{index}: {flavor}");
-            }
-
+            Console.WriteLine($"{index}: {flavor}");
         }
+
     }
+}
 
-    public static class ExtensionMethods
+public static class ExtensionMethods
+{
+    public static IEnumerable<(int index, T item)> Enumerate<T>(this IEnumerable<T> e, int start = 0)
     {
-        public static IEnumerable<(int index, T item)> Enumerate<T>(this IEnumerable<T> e, int start = 0)
-        {
-            foreach (var item in e)
-                yield return (start++, item);
-        }
+        foreach (var item in e)
+            yield return (start++, item);
     }
 }

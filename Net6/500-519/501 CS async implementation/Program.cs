@@ -5,57 +5,56 @@ using System.Runtime.CompilerServices;
 
 #pragma warning disable CA1822 // Mark members as static
 
-namespace ConsoleApplication2
+namespace ConsoleApplication2;
+
+internal class Program
 {
-    internal class Program
+    private static event EventHandler SomeEvent;
+
+    private static void Main()
     {
-        private static event EventHandler SomeEvent;
-
-        private static void Main()
-        {
-            SomeEvent += Program_SomeEvent;
-            SomeEvent(null, null);
-        }
-
-        private static async void Program_SomeEvent(object sender, EventArgs e)
-        {
-            await new Awaitable();
-        }
+        SomeEvent += Program_SomeEvent;
+        SomeEvent(null, null);
     }
 
-    internal class Awaitable
+    private static async void Program_SomeEvent(object sender, EventArgs e)
     {
-        public Awaiter GetAwaiter()
-        {
-            return new Awaiter();
-        }
+        await new Awaitable();
+    }
+}
+
+internal class Awaitable
+{
+    public Awaiter GetAwaiter()
+    {
+        return new Awaiter();
+    }
+}
+
+internal class Awaiter : INotifyCompletion
+{
+    public bool BeginAwait(Action continuation)
+    {
+        return false;
     }
 
-    internal class Awaiter : INotifyCompletion
+    public int EndAwait()
     {
-        public bool BeginAwait(Action continuation)
-        {
-            return false;
-        }
+        return 1;
+    }
 
-        public int EndAwait()
-        {
-            return 1;
-        }
+    public bool IsCompleted
+    {
+        get { return true; }
+    }
 
-        public bool IsCompleted
-        {
-            get { return true; }
-        }
+    public int GetResult()
+    {
+        return 1;
+    }
 
-        public int GetResult()
-        {
-            return 1;
-        }
-
-        public void OnCompleted(Action continuation)
-        {
-            throw new NotImplementedException();
-        }
+    public void OnCompleted(Action continuation)
+    {
+        throw new NotImplementedException();
     }
 }

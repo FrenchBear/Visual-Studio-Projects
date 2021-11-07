@@ -7,49 +7,48 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RI3
+namespace RI3;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            var m = new Model();
-            var vm = new ViewModel(m, this);
-            m.SetViewModel(vm);
-            DataContext = vm;
-        }
-
-        // Quick app exit, bypassing ViewModel
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        // Make sure selected item is visible
-        // Since it can be considered as a view-only issue, it's Ok to have code behind
-        // For other methods: http://stackoverflow.com/questions/8827489/scroll-wpf-listbox-to-the-selecteditem-set-in-code-in-a-view-model
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (((ListBox)sender).SelectedItem != null)
-                ((ListBox)sender).ScrollIntoView(((ListBox)sender).SelectedItem);
-        }
-
-        /*
-        public void AddTrace(string s)
-        {
-            string s1 = s + "  " + DateTime.Now.ToString("HH:mm:ss.fff");
-            Dispatcher.BeginInvoke(new Action(delegate
-            {
-                TracesListBox.Items.Add(s1);
-                TracesListBox.ScrollIntoView(TracesListBox.Items[TracesListBox.Items.Count - 1]);
-            }
-            ));
-        }
-        */
+        var m = new Model();
+        var vm = new ViewModel(m, this);
+        m.SetViewModel(vm);
+        DataContext = vm;
     }
+
+    // Quick app exit, bypassing ViewModel
+    private void QuitButton_Click(object sender, RoutedEventArgs e)
+    {
+        Application.Current.Shutdown();
+    }
+
+    // Make sure selected item is visible
+    // Since it can be considered as a view-only issue, it's Ok to have code behind
+    // For other methods: http://stackoverflow.com/questions/8827489/scroll-wpf-listbox-to-the-selecteditem-set-in-code-in-a-view-model
+    private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (((ListBox)sender).SelectedItem != null)
+            ((ListBox)sender).ScrollIntoView(((ListBox)sender).SelectedItem);
+    }
+
+    /*
+    public void AddTrace(string s)
+    {
+        string s1 = s + "  " + DateTime.Now.ToString("HH:mm:ss.fff");
+        Dispatcher.BeginInvoke(new Action(delegate
+        {
+            TracesListBox.Items.Add(s1);
+            TracesListBox.ScrollIntoView(TracesListBox.Items[TracesListBox.Items.Count - 1]);
+        }
+        ));
+    }
+    */
 }

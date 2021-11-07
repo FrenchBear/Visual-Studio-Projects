@@ -7,42 +7,41 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CS310
+namespace CS310;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            string[] fruits = {
-                "apple",
-                "passionfruit",
-                "banana",
-                "mango",
-                "orange",
-                "blueberry",
-                "grape",
-                "strawberry"};
+        string[] fruits = {
+            "apple",
+            "passionfruit",
+            "banana",
+            "mango",
+            "orange",
+            "blueberry",
+            "grape",
+            "strawberry"};
 
-            // Project the length of each string and
-            // put the length values into an enumerable object.
-            IEnumerable<int> lengths;
-            // With a lambda function
-            lengths = fruits.Select(fruit => fruit.Length);
+        // Project the length of each string and
+        // put the length values into an enumerable object.
+        IEnumerable<int> lengths;
+        // With a lambda function
+        lengths = fruits.Select(fruit => fruit.Length);
 
-            // With a generic delegate
-            // Note: a custom delegate does not work since there are no delegates conversions
-            Func<string, int> selector = LengthOfString;
-            lengths = fruits.Select(selector);
+        // With a generic delegate
+        // Note: a custom delegate does not work since there are no delegates conversions
+        Func<string, int> selector = LengthOfString;
+        lengths = fruits.Select(selector);
 
-            // Display the results.
-            System.Text.StringBuilder output = new();
-            foreach (int length in lengths)
-                output.AppendLine(length.ToString());
+        // Display the results.
+        System.Text.StringBuilder output = new();
+        foreach (int length in lengths)
+            output.AppendLine(length.ToString());
 
-            Console.WriteLine(output.ToString());
-        }
-
-        private static int LengthOfString(string s) 
-            => s.Length;
+        Console.WriteLine(output.ToString());
     }
+
+    private static int LengthOfString(string s) 
+        => s.Length;
 }

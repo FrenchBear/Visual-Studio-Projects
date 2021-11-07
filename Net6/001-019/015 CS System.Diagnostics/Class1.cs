@@ -8,30 +8,24 @@
 using System;
 using System.Diagnostics;
 
-namespace CS015
+namespace CS015;
+
+public class InOut
 {
-    public class InOut
+    private static int Zap()
     {
-        private static int Zap()
-        {
-            Console.WriteLine("Stack\n{0}\n", new StackTrace());
-            return -2;
-        }
+        Console.WriteLine("Stack\n{0}\n", new StackTrace());
+        return -2;
+    }
 
-        public static void Main()
-        {
-            int i = 0;
-            int j;
+    public static void Main()
+    {
+        int i = 0;
+        int j;
 
-            if (i > Zap())
-            {
-                j = 0;
-            }
-            else
-                j = 3;
+        j = i > Zap() ? 0 : 3;
 
-            Console.WriteLine("j: " + j);
-            Console.ReadLine();
-        }
+        Console.WriteLine("j: " + j);
+        Console.ReadLine();
     }
 }

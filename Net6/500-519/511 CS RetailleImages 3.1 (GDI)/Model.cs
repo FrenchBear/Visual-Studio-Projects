@@ -13,107 +13,85 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RI3
+namespace RI3;
+
+public class Model
 {
-    public class Model
+    // Initialization
+    public Model()
     {
-        // Initialization
-        public Model()
-        {
-            // Initialization for multitasking (Max number of // tasks)
-            if (Environment.ProcessorCount > 4)
-                MAX_PARALLISM = Environment.ProcessorCount - 2;
-            else if (Environment.ProcessorCount > 2)
-                MAX_PARALLISM = Environment.ProcessorCount - 1;
-            else
-                MAX_PARALLISM = Environment.ProcessorCount;
-            if (MAX_PARALLISM < 1) MAX_PARALLISM = 1;
+        // Initialization for multitasking (Max number of // tasks)
+        if (Environment.ProcessorCount > 4)
+            MAX_PARALLISM = Environment.ProcessorCount - 2;
+        else if (Environment.ProcessorCount > 2)
+            MAX_PARALLISM = Environment.ProcessorCount - 1;
+        else
+            MAX_PARALLISM = Environment.ProcessorCount;
+        if (MAX_PARALLISM < 1) MAX_PARALLISM = 1;
 
-            // Folders just for testing
-            SourceFolder = "";  // @"D:\A_Copier\2013-06 Vacances AK et YT (Extrait) HR Test";
-            TargetFolder = "";  // @"C:\Temp\2013-06 Vacances AK et YT (Extrait)";
+        // Folders just for testing
+        SourceFolder = "";  // @"D:\A_Copier\2013-06 Vacances AK et YT (Extrait) HR Test";
+        TargetFolder = "";  // @"C:\Temp\2013-06 Vacances AK et YT (Extrait)";
 
-            // Reasonable defaults
-            LargeSideSize = 2000;       // 2000 for GoogleDrive (free storage up to 2048px!)
-            JpegQuality = 90;           // Good compression without losing quality
-        }
+        // Reasonable defaults
+        LargeSideSize = 2000;       // 2000 for GoogleDrive (free storage up to 2048px!)
+        JpegQuality = 90;           // Good compression without losing quality
+    }
 
-        // ViewModel
+    // ViewModel
 #pragma warning disable IDE0052 // Remove unread private members
-        private ViewModel vm;
+    private ViewModel vm;
 #pragma warning restore IDE0052 // Remove unread private members
 
-        public void SetViewModel(ViewModel vm)
+    public void SetViewModel(ViewModel vm)
+    {
+        this.vm = vm;
+    }
+
+    // Variables exposed to ViewModel
+    public string SourceFolder;
+
+    public string TargetFolder;
+    public bool IncludeSubFolders;
+    public int LargeSideSize;
+    public int JpegQuality;
+
+    // Processed files and cache
+    private string[] processedFilesList;                // List of filenames being converted
+
+    // Multitasking
+    private readonly int MAX_PARALLISM;
+
+    public void DoGenerate(CancellationToken cancelToken, IProgress<ProgressInfo> progress)
+    {
+        // Build the list of files to process
+        processedFilesList = Directory.GetFiles(SourceFolder, "*.jpg", IncludeSubFolders ? System.IO.SearchOption.AllDirectories : System.IO.SearchOption.TopDirectoryOnly);
+
+        progress.Report(new ProgressInfo(0, processedFilesList.Length,
+            $"Génération de {processedFilesList.Length} vignettes"));
+        progress.Report(new ProgressInfo(0, processedFilesList.Length, $"{SourceFolder} --> {TargetFolder}"));
+
+        // List of tasks running in parallel
+        var lt = new List<Task<string>>();
+
+        // Will execute generation in a separate thread, no need for async/await since everything is done
+        // in this thread, there is no final action to indicate that hashing is done, this is reported
+        // through IProgress interface
+        Task.Run(/* async */ () =>
         {
-            this.vm = vm;
-        }
+            int n = 0;      // Number of active hashing tasks
+            int p = 0;      // Number of processed files
 
-        // Variables exposed to ViewModel
-        public string SourceFolder;
-
-        public string TargetFolder;
-        public bool IncludeSubFolders;
-        public int LargeSideSize;
-        public int JpegQuality;
-
-        // Processed files and cache
-        private string[] processedFilesList;                // List of filenames being converted
-
-        // Multitasking
-        private readonly int MAX_PARALLISM;
-
-        public void DoGenerate(CancellationToken cancelToken, IProgress<ProgressInfo> progress)
-        {
-            // Build the list of files to process
-            processedFilesList = Directory.GetFiles(SourceFolder, "*.jpg", IncludeSubFolders ? System.IO.SearchOption.AllDirectories : System.IO.SearchOption.TopDirectoryOnly);
-
-            progress.Report(new ProgressInfo(0, processedFilesList.Length, string.Format("Génération de {0} vignettes", processedFilesList.Length)));
-            progress.Report(new ProgressInfo(0, processedFilesList.Length, string.Format("{0} --> {1}", SourceFolder, TargetFolder)));
-
-            // List of tasks running in parallel
-            var lt = new List<Task<string>>();
-
-            // Will execute generation in a separate thread, no need for async/await since everything is done
-            // in this thread, there is no final action to indicate that hashing is done, this is reported
-            // through IProgress interface
-            Task.Run(/* async */ () =>
+            // Hash MAX_PARALLISM files in parallel
+            foreach (string file in processedFilesList)
             {
-                int n = 0;      // Number of active hashing tasks
-                int p = 0;      // Number of processed files
+                if (cancelToken.IsCancellationRequested) goto ExitGenerate;
 
-                // Hash MAX_PARALLISM files in parallel
-                foreach (string file in processedFilesList)
+                string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
+                lt.Add(Task.Run(() => ConvertImage(s)));
+                n++;
+                if (n == MAX_PARALLISM)
                 {
-                    if (cancelToken.IsCancellationRequested) goto ExitGenerate;
-
-                    string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
-                    lt.Add(Task.Run(() => ConvertImage(s)));
-                    n++;
-                    if (n == MAX_PARALLISM)
-                    {
-                        //await Task.WhenAny(lt.ToArray());
-                        Task.WaitAny(lt.ToArray());
-                        lock (lt)
-                        {
-                            var lf = new List<Task<string>>();
-                            foreach (var t in lt)
-                                if (t.IsCompleted)
-                                {
-                                    lf.Add(t);
-                                    n--;
-                                    progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
-                                }
-                            foreach (var t in lf)
-                                lt.Remove(t);
-                        }
-                    }
-                }
-
-                // Wail all tasks to terminate
-                while (n > 0)
-                {
-                    if (cancelToken.IsCancellationRequested) goto ExitGenerate;
-
                     //await Task.WhenAny(lt.ToArray());
                     Task.WaitAny(lt.ToArray());
                     lock (lt)
@@ -130,102 +108,124 @@ namespace RI3
                             lt.Remove(t);
                     }
                 }
+            }
+
+            // Wail all tasks to terminate
+            while (n > 0)
+            {
+                if (cancelToken.IsCancellationRequested) goto ExitGenerate;
+
+                //await Task.WhenAny(lt.ToArray());
+                Task.WaitAny(lt.ToArray());
+                lock (lt)
+                {
+                    var lf = new List<Task<string>>();
+                    foreach (var t in lt)
+                        if (t.IsCompleted)
+                        {
+                            lf.Add(t);
+                            n--;
+                            progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
+                        }
+                    foreach (var t in lf)
+                        lt.Remove(t);
+                }
+            }
 
             ExitGenerate:
-                ;
-            }, cancelToken);
-        }
-
-        public string ConvertImage(string fileName)
-        {
-            string fileNameHRStripped;
-            if (Path.GetDirectoryName(fileName).EndsWith(" HR", StringComparison.InvariantCultureIgnoreCase))
-            {
-                string d = Path.GetDirectoryName(fileName);
-                fileNameHRStripped = Path.Combine(d.Remove(d.Length - 3, 3), Path.GetFileName(fileName));
-            }
-            else
-                fileNameHRStripped = fileName;
-
-            string imagePath = Path.Combine(SourceFolder, fileName);
-            string vignettePath = Path.Combine(TargetFolder, fileNameHRStripped);
-
-            // Using GDI
-            System.Drawing.Image image = new System.Drawing.Bitmap(imagePath);
-
-            int originalWidth = image.Width;
-            int originalHeight = image.Height;
-            int newWidth, newHeight;
-            if (originalWidth > originalHeight)
-            {
-                if (originalWidth < LargeSideSize)
-                {
-                    // smaller images keep their size
-                    newWidth = originalWidth;
-                    newHeight = originalHeight;
-                }
-                else
-                {
-                    newWidth = LargeSideSize;
-                    newHeight = (int)((double)LargeSideSize / (double)originalWidth * (double)originalHeight);
-                }
-            }
-            else
-            {
-                if (originalHeight < LargeSideSize)
-                {
-                    // smaller images keep their size
-                    newWidth = originalWidth;
-                    newHeight = originalHeight;
-                }
-                else
-                {
-                    newHeight = LargeSideSize;
-                    newWidth = (int)((double)LargeSideSize / (double)originalHeight * (double)originalWidth);
-                }
-            }
-
-            // GDI
-            System.Drawing.Image vignette = new System.Drawing.Bitmap(image, newWidth, newHeight);
-            // Preserve origiginal image EXIF attributes
-            foreach (PropertyItem propItem in image.PropertyItems)
-                vignette.SetPropertyItem(propItem);
-
-            EncoderParameters eps = new(1);
-            eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
-            ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
-
-            if (!Directory.Exists(Path.GetDirectoryName(vignettePath)))
-                Directory.CreateDirectory(Path.GetDirectoryName(vignettePath));
-            vignette.Save(vignettePath, ici, eps);
-
-            return fileName;
-        }
-
-        private static ImageCodecInfo GetEncoderInfo(string mimeType)
-        {
-            int j;
-            ImageCodecInfo[] encoders;
-            encoders = ImageCodecInfo.GetImageEncoders();
-            for (j = 0; (j <= encoders.Length); j++)
-                if ((encoders[j].MimeType == mimeType))
-                    return encoders[j];
-            return null;
-        }
+            ;
+        }, cancelToken);
     }
 
-    // For IProgress
-    public class ProgressInfo
+    public string ConvertImage(string fileName)
     {
-        public ProgressInfo(int index, int total, string fileName)
+        string fileNameHRStripped;
+        if (Path.GetDirectoryName(fileName).EndsWith(" HR", StringComparison.InvariantCultureIgnoreCase))
         {
-            Index = index;
-            Total = total;
-            FileName = fileName;
+            string d = Path.GetDirectoryName(fileName);
+            fileNameHRStripped = Path.Combine(d.Remove(d.Length - 3, 3), Path.GetFileName(fileName));
+        }
+        else
+            fileNameHRStripped = fileName;
+
+        string imagePath = Path.Combine(SourceFolder, fileName);
+        string vignettePath = Path.Combine(TargetFolder, fileNameHRStripped);
+
+        // Using GDI
+        System.Drawing.Image image = new System.Drawing.Bitmap(imagePath);
+
+        int originalWidth = image.Width;
+        int originalHeight = image.Height;
+        int newWidth, newHeight;
+        if (originalWidth > originalHeight)
+        {
+            if (originalWidth < LargeSideSize)
+            {
+                // smaller images keep their size
+                newWidth = originalWidth;
+                newHeight = originalHeight;
+            }
+            else
+            {
+                newWidth = LargeSideSize;
+                newHeight = (int)((double)LargeSideSize / (double)originalWidth * (double)originalHeight);
+            }
+        }
+        else
+        {
+            if (originalHeight < LargeSideSize)
+            {
+                // smaller images keep their size
+                newWidth = originalWidth;
+                newHeight = originalHeight;
+            }
+            else
+            {
+                newHeight = LargeSideSize;
+                newWidth = (int)((double)LargeSideSize / (double)originalHeight * (double)originalWidth);
+            }
         }
 
-        public int Index;
-        public int Total;
-        public string FileName;
+        // GDI
+        System.Drawing.Image vignette = new System.Drawing.Bitmap(image, newWidth, newHeight);
+        // Preserve origiginal image EXIF attributes
+        foreach (PropertyItem propItem in image.PropertyItems)
+            vignette.SetPropertyItem(propItem);
+
+        EncoderParameters eps = new(1);
+        eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
+        ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
+
+        if (!Directory.Exists(Path.GetDirectoryName(vignettePath)))
+            Directory.CreateDirectory(Path.GetDirectoryName(vignettePath));
+        vignette.Save(vignettePath, ici, eps);
+
+        return fileName;
     }
+
+    private static ImageCodecInfo GetEncoderInfo(string mimeType)
+    {
+        int j;
+        ImageCodecInfo[] encoders;
+        encoders = ImageCodecInfo.GetImageEncoders();
+        for (j = 0; (j <= encoders.Length); j++)
+            if ((encoders[j].MimeType == mimeType))
+                return encoders[j];
+        return null;
+    }
+}
+
+// For IProgress
+public class ProgressInfo
+{
+    public ProgressInfo(int index, int total, string fileName)
+    {
+        Index = index;
+        Total = total;
+        FileName = fileName;
+    }
+
+    public int Index;
+    public int Total;
+    public string FileName;
 }

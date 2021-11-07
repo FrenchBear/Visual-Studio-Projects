@@ -10,110 +10,106 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 
-namespace CS419
+namespace CS419;
+
+internal class DataBag
 {
-    internal class DataBag
+    public ObservableCollection<string> SourceFiles { get; set; }
+    public ObservableCollection<SourceSystem> SourceSystems { get; set; }
+
+    public DataBag()
     {
-        public ObservableCollection<string> SourceFiles { get; set; }
-        public ObservableCollection<SourceSystem> SourceSystems { get; set; }
+        SourceFiles = new ObservableCollection<string>();
+        foreach (string file in Directory.GetFiles("Systems", "*.l"))
+            SourceFiles.Add(Path.GetFileName(file));
 
-        public DataBag()
+        SourceSystems = new ObservableCollection<SourceSystem>();
+    }
+
+    public void SelectFile(string file)
+    {
+        // Temporary sorted storage
+        // Allows multiple elements with the same "key", although there is no key element strictly speaking
+        // but a comparer: elements that compare to 0 are Ok
+        SortedSet<SourceSystem> sl = new(new SourceSystemComparer());
+
+        try
         {
-            SourceFiles = new ObservableCollection<string>();
-            foreach (string file in Directory.GetFiles("Systems", "*.l"))
-                SourceFiles.Add(Path.GetFileName(file));
-
-            SourceSystems = new ObservableCollection<SourceSystem>();
-        }
-
-        public void SelectFile(string file)
-        {
-            // Temporary sorted storage
-            // Allows multiple elements with the same "key", although there is no key element strictly speaking
-            // but a comparer: elements that compare to 0 are Ok
-            SortedSet<SourceSystem> sl = new(new SourceSystemComparer());
-
-            try
+            using StreamReader sr = new(Path.Join("Systems", file));
+            string line;
+            SourceSystem ss = null;
+            while ((line = sr.ReadLine()) != null)
             {
-                using StreamReader sr = new(Path.Join("Systems", file));
-                string line;
-                SourceSystem ss = null;
-                while ((line = sr.ReadLine()) != null)
+                string lineComment;
+                int startComment = line.IndexOf(';');
+                if (startComment >= 0)
                 {
-                    string lineComment;
-                    int startComment = line.IndexOf(';');
-                    if (startComment >= 0)
+                    lineComment = line[startComment..];
+                    line = startComment == 0 ? "" : line[..startComment];
+
+                    if (ss != null)
                     {
-                        lineComment = line[startComment..];
-                        if (startComment == 0)
-                            line = "";
+                        if (ss.Comments == null)
+                            ss.Comments = lineComment;
                         else
-                            line = line[..startComment];
-
-                        if (ss != null)
-                        {
-                            if (ss.Comments == null)
-                                ss.Comments = lineComment;
-                            else
-                                ss.Comments += "\r\n" + lineComment;
-                        }
-                    }
-                    else
-                        lineComment = "";
-
-                    int p = line.IndexOf('{');
-                    if (p >= 0)
-                    {
-                        line = line[..(p - 1)].Trim();
-                        if (ss != null) Debugger.Break();
-                        ss = new SourceSystem
-                        {
-                            Name = line
-                        };
-                        //if (ss.Name=="FlowSnake") Debugger.Break();
-                        if (lineComment != "") ss.Comments = lineComment;
-                        sl.Add(ss);
-                        continue;
-                    }
-
-                    if (ss == null) continue;       // Eliminate comments or lines at the beginning of the file
-                    if (line.Length == 0) continue;   // Ignore empty lines
-
-                    line = line.Trim();
-                    if (line.StartsWith("Angle", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        int p1 = 5;
-                        while (char.IsWhiteSpace(line[p1]) || line[p1] == '=')
-                            p1++;
-                        if (int.TryParse(line[p1..], out int a))
-                            ss.Angle = a;
-                    }
-                    else if (line.StartsWith("Axiom", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        ss.Axiom = line[5..].Trim().ToUpperInvariant();
-                    }
-                    else if (line.Contains('='))
-                    {
-                        if (ss.Rules == null)
-                            ss.Rules = line.ToUpperInvariant();
-                        else
-                            ss.Rules += "\r\n" + line.ToUpperInvariant();
-                    }
-                    else if (line == "}")
-                    {
-                        ss = null;
+                            ss.Comments += "\r\n" + lineComment;
                     }
                 }
-            }
-            catch (Exception)
-            {
-                // nop;
-            }
+                else
+                    lineComment = "";
 
-            // Finally add to exposed (inherited) list
-            SourceSystems.Clear();
-            foreach (SourceSystem sourceSystem in sl)
-                SourceSystems.Add(sourceSystem);
+                int p = line.IndexOf('{');
+                if (p >= 0)
+                {
+                    line = line[..(p - 1)].Trim();
+                    if (ss != null) Debugger.Break();
+                    ss = new SourceSystem
+                    {
+                        Name = line
+                    };
+                    //if (ss.Name=="FlowSnake") Debugger.Break();
+                    if (lineComment != "") ss.Comments = lineComment;
+                    sl.Add(ss);
+                    continue;
+                }
+
+                if (ss == null) continue;       // Eliminate comments or lines at the beginning of the file
+                if (line.Length == 0) continue;   // Ignore empty lines
+
+                line = line.Trim();
+                if (line.StartsWith("Angle", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    int p1 = 5;
+                    while (char.IsWhiteSpace(line[p1]) || line[p1] == '=')
+                        p1++;
+                    if (int.TryParse(line[p1..], out int a))
+                        ss.Angle = a;
+                }
+                else if (line.StartsWith("Axiom", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ss.Axiom = line[5..].Trim().ToUpperInvariant();
+                }
+                else if (line.Contains('='))
+                {
+                    if (ss.Rules == null)
+                        ss.Rules = line.ToUpperInvariant();
+                    else
+                        ss.Rules += "\r\n" + line.ToUpperInvariant();
+                }
+                else if (line == "}")
+                {
+                    ss = null;
+                }
+            }
         }
+        catch (Exception)
+        {
+            // nop;
+        }
+
+        // Finally add to exposed (inherited) list
+        SourceSystems.Clear();
+        foreach (SourceSystem sourceSystem in sl)
+            SourceSystems.Add(sourceSystem);
     }
 }

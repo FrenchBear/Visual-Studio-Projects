@@ -12,129 +12,128 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace CS_Populate_Array
+namespace CS_Populate_Array;
+
+internal class Program
 {
-    internal class Program
+    private static void Main()
     {
-        private static void Main()
-        {
-            //int n = 1000000000;
-            int n = 32000 * 8;
-            var tb = new bool[n];
+        //int n = 1000000000;
+        int n = 32000 * 8;
+        var tb = new bool[n];
 
-            Stopwatch sw1 = Stopwatch.StartNew();
-            tb.Populate(true);
-            sw1.Stop();
-            Console.WriteLine("Populate: " + sw1.Elapsed.ToString());
+        Stopwatch sw1 = Stopwatch.StartNew();
+        tb.Populate(true);
+        sw1.Stop();
+        Console.WriteLine("Populate: " + sw1.Elapsed);
 
-            Stopwatch sw2 = Stopwatch.StartNew();
-            InitializeArrayUsingSegments(tb, true);
-            sw2.Stop();
-            Console.WriteLine("InitializeArrayUsingSegments: " + sw2.Elapsed.ToString());
+        Stopwatch sw2 = Stopwatch.StartNew();
+        InitializeArrayUsingSegments(tb, true);
+        sw2.Stop();
+        Console.WriteLine("InitializeArrayUsingSegments: " + sw2.Elapsed);
 
-            Stopwatch sw3 = Stopwatch.StartNew();
-            tb.PopulateParallel(true);
-            sw3.Stop();
-            Console.WriteLine("PopulateParallel: " + sw3.Elapsed.ToString());
+        Stopwatch sw3 = Stopwatch.StartNew();
+        tb.PopulateParallel(true);
+        sw3.Stop();
+        Console.WriteLine("PopulateParallel: " + sw3.Elapsed);
 
-            Stopwatch sw4 = Stopwatch.StartNew();
-            InitializeArray2(tb, true);
-            sw4.Stop();
-            Console.WriteLine("InitializeArray2: " + sw4.Elapsed.ToString());
-        }
-
-        public static void InitializeArrayUsingSegments<T>(T[] array, T value)
-        {
-            var cores = Environment.ProcessorCount;
-
-            ArraySegment<T>[] segments = new ArraySegment<T>[cores];
-
-            var step = array.Length / cores;
-            for (int i = 0; i < cores; i++)
-            {
-                segments[i] = new ArraySegment<T>(array, i * step, step);
-            }
-            var remaining = array.Length % cores;
-            if (remaining != 0)
-            {
-                var lastIndex = segments.Length - 1;
-                segments[lastIndex] = new ArraySegment<T>(array, lastIndex * step, array.Length - (lastIndex * step));
-            }
-
-            var initializers = new Task[cores];
-            for (int i = 0; i < cores; i++)
-            {
-                var index = i;
-                var t = new Task(() =>
-                {
-                    var s = segments[index];
-                    for (int j = 0; j < s.Count; j++)
-                    {
-                        array[j + s.Offset] = value;
-                    }
-                });
-                initializers[i] = t;
-                t.Start();
-            }
-
-            Task.WaitAll(initializers);
-        }
-
-        public static void InitializeArray2<T>(T[] array, T value)
-        {
-            var cores = Environment.ProcessorCount - 1;
-            var al = array.Length;
-            var step = al / cores;
-
-            var tasks = new Task[cores];
-            for (int i = 0; i < cores; i++)
-            {
-                var index = i;
-                tasks[i] = new Task(() =>
-                {
-                    int low = step * index;
-                    int high = (index == cores - 1) ? al - 1 : low + step - 1;
-                    for (int j = low; j <= high; j++)
-                        array[j] = value;
-                });
-                tasks[i].Start();
-            }
-
-            Task.WaitAll(tasks);
-        }
+        Stopwatch sw4 = Stopwatch.StartNew();
+        InitializeArray2(tb, true);
+        sw4.Stop();
+        Console.WriteLine("InitializeArray2: " + sw4.Elapsed);
     }
 
-    public static class ArrayExtensions
+    public static void InitializeArrayUsingSegments<T>(T[] array, T value)
     {
-        // Simplest extension method, just fill value using a simple loop
-        public static void Populate<T>(this T[] arr, T value)
+        var cores = Environment.ProcessorCount;
+
+        ArraySegment<T>[] segments = new ArraySegment<T>[cores];
+
+        var step = array.Length / cores;
+        for (int i = 0; i < cores; i++)
         {
-            for (int i = 0; i < arr.Length; i++)
-                arr[i] = value;
+            segments[i] = new ArraySegment<T>(array, i * step, step);
+        }
+        var remaining = array.Length % cores;
+        if (remaining != 0)
+        {
+            var lastIndex = segments.Length - 1;
+            segments[lastIndex] = new ArraySegment<T>(array, lastIndex * step, array.Length - (lastIndex * step));
         }
 
-        // A bit more sophisticated, fill using n threads (n is the actual number of logical processors)
-        // Since array is a direct, simple structure and there is no overlap between slices allocated to a thread,
-        // there is no need for synchronization (but still have to wait that all threads are terminated to continue)
-        public static void PopulateParallel<T>(this T[] array, T value)
+        var initializers = new Task[cores];
+        for (int i = 0; i < cores; i++)
         {
-            var cores = Environment.ProcessorCount - 1;
-            var al = array.Length;
-            var step = al / cores;
-            var tasks = new Task[cores];
-            for (int i = 0; i < cores; i++)
+            var index = i;
+            var t = new Task(() =>
             {
-                var index = i;
-                tasks[i] = new Task(() =>
-                    {
-                        var low = index * step;
-                        int high = (index == cores - 1) ? al - 1 : low + step - 1;
-                        for (int j = low; j <= high; j++)
-                            array[j] = value;
-                    });
-                tasks[i].Start();
-            }
-            Task.WaitAll(tasks);
+                var s = segments[index];
+                for (int j = 0; j < s.Count; j++)
+                {
+                    array[j + s.Offset] = value;
+                }
+            });
+            initializers[i] = t;
+            t.Start();
         }
+
+        Task.WaitAll(initializers);
+    }
+
+    public static void InitializeArray2<T>(T[] array, T value)
+    {
+        var cores = Environment.ProcessorCount - 1;
+        var al = array.Length;
+        var step = al / cores;
+
+        var tasks = new Task[cores];
+        for (int i = 0; i < cores; i++)
+        {
+            var index = i;
+            tasks[i] = new Task(() =>
+            {
+                int low = step * index;
+                int high = (index == cores - 1) ? al - 1 : low + step - 1;
+                for (int j = low; j <= high; j++)
+                    array[j] = value;
+            });
+            tasks[i].Start();
+        }
+
+        Task.WaitAll(tasks);
+    }
+}
+
+public static class ArrayExtensions
+{
+    // Simplest extension method, just fill value using a simple loop
+    public static void Populate<T>(this T[] arr, T value)
+    {
+        for (int i = 0; i < arr.Length; i++)
+            arr[i] = value;
+    }
+
+    // A bit more sophisticated, fill using n threads (n is the actual number of logical processors)
+    // Since array is a direct, simple structure and there is no overlap between slices allocated to a thread,
+    // there is no need for synchronization (but still have to wait that all threads are terminated to continue)
+    public static void PopulateParallel<T>(this T[] array, T value)
+    {
+        var cores = Environment.ProcessorCount - 1;
+        var al = array.Length;
+        var step = al / cores;
+        var tasks = new Task[cores];
+        for (int i = 0; i < cores; i++)
+        {
+            var index = i;
+            tasks[i] = new Task(() =>
+            {
+                var low = index * step;
+                int high = (index == cores - 1) ? al - 1 : low + step - 1;
+                for (int j = low; j <= high; j++)
+                    array[j] = value;
+            });
+            tasks[i].Start();
+        }
+        Task.WaitAll(tasks);
     }
 }

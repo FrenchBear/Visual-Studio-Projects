@@ -73,8 +73,8 @@ internal struct Complex : IFormattable
 
         return cFormat switch
         {
-            'P' => "<" + Math.Sqrt(x * x + y * y).ToString() + ";" + Math.Atan2(y, x).ToString() + ">",
-            _ => "[" + x.ToString() + ";" + y.ToString() + "]",
+            'P' => "<" + Math.Sqrt(x * x + y * y) + ";" + Math.Atan2(y, x) + ">",
+            _ => "[" + x + ";" + y + "]",
         };
     }
 
@@ -96,9 +96,9 @@ internal class TestFormat
         DoOutput("Formats de types spécifiques", new Complex(1, 2), new string[] { "{0}", "{0:P}", "{0:R}" });
 
         Console.WriteLine("Plusieurs sections: format 0.00;(0.00);Zero");
-        Console.WriteLine("{0,-20}|{1}|", "1.234", String.Format("{0:0.00;(0.00);Zero}", 1.234));
-        Console.WriteLine("{0,-20}|{1}|", "-1.234", String.Format("{0:0.00;(0.00);Zero}", -1.234));
-        Console.WriteLine("{0,-20}|{1}|", "0", String.Format("{0:0.00;(0.00);Zero}", 0));
+        Console.WriteLine("{0,-20}|{1}|", "1.234", $"{1.234:0.00;(0.00);Zero}");
+        Console.WriteLine("{0,-20}|{1}|", "-1.234", $"{-1.234:0.00;(0.00);Zero}");
+        Console.WriteLine("{0,-20}|{1}|", "0", $"{0:0.00;(0.00);Zero}");
         Console.WriteLine();
 
         DoOutput("Format spécifiques d'entiers", 1234567, new string[] { "{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}" });

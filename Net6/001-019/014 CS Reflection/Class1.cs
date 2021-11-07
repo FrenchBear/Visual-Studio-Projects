@@ -12,74 +12,72 @@
 using System;
 using System.Reflection;
 
-namespace CS014
+namespace CS014;
+
+public class GetMemberMethodImpl
 {
-    public class GetMemberMethodImpl
+    public static void Main()
     {
-        public static void Main()
+        Type t = typeof(Bar);
+        foreach (MethodInfo m in t.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
         {
-            Type t = typeof(Bar);
-            foreach (MethodInfo m in t.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
-            {
-                MethodInfo dm;
+            MethodInfo dm;
 
-                Console.Write(m);
-                Console.Write(" Interface Method: " + (dm = GetDeclaringMethod(m)));
-                if (dm != null)
-                    Console.Write(" Interface: " + GetDeclaringMethod(m).DeclaringType);
-                Console.WriteLine();
-            }
-            Console.ReadLine();
+            Console.Write(m);
+            Console.Write(" Interface Method: " + (dm = GetDeclaringMethod(m)));
+            if (dm != null)
+                Console.Write(" Interface: " + GetDeclaringMethod(m).DeclaringType);
+            Console.WriteLine();
         }
+        Console.ReadLine();
+    }
 
-        public static MethodInfo GetDeclaringMethod(MethodInfo m)
+    public static MethodInfo GetDeclaringMethod(MethodInfo m)
+    {
+        Type t = m.DeclaringType;
+        foreach (Type i in t.GetInterfaces())
         {
-            Type t = m.DeclaringType;
-            foreach (Type i in t.GetInterfaces())
+            InterfaceMapping map = t.GetInterfaceMap(i);
+            for (int j = 0; j < map.TargetMethods.Length; j++)
             {
-                InterfaceMapping map = t.GetInterfaceMap(i);
-                for (int j = 0; j < map.TargetMethods.Length; j++)
+                if (map.TargetMethods[j] == m)
                 {
-                    if (map.TargetMethods[j] == m)
-                    {
-                        return map.InterfaceMethods[j];
-                    }
+                    return map.InterfaceMethods[j];
                 }
             }
-            return null;
         }
+        return null;
     }
+}
 
-    public class Bar : IBar
+public class Bar : IBar
+{
+    void IFoo.A()
     {
-        void IFoo.A()
-        {
-            Console.WriteLine("bar.a");
-        }
-
-        void IBar.B()
-        {
-            Console.WriteLine("bar.b");
-        }
-
-        void IBar.C()
-        {
-            Console.WriteLine("bar.c");
-        }
-
-        //  void d() { }
+        Console.WriteLine("bar.a");
     }
 
-    public interface IFoo
+    void IBar.B()
     {
-        void A();
+        Console.WriteLine("bar.b");
     }
 
-    public interface IBar : IFoo
+    void IBar.C()
     {
-        void B();
-
-        void C();
+        Console.WriteLine("bar.c");
     }
 
+    //  void d() { }
+}
+
+public interface IFoo
+{
+    void A();
+}
+
+public interface IBar : IFoo
+{
+    void B();
+
+    void C();
 }

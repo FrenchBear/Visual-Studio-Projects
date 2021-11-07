@@ -52,7 +52,7 @@ Public Module ModMain
         End Sub
 
         Public Sub Display(status As String)
-            Application.Display(System.String.Format("Obj({0}): {1}", name, status))
+            Application.Display($"Obj({name}): {status}")
         End Sub
 
         ' A Finalize method is the closest thing to a destructor but many of the
@@ -169,7 +169,7 @@ Public Module ModMain
         End Sub
 
         Public Sub DisplayGeneration()
-            Display(System.String.Format("Generation: {0}", GC.GetGeneration(Me)))
+            Display($"Generation: {GC.GetGeneration(Me)}")
         End Sub
 
     End Class

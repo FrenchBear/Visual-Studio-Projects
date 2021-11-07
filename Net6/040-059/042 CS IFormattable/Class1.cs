@@ -19,7 +19,7 @@ internal struct Complexe : IFormattable
 
     public override string ToString()
     {
-        return String.Format("({0},{1})", r, i);
+        return $"({r},{i})";
     }
 
     public String ToString(String sFormat, IFormatProvider fp)

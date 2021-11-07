@@ -14,30 +14,29 @@ using System;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-namespace Mixte20
+namespace Mixte20;
+
+internal class MyApp
 {
-    internal class MyApp
+    public static void Main()
     {
-        public static void Main()
-        {
-            D1 d1 = new();
-            D2 d2 = new();
-        }
+        D1 d1 = new();
+        D2 d2 = new();
     }
+}
 
-    internal class D1 : B
+internal class D1 : B
+{
+    public D1()
     {
-        public D1()
-        {
-            Console.WriteLine("D1.ctor");
-        }
+        Console.WriteLine("D1.ctor");
     }
+}
 
-    internal class D2 : C
+internal class D2 : C
+{
+    public D2()
     {
-        public D2()
-        {
-            Console.WriteLine("D2.ctor");
-        }
+        Console.WriteLine("D2.ctor");
     }
 }

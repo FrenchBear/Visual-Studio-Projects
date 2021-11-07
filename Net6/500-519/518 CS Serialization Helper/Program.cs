@@ -14,90 +14,89 @@ using System.Xml.Serialization;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-namespace CS518
+namespace CS518;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
+        Ba x = new()
         {
-            Ba x = new()
-            {
-                Val = 25
-            };
+            Val = 25
+        };
 
-            string s1 = Serialize<Ba>(x);
-            string s2 = x.ToXmlString();
-            Debugger.Break();
-        }
-
-        public static string Serialize<T>(T value)
-        {
-            if (value == null)
-                return null;
-
-            XmlSerializer serializer = new(typeof(T));
-
-            XmlWriterSettings settings = new()
-            {
-                Encoding = new UnicodeEncoding(false, false), // no BOM in a .NET string
-                Indent = true,
-                OmitXmlDeclaration = false
-            };
-
-            using StringWriter textWriter = new();
-            using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, settings))
-            {
-                serializer.Serialize(xmlWriter, value);
-            }
-            return textWriter.ToString();
-        }
-
-        public static T Deserialize<T>(string xml)
-        {
-            if (string.IsNullOrEmpty(xml))
-                return default;
-
-            XmlSerializer serializer = new(typeof(T));
-
-            XmlReaderSettings settings = new();
-            // No settings need modifying here
-
-            using StringReader textReader = new(xml);
-            using XmlReader xmlReader = XmlReader.Create(textReader, settings);
-            return (T)serializer.Deserialize(xmlReader);
-        }
+        string s1 = Serialize<Ba>(x);
+        string s2 = x.ToXmlString();
+        Debugger.Break();
     }
 
-    // Extension method
-    public static class XmlTools
+    public static string Serialize<T>(T value)
     {
-        public static string ToXmlString<T>(this T input)
-        {
-            using var writer = new StringWriter();
-            input.ToXml(writer);
-            return writer.ToString();
-        }
+        if (value == null)
+            return null;
 
-        public static void ToXml<T>(this T objectToSerialize, Stream stream)
-        {
-            new XmlSerializer(typeof(T)).Serialize(stream, objectToSerialize);
-        }
+        XmlSerializer serializer = new(typeof(T));
 
-        public static void ToXml<T>(this T objectToSerialize, StringWriter writer)
+        XmlWriterSettings settings = new()
         {
-            new XmlSerializer(typeof(T)).Serialize(writer, objectToSerialize);
+            Encoding = new UnicodeEncoding(false, false), // no BOM in a .NET string
+            Indent = true,
+            OmitXmlDeclaration = false
+        };
+
+        using StringWriter textWriter = new();
+        using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, settings))
+        {
+            serializer.Serialize(xmlWriter, value);
         }
+        return textWriter.ToString();
     }
 
-    public class Ba
+    public static T Deserialize<T>(string xml)
     {
-        private int _val = 42;
+        if (string.IsNullOrEmpty(xml))
+            return default;
 
-        [DefaultValue(42)]      // Avoid serialization of default value
-        public int Val
-        {
-            get { return _val; }
-            set { _val = value; }
-        }
+        XmlSerializer serializer = new(typeof(T));
+
+        XmlReaderSettings settings = new();
+        // No settings need modifying here
+
+        using StringReader textReader = new(xml);
+        using XmlReader xmlReader = XmlReader.Create(textReader, settings);
+        return (T)serializer.Deserialize(xmlReader);
+    }
+}
+
+// Extension method
+public static class XmlTools
+{
+    public static string ToXmlString<T>(this T input)
+    {
+        using var writer = new StringWriter();
+        input.ToXml(writer);
+        return writer.ToString();
+    }
+
+    public static void ToXml<T>(this T objectToSerialize, Stream stream)
+    {
+        new XmlSerializer(typeof(T)).Serialize(stream, objectToSerialize);
+    }
+
+    public static void ToXml<T>(this T objectToSerialize, StringWriter writer)
+    {
+        new XmlSerializer(typeof(T)).Serialize(writer, objectToSerialize);
+    }
+}
+
+public class Ba
+{
+    private int _val = 42;
+
+    [DefaultValue(42)]      // Avoid serialization of default value
+    public int Val
+    {
+        get { return _val; }
+        set { _val = value; }
     }
 }

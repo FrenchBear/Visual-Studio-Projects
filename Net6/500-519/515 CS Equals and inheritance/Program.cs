@@ -9,59 +9,58 @@
 using System;
 using System.Diagnostics;
 
-namespace CS515
+namespace CS515;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            RE_ExtraData e1 = new() { BaseData = 3.14 };
-            RE_ExtraData e2 = new() { BaseData = 3.14 };
-            Debug.Assert(e1.Equals(e2));
+        RE_ExtraData e1 = new() { BaseData = 3.14 };
+        RE_ExtraData e2 = new() { BaseData = 3.14 };
+        Debug.Assert(e1.Equals(e2));
 
-            RE_ExtraDataChemistry c1 = new() { BaseData = 3.14, Uncertainty = 1.23 };
-            RE_ExtraDataChemistry c2 = new() { BaseData = 3.14, Uncertainty = 4.56 };
-            Debug.Assert(!c1.Equals(c2));
+        RE_ExtraDataChemistry c1 = new() { BaseData = 3.14, Uncertainty = 1.23 };
+        RE_ExtraDataChemistry c2 = new() { BaseData = 3.14, Uncertainty = 4.56 };
+        Debug.Assert(!c1.Equals(c2));
 
-            e1 = c1;
-            e2 = c2;
-            Debug.Assert(!e1.Equals(e2));
-        }
+        e1 = c1;
+        e2 = c2;
+        Debug.Assert(!e1.Equals(e2));
+    }
+}
+
+// Base class for LabValue extensions
+public class RE_ExtraData
+{
+    public double BaseData { get; set; }
+
+    public override bool Equals(Object obj)
+    {
+        if (obj is not RE_ExtraData other) return false;
+        return BaseData == other.BaseData;
     }
 
-    // Base class for LabValue extensions
-    public class RE_ExtraData
+    public override int GetHashCode()
     {
-        public double BaseData { get; set; }
+        return BaseData.GetHashCode();
+    }
+}
 
-        public override bool Equals(Object obj)
-        {
-            if (obj is not RE_ExtraData other) return false;
-            return BaseData == other.BaseData;
-        }
+// Specialized version for chemistry
+public class RE_ExtraDataChemistry : RE_ExtraData
+{
+    public double Uncertainty { get; set; }
 
-        public override int GetHashCode()
-        {
-            return BaseData.GetHashCode();
-        }
+    public override bool Equals(Object obj)
+    {
+        if (obj is not RE_ExtraDataChemistry other) return false;
+        if (!base.Equals(obj)) return false;
+
+        return Uncertainty == other.Uncertainty;
     }
 
-    // Specialized version for chemistry
-    public class RE_ExtraDataChemistry : RE_ExtraData
+    public override int GetHashCode()
     {
-        public double Uncertainty { get; set; }
-
-        public override bool Equals(Object obj)
-        {
-            if (obj is not RE_ExtraDataChemistry other) return false;
-            if (!base.Equals(obj)) return false;
-
-            return Uncertainty == other.Uncertainty;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode() ^ Uncertainty.GetHashCode();
-        }
+        return base.GetHashCode() ^ Uncertainty.GetHashCode();
     }
 }

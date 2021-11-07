@@ -5,24 +5,23 @@
 using System;
 using System.IO;
 
-namespace CS_Path
+namespace CS_Path;
+
+/// <summary>
+/// Description résumée de Class1.
+/// </summary>
+internal class Class1
 {
     /// <summary>
-    /// Description résumée de Class1.
+    /// Point d'entrée principal de l'application.
     /// </summary>
-    internal class Class1
+    [STAThread]
+    private static void Main(string[] args)
     {
-        /// <summary>
-        /// Point d'entrée principal de l'application.
-        /// </summary>
-        [STAThread]
-        private static void Main(string[] args)
-        {
-            string sPath1 = "filename.ext";
-            string sPath2 = Path.ChangeExtension(sPath1, ".zap");
+        string sPath1 = "filename.ext";
+        string sPath2 = Path.ChangeExtension(sPath1, ".zap");
 
-            Console.WriteLine("Path1: {0}\nPath2: {1}", sPath1, sPath2);
-            //Console.ReadLine();
-        }
+        Console.WriteLine("Path1: {0}\nPath2: {1}", sPath1, sPath2);
+        //Console.ReadLine();
     }
 }

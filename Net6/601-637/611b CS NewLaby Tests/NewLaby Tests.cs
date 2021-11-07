@@ -2,17 +2,16 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace NewLaby.Tests
+namespace NewLaby.Tests;
+
+[TestClass()]
+public class LabyTests
 {
-    [TestClass()]
-    public class LabyTests
+    [TestMethod()]
+    public void LabyTest()
     {
-        [TestMethod()]
-        public void LabyTest()
-        {
-            var l = new NewLaby.Laby(10, 20, false);
-            Assert.IsNotNull(l);
-            //Program.MethodToTest();
-        }
+        var l = new NewLaby.Laby(10, 20, false);
+        Assert.IsNotNull(l);
+        //Program.MethodToTest();
     }
 }

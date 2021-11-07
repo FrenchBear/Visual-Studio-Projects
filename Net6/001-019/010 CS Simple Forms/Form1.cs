@@ -9,27 +9,26 @@ using System.Windows.Forms;
 
 #pragma warning disable IDE0052 // Remove unread private members
 
-namespace CS010
+namespace CS010;
+
+public class Form1 : System.Windows.Forms.Form
 {
-    public class Form1 : System.Windows.Forms.Form
+    private System.ComponentModel.Container components;
+
+    public Form1()
     {
-        private System.ComponentModel.Container components;
+        InitializeComponent();
+    }
 
-        public Form1()
-        {
-            InitializeComponent();
-        }
+    private void InitializeComponent()
+    {
+        this.components = new System.ComponentModel.Container();
+        this.Text = "010 CS Simple Forms";
+        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+    }
 
-        private void InitializeComponent()
-        {
-            this.components = new System.ComponentModel.Container();
-            this.Text = "010 CS Simple Forms";
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        }
-
-        public static void Main(string[] args)
-        {
-            Application.Run(new Form1());
-        }
+    public static void Main(string[] args)
+    {
+        Application.Run(new Form1());
     }
 }

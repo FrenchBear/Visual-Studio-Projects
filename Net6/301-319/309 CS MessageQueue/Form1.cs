@@ -10,26 +10,25 @@ using System.Windows.Forms;
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 #pragma warning disable IDE1006 // Naming Styles
 
-namespace FPVI.MessageQueueTest
+namespace FPVI.MessageQueueTest;
+
+public partial class Form1 : Form
 {
-    public partial class Form1 : Form
+    public Form1()
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            MessageQueue myQueue = new(@"c:\temp");
-            myQueue.Send("Hello, world", "message1");
-        }
+    private void btnSend_Click(object sender, EventArgs e)
+    {
+        MessageQueue myQueue = new(@"c:\temp");
+        myQueue.Send("Hello, world", "message1");
+    }
 
-        private void btnReceive_Click(object sender, EventArgs e)
-        {
-            MessageQueue myQueue = new(@"c:\temp");
-            object m;
-            m = myQueue.Receive();
-        }
+    private void btnReceive_Click(object sender, EventArgs e)
+    {
+        MessageQueue myQueue = new(@"c:\temp");
+        object m;
+        m = myQueue.Receive();
     }
 }

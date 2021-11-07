@@ -10,78 +10,75 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media.Imaging;
 
-namespace RI3
+namespace RI3;
+
+/// <summary>
+/// Interaction logic for AboutWindow.xaml
+/// </summary>
+public partial class AboutWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for AboutWindow.xaml
-    /// </summary>
-    public partial class AboutWindow : Window
+    public AboutWindow()
     {
-        public AboutWindow()
+        InitializeComponent();
+
+        Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
+        AssemblyTitleAttribute aTitleAttr = (AssemblyTitleAttribute)AssemblyTitleAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyTitleAttribute));
+        AssemblyDescriptionAttribute aDescAttr = (AssemblyDescriptionAttribute)AssemblyDescriptionAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyDescriptionAttribute));
+        string sAssemblyVersion = myAssembly.GetName().Version.ToString();
+        AssemblyCopyrightAttribute aCopyrightAttr = (AssemblyCopyrightAttribute)AssemblyTitleAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyCopyrightAttribute));
+
+        AssemblyTitle.Text = aTitleAttr.Title;
+        AssemblyDescription.Text = aDescAttr.Description;
+        AssemblyVersion.Text = "Version " + sAssemblyVersion;
+        AssemblyCopyright.Text = aCopyrightAttr.Copyright;
+    }
+
+    private void OKButton_Click(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
+}
+
+/// <summary>
+/// Simple extension for ico, let you choose icon with specific size.
+/// Usage sample: Image Stretch="None" Source="{common:Icon /ControlsTester;component/icons/custom-reports.ico, 16}"
+/// Or: Image Source="{common:Icon Source={Binding IconResource},Size=16} "
+/// </summary>
+public class IconExtension : MarkupExtension
+{
+    private string source;
+
+    public string Source
+    {
+        get
         {
-            InitializeComponent();
-
-            Assembly myAssembly = System.Reflection.Assembly.GetExecutingAssembly();
-            AssemblyTitleAttribute aTitleAttr = (AssemblyTitleAttribute)AssemblyTitleAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyTitleAttribute));
-            AssemblyDescriptionAttribute aDescAttr = (AssemblyDescriptionAttribute)AssemblyDescriptionAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyDescriptionAttribute));
-            string sAssemblyVersion = myAssembly.GetName().Version.ToString();
-            AssemblyCopyrightAttribute aCopyrightAttr = (AssemblyCopyrightAttribute)AssemblyTitleAttribute.GetCustomAttribute(myAssembly, typeof(AssemblyCopyrightAttribute));
-
-            AssemblyTitle.Text = aTitleAttr.Title;
-            AssemblyDescription.Text = aDescAttr.Description;
-            AssemblyVersion.Text = "Version " + sAssemblyVersion;
-            AssemblyCopyright.Text = aCopyrightAttr.Copyright;
+            return this.source;
         }
 
-        private void OKButton_Click(object sender, RoutedEventArgs e)
+        set
         {
-            Close();
+            // Have to make full pack URI from short form, so System.Uri can regognize it.
+            this.source = "pack://application:,,," + value;
         }
     }
 
-    /// <summary>
-    /// Simple extension for ico, let you choose icon with specific size.
-    /// Usage sample: Image Stretch="None" Source="{common:Icon /ControlsTester;component/icons/custom-reports.ico, 16}"
-    /// Or: Image Source="{common:Icon Source={Binding IconResource},Size=16} "
-    /// </summary>
-    public class IconExtension : MarkupExtension
+    public int Size { get; set; }
+
+    public override object ProvideValue(IServiceProvider serviceProvider)
     {
-        private string source;
+        var decoder = BitmapDecoder.Create(new Uri(this.Source), BitmapCreateOptions.DelayCreation, BitmapCacheOption.OnDemand);
 
-        public string Source
-        {
-            get
-            {
-                return this.source;
-            }
+        var result = decoder.Frames.SingleOrDefault(f => f.Width == this.Size) ?? decoder.Frames.OrderBy(f => f.Width).First();
+        return result;
+    }
 
-            set
-            {
-                // Have to make full pack URI from short form, so System.Uri can regognize it.
-                this.source = "pack://application:,,," + value;
-            }
-        }
+    public IconExtension(string source, int size)
+    {
+        this.Source = source;
+        this.Size = size;
+    }
 
-        public int Size { get; set; }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            var decoder = BitmapDecoder.Create(new Uri(this.Source), BitmapCreateOptions.DelayCreation, BitmapCacheOption.OnDemand);
-
-            var result = decoder.Frames.SingleOrDefault(f => f.Width == this.Size);
-            if (result == default(BitmapFrame))
-                result = decoder.Frames.OrderBy(f => f.Width).First();
-            return result;
-        }
-
-        public IconExtension(string source, int size)
-        {
-            this.Source = source;
-            this.Size = size;
-        }
-
-        public IconExtension()
-        {
-        }
+    public IconExtension()
+    {
     }
 }

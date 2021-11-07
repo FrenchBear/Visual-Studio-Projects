@@ -14,102 +14,80 @@ using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace RI3
+namespace RI3;
+
+public class Model
 {
-    public class Model
+    // Initialization
+    public Model()
     {
-        // Initialization
-        public Model()
+        // Initialization for multitasking (Max number of // tasks)
+        if (Environment.ProcessorCount > 4)
+            MAX_PARALLISM = Environment.ProcessorCount - 2;
+        else
+            MAX_PARALLISM = Environment.ProcessorCount - 1;
+        if (MAX_PARALLISM < 1) MAX_PARALLISM = 1;
+
+        // Folders just for testing
+        SourceFolder = @"C:\Users\Pierre\Desktop\2013-06 Vacances AK et YT (Extrait) HR";
+        TargetFolder = @"C:\Users\Pierre\Desktop\2013-06 Vacances AK et YT (Extrait)";
+
+        // Reasonable defaults
+        LargeSideSize = 2000;       // 2000 for GoogleDrive (free storage up to 2048px!)
+        JpegQuality = 90;           // Good compression without losing quality
+    }
+
+    // ViewModel
+    private ViewModel vm;
+
+    public void SetViewModel(ViewModel vm)
+    {
+        this.vm = vm;
+    }
+
+    // Variables exposed to ViewModel
+    public string SourceFolder;
+
+    public string TargetFolder;
+    public int LargeSideSize;
+    public int JpegQuality;
+
+    // Processed files and cache
+    private string[] processedFilesList;                // List of filenames being converted
+
+    // Multitasking
+    private readonly int MAX_PARALLISM;
+
+    public void DoGenerate(CancellationToken cancelToken, IProgress<ProgressInfo> progress)
+    {
+        // Build the list of files to process
+        processedFilesList = Directory.GetFiles(SourceFolder, "*.jpg");
+
+        progress.Report(new ProgressInfo(0, processedFilesList.Length,
+            $"Génération de {processedFilesList.Length} vignettes"));
+        progress.Report(new ProgressInfo(0, processedFilesList.Length, $"{SourceFolder} --> {TargetFolder}"));
+
+        // List of tasks running in parallel
+        var lt = new List<Task<string>>();
+
+        // Will execute generation in a separate thread, no need for async/await since everything is done
+        // in this thread, there is no final action to indicate that hashing is done, this is reported
+        // through IProgress interface
+        Task.Run(/* async */ () =>
         {
-            // Initialization for multitasking (Max number of // tasks)
-            if (Environment.ProcessorCount > 4)
-                MAX_PARALLISM = Environment.ProcessorCount - 2;
-            else
-                MAX_PARALLISM = Environment.ProcessorCount - 1;
-            if (MAX_PARALLISM < 1) MAX_PARALLISM = 1;
+            int n = 0;      // Number of active hashing tasks
+            int p = 0;      // Number of processed files
 
-            // Folders just for testing
-            SourceFolder = @"C:\Users\Pierre\Desktop\2013-06 Vacances AK et YT (Extrait) HR";
-            TargetFolder = @"C:\Users\Pierre\Desktop\2013-06 Vacances AK et YT (Extrait)";
-
-            // Reasonable defaults
-            LargeSideSize = 2000;       // 2000 for GoogleDrive (free storage up to 2048px!)
-            JpegQuality = 90;           // Good compression without losing quality
-        }
-
-        // ViewModel
-        private ViewModel vm;
-
-        public void SetViewModel(ViewModel vm)
-        {
-            this.vm = vm;
-        }
-
-        // Variables exposed to ViewModel
-        public string SourceFolder;
-
-        public string TargetFolder;
-        public int LargeSideSize;
-        public int JpegQuality;
-
-        // Processed files and cache
-        private string[] processedFilesList;                // List of filenames being converted
-
-        // Multitasking
-        private readonly int MAX_PARALLISM;
-
-        public void DoGenerate(CancellationToken cancelToken, IProgress<ProgressInfo> progress)
-        {
-            // Build the list of files to process
-            processedFilesList = Directory.GetFiles(SourceFolder, "*.jpg");
-
-            progress.Report(new ProgressInfo(0, processedFilesList.Length, string.Format("Génération de {0} vignettes", processedFilesList.Length)));
-            progress.Report(new ProgressInfo(0, processedFilesList.Length, string.Format("{0} --> {1}", SourceFolder, TargetFolder)));
-
-            // List of tasks running in parallel
-            var lt = new List<Task<string>>();
-
-            // Will execute generation in a separate thread, no need for async/await since everything is done
-            // in this thread, there is no final action to indicate that hashing is done, this is reported
-            // through IProgress interface
-            Task.Run(/* async */ () =>
+            // Hash MAX_PARALLISM files in parallel
+            foreach (string file in processedFilesList)
             {
-                int n = 0;      // Number of active hashing tasks
-                int p = 0;      // Number of processed files
+                if (cancelToken.IsCancellationRequested) goto ExitGenerate;
 
-                // Hash MAX_PARALLISM files in parallel
-                foreach (string file in processedFilesList)
+                string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
+                lt.Add(Task.Run(() => ConvertImage(s)));
+                n++;
+                if (n == MAX_PARALLISM)
                 {
-                    if (cancelToken.IsCancellationRequested) goto ExitGenerate;
-
-                    string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
-                    lt.Add(Task.Run(() => ConvertImage(s)));
-                    n++;
-                    if (n == MAX_PARALLISM)
-                    {
-                        //await Task.WhenAny(lt.ToArray());
-                        Task.WaitAny(lt.ToArray());
-                        lock (lt)
-                        {
-                            var lf = new List<Task<string>>();
-                            foreach (var t in lt)
-                                if (t.IsCompleted)
-                                {
-                                    lf.Add(t);
-                                    n--;
-                                    progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
-                                }
-                            foreach (var t in lf)
-                                lt.Remove(t);
-                        }
-                    }
-                }
-
-                // Wail all tasks to terminate
-                while (n > 0)
-                {
-                    if (cancelToken.IsCancellationRequested) goto ExitGenerate;
-
                     //await Task.WhenAny(lt.ToArray());
                     Task.WaitAny(lt.ToArray());
                     lock (lt)
@@ -126,86 +104,106 @@ namespace RI3
                             lt.Remove(t);
                     }
                 }
+            }
+
+            // Wail all tasks to terminate
+            while (n > 0)
+            {
+                if (cancelToken.IsCancellationRequested) goto ExitGenerate;
+
+                //await Task.WhenAny(lt.ToArray());
+                Task.WaitAny(lt.ToArray());
+                lock (lt)
+                {
+                    var lf = new List<Task<string>>();
+                    foreach (var t in lt)
+                        if (t.IsCompleted)
+                        {
+                            lf.Add(t);
+                            n--;
+                            progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
+                        }
+                    foreach (var t in lf)
+                        lt.Remove(t);
+                }
+            }
 
             ExitGenerate:
-                ;
-            }, cancelToken);
-        }
+            ;
+        }, cancelToken);
+    }
 
-        private string ConvertImage(string fileName)
+    private string ConvertImage(string fileName)
+    {
+        string imagePath = Path.Combine(SourceFolder, fileName);
+        string vignettePath = Path.Combine(TargetFolder, fileName);
+
+        BitmapImage bi = new(new Uri(imagePath));
+
+        int newWidth, newHeight;
+        if (bi.PixelWidth > bi.PixelHeight)
         {
-            string imagePath = Path.Combine(SourceFolder, fileName);
-            string vignettePath = Path.Combine(TargetFolder, fileName);
-
-            BitmapImage bi = new(new Uri(imagePath));
-
-            int newWidth, newHeight;
-            if (bi.PixelWidth > bi.PixelHeight)
+            if (bi.PixelWidth < LargeSideSize)
             {
-                if (bi.PixelWidth < LargeSideSize)
-                {
-                    // smaller images keep their size
-                    newWidth = bi.PixelWidth;
-                    newHeight = bi.PixelHeight;
-                }
-                else
-                {
-                    newWidth = LargeSideSize;
-                    newHeight = (int)((double)LargeSideSize / (double)bi.PixelWidth * (double)bi.PixelHeight);
-                }
+                // smaller images keep their size
+                newWidth = bi.PixelWidth;
+                newHeight = bi.PixelHeight;
             }
             else
             {
-                if (bi.PixelHeight < LargeSideSize)
-                {
-                    // smaller images keep their size
-                    newWidth = bi.PixelWidth;
-                    newHeight = bi.PixelHeight;
-                }
-                else
-                {
-                    newHeight = LargeSideSize;
-                    newWidth = (int)((double)LargeSideSize / (double)bi.PixelHeight * (double)bi.PixelWidth);
-                }
+                newWidth = LargeSideSize;
+                newHeight = (int)((double)LargeSideSize / (double)bi.PixelWidth * (double)bi.PixelHeight);
             }
-
-            // WPF resizing and save
-            BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
-            JpegBitmapEncoder encoder = new()
-            {
-                QualityLevel = JpegQuality
-            };
-            encoder.Frames.Add(BitmapFrame.Create(bi2));
-            using (FileStream output = new(vignettePath, FileMode.Create))
-            {
-                encoder.Save(output);
-            }
-
-            return fileName;
         }
-
-        public static BitmapSource ResizeBitmap(BitmapSource source, int nWidth, int nHeight)
+        else
         {
-            TransformedBitmap tbBitmap = new(source,
-                                                      new ScaleTransform((double)nWidth / (double)source.PixelWidth,
-                                                                         (double)nHeight / (double)source.PixelHeight,
-                                                                         0, 0));
-            return tbBitmap;
+            if (bi.PixelHeight < LargeSideSize)
+            {
+                // smaller images keep their size
+                newWidth = bi.PixelWidth;
+                newHeight = bi.PixelHeight;
+            }
+            else
+            {
+                newHeight = LargeSideSize;
+                newWidth = (int)((double)LargeSideSize / (double)bi.PixelHeight * (double)bi.PixelWidth);
+            }
         }
+
+        // WPF resizing and save
+        BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
+        JpegBitmapEncoder encoder = new()
+        {
+            QualityLevel = JpegQuality
+        };
+        encoder.Frames.Add(BitmapFrame.Create(bi2));
+        using FileStream output = new(vignettePath, FileMode.Create);
+        encoder.Save(output);
+
+        return fileName;
     }
 
-    // For IProgress
-    public class ProgressInfo
+    public static BitmapSource ResizeBitmap(BitmapSource source, int nWidth, int nHeight)
     {
-        public ProgressInfo(int index, int total, string fileName)
-        {
-            Index = index;
-            Total = total;
-            FileName = fileName;
-        }
-
-        public int Index;
-        public int Total;
-        public string FileName;
+        TransformedBitmap tbBitmap = new(source,
+            new ScaleTransform((double)nWidth / (double)source.PixelWidth,
+                (double)nHeight / (double)source.PixelHeight,
+                0, 0));
+        return tbBitmap;
     }
+}
+
+// For IProgress
+public class ProgressInfo
+{
+    public ProgressInfo(int index, int total, string fileName)
+    {
+        Index = index;
+        Total = total;
+        FileName = fileName;
+    }
+
+    public int Index;
+    public int Total;
+    public string FileName;
 }

@@ -33,7 +33,7 @@ internal class MyApp
 
         IDictionaryEnumerator e2 = t2.GetDictionaryEnumerator();
         while (e2.MoveNext())
-            Console.WriteLine(e2.Key.ToString() + " -> " + e2.Value);
+            Console.WriteLine(e2.Key + " -> " + e2.Value);
         Console.WriteLine();
 
         ThreeIntegers3 t3 = new(31, 32, 33);

@@ -43,7 +43,7 @@ Module Module1
 
     <Extension()>
     Public Sub WriteLine(Of TSource)(Source As IEnumerable(Of TSource))
-        Write(Source)
+        Source.Write()
         Console.WriteLine()
     End Sub
 

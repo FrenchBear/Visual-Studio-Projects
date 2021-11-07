@@ -14,335 +14,334 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace RI3
+namespace RI3;
+
+public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
 {
-    public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
+    // INotifyPropertyChanged interface
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public void NotifyPropertyChanged(string propertyName)
     {
-        // INotifyPropertyChanged interface
-        public event PropertyChangedEventHandler PropertyChanged;
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
 
-        public void NotifyPropertyChanged(string propertyName)
+    // Commands public interface
+    public ICommand GenerateCommand { get; private set; }
+
+    public ICommand SelectSourceFolderCommand { get; private set; }
+    public ICommand SelectTargetFolderCommand { get; private set; }
+
+    // Constructor
+    public ViewModel(Model m, MainWindow w)
+    {
+        model = m;
+        window = w;
+
+        // Binding commands with behavior
+        GenerateCommand = new RelayCommand<object>(GenerateExecute, CanGenerate);
+        SelectSourceFolderCommand = new RelayCommand<object>(SelectSourceFolderExecute);
+        SelectTargetFolderCommand = new RelayCommand<object>(SelectTargetFolderExecute);
+
+        // Button caption
+        GenerateButtonCaption = GenerateActionCaption;
+    }
+
+    // Access to Model and window
+    private readonly Model model;
+
+    private readonly MainWindow window;
+
+    //private bool isGenerateInProgress = false;
+
+    // Interface strings
+    private const string GenerateActionCaption = "Générer";
+
+    private const string StopActionCaption = "Stop";
+
+    // Commands private implementation
+    private CancellationTokenSource cts;
+
+    private void GenerateExecute(object parameter)
+    {
+        if (GenerateButtonCaption == GenerateActionCaption)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            GenerateButtonCaption = StopActionCaption;
+            GenerateProgressValue = 0.0;
+            //isGenerateInProgress = true;
+            cts = new CancellationTokenSource();
+            IProgress<ProgressInfo> progress = new Progress<ProgressInfo>(UpdateGenerateProgressValue); // d => UpdateGenerateProgressValue(d)
+            model.DoGenerate(cts.Token, progress);
+            Debug.WriteLine("$$$$$$$$$$$$$$$$$ End of GenerateExecute");
         }
-
-        // Commands public interface
-        public ICommand GenerateCommand { get; private set; }
-
-        public ICommand SelectSourceFolderCommand { get; private set; }
-        public ICommand SelectTargetFolderCommand { get; private set; }
-
-        // Constructor
-        public ViewModel(Model m, MainWindow w)
+        else
         {
-            model = m;
-            window = w;
-
-            // Binding commands with behavior
-            GenerateCommand = new RelayCommand<object>(GenerateExecute, CanGenerate);
-            SelectSourceFolderCommand = new RelayCommand<object>(SelectSourceFolderExecute);
-            SelectTargetFolderCommand = new RelayCommand<object>(SelectTargetFolderExecute);
-
-            // Button caption
             GenerateButtonCaption = GenerateActionCaption;
+            cts.Cancel();
+            //isGenerateInProgress = false;
         }
+    }
 
-        // Access to Model and window
-        private readonly Model model;
+    private bool CanGenerate(object parameter)
+    {
+        return SourceFolder != null && SourceFolder != "" && TargetFolder != null && TargetFolder != "" &&
+               SourceFolder != TargetFolder && IsValid(window);
+    }
 
-        private readonly MainWindow window;
-
-        //private bool isGenerateInProgress = false;
-
-        // Interface strings
-        private const string GenerateActionCaption = "Générer";
-
-        private const string StopActionCaption = "Stop";
-
-        // Commands private implementation
-        private CancellationTokenSource cts;
-
-        private void GenerateExecute(object parameter)
+    // Validate all dependency objects in a window, from http://msdn.microsoft.com/en-us/library/aa969773.aspx
+    private bool IsValid(DependencyObject node)
+    {
+        // Check if dependency object was passed
+        if (node != null)
         {
-            if (GenerateButtonCaption == GenerateActionCaption)
+            // Check if dependency object is valid.
+            // NOTE: Validation.GetHasError works for controls that have validation rules attached
+            bool isValid = !Validation.GetHasError(node);
+            if (!isValid)
             {
-                GenerateButtonCaption = StopActionCaption;
-                GenerateProgressValue = 0.0;
-                //isGenerateInProgress = true;
-                cts = new CancellationTokenSource();
-                IProgress<ProgressInfo> progress = new Progress<ProgressInfo>(d => UpdateGenerateProgressValue(d));
-                model.DoGenerate(cts.Token, progress);
-                Debug.WriteLine("$$$$$$$$$$$$$$$$$ End of GenerateExecute");
-            }
-            else
-            {
-                GenerateButtonCaption = GenerateActionCaption;
-                cts.Cancel();
-                //isGenerateInProgress = false;
+                // If the dependency object is invalid, and it can receive the focus,
+                // set the focus
+                // No: prevent moving to another field!!
+                //if (node is IInputElement) Keyboard.Focus((IInputElement)node);
+                return false;
             }
         }
 
-        private bool CanGenerate(object parameter)
+        // If this dependency object is valid, check all child dependency objects
+        foreach (object subnode in LogicalTreeHelper.GetChildren(node))
+            if (subnode is DependencyObject obj)
+                // If a child dependency object is invalid, return false immediately, otherwise keep checking
+                if (!IsValid(obj)) return false;
+
+        // All dependency objects are valid
+        return true;
+    }
+
+    private void UpdateGenerateProgressValue(ProgressInfo t)
+    {
+        GenerateProgressValue = (100.0 * t.Index) / t.Total;
+        GenerateProgressText = $"{t.Index} / {t.Total}";
+        if (t.FileName != null)
         {
-            return SourceFolder != null && SourceFolder != "" && TargetFolder != null && TargetFolder != "" &&
-                   SourceFolder != TargetFolder && IsValid(window);
+            AddTrace(t.FileName);
         }
 
-        // Validate all dependency objects in a window, from http://msdn.microsoft.com/en-us/library/aa969773.aspx
-        private bool IsValid(DependencyObject node)
+        if (t.Index == t.Total && GenerateButtonCaption != GenerateActionCaption)
         {
-            // Check if dependency object was passed
-            if (node != null)
-            {
-                // Check if dependency object is valid.
-                // NOTE: Validation.GetHasError works for controls that have validation rules attached
-                bool isValid = !Validation.GetHasError(node);
-                if (!isValid)
-                {
-                    // If the dependency object is invalid, and it can receive the focus,
-                    // set the focus
-                    // No: prevent moving to another field!!
-                    //if (node is IInputElement) Keyboard.Focus((IInputElement)node);
-                    return false;
-                }
-            }
-
-            // If this dependency object is valid, check all child dependency objects
-            foreach (object subnode in LogicalTreeHelper.GetChildren(node))
-                if (subnode is DependencyObject obj)
-                    // If a child dependency object is invalid, return false immediately, otherwise keep checking
-                    if (!IsValid(obj)) return false;
-
-            // All dependency objects are valid
-            return true;
+            GenerateButtonCaption = GenerateActionCaption;
+            //isGenerateInProgress = false;
+            AddTrace("Fin de la génération");
         }
+    }
 
-        private void UpdateGenerateProgressValue(ProgressInfo t)
+    private void AddTrace(string s)
+    {
+        TracesList.Add(s);
+        TraceSelectedIndex = TracesList.Count - 1;
+        // Event SelectionChanged in code behind view will make sure selected item is visible
+    }
+
+    private void SelectSourceFolderExecute(object parameter)
+    {
+        var dialog = new System.Windows.Forms.FolderBrowserDialog
         {
-            GenerateProgressValue = (100.0 * t.Index) / t.Total;
-            GenerateProgressText = string.Format("{0} / {1}", t.Index, t.Total);
-            if (t.FileName != null)
-            {
-                AddTrace(t.FileName);
-            }
+            SelectedPath = SourceFolder
+        };
+        System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+        if (result == System.Windows.Forms.DialogResult.OK)
+            SourceFolder = dialog.SelectedPath;
+    }
 
-            if (t.Index == t.Total && GenerateButtonCaption != GenerateActionCaption)
-            {
-                GenerateButtonCaption = GenerateActionCaption;
-                //isGenerateInProgress = false;
-                AddTrace("Fin de la génération");
-            }
-        }
+    private void SelectTargetFolderExecute(object parameter)
+    {
+        var dialog = new System.Windows.Forms.FolderBrowserDialog();
+        if (TargetFolder != null && TargetFolder != "" && Directory.Exists(TargetFolder))
+            dialog.SelectedPath = TargetFolder;
+        else
+            dialog.SelectedPath = SourceFolder;
+        System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+        if (result == System.Windows.Forms.DialogResult.OK)
+            TargetFolder = dialog.SelectedPath;
+    }
 
-        private void AddTrace(string s)
+    // Properties for view binding
+    private string generateButtonCaption = "";
+
+    public string GenerateButtonCaption
+    {
+        get { return generateButtonCaption; }
+        set
         {
-            TracesList.Add(s);
-            TraceSelectedIndex = TracesList.Count - 1;
-            // Event SelectionChanged in code behind view will make sure selected item is visible
-        }
-
-        private void SelectSourceFolderExecute(object parameter)
-        {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog
+            if (value != generateButtonCaption)
             {
-                SelectedPath = SourceFolder
-            };
-            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
-                SourceFolder = dialog.SelectedPath;
-        }
-
-        private void SelectTargetFolderExecute(object parameter)
-        {
-            var dialog = new System.Windows.Forms.FolderBrowserDialog();
-            if (TargetFolder != null && TargetFolder != "" && Directory.Exists(TargetFolder))
-                dialog.SelectedPath = TargetFolder;
-            else
-                dialog.SelectedPath = SourceFolder;
-            System.Windows.Forms.DialogResult result = dialog.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.OK)
-                TargetFolder = dialog.SelectedPath;
-        }
-
-        // Properties for view binding
-        private string generateButtonCaption = "";
-
-        public string GenerateButtonCaption
-        {
-            get { return generateButtonCaption; }
-            set
-            {
-                if (value != generateButtonCaption)
-                {
-                    generateButtonCaption = value;
-                    NotifyPropertyChanged(nameof(GenerateButtonCaption));
-                }
-            }
-        }
-
-        public string SourceFolder
-        {
-            get { return model.SourceFolder; }
-            set
-            {
-                if (value != model.SourceFolder)
-                {
-                    model.SourceFolder = value;
-                    NotifyPropertyChanged(nameof(SourceFolder));
-                }
-            }
-        }
-
-        public string TargetFolder
-        {
-            get { return model.TargetFolder; }
-            set
-            {
-                if (value != model.TargetFolder)
-                {
-                    model.TargetFolder = value;
-                    NotifyPropertyChanged(nameof(TargetFolder));
-                }
-            }
-        }
-
-        public int LargeSideSize
-        {
-            get { return model.LargeSideSize; }
-            set
-            {
-                if (value != model.LargeSideSize)
-                {
-                    model.LargeSideSize = value;
-                    NotifyPropertyChanged(nameof(LargeSideSize));
-                }
-            }
-        }
-
-        public int JpegQuality
-        {
-            get { return model.JpegQuality; }
-            set
-            {
-                if (value != model.JpegQuality)
-                {
-                    model.JpegQuality = value;
-                    NotifyPropertyChanged(nameof(JpegQuality));
-                }
-            }
-        }
-
-        private double generateProgressValue;
-
-        public double GenerateProgressValue
-        {
-            get { return generateProgressValue; }
-            set
-            {
-                if (value != generateProgressValue)
-                {
-                    generateProgressValue = value;
-                    NotifyPropertyChanged(nameof(GenerateProgressValue));
-                }
-            }
-        }
-
-        private string generateProgressText;
-
-        public string GenerateProgressText
-        {
-            get { return generateProgressText; }
-            set
-            {
-                if (value != generateProgressText)
-                {
-                    generateProgressText = value;
-                    NotifyPropertyChanged(nameof(GenerateProgressText));
-                }
-            }
-        }
-
-        private readonly ObservableCollection<string> tracesList = new();
-
-        public ObservableCollection<string> TracesList
-        {
-            get
-            {
-                return tracesList;
-            }
-        }
-
-        private int traceSelectedIndex;
-
-        public int TraceSelectedIndex
-        {
-            get
-            {
-                return traceSelectedIndex;
-            }
-            set
-            {
-                if (value != traceSelectedIndex)
-                {
-                    traceSelectedIndex = value;
-                    NotifyPropertyChanged(nameof(TraceSelectedIndex));
-                }
-            }
-        }
-
-        // IDataErrorInfo
-        // Gets an error message indicating what is wrong with this object.
-        public string Error
-        {
-            get
-            {
-                return this["SourceFolder"] + this["TargetFolder"] + this["LargeSideSize"] + this["JpegQuality"];
-            }
-        }
-
-        // Gets the error (if any) with the specified column name.
-        public string this[string columnName]
-        {
-            get
-            {
-                switch (columnName)
-                {
-                    case "SourceFolder":
-                        if (SourceFolder != null && SourceFolder != "" && !Directory.Exists(SourceFolder))
-                            return "Le répertoire source n'existe pas ou est inaccessible";
-                        break;
-
-                    case "TargetFolder":
-                        if (TargetFolder != null && TargetFolder != "" && !Directory.Exists(TargetFolder))
-                            return "Le répertoire destination n'existe pas ou est inaccessible";
-                        break;
-
-                    case "LargeSideSize":
-                        if (LargeSideSize < 50 || LargeSideSize > 3000)
-                            return "Taille du grand coté invalide (doit être comprise entre 50 et 3000)";
-                        break;
-
-                    case "JpegQuality":
-                        if (JpegQuality < 0 || JpegQuality > 100)
-                            return "Qualité Jpeg invalide (doit être comprise entre 0 et 100)";
-                        break;
-                }
-                return string.Empty;
+                generateButtonCaption = value;
+                NotifyPropertyChanged(nameof(GenerateButtonCaption));
             }
         }
     }
 
-    public static class ExtensionMethods
+    public string SourceFolder
     {
-        private static readonly Action EmptyDelegate = delegate () { };
-
-        // Extension method to force the refresh of a UIElement
-        public static void Refresh(this UIElement uiElement)
+        get { return model.SourceFolder; }
+        set
         {
-            // By calling Dispatcher.Invoke, the code essentially asks the system to execute all operations that are Render or higher priority,
-            // thus the control will then render itself (drawing the new content).  Afterwards, it will then execute the provided delegate,
-            // which is our empty method.
-            uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
+            if (value != model.SourceFolder)
+            {
+                model.SourceFolder = value;
+                NotifyPropertyChanged(nameof(SourceFolder));
+            }
         }
+    }
+
+    public string TargetFolder
+    {
+        get { return model.TargetFolder; }
+        set
+        {
+            if (value != model.TargetFolder)
+            {
+                model.TargetFolder = value;
+                NotifyPropertyChanged(nameof(TargetFolder));
+            }
+        }
+    }
+
+    public int LargeSideSize
+    {
+        get { return model.LargeSideSize; }
+        set
+        {
+            if (value != model.LargeSideSize)
+            {
+                model.LargeSideSize = value;
+                NotifyPropertyChanged(nameof(LargeSideSize));
+            }
+        }
+    }
+
+    public int JpegQuality
+    {
+        get { return model.JpegQuality; }
+        set
+        {
+            if (value != model.JpegQuality)
+            {
+                model.JpegQuality = value;
+                NotifyPropertyChanged(nameof(JpegQuality));
+            }
+        }
+    }
+
+    private double generateProgressValue;
+
+    public double GenerateProgressValue
+    {
+        get { return generateProgressValue; }
+        set
+        {
+            if (value != generateProgressValue)
+            {
+                generateProgressValue = value;
+                NotifyPropertyChanged(nameof(GenerateProgressValue));
+            }
+        }
+    }
+
+    private string generateProgressText;
+
+    public string GenerateProgressText
+    {
+        get { return generateProgressText; }
+        set
+        {
+            if (value != generateProgressText)
+            {
+                generateProgressText = value;
+                NotifyPropertyChanged(nameof(GenerateProgressText));
+            }
+        }
+    }
+
+    private readonly ObservableCollection<string> tracesList = new();
+
+    public ObservableCollection<string> TracesList
+    {
+        get
+        {
+            return tracesList;
+        }
+    }
+
+    private int traceSelectedIndex;
+
+    public int TraceSelectedIndex
+    {
+        get
+        {
+            return traceSelectedIndex;
+        }
+        set
+        {
+            if (value != traceSelectedIndex)
+            {
+                traceSelectedIndex = value;
+                NotifyPropertyChanged(nameof(TraceSelectedIndex));
+            }
+        }
+    }
+
+    // IDataErrorInfo
+    // Gets an error message indicating what is wrong with this object.
+    public string Error
+    {
+        get
+        {
+            return this["SourceFolder"] + this["TargetFolder"] + this["LargeSideSize"] + this["JpegQuality"];
+        }
+    }
+
+    // Gets the error (if any) with the specified column name.
+    public string this[string columnName]
+    {
+        get
+        {
+            switch (columnName)
+            {
+                case "SourceFolder":
+                    if (SourceFolder != null && SourceFolder != "" && !Directory.Exists(SourceFolder))
+                        return "Le répertoire source n'existe pas ou est inaccessible";
+                    break;
+
+                case "TargetFolder":
+                    if (TargetFolder != null && TargetFolder != "" && !Directory.Exists(TargetFolder))
+                        return "Le répertoire destination n'existe pas ou est inaccessible";
+                    break;
+
+                case "LargeSideSize":
+                    if (LargeSideSize < 50 || LargeSideSize > 3000)
+                        return "Taille du grand coté invalide (doit être comprise entre 50 et 3000)";
+                    break;
+
+                case "JpegQuality":
+                    if (JpegQuality < 0 || JpegQuality > 100)
+                        return "Qualité Jpeg invalide (doit être comprise entre 0 et 100)";
+                    break;
+            }
+            return string.Empty;
+        }
+    }
+}
+
+public static class ExtensionMethods
+{
+    private static readonly Action EmptyDelegate = delegate () { };
+
+    // Extension method to force the refresh of a UIElement
+    public static void Refresh(this UIElement uiElement)
+    {
+        // By calling Dispatcher.Invoke, the code essentially asks the system to execute all operations that are Render or higher priority,
+        // thus the control will then render itself (drawing the new content).  Afterwards, it will then execute the provided delegate,
+        // which is our empty method.
+        uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
     }
 }

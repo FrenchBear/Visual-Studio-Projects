@@ -39,8 +39,8 @@ public class CityCollection : IEnumerable<string>
 
     IEnumerator<string> IEnumerable<string>.GetEnumerator()
     {
-        for (int i = 0; i < m_Cities.Length; i++)
-            yield return m_Cities[i];
+        foreach (var t in m_Cities)
+            yield return t;
     }
 
     IEnumerator IEnumerable.GetEnumerator()

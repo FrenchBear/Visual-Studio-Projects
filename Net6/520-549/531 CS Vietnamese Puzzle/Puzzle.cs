@@ -23,220 +23,219 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace CS531
+namespace CS531;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
+        // For Vietnamese puzzle we have to use the digits from 1 to 9
+        List<double> t = new() { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
+
+        Test(ListOfPermut, t);
+        Test(GetStackPermutator, t);
+        Test(IteratorPermutator, t);
+    }
+
+    // Relay helper to transform object creation in a function call to be usable by Test
+    private static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l)
+    {
+        return new StackPermutator<T>(l);
+    }
+
+    private static void Test(Func<List<double>, IEnumerable<List<double>>> f, List<double> l)
+    {
+        int np = 0;                  // Number of permutations
+        int ns = 0;                  // Number of solutions
+        Stopwatch sw = Stopwatch.StartNew();
+
+        foreach (var x in f(l))
         {
-            // For Vietnamese puzzle we have to use the digits from 1 to 9
-            List<double> t = new() { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
-
-            Test(ListOfPermut, t);
-            Test(GetStackPermutator, t);
-            Test(IteratorPermutator, t);
-        }
-
-        // Relay helper to transform object creation in a function call to be usable by Test
-        private static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l)
-        {
-            return new StackPermutator<T>(l);
-        }
-
-        private static void Test(Func<List<double>, IEnumerable<List<double>>> f, List<double> l)
-        {
-            int np = 0;                  // Number of permutations
-            int ns = 0;                  // Number of solutions
-            Stopwatch sw = Stopwatch.StartNew();
-
-            foreach (var x in f(l))
+            np++;
+            if (x[0] + 13.0 * x[1] / x[2] + x[3] + 12.0 * x[4] - x[5] - 11.0 + x[6] * x[7] / x[8] - 10.0 == 66.0)
             {
-                np++;
-                if (x[0] + 13.0 * x[1] / x[2] + x[3] + 12.0 * x[4] - x[5] - 11.0 + x[6] * x[7] / x[8] - 10.0 == 66.0)
-                {
-                    // Found a solution!
-                    //x.WriteLine();
-                    ns++;
-                }
+                // Found a solution!
+                //x.WriteLine();
+                ns++;
             }
-            sw.Stop();
-            Console.WriteLine("{0}: {1} solution(s) found on {2} permutations in {3}s", f.Method.Name, ns, np, Math.Round(sw.ElapsedMilliseconds / 1000.0, 2));
-
-            // Just check that the number of permutations is equal to 9!
-            if (np != Fact(l.Count))
-                Console.WriteLine("We have a problem!");
         }
+        sw.Stop();
+        Console.WriteLine("{0}: {1} solution(s) found on {2} permutations in {3}s", f.Method.Name, ns, np, Math.Round(sw.ElapsedMilliseconds / 1000.0, 2));
 
-        // Quick and dirty factorial
-        private static long Fact(long n)
-        {
-            return n <= 2 ? n : n * Fact(n - 1);
-        }
+        // Just check that the number of permutations is equal to 9!
+        if (np != Fact(l.Count))
+            Console.WriteLine("We have a problem!");
+    }
 
-        // A recursive iterator to produce all possible permutations of a List<T>
-        // Short and readable, but 3 times slower than the stack-based version...
-        private static IEnumerable<List<T>> IteratorPermutator<T>(List<T> l)
-        {
-            if (l.Count == 1)
-                // If there's only one element in the list, then the permutation is the list itself
-                yield return l;
-            else
-                // For each element of the list, return the element 1st, followed by all permutations of
-                // the rest of the list
-                for (int i = 0; i < l.Count; i++)
-                {
-                    T element = l[i];
-                    var copy = new List<T>(l);
-                    copy.RemoveAt(i);
-                    foreach (List<T> permut in IteratorPermutator(copy))
-                    {
-                        permut.Insert(0, element);
-                        yield return permut;
-                    }
-                }
-        }
+    // Quick and dirty factorial
+    private static long Fact(long n)
+    {
+        return n <= 2 ? n : n * Fact(n - 1);
+    }
 
-        // A simple permutator returning a list of permutations
-        private static IEnumerable<List<T>> ListOfPermut<T>(List<T> l)
-        {
-            if (l.Count == 1)
-                return new List<List<T>> { l };
-
-            // Small optimization
-            if (l.Count == 2)
-                return new List<List<T>> { l, new List<T> { l[1], l[0] } };
-
-            var r = new List<List<T>>();
+    // A recursive iterator to produce all possible permutations of a List<T>
+    // Short and readable, but 3 times slower than the stack-based version...
+    private static IEnumerable<List<T>> IteratorPermutator<T>(List<T> l)
+    {
+        if (l.Count == 1)
+            // If there's only one element in the list, then the permutation is the list itself
+            yield return l;
+        else
+            // For each element of the list, return the element 1st, followed by all permutations of
+            // the rest of the list
             for (int i = 0; i < l.Count; i++)
             {
-                var s = new List<T>(l);
-                s.RemoveAt(i);
-                foreach (List<T> x in ListOfPermut<T>(s))
+                T element = l[i];
+                var copy = new List<T>(l);
+                copy.RemoveAt(i);
+                foreach (List<T> permut in IteratorPermutator(copy))
                 {
-                    x.Insert(0, l[i]);
-                    r.Add(x);
+                    permut.Insert(0, element);
+                    yield return permut;
                 }
             }
-            return r;
-        }
     }
 
-    // Stack-based permutator
-    internal class StackPermutator<T> : IEnumerable<List<T>>
+    // A simple permutator returning a list of permutations
+    private static IEnumerable<List<T>> ListOfPermut<T>(List<T> l)
     {
-        // Just keep a copy of the list since enumerator is retrieved later
-        private readonly List<T> list;
+        if (l.Count == 1)
+            return new List<List<T>> { l };
 
-        public StackPermutator(List<T> l)
+        // Small optimization
+        if (l.Count == 2)
+            return new List<List<T>> { l, new List<T> { l[1], l[0] } };
+
+        var r = new List<List<T>>();
+        for (int i = 0; i < l.Count; i++)
         {
-            list = l;
-        }
-
-        public virtual IEnumerator<List<T>> GetEnumerator()
-        {
-            return new MyEnumerator(list);
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        private class MyEnumerator : IEnumerator<List<T>>
-        {
-            // Stack to store elements not fully permuted
-            private readonly Stack<ListLevel<T>> stack;
-
-            // One element of the stack, with level items at the head of the list already permuted
-            private class ListLevel<Z>
+            var s = new List<T>(l);
+            s.RemoveAt(i);
+            foreach (List<T> x in ListOfPermut<T>(s))
             {
-                public List<Z> list;
-                public int level;
+                x.Insert(0, l[i]);
+                r.Add(x);
             }
+        }
+        return r;
+    }
+}
 
-            public MyEnumerator(List<T> l)
-            {
-                stack = new Stack<ListLevel<T>>();
-                stack.Push(new ListLevel<T> { level = 0, list = l });   // 1st ListLevel, 0 item has been permuted yet
-                stack.Push(null);   // Just because the 1st call is to MoveNext, that will pop the top of the stack...
-            }
+// Stack-based permutator
+internal class StackPermutator<T> : IEnumerable<List<T>>
+{
+    // Just keep a copy of the list since enumerator is retrieved later
+    private readonly List<T> list;
 
-            public List<T> Current
+    public StackPermutator(List<T> l)
+    {
+        list = l;
+    }
+
+    public virtual IEnumerator<List<T>> GetEnumerator()
+    {
+        return new MyEnumerator(list);
+    }
+
+    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    private class MyEnumerator : IEnumerator<List<T>>
+    {
+        // Stack to store elements not fully permuted
+        private readonly Stack<ListLevel<T>> stack;
+
+        // One element of the stack, with level items at the head of the list already permuted
+        private class ListLevel<Z>
+        {
+            public List<Z> list;
+            public int level;
+        }
+
+        public MyEnumerator(List<T> l)
+        {
+            stack = new Stack<ListLevel<T>>();
+            stack.Push(new ListLevel<T> { level = 0, list = l });   // 1st ListLevel, 0 item has been permuted yet
+            stack.Push(null);   // Just because the 1st call is to MoveNext, that will pop the top of the stack...
+        }
+
+        public List<T> Current
+        {
+            get
             {
-                get
+                for (; ; )
                 {
-                    for (; ; )
+                    var x = stack.Peek() as ListLevel<T>;
+                    // If all the elements of the list have been permuted,
+                    // the element is valid and can be returned
+                    if (x.level == x.list.Count - 1)
+                        return x.list;
+                    // Of, not valid.  Remove it from the stack
+                    stack.Pop();
+                    // And take one by one all remaining elements not permuted in the list,
+                    // and push a list with this element added to the list of already
+                    // permuted elements, remaining one
+                    // less element in the non-permuted part
+                    for (int i = x.list.Count - 1; i >= x.level; i--)
                     {
-                        var x = stack.Peek() as ListLevel<T>;
-                        // If all the elements of the list have been permuted,
-                        // the element is valid and can be returned
-                        if (x.level == x.list.Count - 1)
-                            return x.list;
-                        // Of, not valid.  Remove it from the stack
-                        stack.Pop();
-                        // And take one by one all remaining elements not permuted in the list,
-                        // and push a list with this element added to the list of already
-                        // permuted elements, remaining one
-                        // less element in the non-permuted part
-                        for (int i = x.list.Count - 1; i >= x.level; i--)
-                        {
-                            T element = x.list[i];
-                            var copy = new List<T>(x.list);
-                            copy.RemoveAt(i);
-                            copy.Insert(x.level, element);
-                            // Push the list with one more permuted element on the stack
-                            stack.Push(new ListLevel<T> { level = x.level + 1, list = copy });
-                        }
+                        T element = x.list[i];
+                        var copy = new List<T>(x.list);
+                        copy.RemoveAt(i);
+                        copy.Insert(x.level, element);
+                        // Push the list with one more permuted element on the stack
+                        stack.Push(new ListLevel<T> { level = x.level + 1, list = copy });
                     }
                 }
             }
+        }
 
-            public bool MoveNext()
-            {
-                // In theory should check that stack is not empty before dropping top element...
-                stack.Pop();
-                return stack.Count > 0;
-            }
+        public bool MoveNext()
+        {
+            // In theory should check that stack is not empty before dropping top element...
+            stack.Pop();
+            return stack.Count > 0;
+        }
 
-            object System.Collections.IEnumerator.Current
-            {
-                get { return Current; }
-            }
+        object System.Collections.IEnumerator.Current
+        {
+            get { return Current; }
+        }
 
-            public void Dispose()
-            {
-                //nop
-            }
+        public void Dispose()
+        {
+            //nop
+        }
 
-            public void Reset()
-            {
-                // nop
-            }
+        public void Reset()
+        {
+            // nop
         }
     }
+}
 
-    internal static class ExtensionMethods
+internal static class ExtensionMethods
+{
+    // Print an enumeration
+    public static void ConsoleWrite<T>(this IEnumerable<T> source)
     {
-        // Print an enumeration
-        public static void ConsoleWrite<T>(this IEnumerable<T> source)
+        Console.Write("{");
+        bool first = true;
+        foreach (T item in source)
         {
-            Console.Write("{");
-            bool first = true;
-            foreach (T item in source)
-            {
-                if (first)
-                    first = false;
-                else
-                    Console.Write(", ");
-                Console.Write(item);
-            }
-            Console.Write("}");
+            if (first)
+                first = false;
+            else
+                Console.Write(", ");
+            Console.Write(item);
         }
+        Console.Write("}");
+    }
 
-        public static void ConsoleWriteLine<T>(this IEnumerable<T> source)
-        {
-            source.ConsoleWrite();
-            Console.WriteLine();
-        }
+    public static void ConsoleWriteLine<T>(this IEnumerable<T> source)
+    {
+        source.ConsoleWrite();
+        Console.WriteLine();
     }
 }

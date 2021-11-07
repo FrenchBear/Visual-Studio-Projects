@@ -7,28 +7,27 @@
 using System;
 using System.Text;
 
-namespace StringDecomposition
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            string s = "ắ";
-            Decomp(s, NormalizationForm.FormC);
-            Decomp(s, NormalizationForm.FormD);
-            Decomp(s, NormalizationForm.FormKC);
-            Decomp(s, NormalizationForm.FormKD);
-        }
+namespace StringDecomposition;
 
-        private static void Decomp(string s, NormalizationForm nf)
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        string s = "ắ";
+        Decomp(s, NormalizationForm.FormC);
+        Decomp(s, NormalizationForm.FormD);
+        Decomp(s, NormalizationForm.FormKC);
+        Decomp(s, NormalizationForm.FormKD);
+    }
+
+    private static void Decomp(string s, NormalizationForm nf)
+    {
+        string sd = s.Normalize(nf);
+        Console.Write(nf + ": ");
+        foreach (char c in sd)
         {
-            string sd = s.Normalize(nf);
-            Console.Write(nf.ToString() + ": ");
-            foreach (char c in sd)
-            {
-                Console.Write("u+" + ((int)(c)).ToString("x4") + " ");
-            }
-            Console.WriteLine();
+            Console.Write("u+" + ((int)(c)).ToString("x4") + " ");
         }
+        Console.WriteLine();
     }
 }

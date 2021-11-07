@@ -38,7 +38,7 @@ internal class Complexe
 
     override public string ToString()
     {
-        return "(" + r.ToString() + ";" + i.ToString() + ")";
+        return "(" + r + ";" + i + ")";
     }
 
     public static Complexe operator +(Complexe a, Complexe b)

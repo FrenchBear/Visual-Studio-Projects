@@ -23,15 +23,14 @@ using System;
 using System.Text;
 using static System.Console;
 
-namespace CS608
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            Console.OutputEncoding = new UTF8Encoding();
+namespace CS608;
 
-            WriteLine("Display φ and ϕ, shown as ϕ and φ in Consolas (and Calibri)");
-        }
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        Console.OutputEncoding = new UTF8Encoding();
+
+        WriteLine("Display φ and ϕ, shown as ϕ and φ in Consolas (and Calibri)");
     }
 }

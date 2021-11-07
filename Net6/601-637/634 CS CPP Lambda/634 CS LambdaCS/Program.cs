@@ -9,47 +9,46 @@ using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
-namespace ConsoleApp1
+namespace ConsoleApp1;
+
+internal class Program
 {
-    internal class Program
+    private static readonly List<Predicate<int>> filters = new();
+
+    private static void AddDivisorFilter(int d)
     {
-        private static readonly List<Predicate<int>> filters = new();
+        int divisor = Math.Min(d, 100);
+        filters.Add(n => n % divisor == 0);
+    }
 
-        private static void AddDivisorFilter(int d)
-        {
-            int divisor = Math.Min(d, 100);
-            filters.Add(n => n % divisor == 0);
-        }
+    private static void WriteLine<T>(IEnumerable<T> list)
+    {
+        bool first = true;
+        foreach (T item in list)
+            if (first)
+            {
+                first = false;
+                Write("[");
+                Console.Write(item);
+            }
+            else
+            {
+                Write(", ");
+                Console.Write(item);
+            }
+        Console.WriteLine("]");
+    }
 
-        private static void WriteLine<T>(IEnumerable<T> list)
-        {
-            bool first = true;
-            foreach (T item in list)
-                if (first)
-                {
-                    first = false;
-                    Write("[");
-                    Console.Write(item);
-                }
-                else
-                {
-                    Write(", ");
-                    Console.Write(item);
-                }
-            Console.WriteLine("]");
-        }
+    private static void Main(string[] args)
+    {
+        AddDivisorFilter(5);
+        AddDivisorFilter(11);
 
-        private static void Main(string[] args)
-        {
-            AddDivisorFilter(5);
-            AddDivisorFilter(11);
+        IEnumerable<int> vi = new List<int> { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
+        WriteLine(vi);
 
-            IEnumerable<int> vi = new List<int> { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
-            WriteLine(vi);
-
-            foreach (Predicate<int> item in filters)
-                vi = vi.Where(n => !item(n));
-            WriteLine(vi);
-        }
+        foreach (Predicate<int> item in filters)
+            vi = vi.Where(n => !item(n));
+        WriteLine(vi);
     }
 }

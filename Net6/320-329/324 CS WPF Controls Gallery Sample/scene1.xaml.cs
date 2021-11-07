@@ -3,91 +3,90 @@
 
 #pragma warning disable IDE1006 // Naming Styles
 
-namespace SdkXamlBrowser
+namespace SdkXamlBrowser;
+
+using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Markup;
+
+public partial class Scene1
 {
-    using System;
-    using System.IO;
-    using System.Windows;
-    using System.Windows.Controls;
-    using System.Windows.Markup;
+    public bool RealTimeUpdate = true;
 
-    public partial class Scene1
+    public Scene1()
     {
-        public bool RealTimeUpdate = true;
+    }
 
-        public Scene1()
+    private void HandleSelectionChanged(object sender, SelectionChangedEventArgs args)
+    {
+        if (sender == null)
+            return;
+
+        Details.DataContext = (sender as ListBox).DataContext;
+    }
+
+    protected void HandleTextChanged(object sender, TextChangedEventArgs me)
+    {
+        if (RealTimeUpdate) ParseCurrentBuffer();
+    }
+
+    private void ParseCurrentBuffer()
+    {
+        try
         {
-        }
-
-        private void HandleSelectionChanged(object sender, SelectionChangedEventArgs args)
-        {
-            if (sender == null)
-                return;
-
-            Details.DataContext = (sender as ListBox).DataContext;
-        }
-
-        protected void HandleTextChanged(object sender, TextChangedEventArgs me)
-        {
-            if (RealTimeUpdate) ParseCurrentBuffer();
-        }
-
-        private void ParseCurrentBuffer()
-        {
+            MemoryStream ms = new();
+            StreamWriter sw = new(ms);
+            string str = TextBox1.Text;
+            sw.Write(str);
+            sw.Flush();
+            ms.Flush();
+            ms.Position = 0;
             try
             {
-                MemoryStream ms = new();
-                StreamWriter sw = new(ms);
-                string str = TextBox1.Text;
-                sw.Write(str);
-                sw.Flush();
-                ms.Flush();
-                ms.Position = 0;
-                try
+                object content = XamlReader.Load(ms);
+                if (content != null)
                 {
-                    object content = XamlReader.Load(ms);
-                    if (content != null)
-                    {
-                        cc.Children.Clear();
-                        cc.Children.Add((UIElement)content);
-                    }
-                    TextBox1.Foreground = System.Windows.Media.Brushes.Black;
-                    ErrorText.Text = "";
+                    cc.Children.Clear();
+                    cc.Children.Add((UIElement)content);
                 }
-                catch (XamlParseException xpe)
-                {
-                    TextBox1.Foreground = System.Windows.Media.Brushes.Red;
-                    TextBox1.TextWrapping = TextWrapping.Wrap;
-                    ErrorText.Text = xpe.Message.ToString();
-                }
+                TextBox1.Foreground = System.Windows.Media.Brushes.Black;
+                ErrorText.Text = "";
             }
-            catch (Exception)
+            catch (XamlParseException xpe)
             {
-                return;
+                TextBox1.Foreground = System.Windows.Media.Brushes.Red;
+                TextBox1.TextWrapping = TextWrapping.Wrap;
+                ErrorText.Text = xpe.Message;
             }
         }
-
-        protected void onClickParseButton(object sender, RoutedEventArgs args)
+        catch (Exception)
         {
-            ParseCurrentBuffer();
+            return;
         }
+    }
 
-        protected void ShowPreview(object sender, RoutedEventArgs args)
-        {
-            PreviewRow.Height = new GridLength(1, GridUnitType.Star);
-            CodeRow.Height = new GridLength(0);
-        }
+    protected void onClickParseButton(object sender, RoutedEventArgs args)
+    {
+        ParseCurrentBuffer();
+    }
 
-        protected void ShowCode(object sender, RoutedEventArgs args)
-        {
-            PreviewRow.Height = new GridLength(0);
-            CodeRow.Height = new GridLength(1, GridUnitType.Star);
-        }
+    protected void ShowPreview(object sender, RoutedEventArgs args)
+    {
+        PreviewRow.Height = new GridLength(1, GridUnitType.Star);
+        CodeRow.Height = new GridLength(0);
+    }
 
-        protected void ShowSplit(object sender, RoutedEventArgs args)
-        {
-            PreviewRow.Height = new GridLength(1, GridUnitType.Star);
-            CodeRow.Height = new GridLength(1, GridUnitType.Star);
-        }
+    protected void ShowCode(object sender, RoutedEventArgs args)
+    {
+        PreviewRow.Height = new GridLength(0);
+        CodeRow.Height = new GridLength(1, GridUnitType.Star);
+    }
+
+    protected void ShowSplit(object sender, RoutedEventArgs args)
+    {
+        PreviewRow.Height = new GridLength(1, GridUnitType.Star);
+        CodeRow.Height = new GridLength(1, GridUnitType.Star);
     }
 }

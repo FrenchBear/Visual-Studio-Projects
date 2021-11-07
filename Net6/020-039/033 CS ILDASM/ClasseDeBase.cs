@@ -1,44 +1,43 @@
 using System;
 
-namespace MaBibliotheque
+namespace MaBibliotheque;
+
+public abstract class MonOrigine
 {
-    public abstract class MonOrigine
+    public abstract void Action();
+}
+
+public class MaClasseDeBase : MonOrigine
+{
+    private int iMembreDeBase;
+
+    public override void Action()
     {
-        public abstract void Action();
+        Console.WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", iMembreDeBase);
     }
 
-    public class MaClasseDeBase : MonOrigine
+    public int MembreDeBase
     {
-        private int iMembreDeBase;
+        get { return iMembreDeBase; }
+        set { iMembreDeBase = value; }
+    }
 
-        public override void Action()
-        {
-            Console.WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", iMembreDeBase);
-        }
+    // Constructeur par défaut
+    public MaClasseDeBase()
+    {
+        this.iMembreDeBase = 0;
+    }
 
-        public int MembreDeBase
-        {
-            get { return iMembreDeBase; }
-            set { iMembreDeBase = value; }
-        }
+    // Constructeur copie
+    public MaClasseDeBase(MaClasseDeBase b0)
+    {
+        this.iMembreDeBase = b0.iMembreDeBase;
+    }
 
-        // Constructeur par défaut
-        public MaClasseDeBase()
-        {
-            this.iMembreDeBase = 0;
-        }
-
-        // Constructeur copie
-        public MaClasseDeBase(MaClasseDeBase b0)
-        {
-            this.iMembreDeBase = b0.iMembreDeBase;
-        }
-
-        // Destructeur
+    // Destructeur
 #pragma warning disable CA1821 // Remove empty Finalizers
-        ~MaClasseDeBase()
+    ~MaClasseDeBase()
 #pragma warning restore CA1821 // Remove empty Finalizers
-        {
-        }
+    {
     }
 }

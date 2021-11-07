@@ -13,46 +13,43 @@
 using System;
 using System.Diagnostics;
 
-namespace CS525
+namespace CS525;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            //Debug.Assert(gcd(5, 7) == 1);
-            //Debug.Assert(gcd(7, 5) == 1);
-            //Debug.Assert(gcd(6, 9) == 3);
-            //Debug.Assert(gcd(9, 6) == 3);
-            //Debug.Assert(gcd(2*3*5*7*11, 2*3*5*7*13) == 2*3*5*7);
+        //Debug.Assert(gcd(5, 7) == 1);
+        //Debug.Assert(gcd(7, 5) == 1);
+        //Debug.Assert(gcd(6, 9) == 3);
+        //Debug.Assert(gcd(9, 6) == 3);
+        //Debug.Assert(gcd(2*3*5*7*11, 2*3*5*7*13) == 2*3*5*7);
 
-            long fn = 7;
-            long n;
-            for (n = 2; n < 100000000; n++)
-            {
-                long fnp1 = fn + Gcd(n, fn);
-                long gn = fnp1 - fn;
-                if (gn == 191) Debugger.Break();
-                if (gn > 1)
-                    Console.Write("{0} ", fnp1 - fn);
-                fn = fnp1;
-            }
+        long fn = 7;
+        long n;
+        for (n = 2; n < 100000000; n++)
+        {
+            long fnp1 = fn + Gcd(n, fn);
+            long gn = fnp1 - fn;
+            if (gn == 191) Debugger.Break();
+            if (gn > 1)
+                Console.Write("{0} ", fnp1 - fn);
+            fn = fnp1;
         }
+    }
 
-        private static long Gcd(long a, long b)
+    private static long Gcd(long a, long b)
+    {
+        for (; ; )
         {
-            for (; ; )
+            if (b > a)
             {
-                if (b > a)
-                {
-                    long t = a;
-                    a = b;
-                    b = t;
-                }
-                long c = a % b;
-                if (c == 0) return b;
-                a = b;
-                b = c;
+                (a, b) = (b, a);
             }
+            long c = a % b;
+            if (c == 0) return b;
+            a = b;
+            b = c;
         }
     }
 }

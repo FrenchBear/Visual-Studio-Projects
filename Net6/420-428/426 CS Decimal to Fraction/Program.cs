@@ -10,109 +10,108 @@ using System;
 using System.Diagnostics;
 using static System.Console;
 
-namespace CS426
+namespace CS426;
+
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
+        WriteLine("Stern-Brocot algorithm to transform a periodic decimal suite into a fraction\n");
+        double f = 0.1415926535;
+        DoubleToFraction(f, out long rNum, out long rDen);
+        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+
+        f = 3.1415926535;
+        DoubleToFraction(f, out rNum, out rDen);
+        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+
+        f = -0.1415926535;
+        DoubleToFraction(f, out rNum, out rDen);
+        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+
+        f = -3.1415926535;
+        DoubleToFraction(f, out rNum, out rDen);
+        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+
+        // Check we get expected results
+        WriteLine("\nTesting 1 million fractions with n,d in [1..1000]");
+        for (int i = 1; i <= 1000; i++)
+        for (int j = 1; j <= 1000; j++)
         {
-            WriteLine("Stern-Brocot algorithm to transform a periodic decimal suite into a fraction\n");
-            double f = 0.1415926535;
-            DoubleToFraction(f, out long rNum, out long rDen);
-            Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
-
-            f = 3.1415926535;
+            f = ((double)i) / ((double)(j));
             DoubleToFraction(f, out rNum, out rDen);
-            Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+            int pgdc = Gcd(i, j);
+            if (i != rNum * pgdc || j != rDen * pgdc)
+                Debugger.Break();
+        }
+        WriteLine("Test Ok!");
+    }
 
-            f = -0.1415926535;
-            DoubleToFraction(f, out rNum, out rDen);
-            Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+    /// <summary>
+    /// Return Greatest Common Divisor using Euclidean Algorithm
+    /// </summary>
+    private static int Gcd(int a, int b)
+    {
+        if (a <= 0 | b <= 0)
+            throw new ArgumentException("Negative or zero argument not supported");
+        while (b != 0)
+        {
+            int t = b;
+            b = a % b;
+            a = t;
+        }
+        return a;
+    }
 
-            f = -3.1415926535;
-            DoubleToFraction(f, out rNum, out rDen);
-            Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+    private static void DoubleToFraction(double f, out long rNum, out long rDen)
+    {
+        const double epsilon = 1e-6;
 
-            // Check we get expected results
-            WriteLine("\nTesting 1 million fractions with n,d in [1..1000]");
-            for (int i = 1; i <= 1000; i++)
-                for (int j = 1; j <= 1000; j++)
-                {
-                    f = ((double)i) / ((double)(j));
-                    DoubleToFraction(f, out rNum, out rDen);
-                    int pgdc = Gcd(i, j);
-                    if (i != rNum * pgdc || j != rDen * pgdc)
-                        Debugger.Break();
-                }
-            WriteLine("Test Ok!");
+        // Special case
+        if (f == 0.0)
+        {
+            rNum = 0;
+            rDen = 1;
+            return;
         }
 
-        /// <summary>
-        /// Return Greatest Common Divisor using Euclidean Algorithm
-        /// </summary>
-        private static int Gcd(int a, int b)
+        int sign = 1;
+        if (f < 0)
         {
-            if (a <= 0 | b <= 0)
-                throw new ArgumentException("Negative or zero argument not supported");
-            while (b != 0)
-            {
-                int t = b;
-                b = a % b;
-                a = t;
-            }
-            return a;
+            sign = -1;
+            f = -f;
         }
 
-        private static void DoubleToFraction(double f, out long rNum, out long rDen)
+        long off = (long)Math.Floor(f);
+        f -= off;
+        if (f <= epsilon)
         {
-            const double epsilon = 1e-6;
+            rNum = off * sign;
+            rDen = 1;
+            return;
+        }
+        long infNum = 0; long infDen = 1;
+        long supNum = 1; long supDen = 0;
+        for (; ; )
+        {
+            rNum = infNum + supNum;
+            rDen = infDen + supDen;
 
-            // Special case
-            if (f == 0.0)
+            double r = rNum / (double)rDen;
+            if (Math.Abs(r - f) < epsilon)
             {
-                rNum = 0;
-                rDen = 1;
+                rNum = (rNum + off * rDen) * sign;
                 return;
             }
-
-            int sign = 1;
-            if (f < 0)
+            if (r < f)
             {
-                sign = -1;
-                f = -f;
+                infNum = rNum;
+                infDen = rDen;
             }
-
-            long off = (long)Math.Floor(f);
-            f -= off;
-            if (f <= epsilon)
+            else
             {
-                rNum = off * sign;
-                rDen = 1;
-                return;
-            }
-            long infNum = 0; long infDen = 1;
-            long supNum = 1; long supDen = 0;
-            for (; ; )
-            {
-                rNum = infNum + supNum;
-                rDen = infDen + supDen;
-
-                double r = rNum / (double)rDen;
-                if (Math.Abs(r - f) < epsilon)
-                {
-                    rNum = (rNum + off * rDen) * sign;
-                    return;
-                }
-                if (r < f)
-                {
-                    infNum = rNum;
-                    infDen = rDen;
-                }
-                else
-                {
-                    supNum = rNum;
-                    supDen = rDen;
-                }
+                supNum = rNum;
+                supDen = rDen;
             }
         }
     }
