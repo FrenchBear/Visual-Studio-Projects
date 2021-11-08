@@ -1,6 +1,7 @@
 // Essais sur la classe DateTime (chronométrage)
 // Comparaison des performances SortedList et Hashtable
 // Récup du nom de la fonction pointée par un delegate
+//
 // 2001-02-25   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
@@ -11,6 +12,8 @@ using System.Collections;
 using System.Windows.Forms;
 
 #pragma warning disable IDE0052 // Remove unread private members
+
+namespace CS048;
 
 
 public class Form1 : Form

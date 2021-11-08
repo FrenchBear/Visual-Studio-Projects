@@ -1,4 +1,4 @@
-// Essai de DllImport
+// Try DllImport
 //
 // 2001-02-18   PV
 // 2006-10-01   PV  VS2005
@@ -10,17 +10,15 @@ using System.Runtime.InteropServices;
 
 internal class MyApp
 {
-    [DllImport("Kernel32", EntryPoint = "GetSystemDirectory")]
+    [DllImport("Kernel32", EntryPoint = "GetSystemDirectory", CharSet = CharSet.Unicode)]
     public static extern uint GSD(System.Text.StringBuilder str, int len);
 
     public static void Main()
     {
         System.Text.StringBuilder strb = new(500);
-        GSD(strb, strb.Capacity);
+        _ = GSD(strb, strb.Capacity);
 
         Console.WriteLine("SystemDirectory: <{0}>", strb);
         Console.WriteLine("SystemDirectory: <{0}>", System.Environment.SystemDirectory);
-
-        //Console.ReadLine();
     }
 }

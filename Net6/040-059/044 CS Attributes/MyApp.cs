@@ -1,5 +1,6 @@
 // 44 C# Attributes
 // Essai d'utilisation des attributs en C#
+//
 // 2001-02-18   PV
 // 2001-08-18   PV Beta2
 // 2006-10-01   PV  VS2005
@@ -7,6 +8,9 @@
 // 2021-09-18   PV  VS2022, Net6
 
 using System;
+
+namespace CS44;
+
 
 [AttributeUsage(AttributeTargets.Class)]
 public class MonAttribut : System.Attribute

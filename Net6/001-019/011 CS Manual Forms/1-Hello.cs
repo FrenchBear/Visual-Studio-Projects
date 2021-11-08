@@ -7,6 +7,8 @@ using System.Windows.Forms;
 
 #pragma warning disable CA1822 // Mark members as static
 
+namespace CS011a;
+
 public class Hello1 : Form
 {
     internal void InitializeComponent()
