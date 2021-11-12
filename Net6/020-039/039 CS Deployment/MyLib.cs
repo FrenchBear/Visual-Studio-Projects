@@ -6,22 +6,15 @@
 using System;
 using System.Reflection;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 #pragma warning disable CA1822 // Mark members as static
 
 namespace CS039Lib;
 
 public class MaClasse
 {
-    public MaClasse()
-    {
-        Console.WriteLine("MaClasse.ctor()");
-    }
+    public MaClasse() => Console.WriteLine("MaClasse.ctor()");
 
-    public static void MyMeth()
-    {
-        Console.WriteLine("MaClasse.MyMeth()");
-    }
+    public static void MyMeth() => Console.WriteLine("MaClasse.MyMeth()");
 }
 
 public class MyLib

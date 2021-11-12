@@ -20,8 +20,6 @@ using System.Text;
 using System.Threading;
 using static System.Console;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 namespace CS544SkipAtChoice;
 
 internal class Program
@@ -78,15 +76,9 @@ public static class Extensions
             }
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            return MyEnumerator();
-        }
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => MyEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return MyEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => MyEnumerator();
     }
 
     /// <summary>
@@ -97,10 +89,7 @@ public static class Extensions
     /// <param name="start">Index of first element to skip, starting at 0</param>
     /// <param name="count">Number of elements to skip, default 1</param>
     /// <returns></returns>
-    public static IEnumerable<T> SkipAt<T>(this IEnumerable<T> e, int start, int count = 1)
-    {
-        return new SkipAtEnumerator<T>(e, start, count);
-    }
+    public static IEnumerable<T> SkipAt<T>(this IEnumerable<T> e, int start, int count = 1) => new SkipAtEnumerator<T>(e, start, count);
 
     private static readonly Random rnd = new();
 
@@ -110,11 +99,9 @@ public static class Extensions
     /// <typeparam name="T"></typeparam>
     /// <param name="e">Original enumeration</param>
     /// <returns></returns>
-    public static T Choice1<T>(this IEnumerable<T> e)
-    {
+    public static T Choice1<T>(this IEnumerable<T> e) =>
         // Not efficient method, one pass to count, one pass to retrieve element
-        return e.ElementAt(rnd.Next(e.Count()));
-    }
+        e.ElementAt(rnd.Next(e.Count()));
 
     /// <summary>
     /// Returns a random element from the enumeration, version 2
@@ -158,10 +145,7 @@ public static class Extensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="e">Original enumeration</param>
-    public static void WriteLine<T>(this IEnumerable<T> e)
-    {
-        Console.WriteLine(e.AsString());
-    }
+    public static void WriteLine<T>(this IEnumerable<T> e) => Console.WriteLine(e.AsString());
 
     /// <summary>
     /// Returns a string version of the enumeration
@@ -177,14 +161,17 @@ public static class Extensions
         {
             if (bFirst)
             {
-                sb.Append('{');
+                _ = sb.Append('{');
                 bFirst = false;
             }
             else
-                sb.Append(", ");
-            sb.Append(item);
+            {
+                _ = sb.Append(", ");
+            }
+
+            _ = sb.Append(item);
         }
-        sb.Append('}');
+        _ = sb.Append('}');
         return sb.ToString();
     }
 
@@ -197,7 +184,7 @@ public static class Extensions
     public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
     {
         Random rnd = new();
-        return source.OrderBy<T, int>((item) => rnd.Next());
+        return source.OrderBy((item) => rnd.Next());
     }
 
     /// <summary>
@@ -246,15 +233,9 @@ public static class Extensions
             }
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            return MyEnumerator();
-        }
+        IEnumerator<T> IEnumerable<T>.GetEnumerator() => MyEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return MyEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => MyEnumerator();
     }
 
     /// <summary>
@@ -265,10 +246,7 @@ public static class Extensions
     /// <param name="start">Index of first element to return, starting at 0</param>
     /// <param name="count">Number of elements to return</param>
     /// <returns></returns>
-    public static IEnumerable<T> GetRange<T>(this IEnumerable<T> e, int start, int count)
-    {
-        return new GetRangeEnumerator<T>(e, start, count);
-    }
+    public static IEnumerable<T> GetRange<T>(this IEnumerable<T> e, int start, int count) => new GetRangeEnumerator<T>(e, start, count);
 }
 
 /// <summary>

@@ -8,8 +8,6 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 namespace _505_CS_Caller_Info;
 
 internal class Program
@@ -21,10 +19,7 @@ internal class Program
         var v = new InternalObject();
     }
 
-    private static void InternalFunction()
-    {
-        TracedFunction(2);
-    }
+    private static void InternalFunction() => TracedFunction(2);
 
     public static void TracedFunction(int i,
         [CallerMemberName] string memberName = "",
@@ -46,7 +41,7 @@ internal class Program
 
     public string UserName
     {
-        get { return _userName; }
+        get => _userName;
         set
         {
             _userName = value;
@@ -54,18 +49,12 @@ internal class Program
         }
     }
 
-    protected void RaisePropertyChanged([CallerMemberName] string member = "")
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
-    }
+    protected void RaisePropertyChanged([CallerMemberName] string member = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
 
     // ========================================
 }
 
 public class InternalObject
 {
-    public InternalObject()
-    {
-        Program.TracedFunction(3);
-    }
+    public InternalObject() => Program.TracedFunction(3);
 }

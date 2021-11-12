@@ -34,17 +34,17 @@ public partial class MainWindow : Window
     private static void DoWork(CancellationToken cancelToken, IProgress<string> progress)
     {
         int i = 0;
-        Task.Run(async () =>
-        {
-            Thread t2 = System.Threading.Thread.CurrentThread;
+        _ = Task.Run(async () =>
+          {
+              Thread t2 = System.Threading.Thread.CurrentThread;
             //Debugger.Break();
 
             while (!cancelToken.IsCancellationRequested)
-            {
-                progress.Report(i++.ToString());
-                await Task.Delay(100, cancelToken);
-            }
-        }, cancelToken);
+              {
+                  progress.Report(i++.ToString());
+                  await Task.Delay(100, cancelToken);
+              }
+          }, cancelToken);
     }
 
     private CancellationTokenSource cts;
@@ -74,7 +74,7 @@ public partial class MainWindow : Window
 
     private void AddTrace(string s)
     {
-        listBox.Items.Add(s + "  " + DateTime.Now.ToString("HH:mm:ss.fff"));
+        _ = listBox.Items.Add(s + "  " + DateTime.Now.ToString("HH:mm:ss.fff"));
         listBox.ScrollIntoView(listBox.Items[^1]);
     }
 
@@ -107,16 +107,14 @@ public partial class MainWindow : Window
         return t.Unwrap();
     }
 
-    private Task GetTask3(int w)
-    {
+    private Task GetTask3(int w) =>
         // Task.Run is smart enough to unwrap
-        return Task.Run(async () =>
+        Task.Run(async () =>
         {
             Debug.WriteLine("A task3 has started, waiting for {0}", w * 1000);
             await Task.Delay(1000 * w);
             Debug.WriteLine("A task3 has ended, waited for {0}", w * 1000);
         });
-    }
 
     // And letting the compiler do the job is even easier
     // Doesn't work!
@@ -200,8 +198,5 @@ public partial class MainWindow : Window
         return tres;
     }
 
-    private async void button5_Click(object sender, RoutedEventArgs e)
-    {
-        Array.ForEach((await ParallelCalcAsync()).ToArray(), d => AddTrace(d.ToString()));
-    }
+    private async void button5_Click(object sender, RoutedEventArgs e) => Array.ForEach((await ParallelCalcAsync()).ToArray(), d => AddTrace(d.ToString()));
 }

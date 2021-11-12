@@ -25,10 +25,7 @@ internal class BinaryTree<T> : IEnumerable<T>
 {
     private Node<T> m_Root;
 
-    public void Add(params T[] items)
-    {
-        Array.ForEach(items, Add);
-    }
+    public void Add(params T[] items) => Array.ForEach(items, Add);
 
     // Return the object itself for data pipelining
     public BinaryTree<T> Add(IEnumerable<T> items)
@@ -37,10 +34,7 @@ internal class BinaryTree<T> : IEnumerable<T>
         return this;
     }
 
-    public void Add(T item)
-    {
-        AddTree(ref m_Root, item);
-    }
+    public void Add(T item) => AddTree(ref m_Root, item);
 
     private void AddTree(ref Node<T> Node, T item)
     {
@@ -53,32 +47,35 @@ internal class BinaryTree<T> : IEnumerable<T>
         }
         else
         if ((item as IComparable).CompareTo(Node.Item as IComparable) >= 0)
+        {
             AddTree(ref Node.RightNode, item);
+        }
         else
+        {
             AddTree(ref Node.LeftNode, item);
+        }
     }
 
-    public IEnumerator<T> GetEnumerator()
-    {
-        return EnumerateInOrder(m_Root).GetEnumerator();
-    }
+    public IEnumerator<T> GetEnumerator() => EnumerateInOrder(m_Root).GetEnumerator();
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     private IEnumerable<T> EnumerateInOrder(Node<T> Node)
     {
         if (Node != null)
         {
             if (Node.LeftNode != null)
+            {
                 foreach (T item in EnumerateInOrder(Node.LeftNode))
                     yield return item;
+            }
+
             yield return Node.Item;
             if (Node.RightNode != null)
+            {
                 foreach (T item in EnumerateInOrder(Node.RightNode))
                     yield return item;
+            }
         }
     }
 }
@@ -94,19 +91,19 @@ internal class Program
         double[] tr10, tu10, tv10;
         tr10 = Array.ConvertAll(new double[10], /*(Converter<double, double>)*/delegate { return Rnd(); });
         tu10 = Array.ConvertAll(new double[10], x => Rnd());
-        tv10 = Generate<double>(10, Rnd).ToArray();
+        tv10 = Generate(10, Rnd).ToArray();
 
         var t = new BinaryTree<double>
         {
             // The two most beautiful lines of code I've written for a long time!!!
-            Generate<double>(10, Rnd)
+            Generate(10, Rnd)
         };
-        t.ForEach<double>(Console.WriteLine);       // x => Console.WriteLine(x)
+        t.ForEach(Console.WriteLine);       // x => Console.WriteLine(x)
 
         // My first data pipeline in one line !
         new BinaryTree<int>()
-            .Add(Generate<int>(10, () => r.Next(100)))
-            .ForEach<int>(Console.WriteLine);       // x => Console.WriteLine(x)
+            .Add(Generate(10, () => r.Next(100)))
+            .ForEach(Console.WriteLine);       // x => Console.WriteLine(x)
 
         Debugger.Break();
     }

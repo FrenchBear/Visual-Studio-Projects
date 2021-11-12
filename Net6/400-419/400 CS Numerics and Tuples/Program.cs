@@ -39,13 +39,7 @@ internal class Program
         // l3.Add(5);       // Throws a run-time exception "not supported exception": Collection is read-only.
     }
 
-    private static BigInteger Factorial(BigInteger n)
-    {
-        if (n <= 1)
-            return 1;
-        else
-            return n * Factorial(n - 1);
-    }
+    private static BigInteger Factorial(BigInteger n) => n <= 1 ? 1 : n * Factorial(n - 1);
 
     // Example of function returning two values in a Tuple
     private static Tuple<int, string> MyFunction()

@@ -17,10 +17,7 @@ public partial class MainWindow : Window
 {
     private readonly Random rnd = new();
 
-    public MainWindow()
-    {
-        InitializeComponent();
-    }
+    public MainWindow() => InitializeComponent();
 
     private async void Button_Click_1(object sender, RoutedEventArgs e)
     {
@@ -41,7 +38,7 @@ public partial class MainWindow : Window
         Task<double> t6 = Task.Run(() => LongMethod(6));
         await Task.WhenAll( t1, t2, t3, t4, t5, t6);
          */
-        await Task.WhenAll<double>(lt.ToArray());
+        _ = await Task.WhenAll(lt.ToArray());
         // With a Task.WaitAll, result is the same, but current thread is blocked waiting for completion of
         // tasks, and dispatcher cannot refreh UI
         //Task.WaitAll(lt.ToArray());
@@ -62,11 +59,11 @@ public partial class MainWindow : Window
     private void AddTrace(string s)
     {
         string s1 = s + "  " + DateTime.Now.ToString("HH:mm:ss.fff");
-        Dispatcher.BeginInvoke(new Action(delegate
-            {
-                listBox.Items.Add(s1);
-                listBox.ScrollIntoView(listBox.Items[^1]);
-            }
+        _ = Dispatcher.BeginInvoke(new Action(delegate
+              {
+                  _ = listBox.Items.Add(s1);
+                  listBox.ScrollIntoView(listBox.Items[^1]);
+              }
         ));
     }
 }

@@ -18,10 +18,7 @@ internal class Program
         a.WriteLine();
     }
 
-    private static void Test(int[] a)
-    {
-        a[2] = 12;
-    }
+    private static void Test(int[] a) => a[2] = 12;
 }
 
 internal static class Extensions
@@ -37,7 +34,10 @@ internal static class Extensions
                 bFirst = false;
             }
             else
+            {
                 Console.Write(", ");
+            }
+
             Console.Write(e);
         }
         Console.WriteLine("]");

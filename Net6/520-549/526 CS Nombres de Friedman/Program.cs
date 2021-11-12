@@ -18,40 +18,54 @@ internal class Program
     {
         // Nombres à deux chiffres
         for (int i = 1; i < 10; i++)
-        for (int j = 0; j < 10; j++)
-            foreach (int c in CombineTwoNumbers(i, j, false))
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                foreach (int c in CombineTwoNumbers(i, j, false))
             {
                 if (10 * i + j == c)
                     Console.WriteLine(c);
             }
+            }
+        }
 
         // Nombres à trois chiffres
         for (int i = 1; i < 10; i++)
-        for (int j = 0; j < 10; j++)
-        for (int k = 0; k < 10; k++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                for (int k = 0; k < 10; k++)
         {
             // ( i op j ) op k
             foreach (int ij in CombineTwoNumbers(i, j, true))
-            foreach (int c in CombineTwoNumbers(ij, k, false))
+                    {
+                        foreach (int c in CombineTwoNumbers(ij, k, false))
             {
                 if (100 * i + 10 * j + k == c)
                     Found(c);
             }
+                    }
 
-            // (i op k) op j
-            foreach (int ik in CombineTwoNumbers(i, k, true))
-            foreach (int c in CombineTwoNumbers(ik, j, false))
+                    // (i op k) op j
+                    foreach (int ik in CombineTwoNumbers(i, k, true))
+                    {
+                        foreach (int c in CombineTwoNumbers(ik, j, false))
             {
                 if (100 * i + 10 * j + k == c)
                     Found(c);
             }
+                    }
 
-            // (j op k) op i
-            foreach (int jk in CombineTwoNumbers(j, k, true))
-            foreach (int c in CombineTwoNumbers(jk, i, false))
+                    // (j op k) op i
+                    foreach (int jk in CombineTwoNumbers(j, k, true))
+                    {
+                        foreach (int c in CombineTwoNumbers(jk, i, false))
             {
                 if (100 * i + 10 * j + k == c)
                     Found(c);
+            }
+                    }
+                }
             }
         }
     }
@@ -62,7 +76,7 @@ internal class Program
     {
         if (!PreviousResults.Contains(n))
         {
-            PreviousResults.Add(n);
+            _ = PreviousResults.Add(n);
             Console.Write("{0} ", n);
         }
     }

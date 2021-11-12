@@ -58,7 +58,7 @@ internal class Program
         if (remaining != 0)
         {
             var lastIndex = segments.Length - 1;
-            segments[lastIndex] = new ArraySegment<T>(array, lastIndex * step, array.Length - (lastIndex * step));
+            segments[lastIndex] = new ArraySegment<T>(array, lastIndex * step, array.Length - lastIndex * step);
         }
 
         var initializers = new Task[cores];

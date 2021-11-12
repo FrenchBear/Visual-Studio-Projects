@@ -15,7 +15,7 @@ internal class Program
     private static void Main(string[] args)
     {
         var testc = new Test();
-        testc.ConvertImage("DSC_09785.JPG");
+        _ = testc.ConvertImage("DSC_09785.JPG");
     }
 }
 
@@ -129,9 +129,12 @@ internal class Test
         int j;
         ImageCodecInfo[] encoders;
         encoders = ImageCodecInfo.GetImageEncoders();
-        for (j = 0; (j <= encoders.Length); j++)
-            if ((encoders[j].MimeType == mimeType))
+        for (j = 0; j <= encoders.Length; j++)
+        {
+            if (encoders[j].MimeType == mimeType)
                 return encoders[j];
+        }
+
         return null;
     }
 

@@ -32,7 +32,7 @@ public class MyForm : Form
             Text = "New"
         };
         Controls.Add(btnNew);
-        btnNew.Click += new System.EventHandler(OnNewClick);
+        btnNew.Click += new EventHandler(OnNewClick);
 
         button1 = new Button
         {
@@ -43,7 +43,7 @@ public class MyForm : Form
         };
         Controls.Add(button1);
         //Register the event handler
-        button1.Click += new System.EventHandler(OnClick);
+        button1.Click += new EventHandler(OnClick);
 
         button2 = new Button
         {
@@ -53,17 +53,12 @@ public class MyForm : Form
             Text = "Bouton 2"
         };
         this.Controls.Add(button2);
-        button2.Click += new System.EventHandler(OnClick);
+        button2.Click += new EventHandler(OnClick);
     }
 
     // Handler commun à button1 et button2
-    private void OnClick(object sender, EventArgs evArgs)
-    {
-        if (sender == button1)
-            MessageBox.Show("Hello Button 1");
-        else
-            MessageBox.Show("Hello Button 2");
-    }
+    private void OnClick(object sender, EventArgs evArgs) 
+        => _ = sender == button1 ? MessageBox.Show("Hello Button 1") : MessageBox.Show("Hello Button 2");
 
     private void OnNewClick(object sender, EventArgs evArgs)
     {
@@ -80,14 +75,14 @@ public class MyForm : Form
         // false before calling showDialog.
 
         MyForm f = new();
-        f.Closed += new System.EventHandler(OnFormClosed);
+        f.Closed += new EventHandler(OnFormClosed);
         //f.ShowDialog();	  // Affichage modal
         f.Show();
     }
 
     private void OnFormClosed(object sender, EventArgs evArgs)
     {
-        MessageBox.Show("onFormClosed");
+        _ = MessageBox.Show("onFormClosed");
         ((MyForm)sender).Dispose();
     }
 

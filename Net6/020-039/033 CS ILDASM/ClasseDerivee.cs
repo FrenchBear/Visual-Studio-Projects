@@ -11,21 +11,15 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     {
         private int a;
 
-        public MaSousClasse(int a)
-        {
-            this.a = a;
-        }
+        public MaSousClasse(int a) => this.a = a;
 
         public int A
         {
-            get { return a; }
-            set { a = value; }
+            get => a;
+            set => a = value;
         }
 
-        public override string ToString()
-        {
-            return a.ToString();
-        }
+        public override string ToString() => a.ToString();
 
         [Obsolete("Ne plus utiliser !")]
         private void MethodeObsolete()
@@ -61,37 +55,22 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     ///   Indexer de base: accès via un indice entier
     /// </summary>
     /// <param name="index">Rang de l'élément à récupérer</param>
-    public string this[int index]
-    {
-        get { return $"this[{index}]"; }
-    }
+    public string this[int index] => $"this[{index}]";
 
-    public string this[string index]
-    {
-        get { return $"this[\"{index}\"]"; }
-    }
+    public string this[string index] => $"this[\"{index}\"]";
 
-    public string this[char index]
-    {
-        get { return $"this['{index}']"; }
-    }
+    public string this[char index] => $"this['{index}']";
 
-    public string this[int x, int y]
-    {
-        get { return $"this[{x},{y}]"; }
-    }
+    public string this[int x, int y] => $"this[{x},{y}]";
 
-    public string this[int x, string y]
-    {
-        get { return $"this[{x},\"{y}\"]"; }
-    }
+    public string this[int x, string y] => $"this[{x},\"{y}\"]";
 
     public event GestionnaireDeBip Bip;
 
     int IMonInterface.MaPropriete
     {
-        get { return iProp; }
-        set { iProp = value; }
+        get => iProp;
+        set => iProp = value;
     }
 
     // Héritage de MaClasseDeBase
@@ -101,10 +80,7 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
         base.Action();
     }
 
-    public void MyBaseAction()
-    {
-        base.Action();
-    }
+    public void MyBaseAction() => base.Action();
 
     // Eléments spécifiques à la classe
     private int iProp;
@@ -112,15 +88,9 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     protected int age;
     private readonly MaSousClasse sc;
 
-    public MaClasseDerivee()
-    {
-        sc = new MaSousClasse(45);
-    }
+    public MaClasseDerivee() => sc = new MaSousClasse(45);
 
-    static MaClasseDerivee()
-    {
-        Console.WriteLine("Constructeur statique de MaClasseDerivee");
-    }
+    static MaClasseDerivee() => Console.WriteLine("Constructeur statique de MaClasseDerivee");
 
     ~MaClasseDerivee()
     {
@@ -129,8 +99,8 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
 
     public int Age
     {
-        get { return age; }
-        set { age = value; }
+        get => age;
+        set => age = value;
     }
 
     public static void TrucDangereux(int q)
@@ -154,8 +124,5 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
 
     private static int iCompteurGlobal;
 
-    public static void MaMethodeStatique()
-    {
-        iCompteurGlobal = 0;
-    }
+    public static void MaMethodeStatique() => iCompteurGlobal = 0;
 }

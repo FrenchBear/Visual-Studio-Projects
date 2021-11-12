@@ -32,28 +32,16 @@ internal class Program
         c2.Stop();
     }
 
-    private static void Car_EngineStartedEvent(object sender, EngineStateChangedEventArgs e)
-    {
-        Console.WriteLine("{0} engine started on {1}", (sender as Car).Name, e.StateChangedOn);
-    }
+    private static void Car_EngineStartedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine started on {1}", (sender as Car).Name, e.StateChangedOn);
 
-    private static void Car_EngineStoppedEvent(object sender, EngineStateChangedEventArgs e)
-    {
-        Console.WriteLine("{0} engine stopped on {1}", (sender as Car).Name, e.StateChangedOn);
-    }
+    private static void Car_EngineStoppedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine stopped on {1}", (sender as Car).Name, e.StateChangedOn);
 
-    private static void Car_EngineStateChangedEvent(object sender, EngineStateChangedEventArgs e)
-    {
-        Console.WriteLine("{0} engine state changed on {1}, IsEngineOn={2}", (sender as Car).Name, e.StateChangedOn, (sender as Car).IsEngineOn);
-    }
+    private static void Car_EngineStateChangedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine state changed on {1}, IsEngineOn={2}", (sender as Car).Name, e.StateChangedOn, (sender as Car).IsEngineOn);
 }
 
 public class EngineStateChangedEventArgs : EventArgs
 {
-    public EngineStateChangedEventArgs(DateTime stateChangedOn)
-    {
-        StateChangedOn = stateChangedOn;
-    }
+    public EngineStateChangedEventArgs(DateTime stateChangedOn) => StateChangedOn = stateChangedOn;
 
     public DateTime StateChangedOn { get; private set; }
 }
@@ -63,10 +51,7 @@ public class Car
     // --------------------------------------------
     // Construction
 
-    public Car(string name)
-    {
-        Name = name;
-    }
+    public Car(string name) => Name = name;
 
     // --------------------------------------------
     // Event support
@@ -102,7 +87,7 @@ public class Car
 
     public bool IsEngineOn
     {
-        get { return isEngineOn; }
+        get => isEngineOn;
         set
         {
             if (isEngineOn != value)
@@ -116,13 +101,7 @@ public class Car
     // --------------------------------------------
     // Some methods
 
-    public void Start()
-    {
-        IsEngineOn = true;
-    }
+    public void Start() => IsEngineOn = true;
 
-    public void Stop()
-    {
-        IsEngineOn = false;
-    }
+    public void Stop() => IsEngineOn = false;
 }

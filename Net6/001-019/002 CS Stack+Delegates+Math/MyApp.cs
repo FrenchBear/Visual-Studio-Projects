@@ -27,10 +27,7 @@ public class MyMath
         return v * (bsup - binf) / PAS;
     }
 
-    public static double Carré(double x)
-    {
-        return x * x;
-    }
+    public static double Carré(double x) => x * x;
 }
 
 public class MyApp

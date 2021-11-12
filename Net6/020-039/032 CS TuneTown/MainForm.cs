@@ -14,15 +14,15 @@ using System.Windows.Forms;
 
 namespace TuneTownNS;
 
-public class MainForm : System.Windows.Forms.Form
+public class MainForm : Form
 {
-    private System.Windows.Forms.Button RemoveButton;
-    private System.Windows.Forms.Button EditButton;
-    private System.Windows.Forms.Button AddButton;
-    private System.Windows.Forms.ColumnHeader TitleHeader;
-    private System.Windows.Forms.ColumnHeader ArtistHeader;
-    private System.Windows.Forms.ColumnHeader CommentHeader;
-    private System.Windows.Forms.ListView TuneView;
+    private Button RemoveButton;
+    private Button EditButton;
+    private Button AddButton;
+    private ColumnHeader TitleHeader;
+    private ColumnHeader ArtistHeader;
+    private ColumnHeader CommentHeader;
+    private ListView TuneView;
 
     public MainForm()
     {
@@ -32,13 +32,13 @@ public class MainForm : System.Windows.Forms.Form
 
     private void InitializeComponent()
     {
-        this.EditButton = new System.Windows.Forms.Button();
-        this.TitleHeader = new System.Windows.Forms.ColumnHeader();
-        this.TuneView = new System.Windows.Forms.ListView();
-        this.ArtistHeader = new System.Windows.Forms.ColumnHeader();
-        this.CommentHeader = new System.Windows.Forms.ColumnHeader();
-        this.AddButton = new System.Windows.Forms.Button();
-        this.RemoveButton = new System.Windows.Forms.Button();
+        this.EditButton = new Button();
+        this.TitleHeader = new ColumnHeader();
+        this.TuneView = new ListView();
+        this.ArtistHeader = new ColumnHeader();
+        this.CommentHeader = new ColumnHeader();
+        this.AddButton = new Button();
+        this.RemoveButton = new Button();
         this.SuspendLayout();
         //
         // EditButton
@@ -47,7 +47,7 @@ public class MainForm : System.Windows.Forms.Form
         this.EditButton.Name = "EditButton";
         this.EditButton.TabIndex = 2;
         this.EditButton.Text = "&Edit";
-        this.EditButton.Click += new System.EventHandler(this.OnEditButtonClicked);
+        this.EditButton.Click += new EventHandler(this.OnEditButtonClicked);
         //
         // TitleHeader
         //
@@ -56,10 +56,10 @@ public class MainForm : System.Windows.Forms.Form
         //
         // TuneView
         //
-        this.TuneView.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                                 | System.Windows.Forms.AnchorStyles.Left)
-                                | System.Windows.Forms.AnchorStyles.Right);
-        this.TuneView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+        this.TuneView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
+                                 | System.Windows.Forms.AnchorStyles.Left
+                                | System.Windows.Forms.AnchorStyles.Right;
+        this.TuneView.Columns.AddRange(new ColumnHeader[] {
             this.TitleHeader,
             this.ArtistHeader,
             this.CommentHeader});
@@ -74,7 +74,7 @@ public class MainForm : System.Windows.Forms.Form
         this.TuneView.Sorting = System.Windows.Forms.SortOrder.Ascending;
         this.TuneView.TabIndex = 0;
         this.TuneView.View = System.Windows.Forms.View.Details;
-        this.TuneView.DoubleClick += new System.EventHandler(this.OnItemDoubleClicked);
+        this.TuneView.DoubleClick += new EventHandler(this.OnItemDoubleClicked);
         //
         // ArtistHeader
         //
@@ -88,27 +88,27 @@ public class MainForm : System.Windows.Forms.Form
         //
         // AddButton
         //
-        this.AddButton.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+        this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
         this.AddButton.Location = new System.Drawing.Point(432, 8);
         this.AddButton.Name = "AddButton";
         this.AddButton.TabIndex = 1;
         this.AddButton.Text = "&Add";
-        this.AddButton.Click += new System.EventHandler(this.OnAddButtonClicked);
+        this.AddButton.Click += new EventHandler(this.OnAddButtonClicked);
         //
         // RemoveButton
         //
-        this.RemoveButton.Anchor = (System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right);
+        this.RemoveButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
         this.RemoveButton.Location = new System.Drawing.Point(432, 104);
         this.RemoveButton.Name = "RemoveButton";
         this.RemoveButton.TabIndex = 3;
         this.RemoveButton.Text = "&Remove";
-        this.RemoveButton.Click += new System.EventHandler(this.OnRemoveButtonClicked);
+        this.RemoveButton.Click += new EventHandler(this.OnRemoveButtonClicked);
         //
         // MainForm
         //
         this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
         this.ClientSize = new System.Drawing.Size(512, 261);
-        this.Controls.AddRange(new System.Windows.Forms.Control[] {
+        this.Controls.AddRange(new Control[] {
             this.RemoveButton,
             this.EditButton,
             this.AddButton,
@@ -125,7 +125,7 @@ public class MainForm : System.Windows.Forms.Form
         if (dlg.ShowDialog() == DialogResult.OK)
         {
             ListViewItem item = new(new string[] { dlg.Title, dlg.Artist, dlg.Comment });
-            TuneView.Items.Add(item);
+            _ = TuneView.Items.Add(item);
             item.Focused = true;
         }
     }
@@ -164,10 +164,7 @@ public class MainForm : System.Windows.Forms.Form
         }
     }
 
-    private void OnItemDoubleClicked(object sender, EventArgs e)
-    {
-        OnEditButtonClicked(sender, e);
-    }
+    private void OnItemDoubleClicked(object sender, EventArgs e) => OnEditButtonClicked(sender, e);
 
     protected override void OnClosing(CancelEventArgs e)
     {
@@ -189,7 +186,7 @@ public class MainForm : System.Windows.Forms.Form
             }
             catch (Exception ex2)
             {
-                MessageBox.Show(ex2.Message);
+                _ = MessageBox.Show(ex2.Message);
             }
             finally
             {
@@ -198,7 +195,7 @@ public class MainForm : System.Windows.Forms.Form
         }
         catch (Exception ex1)
         {
-            MessageBox.Show(ex1.Message);
+            _ = MessageBox.Show(ex1.Message);
         }
     }
 
@@ -220,14 +217,14 @@ public class MainForm : System.Windows.Forms.Form
                         string s2 = reader.ReadLine();
                         string s3 = reader.ReadLine();
                         ListViewItem item = new(new String[] { s1, s2, s3 });
-                        TuneView.Items.Add(item);
+                        _ = TuneView.Items.Add(item);
                         item.Focused = true;
                     }
                 } while (s1 != null);
             }
             catch (Exception ex2)
             {
-                MessageBox.Show(ex2.Message);
+                _ = MessageBox.Show(ex2.Message);
             }
             finally
             {
@@ -240,8 +237,5 @@ public class MainForm : System.Windows.Forms.Form
         }
     }
 
-    public static void Main(string[] args)
-    {
-        Application.Run(new MainForm());
-    }
+    public static void Main(string[] args) => Application.Run(new MainForm());
 }

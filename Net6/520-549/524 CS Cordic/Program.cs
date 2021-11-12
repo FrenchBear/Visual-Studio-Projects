@@ -39,6 +39,7 @@ internal class Program
         double y = 0.0;
         // Do incremental rotation of 1, 0.1, 0.01.. to rotate the value of a
         for (int i = 0; i < n; i++)
+        {
             while (a >= ta[i])
             {
                 // Coordinates before rotation
@@ -52,6 +53,7 @@ internal class Program
                 x = x0 * tcos[i] - y0 * tsin[i];
                 y = x0 * tsin[i] + y0 * tcos[i];
             }
+        }
 
         Console.WriteLine("a={0}", a0);
         Console.WriteLine("c={0}\ts={1}", Math.Cos(a0), Math.Sin(a0));

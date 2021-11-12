@@ -14,16 +14,13 @@ using System.Windows.Forms;
 #pragma warning disable IDE1006 // Naming Styles
 #pragma warning disable CA1050 // Declare types in namespaces
 
-public class MyForm : System.Windows.Forms.Form
+public class MyForm : Form
 {
-    private System.Windows.Forms.Button button1;
+    private Button button1;
     private GradientButton button2;
     private readonly System.ComponentModel.Container components = null;
 
-    public MyForm()
-    {
-        InitializeComponent();
-    }
+    public MyForm() => InitializeComponent();
 
     protected override void Dispose(bool disposing)
     {
@@ -41,62 +38,53 @@ public class MyForm : System.Windows.Forms.Form
 
     private void InitializeComponent()
     {
-        this.button1 = new System.Windows.Forms.Button();
+        this.button1 = new Button();
         this.button2 = new GradientButton();
         this.SuspendLayout();
         //
         // button1
         //
-        this.button1.Location = new System.Drawing.Point(56, 24);
+        this.button1.Location = new Point(56, 24);
         this.button1.Name = "button1";
-        this.button1.Size = new System.Drawing.Size(120, 56);
+        this.button1.Size = new Size(120, 56);
         this.button1.TabIndex = 0;
         this.button1.Text = "button1";
-        this.button1.Click += new System.EventHandler(this.button1_Click_1);
+        this.button1.Click += new EventHandler(this.button1_Click_1);
         //
         // button2
         //
-        this.button2.Location = new System.Drawing.Point(56, 104);
+        this.button2.Location = new Point(56, 104);
         this.button2.Name = "button2";
-        this.button2.Size = new System.Drawing.Size(120, 56);
+        this.button2.Size = new Size(120, 56);
         this.button2.TabIndex = 0;
         this.button2.Text = "button2";
         this.button2.StartColor = Color.AntiqueWhite;
         this.button2.EndColor = Color.RosyBrown;
-        this.button2.Click += new System.EventHandler(this.button2_Click);
+        this.button2.Click += new EventHandler(this.button2_Click);
         //
         // MyForm
         //
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        this.ClientSize = new System.Drawing.Size(292, 273);
-        this.Controls.AddRange(new System.Windows.Forms.Control[] {
+        this.AutoScaleBaseSize = new Size(5, 13);
+        this.ClientSize = new Size(292, 273);
+        this.Controls.AddRange(new Control[] {
                                                                 this.button2,
                                                                 this.button1});
         this.Name = "MyForm";
         this.Text = "Form";
-        this.Load += new System.EventHandler(this.MyForm_Load);
+        this.Load += new EventHandler(this.MyForm_Load);
         this.ResumeLayout(false);
     }
 
     #endregion Windows Form Designer generated code
 
     [STAThread]
-    private static void Main()
-    {
-        Application.Run(new MyForm());
-    }
+    private static void Main() => Application.Run(new MyForm());
 
-    private void MyForm_Load(object sender, System.EventArgs e)
+    private void MyForm_Load(object sender, EventArgs e)
     {
     }
 
-    private void button1_Click_1(object sender, System.EventArgs e)
-    {
-        MessageBox.Show("Clic 1 !");
-    }
+    private void button1_Click_1(object sender, EventArgs e) => MessageBox.Show("Clic 1 !");
 
-    private void button2_Click(object sender, System.EventArgs e)
-    {
-        MessageBox.Show("Clic 2 !");
-    }
+    private void button2_Click(object sender, EventArgs e) => MessageBox.Show("Clic 2 !");
 }

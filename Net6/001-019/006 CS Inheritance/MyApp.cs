@@ -8,14 +8,9 @@
 
 using System;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 internal abstract class B
 {
-    protected B()
-    {
-        Console.WriteLine("B.ctor");
-    }
+    protected B() => Console.WriteLine("B.ctor");
 
     protected virtual void SomeVirtualMethod()
     {
@@ -30,10 +25,7 @@ internal abstract class B
 
 internal class D : B
 {
-    public D()
-    {
-        Console.WriteLine("D.ctor");
-    }
+    public D() => Console.WriteLine("D.ctor");
 
     protected override void SomeVirtualMethod()
     {

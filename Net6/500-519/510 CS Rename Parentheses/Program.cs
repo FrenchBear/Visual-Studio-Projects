@@ -38,12 +38,9 @@ internal class Program
                 char c2 = 'a';
                 while (File.Exists(newFile))
                 {
-                    if (c0 != '`')
-                        newFile = r.Replace(file, (new string(c0, 1)) + (new string(c1, 1)) + (new string(c2, 1)) + replace);
-                    else if (c1 != '`')
-                        newFile = r.Replace(file, (new string(c1, 1)) + (new string(c2, 1)) + replace);
-                    else
-                        newFile = r.Replace(file, c2 + replace);
+                    newFile = c0 != '`'
+                        ? r.Replace(file, new string(c0, 1) + new string(c1, 1) + new string(c2, 1) + replace)
+                        : c1 != '`' ? r.Replace(file, new string(c1, 1) + new string(c2, 1) + replace) : r.Replace(file, c2 + replace);
 
                     if (c2 == 'z')
                     {
@@ -56,7 +53,9 @@ internal class Program
                         }
                     }
                     else
+                    {
                         c2++;
+                    }
                 }
 
                 Console.WriteLine(file);

@@ -9,8 +9,6 @@
 
 using System;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 internal class Animal
 {
     public static int Population;
@@ -26,10 +24,7 @@ internal class Chien : Animal
 {
     public string sRace;
 
-    public Chien(string s)
-    {
-        sRace = s;
-    }
+    public Chien(string s) => sRace = s;
 }
 
 internal class AppTest

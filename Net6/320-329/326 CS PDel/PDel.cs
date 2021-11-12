@@ -49,6 +49,7 @@ internal class Program
         foreach (var t in args)
         {
             if (t[0] == '-' || t[0] == '/')
+            {
                 switch (t[1..].ToLower())
                 {
                     case "?":
@@ -88,6 +89,7 @@ internal class Program
                         errorWriter.WriteLine("PDel: Unknown option " + t + "\n");
                         return 1;
                 }
+            }
             else
             {
                 // Not really an option, but still we allow some common exceptions
@@ -142,7 +144,7 @@ internal class Program
         {
             Console.WriteLine();
             Console.Write("(pause) ");
-            Console.ReadLine();
+            _ = Console.ReadLine();
         }
 
         return 0;
@@ -314,9 +316,7 @@ internal class Program
         return s;
     }
 
-    private static string Usage()
-    {
-        return "Usage: PDel [-?] [-??] [-p] [-s] [-v] [-f] [path\\]pattern [path\\]pattern]...\n"
+    private static string Usage() => "Usage: PDel [-?] [-??] [-p] [-s] [-v] [-f] [path\\]pattern [path\\]pattern]...\n"
                + "-?     Shows version and usage\n"
                + "-??    Shows extended information\n"
                + "-p     Adds a final pause\n"
@@ -325,5 +325,4 @@ internal class Program
                + "-f     Forced/final delete, does not send the file to trash can\n"
                + "-r2    Follow reparse points (by default, they're skipped)\n"
             ;
-    }
 }

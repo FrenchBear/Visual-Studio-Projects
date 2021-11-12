@@ -7,7 +7,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 #pragma warning disable CA1050 // Declare types in namespaces
 #pragma warning disable CA1822 // Mark members as static
 
@@ -43,10 +42,7 @@ public class CityCollection : IEnumerable<string>
             yield return t;
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return ((IEnumerable<string>)this).GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable<string>)this).GetEnumerator();
 }
 
 public interface IMachin
@@ -56,10 +52,7 @@ public interface IMachin
 
 public class Toto
 {
-    private IMachin MaFonction(int a, int b)
-    {
-        return new Internal(a, b);
-    }
+    private IMachin MaFonction(int a, int b) => new Internal(a, b);
 
     public class Internal : IMachin
     {
@@ -71,16 +64,10 @@ public class Toto
             m_b = b;
         }
 
-        int IMachin.Bidule(int i)
-        {
-            return m_a * i + m_b;
-        }
+        int IMachin.Bidule(int i) => m_a * i + m_b;
     }
 
-    public int Zap(int i)
-    {
-        return MaFonction(2, 3).Bidule(i);
-    }
+    public int Zap(int i) => MaFonction(2, 3).Bidule(i);
 }
 
 public class C2 : IMachin
@@ -90,8 +77,8 @@ public class C2 : IMachin
 
     public int Bidule(int i)
     {
-        l.AddLast("This is");
-        l.AddLast("a string");
+        _ = l.AddLast("This is");
+        _ = l.AddLast("a string");
 
         //foreach (string s in d)
         //{

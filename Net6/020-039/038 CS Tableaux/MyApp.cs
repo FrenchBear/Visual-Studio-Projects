@@ -8,8 +8,6 @@
 
 using System;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 internal class MyApp
 {
     public static void Main()
@@ -45,6 +43,6 @@ internal class MyApp
         u1[0] = new Object();
         Console.WriteLine("u1[0]==null: {0}", u1[0] == null);
 
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 }

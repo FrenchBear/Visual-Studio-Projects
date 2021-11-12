@@ -84,14 +84,7 @@ internal class Program
                             txt = outString.ToString();
                             int start = txt.IndexOf("{") + 1;
                             int len = txt.IndexOf("}") - start;
-                            if ((start > 0) && (len > 0))
-                            {
-                                txt = txt.Substring(start, len);
-                            }
-                            else
-                            {
-                                txt = string.Empty;
-                            }
+                            txt = (start > 0) && (len > 0) ? txt.Substring(start, len) : string.Empty;
                         }
                     }
                 }
@@ -106,11 +99,11 @@ internal class Program
         {
             if (hconn != IntPtr.Zero)
             {
-                SQLFreeHandle(SQL_HANDLE_DBC, hconn);
+                _ = SQLFreeHandle(SQL_HANDLE_DBC, hconn);
             }
             if (henv != IntPtr.Zero)
             {
-                SQLFreeHandle(SQL_HANDLE_ENV, hconn);
+                _ = SQLFreeHandle(SQL_HANDLE_ENV, hconn);
             }
         }
 

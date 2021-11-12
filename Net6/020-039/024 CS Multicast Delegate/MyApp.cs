@@ -24,16 +24,10 @@ internal class MyApp
         d2("Hello 2");
         d3("Hello 3");
 
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 
-    private static void Sub1(string s)
-    {
-        Console.WriteLine("Sub1: " + s);
-    }
+    private static void Sub1(string s) => Console.WriteLine("Sub1: " + s);
 
-    private static void Sub2(string s)
-    {
-        Console.WriteLine("Sub2: " + s);
-    }
+    private static void Sub2(string s) => Console.WriteLine("Sub2: " + s);
 }

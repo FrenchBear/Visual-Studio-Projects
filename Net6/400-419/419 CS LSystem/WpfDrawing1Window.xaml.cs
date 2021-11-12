@@ -21,10 +21,7 @@ public partial class WpfDrawing1Window : Window
     private IEnumerable<char> _s;
     private int _angle;
 
-    public WpfDrawing1Window()
-    {
-        InitializeComponent();
-    }
+    public WpfDrawing1Window() => InitializeComponent();
 
     public void DrawString(string title, ref IEnumerable<char> s, int angle)
     {
@@ -34,10 +31,7 @@ public partial class WpfDrawing1Window : Window
         Show();
     }
 
-    private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-    {
-        myDrawingVisual.AddDrawing(myGrid.ActualWidth, myGrid.ActualHeight, _s, _angle);
-    }
+    private void Window_SizeChanged(object sender, SizeChangedEventArgs e) => myDrawingVisual.AddDrawing(myGrid.ActualWidth, myGrid.ActualHeight, _s, _angle);
 
     protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
     {
@@ -50,10 +44,7 @@ public class MyVisualHost : FrameworkElement
 {
     private readonly VisualCollection _children;
 
-    public MyVisualHost()
-    {
-        _children = new VisualCollection(this);
-    }
+    public MyVisualHost() => _children = new VisualCollection(this);
 
     public void AddDrawing(double aw, double ah, IEnumerable<char> s, int angle)
     {
@@ -68,25 +59,14 @@ public class MyVisualHost : FrameworkElement
             Wpf1LSystemRenderer wr = new(s, angle);
             wr.Rend(dc, aw, ah);
         }
-        _children.Add(drawingVisual);
+        _ = _children.Add(drawingVisual);
     }
 
     // Provide a required override for the VisualChildrenCount property.
-    protected override int VisualChildrenCount
-    {
-        get { return _children.Count; }
-    }
+    protected override int VisualChildrenCount => _children.Count;
 
     // Provide a required override for the GetVisualChild method.
-    protected override Visual GetVisualChild(int index)
-    {
-        if (index < 0 || index >= _children.Count)
-        {
-            throw new ArgumentOutOfRangeException(nameof(index));
-        }
-
-        return _children[index];
-    }
+    protected override Visual GetVisualChild(int index) => index < 0 || index >= _children.Count ? throw new ArgumentOutOfRangeException(nameof(index)) : _children[index];
 
     // Implementation of renderer for WFP1
     private class Wpf1LSystemRenderer : LSystemRenderer
@@ -101,7 +81,7 @@ public class MyVisualHost : FrameworkElement
         public void Rend(DrawingContext dc, double rendingWidth, double rendingHeight)
         {
             _dc = dc;
-            Rend(rendingWidth, rendingHeight);
+            _ = Rend(rendingWidth, rendingHeight);
         }
 
         protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)

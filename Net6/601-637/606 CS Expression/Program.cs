@@ -19,7 +19,7 @@ internal class Program
         Expression<Func<int, int, int>> e2 = (x, y) => x + 2 * -y;
         MyVisitor mv = new();
 
-        mv.VisiteExpression(e2);
+        _ = mv.VisiteExpression(e2);
 
         // A parameter for the lambda expression.
         ParameterExpression paramExpr = Expression.Parameter(typeof(int), "arg");
@@ -52,7 +52,7 @@ internal class Program
 
         Console.WriteLine();
         Console.WriteLine(lambdaExpr);
-        mv.VisiteExpression(lambdaExpr);
+        _ = mv.VisiteExpression(lambdaExpr);
         // Raises an exception
         //Console.WriteLine(lambdaExpr.Compile().DynamicInvoke(1<<30, 1<<30));
     }
@@ -69,10 +69,7 @@ public class MyVisitor : ExpressionVisitor
 
     private int s = 0;
 
-    private void PrintLine(string st)
-    {
-        Console.WriteLine(new string(' ', 4 * s) + st);
-    }
+    private void PrintLine(string st) => Console.WriteLine(new string(' ', 4 * s) + st);
 
     protected override MemberMemberBinding VisitMemberMemberBinding(MemberMemberBinding node)
     {
@@ -198,7 +195,7 @@ public class MyVisitor : ExpressionVisitor
     protected override Expression VisitLambda<T>(Expression<T> node)
     {
         PrintLine($"Lambda<{typeof(T)}> {node}");
-        s++; var v = base.VisitLambda<T>(node); s--; return v;
+        s++; var v = base.VisitLambda(node); s--; return v;
     }
 
     protected override Expression VisitListInit(ListInitExpression node)

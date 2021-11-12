@@ -72,7 +72,10 @@ internal static class Extensions
                 first = false;
             }
             else
+            {
                 Console.Write(", ");
+            }
+
             Console.Write(item);
         }
         Console.WriteLine('}');

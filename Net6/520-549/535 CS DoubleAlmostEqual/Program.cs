@@ -30,12 +30,14 @@ internal class Program
         {
             double d1 = values[i];
             foreach (int s1 in new int[] { -1, 1 })
+            {
                 for (int j = 0; j < values.Length; j++)
                 {
                     double d2 = values[j];
                     foreach (int s2 in new int[] { -1, 1 })
-                        T(d1 * s1, d2 * s2, ((s1 == s2 && classes[i] == classes[j])) || (d1 == 0.0 && d2 == 0.0));
+                        T(d1 * s1, d2 * s2, (s1 == s2 && classes[i] == classes[j]) || (d1 == 0.0 && d2 == 0.0));
                 }
+            }
         }
     }
 

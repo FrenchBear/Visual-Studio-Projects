@@ -35,15 +35,9 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
         return d;
     }
 
-    public BigDecimal(BigInteger bi)
-    {
-        n = bi * ScaleFactor;
-    }
+    public BigDecimal(BigInteger bi) => n = bi * ScaleFactor;
 
-    public BigDecimal(BigDecimal bn)
-    {
-        n = bn.n;
-    }
+    public BigDecimal(BigDecimal bn) => n = bn.n;
 
     static public BigDecimal operator +(BigDecimal b1, BigDecimal b2)
     {
@@ -69,56 +63,35 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
     static public BigDecimal operator /(BigDecimal b1, BigDecimal b2)
     {
         BigDecimal d;
-        d.n = (ScaleFactor * b1.n) / b2.n;
+        d.n = ScaleFactor * b1.n / b2.n;
         return d;
     }
 
-    static public bool operator ==(BigDecimal b1, BigDecimal b2)
-    {
-        return b1.n == b2.n;
-    }
+    static public bool operator ==(BigDecimal b1, BigDecimal b2) => b1.n == b2.n;
 
-    static public bool operator !=(BigDecimal b1, BigDecimal b2)
-    {
-        return b1.n != b2.n;
-    }
+    static public bool operator !=(BigDecimal b1, BigDecimal b2) => b1.n != b2.n;
 
-    static public bool operator >(BigDecimal b1, BigDecimal b2)
-    {
-        return b1.n > b2.n;
-    }
+    static public bool operator >(BigDecimal b1, BigDecimal b2) => b1.n > b2.n;
 
-    static public bool operator >=(BigDecimal b1, BigDecimal b2)
-    {
-        return b1.n >= b2.n;
-    }
+    static public bool operator >=(BigDecimal b1, BigDecimal b2) => b1.n >= b2.n;
 
-    static public bool operator <(BigDecimal b1, BigDecimal b2)
-    {
-        return b1.n < b2.n;
-    }
+    static public bool operator <(BigDecimal b1, BigDecimal b2) => b1.n < b2.n;
 
-    static public bool operator <=(BigDecimal b1, BigDecimal b2)
-    {
-        return b1.n <= b2.n;
-    }
+    static public bool operator <=(BigDecimal b1, BigDecimal b2) => b1.n <= b2.n;
 
     // Standard string representation
     public override string ToString()
     {
         var sb = new StringBuilder();
-        if (n < 0) sb.Append('-');
-        if (BigInteger.Abs(n) >= ScaleFactor)
-            sb.Append(BigInteger.Divide(BigInteger.Abs(n), ScaleFactor).ToString());
-        else
-            sb.Append('0');
+        if (n < 0) _ = sb.Append('-');
+        _ = BigInteger.Abs(n) >= ScaleFactor ? sb.Append(BigInteger.Divide(BigInteger.Abs(n), ScaleFactor).ToString()) : sb.Append('0');
         BigInteger d = BigInteger.Remainder(BigInteger.Abs(n), ScaleFactor);
         if (d != 0)
         {
-            sb.Append('.');
+            _ = sb.Append('.');
             string sz = d.ToString();
-            sb.Append('0', Digits - sz.Length);
-            sb.Append(sz);
+            _ = sb.Append('0', Digits - sz.Length);
+            _ = sb.Append(sz);
         }
         return sb.ToString();
     }
@@ -135,10 +108,7 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
 
     // For free!
     // But Resharper indicates a warning: Non-readonly field referenced...
-    public override int GetHashCode()
-    {
-        return n.GetHashCode();
-    }
+    public override int GetHashCode() => n.GetHashCode();
 
     // For IComparable interface
     public int CompareTo(object obj)
@@ -165,8 +135,5 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
     */
 
     // implicit interface IComparable<BigDecimal> implementation
-    public int CompareTo(BigDecimal other)
-    {
-        return n.CompareTo(other.n);
-    }
+    public int CompareTo(BigDecimal other) => n.CompareTo(other.n);
 }

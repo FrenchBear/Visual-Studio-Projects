@@ -12,7 +12,7 @@ internal class Program
     private static void Main()
     {
         XmlReaderSettings roundingInfosSettings = new();
-        roundingInfosSettings.Schemas.Add("http://tempuri.org/RoundingInfos.xsd", "roundingInfos.xsd");
+        _ = roundingInfosSettings.Schemas.Add("http://tempuri.org/RoundingInfos.xsd", "roundingInfos.xsd");
         roundingInfosSettings.ValidationType = ValidationType.Schema;
         roundingInfosSettings.ValidationEventHandler += new ValidationEventHandler(RoundingInfosSettingsValidationEventHandler);
 

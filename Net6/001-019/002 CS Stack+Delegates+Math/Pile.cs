@@ -28,7 +28,9 @@ public class Pile
     public object Dépile()
     {
         if (tête == null)
+        {
             throw new Exception("Dépile sur pile vide");
+        }
         else
         {
             Noeud temp = tête;
@@ -37,8 +39,5 @@ public class Pile
         }
     }
 
-    public void Empile(object o)
-    {
-        tête = new Noeud(o, tête);
-    }
+    public void Empile(object o) => tête = new Noeud(o, tête);
 }

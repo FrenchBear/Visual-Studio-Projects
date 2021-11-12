@@ -56,7 +56,9 @@ internal class DataBag
                     }
                 }
                 else
+                {
                     lineComment = "";
+                }
 
                 int p = line.IndexOf('{');
                 if (p >= 0)
@@ -69,7 +71,7 @@ internal class DataBag
                     };
                     //if (ss.Name=="FlowSnake") Debugger.Break();
                     if (lineComment != "") ss.Comments = lineComment;
-                    sl.Add(ss);
+                    _ = sl.Add(ss);
                     continue;
                 }
 

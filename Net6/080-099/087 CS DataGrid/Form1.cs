@@ -1,6 +1,7 @@
 // 87 CS DataGridView
 // Essais de remplissage de DataGridView
-// 2003-08/08   PV
+//
+// 2003-08-08   PV
 // 2006-10-01   PV  VS2005
 // 2011-12-30   PV  VS2010  Updated connection string
 
@@ -9,25 +10,21 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 #pragma warning disable CA1050 // Declare types in namespaces
 
-public class Form1 : System.Windows.Forms.Form
+public class Form1 : Form
 {
-    private System.Windows.Forms.DataGridView dataGrid1;
-    private System.Windows.Forms.DataGridView dataGrid2;
-    private System.Windows.Forms.Label label2;
-    private System.Windows.Forms.Label label1;
+    private DataGridView dataGrid1;
+    private DataGridView dataGrid2;
+    private Label label2;
+    private Label label1;
 
     /// <summary>
     /// Variable nécessaire au concepteur.
     /// </summary>
     private readonly System.ComponentModel.Container components = null;
 
-    public Form1()
-    {
-        InitializeComponent();
-    }
+    public Form1() => InitializeComponent();
 
     protected override void Dispose(bool disposing)
     {
@@ -49,12 +46,12 @@ public class Form1 : System.Windows.Forms.Form
     /// </summary>
     private void InitializeComponent()
     {
-        this.dataGrid1 = new System.Windows.Forms.DataGridView();
-        this.dataGrid2 = new System.Windows.Forms.DataGridView();
-        this.label2 = new System.Windows.Forms.Label();
-        this.label1 = new System.Windows.Forms.Label();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid2)).BeginInit();
+        this.dataGrid1 = new DataGridView();
+        this.dataGrid2 = new DataGridView();
+        this.label2 = new Label();
+        this.label1 = new Label();
+        ((System.ComponentModel.ISupportInitialize)this.dataGrid1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)this.dataGrid2).BeginInit();
         this.SuspendLayout();
         //
         // dataGrid1
@@ -103,9 +100,9 @@ public class Form1 : System.Windows.Forms.Form
         this.Controls.Add(this.dataGrid1);
         this.Name = "Form1";
         this.Text = "Form1";
-        this.Load += new System.EventHandler(this.Form1_Load);
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid2)).EndInit();
+        this.Load += new EventHandler(this.Form1_Load);
+        ((System.ComponentModel.ISupportInitialize)this.dataGrid1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)this.dataGrid2).EndInit();
         this.ResumeLayout(false);
     }
 
@@ -113,12 +110,9 @@ public class Form1 : System.Windows.Forms.Form
 
     /// Point d'entrée principal de l'application.
     [STAThread]
-    private static void Main()
-    {
-        Application.Run(new Form1());
-    }
+    private static void Main() => Application.Run(new Form1());
 
-    private void Form1_Load(object sender, System.EventArgs e)
+    private void Form1_Load(object sender, EventArgs e)
     {
         Remplit1();
         Remplit2();
@@ -139,7 +133,7 @@ public class Form1 : System.Windows.Forms.Form
 
         nwindConn.Open();
         DataSet myDataSet = new();
-        custDA.Fill(myDataSet, "Customers");
+        _ = custDA.Fill(myDataSet, "Customers");
         nwindConn.Close();
 
         dataGrid1.DataSource = myDataSet;
@@ -160,8 +154,8 @@ public class Form1 : System.Windows.Forms.Form
         DataColumn col2;
         col2 = myTable.Columns.Add("Tel", System.Type.GetType("System.Int32"));
 
-        myTable.Rows.Add(new object[] { "Pierre", 8873 });
-        myTable.Rows.Add(new object[] { "Xavier", 8317 });
+        _ = myTable.Rows.Add(new object[] { "Pierre", 8873 });
+        _ = myTable.Rows.Add(new object[] { "Xavier", 8317 });
 
         DataView myDataView = new(myTable);
         dataGrid2.DataSource = myDataView;

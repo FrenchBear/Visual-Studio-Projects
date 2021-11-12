@@ -11,6 +11,6 @@ internal class MyApp
     {
         CS039Lib.MyLib m = new();
         m.Test();
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 }

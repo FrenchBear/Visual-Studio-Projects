@@ -36,6 +36,6 @@ internal class Hello2
         form1.Controls.Add(button2);
 
         // Display the form as a modal dialog box.
-        form1.ShowDialog();
+        _ = form1.ShowDialog();
     }
 }

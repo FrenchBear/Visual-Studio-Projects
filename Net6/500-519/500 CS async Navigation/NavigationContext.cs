@@ -18,10 +18,7 @@ public interface INavigationContext<T, TResult> where T : UIElement
 // (similar to the relation between IEnumerator and IEnumerable)
 public class NavigationContext<T, TResult> : INavigationContext<T, TResult> where T : UIElement
 {
-    public NavigationContext(T element)
-    {
-        this.element = element;
-    }
+    public NavigationContext(T element) => this.element = element;
 
     private readonly T element;
 
@@ -35,16 +32,11 @@ public class NavigationContext<T, TResult> : INavigationContext<T, TResult> wher
         return cts.Task;
     }
 
-    public T UIelement
-    {
-        get { return element; }
-    }
+    public T UIelement => element;
 
-    public void Continue(TResult returnValue)
-    {
+    public void Continue(TResult returnValue) =>
         // terminates the task and return a result, freeing waiting contexts
         cts.SetResult(returnValue);
-    }
 }
 
 public interface INavigationContextProvider<T, TResult> where T : UIElement
@@ -57,10 +49,7 @@ public class NavigationContext<TResult>
 {
     // Since class is generic<TResult> and method is generic<T>, that means that actually
     // this method is generic <T, TResult>
-    public static INavigationContext<T, TResult> Create<T>(T element) where T : UIElement
-    {
-        return new NavigationContext<T, TResult>(element);
-    }
+    public static INavigationContext<T, TResult> Create<T>(T element) where T : UIElement => new NavigationContext<T, TResult>(element);
 }
 
 public enum NavigationResult

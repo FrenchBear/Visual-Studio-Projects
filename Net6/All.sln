@@ -603,6 +603,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "002 CS Stack+Delegates+Math
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "611b CS NewLaby Tests", "601-637\611b CS NewLaby Tests\611b CS NewLaby Tests.csproj", "{EE54A273-E071-4294-83B7-CB239DD99C91}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F52EA5F7-0772-4E7D-BD9D-45FCE2A201BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

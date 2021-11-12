@@ -78,9 +78,7 @@ Namespace CodeDOMExample
             End If
         End Sub
 
-        Private Sub Run_button_Click(sender As Object,
-e As EventArgs)
-
+        Private Sub Run_button_Click(sender As Object, e As EventArgs)
             Process.Start("TestGraph.EXE")
         End Sub
 

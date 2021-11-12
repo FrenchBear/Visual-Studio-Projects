@@ -25,20 +25,14 @@ internal class Pentamino
     {
         private readonly byte[,] grille;
 
-        public Jeu()
-        {
-            grille = new byte[MAXLIG, MAXCOL];
-        }
+        public Jeu() => grille = new byte[MAXLIG, MAXCOL];
 
-        public Jeu(Jeu j)
-        {
-            grille = (byte[,])j.grille.Clone();
-        }
+        public Jeu(Jeu j) => grille = (byte[,])j.grille.Clone();
 
         public byte this[int l, int c]
         {
-            get { return grille[l, c]; }
-            set { grille[l, c] = value; }
+            get => grille[l, c];
+            set => grille[l, c] = value;
         }
     }
 
@@ -74,7 +68,7 @@ internal class Pentamino
         P10.Dessin();
         P11.Dessin();
         P12.Dessin();
-        Console.ReadLine();
+        _ = Console.ReadLine();
         */
 
         /*
@@ -105,10 +99,10 @@ internal class Pentamino
         Jeu j = new();
 
         // Pavage
-        System.DateTime t0 = System.DateTime.Now;
+        DateTime t0 = System.DateTime.Now;
         Pavage(0, 0, j, (1 << MAXPIECE) - 1);
-        System.DateTime t1 = System.DateTime.Now;
-        System.TimeSpan t = t1.Subtract(t0);
+        DateTime t1 = System.DateTime.Now;
+        TimeSpan t = t1.Subtract(t0);
 
         Console.WriteLine("{0} pour {1} solutions\n", t, iNbSol);
         Console.WriteLine("{0} appels à Pavage\n", iNbAppelPavage);
@@ -160,7 +154,7 @@ internal class Pentamino
               Console.WriteLine();
             }
             Console.WriteLine();
-            Console.ReadLine();
+            _ = Console.ReadLine();
             */
 
             return;

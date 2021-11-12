@@ -32,7 +32,7 @@ public partial class MainWindow : Window
         b = new DataBag();
         DataContext = b;
 
-        CommandBindings.Add(new CommandBinding(About, AboutExecuted));
+        _ = CommandBindings.Add(new CommandBinding(About, AboutExecuted));
     }
 
     private void NewExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -73,7 +73,7 @@ public partial class MainWindow : Window
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Une erreur est survenue lors de l'ouverture du fichier " + dlg.FileName + ": " + ex.Message, "ED850", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                _ = MessageBox.Show("Une erreur est survenue lors de l'ouverture du fichier " + dlg.FileName + ": " + ex.Message, "ED850", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
     }
@@ -81,23 +81,14 @@ public partial class MainWindow : Window
     private void AboutExecuted(object sender, ExecutedRoutedEventArgs e)
     {
         var aw = new AboutWindow();
-        aw.ShowDialog();
+        _ = aw.ShowDialog();
     }
 
-    private void CloseCanExecute(object sender, CanExecuteRoutedEventArgs e)
-    {
-        e.CanExecute = true;
-    }
+    private void CloseCanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = true;
 
-    private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
-    {
-        this.Close();
-    }
+    private void CloseExecuted(object sender, ExecutedRoutedEventArgs e) => this.Close();
 
-    private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        IsDirty = true;
-    }
+    private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e) => IsDirty = true;
 
     private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
     {
@@ -113,7 +104,7 @@ public partial class MainWindow : Window
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Une erreur est survenue lors de l'écriture du fichier " + b.FileName + ": " + ex.Message, "ED850", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                _ = MessageBox.Show("Une erreur est survenue lors de l'écriture du fichier " + b.FileName + ": " + ex.Message, "ED850", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
     }
@@ -164,16 +155,13 @@ public class DataBag : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    private void NotifyPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    private void NotifyPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     private string _FileName;
 
     public string FileName
     {
-        get { return _FileName; }
+        get => _FileName;
         set
         {
             if (_FileName != value)
@@ -185,14 +173,6 @@ public class DataBag : INotifyPropertyChanged
         }
     }
 
-    public string WindowCaption
-    {
-        get
-        {
-            if (_FileName == null)
-                return "ED850 - (Nouveau)";
-            else
-                return "ED850 - " + _FileName;
-        }
-    }
+    public string WindowCaption 
+        => _FileName == null ? "ED850 - (Nouveau)" : "ED850 - " + _FileName;
 }

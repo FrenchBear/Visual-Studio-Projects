@@ -26,6 +26,6 @@ public class InOut
         j = i > Zap() ? 0 : 3;
 
         Console.WriteLine("j: " + j);
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 }

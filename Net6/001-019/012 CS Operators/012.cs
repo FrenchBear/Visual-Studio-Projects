@@ -6,8 +6,6 @@
 
 using System;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 internal class Complexe
 {
     protected double r, i;
@@ -31,20 +29,14 @@ internal class Complexe
         Console.WriteLine("Destructeur {0}", this);
     }
 
-    public static implicit operator Complexe(double d)
-    {
-        return new Complexe(d);
-    }
+    public static implicit operator Complexe(double d) 
+        => new(d);
 
-    override public string ToString()
-    {
-        return "(" + r + ";" + i + ")";
-    }
+    override public string ToString() 
+        => "(" + r + ";" + i + ")";
 
-    public static Complexe operator +(Complexe a, Complexe b)
-    {
-        return new Complexe(a.r + b.r, a.i + b.i);
-    }
+    public static Complexe operator +(Complexe a, Complexe b) 
+        => new(a.r + b.r, a.i + b.i);
 };
 
 internal class MyApp
@@ -57,7 +49,7 @@ internal class MyApp
         System.GC.Collect();
         System.GC.WaitForPendingFinalizers();
         Console.WriteLine("Main.3 Mem: {0}", System.GC.GetTotalMemory(false));
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 
     private static void TestsComplexes()

@@ -12,10 +12,7 @@ namespace ImageView;
 public class StartUp
 {
     [STAThread]
-    private static void Main()
-    {
-        Application.Run(new MyForm());
-    }
+    private static void Main() => Application.Run(new MyForm());
 }
 
 public class MyForm : Form
@@ -37,14 +34,14 @@ public class MyForm : Form
         //To update
         //optionsMenu.Popup += new EventHandler(OnPopupOptionsMenu);
 
-        optionsMenu.DropDownItems.Add(new ToolStripMenuItem("&Open...", null, new EventHandler(OnOpenImage), Keys.Control | Keys.O));
-        optionsMenu.DropDownItems.Add("-");
-        optionsMenu.DropDownItems.Add(_itemFitToWindow = new ToolStripMenuItem("Size image to &fit window", null, new EventHandler(OnFitToWindow)));
-        optionsMenu.DropDownItems.Add(_itemNativeSize = new ToolStripMenuItem("Show image in &native size", null, new EventHandler(OnNativeSize)));
-        optionsMenu.DropDownItems.Add("-");
-        optionsMenu.DropDownItems.Add(new ToolStripMenuItem("&Exit", null, new EventHandler(OnExit)));
+        _ = optionsMenu.DropDownItems.Add(new ToolStripMenuItem("&Open...", null, new EventHandler(OnOpenImage), Keys.Control | Keys.O));
+        _ = optionsMenu.DropDownItems.Add("-");
+        _ = optionsMenu.DropDownItems.Add(_itemFitToWindow = new ToolStripMenuItem("Size image to &fit window", null, new EventHandler(OnFitToWindow)));
+        _ = optionsMenu.DropDownItems.Add(_itemNativeSize = new ToolStripMenuItem("Show image in &native size", null, new EventHandler(OnNativeSize)));
+        _ = optionsMenu.DropDownItems.Add("-");
+        _ = optionsMenu.DropDownItems.Add(new ToolStripMenuItem("&Exit", null, new EventHandler(OnExit)));
 
-        ms.Items.Add(optionsMenu);
+        _ = ms.Items.Add(optionsMenu);
 
         this.MainMenuStrip = ms;
         this.Controls.Add(ms);
@@ -91,7 +88,7 @@ public class MyForm : Form
                 }
                 catch
                 {
-                    MessageBox.Show($"{fileName} is not a valid image file",
+                    _ = MessageBox.Show($"{fileName} is not a valid image file",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -121,10 +118,7 @@ public class MyForm : Form
         }
     }
 
-    private void OnExit(object sender, EventArgs e)
-    {
-        Close();
-    }
+    private void OnExit(object sender, EventArgs e) => Close();
 
     protected override void OnPaint(PaintEventArgs e)
     {
@@ -138,9 +132,6 @@ public class MyForm : Form
         }
     }
 
-    [STAThreadAttribute]
-    public static void Main()
-    {
-        Application.Run(new MyForm());
-    }
+    [STAThread]
+    public static void Main() => Application.Run(new MyForm());
 }

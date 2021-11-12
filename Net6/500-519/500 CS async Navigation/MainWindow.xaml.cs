@@ -34,6 +34,7 @@ public partial class MainWindow : Window
         */
 
         while (state != ApplicationState.Exit)
+        {
             switch (state)
             {
                 case ApplicationState.UC1:
@@ -50,6 +51,8 @@ public partial class MainWindow : Window
                         state = ApplicationState.UC1;
                     break;
             }
+        }
+
         Close();
     }
 
@@ -60,7 +63,7 @@ public partial class MainWindow : Window
         var navigation = provider.GetNavigationContext();
         var element = navigation.UIelement;
         navigationGrid.Children.Clear();
-        navigationGrid.Children.Add(element);
+        _ = navigationGrid.Children.Add(element);
         // Make call blocking
         return navigation.WaitForContinuationTask();
     }

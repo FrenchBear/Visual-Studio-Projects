@@ -12,8 +12,6 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 namespace CS518;
 
 internal class Program
@@ -25,7 +23,7 @@ internal class Program
             Val = 25
         };
 
-        string s1 = Serialize<Ba>(x);
+        string s1 = Serialize(x);
         string s2 = x.ToXmlString();
         Debugger.Break();
     }
@@ -78,15 +76,9 @@ public static class XmlTools
         return writer.ToString();
     }
 
-    public static void ToXml<T>(this T objectToSerialize, Stream stream)
-    {
-        new XmlSerializer(typeof(T)).Serialize(stream, objectToSerialize);
-    }
+    public static void ToXml<T>(this T objectToSerialize, Stream stream) => new XmlSerializer(typeof(T)).Serialize(stream, objectToSerialize);
 
-    public static void ToXml<T>(this T objectToSerialize, StringWriter writer)
-    {
-        new XmlSerializer(typeof(T)).Serialize(writer, objectToSerialize);
-    }
+    public static void ToXml<T>(this T objectToSerialize, StringWriter writer) => new XmlSerializer(typeof(T)).Serialize(writer, objectToSerialize);
 }
 
 public class Ba
@@ -96,7 +88,7 @@ public class Ba
     [DefaultValue(42)]      // Avoid serialization of default value
     public int Val
     {
-        get { return _val; }
-        set { _val = value; }
+        get => _val;
+        set => _val = value;
     }
 }

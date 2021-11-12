@@ -15,25 +15,13 @@ using System;
 
 public abstract class Zap
 {
-    public Zap()
-    {
-        Console.WriteLine("Zap.New()");
-    }
+    public Zap() => Console.WriteLine("Zap.New()");
 
-    public void MH()
-    {
-        Console.WriteLine("Zap.MH()");
-    }
+    public void MH() => Console.WriteLine("Zap.MH()");
 
-    public virtual void OV1()
-    {
-        Console.WriteLine("Zap.OV1()");
-    }
+    public virtual void OV1() => Console.WriteLine("Zap.OV1()");
 
-    public virtual void OV2()
-    {
-        Console.WriteLine("Zap.OV2()");
-    }
+    public virtual void OV2() => Console.WriteLine("Zap.OV2()");
 
     public abstract void MO1();
 
@@ -50,10 +38,7 @@ public class Couleur : Zap
     private int m_A;
 
     public Couleur()
-        : this(0, 0, 0)
-    {
-        Console.WriteLine("Couleur.New()");
-    }
+        : this(0, 0, 0) => Console.WriteLine("Couleur.New()");
 
     public Couleur(int rr, int gg, int bb)
     {
@@ -64,69 +49,36 @@ public class Couleur : Zap
         m_A = 0;
     }
 
-    public override string ToString()
-    {
-        return "{" + m_A + ", " + R + ", " + G + ", " + B + "}";
-    }
+    public override string ToString() => "{" + m_A + ", " + R + ", " + G + ", " + B + "}";
 
     public int A
     {
-        get
-        {
-            return m_A;
-        }
-        set
-        {
-            m_A = value;
-        }
+        get => m_A;
+        set => m_A = value;
     }
 
     // New slot
-    public virtual void S1()
-    {
-        Console.WriteLine("Couleur.S1()");
-    }
+    public virtual void S1() => Console.WriteLine("Couleur.S1()");
 
     // Pas trouvé l'équivalent de NotOverridable en VB (=final en MSIL)
     // 2012-02-25: NotOverridable = sealed, also applicable to a method
-    public sealed override void MO1()
-    {
-        Console.WriteLine("Couleur.MO1()");
-    }
+    public sealed override void MO1() => Console.WriteLine("Couleur.MO1()");
 
-    public override void MO2()
-    {
-        Console.WriteLine("Couleur.MO2()");
-    }
+    public override void MO2() => Console.WriteLine("Couleur.MO2()");
 
     // Pas trouvé l'équivalent de NotOverridable en VB
-    public /* NotOverridable */ override void OV1()
-    {
-        Console.WriteLine("Couleur.OV1()");
-    }
+    public /* NotOverridable */ override void OV1() => Console.WriteLine("Couleur.OV1()");
 }
 
 public sealed class CouleurClaire : Couleur
 {
-    public CouleurClaire()
-    {
-        Console.WriteLine("CouleurClaire.New()");
-    }
+    public CouleurClaire() => Console.WriteLine("CouleurClaire.New()");
 
-    public new void S1()
-    {
-        Console.WriteLine("CouleurClaire.S1()");
-    }
+    public new void S1() => Console.WriteLine("CouleurClaire.S1()");
 
-    public override void MO2()
-    {
-        Console.WriteLine("CouleurClaire.MO2()");
-    }
+    public override void MO2() => Console.WriteLine("CouleurClaire.MO2()");
 
-    public new void OV1()
-    {
-        Console.WriteLine("CouleurClaire.OV1()");
-    }
+    public new void OV1() => Console.WriteLine("CouleurClaire.OV1()");
 }
 
 public class Module1
@@ -190,8 +142,5 @@ public class Module1
         //Console.ReadLine();
     }
 
-    private static void Complément255(ref int x)
-    {
-        x = 255 - x;
-    }
+    private static void Complément255(ref int x) => x = 255 - x;
 }

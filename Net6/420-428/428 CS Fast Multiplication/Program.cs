@@ -58,7 +58,7 @@ public class Program
     {
         var sb = new StringBuilder();
         while (digits-- > 0)
-            sb.Append((char)(48 + rnd.Next(10)));
+            _ = sb.Append((char)(48 + rnd.Next(10)));
         return sb.ToString();
     }
 }
@@ -87,7 +87,9 @@ public class SlicedNumber
             s = s[1..];
         }
         else
+        {
             sign = 1;
+        }
 
         int p1 = s.Length - 1;
         int p2 = 1;
@@ -124,9 +126,9 @@ public class SlicedNumber
     {
         var sb = new StringBuilder();
         if (sign < 0)
-            sb.Append('-');
+            _ = sb.Append('-');
         for (int i = nslices - 1; i >= 0; i--)
-            sb.Append(slices[i].ToString(i == nslices - 1 ? "D" : "D9"));
+            _ = sb.Append(slices[i].ToString(i == nslices - 1 ? "D" : "D9"));
         return sb.ToString();
     }
 
@@ -150,7 +152,9 @@ public class SlicedNumber
                 slices[i] = rem;
             }
             else
+            {
                 carry = 0;
+            }
         }
         if (carry > 0)
         {
@@ -158,7 +162,9 @@ public class SlicedNumber
             slices[nslices - 1] = carry;
         }
         else if (carry < 0)
+        {
             throw new Exception("Nagative carry at the end of normalization process, sign of SlicedNumber is incorrect");
+        }
         // Actually could have saved original slices, then change all slices sign and global sign, and restart the process
     }
 

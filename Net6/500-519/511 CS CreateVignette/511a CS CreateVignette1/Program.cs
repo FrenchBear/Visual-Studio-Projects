@@ -6,8 +6,6 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 namespace CreateVignette;
 
 internal class Program
@@ -15,7 +13,7 @@ internal class Program
     private static void Main(string[] args)
     {
         var testc = new Test();
-        testc.ConvertImage("DSC_09786.JPG");
+        _ = testc.ConvertImage("DSC_09786.JPG");
     }
 }
 

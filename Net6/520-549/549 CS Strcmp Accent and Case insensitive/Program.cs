@@ -13,8 +13,6 @@ using System.Linq;
 using System.Text;
 using static System.Console;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 namespace CS549;
 
 internal class Program
@@ -62,17 +60,17 @@ internal class Program
     {
         StringBuilder sb = new();
         foreach (char ch in text.Normalize(NormalizationForm.FormD))
+        {
             if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
-                sb.Append(ch);
+                _ = sb.Append(ch);
+        }
+
         return sb.ToString().Normalize(NormalizationForm.FormC);
     }
 
-    private static string RemoveDiacritics2(string text)
-    {
-        return string.Concat(
+    private static string RemoveDiacritics2(string text) => string.Concat(
             text.Normalize(NormalizationForm.FormD)
                 .Where(ch => CharUnicodeInfo.GetUnicodeCategory(ch) !=
                              UnicodeCategory.NonSpacingMark)
         ).Normalize(NormalizationForm.FormC);
-    }
 }

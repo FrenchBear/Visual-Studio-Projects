@@ -13,10 +13,7 @@ public class MsgBox2 : System.Windows.Forms.Form
     private System.Windows.Forms.TextBox txtInfo;
     private System.Windows.Forms.Label lblInfo;
 
-    public MsgBox2()
-    {
-        InitializeComponent();
-    }
+    public MsgBox2() => InitializeComponent();
 
     private void InitializeComponent()
     {
@@ -46,9 +43,9 @@ public class MsgBox2 : System.Windows.Forms.Form
         //
         // txtInfo
         //
-        this.txtInfo.Anchor = (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-          | System.Windows.Forms.AnchorStyles.Left)
-          | System.Windows.Forms.AnchorStyles.Right);
+        this.txtInfo.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
+          | System.Windows.Forms.AnchorStyles.Left
+          | System.Windows.Forms.AnchorStyles.Right;
         this.txtInfo.Location = new System.Drawing.Point(52, 8);
         this.txtInfo.Multiline = true;
         this.txtInfo.Name = "txtInfo";
@@ -72,14 +69,11 @@ public class MsgBox2 : System.Windows.Forms.Form
         this.ResumeLayout(false);
     }
 
-    protected void btnOk_Click(object sender, System.EventArgs e)
-    {
-        Close();
-    }
+    protected void btnOk_Click(object sender, System.EventArgs e) => Close();
 
     public virtual void Info(string sMsg)
     {
         txtInfo.Text = sMsg;
-        ShowDialog();
+        _ = ShowDialog();
     }
 }

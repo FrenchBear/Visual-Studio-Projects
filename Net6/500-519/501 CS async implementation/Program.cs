@@ -17,44 +17,23 @@ internal class Program
         SomeEvent(null, null);
     }
 
-    private static async void Program_SomeEvent(object sender, EventArgs e)
-    {
-        await new Awaitable();
-    }
+    private static async void Program_SomeEvent(object sender, EventArgs e) => await new Awaitable();
 }
 
 internal class Awaitable
 {
-    public Awaiter GetAwaiter()
-    {
-        return new Awaiter();
-    }
+    public Awaiter GetAwaiter() => new();
 }
 
 internal class Awaiter : INotifyCompletion
 {
-    public bool BeginAwait(Action continuation)
-    {
-        return false;
-    }
+    public bool BeginAwait(Action continuation) => false;
 
-    public int EndAwait()
-    {
-        return 1;
-    }
+    public int EndAwait() => 1;
 
-    public bool IsCompleted
-    {
-        get { return true; }
-    }
+    public bool IsCompleted => true;
 
-    public int GetResult()
-    {
-        return 1;
-    }
+    public int GetResult() => 1;
 
-    public void OnCompleted(Action continuation)
-    {
-        throw new NotImplementedException();
-    }
+    public void OnCompleted(Action continuation) => throw new NotImplementedException();
 }

@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 #pragma warning disable IDE0051 // Remove unused private members
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace CS508;
 

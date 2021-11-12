@@ -203,8 +203,11 @@ public class Laby
                 int c = rnd.Next(cmin, cmax);
                 int rHole = rnd.Next(rmin, rmax);
                 for (int r = rmin; r <= rmax; r++)
+                {
                     if (r != rHole)
                         Cells[r, c] |= right;
+                }
+
                 if (isDetailedBuild)
                 {
                     WriteLine($"Vertical wall at c={c} between rows {rmin} and {rmax} with a hole at r={rHole}");
@@ -215,7 +218,9 @@ public class Laby
             }
             else
             if (isDetailedBuild)
+            {
                 WriteLine("No vertical build since cmin==cmax");
+            }
         }
         else
         {
@@ -224,8 +229,11 @@ public class Laby
                 int r = rnd.Next(rmin, rmax);
                 int cHole = rnd.Next(cmin, cmax);
                 for (int c = cmin; c <= cmax; c++)
+                {
                     if (c != cHole)
                         Cells[r, c] |= bottom;
+                }
+
                 if (isDetailedBuild)
                 {
                     WriteLine($"Horizontal wall at r={r} between cols {cmin} and {cmax} with a hole at c={cHole}");
@@ -236,7 +244,9 @@ public class Laby
             }
             else
             if (isDetailedBuild)
+            {
                 WriteLine("No horizontal build since rmin==rmax");
+            }
         }
     }
 }

@@ -15,10 +15,8 @@ namespace ArithmeticNamespace
 {
     public class ArithmeticClass
     {
-        public int Plus(int a, int b)
-        {
-            return a + b;
-        }
+        public int Plus(int a, int b) 
+            => a + b;
 
         // Return applicationSetting from dll.config
         public string GetApplicationSetting(string settingName)
@@ -44,10 +42,8 @@ namespace ArithmeticNamespace
         }
 
         // Returns a specific applicationSetting from dll.config using typed access
-        public string GetTypedApplicationSetting(string settingName)
-        {
-            return (string)Properties.Settings.Default[settingName];
-        }
+        public string GetTypedApplicationSetting(string settingName) 
+            => (string)Properties.Settings.Default[settingName];
 
         // Return appSetting from dll.config
         public string GetAppSetting(string settingName)
@@ -57,10 +53,8 @@ namespace ArithmeticNamespace
         }
 
         // Returns a string embedded in dll resources
-        public string GetStringResource(string stringName)
-        {
-            return Properties.Resources.ResourceManager.GetString(stringName);
-        }
+        public string GetStringResource(string stringName) 
+            => Properties.Resources.ResourceManager.GetString(stringName);
 
         public Stream GetImageResource(string imageName, string defaultValue)
         {

@@ -11,21 +11,13 @@ internal class Meute<T> where T : Animal
 {
     private readonly Collection<T> mCol;
 
-    public Meute()
-    {
-        mCol = new Collection<T>();
-    }
+    public Meute() => mCol = new Collection<T>();
 
-    public Meute(T a1)
-    {
+    public Meute(T a1) =>
         // Using a Collection Initializer
         mCol = new Collection<T> { a1 };
-    }
 
-    public void Add(T a1)
-    {
-        mCol.Add(a1);
-    }
+    public void Add(T a1) => mCol.Add(a1);
 
     public void Enerver()
     {

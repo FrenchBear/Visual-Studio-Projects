@@ -18,10 +18,7 @@ namespace NSFile;
 /// </summary>
 internal class ClsFile
 {
-    private static bool IsAscii(byte c)
-    {
-        return c is >= 1 and < 127;
-    }
+    private static bool IsAscii(byte c) => c is >= 1 and < 127;
 
     /// <summary>
     /// The main entry point for the application.
@@ -49,22 +46,23 @@ internal class ClsFile
 
                 tbBuffer = br.ReadBytes(l);
 
-                if (tbBuffer[0] == 0xFF && tbBuffer[1] == 0xFE)
-                    sType = "Unicode";
-                else if (IsAscii(tbBuffer[0]) && IsAscii(tbBuffer[1]) && IsAscii(tbBuffer[2]) && IsAscii(tbBuffer[3]))
-                    sType = "ASCII";
-                else if (IsAscii(tbBuffer[0]) && tbBuffer[1] == 0 && IsAscii(tbBuffer[2]) && tbBuffer[3] == 0)
-                    sType = "Unicode";
-                else
-                    sType = "?";
+                sType = tbBuffer[0] == 0xFF && tbBuffer[1] == 0xFE
+                    ? "Unicode"
+                    : IsAscii(tbBuffer[0]) && IsAscii(tbBuffer[1]) && IsAscii(tbBuffer[2]) && IsAscii(tbBuffer[3])
+                    ? "ASCII"
+                    : IsAscii(tbBuffer[0]) && tbBuffer[1] == 0 && IsAscii(tbBuffer[2]) && tbBuffer[3] == 0 ? "Unicode" : "?";
 
                 if (sType == "Unicode")
+                {
                     for (int i = 0; i < l; i++)
+                    {
                         if (tbBuffer[i] == 13 && tbBuffer[i + 1] == 10)
                         {
                             sType += " Bad";
                             break;
                         }
+                    }
+                }
 
                 Console.WriteLine("{0,-50} {1}", sFilename, sType);
 

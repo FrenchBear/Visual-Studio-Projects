@@ -19,10 +19,7 @@ internal class ThreeIntegers1 : IEnumerable
         this.i3 = i3;
     }
 
-    public virtual IEnumerator GetEnumerator()
-    {
-        return new MonEnumerateur(this);
-    }
+    public virtual IEnumerator GetEnumerator() => new MonEnumerateur(this);
 
     private class MonEnumerateur : IEnumerator
     {
@@ -46,23 +43,14 @@ internal class ThreeIntegers1 : IEnumerable
                 return false;
         }
 
-        public object Current
+        public object Current => pos switch
         {
-            get
-            {
-                return pos switch
-                {
-                    0 => tcur.i1,
-                    1 => tcur.i2,
-                    2 => tcur.i3,
-                    _ => throw new InvalidOperationException(),
-                };
-            }
-        }
+            0 => tcur.i1,
+            1 => tcur.i2,
+            2 => tcur.i3,
+            _ => throw new InvalidOperationException(),
+        };
 
-        public void Reset()
-        {
-            pos = -1;
-        }
+        public void Reset() => pos = -1;
     }
 }

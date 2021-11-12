@@ -52,11 +52,11 @@ internal class Program
         LauncherConfiguration Configuration2;
         using XmlReader reader = XmlReader.Create(MenuFile);
         do
-            reader.Read();
+            _ = reader.Read();
         while (reader.NodeType != XmlNodeType.Element);
         if (reader.Name != "MicrobiologyLauncherMenus") Debugger.Break();
         if (reader.GetAttribute("version") != "1") Debugger.Break(); ;
-        reader.Read();
+        _ = reader.Read();
         Configuration2 = (LauncherConfiguration)serializer.Deserialize(reader);
     }
 }

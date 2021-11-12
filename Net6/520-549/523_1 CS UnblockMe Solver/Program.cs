@@ -43,8 +43,8 @@ internal class Program
 
         Console.WriteLine(Configuration.IsValid(Pieces) ? "Config Ok" : "Invalid config!");
 
-        History.Add(Configuration.Signature());
-        Move(1, Configuration);
+        _ = History.Add(Configuration.Signature());
+        _ = Move(1, Configuration);
 
         Console.WriteLine("{0} configurations analyzed, {1} moves for solution", nbConfig, solutionMoves);
     }
@@ -74,7 +74,7 @@ internal class Program
             newConfig.Pos[i]--;
             if (!History.Contains(newConfig.Signature()) && newConfig.IsValid(Pieces))
             {
-                History.Add(newConfig.Signature());
+                _ = History.Add(newConfig.Signature());
                 //ShowConfig(newConfig);
                 if (Move(depth + 1, newConfig))
                 {
@@ -91,7 +91,7 @@ internal class Program
             newConfig.Pos[i]++;
             if (!History.Contains(newConfig.Signature()) && newConfig.IsValid(Pieces))
             {
-                History.Add(newConfig.Signature());
+                _ = History.Add(newConfig.Signature());
                 //ShowConfig(newConfig);
                 if (Move(depth + 1, newConfig))
                 {
@@ -131,23 +131,7 @@ internal class Program
                 }
 
                 char ch;
-                if (i == config.Length)
-                {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    //ch = (char)183;     // centered dot
-                }
-                else if (i == redPiece)
-                {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    //ch = (char)(49 + i);
-                    //ch = ' ';
-                }
-                else
-                {
-                    Console.BackgroundColor = Colors[i];
-                    //ch = (char)(49 + i);
-                    //ch = ' ';
-                }
+                Console.BackgroundColor = i == config.Length ? ConsoleColor.Black : i == redPiece ? ConsoleColor.Red : Colors[i];
                 ch = (char)183;     // centered dot
                 Console.Write(ch);
                 Console.Write(ch);
@@ -182,10 +166,7 @@ internal struct Config
     }
 
     // Equivalent of Pos, but packed in a 32-bit integer
-    public int Signature()
-    {
-        return Pos[0] + (Pos[1] << 3) + (Pos[2] << 6) + (Pos[3] << 9) + (Pos[4] << 12) + (Pos[5] << 15) + (Pos[6] << 18) + (Pos[7] << 21) + (Pos[8] << 24); // +(Pos[9] << 27);
-    }
+    public int Signature() => Pos[0] + (Pos[1] << 3) + (Pos[2] << 6) + (Pos[3] << 9) + (Pos[4] << 12) + (Pos[5] << 15) + (Pos[6] << 18) + (Pos[7] << 21) + (Pos[8] << 24); // +(Pos[9] << 27);
 
     // Check the validity of a configuration
     public bool IsValid(Block[] Pieces)
@@ -197,6 +178,7 @@ internal struct Config
 
             // Check that it doesn't cover another piece
             for (int j = 0; j < Length; j++)
+            {
                 if (j != i)
                 {
                     // Same orientation?
@@ -204,20 +186,27 @@ internal struct Config
                     {
                         // Only check for overlap if they are in the same row/col
                         if (Pieces[i].RowCol == Pieces[j].RowCol)
+                        {
                             if (Pos[i] < Pos[j])
+                            {
                                 if (Pos[i] + Pieces[i].Length - 1 >= Pos[j])
                                     return false;
                                 else if (Pos[j] + Pieces[j].Length - 1 >= Pos[i])
                                     return false;
+                            }
+                        }
                     }
                     else
                     {
                         // Check for intersection: piece j rowcol is in the rowcol range of piece i, and piece i rowcol is in the range of piece j
                         if (Pieces[j].RowCol >= Pos[i] && Pieces[j].RowCol <= Pos[i] + Pieces[i].Length - 1)
+                        {
                             if (Pieces[i].RowCol >= Pos[j] && Pieces[i].RowCol <= Pos[j] + Pieces[j].Length - 1)
                                 return false;
+                        }
                     }
                 }
+            }
         }
         return true;
     }

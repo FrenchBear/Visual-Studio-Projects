@@ -41,7 +41,7 @@ internal class Program
         JObject consoleColorConfiguration = JObject.Parse(jsonText);
         // Null-conditional operator ?[ since JSon indexer does not raise an exception
         string colorText = consoleColorConfiguration?["ForegroundColor"]?["Normal"]?.Value<string>();
-        if (Enum.TryParse<ConsoleColor>(colorText, out ConsoleColor color))
+        if (Enum.TryParse(colorText, out ConsoleColor color))
             ForegroundColor = color;
     }
 

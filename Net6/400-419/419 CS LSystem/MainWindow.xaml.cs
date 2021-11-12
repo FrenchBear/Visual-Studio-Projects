@@ -47,25 +47,25 @@ public partial class MainWindow : Window
     {
         if (!int.TryParse(LevelTextBox.Text, out int d))
         {
-            MessageBox.Show("Invalid depth", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            _ = MessageBox.Show("Invalid depth", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             return false;
         }
         if (d < 0 || d > 20)
         {
-            MessageBox.Show("Depth must be between 0 and 20", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            _ = MessageBox.Show("Depth must be between 0 and 20", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             return false;
         }
 
         if (SystemsListBox.SelectedItem is not SourceSystem ss)
         {
-            MessageBox.Show("Select a system first", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            _ = MessageBox.Show("Select a system first", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             return false;
         }
 
         angle = ss.Angle;
         if (ss.Angle == 0)
         {
-            MessageBox.Show("Can't accept Angle=0", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            _ = MessageBox.Show("Can't accept Angle=0", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             return false;
         }
 
@@ -86,7 +86,7 @@ public partial class MainWindow : Window
         StringBuilder sb = new();
         foreach (char c in drawString)
         {
-            sb.Append(c);
+            _ = sb.Append(c);
             i++;
             if (i > 1000) break;
         }
@@ -134,10 +134,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void ExitCommand_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void ExitCommand_Click(object sender, RoutedEventArgs e) => Close();
 
     private void SourceFileComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {

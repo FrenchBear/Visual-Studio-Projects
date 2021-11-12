@@ -7,17 +7,13 @@ using Experimental.System.Messaging;
 using System;
 using System.Windows.Forms;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 #pragma warning disable IDE1006 // Naming Styles
 
 namespace FPVI.MessageQueueTest;
 
 public partial class Form1 : Form
 {
-    public Form1()
-    {
-        InitializeComponent();
-    }
+    public Form1() => InitializeComponent();
 
     private void btnSend_Click(object sender, EventArgs e)
     {

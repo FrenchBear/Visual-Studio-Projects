@@ -21,10 +21,7 @@ public static class LSystemProcessor
         {
             StringBuilder s2 = new();
             foreach (char c in s)
-                if (rules.ContainsKey(c))
-                    s2.Append(rules[c]);
-                else
-                    s2.Append(c);
+                _ = rules.ContainsKey(c) ? s2.Append(rules[c]) : s2.Append(c);
             s = s2.ToString();
         }
         return s;
@@ -45,10 +42,14 @@ public static class LSystemProcessor
 
         // General case, apply transformation rules on depth-1 version
         foreach (char c in LSystemIterator(depth - 1, axiom, rules))
+        {
             if (rules.ContainsKey(c))
+            {
                 foreach (char c2 in rules[c])
                     yield return c2;
+            }
             else
                 yield return c;
+        }
     }
 }

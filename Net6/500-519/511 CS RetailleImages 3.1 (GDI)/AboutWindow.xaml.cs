@@ -33,10 +33,7 @@ public partial class AboutWindow : Window
         AssemblyCopyright.Text = aCopyrightAttr.Copyright;
     }
 
-    private void OKButton_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
-    }
+    private void OKButton_Click(object sender, RoutedEventArgs e) => Close();
 }
 
 /// <summary>
@@ -50,16 +47,10 @@ public class IconExtension : MarkupExtension
 
     public string Source
     {
-        get
-        {
-            return this.source;
-        }
-
-        set
-        {
+        get => this.source;
+        set =>
             // Have to make full pack URI from short form, so System.Uri can regognize it.
             this.source = "pack://application:,,," + value;
-        }
     }
 
     public int Size { get; set; }

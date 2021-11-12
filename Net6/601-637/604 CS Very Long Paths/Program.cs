@@ -30,6 +30,6 @@ internal class Program
         reallyLongDirectory += @"\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         Console.WriteLine($"Creating a directory that is {reallyLongDirectory.Length} characters long");
-        Directory.CreateDirectory(reallyLongDirectory);
+        _ = Directory.CreateDirectory(reallyLongDirectory);
     }
 }

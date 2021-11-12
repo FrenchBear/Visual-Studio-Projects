@@ -37,7 +37,7 @@ internal class Program
         // Display the results.
         System.Text.StringBuilder output = new();
         foreach (int length in lengths)
-            output.AppendLine(length.ToString());
+            _ = output.AppendLine(length.ToString());
 
         Console.WriteLine(output.ToString());
     }

@@ -8,7 +8,6 @@ using System;
 
 #pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable IDE0051 // Remove unused private members
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 #pragma warning disable CA1822 // Mark members as static
 
 
@@ -93,26 +92,14 @@ internal interface IDeriv : IInter
 
 internal class Cla1
 {
-    public virtual void H()
-    {
-        Console.WriteLine("cla1.H()");
-    }
+    public virtual void H() => Console.WriteLine("cla1.H()");
 }
 
 internal class Cla2 : Cla1, IInter
 {
-    public override void H()
-    {
-        Console.WriteLine("cla2.H()");
-    }
+    public override void H() => Console.WriteLine("cla2.H()");
 
-    public void F()
-    {
-        Console.WriteLine("cla2.F()");
-    }
+    public void F() => Console.WriteLine("cla2.F()");
 
-    void IInter.F()
-    {
-        Console.WriteLine("cla2.inter.F()");
-    }
+    void IInter.F() => Console.WriteLine("cla2.inter.F()");
 }

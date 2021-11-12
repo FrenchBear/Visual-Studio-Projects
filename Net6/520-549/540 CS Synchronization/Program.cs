@@ -76,13 +76,10 @@ internal class Program
             {
                 var hs = new ConcurrentQueue<int>();
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
-                    (int i) =>
-                    {
-                        hs.Enqueue(i);
-                    });
+                    (int i) => hs.Enqueue(i));
                 for (int i = 0; i < 30; i++)
                 {
-                    hs.TryDequeue(out int n);   // Will always succeed, single-threaded here
+                    _ = hs.TryDequeue(out int n);   // Will always succeed, single-threaded here
                     Write($"{n} ");
                 }
                 WriteLine();
@@ -108,10 +105,7 @@ internal class Program
             {
                 int sum = 0;
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
-                    (int i) =>
-                    {
-                        Increment(ref sum);
-                    });
+                    (int i) => _ = Increment(ref sum));
             });
 
         TestAction("1M ++ with Mutex",
@@ -122,7 +116,7 @@ internal class Program
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                     (int i) =>
                     {
-                        m.WaitOne();
+                        _ = m.WaitOne();
                         sum++;
                         m.ReleaseMutex();
                     });

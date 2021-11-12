@@ -17,10 +17,7 @@ namespace CS419;
 /// </summary>
 public partial class WpfDrawing2Window : Window
 {
-    public WpfDrawing2Window()
-    {
-        InitializeComponent();
-    }
+    public WpfDrawing2Window() => InitializeComponent();
 
     protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
     {
@@ -65,13 +62,7 @@ public partial class WpfDrawing2Window : Window
         }
     }
 
-    private void CheckBox_Checked(object sender, RoutedEventArgs e)
-    {
-        myGeometryDrawing.Brush = Brushes.Orange;
-    }
+    private void CheckBox_Checked(object sender, RoutedEventArgs e) => myGeometryDrawing.Brush = Brushes.Orange;
 
-    private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-    {
-        myGeometryDrawing.Brush = Brushes.Transparent;
-    }
+    private void CheckBox_Unchecked(object sender, RoutedEventArgs e) => myGeometryDrawing.Brush = Brushes.Transparent;
 }

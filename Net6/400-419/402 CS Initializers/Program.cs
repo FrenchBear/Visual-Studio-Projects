@@ -10,7 +10,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 // For extension method
 internal static class Module1
@@ -69,10 +68,7 @@ internal static class Module1
         }};
     }
 
-    public static void Add(this List<Customer> genericList, int id, string name, OrderCollection orders)
-    {
-        genericList.Add(new Customer(id, name, orders));
-    }
+    public static void Add(this List<Customer> genericList, int id, string name, OrderCollection orders) => genericList.Add(new Customer(id, name, orders));
 }
 
 internal class Complexe
@@ -115,27 +111,15 @@ public class OrderCollection : IEnumerable<Order>
 
     public Order this[int index]
     {
-        get { return items[index]; }
-        set { items[index] = value; }
+        get => items[index];
+        set => items[index] = value;
     }
 
-    public void Add(int id, int customerID, DateTime orderDate)
-    {
-        items.Add(new Order(id, customerID, orderDate));
-    }
+    public void Add(int id, int customerID, DateTime orderDate) => items.Add(new Order(id, customerID, orderDate));
 
-    public IEnumerator<Order> GetEnumerator()
-    {
-        return items.GetEnumerator();
-    }
+    public IEnumerator<Order> GetEnumerator() => items.GetEnumerator();
 
-    public IEnumerator GetEnumerator1()
-    {
-        return this.GetEnumerator();
-    }
+    public IEnumerator GetEnumerator1() => this.GetEnumerator();
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator1();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator1();
 }

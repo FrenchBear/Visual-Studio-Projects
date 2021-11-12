@@ -15,7 +15,7 @@ public struct DBInt
     private readonly int value;
     private readonly bool defined;
 
-    public bool IsNull { get { return !defined; } }
+    public bool IsNull => !defined;
 
     // Pas de constructeur sans paramètre car c'est un type struct
     private DBInt(int x)
@@ -24,32 +24,13 @@ public struct DBInt
         defined = true;
     }
 
-    public static DBInt operator +(DBInt x, DBInt y)
-    {
-        if (!x.defined || !y.defined) return Null;
-        return new DBInt(x.value + y.value);
-    }
+    public static DBInt operator +(DBInt x, DBInt y) => !x.defined || !y.defined ? Null : new DBInt(x.value + y.value);
 
-    public static implicit operator DBInt(int x)
-    {
-        return new DBInt(x);
-    }
+    public static implicit operator DBInt(int x) => new(x);
 
-    public static explicit operator int(DBInt x)
-    {
-        if (x.defined)
-            return x.value;
-        else
-            throw new Exception("Valeur NULL");
-    }
+    public static explicit operator int(DBInt x) => x.defined ? x.value : throw new Exception("Valeur NULL");
 
-    public override string ToString()
-    {
-        if (defined)
-            return value.ToString();
-        else
-            return "(Null)";
-    }
+    public override string ToString() => defined ? value.ToString() : "(Null)";
 }
 
 internal class MyApp
@@ -64,6 +45,6 @@ internal class MyApp
         Console.WriteLine("y = {0}", y);
         Console.WriteLine("z = {0}", z);
 
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 }

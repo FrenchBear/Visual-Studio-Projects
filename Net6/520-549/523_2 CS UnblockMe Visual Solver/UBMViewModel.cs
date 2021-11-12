@@ -16,10 +16,7 @@ internal class UBMViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
-    protected void NotifyPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+    protected void NotifyPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
     private readonly UBMModel m;
     private readonly UBMWindow w;
@@ -40,16 +37,11 @@ internal class UBMViewModel : INotifyPropertyChanged
     }
 
     // Solve: Automatic resolution of labyrinth
-    public void SolveExecute(object parameter)
-    {
+    public void SolveExecute(object parameter) =>
         // ToDo
         DrawSolution();
-    }
 
-    public bool CanSolve(object parameter)
-    {
-        return true;
-    }
+    public bool CanSolve(object parameter) => true;
 
     private readonly Brush[] PieceBrushes =
     {
@@ -91,7 +83,7 @@ internal class UBMViewModel : INotifyPropertyChanged
 
             r.Fill = i == m.redPiece ? Brushes.Red : PieceBrushes[i];
 
-            w.myGrid.Children.Add(r);
+            _ = w.myGrid.Children.Add(r);
         }
     }
 }

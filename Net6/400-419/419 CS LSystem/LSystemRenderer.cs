@@ -141,7 +141,7 @@ public abstract class LSystemRenderer
                         if (_angle % 2 == 0)
                             ap.Angle += Math.PI;
                         else
-                            ap.Angle += generalOrientation * ((int)(_angle / 2)) * angleIncrement;
+                            ap.Angle += generalOrientation * (int)(_angle / 2) * angleIncrement;
                         break;
 
                     case '!':

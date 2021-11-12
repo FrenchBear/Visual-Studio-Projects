@@ -38,10 +38,7 @@ internal class Program
     }
 
     // Relay helper to transform object creation in a function call to be usable by Test
-    private static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l)
-    {
-        return new StackPermutator<T>(l);
-    }
+    private static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l) => new StackPermutator<T>(l);
 
     private static void Test(Func<List<double>, IEnumerable<List<double>>> f, List<double> l)
     {
@@ -68,10 +65,7 @@ internal class Program
     }
 
     // Quick and dirty factorial
-    private static long Fact(long n)
-    {
-        return n <= 2 ? n : n * Fact(n - 1);
-    }
+    private static long Fact(long n) => n <= 2 ? n : n * Fact(n - 1);
 
     // A recursive iterator to produce all possible permutations of a List<T>
     // Short and readable, but 3 times slower than the stack-based version...
@@ -81,6 +75,7 @@ internal class Program
             // If there's only one element in the list, then the permutation is the list itself
             yield return l;
         else
+        {
             // For each element of the list, return the element 1st, followed by all permutations of
             // the rest of the list
             for (int i = 0; i < l.Count; i++)
@@ -94,6 +89,7 @@ internal class Program
                     yield return permut;
                 }
             }
+        }
     }
 
     // A simple permutator returning a list of permutations
@@ -111,7 +107,7 @@ internal class Program
         {
             var s = new List<T>(l);
             s.RemoveAt(i);
-            foreach (List<T> x in ListOfPermut<T>(s))
+            foreach (List<T> x in ListOfPermut(s))
             {
                 x.Insert(0, l[i]);
                 r.Add(x);
@@ -127,20 +123,11 @@ internal class StackPermutator<T> : IEnumerable<List<T>>
     // Just keep a copy of the list since enumerator is retrieved later
     private readonly List<T> list;
 
-    public StackPermutator(List<T> l)
-    {
-        list = l;
-    }
+    public StackPermutator(List<T> l) => list = l;
 
-    public virtual IEnumerator<List<T>> GetEnumerator()
-    {
-        return new MyEnumerator(list);
-    }
+    public virtual IEnumerator<List<T>> GetEnumerator() => new MyEnumerator(list);
 
-    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
     private class MyEnumerator : IEnumerator<List<T>>
     {
@@ -173,7 +160,7 @@ internal class StackPermutator<T> : IEnumerable<List<T>>
                     if (x.level == x.list.Count - 1)
                         return x.list;
                     // Of, not valid.  Remove it from the stack
-                    stack.Pop();
+                    _ = stack.Pop();
                     // And take one by one all remaining elements not permuted in the list,
                     // and push a list with this element added to the list of already
                     // permuted elements, remaining one
@@ -194,14 +181,11 @@ internal class StackPermutator<T> : IEnumerable<List<T>>
         public bool MoveNext()
         {
             // In theory should check that stack is not empty before dropping top element...
-            stack.Pop();
+            _ = stack.Pop();
             return stack.Count > 0;
         }
 
-        object System.Collections.IEnumerator.Current
-        {
-            get { return Current; }
-        }
+        object System.Collections.IEnumerator.Current => Current;
 
         public void Dispose()
         {

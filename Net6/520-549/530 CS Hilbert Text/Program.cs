@@ -46,6 +46,7 @@ internal class Program
 
         // Scans the full instruchon chain returned by iterator and build output table tc
         foreach (char c in LSystemIterator(depth, axiom, rules))
+        {
             switch (c)      // Only process drawing instructions - + and F
             {
                 case '-': a = (a + 1) % 4; break;   // Rotate 90° anti clockwise = increment a (modulo 4)
@@ -65,6 +66,8 @@ internal class Program
                     en = a;
                     break;
             }
+        }
+
         tc[cy, cx] = io[en, 4];          // Fill the last cell, since in the body we always fill previous cell
 
         // Unicode box characters
@@ -100,10 +103,14 @@ internal class Program
 
         // General case, apply transformation rules on depth-1 version
         foreach (char c in LSystemIterator(depth - 1, axiom, rules))
+        {
             if (rules.ContainsKey(c))
+            {
                 foreach (char c2 in rules[c])
                     yield return c2;
+            }
             else
                 yield return c;
+        }
     }
 }

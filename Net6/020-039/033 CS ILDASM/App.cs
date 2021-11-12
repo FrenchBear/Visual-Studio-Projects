@@ -68,7 +68,7 @@ internal class MyApp
         Console.WriteLine("y = {0}", y);
         Console.WriteLine("z = {0}", z);
 
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 
     protected static void ActionBase(MaClasseDeBase b, int iVal)
@@ -83,8 +83,5 @@ internal class MyApp
         IMI.MaMethodeBruyante2(1);
     }
 
-    private static void D_Bip(object e, string sMsg)
-    {
-        Console.WriteLine("D_Bip(): {0}", sMsg);
-    }
+    private static void D_Bip(object e, string sMsg) => Console.WriteLine("D_Bip(): {0}", sMsg);
 }

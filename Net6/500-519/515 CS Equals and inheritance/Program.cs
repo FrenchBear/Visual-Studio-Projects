@@ -34,16 +34,9 @@ public class RE_ExtraData
 {
     public double BaseData { get; set; }
 
-    public override bool Equals(Object obj)
-    {
-        if (obj is not RE_ExtraData other) return false;
-        return BaseData == other.BaseData;
-    }
+    public override bool Equals(Object obj) => obj is RE_ExtraData other && BaseData == other.BaseData;
 
-    public override int GetHashCode()
-    {
-        return BaseData.GetHashCode();
-    }
+    public override int GetHashCode() => BaseData.GetHashCode();
 }
 
 // Specialized version for chemistry
@@ -51,16 +44,8 @@ public class RE_ExtraDataChemistry : RE_ExtraData
 {
     public double Uncertainty { get; set; }
 
-    public override bool Equals(Object obj)
-    {
-        if (obj is not RE_ExtraDataChemistry other) return false;
-        if (!base.Equals(obj)) return false;
+    public override bool Equals(Object obj) 
+        => obj is RE_ExtraDataChemistry other && base.Equals(obj) && Uncertainty == other.Uncertainty;
 
-        return Uncertainty == other.Uncertainty;
-    }
-
-    public override int GetHashCode()
-    {
-        return base.GetHashCode() ^ Uncertainty.GetHashCode();
-    }
+    public override int GetHashCode() => base.GetHashCode() ^ Uncertainty.GetHashCode();
 }

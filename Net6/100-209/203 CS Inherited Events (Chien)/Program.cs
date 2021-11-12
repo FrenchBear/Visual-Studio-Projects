@@ -17,7 +17,7 @@ internal class Program
 
     public static Chien MyRex
     {
-        get { return _withEventsFieldRex; }
+        get => _withEventsFieldRex;
         set
         {
             if (_withEventsFieldRex != null)
@@ -66,30 +66,18 @@ internal class Program
         a2.Lécher();
     }
 
-    private static void Rex_Aboyer()
-    {
-        Console.WriteLine("Rex aboie");
-    }
+    private static void Rex_Aboyer() => Console.WriteLine("Rex aboie");
 
-    private static void Rex_Meurt()
-    {
-        Console.WriteLine("Rex est mort");
-    }
+    private static void Rex_Meurt() => Console.WriteLine("Rex est mort");
 
-    private static void Rex_Mordre()
-    {
-        Console.WriteLine("Rex a mordu");
-    }
+    private static void Rex_Mordre() => Console.WriteLine("Rex a mordu");
 
-    private static void Rex_Nait()
-    {
-        Console.WriteLine("Rex est né le " + MyRex.NéLe);
-    }
+    private static void Rex_Nait() => Console.WriteLine("Rex est né le " + MyRex.NéLe);
 }
 
 public abstract class EtreVivant
 {
-    public System.DateTime NéLe;
+    public DateTime NéLe;
 
     public event NaitEventHandler Nait;
 
@@ -113,15 +101,9 @@ public abstract class EtreVivant
         Meurt?.Invoke();
     }
 
-    private void EtreVivant_Meurt()
-    {
-        Console.WriteLine("Un être vivant est mort");
-    }
+    private void EtreVivant_Meurt() => Console.WriteLine("Un être vivant est mort");
 
-    private void EtreVivant_Nait()
-    {
-        Console.WriteLine("Un être vivant est né");
-    }
+    private void EtreVivant_Nait() => Console.WriteLine("Un être vivant est né");
 }
 
 public class Animal : EtreVivant
@@ -141,40 +123,19 @@ public class Animal : EtreVivant
         Race = sRace;
     }
 
-    public void Enerver()
-    {
-        Mordre?.Invoke();
-    }
+    public void Enerver() => Mordre?.Invoke();
 
-    public virtual void Crier()
-    {
-        Console.WriteLine("Un animal de race " + Race + " crie.");
-    }
+    public virtual void Crier() => Console.WriteLine("Un animal de race " + Race + " crie.");
 
-    public virtual void Lécher()
-    {
-        Console.WriteLine("Un animal de race " + Race + " lèche.");
-    }
+    public virtual void Lécher() => Console.WriteLine("Un animal de race " + Race + " lèche.");
 
-    public void Jouer()
-    {
-        Console.WriteLine("Un animal de race " + Race + " joue.");
-    }
+    public void Jouer() => Console.WriteLine("Un animal de race " + Race + " joue.");
 
-    private void Animal_Meurt()
-    {
-        Console.WriteLine("Un animal de race " + Race + " est mort");
-    }
+    private void Animal_Meurt() => Console.WriteLine("Un animal de race " + Race + " est mort");
 
-    private void Animal_Mordre()
-    {
-        Console.WriteLine("Un animal de race " + Race + " a mordu");
-    }
+    private void Animal_Mordre() => Console.WriteLine("Un animal de race " + Race + " a mordu");
 
-    private void Animal_Nait()
-    {
-        Console.WriteLine("Un animal de race " + Race + " est né");
-    }
+    private void Animal_Nait() => Console.WriteLine("Un animal de race " + Race + " est né");
 }
 
 public class Chien : Animal
@@ -195,45 +156,21 @@ public class Chien : Animal
 
     public delegate void AboyerEventHandler();
 
-    public void Exciter()
-    {
-        Aboyer?.Invoke();
-    }
+    public void Exciter() => Aboyer?.Invoke();
 
-    public override void Crier()
-    {
-        Console.WriteLine(Nom + ": Wouaf !");
-    }
+    public override void Crier() => Console.WriteLine(Nom + ": Wouaf !");
 
-    public override sealed void Lécher()
-    {
-        Console.WriteLine("Le chien " + Nom + " lèche");
-    }
+    public override sealed void Lécher() => Console.WriteLine("Le chien " + Nom + " lèche");
 
-    public new void Jouer()
-    {
-        Console.WriteLine("Le chien " + Nom + " joue.");
-    }
+    public new void Jouer() => Console.WriteLine("Le chien " + Nom + " joue.");
 
-    private void Chien_Aboyer()
-    {
-        Console.WriteLine("Le chien " + Nom + " a aboyé");
-    }
+    private void Chien_Aboyer() => Console.WriteLine("Le chien " + Nom + " a aboyé");
 
-    private void Chien_Meurt()
-    {
-        Console.WriteLine("Le chien " + Nom + " est mort");
-    }
+    private void Chien_Meurt() => Console.WriteLine("Le chien " + Nom + " est mort");
 
-    private void Chien_Mordre()
-    {
-        Console.WriteLine("Le chien " + Nom + " a mordu");
-    }
+    private void Chien_Mordre() => Console.WriteLine("Le chien " + Nom + " a mordu");
 
-    private void Chien_Nait()
-    {
-        Console.WriteLine("Le chien " + Nom + " est né");
-    }
+    private void Chien_Nait() => Console.WriteLine("Le chien " + Nom + " est né");
 }
 
 internal class Chiot : Chien
@@ -243,15 +180,9 @@ internal class Chiot : Chien
     {
     }
 
-    public override void Crier()
-    {
-        Console.WriteLine(Nom + ": Wif !  Wif !");
-    }
+    public override void Crier() => Console.WriteLine(Nom + ": Wif !  Wif !");
 
-    public new void Jouer()
-    {
-        Console.WriteLine("Le chiot " + Nom + " joue.");
-    }
+    public new void Jouer() => Console.WriteLine("Le chiot " + Nom + " joue.");
 }
 
 internal class Loup : Animal

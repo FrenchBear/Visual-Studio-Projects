@@ -20,15 +20,9 @@ internal class ThreeIntegers2 : IEnumerable
         this.i3 = i3;
     }
 
-    public virtual IEnumerator GetEnumerator()
-    {
-        return new MonEnumerateur(this);
-    }
+    public virtual IEnumerator GetEnumerator() => new MonEnumerateur(this);
 
-    public virtual IDictionaryEnumerator GetDictionaryEnumerator()
-    {
-        return new MonEnumerateur(this);
-    }
+    public virtual IDictionaryEnumerator GetDictionaryEnumerator() => new MonEnumerateur(this);
 
     private class MonEnumerateur : IDictionaryEnumerator
     {
@@ -52,53 +46,26 @@ internal class ThreeIntegers2 : IEnumerable
                 return false;
         }
 
-        public object Value
+        public object Value => pos switch
         {
-            get
-            {
-                return pos switch
-                {
-                    0 => tcur.i1,
-                    1 => tcur.i2,
-                    2 => tcur.i3,
-                    _ => throw new InvalidOperationException(),
-                };
-            }
-        }
+            0 => tcur.i1,
+            1 => tcur.i2,
+            2 => tcur.i3,
+            _ => throw new InvalidOperationException(),
+        };
 
-        public object Current
-        {
-            get
-            {
-                return Value;
-            }
-        }
+        public object Current => Value;
 
-        public object Key
+        public object Key => pos switch
         {
-            get
-            {
-                return pos switch
-                {
-                    0 => 0,
-                    1 => 1,
-                    2 => 2,
-                    _ => throw new InvalidOperationException(),
-                };
-            }
-        }
+            0 => 0,
+            1 => 1,
+            2 => 2,
+            _ => throw new InvalidOperationException(),
+        };
 
-        public DictionaryEntry Entry
-        {
-            get
-            {
-                return new DictionaryEntry(Key, Value);
-            }
-        }
+        public DictionaryEntry Entry => new(Key, Value);
 
-        public void Reset()
-        {
-            pos = -1;
-        }
+        public void Reset() => pos = -1;
     }
 }

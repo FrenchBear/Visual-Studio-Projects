@@ -51,9 +51,13 @@ internal class Program
         var sw = Stopwatch.StartNew();
 
         for (int i = 0; i < AStringsList.Count; i++)
-        for (int j = i + 1; j < AStringsList.Count; j++)
-            if (IsCloseEnough(AStringsList[i], AStringsList[j], dist))
+        {
+            for (int j = i + 1; j < AStringsList.Count; j++)
+            {
+                if (IsCloseEnough(AStringsList[i], AStringsList[j], dist))
                 Console.WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
+            }
+        }
 
         sw.Stop();
         Console.WriteLine("time={0}", sw.Elapsed);
@@ -79,8 +83,10 @@ internal class Program
         if (dist == 1 && s1.Length == s2.Length)
         {
             for (int i = 0; i < s1.Length - 1; i++)
+            {
                 if (as1.ReducedList[i].Name == as2.ReducedList[i].Name)
                     return true;
+            }
         }
 
         // s1 is always the longest chain
@@ -91,8 +97,10 @@ internal class Program
 
         // dist>1: remove 1 char from s1 and do it recursively with dist-1
         for (int i = 0; i < s1.Length; i++)
+        {
             if (IsCloseEnough(as1.ReducedList[i], as2, dist - 1))
                 return true;
+        }
 
         // Ok, strings are definitely different
         return false;

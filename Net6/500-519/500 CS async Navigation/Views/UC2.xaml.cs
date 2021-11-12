@@ -16,13 +16,7 @@ public partial class UC2 : UserControl, INavigationContextProvider<UC2, Navigati
 
     private readonly INavigationContext<UC2, NavigationResult> context;
 
-    public INavigationContext<UC2, NavigationResult> GetNavigationContext()
-    {
-        return context;
-    }
+    public INavigationContext<UC2, NavigationResult> GetNavigationContext() => context;
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-        context.Continue(NavigationResult.GoBackward);
-    }
+    private void Button_Click(object sender, RoutedEventArgs e) => context.Continue(NavigationResult.GoBackward);
 }

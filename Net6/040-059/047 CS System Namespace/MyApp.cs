@@ -93,7 +93,10 @@ internal class MyApp
                     writer.Write("X");
                 }
                 else
+                {
                     writer.Write("&nbsp;");
+                }
+
                 writer.WriteLine("</TD>");
             }
             writer.WriteLine("</TR>");

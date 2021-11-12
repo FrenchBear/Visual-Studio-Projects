@@ -28,8 +28,5 @@ internal class Program
     // Add System.Configuration .dll reference and namespace
     // AppSettings only works for simple appSettings element in App.Config, that
     // is much simpler than applicationSettings section
-    private static string GetAppSetting(string settingName)
-    {
-        return ConfigurationManager.AppSettings[settingName];
-    }
+    private static string GetAppSetting(string settingName) => ConfigurationManager.AppSettings[settingName];
 }

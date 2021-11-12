@@ -3,30 +3,26 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-17   PV  VS2022/Net6
 
-#pragma warning disable IDE0052 // Remove unread private members
-
-namespace WindowsApplication2_CSharp;
 
 using System.Windows.Forms;
 
+namespace WindowsApplication2_CSharp;
+
+#pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable IDE1006 // Naming Styles
 
-public class frmHello : System.Windows.Forms.Form
+public class frmHello : Form
 {
     /// <summary>
     ///    Required designer variable.
     /// </summary>
     private System.ComponentModel.Container components;
 
-    private System.Windows.Forms.Button btnHello;
+    private Button btnHello;
 
-    public frmHello()
-    {
+    public frmHello() =>
         // Required for Windows Form Designer support
-        InitializeComponent();
-
-        // TODO: Add any constructor code after InitializeComponent call
-    }
+        InitializeComponent();// TODO: Add any constructor code after InitializeComponent call
 
     /// <summary>
     ///    Required method for Designer support - do not modify
@@ -35,7 +31,7 @@ public class frmHello : System.Windows.Forms.Form
     private void InitializeComponent()
     {
         this.components = new System.ComponentModel.Container();
-        this.btnHello = new System.Windows.Forms.Button();
+        this.btnHello = new Button();
         //@this.TrayHeight = 0;
         //@this.TrayLargeIcon = false;
         //@this.TrayAutoArrange = true;
@@ -53,24 +49,15 @@ public class frmHello : System.Windows.Forms.Form
     /// <summary>
     /// Une fonction événement qui affiche une boîte de message 'Hello'
     /// </summary>
-    protected void btnHello_Click(object sender, System.EventArgs e)
-    {
-        MessageBox.Show("Hello !", "titre");
-    }
+    protected void btnHello_Click(object sender, System.EventArgs e) => MessageBox.Show("Hello !", "titre");
 
     /// <summary>
     /// Une deuxième fonction événement pour l'événement click !
     /// </summary>
-    protected void btnHello_Click_bis(object sender, System.EventArgs e)
-    {
-        MessageBox.Show("Hello_bis !", "titre_bis");
-    }
+    protected void btnHello_Click_bis(object sender, System.EventArgs e) => MessageBox.Show("Hello_bis !", "titre_bis");
 
     /// <summary>
     /// The main entry point for the application.
     /// </summary>
-    public static void Main(string[] args)
-    {
-        Application.Run(new frmHello());
-    }
+    public static void Main(string[] args) => Application.Run(new frmHello());
 }

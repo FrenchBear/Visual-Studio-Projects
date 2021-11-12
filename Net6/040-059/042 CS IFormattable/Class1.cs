@@ -17,14 +17,12 @@ internal struct Complexe : IFormattable
         this.i = i;
     }
 
-    public override string ToString()
-    {
-        return $"({r},{i})";
-    }
+    public override string ToString() => $"({r},{i})";
 
     public String ToString(String sFormat, IFormatProvider fp)
     {
-        if (sFormat != null) switch (sFormat.ToLower())
+        if (sFormat != null) 
+            switch (sFormat.ToLower())
             {
                 case "p":
                     //return "<Nombre " + ToString() + " en coordonnées pôlaires>";

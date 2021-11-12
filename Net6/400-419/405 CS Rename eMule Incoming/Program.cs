@@ -17,6 +17,7 @@ internal class Program
         Regex r = new(@"^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
 
         foreach (FileInfo f in d.EnumerateFiles())
+        {
             if (string.Compare(f.Extension, ".avi", true) == 0 || string.Compare(f.Extension, ".mkv", true) == 0)
             {
                 Console.WriteLine(f.Name);
@@ -28,6 +29,7 @@ internal class Program
                         File.Move(f.FullName, newName);
                 }
             }
+        }
     }
 
     private static string Clean(string s) 

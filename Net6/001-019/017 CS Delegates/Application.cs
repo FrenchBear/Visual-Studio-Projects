@@ -13,18 +13,12 @@ using System;
 
 internal class MaClasse
 {
-    public virtual void F(int i)
-    {
-        Console.WriteLine("MaClasse.F({0})", i);
-    }
+    public virtual void F(int i) => Console.WriteLine("MaClasse.F({0})", i);
 }
 
 internal class MaDérivée : MaClasse
 {
-    public override void F(int i)
-    {
-        Console.WriteLine("MaDérivée.F({0})", i);
-    }
+    public override void F(int i) => Console.WriteLine("MaDérivée.F({0})", i);
 }
 
 internal delegate void MyDelegate(int x);
@@ -41,11 +35,8 @@ internal class Test
         f(132);
         g(133);
 
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 
-    private static void Zap(int iValeur)
-    {
-        Console.WriteLine("Zap({0})", iValeur);
-    }
+    private static void Zap(int iValeur) => Console.WriteLine("Zap({0})", iValeur);
 }

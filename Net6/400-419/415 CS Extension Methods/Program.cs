@@ -27,17 +27,14 @@ namespace ExtensionMethods
 {
     public static class MyExtensions
     {
-        public static int WordCount(this String str)
-        {
-            return str.Split(new char[] { ' ', '.', '?' },
+        public static int WordCount(this String str) => str.Split(new char[] { ' ', '.', '?' },
                              StringSplitOptions.RemoveEmptyEntries).Length;
-        }
 
         public static String Concat(this IEnumerable<char> ie)
         {
             var sb = new StringBuilder();
             foreach (char c in ie)
-                sb.Append(c);
+                _ = sb.Append(c);
             return sb.ToString();
         }
     }

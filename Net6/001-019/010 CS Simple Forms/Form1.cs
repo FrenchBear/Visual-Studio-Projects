@@ -11,14 +11,11 @@ using System.Windows.Forms;
 
 namespace CS010;
 
-public class Form1 : System.Windows.Forms.Form
+public class Form1 : Form
 {
     private System.ComponentModel.Container components;
 
-    public Form1()
-    {
-        InitializeComponent();
-    }
+    public Form1() => InitializeComponent();
 
     private void InitializeComponent()
     {
@@ -27,8 +24,5 @@ public class Form1 : System.Windows.Forms.Form
         this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
     }
 
-    public static void Main(string[] args)
-    {
-        Application.Run(new Form1());
-    }
+    public static void Main(string[] args) => Application.Run(new Form1());
 }

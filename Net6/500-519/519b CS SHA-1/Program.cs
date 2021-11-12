@@ -61,7 +61,7 @@ internal class Program
         byte[] hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
         foreach (byte b in hash)
-            hsb.Append(b.ToString("x2"));
+            _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
 
@@ -91,8 +91,11 @@ internal class Program
             tb[j++] = 0;
         // Length is always 32-bit in this implementation
         if (lengthsize == 128)
+        {
             for (int i = 0; i < 8; i++)
                 tb[j++] = 0;
+        }
+
         tb[j++] = 0;
         tb[j++] = 0;
         tb[j++] = 0;
@@ -100,7 +103,7 @@ internal class Program
         tb[j++] = (byte)(lb >> 24);
         tb[j++] = (byte)((lb & 0x00FF0000) >> 16);
         tb[j++] = (byte)((lb & 0x0000FF00) >> 8);
-        tb[j++] = (byte)((lb & 0x000000FF));
+        tb[j++] = (byte)(lb & 0x000000FF);
         Debug.Assert(j % (blocksize / 8) == 0);
         Debug.Assert(j == nb * (blocksize / 8));
     }
@@ -137,7 +140,7 @@ internal class Program
 
             // copy chunk into first 16 words w[0..15] of the message schedule array
             for (int i = 0; i < 64; i += 4)
-                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)(tb[(br << 6) + i + 3]);
+                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)tb[(br << 6) + i + 3];
 
             // Extend the first 16 words into the remaining 64 words w[16..79] of the message schedule array:
             // for i from 16 to 79:
@@ -223,8 +226,5 @@ internal class Program
 
     // equivalent of C++ _rotl
     // 32-bit version
-    private static uint LeftRotate(uint original, int bits)
-    {
-        return (original << bits) | (original >> (32 - bits));
-    }
+    private static uint LeftRotate(uint original, int bits) => (original << bits) | (original >> (32 - bits));
 }

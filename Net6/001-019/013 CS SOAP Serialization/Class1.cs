@@ -23,10 +23,8 @@ internal class TestSer
             this.s = s;
         }
 
-        public override String ToString()
-        {
-            return "i:" + i + ", s:" + s;
-        }
+        public override String ToString() 
+            => "i:" + i + ", s:" + s;
     }
 
     public static void Main(string[] args)
@@ -34,7 +32,7 @@ internal class TestSer
         int objects = 1000;
 
         Console.WriteLine("Writing " + objects + " objects to a file stream");
-        Stream s = (File.Open("testser.xml", FileMode.Create));
+        Stream s = File.Open("testser.xml", FileMode.Create);
         //SoapFormatter f = new SoapFormatter();
         BinaryFormatter f = new();
         for (int i = 1; i <= objects; i++)
@@ -63,6 +61,6 @@ internal class TestSer
         Console.WriteLine("End: " + DateTime.Now);
         Console.WriteLine("The last object is: " + var);
 
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 }

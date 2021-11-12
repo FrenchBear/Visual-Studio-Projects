@@ -61,7 +61,7 @@ internal class Program
 
         // Actually, real type is ValueTuple
         ValueTuple<int, int> myValueTuple1 = (2, 7);
-        ValueTuple<int, int> myValueTuple2 = (once: 2, upon: 7);
+        //ValueTuple<int, int> myValueTuple2 = (once: 2, upon: 7);
 
         // Convoluted method to make a tuple enumerable, just to do it
         var t9 = ("once", "upon", "a", "time", "in", "a", "far", "away", "kingdom");
@@ -119,8 +119,7 @@ internal class Program
     // Local function and tuples
     public static int Fibonacci(int x)
     {
-        if (x < 0) throw new ArgumentException("Less negativity please!", nameof(x));
-        return Fib(x).current;
+        return x < 0 ? throw new ArgumentException("Less negativity please!", nameof(x)) : Fib(x).current;
 
         static (int current, int previous) Fib(int i)
         {
@@ -133,7 +132,7 @@ internal class Program
     private static (int sum, int count) Tally(object[] values)      // tuple types
     {
         var r = (s: 0, c: 0);                               // tuple literals
-        void Add(int s, int c) { r = (r.s + s, r.c + c); }  // local functions
+        void Add(int s, int c) => r = (r.s + s, r.c + c);   // local functions
         foreach (var v in values)
         {
             switch (v)                                      // switch on any value
@@ -164,11 +163,7 @@ internal class Program
     }
 
     // function returning a reference
-    public static ref TValue Choose<TValue>(bool condition, ref TValue left, ref TValue right)
-    {
-        if (condition) return ref left;
-        return ref right;
-    }
+    public static ref TValue Choose<TValue>(bool condition, ref TValue left, ref TValue right) => ref condition ? ref left : ref right;
 
     static public void TestPatternMatching()
     {

@@ -61,10 +61,10 @@ public class Int4d : ISimpleArith<Int4d>
     private const int digits = 4;
 
     private const int k = 10000;        // 10^digits
-    public int Digits { get => digits; }
+    public int Digits => digits;
 
     // A public parameterless constructor is needed
-    public Int4d() { val = 0; }
+    public Int4d() => val = 0;
 
     // Not part of interface, just for base class
     private Int4d(int x)
@@ -80,10 +80,7 @@ public class Int4d : ISimpleArith<Int4d>
     }
 
     // Same here, actually copy constructor
-    public void FromOther(Int4d other)
-    {
-        val = other.val;
-    }
+    public void FromOther(Int4d other) => val = other.val;
 
     // Addition 4d+4d -> (4d carry, 4d result)
     public (Int4d high, Int4d low) Plus(params Int4d[] list)
@@ -108,28 +105,16 @@ public class Int4d : ISimpleArith<Int4d>
     }
 
     // Convenient helper for output formatting
-    public bool IsZero()
-    {
-        return val == 0;
-    }
+    public bool IsZero() => val == 0;
 
-    public override string ToString()
-    {
-        return val.ToString();
-    }
+    public override string ToString() => val.ToString();
 
     // Output always formatted using 'digits' digits
     public string ToStringWithLeadingZeros() => (val + k).ToString()[1..];
 
     // Helper for testing, prints a pair of 4d numbers
     // This (instance calling) is the high half (first), parameter is the low half
-    public string ToString2(Int4d b)
-    {
-        if (val > 0)
-            return ToString() + b.ToStringWithLeadingZeros();
-        else
-            return b.ToString();
-    }
+    public string ToString2(Int4d b) => val > 0 ? ToString() + b.ToStringWithLeadingZeros() : b.ToString();
 }
 
 // Double Arithmetic: provides twice the capacity of type T that implements ISimpleArith
@@ -141,13 +126,10 @@ public class DA<T> : ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
     protected T low;
 
     private static readonly int digits;
-    public int Digits { get => digits; }
+    public int Digits => digits;
 
     // Static constructore to initialize static variable returned by an instance property that can be included in interface...
-    static DA()
-    {
-        digits = 2 * (new T()).Digits;
-    }
+    static DA() => digits = 2 * new T().Digits;
 
     public DA()
     {
@@ -227,42 +209,27 @@ public class DA<T> : ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
         return (new DA<T>(highH, highL), new DA<T>(lowH, lowL));
     }
 
-    public bool IsZero()
-    {
-        return high.IsZero() && low.IsZero();
-    }
+    public bool IsZero() => high.IsZero() && low.IsZero();
 
-    public override string ToString()
-    {
-        if (high.IsZero())
-            return low.ToString();
-        else
-            return high.ToString() + low.ToStringWithLeadingZeros();
-    }
+    public override string ToString() => high.IsZero() ? low.ToString() : high.ToString() + low.ToStringWithLeadingZeros();
 
     public string ToStringWithLeadingZeros() => high.ToStringWithLeadingZeros() + low.ToStringWithLeadingZeros();
 
-    public string ToString2(DA<T> b)
-    {
-        if (IsZero())
-            return b.ToString();
-        else
-            return ToString() + b.ToStringWithLeadingZeros();
-    }
+    public string ToString2(DA<T> b) => IsZero() ? b.ToString() : ToString() + b.ToStringWithLeadingZeros();
 }
 
 internal class Program
 {
     private static void Test<T>() where T : ISimpleArith<T>, new()
     {
-        int d = (new T()).Digits;
+        int d = new T().Digits;
         var rnd = new Random();
 
         string GetRandomNumber()
         {
             var sb = new StringBuilder(d);
             for (int i = 0; i < d; i++)
-                sb.Append((char)(48 + rnd.Next(0, 10)));
+                _ = sb.Append((char)(48 + rnd.Next(0, 10)));
             return sb.ToString();
         }
 

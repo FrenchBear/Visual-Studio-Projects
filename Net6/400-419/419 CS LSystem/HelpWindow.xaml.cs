@@ -10,8 +10,5 @@ namespace CS419;
 /// </summary>
 public partial class HelpWindow : Window
 {
-    public HelpWindow()
-    {
-        InitializeComponent();
-    }
+    public HelpWindow() => InitializeComponent();
 }

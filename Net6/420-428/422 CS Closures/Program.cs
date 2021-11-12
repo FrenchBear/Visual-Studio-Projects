@@ -51,7 +51,7 @@ internal class SomeClass
         public int GetDelegate__0(int x)
         {
             this.sum += x;
-            return (this.sum + this.__this.offset);
+            return this.sum + this.__this.offset;
         }
     }
 

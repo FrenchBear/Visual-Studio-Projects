@@ -16,10 +16,7 @@ public partial class GdiDrawingForm : Form
     private IEnumerable<char> _s;
     private int _angle;
 
-    public GdiDrawingForm()
-    {
-        InitializeComponent();
-    }
+    public GdiDrawingForm() => InitializeComponent();
 
     public void DrawString(string title, ref IEnumerable<char> s, int angle)
     {
@@ -65,7 +62,7 @@ public partial class GdiDrawingForm : Form
         public void Rend(ref Graphics graOut, double rendingWidth, double rendingHeight)
         {
             _graOut = graOut;
-            Rend(rendingWidth, rendingHeight);
+            _ = Rend(rendingWidth, rendingHeight);
         }
 
         protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)

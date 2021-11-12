@@ -77,18 +77,12 @@ public interface IMetaSimpleArith<T>
 public class MetaIntBase : IMetaSimpleArith<IntBase>
 {
     // Factory from string
-    public IntBase FromString(string s)
-    {
-        if (string.IsNullOrEmpty(s) || s.Length > IntBase.digits || !int.TryParse(s, out int val))
-            throw new ArgumentException("Invalid constructor call");
-        return new IntBase(val);
-    }
+    public IntBase FromString(string s) => string.IsNullOrEmpty(s) || s.Length > IntBase.digits || !int.TryParse(s, out int val)
+            ? throw new ArgumentException("Invalid constructor call")
+            : new IntBase(val);
 
     // Factory from other (copy constructor)
-    public IntBase FromOther(IntBase other)
-    {
-        return new IntBase(other.val);
-    }
+    public IntBase FromOther(IntBase other) => new(other.val);
 
     // Addition of a paramarray of IntBase, high part contains the overflow carry
     public (IntBase high, IntBase low) Plus(params IntBase[] list)
@@ -112,13 +106,7 @@ public class MetaIntBase : IMetaSimpleArith<IntBase>
     }
 
     // Helper for testing, prints a pair of IntBase numbers as a singmle number
-    public string ToString2(IntBase a, IntBase b)
-    {
-        if (a.val > 0)
-            return ToString() + b.ToStringWithLeadingZeros();
-        else
-            return b.ToString();
-    }
+    public string ToString2(IntBase a, IntBase b) => a.val > 0 ? ToString() + b.ToStringWithLeadingZeros() : b.ToString();
 }
 
 // Base arithmetic class providing 4 decimal digits precision using
@@ -134,10 +122,10 @@ public class IntBase : ISimpleArith<IntBase>
     internal const int k = 10000;        // 10^digits
 
     // Instance property so that doubling class can retrieve it
-    public int Digits { get => digits; }
+    public int Digits => digits;
 
     // A public parameterless constructor is needed
-    public IntBase() { val = 0; }
+    public IntBase() => val = 0;
 
     // Not part of interface, called by MetaClass
     internal IntBase(int x)
@@ -147,15 +135,9 @@ public class IntBase : ISimpleArith<IntBase>
     }
 
     // Convenient helper for output formatting
-    public bool IsZero()
-    {
-        return val == 0;
-    }
+    public bool IsZero() => val == 0;
 
-    public override string ToString()
-    {
-        return val.ToString();
-    }
+    public override string ToString() => val.ToString();
 
     // Output always formatted using 'digits' digits
     public string ToStringWithLeadingZeros() => (val + k).ToString()[1..];
@@ -169,22 +151,15 @@ public class MetaDA<T, MetaT> : IMetaSimpleArith<DA<T, MetaT>>
     // Metaclass is a singleton
     private static readonly MetaT m = new();
 
-    public DA<T, MetaT> FromString(string s)
-    {
-        if (string.IsNullOrEmpty(s) || s.Length > DA<T, MetaT>.digits)
-            throw new ArgumentException("Invalid constructor call");
+    public DA<T, MetaT> FromString(string s) 
+        => string.IsNullOrEmpty(s) || s.Length > DA<T, MetaT>.digits
+            ? throw new ArgumentException("Invalid constructor call")
+            : s.Length > DA<T, MetaT>.digits / 2
+            ? new DA<T, MetaT>(m.FromString(s[..^(DA<T, MetaT>.digits / 2)]),
+                m.FromString(s[^(DA<T, MetaT>.digits / 2)..]), true)
+            : new DA<T, MetaT>(new T(), m.FromString(s), true);
 
-        if (s.Length > DA<T, MetaT>.digits / 2)
-            return new DA<T, MetaT>(m.FromString(s[..^(DA<T, MetaT>.digits / 2)]),
-                m.FromString(s[^(DA<T, MetaT>.digits / 2)..]), true);
-        else
-            return new DA<T, MetaT>(new T(), m.FromString(s), true);
-    }
-
-    public DA<T, MetaT> FromOther(DA<T, MetaT> other)
-    {
-        return new DA<T, MetaT>(other.high, other.low, true);
-    }
+    public DA<T, MetaT> FromOther(DA<T, MetaT> other) => new(other.high, other.low, true);
 
     public (DA<T, MetaT> high, DA<T, MetaT> low) Plus(params DA<T, MetaT>[] list)
     {
@@ -223,13 +198,7 @@ public class MetaDA<T, MetaT> : IMetaSimpleArith<DA<T, MetaT>>
         return (new DA<T, MetaT>(highH, highL, true), new DA<T, MetaT>(lowH, lowL, true));
     }
 
-    public string ToString2(DA<T, MetaT> a, DA<T, MetaT> b)
-    {
-        if (a.IsZero())
-            return b.ToString();
-        else
-            return a + b.ToStringWithLeadingZeros();
-    }
+    public string ToString2(DA<T, MetaT> a, DA<T, MetaT> b) => a.IsZero() ? b.ToString() : a + b.ToStringWithLeadingZeros();
 }
 
 // Double Arithmetic: provides twice the capacity of type T that implements ISimpleArith
@@ -246,13 +215,10 @@ public class DA<T, MetaT> : ISimpleArith<DA<T, MetaT>>
     private static readonly MetaT m = new();
 
     internal static int digits;
-    public int Digits { get => digits; }
+    public int Digits => digits;
 
     // Static constructor to initialize static variable returned by an instance property that can be included in interface...
-    static DA()
-    {
-        digits = 2 * (new T()).Digits;
-    }
+    static DA() => digits = 2 * new T().Digits;
 
     public DA()
     {
@@ -277,18 +243,9 @@ public class DA<T, MetaT> : ISimpleArith<DA<T, MetaT>>
         }
     }
 
-    public bool IsZero()
-    {
-        return high.IsZero() && low.IsZero();
-    }
+    public bool IsZero() => high.IsZero() && low.IsZero();
 
-    public override string ToString()
-    {
-        if (high.IsZero())
-            return low.ToString();
-        else
-            return high.ToString() + low.ToStringWithLeadingZeros();
-    }
+    public override string ToString() => high.IsZero() ? low.ToString() : high.ToString() + low.ToStringWithLeadingZeros();
 
     public string ToStringWithLeadingZeros() => high.ToStringWithLeadingZeros() + low.ToStringWithLeadingZeros();
 }
@@ -299,14 +256,14 @@ internal class Program
         where T : ISimpleArith<T>, new()
         where MetaT : IMetaSimpleArith<T>, new()
     {
-        int d = (new T()).Digits;
+        int d = new T().Digits;
         var rnd = new Random();
 
         string GetRandomNumber()
         {
             var sb = new StringBuilder(d);
             for (int i = 0; i < d; i++)
-                sb.Append((char)(48 + rnd.Next(0, 10)));
+                _ = sb.Append((char)(48 + rnd.Next(0, 10)));
             return sb.ToString();
         }
 

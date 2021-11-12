@@ -25,6 +25,7 @@ internal class Program
     {
         bool first = true;
         foreach (T item in list)
+        {
             if (first)
             {
                 first = false;
@@ -36,6 +37,8 @@ internal class Program
                 Write(", ");
                 Console.Write(item);
             }
+        }
+
         Console.WriteLine("]");
     }
 

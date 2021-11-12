@@ -9,8 +9,6 @@
 using System;
 using System.Collections;
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
-
 internal class TestCollections
 {
     public static void PrintKeysAndValues(IDictionary myCollection)
@@ -48,15 +46,9 @@ internal class TestCollections
 
     private class MyComparer : IEqualityComparer
     {
-        public new bool Equals(object x, object y)
-        {
-            return x.Equals(y);
-        }
+        public new bool Equals(object x, object y) => x.Equals(y);
 
-        public int GetHashCode(object obj)
-        {
-            return obj.ToString().ToLower().GetHashCode();
-        }
+        public int GetHashCode(object obj) => obj.ToString().ToLower().GetHashCode();
     }
 
     public static void TestCaseInsensitiveHashtable()
@@ -123,6 +115,6 @@ internal class MyApp
         TestCollections.TestCaseInsensitiveHashtable();
         TestCollections.TestSortedList();
 
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 }

@@ -29,7 +29,7 @@ public class GetMemberMethodImpl
                 Console.Write(" Interface: " + GetDeclaringMethod(m).DeclaringType);
             Console.WriteLine();
         }
-        Console.ReadLine();
+        _ = Console.ReadLine();
     }
 
     public static MethodInfo GetDeclaringMethod(MethodInfo m)
@@ -41,9 +41,7 @@ public class GetMemberMethodImpl
             for (int j = 0; j < map.TargetMethods.Length; j++)
             {
                 if (map.TargetMethods[j] == m)
-                {
                     return map.InterfaceMethods[j];
-                }
             }
         }
         return null;
@@ -52,20 +50,11 @@ public class GetMemberMethodImpl
 
 public class Bar : IBar
 {
-    void IFoo.A()
-    {
-        Console.WriteLine("bar.a");
-    }
+    void IFoo.A() => Console.WriteLine("bar.a");
 
-    void IBar.B()
-    {
-        Console.WriteLine("bar.b");
-    }
+    void IBar.B() => Console.WriteLine("bar.b");
 
-    void IBar.C()
-    {
-        Console.WriteLine("bar.c");
-    }
+    void IBar.C() => Console.WriteLine("bar.c");
 
     //  void d() { }
 }

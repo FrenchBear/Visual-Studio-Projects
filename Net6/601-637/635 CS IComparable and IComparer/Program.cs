@@ -25,10 +25,7 @@ internal class Program
         List<Entier> l2 = new() { new Entier(15), new Entier(2), new Entier(1), new Entier(17), new Entier(3) };
         l2.Sort((it1, it2) => it1.Value - it2.Value);      // Sort using a Comparison<Entier> delegate provided by a lambda
         WriteLine("l2a: " + l2.ToString<Entier>());
-        int alphaSorting(Entier it1, Entier it2)
-        {
-            return string.Compare(it1.Value.ToString(), it2.Value.ToString(), StringComparison.Ordinal);
-        }
+        int alphaSorting(Entier it1, Entier it2) => string.Compare(it1.Value.ToString(), it2.Value.ToString(), StringComparison.Ordinal);
         Comparison<Entier> alphaSortingDeletage = alphaSorting;
         l2.Sort(alphaSortingDeletage);      // Sort using a traditional Comparison<Entier> delegate
         WriteLine("l2b: " + l2.ToString<Entier>());
@@ -85,17 +82,11 @@ internal class Entier
 {
     private readonly int n;
 
-    public Entier(int value)
-    {
-        n = value;
-    }
+    public Entier(int value) => n = value;
 
     public int Value => n;
 
-    public override string ToString()
-    {
-        return n.ToString();
-    }
+    public override string ToString() => n.ToString();
 }
 
 // IComparable, for old code
@@ -105,24 +96,15 @@ internal class Entier1 : Entier, IComparable
     {
     }
 
-    public int CompareTo(object obj)
-    {
-        if (obj == null) return 1;
-
-        if (obj is Entier1 otherEntier)
-            return Value - otherEntier.Value;
-        else
-            throw new ArgumentException("Object is not an Entier1");
-    }
+    public int CompareTo(object obj) => obj == null
+            ? 1
+            : obj is Entier1 otherEntier ? Value - otherEntier.Value : throw new ArgumentException("Object is not an Entier1");
 }
 
 // IComparer<T>, to build objects that implements specific sorting
 internal class EntierComparer : IComparer<Entier>
 {
-    public int Compare(Entier x, Entier y)
-    {
-        return x.Value - y.Value;
-    }
+    public int Compare(Entier x, Entier y) => x.Value - y.Value;
 }
 
 // Implements operators >, >=, <, <=
@@ -153,20 +135,14 @@ internal class Entier3 : Entier, IComparable<Entier3>
     {
     }
 
-    public int CompareTo(Entier3 other)
-    {
-        return Value - other.Value;
-    }
+    public int CompareTo(Entier3 other) => Value - other.Value;
 }
 
 // IComparer<T>, to build objects that implements specific sorting
 // Here Entier3 is sorted using alphabetical sorting
 internal class Entier3Comparer : IComparer<Entier3>
 {
-    public int Compare(Entier3 x, Entier3 y)
-    {
-        return string.Compare(x.Value.ToString(), y.Value.ToString(), StringComparison.Ordinal);
-    }
+    public int Compare(Entier3 x, Entier3 y) => string.Compare(x.Value.ToString(), y.Value.ToString(), StringComparison.Ordinal);
 }
 
 internal static class ExtensionMethods
@@ -176,13 +152,18 @@ internal static class ExtensionMethods
         StringBuilder sb = new();
         bool first = true;
         foreach (T item in collection)
+        {
             if (first)
             {
-                sb.Append('{').Append(item);
+                _ = sb.Append('{').Append(item);
                 first = false;
             }
             else
-                sb.Append(", ").Append(item);
+            {
+                _ = sb.Append(", ").Append(item);
+            }
+        }
+
         return sb.Append('}').ToString();
     }
 }

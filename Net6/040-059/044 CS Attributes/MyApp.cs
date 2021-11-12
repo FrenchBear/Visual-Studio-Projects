@@ -13,7 +13,7 @@ namespace CS44;
 
 
 [AttributeUsage(AttributeTargets.Class)]
-public class MonAttribut : System.Attribute
+public class MonAttribut : Attribute
 {
     private readonly int iPriv;
     private string sInfo;
@@ -26,23 +26,11 @@ public class MonAttribut : System.Attribute
 
     public string Info
     {
-        get
-        {
-            return sInfo;
-        }
-        set
-        {
-            sInfo = value;
-        }
+        get => sInfo;
+        set => sInfo = value;
     }
 
-    public int IFlags
-    {
-        get
-        {
-            return iPriv;
-        }
-    }
+    public int IFlags => iPriv;
 }
 
 [MonAttribut(1, Info = "Info de MaClasse1")]

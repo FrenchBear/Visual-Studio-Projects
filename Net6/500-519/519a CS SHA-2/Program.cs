@@ -122,17 +122,13 @@ internal class Program
         byte[] hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
         foreach (byte b in hash)
-            hsb.Append(b.ToString("x2"));
+            _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
 
-    private static void Test_sha_224(string s, string hashed)
-    {
+    private static void Test_sha_224(string s, string hashed) =>
         // Use local implementation
-        Debug.Assert(SHA_224(s) == hashed);
-
-        // .Net Framework does not provide a managed version
-    }
+        Debug.Assert(SHA_224(s) == hashed);// .Net Framework does not provide a managed version
 
     private static void Test_sha_512(string s, string hashed)
     {
@@ -145,7 +141,7 @@ internal class Program
         byte[] hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
         foreach (byte b in hash)
-            hsb.Append(b.ToString("x2"));
+            _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
 
@@ -160,7 +156,7 @@ internal class Program
         byte[] hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
         foreach (byte b in hash)
-            hsb.Append(b.ToString("x2"));
+            _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
 
@@ -190,8 +186,11 @@ internal class Program
             tb[j++] = 0;
         // Length is always 32-bit in this implementation
         if (lengthsize == 128)
+        {
             for (int i = 0; i < 8; i++)
                 tb[j++] = 0;
+        }
+
         tb[j++] = 0;
         tb[j++] = 0;
         tb[j++] = 0;
@@ -199,7 +198,7 @@ internal class Program
         tb[j++] = (byte)(lb >> 24);
         tb[j++] = (byte)((lb & 0x00FF0000) >> 16);
         tb[j++] = (byte)((lb & 0x0000FF00) >> 8);
-        tb[j++] = (byte)((lb & 0x000000FF));
+        tb[j++] = (byte)(lb & 0x000000FF);
         Debug.Assert(j % (blocksize / 8) == 0);
         Debug.Assert(j == nb * (blocksize / 8));
     }
@@ -280,7 +279,7 @@ internal class Program
 
             // copy chunk into first 16 words w[0..15] of the message schedule array
             for (int i = 0; i < 64; i += 4)
-                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)(tb[(br << 6) + i + 3]);
+                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)tb[(br << 6) + i + 3];
 
             // Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
             // for i from 16 to 63
@@ -427,8 +426,10 @@ internal class Program
 
             // copy chunk into first 16 long words w[0..15] of the message schedule array
             for (int i = 0; i < 128; i += 8)
+            {
                 w[i >> 3] = ((ulong)tb[(br << 7) + i + 0] << 56) + ((ulong)tb[(br << 7) + i + 1] << 48) + ((ulong)tb[(br << 7) + i + 2] << 40) + ((ulong)tb[(br << 7) + i + 3] << 32) +
-                            ((ulong)tb[(br << 7) + i + 4] << 24) + ((ulong)tb[(br << 7) + i + 5] << 16) + ((ulong)tb[(br << 7) + i + 6] << 8) + ((ulong)tb[(br << 7) + i + 7]);
+                            ((ulong)tb[(br << 7) + i + 4] << 24) + ((ulong)tb[(br << 7) + i + 5] << 16) + ((ulong)tb[(br << 7) + i + 6] << 8) + (ulong)tb[(br << 7) + i + 7];
+            }
 
             // Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
             // for i from 16 to 79
@@ -498,16 +499,10 @@ internal class Program
 
     // equivalent of C++ _rotr
     // 32-bit version
-    private static uint RightRotate(uint original, int bits)
-    {
-        return (original >> bits) | (original << (32 - bits));
-    }
+    private static uint RightRotate(uint original, int bits) => (original >> bits) | (original << (32 - bits));
 
     // 64-bit version
-    private static ulong RightRotate(ulong original, int bits)
-    {
-        return (original >> bits) | (original << (64 - bits));
-    }
+    private static ulong RightRotate(ulong original, int bits) => (original >> bits) | (original << (64 - bits));
 
     /*
     // equivalent of C++ _rotl

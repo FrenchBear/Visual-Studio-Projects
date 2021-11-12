@@ -1,16 +1,16 @@
 ﻿// 2021-09-22   PV      VS2022; Net6
 
 
-#pragma warning disable IDE1006 // Naming Styles
-
-namespace SdkXamlBrowser;
-
 using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
+#pragma warning disable IDE1006 // Naming Styles
+
+
+namespace SdkXamlBrowser;
 public partial class Scene1
 {
     public bool RealTimeUpdate = true;
@@ -49,7 +49,7 @@ public partial class Scene1
                 if (content != null)
                 {
                     cc.Children.Clear();
-                    cc.Children.Add((UIElement)content);
+                    _ = cc.Children.Add((UIElement)content);
                 }
                 TextBox1.Foreground = System.Windows.Media.Brushes.Black;
                 ErrorText.Text = "";
@@ -67,10 +67,7 @@ public partial class Scene1
         }
     }
 
-    protected void onClickParseButton(object sender, RoutedEventArgs args)
-    {
-        ParseCurrentBuffer();
-    }
+    protected void onClickParseButton(object sender, RoutedEventArgs args) => ParseCurrentBuffer();
 
     protected void ShowPreview(object sender, RoutedEventArgs args)
     {

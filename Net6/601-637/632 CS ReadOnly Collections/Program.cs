@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;           // Namespace for RO interfaces and collections
 
-#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace CS612;
 

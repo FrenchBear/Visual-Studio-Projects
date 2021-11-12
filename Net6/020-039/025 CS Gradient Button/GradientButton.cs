@@ -35,10 +35,7 @@ public class GradientButton : Button
 
     public Color EndColor
     {
-        get
-        {
-            return endColor;
-        }
+        get => endColor;
 
         set
         {
@@ -50,10 +47,7 @@ public class GradientButton : Button
 
     public Color StartColor
     {
-        get
-        {
-            return startColor;
-        }
+        get => startColor;
 
         set
         {

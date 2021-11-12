@@ -45,34 +45,16 @@ internal interface I2
 public class MyClass : I1, I2
 {
     // Common for I1 and I2 interfaces, implicit implementation
-    public void Method1()
-    {
-        throw new NotImplementedException();
-    }
+    public void Method1() => throw new NotImplementedException();
 
     // With explicit implementation of interface member, public is implicit (and forbidden)
-    void I1.Method2()
-    {
-        throw new NotImplementedException();
-    }
+    void I1.Method2() => throw new NotImplementedException();
 
-    public void Method3()
-    {
-        throw new NotImplementedException();
-    }
+    public void Method3() => throw new NotImplementedException();
 
-    void I2.Method1()
-    {
-        throw new NotImplementedException();
-    }
+    void I2.Method1() => throw new NotImplementedException();
 
-    void I2.Method2()
-    {
-        throw new NotImplementedException();
-    }
+    void I2.Method2() => throw new NotImplementedException();
 
-    void I2.Method4()
-    {
-        throw new NotImplementedException();
-    }
+    void I2.Method4() => throw new NotImplementedException();
 }

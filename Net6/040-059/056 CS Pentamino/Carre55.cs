@@ -11,10 +11,8 @@ internal class Carre55
     public int lmax, cmax;		// Encombrement de la pièce
     public int iOffsetCol;		// Décalage de colonne pour occuper la cellule [0, 0]
 
-    private bool B(int x)
-    {
-        return x != 0;
-    }
+    private bool B(int x) 
+        => x != 0;
 
     private Carre55()
     {
@@ -53,37 +51,23 @@ internal class Carre55
 
     // Détermine la propriété iOffsetCol, c'est à dire le nombre de colonnes qu'il
     // faut translater le dessin à gauche pour occuper la cellule [0, 0]
-    private void MkOffset()
-    {
-        if (tMotif[0, 0])
-            iOffsetCol = 0;
-        else if (tMotif[0, 1])
-            iOffsetCol = 1;
-        else if (tMotif[0, 2])
-            iOffsetCol = 2;
-        else if (tMotif[0, 3])
-            iOffsetCol = 3;
-        else
-            iOffsetCol = 4;
-    }
+    private void MkOffset() 
+        => iOffsetCol = tMotif[0, 0] ? 0 : tMotif[0, 1] ? 1 : tMotif[0, 2] ? 2 : tMotif[0, 3] ? 3 : 4;
 
     // Opérateur de comparaison
-    public static bool Egalite(Carre55 l, Carre55 k)
-    {
-        return l.lmax == k.lmax && l.cmax == k.cmax &&
-        l.tMotif[0, 0] == k.tMotif[0, 0] && l.tMotif[0, 1] == k.tMotif[0, 1] && l.tMotif[0, 2] == k.tMotif[0, 2] && l.tMotif[0, 3] == k.tMotif[0, 3] && l.tMotif[0, 4] == k.tMotif[0, 4] &&
-        l.tMotif[1, 0] == k.tMotif[1, 0] && l.tMotif[1, 1] == k.tMotif[1, 1] && l.tMotif[1, 2] == k.tMotif[1, 2] && l.tMotif[1, 3] == k.tMotif[1, 3] && l.tMotif[1, 4] == k.tMotif[1, 4] &&
-        l.tMotif[2, 0] == k.tMotif[2, 0] && l.tMotif[2, 1] == k.tMotif[2, 1] && l.tMotif[2, 2] == k.tMotif[2, 2] && l.tMotif[2, 3] == k.tMotif[2, 3] && l.tMotif[2, 4] == k.tMotif[2, 4] &&
-        l.tMotif[3, 0] == k.tMotif[3, 0] && l.tMotif[3, 1] == k.tMotif[3, 1] && l.tMotif[3, 2] == k.tMotif[3, 2] && l.tMotif[3, 3] == k.tMotif[3, 3] && l.tMotif[3, 4] == k.tMotif[3, 4] &&
-        l.tMotif[4, 0] == k.tMotif[4, 0] && l.tMotif[4, 1] == k.tMotif[4, 1] && l.tMotif[4, 2] == k.tMotif[4, 2] && l.tMotif[4, 3] == k.tMotif[4, 3] && l.tMotif[4, 4] == k.tMotif[4, 4];
-    }
+    public static bool Egalite(Carre55 l, Carre55 k) 
+        => l.lmax == k.lmax && l.cmax == k.cmax &&
+            l.tMotif[0, 0] == k.tMotif[0, 0] && l.tMotif[0, 1] == k.tMotif[0, 1] && l.tMotif[0, 2] == k.tMotif[0, 2] && l.tMotif[0, 3] == k.tMotif[0, 3] && l.tMotif[0, 4] == k.tMotif[0, 4] &&
+            l.tMotif[1, 0] == k.tMotif[1, 0] && l.tMotif[1, 1] == k.tMotif[1, 1] && l.tMotif[1, 2] == k.tMotif[1, 2] && l.tMotif[1, 3] == k.tMotif[1, 3] && l.tMotif[1, 4] == k.tMotif[1, 4] &&
+            l.tMotif[2, 0] == k.tMotif[2, 0] && l.tMotif[2, 1] == k.tMotif[2, 1] && l.tMotif[2, 2] == k.tMotif[2, 2] && l.tMotif[2, 3] == k.tMotif[2, 3] && l.tMotif[2, 4] == k.tMotif[2, 4] &&
+            l.tMotif[3, 0] == k.tMotif[3, 0] && l.tMotif[3, 1] == k.tMotif[3, 1] && l.tMotif[3, 2] == k.tMotif[3, 2] && l.tMotif[3, 3] == k.tMotif[3, 3] && l.tMotif[3, 4] == k.tMotif[3, 4] &&
+            l.tMotif[4, 0] == k.tMotif[4, 0] && l.tMotif[4, 1] == k.tMotif[4, 1] && l.tMotif[4, 2] == k.tMotif[4, 2] && l.tMotif[4, 3] == k.tMotif[4, 3] && l.tMotif[4, 4] == k.tMotif[4, 4];
 
     // Transformations
 
     // Transformation de ligne
-    private int TL(int iT, int l, int c)
-    {
-        return iT switch
+    private int TL(int iT, int l, int c) 
+        => iT switch
         {
             1 => c,
             2 => l < lmax ? lmax - 1 - l : l,
@@ -94,12 +78,10 @@ internal class Carre55
             7 => c,
             _ => l,// cas 0
         };
-    }
 
     // Transformation de colonne
-    private int TC(int iT, int l, int c)
-    {
-        return iT switch
+    private int TC(int iT, int l, int c) 
+        => iT switch
         {
             1 => l < lmax ? lmax - 1 - l : l,
             2 => c < cmax ? cmax - 1 - c : c,
@@ -110,7 +92,6 @@ internal class Carre55
             7 => l,
             _ => c,// cas 0
         };
-    }
 
     // Transformations
     // 0: Identité

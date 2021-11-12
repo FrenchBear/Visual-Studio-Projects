@@ -22,10 +22,7 @@ public class Model
     public Model()
     {
         // Initialization for multitasking (Max number of // tasks)
-        if (Environment.ProcessorCount > 4)
-            MAX_PARALLISM = Environment.ProcessorCount - 2;
-        else
-            MAX_PARALLISM = Environment.ProcessorCount - 1;
+        MAX_PARALLISM = Environment.ProcessorCount > 4 ? Environment.ProcessorCount - 2 : Environment.ProcessorCount - 1;
         if (MAX_PARALLISM < 1) MAX_PARALLISM = 1;
 
         // Folders just for testing
@@ -40,10 +37,7 @@ public class Model
     // ViewModel
     private ViewModel vm;
 
-    public void SetViewModel(ViewModel vm)
-    {
-        this.vm = vm;
-    }
+    public void SetViewModel(ViewModel vm) => this.vm = vm;
 
     // Variables exposed to ViewModel
     public string SourceFolder;
@@ -73,64 +67,64 @@ public class Model
         // Will execute generation in a separate thread, no need for async/await since everything is done
         // in this thread, there is no final action to indicate that hashing is done, this is reported
         // through IProgress interface
-        Task.Run(/* async */ () =>
-        {
-            int n = 0;      // Number of active hashing tasks
+        _ = Task.Run(/* async */ () =>
+          {
+              int n = 0;      // Number of active hashing tasks
             int p = 0;      // Number of processed files
 
             // Hash MAX_PARALLISM files in parallel
             foreach (string file in processedFilesList)
-            {
-                if (cancelToken.IsCancellationRequested) goto ExitGenerate;
+              {
+                  if (cancelToken.IsCancellationRequested) goto ExitGenerate;
 
-                string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
+                  string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
                 lt.Add(Task.Run(() => ConvertImage(s)));
-                n++;
-                if (n == MAX_PARALLISM)
-                {
+                  n++;
+                  if (n == MAX_PARALLISM)
+                  {
                     //await Task.WhenAny(lt.ToArray());
-                    Task.WaitAny(lt.ToArray());
-                    lock (lt)
-                    {
-                        var lf = new List<Task<string>>();
-                        foreach (var t in lt)
-                            if (t.IsCompleted)
-                            {
-                                lf.Add(t);
-                                n--;
-                                progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
-                            }
-                        foreach (var t in lf)
-                            lt.Remove(t);
-                    }
-                }
-            }
+                    _ = Task.WaitAny(lt.ToArray());
+                      lock (lt)
+                      {
+                          var lf = new List<Task<string>>();
+                          foreach (var t in lt)
+                              if (t.IsCompleted)
+                              {
+                                  lf.Add(t);
+                                  n--;
+                                  progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
+                              }
+                          foreach (var t in lf)
+                              _ = lt.Remove(t);
+                      }
+                  }
+              }
 
             // Wail all tasks to terminate
             while (n > 0)
-            {
-                if (cancelToken.IsCancellationRequested) goto ExitGenerate;
+              {
+                  if (cancelToken.IsCancellationRequested) goto ExitGenerate;
 
                 //await Task.WhenAny(lt.ToArray());
-                Task.WaitAny(lt.ToArray());
-                lock (lt)
-                {
-                    var lf = new List<Task<string>>();
-                    foreach (var t in lt)
-                        if (t.IsCompleted)
-                        {
-                            lf.Add(t);
-                            n--;
-                            progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
-                        }
-                    foreach (var t in lf)
-                        lt.Remove(t);
-                }
-            }
+                _ = Task.WaitAny(lt.ToArray());
+                  lock (lt)
+                  {
+                      var lf = new List<Task<string>>();
+                      foreach (var t in lt)
+                          if (t.IsCompleted)
+                          {
+                              lf.Add(t);
+                              n--;
+                              progress.Report(new ProgressInfo(++p, processedFilesList.Length, t.Result));
+                          }
+                      foreach (var t in lf)
+                          _ = lt.Remove(t);
+                  }
+              }
 
-            ExitGenerate:
-            ;
-        }, cancelToken);
+          ExitGenerate:
+              ;
+          }, cancelToken);
     }
 
     private string ConvertImage(string fileName)
