@@ -43,15 +43,15 @@ public class AddEditForm : System.Windows.Forms.Form
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.ArtistLabel = new System.Windows.Forms.Label();
-        this.OKButton = new System.Windows.Forms.Button();
-        this.NotOKButton = new System.Windows.Forms.Button();
-        this.ArtistBox = new System.Windows.Forms.TextBox();
-        this.TitleLabel = new System.Windows.Forms.Label();
-        this.CommentLabel = new System.Windows.Forms.Label();
-        this.TitleBox = new System.Windows.Forms.TextBox();
-        this.CommentBox = new System.Windows.Forms.TextBox();
+        components = new System.ComponentModel.Container();
+        ArtistLabel = new System.Windows.Forms.Label();
+        OKButton = new System.Windows.Forms.Button();
+        NotOKButton = new System.Windows.Forms.Button();
+        ArtistBox = new System.Windows.Forms.TextBox();
+        TitleLabel = new System.Windows.Forms.Label();
+        CommentLabel = new System.Windows.Forms.Label();
+        TitleBox = new System.Windows.Forms.TextBox();
+        CommentBox = new System.Windows.Forms.TextBox();
         //@this.TrayHeight = 0;
         //@this.TrayLargeIcon = false;
         //@this.TrayAutoArrange = true;
@@ -90,22 +90,22 @@ public class AddEditForm : System.Windows.Forms.Form
         CommentBox.Multiline = true;
         CommentBox.TabIndex = 5;
         CommentBox.Size = new System.Drawing.Size(208, 80);
-        this.Text = "AddEditForm";
-        this.MaximizeBox = false;
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        this.CancelButton = this.NotOKButton;
-        this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-        this.ShowInTaskbar = false;
-        this.AcceptButton = this.OKButton;
-        this.MinimizeBox = false;
-        this.ClientSize = new System.Drawing.Size(282, 247);
-        this.Controls.Add(this.NotOKButton);
-        this.Controls.Add(this.OKButton);
-        this.Controls.Add(this.CommentBox);
-        this.Controls.Add(this.ArtistBox);
-        this.Controls.Add(this.TitleBox);
-        this.Controls.Add(this.CommentLabel);
-        this.Controls.Add(this.ArtistLabel);
-        this.Controls.Add(this.TitleLabel);
+        Text = "AddEditForm";
+        MaximizeBox = false;
+        AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        CancelButton = NotOKButton;
+        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+        ShowInTaskbar = false;
+        AcceptButton = OKButton;
+        MinimizeBox = false;
+        ClientSize = new System.Drawing.Size(282, 247);
+        Controls.Add(NotOKButton);
+        Controls.Add(OKButton);
+        Controls.Add(CommentBox);
+        Controls.Add(ArtistBox);
+        Controls.Add(TitleBox);
+        Controls.Add(CommentLabel);
+        Controls.Add(ArtistLabel);
+        Controls.Add(TitleLabel);
     }
 }

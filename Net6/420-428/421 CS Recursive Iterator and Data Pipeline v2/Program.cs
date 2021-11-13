@@ -18,7 +18,6 @@ internal class Program
         foreach (double d in s)
             Console.WriteLine(d);
 
-
         // New style
         _ = new SortedSet<double>()
             .Add(Generate(10, () => r.NextDouble()))

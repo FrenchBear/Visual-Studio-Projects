@@ -86,7 +86,7 @@ public partial class MainWindow : Window
 
     private void CloseCanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = true;
 
-    private void CloseExecuted(object sender, ExecutedRoutedEventArgs e) => this.Close();
+    private void CloseExecuted(object sender, ExecutedRoutedEventArgs e) => Close();
 
     private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e) => IsDirty = true;
 

@@ -15,9 +15,9 @@ public sealed class MsgBox3 : MsgBox2
 
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        this.BackColor = System.Drawing.Color.Bisque;
+        components = new System.ComponentModel.Container();
+        AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        BackColor = System.Drawing.Color.Bisque;
     }
 
     public override void Info(string sMsg) => base.Info("Info MsgBox3:\r\n" + sMsg);

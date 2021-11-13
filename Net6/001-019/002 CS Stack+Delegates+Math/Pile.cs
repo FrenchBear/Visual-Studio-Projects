@@ -18,8 +18,8 @@ public class Pile
 
         public Noeud(object o, Noeud s)
         {
-            this.suivant = s;
-            this.élément = o;
+            suivant = s;
+            élément = o;
         }
     }
 

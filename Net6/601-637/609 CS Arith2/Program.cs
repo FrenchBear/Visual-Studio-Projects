@@ -85,7 +85,7 @@ public class Int4d : ISimpleArith<Int4d>
     // Addition 4d+4d -> (4d carry, 4d result)
     public (Int4d high, Int4d low) Plus(params Int4d[] list)
     {
-        int x = this.val;
+        int x = val;
         // Assume we've less than 10000 items in list so result can be two Int4d
         foreach (Int4d item in list)
             x += item.val;
@@ -98,7 +98,7 @@ public class Int4d : ISimpleArith<Int4d>
     // Multiplication 4d*4d -> (4d high, 4d low)
     public (Int4d high, Int4d low) Mult(Int4d other)
     {
-        int x = this.val * other.val;
+        int x = val * other.val;
         int h = x / k;
         int l = x % k;
         return (new Int4d(h), new Int4d(l));
@@ -196,10 +196,10 @@ public class DA<T> : ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
         T lowH, lowL;
         T highH, highL;
 
-        (lowH, lowL) = this.low.Mult(other.low);
-        (T t1h, T t1l) = this.high.Mult(other.low);
-        (T t2h, T t2l) = this.low.Mult(other.high);
-        (highH, highL) = this.high.Mult(other.high);
+        (lowH, lowL) = low.Mult(other.low);
+        (T t1h, T t1l) = high.Mult(other.low);
+        (T t2h, T t2l) = low.Mult(other.high);
+        (highH, highL) = high.Mult(other.high);
 
         T ov1, ov2;
         (ov1, lowH) = lowH.Plus(t1l, t2l);

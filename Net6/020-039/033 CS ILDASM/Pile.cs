@@ -11,8 +11,8 @@ public class Pile
 
         public Noeud(object o, Noeud s)
         {
-            this.suivant = s;
-            this.element = o;
+            suivant = s;
+            element = o;
         }
     }
 

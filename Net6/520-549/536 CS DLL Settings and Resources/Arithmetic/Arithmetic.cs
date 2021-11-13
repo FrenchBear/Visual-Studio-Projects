@@ -5,7 +5,6 @@
 // 2015-10-01   PV
 // 2021-09-26   PV      VS2022; Net6
 
-
 using System;
 using System.Configuration;
 using System.IO;
@@ -24,7 +23,7 @@ namespace ArithmeticNamespace
             // Doesn't work, return the config for the application, not the DLL
             //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            string dllPath = this.GetType().Assembly.Location;
+            string dllPath = GetType().Assembly.Location;
             Configuration config = ConfigurationManager.OpenExeConfiguration(dllPath);
 
             ConfigurationSectionGroup applicationSectionGroup = config.GetSectionGroup("applicationSettings");
@@ -37,7 +36,7 @@ namespace ArithmeticNamespace
         // Trick to get base namespace instead of hardcoding the string
         private string GetDllNamespace()
         {
-            Type type = this.GetType();
+            Type type = GetType();
             return type.FullName.Substring(0, type.FullName.LastIndexOf('.'));
         }
 
@@ -48,7 +47,7 @@ namespace ArithmeticNamespace
         // Return appSetting from dll.config
         public string GetAppSetting(string settingName)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(this.GetType().Assembly.Location);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(GetType().Assembly.Location);
             return config.AppSettings.Settings[settingName].Value;
         }
 

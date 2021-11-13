@@ -25,5 +25,5 @@ public class Hello1 : Form
     /// Constructeur de la fenêtre
     public Hello1() =>
         //    InitializeComponent();
-        this.Text = "Hello 1";
+        Text = "Hello 1";
 }

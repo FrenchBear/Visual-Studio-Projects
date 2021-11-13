@@ -10,7 +10,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-
 // For extension method
 internal static class Module1
 {
@@ -85,9 +84,9 @@ public class Customer
 
     public Customer(int id, string name, OrderCollection orders)
     {
-        this.Id = id;
-        this.Name = name;
-        this.Orders = orders;
+        Id = id;
+        Name = name;
+        Orders = orders;
     }
 }
 
@@ -99,9 +98,9 @@ public class Order
 
     public Order(int id, int customerId, DateTime orderDate)
     {
-        this.Id = id;
-        this.CustomerId = customerId;
-        this.OrderDate = orderDate;
+        Id = id;
+        CustomerId = customerId;
+        OrderDate = orderDate;
     }
 }
 
@@ -119,7 +118,7 @@ public class OrderCollection : IEnumerable<Order>
 
     public IEnumerator<Order> GetEnumerator() => items.GetEnumerator();
 
-    public IEnumerator GetEnumerator1() => this.GetEnumerator();
+    public IEnumerator GetEnumerator1() => GetEnumerator();
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator1();
 }

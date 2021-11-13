@@ -10,7 +10,6 @@
 #pragma warning disable CA1822 // Mark members as static
 #pragma warning disable CA2211 // Non-constant fields should not be visible
 
-
 using System;
 
 public abstract class Zap

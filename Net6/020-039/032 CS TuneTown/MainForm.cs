@@ -32,90 +32,90 @@ public class MainForm : Form
 
     private void InitializeComponent()
     {
-        this.EditButton = new Button();
-        this.TitleHeader = new ColumnHeader();
-        this.TuneView = new ListView();
-        this.ArtistHeader = new ColumnHeader();
-        this.CommentHeader = new ColumnHeader();
-        this.AddButton = new Button();
-        this.RemoveButton = new Button();
-        this.SuspendLayout();
+        EditButton = new Button();
+        TitleHeader = new ColumnHeader();
+        TuneView = new ListView();
+        ArtistHeader = new ColumnHeader();
+        CommentHeader = new ColumnHeader();
+        AddButton = new Button();
+        RemoveButton = new Button();
+        SuspendLayout();
         //
         // EditButton
         //
-        this.EditButton.Location = new System.Drawing.Point(432, 56);
-        this.EditButton.Name = "EditButton";
-        this.EditButton.TabIndex = 2;
-        this.EditButton.Text = "&Edit";
-        this.EditButton.Click += new EventHandler(this.OnEditButtonClicked);
+        EditButton.Location = new System.Drawing.Point(432, 56);
+        EditButton.Name = "EditButton";
+        EditButton.TabIndex = 2;
+        EditButton.Text = "&Edit";
+        EditButton.Click += new EventHandler(OnEditButtonClicked);
         //
         // TitleHeader
         //
-        this.TitleHeader.Text = "Title";
-        this.TitleHeader.Width = 100;
+        TitleHeader.Text = "Title";
+        TitleHeader.Width = 100;
         //
         // TuneView
         //
-        this.TuneView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
+        TuneView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
                                  | System.Windows.Forms.AnchorStyles.Left
                                 | System.Windows.Forms.AnchorStyles.Right;
-        this.TuneView.Columns.AddRange(new ColumnHeader[] {
-            this.TitleHeader,
-            this.ArtistHeader,
-            this.CommentHeader});
-        this.TuneView.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.TuneView.FullRowSelect = true;
-        this.TuneView.GridLines = true;
-        this.TuneView.HideSelection = false;
-        this.TuneView.Location = new System.Drawing.Point(8, 8);
-        this.TuneView.MultiSelect = false;
-        this.TuneView.Name = "TuneView";
-        this.TuneView.Size = new System.Drawing.Size(416, 248);
-        this.TuneView.Sorting = System.Windows.Forms.SortOrder.Ascending;
-        this.TuneView.TabIndex = 0;
-        this.TuneView.View = System.Windows.Forms.View.Details;
-        this.TuneView.DoubleClick += new EventHandler(this.OnItemDoubleClicked);
+        TuneView.Columns.AddRange(new ColumnHeader[] {
+            TitleHeader,
+            ArtistHeader,
+            CommentHeader});
+        TuneView.ForeColor = System.Drawing.SystemColors.WindowText;
+        TuneView.FullRowSelect = true;
+        TuneView.GridLines = true;
+        TuneView.HideSelection = false;
+        TuneView.Location = new System.Drawing.Point(8, 8);
+        TuneView.MultiSelect = false;
+        TuneView.Name = "TuneView";
+        TuneView.Size = new System.Drawing.Size(416, 248);
+        TuneView.Sorting = System.Windows.Forms.SortOrder.Ascending;
+        TuneView.TabIndex = 0;
+        TuneView.View = System.Windows.Forms.View.Details;
+        TuneView.DoubleClick += new EventHandler(OnItemDoubleClicked);
         //
         // ArtistHeader
         //
-        this.ArtistHeader.Text = "Artist";
-        this.ArtistHeader.Width = 100;
+        ArtistHeader.Text = "Artist";
+        ArtistHeader.Width = 100;
         //
         // CommentHeader
         //
-        this.CommentHeader.Text = "Comment";
-        this.CommentHeader.Width = 200;
+        CommentHeader.Text = "Comment";
+        CommentHeader.Width = 200;
         //
         // AddButton
         //
-        this.AddButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-        this.AddButton.Location = new System.Drawing.Point(432, 8);
-        this.AddButton.Name = "AddButton";
-        this.AddButton.TabIndex = 1;
-        this.AddButton.Text = "&Add";
-        this.AddButton.Click += new EventHandler(this.OnAddButtonClicked);
+        AddButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        AddButton.Location = new System.Drawing.Point(432, 8);
+        AddButton.Name = "AddButton";
+        AddButton.TabIndex = 1;
+        AddButton.Text = "&Add";
+        AddButton.Click += new EventHandler(OnAddButtonClicked);
         //
         // RemoveButton
         //
-        this.RemoveButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-        this.RemoveButton.Location = new System.Drawing.Point(432, 104);
-        this.RemoveButton.Name = "RemoveButton";
-        this.RemoveButton.TabIndex = 3;
-        this.RemoveButton.Text = "&Remove";
-        this.RemoveButton.Click += new EventHandler(this.OnRemoveButtonClicked);
+        RemoveButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        RemoveButton.Location = new System.Drawing.Point(432, 104);
+        RemoveButton.Name = "RemoveButton";
+        RemoveButton.TabIndex = 3;
+        RemoveButton.Text = "&Remove";
+        RemoveButton.Click += new EventHandler(OnRemoveButtonClicked);
         //
         // MainForm
         //
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        this.ClientSize = new System.Drawing.Size(512, 261);
-        this.Controls.AddRange(new Control[] {
-            this.RemoveButton,
-            this.EditButton,
-            this.AddButton,
-            this.TuneView});
-        this.Name = "MainForm";
-        this.Text = "TuneTown";
-        this.ResumeLayout(false);
+        AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        ClientSize = new System.Drawing.Size(512, 261);
+        Controls.AddRange(new Control[] {
+            RemoveButton,
+            EditButton,
+            AddButton,
+            TuneView});
+        Name = "MainForm";
+        Text = "TuneTown";
+        ResumeLayout(false);
     }
 
     private void OnAddButtonClicked(object sender, EventArgs e)

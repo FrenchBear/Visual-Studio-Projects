@@ -10,7 +10,6 @@ using System;
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CA1822 // Mark members as static
 
-
 internal class MaClasse
 {
     private static void Main(string[] args)

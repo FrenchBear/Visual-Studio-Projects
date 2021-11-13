@@ -10,7 +10,6 @@
 // 2019-10-14   PV      VS2019; Added Go examples "x" and "X"
 // 2021-09-26   PV      VS2022; Net6
 
-
 using System;
 using System.Diagnostics;
 using System.Security.Cryptography;

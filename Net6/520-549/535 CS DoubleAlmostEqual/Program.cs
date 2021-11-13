@@ -7,7 +7,6 @@
 // 2015-09-15   PV      First version
 // 2021-09-26   PV      VS2022; Net6
 
-
 using System;
 
 namespace DoubleAlmostEqual;

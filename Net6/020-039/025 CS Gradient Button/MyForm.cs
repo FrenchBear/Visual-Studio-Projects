@@ -38,41 +38,41 @@ public class MyForm : Form
 
     private void InitializeComponent()
     {
-        this.button1 = new Button();
-        this.button2 = new GradientButton();
-        this.SuspendLayout();
+        button1 = new Button();
+        button2 = new GradientButton();
+        SuspendLayout();
         //
         // button1
         //
-        this.button1.Location = new Point(56, 24);
-        this.button1.Name = "button1";
-        this.button1.Size = new Size(120, 56);
-        this.button1.TabIndex = 0;
-        this.button1.Text = "button1";
-        this.button1.Click += new EventHandler(this.button1_Click_1);
+        button1.Location = new Point(56, 24);
+        button1.Name = "button1";
+        button1.Size = new Size(120, 56);
+        button1.TabIndex = 0;
+        button1.Text = "button1";
+        button1.Click += new EventHandler(button1_Click_1);
         //
         // button2
         //
-        this.button2.Location = new Point(56, 104);
-        this.button2.Name = "button2";
-        this.button2.Size = new Size(120, 56);
-        this.button2.TabIndex = 0;
-        this.button2.Text = "button2";
-        this.button2.StartColor = Color.AntiqueWhite;
-        this.button2.EndColor = Color.RosyBrown;
-        this.button2.Click += new EventHandler(this.button2_Click);
+        button2.Location = new Point(56, 104);
+        button2.Name = "button2";
+        button2.Size = new Size(120, 56);
+        button2.TabIndex = 0;
+        button2.Text = "button2";
+        button2.StartColor = Color.AntiqueWhite;
+        button2.EndColor = Color.RosyBrown;
+        button2.Click += new EventHandler(button2_Click);
         //
         // MyForm
         //
-        this.AutoScaleBaseSize = new Size(5, 13);
-        this.ClientSize = new Size(292, 273);
-        this.Controls.AddRange(new Control[] {
-                                                                this.button2,
-                                                                this.button1});
-        this.Name = "MyForm";
-        this.Text = "Form";
-        this.Load += new EventHandler(this.MyForm_Load);
-        this.ResumeLayout(false);
+        AutoScaleBaseSize = new Size(5, 13);
+        ClientSize = new Size(292, 273);
+        Controls.AddRange(new Control[] {
+                                                                button2,
+                                                                button1});
+        Name = "MyForm";
+        Text = "Form";
+        Load += new EventHandler(MyForm_Load);
+        ResumeLayout(false);
     }
 
     #endregion Windows Form Designer generated code

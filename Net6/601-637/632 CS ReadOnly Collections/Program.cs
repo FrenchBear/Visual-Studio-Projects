@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;           // Namespace for RO interfaces and collections
 
-
 namespace CS612;
 
 internal class Program

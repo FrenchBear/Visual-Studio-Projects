@@ -11,7 +11,6 @@ using System;
 
 namespace CS44;
 
-
 [AttributeUsage(AttributeTargets.Class)]
 public class MonAttribut : Attribute
 {

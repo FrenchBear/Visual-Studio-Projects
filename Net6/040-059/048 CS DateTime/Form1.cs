@@ -15,7 +15,6 @@ using System.Windows.Forms;
 
 namespace CS048;
 
-
 public class Form1 : Form
 {
     private System.ComponentModel.Container components;
@@ -73,16 +72,16 @@ public class Form1 : Form
 
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.listBox1 = new ListBox();
+        components = new System.ComponentModel.Container();
+        listBox1 = new ListBox();
         listBox1.Location = new System.Drawing.Point(4, 4);
         listBox1.Size = new System.Drawing.Size(360, 329);
         listBox1.TabIndex = 0;
         listBox1.Anchor = System.Windows.Forms.AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
-        this.Text = "Tests de performances";
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        this.ClientSize = new System.Drawing.Size(368, 337);
-        this.Controls.Add(this.listBox1);
+        Text = "Tests de performances";
+        AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        ClientSize = new System.Drawing.Size(368, 337);
+        Controls.Add(listBox1);
     }
 
     public static void Main(string[] args) => Application.Run(new Form1());

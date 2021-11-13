@@ -7,22 +7,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-#pragma warning disable CA1050 // Declare types in namespaces
 #pragma warning disable CA1822 // Mark members as static
 
-namespace _101_CS_IEnumerable_Generic
-{
-    internal class Program
-    {
-        private static void Main(string[] args)
-        {
-            CityCollection cities = new();
-            foreach (string city in cities.Reverse())
-                Trace.WriteLine(city);
+namespace _101_CS_IEnumerable_Generic;
 
-            //toto t = new toto();
-            //Trace.WriteLine(t.zap(1));
-        }
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        CityCollection cities = new();
+        foreach (string city in cities.Reverse())
+            Trace.WriteLine(city);
+
+        //toto t = new toto();
+        //Trace.WriteLine(t.zap(1));
     }
 }
 

@@ -58,7 +58,7 @@ public static class Extensions
 
         public SkipAtEnumerator(IEnumerable<T> original, int start, int count)
         {
-            this.originalEnumerator = original.GetEnumerator();
+            originalEnumerator = original.GetEnumerator();
             this.start = start;
             this.count = count;
             pos = 0;
@@ -215,7 +215,7 @@ public static class Extensions
 
         public GetRangeEnumerator(IEnumerable<T> original, int start, int count)
         {
-            this.originalEnumerator = original.GetEnumerator();
+            originalEnumerator = original.GetEnumerator();
             this.start = start;
             this.count = count;
             pos = 0;

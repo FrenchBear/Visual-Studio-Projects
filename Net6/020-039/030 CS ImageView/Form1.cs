@@ -43,8 +43,8 @@ public class MyForm : Form
 
         _ = ms.Items.Add(optionsMenu);
 
-        this.MainMenuStrip = ms;
-        this.Controls.Add(ms);
+        MainMenuStrip = ms;
+        Controls.Add(ms);
     }
 
     private void OnPopupOptionsMenu(object sender, EventArgs e)

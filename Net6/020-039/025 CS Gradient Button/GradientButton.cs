@@ -40,7 +40,7 @@ public class GradientButton : Button
         set
         {
             endColor = value;
-            if (this.IsHandleCreated && this.Visible)
+            if (IsHandleCreated && Visible)
                 Invalidate();
         }
     }
@@ -52,7 +52,7 @@ public class GradientButton : Button
         set
         {
             startColor = value;
-            if (this.IsHandleCreated && this.Visible)
+            if (IsHandleCreated && Visible)
                 Invalidate();
         }
     }
@@ -62,7 +62,7 @@ public class GradientButton : Button
         base.OnPaint(pe);
 
         Graphics g = pe.Graphics;
-        Rectangle clientRect = this.ClientRectangle;
+        Rectangle clientRect = ClientRectangle;
 
         // On n'écrase pas les bords
         clientRect.Inflate(-1, -1);
@@ -74,7 +74,7 @@ public class GradientButton : Button
           endColor);
 
         g.FillRectangle(backgroundBrush, clientRect);
-        g.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor),
+        g.DrawString(Text, Font, new SolidBrush(ForeColor),
           clientRect, format);
     }
 }

@@ -1,6 +1,5 @@
 ﻿// 2021-09-22   PV      VS2022; Net6
 
-
 using System;
 using System.IO;
 using System.Windows;
@@ -8,7 +7,6 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 
 #pragma warning disable IDE1006 // Naming Styles
-
 
 namespace SdkXamlBrowser;
 public partial class Scene1

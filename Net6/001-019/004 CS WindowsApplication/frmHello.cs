@@ -3,7 +3,6 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-17   PV  VS2022/Net6
 
-
 using System.Windows.Forms;
 
 namespace WindowsApplication2_CSharp;
@@ -30,8 +29,8 @@ public class frmHello : Form
     /// </summary>
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.btnHello = new Button();
+        components = new System.ComponentModel.Container();
+        btnHello = new Button();
         //@this.TrayHeight = 0;
         //@this.TrayLargeIcon = false;
         //@this.TrayAutoArrange = true;
@@ -39,11 +38,11 @@ public class frmHello : Form
         btnHello.Size = new System.Drawing.Size(75, 23);
         btnHello.TabIndex = 0;
         btnHello.Text = "&Hello";
-        btnHello.Click += new System.EventHandler(this.btnHello_Click);
-        btnHello.Click += new System.EventHandler(this.btnHello_Click_bis);
-        this.Text = "Essais C#";
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        this.Controls.Add(this.btnHello);
+        btnHello.Click += new System.EventHandler(btnHello_Click);
+        btnHello.Click += new System.EventHandler(btnHello_Click_bis);
+        Text = "Essais C#";
+        AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        Controls.Add(btnHello);
     }
 
     /// <summary>
