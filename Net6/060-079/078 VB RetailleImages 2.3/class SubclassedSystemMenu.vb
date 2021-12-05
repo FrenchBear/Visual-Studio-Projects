@@ -1,9 +1,11 @@
 ' SubclassedSystemMenu
 ' A convenient way to subclass system menu commands
 ' From http://www.codeproject.com/vb/net/SubclassedSystemMenu.asp
-' 2006-05-03 FPVI
+'
+' 2006-05-03    PV
+' 2021-12-05    PV      AppendMenuW and parameter marshalling
 
-
+Imports System.Runtime.InteropServices
 ''' <summary>
 ''' A convenient class to manage system menu commands
 ''' </summary>
@@ -13,13 +15,9 @@ Public Class SubclassedSystemMenu
     Implements IDisposable
 
 #Region "Win32 API Declares"
-    Private Declare Function GetSystemMenu Lib "user32" (ByVal hwnd As Integer,
-                                                         ByVal bRevert As Boolean) As Integer
+    Private Declare Function GetSystemMenu Lib "user32" (ByVal hwnd As Integer, ByVal bRevert As Boolean) As Integer
 
-    Private Declare Function AppendMenu Lib "user32" Alias "AppendMenuA" (ByVal hMenu As Integer,
-                                                                          ByVal wFlags As Integer,
-                                                                          ByVal wIDNewItem As Integer,
-                                                                          ByVal lpNewItem As String) As Integer
+    Private Declare Function AppendMenu Lib "user32" Alias "AppendMenuW" (hMenu As Int32, wFlags As Int32, wIDNewItem As Int32, <MarshalAs(UnmanagedType.LPWStr)> lpNewItem As String) As Int32
 #End Region
 
 #Region "Constants"

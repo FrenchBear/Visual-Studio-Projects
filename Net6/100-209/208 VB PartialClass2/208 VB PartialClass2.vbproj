@@ -2,13 +2,13 @@
     <PropertyGroup>
         <TargetFramework>net6.0-windows</TargetFramework>
         <OutputType>Exe</OutputType>
-        <RootNamespace>ConsoleApplication1</RootNamespace>
+        <RootNamespace>VB208</RootNamespace>
         <AssemblyName>PartialClass2</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
-        <Title>ConsoleApplication1</Title>
+        <Title>VB208</Title>
         <Company>ES</Company>
-        <Copyright>Copyright @ ES 2004</Copyright>
+        <Copyright>Copyright @2004-2021 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
     </PropertyGroup>

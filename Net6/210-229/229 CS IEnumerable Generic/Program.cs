@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 #pragma warning disable CA1822 // Mark members as static
 
-namespace _101_CS_IEnumerable_Generic;
+namespace CS101_IEnumerable_Generic;
 
 internal class Program
 {

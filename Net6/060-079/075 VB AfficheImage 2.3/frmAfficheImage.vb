@@ -10,6 +10,7 @@
 
 Imports System.IO
 Imports System.Reflection
+Imports System.Runtime.InteropServices
 
 #Disable Warning IDE1006 ' Naming Styles
 

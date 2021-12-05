@@ -1,10 +1,12 @@
 ﻿' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
-
+' 2021-12-05    PV  String marshalling
 #Disable Warning IDE1006 ' Naming Styles
 #Disable Warning IDE0052 ' Remove unread private members
 #Disable Warning IDE0051 ' Remove unused private members
 #Disable Warning IDE0060 ' Remove unused parameter
+
+Imports System.Runtime.InteropServices
 
 Public Class Form1
 
@@ -13,11 +15,11 @@ Public Class Form1
     End Sub
 
     ' Defines the MessageBox function.
-    Friend Declare Auto Function Win32MessageBox Lib "user32.dll" Alias "MessageBox" (hWnd As Integer, txt As String, caption As String, Type As Integer) As Integer
+    Friend Declare Auto Function Win32MessageBox Lib "user32.dll" Alias "MessageBoxW" (hWnd As Integer, <MarshalAs(UnmanagedType.LPWStr)> txt As String, <MarshalAs(UnmanagedType.LPWStr)> caption As String, Type As Integer) As Integer
 
     ' Calls the MessageBox function.
     Public Shared Sub CallMessageBox()
-        Dim ret = Win32MessageBox(0, "Here's a MessageBox", "Platform Invoke Sample", 0)
+        Dim ret = Win32MessageBox(0, "Here's a MessageBox\r\nAé♫山𝄞🐗 🐱‍💻 🧝‍♂️", "Platform Invoke Sample", 0)
     End Sub
 
     <Serializable()>

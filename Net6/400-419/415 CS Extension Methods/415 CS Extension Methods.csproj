@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <OutputType>Exe</OutputType>
-        <RootNamespace>_415_CS_Extension_Methods</RootNamespace>
+        <RootNamespace>CS415_Extension_Methods</RootNamespace>
         <AssemblyName>CS415</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>

@@ -6,7 +6,7 @@
 
 using System;
 
-namespace ConsoleApplication1;
+namespace CS504;
 
 internal class Program
 {

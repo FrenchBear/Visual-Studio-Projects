@@ -1,6 +1,7 @@
 ' frmRetailleImages
 ' Application de redimensionnement d'images en VB.Net
-' PV Juillet 2003
+'
+' 2003-07       PV
 ' 2003-07-30    PV  Contrôle de la qualité
 ' 2006-10-01    PV  VS 2005
 ' 2007-05/18    PV  About... in system menu
@@ -445,7 +446,7 @@ Public Class VignettesForm
     Private Sub VignettesForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         QualitéText.Text = "90"
         ' About command in System menu
-        SubclassedSystemMenu = New SubclassedSystemMenu(Me.Handle.ToInt32, "&A propos de...")
+        SubclassedSystemMenu = New SubclassedSystemMenu(Me.Handle.ToInt32, "&À propos de...")
     End Sub
 
     Private Sub SourceText_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles SourceText.GotFocus

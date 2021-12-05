@@ -5,11 +5,11 @@
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>RetailleImages</RootNamespace>
 		<AssemblyName>RetailleImages</AssemblyName>
-		<Version>2.3.0</Version>
+		<Version>2.3.1</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>Retaille Images</Title>
 		<Description>Application de changement de taille d'images en mode batch</Description>
-		<Copyright>Copyright © 2006-2021 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2006-2021 Pierre Violent</Copyright>
 		<ApplicationIcon>retaille.ico</ApplicationIcon>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>

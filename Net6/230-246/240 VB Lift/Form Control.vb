@@ -11,8 +11,8 @@ Public Class frmControl
     Private Sub frmControl_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' Create floor buttons
         For i As Integer = 0 To NumberOfFloors - 1
-            Dim fb As ucFloorButtons
-            fb = New ucFloorButtons
+            Dim fb As FloorButtonsUserControl
+            fb = New FloorButtonsUserControl
 
             paFloorButtons.Controls.Add(fb)
             fb.Location = New Point(3, 3 + i * (fb.Height + 3))
@@ -43,12 +43,12 @@ Public Class frmControl
         llEvents = New LinkedList(Of LiftEvent)
     End Sub
 
-    Private Sub UcFloorButtons_FloorRequestUp(ucfb As ucFloorButtons)
+    Private Sub UcFloorButtons_FloorRequestUp(ucfb As FloorButtonsUserControl)
         SchedulerForm.Trace("FloorRequestUp " & ucfb.FloorLabel)
         ucfb.CallStatusUp = Not ucfb.CallStatusUp
     End Sub
 
-    Private Sub UcFloorButtons_FloorRequestDown(ucfb As ucFloorButtons)
+    Private Sub UcFloorButtons_FloorRequestDown(ucfb As FloorButtonsUserControl)
         SchedulerForm.Trace("FloorRequestDown " & ucfb.FloorLabel)
         ucfb.CallStatusDown = Not ucfb.CallStatusDown
     End Sub

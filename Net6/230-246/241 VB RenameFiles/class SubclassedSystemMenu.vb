@@ -5,7 +5,9 @@
 ' 2006-05-03    PV
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
+' 2021-12-05    PV  AppendMenuW and parameter marshalling
 
+Imports System.Runtime.InteropServices
 ''' <summary>
 ''' A convenient class to manage system menu commands
 ''' </summary>
@@ -16,13 +18,13 @@ Public Class SubclassedSystemMenu
 
 #Region "Win32 API Declares"
 
-    Private Declare Function GetSystemMenu Lib "user32" (hwnd As Int32,
-bRevert As Boolean) As Int32
+    Private Declare Function GetSystemMenu Lib "user32" (hwnd As Int32, bRevert As Boolean) As Int32
 
-    Private Declare Function AppendMenu Lib "user32" Alias "AppendMenuA" (hMenu As Int32,
-wFlags As Int32,
-wIDNewItem As Int32,
-lpNewItem As String) As Int32
+    Private Declare Function AppendMenu Lib "user32" Alias "AppendMenuW" (hMenu As Int32, wFlags As Int32, wIDNewItem As Int32, <MarshalAs(UnmanagedType.LPWStr)> lpNewItem As String) As Int32
+
+    '<DllImport("user32.dll", EntryPoint:="AppendMenuW", CharSet:=CharSet.Unicode)>
+    'Private Shared Function AppendMenu(hMenu As Int32, wFlags As Int32, wIDNewItem As Int32, lpNewItem As String) As Int32
+    'End Function
 
 #End Region
 
@@ -107,6 +109,7 @@ strMenuItemText As String)
         If Not Me.Handle.Equals(IntPtr.Zero) Then
             Me.ReleaseHandle()
         End If
+        GC.SuppressFinalize(Me)
     End Sub
 
     ''' <summary>

@@ -3,11 +3,11 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
 
-Public Class ucFloorButtons
+Public Class FloorButtonsUserControl
 
-    Public Event FloorRequestUp(ucfb As ucFloorButtons)
+    Public Event FloorRequestUp(ucfb As FloorButtonsUserControl)
 
-    Public Event FloorRequestDown(ucfb As ucFloorButtons)
+    Public Event FloorRequestDown(ucfb As FloorButtonsUserControl)
 
     Private Sub UpButton_Click(sender As System.Object, e As EventArgs) Handles UpButton.Click
         RaiseEvent FloorRequestUp(Me)

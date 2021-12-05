@@ -1,4 +1,4 @@
-' frmRenameFiles
+﻿' frmRenameFiles
 ' Quick tool to rename a series of files in a folder
 '
 ' 2006-07-26    PV  Version 2.0 in VB.Net
@@ -32,7 +32,7 @@ Public Class frmRenameFiles
     ''' </summary>
     Private Sub frmRenameFiles_Load(sender As Object, e As EventArgs) Handles Me.Load
         ' About command in System menu
-        mobjSubclassedSystemMenu = New SubclassedSystemMenu(Me.Handle.ToInt32, "&About...")
+        mobjSubclassedSystemMenu = New SubclassedSystemMenu(Me.Handle.ToInt32, "&About Ĥ Aé♫山𝄞🐗 ←↑→↓ ￩￪￫￬ 🠀🠁🠂🠃 🠄🠅🠆🠇 🠈🠉🠊🠋...")
     End Sub
 
     ''' <summary>

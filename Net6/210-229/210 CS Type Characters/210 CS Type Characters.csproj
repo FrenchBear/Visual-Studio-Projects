@@ -2,7 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <OutputType>Exe</OutputType>
-        <RootNamespace>_210_CS_Type_Characters</RootNamespace>
+        <RootNamespace>CS210_Type_Characters</RootNamespace>
         <AssemblyName>CS210</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>

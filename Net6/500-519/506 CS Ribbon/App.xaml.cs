@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace _506_CS_Ribbon;
+namespace CS506_Ribbon;
 
 /// <summary>
 /// Interaction logic for App.xaml

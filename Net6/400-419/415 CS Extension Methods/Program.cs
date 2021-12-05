@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace _415_CS_Extension_Methods
+namespace CS415_Extension_Methods
 {
     internal class Program
     {

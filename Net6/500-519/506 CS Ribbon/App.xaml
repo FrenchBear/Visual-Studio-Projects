@@ -1,4 +1,4 @@
-﻿<Application x:Class="_506_CS_Ribbon.App"
+﻿<Application x:Class="CS506_Ribbon.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">

@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ConsoleApplication1;
+namespace CS421;
 
 internal class Program
 {

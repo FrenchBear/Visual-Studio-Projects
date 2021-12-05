@@ -5,7 +5,7 @@
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-namespace _210_CS_Type_Characters;
+namespace CS210_Type_Characters;
 
 internal class Program
 {
