@@ -3,6 +3,7 @@
 //
 // 2012-02-05   PV  First version
 // 2021-09-23   PV  VS2022; Net6
+// 2021-12-07   PV  Centered rendering
 
 using System;
 using System.Collections.Generic;
@@ -76,7 +77,8 @@ public abstract class LSystemRenderer
             double ymax = 0.0;
             double ymin = 0.0;
 
-            if (pass == 0) r = 0;
+            if (pass == 0)
+                r = 0;
 
             Stopwatch sw = Stopwatch.StartNew();
 
@@ -210,9 +212,10 @@ public abstract class LSystemRenderer
             }
 
             // Pass 1 is finished here
-            if (pass == 1) return new Rect(xmin, ymin, xmax - xmin, ymax - ymin);
+            if (pass == 1)
+                return new Rect(xmin, ymin, xmax - xmin, ymax - ymin);
 
-            // Step 2, caclulate scale factor
+            // Pass 0 is continuing, caclulate scale factor
             if (Math.Abs(xmax - xmin) < 1e-8)
             {
                 rx = 100000;
@@ -220,7 +223,6 @@ public abstract class LSystemRenderer
             else
             {
                 rx = rendingWidth / (1.1 * (xmax - xmin));
-                xmin -= 0.05 * (xmax - xmin);
             }
             if (Math.Abs(ymax - ymin) < 1e-8)
             {
@@ -229,11 +231,10 @@ public abstract class LSystemRenderer
             else
             {
                 ry = rendingHeight / (1.1 * (ymax - ymin));
-                ymin -= 0.05 * (ymax - ymin);
             }
             r = Math.Min(rx, ry);
-            x0 = xmin;
-            y0 = ymin;
+            x0 = xmin + (xmax - xmin - rendingWidth / r) / 2;
+            y0 = ymin + (ymax - ymin - rendingHeight / r) / 2;
         }
     }
 
