@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.Text;
 using System.Windows;
 
 namespace CS419;
@@ -31,6 +32,7 @@ public abstract class LSystemRenderer
         public double Angle;                    // Angle in radians controlled by + and -
         public double DirectAngle;              // Angle in radians controlled by / and \
         public double SegmentLength;            // Stroke length
+        public int color;                       // 0=black, the rest in undefined
     }
 
     // Rend LSystem using dimensions indicated (scale drawing accordingly)
@@ -49,6 +51,11 @@ public abstract class LSystemRenderer
             pass = 1;
             r = 1.0;
         }
+
+        var sb = new StringBuilder();
+        foreach (char c in _s)
+            sb.Append(c);
+        string ss = sb.ToString();
 
         for (; ; pass++)
         {
@@ -80,11 +87,13 @@ public abstract class LSystemRenderer
             if (pass == 0)
                 r = 0;
 
-            Stopwatch sw = Stopwatch.StartNew();
+            var sw = Stopwatch.StartNew();
 
             // Step 1, calculate the extent (pass==0) or draw (pass==1)
-            foreach (char c in _s)
+            for (int i = 0; i < ss.Length; i++)
             {
+                char c = ss[i];
+
                 // General timeout at 2s for measuring or rendering
                 if (sw.ElapsedMilliseconds > 2000)
                     break;
@@ -126,6 +135,11 @@ public abstract class LSystemRenderer
                             ap.SegmentLength *= f;
                             escapeChar = '\0';
                             break;
+
+                        case 'C':
+                            ap.color = int.Parse(argumentNum, CultureInfo.InvariantCulture);
+                            escapeChar = '\0';
+                            break;
                     }
                 }
 
@@ -160,6 +174,11 @@ public abstract class LSystemRenderer
                         argumentNum = "";
                         break;
 
+                    case 'C':
+                        escapeChar = c;
+                        argumentNum = "";
+                        break;
+
                     case '@':
                         escapeChar = c;
                         argumentNum = "";
@@ -177,7 +196,7 @@ public abstract class LSystemRenderer
                             // Draw a fake unstroked segment to restore correctly current position for rendering subsystems
                             // that memorize current position
                             if (pass == 1)
-                                RendLine(0, 0, (ap.Px - x0) * r, (ap.Py - y0) * r, false);
+                                RendLine(0, 0, (ap.Px - x0) * r, (ap.Py - y0) * r, false, ap.color);
                         }
                         break;
 
@@ -190,7 +209,7 @@ public abstract class LSystemRenderer
                         xmin = Math.Min(xmin, nx);
                         ymin = Math.Min(ymin, ny);
                         if (pass == 1)
-                            RendLine((ap.Px - x0) * r, (ap.Py - y0) * r, (nx - x0) * r, (ny - y0) * r, c == 'F');
+                            RendLine((ap.Px - x0) * r, (ap.Py - y0) * r, (nx - x0) * r, (ny - y0) * r, c == 'F', ap.color);
                         ap.Px = nx;
                         ap.Py = ny;
                         break;
@@ -204,7 +223,7 @@ public abstract class LSystemRenderer
                         xmin = Math.Min(xmin, nx);
                         ymin = Math.Min(ymin, ny);
                         if (pass == 1)
-                            RendLine((ap.Px - x0) * r, (ap.Py - y0) * r, (nx - x0) * r, (ny - y0) * r, c == 'D');
+                            RendLine((ap.Px - x0) * r, (ap.Py - y0) * r, (nx - x0) * r, (ny - y0) * r, c == 'D', ap.color);
                         ap.Px = nx;
                         ap.Py = ny;
                         break;
@@ -239,5 +258,5 @@ public abstract class LSystemRenderer
     }
 
     // Must be overriden in derived classes, depending on technology
-    protected abstract void RendLine(double x1, double y1, double x2, double y2, bool isStroke);
+    protected abstract void RendLine(double x1, double y1, double x2, double y2, bool isStroke, int color);
 }

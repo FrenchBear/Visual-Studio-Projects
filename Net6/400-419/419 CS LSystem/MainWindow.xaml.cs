@@ -14,7 +14,7 @@ namespace CS419;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow: Window
 {
     private IEnumerable<char> drawString;
     private int angle;
@@ -82,14 +82,10 @@ public partial class MainWindow : Window
         drawString = LSystemProcessor.LSystemIterator(d, ss.Axiom, rules);
 
         // Show the 1st 1000 chars of out string
-        int i = 0;
         StringBuilder sb = new();
-        foreach (char c in drawString)
-        {
-            _ = sb.Append(c);
-            i++;
-            if (i > 1000) break;
-        }
+        //foreach (char c in drawString)
+        for (int i = 0; i < sb.Length && i < 1000; i++)
+            sb.Append(sb[i]);
         OutStringTextBox.Text = sb.ToString();
 
         // For rendering window title

@@ -84,7 +84,7 @@ public class MyVisualHost : FrameworkElement
             _ = Rend(rendingWidth, rendingHeight);
         }
 
-        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)
+        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke, int color)
         {
             if (isStroke)
                 _dc.DrawLine(blackPen, new Point(x1, y1), new Point(x2, y2));

@@ -54,6 +54,7 @@ public partial class WpfDrawing3Window : Window
             _context = null;
         }
 
-        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroked) => _context.LineTo(new Point(x2, y2), isStroked, true);
+        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroked, int color) 
+            => _context.LineTo(new Point(x2, y2), isStroked, true);
     }
 }

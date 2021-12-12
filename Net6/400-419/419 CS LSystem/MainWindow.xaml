@@ -118,7 +118,7 @@
                          Text="{Binding ElementName=SystemsListBox, Path=SelectedItem.Comments}" />
 
                 <TextBlock Grid.Row="4" Grid.Column="0">Rules</TextBlock>
-                <TextBox Grid.Row="4" Grid.Column="1" Name="RulesTextBox" IsReadOnly="True"
+                <TextBox Grid.Row="4" Grid.Column="1" Name="RulesTextBox" 
                          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                          ScrollViewer.VerticalScrollBarVisibility="Visible"
                      Text="{Binding ElementName=SystemsListBox, Path=SelectedItem.Rules}" />

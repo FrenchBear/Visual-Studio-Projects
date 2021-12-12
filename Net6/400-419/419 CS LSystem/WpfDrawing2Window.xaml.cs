@@ -52,7 +52,7 @@ public partial class WpfDrawing2Window : Window
             r = base.Rend(rendingWidth, rendingHeight);
         }
 
-        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)
+        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke, int color)
         {
             LineSegment ls = new(new Point(x2, y2), isStroke)
             {

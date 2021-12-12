@@ -3,10 +3,10 @@
 //
 // 2012-02-05   PV  First version
 // 2021-09-23   PV  VS2022; Net6
+// 2021-12-11   PV  Support for color
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -55,13 +55,13 @@ public partial class GdiDrawingForm: Form
             return;  // Too small pic area
         Bitmap bmpOut = new(picOut.Size.Width, picOut.Size.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
         picOut.Image = bmpOut;
-        Graphics graOut = Graphics.FromImage(bmpOut);
+        var graOut = Graphics.FromImage(bmpOut);
         graOut.Clear(Color.White);
-        GraphicsDraw(graOut,picOut.Size.Width, picOut.Size.Height);
+        GraphicsDraw(graOut, picOut.Size.Width, picOut.Size.Height);
     }
 
     private void GraphicsDraw(Graphics graOut, int width, int height)
-    { 
+    {
         GdiLSystemRenderer gr = new(_s, _angle);
         gr.Rend(ref graOut, width, height);
     }
@@ -81,12 +81,27 @@ public partial class GdiDrawingForm: Form
             _ = Rend(rendingWidth, rendingHeight);
         }
 
-        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke)
+        private readonly Color[] ColorsTable = new Color[]
+        {
+            Color.Black,
+            Color.Blue,
+            Color.Red,
+            Color.Yellow,
+            Color.Green,
+            Color.Orange,
+            Color.Purple,
+            Color.Gray,
+            Color.LightPink,
+            Color.SkyBlue,
+            Color.Brown,
+        };
+
+        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke, int color)
         {
             if (isStroke)
             {
-                var p = new Pen(Brushes.Black, 0.1f);
-                _graOut.DrawLine(/*Pens.Black*/p, Convert.ToInt32(x1), Convert.ToInt32(y1), Convert.ToInt32(x2), Convert.ToInt32(y2));
+                var p = new Pen(ColorsTable[color % ColorsTable.Length], 0.1f);
+                _graOut.DrawLine(p, Convert.ToInt32(x1), Convert.ToInt32(y1), Convert.ToInt32(x2), Convert.ToInt32(y2));
             }
         }
     }
@@ -105,7 +120,7 @@ public partial class GdiDrawingForm: Form
             return;
         }
 
-        PrintDocument pd = new PrintDocument();
+        var pd = new PrintDocument();
         pd.PrinterSettings.PrinterName = PrintersList.SelectedItem.ToString();
 
         // Select A4 paper
@@ -118,18 +133,18 @@ public partial class GdiDrawingForm: Form
 
         foreach (PrinterResolution pr in pd.PrinterSettings.PrinterResolutions)
         {
-            if (pr.Kind==PrinterResolutionKind.Custom)
+            if (pr.Kind == PrinterResolutionKind.Custom)
             {
                 pd.DefaultPageSettings.PrinterResolution = pr;
                 break;
             }
         }
 
-        pd.PrintPage += new PrintPageEventHandler(pd_PrintPage);
+        pd.PrintPage += new PrintPageEventHandler(Pd_PrintPage);
         pd.Print();
     }
 
-    private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+    private void Pd_PrintPage(object sender, PrintPageEventArgs ev)
     {
         Graphics g = ev.Graphics;
         var pr = ev.PageSettings.PrinterResolution;
