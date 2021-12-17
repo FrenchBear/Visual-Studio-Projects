@@ -84,7 +84,7 @@ Public Class frmTest
         Trace("Début Proc1")
         SyncLock m
             Trace("Début section critique Proc1")
-            System.Threading.Thread.Sleep(4000)
+            Threading.Thread.Sleep(4000)
             Trace("Fin section critique Proc1")
         End SyncLock
         Trace("Fin de Proc1")
@@ -94,7 +94,7 @@ Public Class frmTest
         Trace("Début Proc2")
         SyncLock m
             Trace("Début section critique Proc2")
-            System.Threading.Thread.Sleep(4000)
+            Threading.Thread.Sleep(4000)
             Trace("Fin section critique Proc2")
         End SyncLock
         Trace("Fin Proc2")
@@ -108,10 +108,10 @@ Public Class frmTest
 
         Trace("BeginInvoke Proc1")
         Dim ar1 As IAsyncResult = p1.BeginInvoke(Nothing, Nothing)
-        System.Threading.Thread.Sleep(1000)
+        Threading.Thread.Sleep(1000)
         Trace("BeginInvoke Proc2")
         Dim ar2 As IAsyncResult = p2.BeginInvoke(Nothing, Nothing)
-        System.Threading.Thread.Sleep(1000)
+        Threading.Thread.Sleep(1000)
         Trace("avant EndInvoke Proc1")
         p1.EndInvoke(ar1)
         Trace("après EndInvoke Proc1")
@@ -128,20 +128,20 @@ Public Class frmTest
 
         Trace("Start Proc1")
         t1.Start()
-        System.Threading.Thread.Sleep(1000)
+        Threading.Thread.Sleep(1000)
         Trace("Start Proc2")
         t2.Start()
-        System.Threading.Thread.Sleep(1000)
+        Threading.Thread.Sleep(1000)
 
         Trace("attente fin Proc1")
         While t1.IsAlive
-            System.Threading.Thread.Sleep(100)
+            Threading.Thread.Sleep(100)
         End While
         Trace("Proc1 terminé")
 
         Trace("attente fin Proc2")
         While t2.IsAlive
-            System.Threading.Thread.Sleep(100)
+            Threading.Thread.Sleep(100)
         End While
         Trace("Proc2 terminé")
 

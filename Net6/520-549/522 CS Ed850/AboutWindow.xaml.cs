@@ -18,11 +18,11 @@ public partial class AboutWindow : Window
     {
         InitializeComponent();
 
-        Assembly myAssembly = Assembly.GetExecutingAssembly();
-        AssemblyTitleAttribute aTitleAttr = (AssemblyTitleAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyTitleAttribute));
-        AssemblyDescriptionAttribute aDescAttr = (AssemblyDescriptionAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyDescriptionAttribute));
+        var myAssembly = Assembly.GetExecutingAssembly();
+        var aTitleAttr = (AssemblyTitleAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyTitleAttribute));
+        var aDescAttr = (AssemblyDescriptionAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyDescriptionAttribute));
         string sAssemblyVersion = myAssembly.GetName().Version.ToString();
-        AssemblyCopyrightAttribute aCopyrightAttr = (AssemblyCopyrightAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyCopyrightAttribute));
+        var aCopyrightAttr = (AssemblyCopyrightAttribute)System.Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyCopyrightAttribute));
 
         AssemblyTitle.Text = aTitleAttr.Title;
         AssemblyDescription.Text = aDescAttr.Description;

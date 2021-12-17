@@ -22,6 +22,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using static System.Console;
 
 namespace CS531;
 
@@ -44,7 +45,7 @@ internal class Program
     {
         int np = 0;                  // Number of permutations
         int ns = 0;                  // Number of solutions
-        Stopwatch sw = Stopwatch.StartNew();
+        var sw = Stopwatch.StartNew();
 
         foreach (var x in f(l))
         {
@@ -57,11 +58,11 @@ internal class Program
             }
         }
         sw.Stop();
-        Console.WriteLine("{0}: {1} solution(s) found on {2} permutations in {3}s", f.Method.Name, ns, np, Math.Round(sw.ElapsedMilliseconds / 1000.0, 2));
+        WriteLine("{0}: {1} solution(s) found on {2} permutations in {3}s", f.Method.Name, ns, np, Math.Round(sw.ElapsedMilliseconds / 1000.0, 2));
 
         // Just check that the number of permutations is equal to 9!
         if (np != Fact(l.Count))
-            Console.WriteLine("We have a problem!");
+            WriteLine("We have a problem!");
     }
 
     // Quick and dirty factorial
@@ -220,6 +221,6 @@ internal static class ExtensionMethods
     public static void ConsoleWriteLine<T>(this IEnumerable<T> source)
     {
         source.ConsoleWrite();
-        Console.WriteLine();
+        WriteLine();
     }
 }

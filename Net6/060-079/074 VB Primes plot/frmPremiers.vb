@@ -53,7 +53,7 @@ Public Class frmPremiers
         '
         'btnCrible
         '
-        Me.btnCrible.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCrible.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCrible.Location = New System.Drawing.Point(416, 20)
         Me.btnCrible.Name = "btnCrible"
         Me.btnCrible.Size = New System.Drawing.Size(180, 56)
@@ -62,10 +62,10 @@ Public Class frmPremiers
         '
         'Panel1
         '
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.RosyBrown
+        Me.Panel1.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.BackColor = Color.RosyBrown
         Me.Panel1.Location = New System.Drawing.Point(19, 20)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(377, 461)
@@ -114,7 +114,7 @@ Public Class frmPremiers
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCrible.Click
         t.SetAll(1)
         Dim ti As Double
-        ti = Microsoft.VisualBasic.DateAndTime.Timer
+        ti = DateAndTime.Timer
 
         Dim i As Integer
         Dim ns2 As Integer = n \ 2 + 1
@@ -134,17 +134,17 @@ Public Class frmPremiers
             End If
         Loop
 
-        ti = Microsoft.VisualBasic.DateAndTime.Timer - ti
+        ti = DateAndTime.Timer - ti
         StatusBar1.Text = "Terminé, t=" & FormatNumber(ti, 1) & "s"
         Me.Refresh()
     End Sub
 
     Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
-        Dim myBitmap As New Bitmap(Panel1.Width, Panel1.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
+        Dim myBitmap As New Bitmap(Panel1.Width, Panel1.Height, Imaging.PixelFormat.Format24bppRgb)
         Dim nbp As Integer = 0
 
         If Not bResizeEnCours Then
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+            Cursor.Current = Cursors.WaitCursor
             Dim i As Integer = 1
             For Ycount As Integer = 0 To myBitmap.Height - 1
                 For Xcount As Integer = 0 To myBitmap.Width - 1
@@ -162,7 +162,7 @@ Public Class frmPremiers
         End If
         e.Graphics.DrawImage(myBitmap, Panel1.Left, Panel1.Top, myBitmap.Width, myBitmap.Height)
         StatusBar1.Text = Panel1.Width & " x " & Panel1.Height & ", nbp=" & nbp
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize

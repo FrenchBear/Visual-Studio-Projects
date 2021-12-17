@@ -49,7 +49,7 @@ Module ODBC
                 Do While SQLDataSources(hEnv, SQL_FETCH_NEXT, sServer, SQL_MAX_DSN_LENGTH, nSvrLen, sDriver, SQL_MAX_DESC_LENGTH, nDvrLen) = SQL_SUCCESS
 
                     'add data to the controls
-                    Console.WriteLine(Left(sServer, nSvrLen) & ": " & Left(sDriver, nDvrLen))
+                    WriteLine(Left(sServer, nSvrLen) & ": " & Left(sDriver, nDvrLen))
 
                     'repad the strings
                     sServer = Space(SQL_MAX_DSN_LENGTH)

@@ -5,7 +5,7 @@
 Public Class MainClass
 
     Public Function Main(sCommand As String) As Integer
-        Console.WriteLine("Here is MainClass.Main:" & vbCrLf & sCommand)
+        WriteLine("Here is MainClass.Main:" & vbCrLf & sCommand)
         Return 0
     End Function
 

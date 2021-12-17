@@ -4,11 +4,11 @@
 // 2013-07-23   PV  Second version, the first one has been deleted by accident...
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.Diagnostics;
 using System.IO;
+using static System.Console;
 
-namespace _514_CS_Remap_HR_Extract_Pics;
+namespace CS514;
 
 internal class Program
 {
@@ -27,7 +27,7 @@ internal class Program
             if (!File.Exists(source))
                 Debugger.Break();
             File.Copy(source, dest);
-            Console.WriteLine(extractFile);
+            WriteLine(extractFile);
         }
     }
 }

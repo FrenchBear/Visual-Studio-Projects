@@ -16,7 +16,7 @@ Module Module1
             Dim Command As New OleDbCommand("SELECT * FROM Region", con)
             Dim reader As OleDbDataReader = Command.ExecuteReader()
             While reader.Read()
-                Console.WriteLine(reader.GetInt32(0).ToString & ": " & reader("RegionDescription").ToString)
+                WriteLine(reader.GetInt32(0).ToString & ": " & reader("RegionDescription").ToString)
             End While
 
             ' always call Close when done reading.

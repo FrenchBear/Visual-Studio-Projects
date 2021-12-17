@@ -8,18 +8,19 @@
 
 using System;
 using System.Collections;
+using static System.Console;
 
 internal class TestCollections
 {
     public static void PrintKeysAndValues(IDictionary myCollection)
     {
         IDictionaryEnumerator myEnumerator = myCollection.GetEnumerator();
-        Console.WriteLine("-KEY-\t-VALUE-");
+        WriteLine("-KEY-\t-VALUE-");
         while (myEnumerator.MoveNext())
         {
-            Console.WriteLine("{0}\t{1}", myEnumerator.Key, myEnumerator.Value);
+            WriteLine("{0}\t{1}", myEnumerator.Key, myEnumerator.Value);
         }
-        Console.WriteLine();
+        WriteLine();
     }
 
     public static void TestHashtable()
@@ -34,13 +35,13 @@ internal class TestCollections
         try
         { h.Add("G", "Grenoble"); }
         catch
-        { Console.WriteLine("Échec à l'ajout d'une clé en double dans une Hashtable"); }
+        { WriteLine("Échec à l'ajout d'une clé en double dans une Hashtable"); }
         try
         { h.Add("g", "grenoble"); }
         catch
-        { Console.WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une Hashtable"); }
+        { WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une Hashtable"); }
 
-        Console.WriteLine("HashTable: {0} élément(s)", h.Count);
+        WriteLine("HashTable: {0} élément(s)", h.Count);
         PrintKeysAndValues(h);
     }
 
@@ -69,13 +70,13 @@ internal class TestCollections
         try
         { h.Add("G", "Grenoble"); }
         catch
-        { Console.WriteLine("Échec à l'ajout d'une clé en double dans une CaseInsensitiveHashtable"); }
+        { WriteLine("Échec à l'ajout d'une clé en double dans une CaseInsensitiveHashtable"); }
         try
         { h.Add("g", "grenoble"); }
         catch
-        { Console.WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une CaseInsensitiveHashtable"); }
+        { WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une CaseInsensitiveHashtable"); }
 
-        Console.WriteLine("CaseInsensitiveHashtable: {0} élément(s)", h.Count);
+        WriteLine("CaseInsensitiveHashtable: {0} élément(s)", h.Count);
         PrintKeysAndValues(h);
     }
 
@@ -92,18 +93,18 @@ internal class TestCollections
         try
         { s.Add("G", "Grenoble"); }
         catch
-        { Console.WriteLine("Échec à l'ajout d'une clé en double dans une SortedList"); }
+        { WriteLine("Échec à l'ajout d'une clé en double dans une SortedList"); }
         try
         { s.Add("g", "Grenoble"); }
         catch
-        { Console.WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une SortedList"); }
+        { WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une SortedList"); }
 
-        Console.WriteLine("SortedList: {0} élément(s)", s.Count);
+        WriteLine("SortedList: {0} élément(s)", s.Count);
         PrintKeysAndValues(s);
 
-        Console.WriteLine("Clés triées par indice:");
+        WriteLine("Clés triées par indice:");
         for (int i = 0; i < s.Count; i++)
-            Console.WriteLine("{0}: {1} {2}", i, s.GetKey(i), s.GetByIndex(i));
+            WriteLine("{0}: {1} {2}", i, s.GetKey(i), s.GetByIndex(i));
     }
 }
 

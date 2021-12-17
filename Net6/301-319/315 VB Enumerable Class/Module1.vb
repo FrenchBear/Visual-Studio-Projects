@@ -6,6 +6,7 @@
 ' 2012-02-25    PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
 
+Imports System.Console
 Imports System.Runtime.CompilerServices
 
 Module Module1
@@ -45,9 +46,9 @@ Module Module1
     End Sub
 
     <Extension()>
-    Public Sub WriteLine(Of TSource)(Source As IEnumerable(Of TSource))
+    Public Sub MyWriteLine(Of TSource)(Source As IEnumerable(Of TSource))
         Write(Source)
-        Console.WriteLine()
+        WriteLine()
     End Sub
 
     ' Simple concatenation of two IEnumerable(Of T)
@@ -58,14 +59,14 @@ Module Module1
 
         Dim l As IEnumerable(Of String) = Enumerable.Concat(t1, t2)
 
-        Console.WriteLine()
-        Console.WriteLine("Concat ------------------")
+        WriteLine()
+        MyWriteLine("Concat ------------------")
         Console.Write("t1: ")
-        t1.WriteLine()
+        t1.MyWriteLine()
         Console.Write("t2: ")
-        t2.WriteLine()
+        t2.MyWriteLine()
         Console.Write("Enumerable.Concat(t1, t2): ")
-        l.WriteLine()
+        l.MyWriteLine()
     End Sub
 
     ' Range: Creates an IEnumerable(Of Integer) using start, count
@@ -74,12 +75,12 @@ Module Module1
         Dim l1 As IEnumerable(Of Integer) = Enumerable.Range(-4, 10)
         Dim l2 As IEnumerable(Of String) = Enumerable.Repeat("hello", 4)
 
-        Console.WriteLine()
-        Console.WriteLine("Range and Repeat --------")
+        WriteLine()
+        MyWriteLine("Range and Repeat --------")
         Console.Write("Enumerable.Range(-4, 10): ")
-        l1.WriteLine()
+        l1.MyWriteLine()
         Console.Write("Enumerable.Repeat(""hello"", 4): ")
-        l2.WriteLine()
+        l2.MyWriteLine()
     End Sub
 
     ' Filters an IEnumerable(Of T) using a predicate (a function that returns a boolean, true=keep element, false=discard it)
@@ -92,17 +93,17 @@ Module Module1
         ' Restrict the results to those strings whose length is less than six.
         Dim query As IEnumerable(Of String) = fruits.Where(Function(fruit) fruit.Length < 6)
 
-        Console.WriteLine()
-        Console.WriteLine("Where -------------------")
+        WriteLine()
+        MyWriteLine("Where -------------------")
         Console.Write("fruits: ")
-        fruits.WriteLine()
+        fruits.MyWriteLine()
         Console.Write("fruits.Where(Function(fruit) fruit.Length<6): ")
-        query.WriteLine()
+        query.MyWriteLine()
 
         ' A filter predicate can use element index
         Dim OddIndexFruits As Func(Of String, Integer, Boolean) = Function(fruit, index) (index And 1) = 1
         Console.Write("fruits having an odd index: ")
-        fruits.Where(OddIndexFruits).WriteLine()
+        fruits.Where(OddIndexFruits).MyWriteLine()
 
     End Sub
 
@@ -110,21 +111,21 @@ Module Module1
     Sub TestFirstLast()
         Dim dates = New Date() {#2/26/1965#, #2/8/1969#, #1/1/2000#}
 
-        Console.WriteLine()
-        Console.WriteLine("First and Last ----------")
+        WriteLine()
+        MyWriteLine("First and Last ----------")
         Console.Write("dates: ")
-        dates.WriteLine()
+        dates.MyWriteLine()
         Console.Write("dates.First: ")
-        Console.WriteLine(dates.First)
+        WriteLine(dates.First)
         Console.Write("dates.Lastt: ")
-        Console.WriteLine(dates.Last)
+        WriteLine(dates.Last)
 
         Dim emptyDates = Array.Empty(Of Date)()
 
         Console.Write("emptyDates: ")
-        emptyDates.WriteLine()
+        emptyDates.MyWriteLine()
         Console.Write("emptydates.FirstOrDefault: ")
-        Console.WriteLine(emptyDates.FirstOrDefault)
+        WriteLine(emptyDates.FirstOrDefault)
     End Sub
 
     ' Extract minimum or maximum from an IEnumerable(Of T)
@@ -132,16 +133,16 @@ Module Module1
     Sub TestMinMax()
         Dim ts() As String = {"one", "upon", "a", "time", "in", "a", "far", "away", "kingdom"}
 
-        Console.WriteLine()
-        Console.WriteLine("Min and Max -------------")
+        WriteLine()
+        MyWriteLine("Min and Max -------------")
         Console.Write("ts: ")
-        ts.WriteLine()
+        ts.MyWriteLine()
         Console.Write("Enumerable.Min(ts): ")
-        Console.WriteLine(Enumerable.Min(ts))
+        MyWriteLine(Enumerable.Min(ts))
         Console.Write("ts.Max: ")
-        Console.WriteLine(ts.Max)
+        MyWriteLine(ts.Max)
         Console.Write("ts.Max(Function(s) s.Length): ")
-        Console.WriteLine(ts.Max(Function(s) s.Length))
+        WriteLine(ts.Max(Function(s) s.Length))
 
         ' Create an array of Pet objects.
         Dim pets() As Pet = {New Pet With {.Name = "Barley", .Age = 8},
@@ -151,9 +152,9 @@ Module Module1
         ' Find the "maximum" pet according to the custom CompareTo() implementation.
         Dim max As Pet = pets.Max()
         Console.Write("pets: ")
-        pets.WriteLine()
+        pets.MyWriteLine()
         Console.Write("pets.max: ")
-        Console.WriteLine(pets.Max)
+        WriteLine(pets.Max)
     End Sub
 
     ' This class implements IComparable
@@ -192,18 +193,18 @@ Module Module1
         Dim t1 = New Integer() {2, 4, 6, 8, 10, 12, 14, 16, 18}
         Dim t2 = New Integer() {3, 6, 9, 12, 15, 18}
 
-        Console.WriteLine()
-        Console.WriteLine("Set operations ----------")
+        WriteLine()
+        MyWriteLine("Set operations ----------")
         Console.Write("t1: ")
-        t1.WriteLine()
+        t1.MyWriteLine()
         Console.Write("t2: ")
-        t2.WriteLine()
+        t2.MyWriteLine()
         Console.Write("Enumerable.Union(t1, t2): ")
-        Enumerable.Union(t1, t2).WriteLine()
+        Enumerable.Union(t1, t2).MyWriteLine()
         Console.Write("Enumerable.Intersect(t1, t2): ")
-        Enumerable.Intersect(t1, t2).WriteLine()
+        Enumerable.Intersect(t1, t2).MyWriteLine()
         Console.Write("Enumerable.Except(t1, t2): ")
-        Enumerable.Except(t1, t2).WriteLine()
+        Enumerable.Except(t1, t2).MyWriteLine()
     End Sub
 
     ' Runs an aggregation function Func(Of TSource, TSource, TSource) on each element of a sequence
@@ -215,12 +216,12 @@ Module Module1
         Dim words As IEnumerable(Of String) = sentence.Split(" "c)
         Dim s As String = words.Aggregate(AddressOf ProcessWord)
 
-        Console.WriteLine()
-        Console.WriteLine("Aggregate ---------------")
+        WriteLine()
+        MyWriteLine("Aggregate ---------------")
         Console.Write("words: ")
-        words.WriteLine()
+        words.MyWriteLine()
         Console.Write("words.Aggregate(AddressOf ProcessWord): ")
-        Console.WriteLine(s)
+        MyWriteLine(s)
     End Sub
 
     Function ProcessWord(aggregated As String, element As String) As String
@@ -237,12 +238,12 @@ Module Module1
         Dim allPrimes As Boolean = tabInt.All(AddressOf IsPrime)
         Dim allLessThan50 As Boolean = tabInt.All(Function(n) n < 50)
 
-        Console.WriteLine()
-        Console.WriteLine("TestAll -----------------")
+        WriteLine()
+        MyWriteLine("TestAll -----------------")
         Console.Write("tabInt: ")
-        tabInt.WriteLine()
-        Console.WriteLine("AllPrimes: " & allPrimes.ToString)
-        Console.WriteLine("AllLessThan50: " & allLessThan50.ToString)
+        tabInt.MyWriteLine()
+        MyWriteLine("AllPrimes: " & allPrimes.ToString)
+        MyWriteLine("AllLessThan50: " & allLessThan50.ToString)
     End Sub
 
     ' Returns True if lngNumber is a prime
@@ -262,16 +263,16 @@ Module Module1
         Dim l As IEnumerable(Of Object) = Array.Empty(Of Object)()
         Dim t As Integer() = {51, 51, 52, 53, 54, 55, 56, 57, 58, 59}
 
-        Console.WriteLine()
-        Console.WriteLine("TestAny -----------------")
+        WriteLine()
+        MyWriteLine("TestAny -----------------")
         Console.Write("l: ")
-        l.WriteLine()
+        l.MyWriteLine()
         Console.Write("l.Any(): ")
-        Console.WriteLine(l.Any())
+        WriteLine(l.Any())
         Console.Write("t: ")
-        t.WriteLine()
+        t.MyWriteLine()
         Console.Write("t.Any(AddressOf IsPrime): ")
-        Console.WriteLine(t.Any(AddressOf IsPrime))
+        WriteLine(t.Any(AddressOf IsPrime))
     End Sub
 
     ' Transforms an IEnumerable(Of X) into IEnumerable(Of T)
@@ -280,12 +281,12 @@ Module Module1
         Dim t As Object() = New Object() {"Hello", "world"}
         Dim l As IEnumerable(Of String) = t.Cast(Of String)()
 
-        Console.WriteLine()
-        Console.WriteLine("Cast --------------------")
+        WriteLine()
+        MyWriteLine("Cast --------------------")
         Console.Write("t As Object(): ")
-        t.WriteLine()
+        t.MyWriteLine()
         Console.Write("t.Cast(Of String)(): ")
-        l.WriteLine()
+        l.MyWriteLine()
     End Sub
 
     ' Returns a sublist based on type
@@ -301,19 +302,19 @@ Module Module1
             New Puppy("Baltik")
         }
 
-        Console.WriteLine()
-        Console.WriteLine("OfType ------------------")
+        WriteLine()
+        MyWriteLine("OfType ------------------")
         Console.Write("t As Object(): ")
-        t.WriteLine()
+        t.MyWriteLine()
         Console.Write("t.OfType(Of Integer)(): ")
-        li.WriteLine()
+        li.MyWriteLine()
 
         Console.Write("ld: ")
-        ld.WriteLine()
+        ld.MyWriteLine()
         Console.Write("ld.OfType(Of Dog): ")
-        ld.OfType(Of Dog)().WriteLine()
+        ld.OfType(Of Dog)().MyWriteLine()
         Console.Write("ld.OfType(Of Puppy): ")
-        ld.OfType(Of Puppy)().WriteLine()
+        ld.OfType(Of Puppy)().MyWriteLine()
     End Sub
 
     Class Dog
@@ -342,14 +343,14 @@ Module Module1
     Sub TestContains()
         Dim colors As String() = {"red", "green", "blue"}
 
-        Console.WriteLine()
-        Console.WriteLine("Contains ----------------")
+        WriteLine()
+        MyWriteLine("Contains ----------------")
         Console.Write("colors: ")
-        colors.WriteLine()
+        colors.MyWriteLine()
         Console.Write("colors.Contains(""Red""): ")
-        Console.WriteLine(colors.Contains("Red"))
+        WriteLine(colors.Contains("Red"))
         Console.Write("colors.Contains(""Red"", StringComparer.InvariantCultureIgnoreCase): ")
-        Console.WriteLine(colors.Contains("Red", StringComparer.InvariantCultureIgnoreCase))
+        WriteLine(colors.Contains("Red", StringComparer.InvariantCultureIgnoreCase))
     End Sub
 
     ' No argument, counts elements in a sequence.
@@ -358,14 +359,14 @@ Module Module1
     Sub TestCount()
         Dim l As IEnumerable(Of Integer) = Enumerable.Range(2, 99)
 
-        Console.WriteLine()
-        Console.WriteLine("Count -------------------")
+        WriteLine()
+        MyWriteLine("Count -------------------")
         Console.Write("l: ")
-        l.WriteLine()
+        l.MyWriteLine()
         Console.Write("l.Count(): ")
-        Console.WriteLine(l.Count)
+        WriteLine(l.Count)
         Console.Write("l.Count(AddressOf IsPrime): ")
-        Console.WriteLine(l.Count(AddressOf IsPrime))
+        WriteLine(l.Count(AddressOf IsPrime))
     End Sub
 
     ' Returns distinct values of a sequence
@@ -401,12 +402,12 @@ Module Module1
         lc.AddRange(New String() {"blue", "yellow"})            ' Sweden
         lc.AddRange(New String() {"blue", "white", "red"})      ' United Kingdom
 
-        Console.WriteLine()
-        Console.WriteLine("Distinct ----------------")
+        WriteLine()
+        MyWriteLine("Distinct ----------------")
         Console.Write("lc: ")
-        lc.WriteLine()
+        lc.MyWriteLine()
         Console.Write("lc.Distinct(): ")
-        lc.Distinct.WriteLine()
+        lc.Distinct.MyWriteLine()
     End Sub
 
     ' Sorts a sequence using a provided function that returns an integer rank for each element of the series
@@ -415,16 +416,16 @@ Module Module1
         Dim li As Integer() = {5, 2, 3, 8, 1, 9, 4, 11, 6, -1, 7, 0}
         Dim ts() As String = {"one", "upon", "a", "time", "in", "a", "far", "away", "kingdom"}
 
-        Console.WriteLine()
-        Console.WriteLine("OrderBy -----------------")
+        WriteLine()
+        MyWriteLine("OrderBy -----------------")
         Console.Write("li: ")
-        li.WriteLine()
+        li.MyWriteLine()
         Console.Write("li.OrderByDescending(Function(i) i): ")
-        li.OrderByDescending(Function(i) i).WriteLine()
+        li.OrderByDescending(Function(i) i).MyWriteLine()
         Console.Write("ts: ")
-        ts.WriteLine()
+        ts.MyWriteLine()
         Console.Write("li.OrderBy(Function(s) s.length): ")
-        ts.OrderBy(Function(s) s.Length).WriteLine()
+        ts.OrderBy(Function(s) s.Length).MyWriteLine()
     End Sub
 
     Structure TornadoEvent
@@ -503,12 +504,12 @@ Module Module1
         New TornadoEvent With {.startingDate = #5/5/2003#, .eventName = "Kansas/Missouri and Tennessee"}
         }
 
-        Console.WriteLine()
-        Console.WriteLine("GroupBy -----------------")
+        WriteLine()
+        MyWriteLine("GroupBy -----------------")
         Dim lgroups As IEnumerable(Of IGrouping(Of Integer, TornadoEvent)) = tt.GroupBy(Function(te As TornadoEvent) Month(te.startingDate))
         Dim lgroupsSortedByMonth As IEnumerable(Of IGrouping(Of Integer, TornadoEvent)) = lgroups.OrderBy(Function(g As IGrouping(Of Integer, TornadoEvent)) g.Key)
         For Each mois As IGrouping(Of Integer, TornadoEvent) In lgroupsSortedByMonth
-            Console.WriteLine("Month " & mois.Key.ToString & ": " & mois.Count.ToString & " event(s)")
+            MyWriteLine("Month " & mois.Key.ToString & ": " & mois.Count.ToString & " event(s)")
         Next
     End Sub
 
@@ -559,10 +560,10 @@ Module Module1
                 Function(animal As Animal) animal.Owner,
                 Function(person As Person, animal As Animal) New OwnerAnimal With {.OwnerName = person.Name, .AnimalName = animal.Name})
 
-        Console.WriteLine()
-        Console.WriteLine("Join --------------------")
+        WriteLine()
+        MyWriteLine("Join --------------------")
         For Each obj In query2
-            Console.WriteLine(obj.OwnerName & ": " & obj.AnimalName)
+            MyWriteLine(obj.OwnerName & ": " & obj.AnimalName)
         Next
     End Sub
 
@@ -596,17 +597,17 @@ Module Module1
                                      .Animals = AnimalCollection.Select(
                                                         Function(Animal) Animal.Name)})
 
-        Console.WriteLine()
-        Console.WriteLine("GroupJoin ---------------")
+        WriteLine()
+        MyWriteLine("GroupJoin ---------------")
         For Each obj In query
             ' Output the owner's name.
             Console.Write(obj.OwnerName & ": ")
             ' Output each of the owner's Animal's names.
-            obj.Animals.WriteLine()
+            obj.Animals.MyWriteLine()
             'For Each Animal As String In obj.Animals
             '    Console.Write(" " & Animal)
             'Next
-            'Console.WriteLine()
+            'WriteLine()
         Next
 
     End Sub
@@ -616,12 +617,12 @@ Module Module1
     Sub TestReverse()
         Dim WeekDays As String() = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"}
 
-        Console.WriteLine()
-        Console.WriteLine("Reverse -----------------")
+        WriteLine()
+        MyWriteLine("Reverse -----------------")
         Console.Write("WeekDays: ")
-        WeekDays.WriteLine()
+        WeekDays.MyWriteLine()
         Console.Write("WeekDays.Reverse: ")
-        WeekDays.Reverse.WriteLine()
+        WeekDays.Reverse.MyWriteLine()
     End Sub
 
     ' Select extensions apply a transformation function on an enumeration
@@ -632,14 +633,14 @@ Module Module1
         Dim ils As IEnumerable(Of Integer) = ts.Select(Function(s) s.Length)
         Dim ilc As IEnumerable(Of Char) = ts.SelectMany(Function(s) s.ToCharArray)
 
-        Console.WriteLine()
-        Console.WriteLine("Reverse -----------------")
+        WriteLine()
+        MyWriteLine("Reverse -----------------")
         Console.Write("ts: ")
-        ts.WriteLine()
+        ts.MyWriteLine()
         Console.Write("ts.Select(Function(s) s.Length): ")
-        ils.WriteLine()
+        ils.MyWriteLine()
         Console.Write("ts.SelectMany(Function(s) s.ToCharArray): ")
-        ilc.WriteLine()
+        ilc.MyWriteLine()
     End Sub
 
     Class BaseBloke
@@ -687,12 +688,12 @@ Module Module1
         l2 = CribleTraditional(pMax)
         sw2.Stop()
 
-        Console.WriteLine()
-        Console.WriteLine("TestCrible --------------")
-        Console.WriteLine("From 2 to " & pMax.ToString)
-        Console.WriteLine("Enumerable:  " & l1.Count & " primes, elapsed=" & sw1.Elapsed.ToString)
-        Console.WriteLine("Traditional: " & l2.Count & " primes, elapsed=" & sw2.Elapsed.ToString)
-        Console.WriteLine("Elapsed ratio Trad/Enum: " & CLng(sw1.ElapsedTicks / sw2.ElapsedTicks).ToString)
+        WriteLine()
+        MyWriteLine("TestCrible --------------")
+        MyWriteLine("From 2 to " & pMax.ToString)
+        MyWriteLine("Enumerable:  " & l1.Count & " primes, elapsed=" & sw1.Elapsed.ToString)
+        MyWriteLine("Traditional: " & l2.Count & " primes, elapsed=" & sw2.Elapsed.ToString)
+        MyWriteLine("Elapsed ratio Trad/Enum: " & CLng(sw1.ElapsedTicks / sw2.ElapsedTicks).ToString)
     End Sub
 
     ' Note that with a "yield return" statement we could return directly the prime sequence

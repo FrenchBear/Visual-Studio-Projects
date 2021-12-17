@@ -52,7 +52,7 @@ Public Class frmElimineDoublons
         '
         'btnEliminer
         '
-        Me.btnEliminer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.btnEliminer.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
         Me.btnEliminer.Location = New Point(312, 9)
         Me.btnEliminer.Name = "btnEliminer"
         Me.btnEliminer.Size = New Size(90, 27)
@@ -61,9 +61,9 @@ Public Class frmElimineDoublons
         '
         'lstTrace
         '
-        Me.lstTrace.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.lstTrace.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), AnchorStyles)
         Me.lstTrace.ItemHeight = 16
         Me.lstTrace.Location = New Point(10, 9)
         Me.lstTrace.Name = "lstTrace"

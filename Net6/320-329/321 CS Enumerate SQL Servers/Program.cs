@@ -10,6 +10,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using static System.Console;
 
 namespace ConsoleApplication2;
 
@@ -19,7 +20,7 @@ internal class Program
     {
         string[] ts = GetServers();
         foreach (string s in ts)
-            Console.WriteLine(s);
+            WriteLine(s);
    
     }
 
@@ -92,7 +93,7 @@ internal class Program
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            WriteLine(ex.Message);
             txt = string.Empty;
         }
         finally

@@ -7,6 +7,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using static System.Console;
 
 internal class MyApp
 {
@@ -18,7 +19,7 @@ internal class MyApp
         System.Text.StringBuilder strb = new(500);
         _ = GSD(strb, strb.Capacity);
 
-        Console.WriteLine("SystemDirectory: <{0}>", strb);
-        Console.WriteLine("SystemDirectory: <{0}>", System.Environment.SystemDirectory);
+        WriteLine("SystemDirectory: <{0}>", strb);
+        WriteLine("SystemDirectory: <{0}>", Environment.SystemDirectory);
     }
 }

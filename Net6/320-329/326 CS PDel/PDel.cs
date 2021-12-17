@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using static System.Console;
 
 #nullable enable
 
@@ -142,7 +143,7 @@ internal class Program
 
         if (isWithFinalPause)
         {
-            Console.WriteLine();
+            WriteLine();
             Console.Write("(pause) ");
             _ = Console.ReadLine();
         }
@@ -199,7 +200,7 @@ internal class Program
                     try
                     {
                         if (isVerbose)
-                            Console.WriteLine((isFinal ? "DEL " : "PDEL ") + QuotedFile(normalFileName));
+                            WriteLine((isFinal ? "DEL " : "PDEL ") + QuotedFile(normalFileName));
                         if (!isNoAction)
                             FileSystem.DeleteFile(normalFileName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
                     }
@@ -213,7 +214,7 @@ internal class Program
                     try
                     {
                         if (isVerbose)
-                            Console.WriteLine("DEL " + QuotedFile(fileName));
+                            WriteLine("DEL " + QuotedFile(fileName));
                         if (!isNoAction)
                             File.Delete(fileName);
                     }
@@ -250,7 +251,7 @@ internal class Program
                             try
                             {
                                 if (isVerbose)
-                                    Console.WriteLine((isFinal ? "RD " : "PRD ") + QuotedFile(normalDirectoryName));
+                                    WriteLine((isFinal ? "RD " : "PRD ") + QuotedFile(normalDirectoryName));
                                 if (!isNoAction)
                                     FileSystem.DeleteDirectory(normalDirectoryName, UIOption.OnlyErrorDialogs, isFinal ? RecycleOption.DeletePermanently : RecycleOption.SendToRecycleBin);
                             }
@@ -264,7 +265,7 @@ internal class Program
                             try
                             {
                                 if (isVerbose)
-                                    Console.WriteLine("RD " + QuotedFile(directoryName));
+                                    WriteLine("RD " + QuotedFile(directoryName));
                                 if (!isNoAction)
                                     Directory.Delete(directoryName);
                             }
@@ -289,14 +290,14 @@ internal class Program
 
     private static string QuotedFile(string fileName) => fileName.Contains(' ') ? "\"" + fileName + "\"" : fileName;
 
-    private static void ShowUsage() => Console.WriteLine(HelpHeader(false) + "\n\n" + Usage());
+    private static void ShowUsage() => WriteLine(HelpHeader(false) + "\n\n" + Usage());
 
-    private static void ShowExtendedHelp() => Console.WriteLine(HelpHeader(true) + "\n");
+    private static void ShowExtendedHelp() => WriteLine(HelpHeader(true) + "\n");
 
     private static string HelpHeader(bool includeExtendedHelp)
     {
         // Get information for this assembly
-        Assembly asm = Assembly.GetExecutingAssembly();
+        var asm = Assembly.GetExecutingAssembly();
         AssemblyName asmName = asm.GetName();
         Version? v = asmName.Version;
         string asmTitle = ((AssemblyTitleAttribute)asm.GetCustomAttributes(

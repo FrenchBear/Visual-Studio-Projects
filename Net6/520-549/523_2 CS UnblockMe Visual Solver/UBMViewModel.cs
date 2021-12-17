@@ -10,7 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace CS523B_UnblockMe_Solver_Visual;
+namespace CS523B;
 
 internal class UBMViewModel : INotifyPropertyChanged
 {

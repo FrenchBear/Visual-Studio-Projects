@@ -7,6 +7,7 @@
 
 using System;
 using System.Diagnostics;
+using static System.Console;
 
 namespace CS015;
 
@@ -14,7 +15,7 @@ public class InOut
 {
     private static int Zap()
     {
-        Console.WriteLine("Stack\n{0}\n", new StackTrace());
+        WriteLine("Stack\n{0}\n", new StackTrace());
         return -2;
     }
 
@@ -25,7 +26,7 @@ public class InOut
 
         j = i > Zap() ? 0 : 3;
 
-        Console.WriteLine("j: " + j);
+        WriteLine("j: " + j);
         _ = Console.ReadLine();
     }
 }

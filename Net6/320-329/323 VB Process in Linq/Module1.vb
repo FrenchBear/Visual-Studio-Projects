@@ -7,9 +7,9 @@ Module Module1
 
     Sub Main()
         Dim processes = Process.GetProcesses().OrderByDescending(Function(p) p.WorkingSet64).Take(10)
-        Console.WriteLine("Process                 Memory")
+        WriteLine("Process                 Memory")
         For Each p As Process In processes
-            Console.WriteLine("{0,-15}{1,15:n0}", p.ProcessName, p.WorkingSet64)
+            WriteLine("{0,-15}{1,15:n0}", p.ProcessName, p.WorkingSet64)
         Next
 
     End Sub

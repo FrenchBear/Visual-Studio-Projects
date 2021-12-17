@@ -9,7 +9,7 @@ Module Module1
         Dim t1 As String() = {"A", "B", "C"}
         Dim t2 As String() = t1.Clone
         t2(0) = "Z"
-        Console.WriteLine(t1(0))
+        WriteLine(t1(0))
     End Sub
 
 End Module

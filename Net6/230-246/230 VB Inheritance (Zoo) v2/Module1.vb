@@ -23,7 +23,7 @@ Module Module1
 
         Dim x As Animal
         For Each x In Savane
-            Console.WriteLine(TypeName(x))
+            WriteLine(TypeName(x))
         Next
 
         Dim iez As IEnumerator(Of Animal)
@@ -35,7 +35,7 @@ Module Module1
         Dim z As IEnumerable(Of Animal)
         z = Savane
         For Each x In z
-            Console.WriteLine(TypeName(x))
+            WriteLine(TypeName(x))
         Next
     End Sub
 
@@ -93,7 +93,7 @@ Class Lion
 
     Public Overrides Sub Crier(iNb As Integer)
         For i As Integer = 1 To iNb
-            Console.WriteLine("{0}: Roaaaar!", Name)
+            WriteLine("{0}: Roaaaar!", Name)
         Next
     End Sub
 
@@ -108,7 +108,7 @@ Class Lionceau
 
     Public Overrides Sub Crier(iNb As Integer)
         For i As Integer = 1 To iNb
-            Console.WriteLine("{0}: Miaooow!", Name)
+            WriteLine("{0}: Miaooow!", Name)
         Next
     End Sub
 

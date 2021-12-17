@@ -47,7 +47,7 @@ internal class Program
 
     private static void TimeExec(StringToString f)
     {
-        Stopwatch sw = Stopwatch.StartNew();
+        var sw = Stopwatch.StartNew();
         for (int i = 0; i < 100000; i++)
         {
             string sSource = file;

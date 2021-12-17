@@ -91,7 +91,7 @@ Module Module1
 
         Dim ti() As Integer = {1, 2, 3, 4}
 
-        Console.WriteLine("Done.")
+        WriteLine("Done.")
     End Sub
 
     Sub CaresserChien(c As Chien)

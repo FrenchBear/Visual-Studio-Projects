@@ -10,6 +10,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Console;
 
 namespace SelectMany;
 
@@ -24,15 +25,15 @@ class Program
         // public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TResult>> selector);
         var l1 = odds.SelectMany<int, (int, int)>(o => evens.Select(e => (o, e)));
         foreach (var item in l1)
-            Console.WriteLine(item);
-        Console.WriteLine();
+            WriteLine(item);
+        WriteLine();
 
         // 1 selector, 1 index
         // public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, int, IEnumerable<TResult>> selector);
         var l2 = odds.SelectMany<int, (int, int, int)>((o, index) => evens.Select(e => (index, o, e)));
         foreach (var item in l2)
-            Console.WriteLine(item);
-        Console.WriteLine();
+            WriteLine(item);
+        WriteLine();
 
         // 2 selectors, 1 intermediate type, no index
         // public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TCollection>> collectionSelector, Func<TSource, TCollection, TResult> resultSelector);
@@ -40,24 +41,24 @@ class Program
             o => evens.Select(e => (e, (double)o / (double)e)),
             (o, t) => (o, t.Item1, t.Item2));
         foreach (var item in l3)
-            Console.WriteLine(item);
-        Console.WriteLine();
+            WriteLine(item);
+        WriteLine();
 
         // Framework version
         var l4 = odds.SelectMany(
             o => evens,
             (o, e) => (1000 + o, 1000 + e));
         foreach (var item in l4)
-            Console.WriteLine(item);
-        Console.WriteLine();
+            WriteLine(item);
+        WriteLine();
 
         // My version
         var l5 = odds.MySelectMany(
             o => evens,
             (o, e) => (1000 + o, 1000 + e));
         foreach (var item in l5)
-            Console.WriteLine(item);
-        Console.WriteLine();
+            WriteLine(item);
+        WriteLine();
 
     }
 }

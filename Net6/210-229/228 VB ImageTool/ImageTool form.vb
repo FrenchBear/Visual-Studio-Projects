@@ -105,7 +105,7 @@ Public Class frmImageTool
         sbpScale.Text = FormatPercent(fRatio, 0)
 
         Dim imgOutput As Bitmap
-        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, System.Drawing.Imaging.PixelFormat.Format32bppRgb)
+        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, Imaging.PixelFormat.Format32bppRgb)
         Dim h As Graphics = Graphics.FromImage(imgOutput)
         h.Clear(Color.FromKnownColor(KnownColor.Control))
         h.DrawImage(imOriginalImage, 0, 0, imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio)
@@ -233,7 +233,7 @@ Public Class frmImageTool
 
     ' NOT an event proc
     Sub HandTool_MouseDown(e As MouseEventArgs)
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Hand
+        Cursor.Current = Cursors.Hand
         hs0 = hsScrollBar.Value + pbDisplayedPic.Left
         vs0 = vsScrollBar.Value + pbDisplayedPic.Top
     End Sub
@@ -251,7 +251,7 @@ Public Class frmImageTool
 
     Sub SelectionTool_MouseMove(e As MouseEventArgs)
         Dim imgOutput As Bitmap
-        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, System.Drawing.Imaging.PixelFormat.Format32bppRgb)
+        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, Imaging.PixelFormat.Format32bppRgb)
         Dim h As Graphics = Graphics.FromImage(imgOutput)
         h.Clear(Color.FromKnownColor(KnownColor.Control))
         h.DrawImage(imOriginalImage, 0, 0, imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio)
@@ -304,7 +304,7 @@ Public Class frmImageTool
 
     ' NOT event proc!
     Shared Sub HandTool_MouseUp(e As MouseEventArgs)
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub btnRotate90Left_Click(sender As System.Object, e As EventArgs) Handles btnRotate90Left.Click

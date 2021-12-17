@@ -7,7 +7,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace CS523B_UnblockMe_Solver_Visual;
+namespace CS523B;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml

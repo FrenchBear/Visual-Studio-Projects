@@ -8,6 +8,7 @@
 
 using System;
 using System.IO;
+using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
@@ -35,7 +36,7 @@ internal class ClsFile
         foreach (string s in tsFiles)
         {
             string sFilename;
-            sFilename = System.IO.Path.GetFileName(s);
+            sFilename = Path.GetFileName(s);
             bRename = false;
 
             using (FileStream fs = new(s, FileMode.Open, FileAccess.Read))
@@ -64,7 +65,7 @@ internal class ClsFile
                     }
                 }
 
-                Console.WriteLine("{0,-50} {1}", sFilename, sType);
+                WriteLine("{0,-50} {1}", sFilename, sType);
 
                 /*
                 if (sType=="Unicode Bad")

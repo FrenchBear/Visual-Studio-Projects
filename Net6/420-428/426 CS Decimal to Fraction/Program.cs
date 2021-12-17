@@ -14,24 +14,24 @@ namespace CS426;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static void Main()
     {
         WriteLine("Stern-Brocot algorithm to transform a periodic decimal suite into a fraction\n");
         double f = 0.1415926535;
         DoubleToFraction(f, out long rNum, out long rDen);
-        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+        WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
         f = 3.1415926535;
         DoubleToFraction(f, out rNum, out rDen);
-        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+        WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
         f = -0.1415926535;
         DoubleToFraction(f, out rNum, out rDen);
-        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+        WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
         f = -3.1415926535;
         DoubleToFraction(f, out rNum, out rDen);
-        Console.WriteLine("{0} = {1}/{2}", f, rNum, rDen);
+        WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
         // Check we get expected results
         WriteLine("\nTesting 1 million fractions with n,d in [1..1000]");
@@ -55,14 +55,10 @@ internal class Program
     /// </summary>
     private static int Gcd(int a, int b)
     {
-        if (a <= 0 | b <= 0)
+        if (a <= 0 || b <= 0)
             throw new ArgumentException("Negative or zero argument not supported");
         while (b != 0)
-        {
-            int t = b;
-            b = a % b;
-            a = t;
-        }
+            (a, b) = (b, a % b);
         return a;
     }
 

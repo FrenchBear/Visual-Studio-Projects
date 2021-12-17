@@ -98,12 +98,12 @@ internal class Program
             // The two most beautiful lines of code I've written for a long time!!!
             Generate(10, Rnd)
         };
-        t.ForEach(Console.WriteLine);       // x => Console.WriteLine(x)
+        t.ForEach(Console.WriteLine);       // x => WriteLine(x)
 
         // My first data pipeline in one line !
         new BinaryTree<int>()
             .Add(Generate(10, () => r.Next(100)))
-            .ForEach(Console.WriteLine);       // x => Console.WriteLine(x)
+            .ForEach(Console.WriteLine);       // x => WriteLine(x)
 
         Debugger.Break();
     }

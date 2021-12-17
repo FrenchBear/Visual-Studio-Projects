@@ -6,11 +6,11 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-17   PV  VS2022/Net6
 
-using System;
+using static System.Console;
 
 internal abstract class B
 {
-    protected B() => Console.WriteLine("B.ctor");
+    protected B() => WriteLine("B.ctor");
 
     protected virtual void SomeVirtualMethod()
     {
@@ -25,7 +25,7 @@ internal abstract class B
 
 internal class D : B
 {
-    public D() => Console.WriteLine("D.ctor");
+    public D() => WriteLine("D.ctor");
 
     protected override void SomeVirtualMethod()
     {

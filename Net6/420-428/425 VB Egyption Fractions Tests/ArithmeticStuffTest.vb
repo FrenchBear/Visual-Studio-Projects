@@ -67,28 +67,28 @@ Public Class ArithmeticStuffTest
         Dim b As Long = 13 * 43
         Dim expected As Long = 43
         Dim actual As Long
-        actual = ArithmeticStuff.Gcd(a, b)
+        actual = Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 13 * 43
         b = 7 * 43
-        actual = ArithmeticStuff.Gcd(a, b)
+        actual = Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 7
         b = 13
         expected = 1
-        actual = ArithmeticStuff.Gcd(a, b)
+        actual = Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 13
         b = 7
-        actual = ArithmeticStuff.Gcd(a, b)
+        actual = Gcd(a, b)
         Assert.AreEqual(expected, actual)
 
         b = -13
         Try
-            actual = ArithmeticStuff.Gcd(a, b)
+            actual = Gcd(a, b)
             Assert.Fail("gcd was expected to thow an exception and did not")
         Catch ex As Exception
             Assert.IsTrue(TypeOf ex Is ArgumentException)
@@ -104,13 +104,13 @@ Public Class ArithmeticStuffTest
         Dim b As Long = 13 * 43
         Dim expected As Long = 7 * 13 * 43
         Dim actual As Long
-        actual = ArithmeticStuff.Scm(a, b)
+        actual = Scm(a, b)
         Assert.AreEqual(expected, actual)
 
         a = 7
         b = 13
         expected = 7 * 13
-        actual = ArithmeticStuff.Scm(a, b)
+        actual = Scm(a, b)
         Assert.AreEqual(expected, actual)
 
         'a = 0

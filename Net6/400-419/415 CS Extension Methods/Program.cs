@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using static System.Console;
 
 namespace CS415_Extension_Methods
 {
@@ -17,8 +18,8 @@ namespace CS415_Extension_Methods
             string t = s.Reverse().Concat();
             int n = s.WordCount();
 
-            Console.WriteLine(t);
-            Console.WriteLine(n);
+            WriteLine(t);
+            WriteLine(n);
         }
     }
 }

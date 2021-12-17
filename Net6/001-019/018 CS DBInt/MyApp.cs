@@ -6,6 +6,7 @@
 // 2021-09-17   PV  VS2022/Net6
 
 using System;
+using static System.Console;
 
 namespace CS018;
 
@@ -41,9 +42,9 @@ internal class MyApp
         DBInt y = DBInt.Null;
         DBInt z = x + y;
 
-        Console.WriteLine("x = {0}", x);
-        Console.WriteLine("y = {0}", y);
-        Console.WriteLine("z = {0}", z);
+        WriteLine("x = {0}", x);
+        WriteLine("y = {0}", y);
+        WriteLine("z = {0}", z);
 
         _ = Console.ReadLine();
     }

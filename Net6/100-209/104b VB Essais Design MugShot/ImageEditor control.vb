@@ -323,11 +323,11 @@ Public Class ImageEditor
     End Sub
 
     Private Sub SelectionTool_MouseDown(e As MouseEventArgs)
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Cross
+        Cursor.Current = Cursors.Cross
     End Sub
 
     Private Sub HandTool_MouseDown(e As MouseEventArgs)
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.NoMove2D
+        Cursor.Current = Cursors.NoMove2D
         hs0 = hsScrollBar.Value + pbDisplayedPic.Left
         vs0 = vsScrollBar.Value + pbDisplayedPic.Top
     End Sub
@@ -485,8 +485,8 @@ Public Class ImageEditor
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
 
         ' First release pending file locks
-        System.GC.Collect()
-        System.GC.WaitForPendingFinalizers()
+        GC.Collect()
+        GC.WaitForPendingFinalizers()
 
         ' And save
         m_bmpOriginalImage.Save(m_doc.sPathName, ici, eps)

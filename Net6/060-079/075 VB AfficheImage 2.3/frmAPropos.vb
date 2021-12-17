@@ -16,7 +16,7 @@ Friend Class FrmAPropos
             Else
                 Try
                     'Pour le formulaire de démarrage, la première instance créée est l'instance par défaut.
-                    If System.Reflection.Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
+                    If Reflection.Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
                         m_vb6FormDefInstance = Me
                     End If
                 Catch
@@ -67,13 +67,13 @@ Friend Class FrmAPropos
         '
         'btnOK
         '
-        Me.BtnOK.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnOK.Cursor = System.Windows.Forms.Cursors.Default
-        Me.BtnOK.Font = New Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnOK.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.BtnOK.BackColor = SystemColors.Control
+        Me.BtnOK.Cursor = Cursors.Default
+        Me.BtnOK.Font = New Font("Verdana", 9.0!, FontStyle.Regular, GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnOK.ForeColor = SystemColors.ControlText
         Me.BtnOK.Location = New Point(278, 83)
         Me.BtnOK.Name = "btnOK"
-        Me.BtnOK.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.BtnOK.RightToLeft = RightToLeft.No
         Me.BtnOK.Size = New Size(86, 25)
         Me.BtnOK.TabIndex = 2
         Me.BtnOK.Text = "OK"
@@ -81,23 +81,23 @@ Friend Class FrmAPropos
         '
         'Image1
         '
-        Me.Image1.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Image1.Cursor = Cursors.Default
         Me.Image1.Image = CType(resources.GetObject("Image1.Image"), Image)
         Me.Image1.Location = New Point(19, 18)
         Me.Image1.Name = "Image1"
         Me.Image1.Size = New Size(78, 88)
-        Me.Image1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Image1.SizeMode = PictureBoxSizeMode.StretchImage
         Me.Image1.TabIndex = 3
         Me.Image1.TabStop = False
         '
         'imgAuteur
         '
-        Me.ImgAuteur.Cursor = System.Windows.Forms.Cursors.Default
+        Me.ImgAuteur.Cursor = Cursors.Default
         Me.ImgAuteur.Image = CType(resources.GetObject("imgAuteur.Image"), Image)
         Me.ImgAuteur.Location = New Point(29, 28)
         Me.ImgAuteur.Name = "imgAuteur"
         Me.ImgAuteur.Size = New Size(35, 44)
-        Me.ImgAuteur.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.ImgAuteur.SizeMode = PictureBoxSizeMode.StretchImage
         Me.ImgAuteur.TabIndex = 4
         Me.ImgAuteur.TabStop = False
         Me.ImgAuteur.Visible = False
@@ -105,13 +105,13 @@ Friend Class FrmAPropos
         'lblBuild
         '
         Me.LblBuild.AutoSize = True
-        Me.LblBuild.BackColor = System.Drawing.SystemColors.Control
-        Me.LblBuild.Cursor = System.Windows.Forms.Cursors.Default
-        Me.LblBuild.Font = New Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblBuild.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.LblBuild.BackColor = SystemColors.Control
+        Me.LblBuild.Cursor = Cursors.Default
+        Me.LblBuild.Font = New Font("Verdana", 8.25!, FontStyle.Regular, GraphicsUnit.Point, CType(0, Byte))
+        Me.LblBuild.ForeColor = SystemColors.ControlText
         Me.LblBuild.Location = New Point(120, 62)
         Me.LblBuild.Name = "lblBuild"
-        Me.LblBuild.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.LblBuild.RightToLeft = RightToLeft.No
         Me.LblBuild.Size = New Size(53, 17)
         Me.LblBuild.TabIndex = 3
         Me.LblBuild.Text = "Build :"
@@ -119,13 +119,13 @@ Friend Class FrmAPropos
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.SystemColors.Control
-        Me.Label3.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Label3.Font = New Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label3.BackColor = SystemColors.Control
+        Me.Label3.Cursor = Cursors.Default
+        Me.Label3.Font = New Font("Verdana", 8.25!, FontStyle.Regular, GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = SystemColors.ControlText
         Me.Label3.Location = New Point(120, 37)
         Me.Label3.Name = "Label3"
-        Me.Label3.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label3.RightToLeft = RightToLeft.No
         Me.Label3.Size = New Size(194, 17)
         Me.Label3.TabIndex = 1
         Me.Label3.Text = "(c) 1997-2012  P.VIOLENT"
@@ -133,13 +133,13 @@ Friend Class FrmAPropos
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.SystemColors.Control
-        Me.Label1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Label1.Font = New Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Label1.BackColor = SystemColors.Control
+        Me.Label1.Cursor = Cursors.Default
+        Me.Label1.Font = New Font("Verdana", 9.0!, FontStyle.Bold, GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = SystemColors.ControlText
         Me.Label1.Location = New Point(120, 14)
         Me.Label1.Name = "Label1"
-        Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Label1.RightToLeft = RightToLeft.No
         Me.Label1.Size = New Size(463, 18)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "AfficheImage - Programme d'affichage d'images simple"
@@ -148,7 +148,7 @@ Friend Class FrmAPropos
         '
         Me.AcceptButton = Me.BtnOK
         Me.AutoScaleBaseSize = New Size(6, 15)
-        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.BackColor = SystemColors.Control
         Me.ClientSize = New Size(594, 124)
         Me.Controls.Add(Me.BtnOK)
         Me.Controls.Add(Me.Image1)
@@ -156,16 +156,16 @@ Friend Class FrmAPropos
         Me.Controls.Add(Me.LblBuild)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label1)
-        Me.Cursor = System.Windows.Forms.Cursors.Default
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Cursor = Cursors.Default
+        Me.FormBorderStyle = FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Location = New Point(211, 144)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAPropos"
-        Me.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.RightToLeft = RightToLeft.No
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        Me.StartPosition = FormStartPosition.Manual
         Me.Text = "À propos d'AfficheImage"
         CType(Me.Image1, ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ImgAuteur, ComponentModel.ISupportInitialize).EndInit()
@@ -206,7 +206,7 @@ Friend Class FrmAPropos
     End Sub
 
     Private Sub Image1_Click(eventSender As Object, eventArgs As EventArgs) Handles Image1.Click
-        Image1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Image1.SizeMode = PictureBoxSizeMode.StretchImage
         Image1.Image = ImgAuteur.Image
     End Sub
 

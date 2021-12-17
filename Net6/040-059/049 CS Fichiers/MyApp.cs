@@ -6,6 +6,7 @@
 
 using System;
 using System.IO;
+using static System.Console;
 
 internal class MyApp
 {
@@ -13,7 +14,7 @@ internal class MyApp
     {
         DirectoryInfo[] td = new DirectoryInfo(@"C:\Program files").GetDirectories();
         foreach (DirectoryInfo d in td)
-            Console.WriteLine("{0}  {1}", d.Name, d.FullName);
+            WriteLine("{0}  {1}", d.Name, d.FullName);
 
         DirectoryInfo d0 = new(@"C:\Temp");
         DirectoryInfo d1 = d0.CreateSubdirectory("Essais de dossiers");
@@ -32,7 +33,7 @@ internal class MyApp
         StreamReader s2 = File.OpenText(sPath + "MyApp.cs");
         string ligne;
         while ((ligne = s2.ReadLine()) != null)
-            Console.WriteLine(ligne);
+            WriteLine(ligne);
         s2.Close();
 
         //Console.ReadLine();

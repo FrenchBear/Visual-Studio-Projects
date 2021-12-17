@@ -1,6 +1,8 @@
 ' 2006-10-01    PV  VS2005
 ' 2021-09-18    PV  VS2022, Net6
 
+Imports System.Console
+
 #Disable Warning CA1822 ' Mark members as static
 
 Public Class Carre55
@@ -150,9 +152,9 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
                     Console.Write("\xfa\xfa")
                 End If
             Next
-            Console.WriteLine()
+            WriteLine()
         Next
-        Console.WriteLine("Offset: {0}", iOffsetCol)
+        WriteLine("Offset: {0}", iOffsetCol)
     End Sub
 
 End Class

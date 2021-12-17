@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static System.Console;
 
 namespace CS310;
 
@@ -39,7 +40,7 @@ internal class Program
         foreach (int length in lengths)
             _ = output.AppendLine(length.ToString());
 
-        Console.WriteLine(output.ToString());
+        WriteLine(output.ToString());
     }
 
     private static int LengthOfString(string s) 

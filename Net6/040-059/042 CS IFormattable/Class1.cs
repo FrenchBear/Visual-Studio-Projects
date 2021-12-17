@@ -6,6 +6,7 @@
 // 2021-09-18   PV  VS2022, Net6
 
 using System;
+using static System.Console;
 
 internal struct Complexe : IFormattable
 {
@@ -36,14 +37,14 @@ internal class MyApp
 {
     public static void Main()
     {
-        Console.WriteLine("{0:N0}", Int16.MaxValue);
-        Console.WriteLine("{0:N0}", Int32.MaxValue);
-        Console.WriteLine("{0:N0}", Int64.MaxValue);
+        WriteLine("{0:N0}", Int16.MaxValue);
+        WriteLine("{0:N0}", Int32.MaxValue);
+        WriteLine("{0:N0}", Int64.MaxValue);
 
         Complexe c = new(1, 1);
-        Console.WriteLine("{0}", c.ToString());
-        Console.WriteLine("{0}", c);
-        Console.WriteLine("{0:P}", c);
+        WriteLine("{0}", c.ToString());
+        WriteLine("{0}", c);
+        WriteLine("{0:P}", c);
 
         //Console.ReadLine();
     }

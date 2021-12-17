@@ -5,6 +5,7 @@
 // 2021-09-26   PV      VS2022; Net6
 
 using System;
+using static System.Console;
 
 namespace CS607;
 
@@ -28,6 +29,6 @@ internal class Program
         var answer = higherorder(addtwointegers(7), 8);
 
         // Print the result, which is (7+8)*2.
-        Console.WriteLine(answer);
+        WriteLine(answer);
     }
 }

@@ -23,7 +23,7 @@ Friend Class frmTestScripting
             Else
                 Try
                     'Pour le formulaire de démarrage, la première instance créée est l'instance par défaut.
-                    If System.Reflection.Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
+                    If Reflection.Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
                         m_vb6FormDefInstance = Me
                     End If
                 Catch
@@ -72,60 +72,60 @@ Friend Class frmTestScripting
         '
         'Command5
         '
-        Me.Command5.BackColor = System.Drawing.SystemColors.Control
-        Me.Command5.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Command5.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Command5.BackColor = SystemColors.Control
+        Me.Command5.Cursor = Cursors.Default
+        Me.Command5.ForeColor = SystemColors.ControlText
         Me.Command5.Location = New Point(8, 168)
         Me.Command5.Name = "Command5"
-        Me.Command5.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Command5.RightToLeft = RightToLeft.No
         Me.Command5.Size = New Size(81, 33)
         Me.Command5.TabIndex = 4
         Me.Command5.Text = "Word"
         '
         'Command4
         '
-        Me.Command4.BackColor = System.Drawing.SystemColors.Control
-        Me.Command4.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Command4.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Command4.BackColor = SystemColors.Control
+        Me.Command4.Cursor = Cursors.Default
+        Me.Command4.ForeColor = SystemColors.ControlText
         Me.Command4.Location = New Point(8, 128)
         Me.Command4.Name = "Command4"
-        Me.Command4.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Command4.RightToLeft = RightToLeft.No
         Me.Command4.Size = New Size(81, 33)
         Me.Command4.TabIndex = 3
         Me.Command4.Text = "Modules"
         '
         'Command3
         '
-        Me.Command3.BackColor = System.Drawing.SystemColors.Control
-        Me.Command3.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Command3.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Command3.BackColor = SystemColors.Control
+        Me.Command3.Cursor = Cursors.Default
+        Me.Command3.ForeColor = SystemColors.ControlText
         Me.Command3.Location = New Point(8, 88)
         Me.Command3.Name = "Command3"
-        Me.Command3.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Command3.RightToLeft = RightToLeft.No
         Me.Command3.Size = New Size(81, 33)
         Me.Command3.TabIndex = 2
         Me.Command3.Text = "Eval"
         '
         'Command2
         '
-        Me.Command2.BackColor = System.Drawing.SystemColors.Control
-        Me.Command2.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Command2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Command2.BackColor = SystemColors.Control
+        Me.Command2.Cursor = Cursors.Default
+        Me.Command2.ForeColor = SystemColors.ControlText
         Me.Command2.Location = New Point(8, 48)
         Me.Command2.Name = "Command2"
-        Me.Command2.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Command2.RightToLeft = RightToLeft.No
         Me.Command2.Size = New Size(81, 33)
         Me.Command2.TabIndex = 1
         Me.Command2.Text = "EvalFunc"
         '
         'Command1
         '
-        Me.Command1.BackColor = System.Drawing.SystemColors.Control
-        Me.Command1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Command1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.Command1.BackColor = SystemColors.Control
+        Me.Command1.Cursor = Cursors.Default
+        Me.Command1.ForeColor = SystemColors.ControlText
         Me.Command1.Location = New Point(8, 8)
         Me.Command1.Name = "Command1"
-        Me.Command1.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.Command1.RightToLeft = RightToLeft.No
         Me.Command1.Size = New Size(81, 33)
         Me.Command1.TabIndex = 0
         Me.Command1.Text = "sc.Run ""NameMe"""
@@ -133,17 +133,17 @@ Friend Class frmTestScripting
         'frmTestScripting
         '
         Me.AutoScaleBaseSize = New Size(5, 13)
-        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.BackColor = SystemColors.Control
         Me.ClientSize = New Size(312, 208)
         Me.Controls.Add(Me.Command5)
         Me.Controls.Add(Me.Command4)
         Me.Controls.Add(Me.Command3)
         Me.Controls.Add(Me.Command2)
         Me.Controls.Add(Me.Command1)
-        Me.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Cursor = Cursors.Default
         Me.Location = New Point(4, 30)
         Me.Name = "frmTestScripting"
-        Me.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.RightToLeft = RightToLeft.No
         Me.Text = "Tests Scripting"
         Me.ResumeLayout(False)
 

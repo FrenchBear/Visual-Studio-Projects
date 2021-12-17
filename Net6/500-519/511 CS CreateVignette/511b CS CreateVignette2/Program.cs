@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static System.Console;
 
 namespace CreateVignette;
 
@@ -76,7 +77,7 @@ internal class Test
         //DumpPropItems(vignette);
 
         EncoderParameters eps = new(1);
-        eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
+        eps.Param[0] = new EncoderParameter(Encoder.Quality, JpegQuality);
         ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
 
         vignette.Save(vignettePath, ici, eps);
@@ -109,7 +110,7 @@ internal class Test
                 var b = propItem.Value[j];
                 Console.Write(b is >= 32 and <= 127 ? (char)b : '?');
             }
-            Console.WriteLine();
+            WriteLine();
             count++;
         }
     }

@@ -77,9 +77,9 @@ Public Class Form1
         Dim page2 As Bitmap
         Dim page3 As Bitmap
 
-        multi = New Bitmap(1728, 2156, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
-        page2 = New Bitmap(1728, 2156, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
-        page3 = New Bitmap(1728, 2156, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
+        multi = New Bitmap(1728, 2156, PixelFormat.Format24bppRgb)
+        page2 = New Bitmap(1728, 2156, PixelFormat.Format24bppRgb)
+        page3 = New Bitmap(1728, 2156, PixelFormat.Format24bppRgb)
 
         multi.SetResolution(200, 200)
         page2.SetResolution(200, 200)
@@ -96,16 +96,16 @@ Public Class Form1
         Dim f As Font
         f = New Font("Arial", 12)
 
-        g1.DrawString("Page 1", f, System.Drawing.Brushes.Black, 25, 25)
-        g2.DrawString("Page 2", f, System.Drawing.Brushes.Black, 25, 25)
-        g3.DrawString("Page 3", f, System.Drawing.Brushes.Black, 25, 25)
+        g1.DrawString("Page 1", f, Brushes.Black, 25, 25)
+        g2.DrawString("Page 2", f, Brushes.Black, 25, 25)
+        g3.DrawString("Page 3", f, Brushes.Black, 25, 25)
 
         'Declare Function OemToChar Lib "user32" Alias "OemToCharA" (ByVal lpszSrc As String, ByVal lpszDst As String) As Long
         'Declare Function CharToOem Lib "user32" Alias "CharToOemA" (ByVal lpszSrc As String, ByVal lpszDst As String) As Long
 
         For i As Integer = 0 To 255
             f = New Font("Courier New", 14, FontStyle.Regular, GraphicsUnit.Pixel, i)
-            g1.DrawString(ChrW(&H251C) & f.GdiCharSet().ToString, f, System.Drawing.Brushes.Black, 250 * (1 + i Mod 6), 2100 / 255 * i)
+            g1.DrawString(ChrW(&H251C) & f.GdiCharSet().ToString, f, Brushes.Black, 250 * (1 + i Mod 6), 2100 / 255 * i)
         Next
 
         Dim myImageCodecInfo As ImageCodecInfo

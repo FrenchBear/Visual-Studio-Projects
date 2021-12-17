@@ -36,7 +36,7 @@ public partial class MainWindow : Window
         int i = 0;
         _ = Task.Run(async () =>
           {
-              Thread t2 = System.Threading.Thread.CurrentThread;
+              Thread t2 = Thread.CurrentThread;
             //Debugger.Break();
 
             while (!cancelToken.IsCancellationRequested)
@@ -51,7 +51,7 @@ public partial class MainWindow : Window
 
     private void button1_Click(object sender, RoutedEventArgs e)
     {
-        Thread t1 = System.Threading.Thread.CurrentThread;
+        Thread t1 = Thread.CurrentThread;
         //Debugger.Break();
 
         if (button1.Content.ToString() == "Start")
@@ -141,7 +141,7 @@ public partial class MainWindow : Window
         listBox.Items.Clear();
         AddTrace("Start T0, T1 and T2");
 
-        Task[] T = new Task[3];
+        var T = new Task[3];
         T[0] = getTask(1);
         T[1] = getTask(3);
         T[2] = getTask(2);

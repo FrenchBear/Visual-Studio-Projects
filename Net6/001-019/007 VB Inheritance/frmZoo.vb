@@ -84,8 +84,8 @@ Public Class frmZoo
         '
         'TextBox1
         '
-        Me.TextBox1.Anchor = ((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right)
+        Me.TextBox1.Anchor = ((Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Left) _
+                    Or Windows.Forms.AnchorStyles.Right)
         Me.TextBox1.Location = New Drawing.Point(8, 20)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New Drawing.Size(152, 20)
@@ -94,7 +94,7 @@ Public Class frmZoo
         '
         'btnTypeName
         '
-        Me.BtnTypeName.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.BtnTypeName.Anchor = (Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Right)
         Me.BtnTypeName.Location = New Drawing.Point(168, 16)
         Me.BtnTypeName.Name = "btnTypeName"
         Me.BtnTypeName.Size = New Drawing.Size(92, 24)
@@ -112,9 +112,9 @@ Public Class frmZoo
         '
         'TabControl1
         '
-        Me.TabControl1.Anchor = (((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right)
+        Me.TabControl1.Anchor = (((Windows.Forms.AnchorStyles.Top Or Windows.Forms.AnchorStyles.Bottom) _
+                    Or Windows.Forms.AnchorStyles.Left) _
+                    Or Windows.Forms.AnchorStyles.Right)
         Me.TabControl1.Controls.AddRange(New Windows.Forms.Control() {Me.TabPage1, Me.TabPage2})
         Me.TabControl1.Location = New Drawing.Point(4, 120)
         Me.TabControl1.Name = "TabControl1"

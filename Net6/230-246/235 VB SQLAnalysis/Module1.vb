@@ -59,7 +59,7 @@ Module Module1
         Dim sMasked As String = sbMasked.ToString
 
         Dim re As Regex
-        re = New Regex("^ *GO *\r?$", Text.RegularExpressions.RegexOptions.Multiline Or Text.RegularExpressions.RegexOptions.IgnoreCase)
+        re = New Regex("^ *GO *\r?$", RegexOptions.Multiline Or RegexOptions.IgnoreCase)
         Dim mc As MatchCollection = re.Matches(sMasked)
         If mc.Count = 0 Then
             ProcessSQLBlock(sOriginal, sMasked)

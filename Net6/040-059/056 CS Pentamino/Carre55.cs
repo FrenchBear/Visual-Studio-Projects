@@ -2,6 +2,7 @@
 // 2021-09-18   PV  VS2022, Net6
 
 using System;
+using static System.Console;
 
 #pragma warning disable CA1822 // Mark members as static
 
@@ -136,8 +137,8 @@ internal class Carre55
         {
             for (c = 0; c < 5; c++)
                 Console.Write(tMotif[l, c] ? "\xdb\xdb" : "\xfa\xfa");
-            Console.WriteLine();
+            WriteLine();
         }
-        Console.WriteLine("Offset: {0}", iOffsetCol);
+        WriteLine("Offset: {0}", iOffsetCol);
     }
 }

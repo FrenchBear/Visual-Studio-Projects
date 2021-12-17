@@ -11,6 +11,7 @@
 
 using System;
 using System.Reflection;
+using static System.Console;
 
 namespace CS014;
 
@@ -27,7 +28,7 @@ public class GetMemberMethodImpl
             Console.Write(" Interface Method: " + (dm = GetDeclaringMethod(m)));
             if (dm != null)
                 Console.Write(" Interface: " + GetDeclaringMethod(m).DeclaringType);
-            Console.WriteLine();
+            WriteLine();
         }
         _ = Console.ReadLine();
     }
@@ -50,11 +51,11 @@ public class GetMemberMethodImpl
 
 public class Bar : IBar
 {
-    void IFoo.A() => Console.WriteLine("bar.a");
+    void IFoo.A() => WriteLine("bar.a");
 
-    void IBar.B() => Console.WriteLine("bar.b");
+    void IBar.B() => WriteLine("bar.b");
 
-    void IBar.C() => Console.WriteLine("bar.c");
+    void IBar.C() => WriteLine("bar.c");
 
     //  void d() { }
 }

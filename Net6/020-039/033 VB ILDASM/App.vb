@@ -6,6 +6,7 @@
 ' 2021-09-18    PV  VS2022, Net6
 
 Imports MaBibliotheque
+Imports System.Console
 
 Namespace EssaisILDasm
 
@@ -23,53 +24,53 @@ Namespace EssaisILDasm
             Try
                 MaClasseDerivee.TrucDangereux(35)
             Catch
-                Console.WriteLine("Echec a l'appel de d.TrucDangereux(35)")
+                WriteLine("Echec a l'appel de d.TrucDangereux(35)")
             End Try
 
             Try
                 MaClasseDerivee.TrucDangereux(0)
             Catch e As Exception
-                Console.WriteLine("Échec à l'appel de d.TrucDangereux(0): {0}", e.Message)
+                WriteLine("Échec à l'appel de d.TrucDangereux(0): {0}", e.Message)
             End Try
-            Console.WriteLine()
+            WriteLine()
 
             ' Appel de méthodes virtuelles
             ActionBase(d, 2)
             d.MyBaseAction()
             Dim b As New MaClasseDeBase(d)
             b.Action()
-            Console.WriteLine()
+            WriteLine()
 
             ' Evénements
             d.MaMethodeBruyante1(3)
             ActionInterface(d)
-            Console.WriteLine()
+            WriteLine()
 
             ' Indexers
-            Console.WriteLine("Index 0: {0}", d(0))
-            Console.WriteLine("Index ""A"": {0}", d("A"))
-            Console.WriteLine("Index 'A': {0}", d(CChar("A")))
-            Console.WriteLine("Index 3,4: {0}", d(3, 4))
-            Console.WriteLine("Index 3,""Z"": {0}", d(3, "Z"))
-            Console.WriteLine()
+            WriteLine("Index 0: {0}", d(0))
+            WriteLine("Index ""A"": {0}", d("A"))
+            WriteLine("Index 'A': {0}", d(CChar("A")))
+            WriteLine("Index 3,4: {0}", d(3, 4))
+            WriteLine("Index 3,""Z"": {0}", d(3, "Z"))
+            WriteLine()
 
             ' Enum
             Dim j As Jour = Jour.Mardi
-            Console.WriteLine("j = {0}", j)
+            WriteLine("j = {0}", j)
             j = CType(j + 1, Jour)
-            Console.WriteLine("j = {0}", j)
-            Console.WriteLine()
+            WriteLine("j = {0}", j)
+            WriteLine()
 
             ' Types valeur
             Dim x As DBInt = DBInt.op_Implicit(123)
             Dim y As DBInt = DBInt.Null
             Dim z As DBInt = DBInt.op_Addition(x, y)
 
-            Console.WriteLine("x = {0}", x)
-            Console.WriteLine("y = {0}", y)
-            Console.WriteLine("z = {0}", z)
+            WriteLine("x = {0}", x)
+            WriteLine("y = {0}", y)
+            WriteLine("z = {0}", z)
 
-            Console.ReadLine()
+            ReadLine()
         End Sub
 
         Protected Shared Sub ActionBase(b As MaClasseDeBase, iVal As Integer)
@@ -83,7 +84,7 @@ Namespace EssaisILDasm
         End Sub
 
         Private Shared Sub D_Bip(e As Object, sMsg As String)
-            Console.WriteLine("D_Bip(): {0}", sMsg)
+            WriteLine("D_Bip(): {0}", sMsg)
         End Sub
 
     End Class

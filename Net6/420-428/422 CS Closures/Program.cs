@@ -1,6 +1,7 @@
 ﻿// 2021-09-23   PV  VS2022; Net6
 
 using System;
+using static System.Console;
 
 namespace CS422;
 
@@ -13,14 +14,14 @@ internal class Program
         Func<int, int> del = sc.GetDelegate();
         int i1 = del(10);
         int i2 = del(3);
-        Console.WriteLine(i1);
-        Console.WriteLine(i2);
+        WriteLine(i1);
+        WriteLine(i2);
 
         Func<int, int> del2 = sc.GetDelegate2();
         int j1 = del2(10);
         int j2 = del2(3);
-        Console.WriteLine(j1);
-        Console.WriteLine(j2);
+        WriteLine(j1);
+        WriteLine(j2);
     }
 }
 

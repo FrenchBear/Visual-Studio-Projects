@@ -7,13 +7,13 @@
 Module Module1
 
     Sub Main()
-        Console.WriteLine("date d               LocalToUTC(d)        UTCToLocal(d)        LocalToUTC(UTCToLocal(d))")
+        WriteLine("date d               LocalToUTC(d)        UTCToLocal(d)        LocalToUTC(UTCToLocal(d))")
         T(#11/17/2006 11:05:00 AM#)
         T(#7/17/2006 11:05:00 AM#)
     End Sub
 
     Sub T(d As Date)
-        Console.WriteLine("{0}  {1}  {2}  {3}", d.ToString, LocalToUTC(d).ToString, UTCToLocal(d).ToString, LocalToUTC(UTCToLocal(d)).ToString)
+        WriteLine("{0}  {1}  {2}  {3}", d.ToString, LocalToUTC(d).ToString, UTCToLocal(d).ToString, LocalToUTC(UTCToLocal(d)).ToString)
     End Sub
 
 End Module

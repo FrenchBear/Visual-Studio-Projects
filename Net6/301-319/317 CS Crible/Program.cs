@@ -3,10 +3,10 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-20   PV  VS2022; Net6
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using static System.Console;
 
 namespace Crible;
 
@@ -21,7 +21,7 @@ internal class Program
         sw.Start();
         RunCrible(n);
         sw.Stop();
-        Console.WriteLine("Elapsed time: " + sw.Elapsed);
+        WriteLine("Elapsed time: " + sw.Elapsed);
     }
 
     // tb 1 3 5 7 9 11 13
@@ -51,6 +51,6 @@ internal class Program
             }
             nv += 2;
         }
-        Console.WriteLine("2.." + n + ": " + li.Count + " primes");
+        WriteLine("2.." + n + ": " + li.Count + " primes");
     }
 }

@@ -97,7 +97,7 @@ Public Class Form1
         Me.lvFichiers.Name = "lvFichiers"
         Me.lvFichiers.Size = New Size(320, 424)
         Me.lvFichiers.TabIndex = 4
-        Me.lvFichiers.View = System.Windows.Forms.View.Details
+        Me.lvFichiers.View = View.Details
         '
         'colFichier
         '

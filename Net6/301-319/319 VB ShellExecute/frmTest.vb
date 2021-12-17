@@ -43,12 +43,12 @@ Public Class frmTest
             myProcess.Start()
         Catch ex As Win32Exception
             If ex.NativeErrorCode = ERROR_FILE_NOT_FOUND Then
-                Console.WriteLine((ex.Message + ". Check the path."))
+                WriteLine((ex.Message + ". Check the path."))
             Else
                 If ex.NativeErrorCode = ERROR_ACCESS_DENIED Then
                     ' Note that if your word processor might generate exceptions
                     ' such as this, which are handled first.
-                    Console.WriteLine((ex.Message + ". You do not have permission to execute this action."))
+                    WriteLine((ex.Message + ". You do not have permission to execute this action."))
                 End If
             End If
 

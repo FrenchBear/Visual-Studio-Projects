@@ -76,7 +76,7 @@ Public Class frmInfos
         btnInfos.Visible = False
 
         Dim vi As FileVersionInfo
-        vi = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location)
+        vi = FileVersionInfo.GetVersionInfo(Reflection.Assembly.GetExecutingAssembly.Location)
 
         Info("FileName", vi.FileName)
         Info("Comments", vi.Comments)
@@ -107,7 +107,7 @@ Public Class frmInfos
 
         ' Attribut privé
         Dim a As Reflection.Assembly
-        a = System.Reflection.Assembly.GetExecutingAssembly
+        a = Reflection.Assembly.GetExecutingAssembly
         Dim tPV As Object()
         tPV = a.GetCustomAttributes(GetType(AssemblyPVAttribute), False)
         If (tPV Is Nothing) Or tPV.Length = 0 Then

@@ -5,6 +5,7 @@
 // 2021-09-23   PV  VS2022; Net6
 
 using System;
+using static System.Console;
 
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
@@ -27,21 +28,21 @@ internal class Program
 
     private static void ContraptionMaintenance(Contraption c)
     {
-        Console.WriteLine("ContraptionMaintenance on {0}", c.GetType());
+        WriteLine("ContraptionMaintenance on {0}", c.GetType());
         // Can only access Contraption members
         c.ContraptionField = 0;
     }
 
     private static void VehicleMaintenance(Vehicle v)
     {
-        Console.WriteLine("VehicleMaintenance on {0}", v.GetType());
+        WriteLine("VehicleMaintenance on {0}", v.GetType());
         v.ContraptionField = 0;
         v.VehicleField = 0;
     }
 
     private static void BicycleMaintenance(Bicycle b)
     {
-        Console.WriteLine("BicycleMaintenance on {0}", b.GetType());
+        WriteLine("BicycleMaintenance on {0}", b.GetType());
         // Can access Contraption, Vehicle and Bicycle members
         b.ContraptionField = 0;
         b.VehicleField = 0;

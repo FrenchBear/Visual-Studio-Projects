@@ -55,7 +55,7 @@ Public Class frmPaint
         '
         'pic
         '
-        Me.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pic.BorderStyle = BorderStyle.FixedSingle
         Me.pic.Location = New Point(184, 8)
         Me.pic.Name = "pic"
         Me.pic.Size = New Size(280, 184)

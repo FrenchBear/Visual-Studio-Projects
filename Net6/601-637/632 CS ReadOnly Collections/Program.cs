@@ -4,9 +4,9 @@
 // 2013-01-29   FPVI
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;           // Namespace for RO interfaces and collections
+using static System.Console;
 
 namespace CS612;
 
@@ -17,13 +17,13 @@ internal class Program
         // ReadOnly Dictionary
         var d1 = GetNumberDic1();
         foreach (var k in d1.Keys)
-            Console.WriteLine(k + " -> " + d1[k]);
-        Console.WriteLine();
+            WriteLine(k + " -> " + d1[k]);
+        WriteLine();
 
         var d2 = GetNumberDic2();
         foreach (var k in d2.Keys)
-            Console.WriteLine(k + " -> " + d2[k]);
-        Console.WriteLine();
+            WriteLine(k + " -> " + d2[k]);
+        WriteLine();
         // Problem with just an interface is that you can still recast it to a real dictionary and add elements to it...
         var d3 = (Dictionary<int, string>)d2;
         d3.Add(4, "Four");

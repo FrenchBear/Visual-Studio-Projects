@@ -8,7 +8,7 @@ Module Module1
     Sub Main()
         Dim cc As New CityCollection
         For Each city As String In cc
-            Console.WriteLine(city)
+            WriteLine(city)
         Next
     End Sub
 

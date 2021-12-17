@@ -10,12 +10,12 @@ Module Module1
         a = 1.0E-305
         For i As Integer = 27 To 30
             a /= 10
-            Console.WriteLine("a={0}", a)
+            WriteLine("a={0}", a)
         Next
 
         Dim b As String
         b = CStr(1234)
-        Console.WriteLine("b={0}", b)
+        WriteLine("b={0}", b)
 
         Console.ReadLine()
     End Sub

@@ -69,7 +69,7 @@ Public Class frmAnalyse
         '
         'PictureBox1
         '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.BorderStyle = BorderStyle.FixedSingle
         Me.PictureBox1.Location = New Point(8, 24)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New Size(112, 112)
@@ -78,7 +78,7 @@ Public Class frmAnalyse
         '
         'PictureBox2
         '
-        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox2.BorderStyle = BorderStyle.FixedSingle
         Me.PictureBox2.Location = New Point(8, 168)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New Size(112, 112)
@@ -95,7 +95,7 @@ Public Class frmAnalyse
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label1.Font = New Font("Tahoma", 8.0!, FontStyle.Bold)
         Me.Label1.Location = New Point(8, 8)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New Size(131, 16)
@@ -105,7 +105,7 @@ Public Class frmAnalyse
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label2.Font = New Font("Tahoma", 8.0!, FontStyle.Bold)
         Me.Label2.Location = New Point(8, 152)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New Size(110, 16)
@@ -115,7 +115,7 @@ Public Class frmAnalyse
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New Font("Tahoma", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.Label3.Font = New Font("Tahoma", 8.0!, FontStyle.Bold)
         Me.Label3.Location = New Point(216, 152)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New Size(195, 16)
@@ -131,7 +131,7 @@ Public Class frmAnalyse
         '
         'PictureBox3
         '
-        Me.PictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox3.BorderStyle = BorderStyle.FixedSingle
         Me.PictureBox3.Location = New Point(216, 168)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New Size(112, 112)
@@ -410,7 +410,7 @@ Public Class frmAnalyse
         bmp.RotateFlip(RotateFlipType.Rotate180FlipX)
         'Dim sPath As String = My.Application.Info.DirectoryPath.Replace("\bin", "")
         'bmp.Save(sPath & "\oldImage.gif", System.Drawing.Imaging.ImageFormat.Gif)
-        bmp.Save("oldImage.gif", System.Drawing.Imaging.ImageFormat.Gif)
+        bmp.Save("oldImage.gif", Imaging.ImageFormat.Gif)
 
         PictureBox1.Image = bmp
     End Sub

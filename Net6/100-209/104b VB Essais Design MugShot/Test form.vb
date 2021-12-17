@@ -28,7 +28,7 @@ Public Class frmTest
         }
 
         ge = Nothing
-        Select Case System.IO.Path.GetExtension(ed.sPathName)
+        Select Case IO.Path.GetExtension(ed.sPathName)
             Case ".jpg"
                 myTextEditor.Visible = False
                 myPDFEditor.Visible = False
@@ -77,7 +77,7 @@ Class ListViewItemDoc
 
     Public Sub New(sPath As String)
         m_sPathName = sPath
-        Me.Text = System.IO.Path.GetFileName(sPath)
+        Me.Text = IO.Path.GetFileName(sPath)
         Me.SubItems.Add(FileLen(sPath).ToString)
         Me.SubItems.Add(FileDateTime(sPath).ToString)
     End Sub

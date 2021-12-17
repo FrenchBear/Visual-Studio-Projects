@@ -103,7 +103,7 @@ Public Class Form1
         'Panel1
         '
         Me.Panel1.AutoScroll = True
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.BorderStyle = BorderStyle.FixedSingle
         Me.Panel1.Location = New Point(272, 8)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New Size(304, 200)

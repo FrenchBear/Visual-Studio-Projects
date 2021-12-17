@@ -5,6 +5,7 @@
 // 2021-09-26   PV      VS2022; Net6
 
 using System;
+using static System.Console;
 
 namespace Cordic;
 
@@ -55,9 +56,9 @@ internal class Program
             }
         }
 
-        Console.WriteLine("a={0}", a0);
-        Console.WriteLine("c={0}\ts={1}", Math.Cos(a0), Math.Sin(a0));
-        Console.WriteLine("x={0}\ty={1}\t", x, y);
+        WriteLine("a={0}", a0);
+        WriteLine("c={0}\ts={1}", Math.Cos(a0), Math.Sin(a0));
+        WriteLine("x={0}\ty={1}\t", x, y);
 
         // Maple answer with 30 digits
         // cos = 0.378740326955891541643393287014

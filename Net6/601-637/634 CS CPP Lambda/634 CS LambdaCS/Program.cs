@@ -30,16 +30,16 @@ internal class Program
             {
                 first = false;
                 Write("[");
-                Console.Write(item);
+                Write(item);
             }
             else
             {
                 Write(", ");
-                Console.Write(item);
+                Write(item);
             }
         }
 
-        Console.WriteLine("]");
+        WriteLine("]");
     }
 
     private static void Main(string[] args)

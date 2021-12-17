@@ -7,9 +7,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Numerics;
-using System.Text;
+using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
@@ -18,24 +17,24 @@ internal class Program
     private static void Main(string[] args)
     {
         BigInteger number = Factorial(100);
-        Console.WriteLine(number);
-        Console.WriteLine();
+        WriteLine(number);
+        WriteLine();
 
         Complex z1 = new(2, 3);
-        Console.WriteLine(Complex.Sqrt(z1));
-        Console.WriteLine();
+        WriteLine(Complex.Sqrt(z1));
+        WriteLine();
 
         var primes = Tuple.Create(2, "three", 5, 7, 11, 13, 17, 19);
-        Console.WriteLine(primes);
-        Console.WriteLine();
+        WriteLine(primes);
+        WriteLine();
         Tuple<int, string> t = MyFunction();
-        Console.WriteLine("{0} {1}", t.Item1, t.Item2);
-        Console.WriteLine();
+        WriteLine("{0} {1}", t.Item1, t.Item2);
+        WriteLine();
 
         // Simple test on ReadOnlyCollection actually present since Framework 2.0...
         List<int> l1 = new() { 1, 2, 3, 4 };
         ReadOnlyCollection<int> l2 = new(l1);
-        IList<int> l3 = l2 as IList<int>;
+        var l3 = l2 as IList<int>;
         // l3.Add(5);       // Throws a run-time exception "not supported exception": Collection is read-only.
     }
 

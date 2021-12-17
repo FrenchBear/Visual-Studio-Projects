@@ -6,6 +6,7 @@
 
 using System;
 using System.Text;
+using static System.Console;
 
 namespace StringDecomposition;
 
@@ -28,6 +29,6 @@ internal class Program
         {
             Console.Write("u+" + ((int)c).ToString("x4") + " ");
         }
-        Console.WriteLine();
+        WriteLine();
     }
 }

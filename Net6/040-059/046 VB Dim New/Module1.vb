@@ -10,20 +10,20 @@
 Module Module1
 
     Sub Main()
-        Console.WriteLine("Début")
+        WriteLine("Début")
 
         Dim s As New Stack()
 
         s.Push(1)
         s.Push(2)
 
-        Console.WriteLine("avant s=Nothing")
+        WriteLine("avant s=Nothing")
         s = Nothing
 
         s.Push(1)
         s.Push(2)
 
-        Console.WriteLine("Fin")
+        WriteLine("Fin")
     End Sub
 
 End Module

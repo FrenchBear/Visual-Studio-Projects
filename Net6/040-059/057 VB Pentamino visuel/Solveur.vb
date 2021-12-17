@@ -89,7 +89,7 @@ Class PentaminoSolveur
         'Console.ReadLine()
 
         If (MAXLIG * MAXCOL <> 5 * MAXPIECE) Then
-            Console.WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !")
+            WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !")
             Exit Sub
         End If
 
@@ -150,14 +150,14 @@ Class PentaminoSolveur
             RaiseEvent Solution(iNbSol, jeu, bStop)
 
 #If TraceSolution Then
-      Console.WriteLine("Solution {0} trouvée", iNbSol)
+      WriteLine("Solution {0} trouvée", iNbSol)
       For l = 0 To MAXLIG - 1
         For c = 0 To MAXCOL - 1
           Console.Write("{0:D2} ", tP(jeu(l, c) - 1).hNumPiece)
         Next
-        Console.WriteLine()
+        WriteLine()
       Next
-      Console.WriteLine()
+      WriteLine()
       Console.ReadLine()
 #End If
 

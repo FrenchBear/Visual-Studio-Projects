@@ -29,13 +29,10 @@ Option Strict On
 'IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
 'PARTICULAR PURPOSE.
 '=====================================================================*/
-'
 
-' Add the classes in the following namespaces to our namespace
 Imports System.Threading
 Imports Microsoft.VisualBasic.ControlChars
-
-'///////////////////////////////////////////////////////////////////////////////
+Imports System.Console
 
 Public Module ModMain
 
@@ -219,7 +216,7 @@ Public Module ModMain
             For x = 0 To indent * 3 - 1
                 Console.Write(" ")
             Next
-            Console.WriteLine(s)
+            WriteLine(s)
         End Sub
 
         Public Overloads Shared Sub Display(preIndent As Integer, s As String, postIndent As Integer)

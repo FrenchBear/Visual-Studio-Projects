@@ -16,9 +16,9 @@ Module Module1
         Dim b2 As Boolean = e1 Is e2        ' Calls nothing!
         Dim b3 As Boolean = e1.Equals(e2)   ' Calls Public Overloads Function Equals(ByVal obj As Entier)
 
-        Console.WriteLine("b1=" & b1.ToString)
-        Console.WriteLine("b2=" & b2.ToString)
-        Console.WriteLine("b3=" & b3.ToString)
+        WriteLine("b1=" & b1.ToString)
+        WriteLine("b2=" & b2.ToString)
+        WriteLine("b3=" & b3.ToString)
 
     End Sub
 

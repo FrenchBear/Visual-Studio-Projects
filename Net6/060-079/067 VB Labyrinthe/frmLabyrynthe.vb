@@ -68,9 +68,9 @@ Public Class frmLabyrinthe
         '
         'pic
         '
-        Me.pic.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.pic.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), AnchorStyles)
         Me.pic.Location = New Point(176, 15)
         Me.pic.Name = "pic"
         Me.pic.Size = New Size(336, 332)

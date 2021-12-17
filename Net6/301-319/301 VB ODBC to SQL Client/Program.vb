@@ -35,6 +35,6 @@ Module Program
         Dim n As Integer = cmdSQL.ExecuteScalar
         conSQL.Close()
 
-        Console.WriteLine("{0} operators", n)
+        WriteLine("{0} operators", n)
     End Sub
 End Module

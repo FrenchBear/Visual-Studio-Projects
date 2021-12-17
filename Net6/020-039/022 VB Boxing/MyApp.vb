@@ -16,7 +16,7 @@ Module Module1
 
         o = 3
         i = CInt(o)
-        Console.WriteLine("i = {0}", i)
+        WriteLine("i = {0}", i)
 
         Dim p As New PileEntier()
 

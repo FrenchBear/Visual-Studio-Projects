@@ -7,6 +7,7 @@
 
 Imports System.Data
 Imports System.Data.Odbc
+Imports System.Console
 
 Class App
 
@@ -27,9 +28,9 @@ Class App
 
         Dim dr As DataRow
         For Each dr In ds.Tables(0).Rows
-            Console.WriteLine("{0} {1}", dr("RegionID").ToString, dr("RegionDescription").ToString)
+            WriteLine("{0} {1}", dr("RegionID").ToString, dr("RegionDescription").ToString)
         Next
-        Console.ReadLine()
+        ReadLine()
     End Sub
 
 End Class

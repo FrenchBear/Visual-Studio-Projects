@@ -30,8 +30,8 @@ Public Class HScrollBarNew
 
     Private Sub HScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles Me.Scroll
         Static lastValue As Integer
-        If MyBase.Value <> lastValue Then
-            lastValue = MyBase.Value
+        If Value <> lastValue Then
+            lastValue = Value
             RaiseEvent ScrollNew()
         End If
     End Sub

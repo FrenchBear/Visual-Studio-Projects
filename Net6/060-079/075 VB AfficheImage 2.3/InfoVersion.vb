@@ -3,9 +3,9 @@
 Public Module InfoVersion
 
     Function GetVersion() As String
-        Return System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).FileMajorPart &
-                "." & System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).FileMinorPart &
-                "." & System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly.Location).FileBuildPart
+        Return FileVersionInfo.GetVersionInfo(Reflection.Assembly.GetExecutingAssembly.Location).FileMajorPart &
+                "." & FileVersionInfo.GetVersionInfo(Reflection.Assembly.GetExecutingAssembly.Location).FileMinorPart &
+                "." & FileVersionInfo.GetVersionInfo(Reflection.Assembly.GetExecutingAssembly.Location).FileBuildPart
         'Return My.Application.Info.Version.ToString
     End Function
 

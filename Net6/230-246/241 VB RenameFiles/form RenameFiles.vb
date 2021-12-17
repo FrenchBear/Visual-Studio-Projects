@@ -109,7 +109,7 @@ Public Class frmRenameFiles
         End If
 
         For Each sFile As String In My.Computer.FileSystem.GetFiles(s)
-            Dim sBaseName As String = System.IO.Path.GetFileName(sFile)
+            Dim sBaseName As String = IO.Path.GetFileName(sFile)
             If txtLike.Text = "" OrElse sBaseName Like txtLike.Text Then
                 lvPreview.Items.Add(sFolder & sBaseName)
                 nbFile += 1
@@ -118,7 +118,7 @@ Public Class frmRenameFiles
 
         If chkIncludeSubfolders.Checked Then
             For Each sSubFolder As String In My.Computer.FileSystem.GetDirectories(s)
-                Analyze(sRootPath, sFolder & System.IO.Path.GetFileName(sSubFolder))
+                Analyze(sRootPath, sFolder & IO.Path.GetFileName(sSubFolder))
             Next
         End If
     End Sub
@@ -163,7 +163,7 @@ Public Class frmRenameFiles
                     p = InStr(p1, sNewName, txtSearch.Text, IIf(chkCaseSignificant.Checked, CompareMethod.Binary, CompareMethod.Text))
                     If p <= 0 Then Exit Do
                     sTextReplace = sGetReplacement(Mid(sNewName, p, Len(txtSearch.Text)), txtReplace.Text)
-                    sNewName = Microsoft.VisualBasic.Left(sNewName, p - 1) & sTextReplace & Mid(sNewName, p + Len(txtSearch.Text))
+                    sNewName = vb.Left(sNewName, p - 1) & sTextReplace & Mid(sNewName, p + Len(txtSearch.Text))
                     p1 = p + Len(sTextReplace) ' - Len(txtSearch.Text)  No looping replacement
                 Loop
             Else
@@ -173,7 +173,7 @@ Public Class frmRenameFiles
                 For i As Integer = mac.Count - 1 To 0 Step -1
                     Dim ma As Match = mac(i)
                     sTextReplace = sGetReplacement(ma.Value, txtReplace.Text)
-                    sNewName = Microsoft.VisualBasic.Left(sNewName, ma.Index) & sTextReplace & Mid(sNewName, ma.Index + 1 + ma.Length)
+                    sNewName = vb.Left(sNewName, ma.Index) & sTextReplace & Mid(sNewName, ma.Index + 1 + ma.Length)
                 Next
             End If
 
@@ -233,7 +233,7 @@ Public Class frmRenameFiles
                     Try
                         'VB version complains when new name differs only by case from old name...
                         'My.Computer.FileSystem.RenameFile(txtFolder.Text & "\" & sOldName, sNewName)
-                        System.IO.File.Move(txtFolder.Text & "\" & sOldName, txtFolder.Text & "\" & sNewName)
+                        IO.File.Move(txtFolder.Text & "\" & sOldName, txtFolder.Text & "\" & sNewName)
                         nbRename += 1
                     Catch ex As Exception
                         nbFail += 1

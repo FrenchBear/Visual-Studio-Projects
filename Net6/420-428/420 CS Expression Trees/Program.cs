@@ -7,6 +7,7 @@
 using System;
 using System.Diagnostics;
 using System.Linq.Expressions;
+using static System.Console;
 
 namespace CS420;
 
@@ -17,17 +18,17 @@ internal class Program
         Expression<Func<int, int>> Signe = x => x == 0 ? 0 : x > 0 ? 1 : -1;
 
         // Decompose the expression tree.
-        ParameterExpression param = (ParameterExpression)Signe.Parameters[0];
-        ConditionalExpression operation = (ConditionalExpression)Signe.Body;
-        BinaryExpression test = (BinaryExpression)operation.Test;
-        ConstantExpression ifTrue = (ConstantExpression)operation.IfTrue;
+        var param = (ParameterExpression)Signe.Parameters[0];
+        var operation = (ConditionalExpression)Signe.Body;
+        var test = (BinaryExpression)operation.Test;
+        var ifTrue = (ConstantExpression)operation.IfTrue;
         Expression ifFalse = operation.IfFalse;
         /*
         ParameterExpression left = (ParameterExpression)operation.;
         ConstantExpression right = (ConstantExpression)operation.Right;
         */
 
-        Console.WriteLine("Decomposed expression: {0} => {1} ? {2} : {3}",
+        WriteLine("Decomposed expression: {0} => {1} ? {2} : {3}",
             param.Name, test, ifTrue, ifFalse);
 
         Func<int, int> SigneCompiled = Signe.Compile();
@@ -83,7 +84,7 @@ internal class Program
         // Compile and execute an expression tree.
         int factorial = Expression.Lambda<Func<int, int>>(block, value).Compile()(5);
 
-        Console.WriteLine(factorial);
+        WriteLine(factorial);
 
         Debugger.Break();
     }

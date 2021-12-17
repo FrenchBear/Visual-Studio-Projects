@@ -4,7 +4,7 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-18   PV  VS2022, Net6
 
-using System;
+using static System.Console;
 
 #pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable IDE0051 // Remove unused private members
@@ -15,9 +15,9 @@ internal class MaClasse
     private static void Main(string[] args)
     {
         TestInterface();
-        Console.WriteLine("---------------------");
+        WriteLine("---------------------");
         TestDecimal();
-        Console.WriteLine("---------------------");
+        WriteLine("---------------------");
         TestEgalite();
 
         //Console.ReadLine();
@@ -29,13 +29,13 @@ internal class MaClasse
 #pragma warning disable CS0618 // Type or member is obsolete
         string s2 = string.Copy(s1);
 #pragma warning restore CS0618 // Type or member is obsolete
-        Console.WriteLine("s1==s2: {0}", s1 == s2);
-        Console.WriteLine("(object)s1==(object)s2: {0}", (object)s1 == (object)s2);
-        //	Console.WriteLine("s1 is s2: {0}", s1 is s2);
-        Console.WriteLine("s1.Equals(s2): {0}", s1.Equals(s2));
+        WriteLine("s1==s2: {0}", s1 == s2);
+        WriteLine("(object)s1==(object)s2: {0}", (object)s1 == (object)s2);
+        //	WriteLine("s1 is s2: {0}", s1 is s2);
+        WriteLine("s1.Equals(s2): {0}", s1.Equals(s2));
 
         string a = 3.14.ToString();
-        Console.WriteLine(a);
+        WriteLine(a);
 
         int[] b = new int[5];
     }
@@ -55,21 +55,21 @@ internal class MaClasse
         decimal d = 0;
         for (int i = 0; i < 100; i++)
             d += 0.01m;
-        Console.WriteLine("decimal: {0}\t{1}", d, d - 1m);
+        WriteLine("decimal: {0}\t{1}", d, d - 1m);
 
         double r = 0;
         for (int i = 0; i < 100; i++)
             r += 0.01d;
-        Console.WriteLine("double: {0}\t{1}", r, r - 1.0d);
+        WriteLine("double: {0}\t{1}", r, r - 1.0d);
 
         float f = 0;
         for (int i = 0; i < 100; i++)
             f += 0.01f;
-        Console.WriteLine("float: {0}\t{1}", f, f - 1.0f);
+        WriteLine("float: {0}\t{1}", f, f - 1.0f);
 
         decimal d2 = 12345678901234567890123456789m;
-        Console.WriteLine("d2:{0}", d2);
-        Console.WriteLine("d3:{0}", decimal.MaxValue);
+        WriteLine("d2:{0}", d2);
+        WriteLine("d3:{0}", decimal.MaxValue);
     }
 }
 
@@ -91,14 +91,14 @@ internal interface IDeriv : IInter
 
 internal class Cla1
 {
-    public virtual void H() => Console.WriteLine("cla1.H()");
+    public virtual void H() => WriteLine("cla1.H()");
 }
 
 internal class Cla2 : Cla1, IInter
 {
-    public override void H() => Console.WriteLine("cla2.H()");
+    public override void H() => WriteLine("cla2.H()");
 
-    public void F() => Console.WriteLine("cla2.F()");
+    public void F() => WriteLine("cla2.F()");
 
-    void IInter.F() => Console.WriteLine("cla2.inter.F()");
+    void IInter.F() => WriteLine("cla2.inter.F()");
 }

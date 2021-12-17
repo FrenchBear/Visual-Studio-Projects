@@ -6,8 +6,8 @@
 // 2021-07-13   PV      .Net 4.8
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.Collections.Generic;
+using static System.Console;
 
 namespace EnumerateApp;
 
@@ -17,10 +17,7 @@ class Program
     {
         List<string> flavors = new() { "Chocolat", "Vanille", "Fraise", "Citron" };
         foreach (var (index, flavor) in flavors.Enumerate(1))
-        {
-            Console.WriteLine($"{index}: {flavor}");
-        }
-
+            WriteLine($"{index}: {flavor}");
     }
 }
 

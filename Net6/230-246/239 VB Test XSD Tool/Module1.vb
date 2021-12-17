@@ -23,7 +23,7 @@ Module Module1
         t.Items = New TaskType() {m1, m2}
 
         Dim s As New Xml.Serialization.XmlSerializer(GetType(Project))
-        Dim xtw As New Xml.XmlTextWriter("..\..\p.xml", System.Text.Encoding.UTF8) With {
+        Dim xtw As New Xml.XmlTextWriter("..\..\p.xml", Text.Encoding.UTF8) With {
             .Formatting = Xml.Formatting.Indented
         }
         s.Serialize(xtw, p)

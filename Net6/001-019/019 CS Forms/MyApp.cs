@@ -89,7 +89,7 @@ public class MyForm : Form
     // Feuille principale
     public static int Main()
     {
-        System.Windows.Forms.Application.Run(new MyForm());
+        Application.Run(new MyForm());
         return 0;
     }
 }

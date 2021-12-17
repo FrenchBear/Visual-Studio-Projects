@@ -9,22 +9,25 @@
 #Disable Warning CA1822 ' Mark members as static
 #Disable Warning CA2211 ' Non-constant fields should not be visible
 
+Imports System.Console
+
+
 Public MustInherit Class Zap
 
     Public Sub New()
-        Console.WriteLine("Zap.New()")
+        WriteLine("Zap.New()")
     End Sub
 
     Public Sub MH()
-        Console.WriteLine("Zap.MH()")
+        WriteLine("Zap.MH()")
     End Sub
 
     Public Overridable Sub OV1()
-        Console.WriteLine("Zap.OV1()")
+        WriteLine("Zap.OV1()")
     End Sub
 
     Public Overridable Sub OV2()
-        Console.WriteLine("Zap.OV2()")
+        WriteLine("Zap.OV2()")
     End Sub
 
     Public MustOverride Sub MO1()
@@ -44,11 +47,11 @@ Public Class Couleur : Inherits Zap
 
     Public Sub New()
         Me.New(0, 0, 0)
-        Console.WriteLine("Couleur.New()")
+        WriteLine("Couleur.New()")
     End Sub
 
     Public Sub New(rr As Integer, gg As Integer, bb As Integer)
-        Console.WriteLine("Couleur.New({0},{1},{2})", rr, gg, bb)
+        WriteLine("Couleur.New({0},{1},{2})", rr, gg, bb)
         R = rr
         G = gg
         B = bb
@@ -69,19 +72,19 @@ Public Class Couleur : Inherits Zap
     End Property
 
     Public Overridable Sub S1()
-        Console.WriteLine("Couleur.S1()")
+        WriteLine("Couleur.S1()")
     End Sub
 
     Public NotOverridable Overrides Sub MO1()
-        Console.WriteLine("Couleur.MO1()")
+        WriteLine("Couleur.MO1()")
     End Sub
 
     Public Overrides Sub MO2()
-        Console.WriteLine("Couleur.MO2()")
+        WriteLine("Couleur.MO2()")
     End Sub
 
     Public NotOverridable Overrides Sub OV1()
-        Console.WriteLine("Couleur.OV1()")
+        WriteLine("Couleur.OV1()")
     End Sub
 
 End Class
@@ -89,19 +92,19 @@ End Class
 Public NotInheritable Class CouleurClaire : Inherits Couleur
 
     Public Sub New()
-        Console.WriteLine("CouleurClaire.New()")
+        WriteLine("CouleurClaire.New()")
     End Sub
 
     Public Shadows Sub S1()
-        Console.WriteLine("CouleurClaire.S1()")
+        WriteLine("CouleurClaire.S1()")
     End Sub
 
     Public Overrides Sub MO2()
-        Console.WriteLine("CouleurClaire.MO2()")
+        WriteLine("CouleurClaire.MO2()")
     End Sub
 
     Public Shadows Sub OV1()
-        Console.WriteLine("CouleurClaire.OV1()")
+        WriteLine("CouleurClaire.OV1()")
     End Sub
 
 End Class
@@ -109,48 +112,48 @@ End Class
 Public Module Module1
 
     Sub Main()
-        Console.WriteLine("Module1.Main()")
+        WriteLine("Module1.Main()")
 
         Dim c As New Couleur(128, 80, 200)
-        Console.WriteLine("c = {0}", c)
+        WriteLine("c = {0}", c)
         Complément255(c.G)
-        Console.WriteLine("c = {0}", c)
+        WriteLine("c = {0}", c)
         Complément255(c.A)
-        Console.WriteLine("c = {0}", c)
-        Console.WriteLine()
+        WriteLine("c = {0}", c)
+        WriteLine()
 
         Dim cc As New CouleurClaire()
-        Console.WriteLine()
+        WriteLine()
 
         Dim zc As Zap = c
-        Console.WriteLine("Appels avec un objet Couleur et une variable Zap")
+        WriteLine("Appels avec un objet Couleur et une variable Zap")
         zc.MH()
         zc.MO1()
         zc.MO2()
         zc.OV1()
         zc.OV2()
-        Console.WriteLine()
+        WriteLine()
 
         Dim zcc As Zap = cc
-        Console.WriteLine("Appels avec un objet CouleurClaire et une variable Zap")
+        WriteLine("Appels avec un objet CouleurClaire et une variable Zap")
         zcc.MH()
         zcc.MO1()
         zcc.MO2()
         zcc.OV1()
         zcc.OV2()
-        Console.WriteLine()
+        WriteLine()
 
         Dim c2 As Couleur = cc
-        Console.WriteLine("Appels avec un objet CouleurClaire et une variable Couleur")
+        WriteLine("Appels avec un objet CouleurClaire et une variable Couleur")
         c2.MH()
         c2.MO1()
         c2.MO2()
         c2.OV1()
         c2.OV2()
         c2.S1()
-        Console.WriteLine()
+        WriteLine()
 
-        Console.WriteLine("Appels avec un objet CouleurClaire et une variable CouleurClaire")
+        WriteLine("Appels avec un objet CouleurClaire et une variable CouleurClaire")
         cc.MH()
         cc.MO1()
         cc.MO2()

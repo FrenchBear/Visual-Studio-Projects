@@ -51,6 +51,7 @@
 using System;
 using System.Globalization;
 using System.Threading;
+using static System.Console;
 
 internal struct Complex : IFormattable
 {
@@ -95,15 +96,15 @@ internal class TestFormat
         DoOutput("Formats de dates", DateTime.Now, new string[] { "{0:dddd dd MMMM yyyy}", "{0:dd/MM/yy}", "{0:hh:mm:ss}" });
         DoOutput("Formats de types spécifiques", new Complex(1, 2), new string[] { "{0}", "{0:P}", "{0:R}" });
 
-        Console.WriteLine("Plusieurs sections: format 0.00;(0.00);Zero");
-        Console.WriteLine("{0,-20}|{1}|", "1.234", $"{1.234:0.00;(0.00);Zero}");
-        Console.WriteLine("{0,-20}|{1}|", "-1.234", $"{-1.234:0.00;(0.00);Zero}");
-        Console.WriteLine("{0,-20}|{1}|", "0", $"{0:0.00;(0.00);Zero}");
-        Console.WriteLine();
+        WriteLine("Plusieurs sections: format 0.00;(0.00);Zero");
+        WriteLine("{0,-20}|{1}|", "1.234", $"{1.234:0.00;(0.00);Zero}");
+        WriteLine("{0,-20}|{1}|", "-1.234", $"{-1.234:0.00;(0.00);Zero}");
+        WriteLine("{0,-20}|{1}|", "0", $"{0:0.00;(0.00);Zero}");
+        WriteLine();
 
         DoOutput("Format spécifiques d'entiers", 1234567, new string[] { "{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}" });
 
-        Console.WriteLine("Passage en culture US");
+        WriteLine("Passage en culture US");
         Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
         DoOutput("Formats de décimaux", 3141.5926, new string[] { "{0:G}", "{0:C}" });
         DoOutput("Formats de dates", DateTime.Now, new string[] { "{0:dddd dd MMMM yyyy}" });
@@ -113,11 +114,11 @@ internal class TestFormat
 
     private static void DoOutput(string sTitre, object o, string[] tFormat)
     {
-        Console.WriteLine(sTitre);
+        WriteLine(sTitre);
         foreach (string sFormat in tFormat)
         {
-            Console.WriteLine("{0,-20}|{1}|", sFormat, string.Format(sFormat, o));
+            WriteLine("{0,-20}|{1}|", sFormat, string.Format(sFormat, o));
         }
-        Console.WriteLine();
+        WriteLine();
     }
 }

@@ -9,6 +9,7 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using System.Text;
+using static System.Console;
 
 namespace CS428;
 
@@ -45,13 +46,13 @@ public class Program
         Debug.Assert(snSchool.ToString() == s);
         Debug.Assert(snFastMult.ToString() == s);
 
-        Console.WriteLine("School:    {0}ms", swSchool.ElapsedMilliseconds);
-        Console.WriteLine("FastMult:  {0}ms", swFastMult.ElapsedMilliseconds);
-        Console.WriteLine("BigNumber: {0}ms", swBigNumber.ElapsedMilliseconds);
+        WriteLine("School:    {0}ms", swSchool.ElapsedMilliseconds);
+        WriteLine("FastMult:  {0}ms", swFastMult.ElapsedMilliseconds);
+        WriteLine("BigNumber: {0}ms", swBigNumber.ElapsedMilliseconds);
 
-        //Console.WriteLine("n1=" + n1string);
-        //Console.WriteLine("n2=" + n2string);
-        //Console.WriteLine("n1*n2=" + n3);
+        //WriteLine("n1=" + n1string);
+        //WriteLine("n2=" + n2string);
+        //WriteLine("n1*n2=" + n3);
     }
 
     private static string GetRandomStringNumber(int digits)
@@ -297,12 +298,12 @@ public class SlicedNumber
         };
 
         // 1st product: ac
-        SlicedNumber ac = SlicedNumber.FastMult(a, c);
+        SlicedNumber ac = FastMult(a, c);
         for (int i = 0; i < ac.nslices; i++)
             r.slices[i] = ac.slices[i];
 
         // 2nd product: bd
-        SlicedNumber bd = SlicedNumber.FastMult(b, d);
+        SlicedNumber bd = FastMult(b, d);
         int nslices2 = bd.nslices + 2 * p;
         if (nslices2 > r.nslices)
             r.Redim(nslices2);
@@ -310,9 +311,9 @@ public class SlicedNumber
             r.slices[i + 2 * p] += bd.slices[i];
 
         // 3rd product
-        var bma = SlicedNumber.Subtract(b, a);
-        var cmd = SlicedNumber.Subtract(c, d);
-        var p3 = SlicedNumber.Add(SlicedNumber.Add(SlicedNumber.FastMult(bma, cmd), ac), bd);
+        var bma = Subtract(b, a);
+        var cmd = Subtract(c, d);
+        var p3 = Add(Add(FastMult(bma, cmd), ac), bd);
         for (int i = 0; i < p3.nslices; i++)
             r.slices[i + p] += p3.slices[i];
 

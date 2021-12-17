@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using static System.Console;
 
 namespace CS421;
 
@@ -16,7 +17,7 @@ internal class Program
         for (int i = 0; i < 10; i++)
             _ = s.Add(r.NextDouble());
         foreach (double d in s)
-            Console.WriteLine(d);
+            WriteLine(d);
 
         // New style
         _ = new SortedSet<double>()

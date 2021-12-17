@@ -17,7 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using static System.Console;
 
 namespace CS544SkipAtChoice;
@@ -145,7 +144,7 @@ public static class Extensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="e">Original enumeration</param>
-    public static void WriteLine<T>(this IEnumerable<T> e) => Console.WriteLine(e.AsString());
+    public static void WriteLine<T>(this IEnumerable<T> e) => WriteLine(e.AsString());
 
     /// <summary>
     /// Returns a string version of the enumeration

@@ -56,9 +56,9 @@ public class MainForm : Form
         //
         // TuneView
         //
-        TuneView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom
-                                 | System.Windows.Forms.AnchorStyles.Left
-                                | System.Windows.Forms.AnchorStyles.Right;
+        TuneView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
+                                 | AnchorStyles.Left
+                                | AnchorStyles.Right;
         TuneView.Columns.AddRange(new ColumnHeader[] {
             TitleHeader,
             ArtistHeader,
@@ -71,9 +71,9 @@ public class MainForm : Form
         TuneView.MultiSelect = false;
         TuneView.Name = "TuneView";
         TuneView.Size = new System.Drawing.Size(416, 248);
-        TuneView.Sorting = System.Windows.Forms.SortOrder.Ascending;
+        TuneView.Sorting = SortOrder.Ascending;
         TuneView.TabIndex = 0;
-        TuneView.View = System.Windows.Forms.View.Details;
+        TuneView.View = View.Details;
         TuneView.DoubleClick += new EventHandler(OnItemDoubleClicked);
         //
         // ArtistHeader
@@ -88,7 +88,7 @@ public class MainForm : Form
         //
         // AddButton
         //
-        AddButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        AddButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         AddButton.Location = new System.Drawing.Point(432, 8);
         AddButton.Name = "AddButton";
         AddButton.TabIndex = 1;
@@ -97,7 +97,7 @@ public class MainForm : Form
         //
         // RemoveButton
         //
-        RemoveButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+        RemoveButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
         RemoveButton.Location = new System.Drawing.Point(432, 104);
         RemoveButton.Name = "RemoveButton";
         RemoveButton.TabIndex = 3;
@@ -171,7 +171,7 @@ public class MainForm : Form
         try
         {
             StreamWriter writer = File.CreateText(
-                System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + @"\TuneTownData.ttd");
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TuneTownData.ttd");
             try
             {
                 for (int i = 0; i < TuneView.Items.Count; i++)
@@ -204,7 +204,7 @@ public class MainForm : Form
         try
         {
             StreamReader reader = File.OpenText(
-                System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData) + @"\TuneTownData.ttd");
+                Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TuneTownData.ttd");
 
             try
             {

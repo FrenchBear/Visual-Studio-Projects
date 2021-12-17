@@ -12,7 +12,7 @@ Module Module1
 
         Dim i As Integer
         For Each i In t1
-            Console.WriteLine(i)
+            WriteLine(i)
         Next
 
         'Console.ReadLine()

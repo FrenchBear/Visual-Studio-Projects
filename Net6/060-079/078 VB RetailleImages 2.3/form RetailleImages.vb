@@ -91,7 +91,7 @@ Public Class VignettesForm
         '
         'btnGénère
         '
-        Me.GénèreButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GénèreButton.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GénèreButton.Location = New System.Drawing.Point(315, 8)
         Me.GénèreButton.Name = "btnGénère"
         Me.GénèreButton.Size = New System.Drawing.Size(104, 32)
@@ -100,9 +100,9 @@ Public Class VignettesForm
         '
         'lstTrace
         '
-        Me.TraceList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TraceList.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+                    Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TraceList.Location = New System.Drawing.Point(8, 198)
         Me.TraceList.Name = "lstTrace"
         Me.TraceList.Size = New System.Drawing.Size(411, 225)
@@ -118,8 +118,8 @@ Public Class VignettesForm
         '
         'txtSource
         '
-        Me.SourceText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SourceText.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SourceText.Location = New System.Drawing.Point(8, 24)
         Me.SourceText.Name = "txtSource"
         Me.SourceText.Size = New System.Drawing.Size(268, 20)
@@ -127,8 +127,8 @@ Public Class VignettesForm
         '
         'txtDestination
         '
-        Me.DestinationText.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DestinationText.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DestinationText.Location = New System.Drawing.Point(8, 86)
         Me.DestinationText.Name = "txtDestination"
         Me.DestinationText.Size = New System.Drawing.Size(268, 20)
@@ -160,7 +160,7 @@ Public Class VignettesForm
         '
         'btnLookupSource
         '
-        Me.LookupSourceButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LookupSourceButton.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LookupSourceButton.Location = New System.Drawing.Point(284, 24)
         Me.LookupSourceButton.Name = "btnLookupSource"
         Me.LookupSourceButton.Size = New System.Drawing.Size(24, 23)
@@ -169,7 +169,7 @@ Public Class VignettesForm
         '
         'btnLookupDestination
         '
-        Me.LookupDestinationButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LookupDestinationButton.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.LookupDestinationButton.Location = New System.Drawing.Point(284, 86)
         Me.LookupDestinationButton.Name = "btnLookupDestination"
         Me.LookupDestinationButton.Size = New System.Drawing.Size(24, 23)
@@ -194,15 +194,15 @@ Public Class VignettesForm
         '
         'tbQualité
         '
-        Me.QualitéTrackBar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.QualitéTrackBar.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.QualitéTrackBar.Location = New System.Drawing.Point(216, 146)
         Me.QualitéTrackBar.Maximum = 100
         Me.QualitéTrackBar.Name = "tbQualité"
         Me.QualitéTrackBar.Size = New System.Drawing.Size(208, 45)
         Me.QualitéTrackBar.TabIndex = 11
         Me.QualitéTrackBar.TickFrequency = 5
-        Me.QualitéTrackBar.TickStyle = System.Windows.Forms.TickStyle.TopLeft
+        Me.QualitéTrackBar.TickStyle = TickStyle.TopLeft
         '
         'Label1
         '
@@ -215,7 +215,7 @@ Public Class VignettesForm
         '
         'Label2
         '
-        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(328, 126)
         Me.Label2.Name = "Label2"
@@ -269,7 +269,7 @@ Public Class VignettesForm
         Dim m_sSourcePath As String
         Dim m_sDestinationPath As String
 
-        If Not System.IO.Directory.Exists(SourceText.Text) Then
+        If Not IO.Directory.Exists(SourceText.Text) Then
             MsgBox("Répertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             SourceText.Focus()
             Exit Sub
@@ -324,9 +324,9 @@ Public Class VignettesForm
         For Each fic In dir.GetFiles("*.jpg")
             Try
                 GénèreVignette(sSourcePath, sDestinationPath, fic.Name)
-                System.GC.Collect()
-                System.GC.WaitForPendingFinalizers()
-                System.Threading.Thread.Sleep(0)
+                GC.Collect()
+                GC.WaitForPendingFinalizers()
+                Threading.Thread.Sleep(0)
             Catch
             End Try
         Next

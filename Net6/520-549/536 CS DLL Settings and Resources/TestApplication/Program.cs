@@ -5,7 +5,6 @@
 // 2021-09-26   PV      VS2022; Net6
 
 using ArithmeticNamespace;
-using System;
 using System.Configuration;
 using static System.Console;
 

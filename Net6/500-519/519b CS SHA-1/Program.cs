@@ -8,10 +8,10 @@
 // 2019-10-15   PV      VS2019
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
+using static System.Console;
 
 #pragma warning disable SYSLIB0021 // Type or member is obsolete
 
@@ -21,7 +21,7 @@ internal class Program
 {
     private static void Main()
     {
-        Console.WriteLine("519b CS SHA-1");
+        WriteLine("519b CS SHA-1");
 
         // Test rotation function
         uint u32 = 0xcafe;
@@ -47,7 +47,7 @@ internal class Program
         Test_sha1("The quick brown fox jumps over the lazy cog",
             "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3");
 
-        Console.WriteLine("All SHA-1 tests passed successfully");
+        WriteLine("All SHA-1 tests passed successfully");
     }
 
     private static void Test_sha1(string s, string hashed)

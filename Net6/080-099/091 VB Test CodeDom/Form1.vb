@@ -109,7 +109,7 @@ Namespace CodeDOMExample
             Me.comboBox1.Size = New Size(190, 23)
             Me.comboBox1.Name = "comboBox1"
             Me.comboBox1.Items.AddRange(New String() {"CSharp", "Visual Basic", "JScript"})
-            Me.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right Or System.Windows.Forms.AnchorStyles.Top
+            Me.comboBox1.Anchor = AnchorStyles.Left Or AnchorStyles.Right Or AnchorStyles.Top
             Me.comboBox1.SelectedIndex = 0
             ' Set properties for generate_button.
             Me.generate_button.Location = New Point(8, 16)
@@ -131,10 +131,10 @@ Namespace CodeDOMExample
             Me.run_button.Text = "Run"
             AddHandler run_button.Click, AddressOf Me.Run_button_Click
             ' Set properties for textBox1.
-            Me.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right
+            Me.textBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
             Me.textBox1.Location = New Point(8, 48)
             Me.textBox1.Multiline = True
-            Me.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+            Me.textBox1.ScrollBars = ScrollBars.Vertical
             Me.textBox1.Name = "textBox1"
             Me.textBox1.Size = New Size(744, 280)
             Me.textBox1.Text = ""

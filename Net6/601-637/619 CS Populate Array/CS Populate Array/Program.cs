@@ -11,6 +11,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace CS_Populate_Array;
 
@@ -22,32 +23,32 @@ internal class Program
         int n = 32000 * 8;
         var tb = new bool[n];
 
-        Stopwatch sw1 = Stopwatch.StartNew();
+        var sw1 = Stopwatch.StartNew();
         tb.Populate(true);
         sw1.Stop();
-        Console.WriteLine("Populate: " + sw1.Elapsed);
+        WriteLine("Populate: " + sw1.Elapsed);
 
-        Stopwatch sw2 = Stopwatch.StartNew();
+        var sw2 = Stopwatch.StartNew();
         InitializeArrayUsingSegments(tb, true);
         sw2.Stop();
-        Console.WriteLine("InitializeArrayUsingSegments: " + sw2.Elapsed);
+        WriteLine("InitializeArrayUsingSegments: " + sw2.Elapsed);
 
-        Stopwatch sw3 = Stopwatch.StartNew();
+        var sw3 = Stopwatch.StartNew();
         tb.PopulateParallel(true);
         sw3.Stop();
-        Console.WriteLine("PopulateParallel: " + sw3.Elapsed);
+        WriteLine("PopulateParallel: " + sw3.Elapsed);
 
-        Stopwatch sw4 = Stopwatch.StartNew();
+        var sw4 = Stopwatch.StartNew();
         InitializeArray2(tb, true);
         sw4.Stop();
-        Console.WriteLine("InitializeArray2: " + sw4.Elapsed);
+        WriteLine("InitializeArray2: " + sw4.Elapsed);
     }
 
     public static void InitializeArrayUsingSegments<T>(T[] array, T value)
     {
         var cores = Environment.ProcessorCount;
 
-        ArraySegment<T>[] segments = new ArraySegment<T>[cores];
+        var segments = new ArraySegment<T>[cores];
 
         var step = array.Length / cores;
         for (int i = 0; i < cores; i++)

@@ -1,4 +1,5 @@
 using System;
+using static System.Console;
 
 #pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable IDE0051 // Remove unused private members
@@ -76,7 +77,7 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     // Héritage de MaClasseDeBase
     public override void Action()
     {
-        Console.WriteLine("MaClasseDerivee.Action()");
+        WriteLine("MaClasseDerivee.Action()");
         base.Action();
     }
 
@@ -90,11 +91,11 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
 
     public MaClasseDerivee() => sc = new MaSousClasse(45);
 
-    static MaClasseDerivee() => Console.WriteLine("Constructeur statique de MaClasseDerivee");
+    static MaClasseDerivee() => WriteLine("Constructeur statique de MaClasseDerivee");
 
     ~MaClasseDerivee()
     {
-        Console.WriteLine("~MaClasseDerivee()");
+        WriteLine("~MaClasseDerivee()");
     }
 
     public int Age
@@ -107,19 +108,19 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     {
         try
         {
-            Console.WriteLine("MaClasseDerivee.TrucDangereux({0})", q);
+            WriteLine("MaClasseDerivee.TrucDangereux({0})", q);
             iCompteurGlobal = 10 / q;
         }
         catch (Exception e)
         {
-            Console.WriteLine("Problème dans TrucDangereux{0}: {1} --> On remonte l'erreur", q, e.Message);
+            WriteLine("Problème dans TrucDangereux{0}: {1} --> On remonte l'erreur", q, e.Message);
             throw;
         }
         finally
         {
-            Console.WriteLine("Section finally de TrucDangereux{0}", q);
+            WriteLine("Section finally de TrucDangereux{0}", q);
         }
-        Console.WriteLine("Fin normale de TrucDangereux{0}", q);
+        WriteLine("Fin normale de TrucDangereux{0}", q);
     }
 
     private static int iCompteurGlobal;

@@ -110,7 +110,7 @@ Public Class Form1
         Catch ex As Exception
         End Try
         Try
-            My.Computer.FileSystem.RenameFile(sConfigPath, IO.Path.GetFileName(sConfigPath) & ".bak")
+            My.Computer.FileSystem.RenameFile(sConfigPath, Path.GetFileName(sConfigPath) & ".bak")
         Catch ex As Exception
         End Try
 

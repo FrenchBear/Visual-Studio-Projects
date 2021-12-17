@@ -11,7 +11,7 @@ Module Module1
         Dim tc2() As Colonne = tc.Clone
         Array.Sort(tc2, New MyColumnComparer)
         For Each c As Colonne In tc2
-            Console.WriteLine("{0}: {1}", c.rang, c.nom)
+            WriteLine("{0}: {1}", c.rang, c.nom)
         Next
     End Sub
 

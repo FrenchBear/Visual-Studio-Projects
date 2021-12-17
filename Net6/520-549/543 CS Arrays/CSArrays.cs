@@ -4,7 +4,6 @@
 // 2016-08-05   PV
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using static System.Console;
 
 namespace ConsoleApplication3;

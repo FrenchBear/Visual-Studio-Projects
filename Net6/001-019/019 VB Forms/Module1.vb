@@ -72,7 +72,7 @@ Public Class MyForm
 
     ' Point d'entrée de l'appli
     Shared Sub Main()
-        Windows.Forms.Application.Run(New MyForm())
+        Application.Run(New MyForm())
     End Sub
 
 End Class

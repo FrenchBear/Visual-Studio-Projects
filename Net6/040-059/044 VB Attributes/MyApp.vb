@@ -57,14 +57,14 @@ Class MyApp
     Private Shared Sub Zap(o As Object)
         Dim tob As Type     ' Type de l'objet
         tob = o.GetType()
-        Console.WriteLine(tob.Name)
+        WriteLine(tob.Name)
 
         Dim tat As Type     ' Type de l'attribut
         tat = GetType(MonAttribut)
 
         Dim m As MonAttribut
         m = CType(tob.GetCustomAttributes(tat, False)(0), MonAttribut)
-        Console.WriteLine("{0}, {1}", m.IFlags, m.Info)
+        WriteLine("{0}, {1}", m.IFlags, m.Info)
     End Sub
 
 End Class

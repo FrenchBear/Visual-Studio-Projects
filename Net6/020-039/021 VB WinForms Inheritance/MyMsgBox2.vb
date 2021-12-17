@@ -63,7 +63,7 @@ Public Class MyMsgBox2
 
         txtInfo.Location = New Drawing.Point(52, 8)
         txtInfo.Multiline = True
-        txtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        txtInfo.ScrollBars = Windows.Forms.ScrollBars.Vertical
         txtInfo.TabIndex = 1
         txtInfo.Size = New Drawing.Size(300, 96)
         Me.Text = "Information"

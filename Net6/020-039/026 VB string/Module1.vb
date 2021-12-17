@@ -18,18 +18,18 @@ Module TestsSurString
         w = ("Bonjour").PadRight(30, CType("*", Char))
         x = String.Concat("Il ", "était ", "une ", "fois...")
 
-        Console.WriteLine("s: ""{0}""", s)
-        Console.WriteLine("t: ""{0}""", t)
-        Console.WriteLine("u: ""{0}""", u)
-        Console.WriteLine("v: ""{0}""", v)
-        Console.WriteLine("w: ""{0}""", w)
-        Console.WriteLine("x: ""{0}""", x)
+        WriteLine("s: ""{0}""", s)
+        WriteLine("t: ""{0}""", t)
+        WriteLine("u: ""{0}""", u)
+        WriteLine("v: ""{0}""", v)
+        WriteLine("w: ""{0}""", w)
+        WriteLine("x: ""{0}""", x)
 
         Dim p As Integer
         p = x.IndexOf("une")
-        Console.WriteLine("x.IndexOf(""une""): {0}", p)
+        WriteLine("x.IndexOf(""une""): {0}", p)
         p = x.IndexOf("Une")
-        Console.WriteLine("x.IndexOf(""Une""): {0}", p)
+        WriteLine("x.IndexOf(""Une""): {0}", p)
 
         Console.ReadLine()
     End Sub

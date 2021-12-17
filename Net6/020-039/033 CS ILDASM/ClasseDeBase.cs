@@ -1,4 +1,4 @@
-using System;
+using static System.Console;
 
 namespace MaBibliotheque;
 
@@ -11,7 +11,7 @@ public class MaClasseDeBase : MonOrigine
 {
     private int iMembreDeBase;
 
-    public override void Action() => Console.WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", iMembreDeBase);
+    public override void Action() => WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", iMembreDeBase);
 
     public int MembreDeBase
     {

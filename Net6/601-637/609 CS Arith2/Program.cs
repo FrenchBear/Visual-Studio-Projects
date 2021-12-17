@@ -236,7 +236,7 @@ internal class Program
         WriteLine($"Test Int{d}d");
         string astr = GetRandomNumber();
         string bstr = GetRandomNumber();
-        Stopwatch sw = Stopwatch.StartNew();
+        var sw = Stopwatch.StartNew();
         T a, b;
         (a = new T()).FromString(astr);
         (b = new T()).FromString(bstr);
@@ -251,7 +251,7 @@ internal class Program
         sw.Stop();
 
         // Check using BigInteger
-        Stopwatch swc = Stopwatch.StartNew();
+        var swc = Stopwatch.StartNew();
         var abi = BigInteger.Parse(astr);
         var bbi = BigInteger.Parse(bstr);
         var sumbi = abi + bbi;

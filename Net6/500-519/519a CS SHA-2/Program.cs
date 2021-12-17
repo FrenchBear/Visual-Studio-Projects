@@ -10,10 +10,10 @@
 // 2019-10-14   PV      VS2019; Added Go examples "x" and "X"
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
+using static System.Console;
 
 #pragma warning disable SYSLIB0021 // Type or member is obsolete
 
@@ -23,7 +23,7 @@ internal class Program
 {
     private static void Main()
     {
-        Console.WriteLine("CS 519 SHA-2");
+        WriteLine("CS 519 SHA-2");
 
         // Test rotation function
         uint u32 = 0xcafe;
@@ -107,7 +107,7 @@ internal class Program
         Test_sha_384("The quick brown fox jumps over the lazy dog.",
             "ed892481d8272ca6df370bf706e4d7bc1b5739fa2177aae6c50e946678718fc67a7af2819a021c2fc34e91bdb63409d7");
 
-        Console.WriteLine("All tests passed successfully");
+        WriteLine("All tests passed successfully");
     }
 
     private static void Test_sha_256(string s, string hashed)

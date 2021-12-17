@@ -6,6 +6,7 @@
 
 using System;
 using System.Reflection;
+using static System.Console;
 
 namespace CS517;
 
@@ -25,30 +26,30 @@ internal class Program
         var t4 = b2.GetType().IsDerivedFromType(typeof(bool));
         // Beware, GetType on a T? variable returns type T, not T? !!!!
 
-        Console.WriteLine("typeof(bool).IsDerivedFromType(typeof(bool)): {0}", typeof(bool).IsDerivedFromType(typeof(bool)));
-        Console.WriteLine("typeof(bool).IsDerivedFromType(typeof(bool?)): {0}", typeof(bool).IsDerivedFromType(typeof(bool?)));
-        Console.WriteLine("typeof(bool?).IsDerivedFromType(typeof(bool?)): {0}", typeof(bool?).IsDerivedFromType(typeof(bool?)));
+        WriteLine("typeof(bool).IsDerivedFromType(typeof(bool)): {0}", typeof(bool).IsDerivedFromType(typeof(bool)));
+        WriteLine("typeof(bool).IsDerivedFromType(typeof(bool?)): {0}", typeof(bool).IsDerivedFromType(typeof(bool?)));
+        WriteLine("typeof(bool?).IsDerivedFromType(typeof(bool?)): {0}", typeof(bool?).IsDerivedFromType(typeof(bool?)));
 
         var tni = typeof(Program).GetProperty("ni", BindingFlags.Static | BindingFlags.Public).PropertyType;
-        Console.WriteLine("tni.IsDerivedFromType(typeof(int)): {0}", tni.IsDerivedFromType(typeof(int)));
-        Console.WriteLine("tni.IsDerivedFromType(typeof(int?)): {0}", tni.IsDerivedFromType(typeof(int?)));
-        Console.WriteLine("tni.IsDerivedFromType(typeof(Nullable)): {0}", tni.IsDerivedFromType(typeof(Nullable)));
+        WriteLine("tni.IsDerivedFromType(typeof(int)): {0}", tni.IsDerivedFromType(typeof(int)));
+        WriteLine("tni.IsDerivedFromType(typeof(int?)): {0}", tni.IsDerivedFromType(typeof(int?)));
+        WriteLine("tni.IsDerivedFromType(typeof(Nullable)): {0}", tni.IsDerivedFromType(typeof(Nullable)));
 
-        Console.WriteLine();
-        Console.WriteLine("t = typeof(Nullable)");
+        WriteLine();
+        WriteLine("t = typeof(Nullable)");
         Type t = typeof(Nullable);
-        Console.WriteLine("t.IsGenericType: {0}", t.IsGenericType);
-        Console.WriteLine("t.IsGenericTypeDefinition: {0}", t.IsGenericTypeDefinition);
-        Console.WriteLine("t.IsConstructedGenericType: {0}", t.IsConstructedGenericType);
-        Console.WriteLine("t.BaseType.Name {0}", t.BaseType.Name);
+        WriteLine("t.IsGenericType: {0}", t.IsGenericType);
+        WriteLine("t.IsGenericTypeDefinition: {0}", t.IsGenericTypeDefinition);
+        WriteLine("t.IsConstructedGenericType: {0}", t.IsConstructedGenericType);
+        WriteLine("t.BaseType.Name {0}", t.BaseType.Name);
 
-        Console.WriteLine();
-        Console.WriteLine("t = typeof(Nullable<int>)");
+        WriteLine();
+        WriteLine("t = typeof(Nullable<int>)");
         t = typeof(int?);
-        Console.WriteLine("t.IsGenericType: {0}", t.IsGenericType);
-        Console.WriteLine("t.IsGenericTypeDefinition: {0}", t.IsGenericTypeDefinition);
-        Console.WriteLine("t.IsConstructedGenericType: {0}", t.IsConstructedGenericType);
-        Console.WriteLine("t.BaseType.Name {0}", t.BaseType.Name);
+        WriteLine("t.IsGenericType: {0}", t.IsGenericType);
+        WriteLine("t.IsGenericTypeDefinition: {0}", t.IsGenericTypeDefinition);
+        WriteLine("t.IsConstructedGenericType: {0}", t.IsConstructedGenericType);
+        WriteLine("t.BaseType.Name {0}", t.BaseType.Name);
     }
 
     public static int? Ni { get; set; }

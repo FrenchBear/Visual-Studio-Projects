@@ -131,9 +131,9 @@ Public Class frmAnalyse
         '
         'TabControl1
         '
-        Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TabControl1.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.tabHTML)
         Me.TabControl1.Controls.Add(Me.tabListe)
         Me.TabControl1.Location = New System.Drawing.Point(10, 117)
@@ -153,7 +153,7 @@ Public Class frmAnalyse
         '
         'IEDoc
         '
-        Me.IEDoc.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.IEDoc.Dock = DockStyle.Fill
         Me.IEDoc.Location = New System.Drawing.Point(0, 0)
         Me.IEDoc.MinimumSize = New System.Drawing.Size(20, 20)
         Me.IEDoc.Name = "IEDoc"
@@ -171,9 +171,9 @@ Public Class frmAnalyse
         '
         'lvListe
         '
-        Me.lvListe.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lvListe.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvListe.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chPoste, Me.chSite, Me.chOU, Me.chDescription, Me.chWhenCreated, Me.chWhenChanged})
         Me.lvListe.FullRowSelect = True
         Me.lvListe.GridLines = True
@@ -182,7 +182,7 @@ Public Class frmAnalyse
         Me.lvListe.Size = New System.Drawing.Size(1623, 1236)
         Me.lvListe.TabIndex = 0
         Me.lvListe.UseCompatibleStateImageBehavior = False
-        Me.lvListe.View = System.Windows.Forms.View.Details
+        Me.lvListe.View = View.Details
         '
         'chPoste
         '
@@ -803,7 +803,7 @@ Public Class frmAnalyse
     ' Utilitaire: rafaîchit la fenêtre IE
     Sub RefreshIE()
         Do
-            System.Windows.Forms.Application.DoEvents()
+            Application.DoEvents()
         Loop Until IEDoc.ReadyState = WebBrowserReadyState.Complete
     End Sub
 
@@ -868,8 +868,8 @@ Public Class frmAnalyse
                 m = rNum.Match(CType(enumComp.Key, String))
                 iComp = CInt(m.Groups(1).Value)  ' L'indice 0 est le match de la chaîne complète
             End If
-            iMin = System.Math.Min(iMin, iComp)
-            iMax = System.Math.Max(iMax, iComp)
+            iMin = Math.Min(iMin, iComp)
+            iMax = Math.Max(iMax, iComp)
         End While
 
         ' iMin0 = début d'affichage. L'affichage commence aux valeurs 1,11,21,31...
@@ -995,11 +995,11 @@ Public Class frmAnalyse
             .sDescription = sDescription
         End With
 
-        If r95.Match(sComputer).Success And StrComp(sKey, VB.Mid(sComputer, 3, 3), CompareMethod.Text) = 0 Then
+        If r95.Match(sComputer).Success And StrComp(sKey, Mid(sComputer, 3, 3), CompareMethod.Text) = 0 Then
             If Not sad.slComp95.ContainsKey(sComputer) Then sad.slComp95.Add(sComputer, theComputer)
-        ElseIf r98.Match(sComputer).Success And StrComp(sKey, VB.Mid(sComputer, 3, 3), CompareMethod.Text) = 0 Then
+        ElseIf r98.Match(sComputer).Success And StrComp(sKey, Mid(sComputer, 3, 3), CompareMethod.Text) = 0 Then
             If Not sad.slComp98.ContainsKey(sComputer) Then sad.slComp98.Add(sComputer, theComputer)
-        ElseIf r00.Match(sComputer).Success And StrComp(sKey, VB.Mid(sComputer, 3, 3), CompareMethod.Text) = 0 And Mid(sComputer, 6, 2) <> "99" And Mid(sComputer, 6, 4) <> "0000" Then
+        ElseIf r00.Match(sComputer).Success And StrComp(sKey, Mid(sComputer, 3, 3), CompareMethod.Text) = 0 And Mid(sComputer, 6, 2) <> "99" And Mid(sComputer, 6, 4) <> "0000" Then
             If Not sad.slComp00.ContainsKey(sComputer) Then sad.slComp00.Add(sComputer, theComputer)
         Else
             If Not sad.slCompXX.ContainsKey(sComputer) Then sad.slCompXX.Add(sComputer, theComputer)

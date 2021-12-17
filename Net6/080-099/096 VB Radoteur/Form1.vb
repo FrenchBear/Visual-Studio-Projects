@@ -54,9 +54,9 @@ Public Class Form1
         '
         'lstPropositions
         '
-        Me.lstPropositions.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.lstPropositions.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), AnchorStyles)
         Me.lstPropositions.ItemHeight = 25
         Me.lstPropositions.Location = New Point(364, 15)
         Me.lstPropositions.Name = "lstPropositions"
@@ -66,7 +66,7 @@ Public Class Form1
         '
         'btnGo
         '
-        Me.btnGo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.btnGo.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
         Me.btnGo.Location = New Point(675, 15)
         Me.btnGo.Name = "btnGo"
         Me.btnGo.Size = New Size(150, 42)
@@ -75,8 +75,8 @@ Public Class Form1
         '
         'lstWords
         '
-        Me.lstWords.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), AnchorStyles)
+        Me.lstWords.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left), AnchorStyles)
         Me.lstWords.ItemHeight = 25
         Me.lstWords.Location = New Point(24, 15)
         Me.lstWords.Name = "lstWords"

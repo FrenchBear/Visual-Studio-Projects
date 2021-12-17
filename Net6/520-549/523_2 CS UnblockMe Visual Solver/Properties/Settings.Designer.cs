@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CS523B_UnblockMe_Solver_Visual.Properties {
+namespace CS523B.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

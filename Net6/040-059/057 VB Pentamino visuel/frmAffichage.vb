@@ -110,7 +110,7 @@ Public Class frmAffichage
         '
         'pic
         '
-        Me.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pic.BorderStyle = BorderStyle.FixedSingle
         Me.pic.Location = New Point(96, 8)
         Me.pic.Name = "pic"
         Me.pic.Size = New Size(208, 424)
@@ -154,7 +154,7 @@ Public Class frmAffichage
         Me.AutoScaleBaseSize = New Size(5, 13)
         Me.ClientSize = New Size(320, 447)
         Me.Controls.AddRange(New Control() {Me.Button1, Me.vsSol, Me.btnStop, Me.btnPause, Me.txtSolution, Me.pic, Me.btnAnalyse})
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.Name = "frmAffichage"
         Me.Text = "Analyseur Pentamino"

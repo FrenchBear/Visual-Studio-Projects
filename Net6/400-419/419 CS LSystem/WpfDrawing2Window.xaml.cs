@@ -49,7 +49,7 @@ public partial class WpfDrawing2Window : Window
         {
             pf = new PathFigure();
             _pf = pf;
-            r = base.Rend(rendingWidth, rendingHeight);
+            r = Rend(rendingWidth, rendingHeight);
         }
 
         protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroke, int color)

@@ -45,7 +45,7 @@ Public Class Form1
         '
         'pb
         '
-        Me.pb.BackColor = System.Drawing.Color.Turquoise
+        Me.pb.BackColor = Color.Turquoise
         Me.pb.Location = New Point(42, 22)
         Me.pb.Name = "pb"
         Me.pb.Size = New Size(210, 201)

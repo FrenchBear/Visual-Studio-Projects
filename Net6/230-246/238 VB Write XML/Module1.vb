@@ -26,7 +26,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim xtw As New XmlTextWriter("..\..\TestResults1.xml", System.Text.Encoding.UTF8)
+        Dim xtw As New XmlTextWriter("..\..\TestResults1.xml", Text.Encoding.UTF8)
         With xtw
             .Formatting = Formatting.Indented
             .WriteStartDocument()
@@ -111,7 +111,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim xtw As New XmlTextWriter("..\..\TestResults3_Intermediate.xml", System.Text.Encoding.UTF8)
+        Dim xtw As New XmlTextWriter("..\..\TestResults3_Intermediate.xml", Text.Encoding.UTF8)
         With xtw
             .Formatting = Formatting.Indented
             .WriteStartDocument()
@@ -151,7 +151,7 @@ Module Module1
         Dim xslt2 As New Xsl.XslCompiledTransform()
         xslt2.Load("..\..\TransformSheet.xsl")
 
-        Dim xtw2 As New XmlTextWriter("..\..\TestResults3.xml", System.Text.Encoding.UTF8) With {
+        Dim xtw2 As New XmlTextWriter("..\..\TestResults3.xml", Text.Encoding.UTF8) With {
             .Formatting = Formatting.Indented
         }
         xtw2.WriteStartDocument()
@@ -203,7 +203,7 @@ Module Module1
         Dim tokens() As String
 
         Dim s As New Serialization.XmlSerializer(GetType(TestResults))
-        Dim xtw As New XmlTextWriter("..\..\TestResults5.xml", System.Text.Encoding.UTF8) With {
+        Dim xtw As New XmlTextWriter("..\..\TestResults5.xml", Text.Encoding.UTF8) With {
             .Formatting = Formatting.Indented
         }
 

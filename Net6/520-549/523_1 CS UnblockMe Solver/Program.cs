@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using static System.Console;
 
 namespace UnblockMeSolver;
 
@@ -38,15 +39,15 @@ internal class Program
         //    Console.Write(i);
         //    Console.Write((char)i);
         //}
-        //Console.WriteLine();
+        //WriteLine();
         ShowConfig(Configuration);
 
-        Console.WriteLine(Configuration.IsValid(Pieces) ? "Config Ok" : "Invalid config!");
+        WriteLine(Configuration.IsValid(Pieces) ? "Config Ok" : "Invalid config!");
 
         _ = History.Add(Configuration.Signature());
         _ = Move(1, Configuration);
 
-        Console.WriteLine("{0} configurations analyzed, {1} moves for solution", nbConfig, solutionMoves);
+        WriteLine("{0} configurations analyzed, {1} moves for solution", nbConfig, solutionMoves);
     }
 
     private static bool foundSolution = false;
@@ -61,7 +62,7 @@ internal class Program
         if (config.Pos[redPiece] + Pieces[redPiece].Length == 6)
         {
             ShowConfig(config);
-            Console.WriteLine("Solution found, depth={0}", depth);
+            WriteLine("Solution found, depth={0}", depth);
             foundSolution = true;
             return true;
         }
@@ -110,7 +111,7 @@ internal class Program
 
     private static void ShowConfig(Config config)
     {
-        Console.WriteLine();
+        WriteLine();
         for (int r = 0; r < 6; r++)
         {
             for (int c = 0; c < 6; c++)
@@ -137,7 +138,7 @@ internal class Program
                 Console.Write(ch);
             }
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine();
+            WriteLine();
         }
     }
 }

@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using static System.Console;
 
 internal class Program
 {
@@ -19,6 +20,6 @@ internal class Program
             Console.Write(s);
             Console.Write(" ");
         }
-        Console.WriteLine();
+        WriteLine();
     }
 }

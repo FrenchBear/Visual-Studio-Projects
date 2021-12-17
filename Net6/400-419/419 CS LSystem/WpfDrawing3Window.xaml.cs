@@ -50,7 +50,7 @@ public partial class WpfDrawing3Window : Window
             using StreamGeometryContext context = g.Open();
             _context = context;
             context.BeginFigure(new Point(0, 0), false, false);
-            r = base.Rend(rendingWidth, rendingHeight);
+            r = Rend(rendingWidth, rendingHeight);
             _context = null;
         }
 

@@ -305,7 +305,7 @@ Module modMacros
     End Sub
 
     Sub PCLStopLearning()
-        If bDebugMacros Then Console.WriteLine("Fin enregistrement macro")
+        If bDebugMacros Then WriteLine("Fin enregistrement macro")
         bLearningMacro = False
         macCurrentMacro = Nothing
     End Sub
@@ -326,9 +326,9 @@ Module modMacros
         Select Case iFonction
             Case 0
                 TraceWrite("[Macro: Start Macro Def.]")
-                If bDebugMacros Then Console.WriteLine("Début enregistrement macro {0}", iMacroID)
+                If bDebugMacros Then WriteLine("Début enregistrement macro {0}", iMacroID)
                 If colMacros.ContainsKey(iMacroID) Then
-                    If bDebugMacros Then Console.WriteLine("Effacement de la précédente macro {0}", iMacroID)
+                    If bDebugMacros Then WriteLine("Effacement de la précédente macro {0}", iMacroID)
                     colMacros.Remove(iMacroID)
                 End If
                 macCurrentMacro = New PCLMacro
@@ -360,7 +360,7 @@ Module modMacros
     Private Sub RunMacro(sAction As String)
         Dim m As PCLMacro
         Dim iId As Integer = iMacroID
-        If bDebugMacros Then Console.WriteLine("Début {0} macro {1}", sAction, iMacroID)
+        If bDebugMacros Then WriteLine("Début {0} macro {1}", sAction, iMacroID)
         m = CType(colMacros(iMacroID), PCLMacro)
         If m.bIsRunning Then
             PCLError("Blocage anti-récursivité !")
@@ -370,16 +370,16 @@ Module modMacros
         For i As Integer = 0 To m.sMacroText.Length - 1
             AnaPCL(Asc(m.sMacroText.Chars(i)))
         Next
-        If bDebugMacros Then Console.WriteLine("Fin {0} macro {1}", sAction, iId)
+        If bDebugMacros Then WriteLine("Fin {0} macro {1}", sAction, iId)
         m.bIsRunning = False
     End Sub
 
     ' Liste les IDs de macros et leur taille
     Public Sub TraceMacros()
         Dim myEnumerator As IDictionaryEnumerator = colMacros.GetEnumerator()
-        Console.WriteLine("Macro Size")
+        WriteLine("Macro Size")
         While (myEnumerator.MoveNext())
-            Console.WriteLine("{0}     {1}", myEnumerator.Key, CType(myEnumerator.Value, PCLMacro).sMacroText.Length)
+            WriteLine("{0}     {1}", myEnumerator.Key, CType(myEnumerator.Value, PCLMacro).sMacroText.Length)
         End While
     End Sub
 
@@ -388,12 +388,12 @@ End Module
 Module modPCLError
 
     Sub PCLError(s As String)
-        Console.WriteLine("Erreur PCL pos {0}: {1}", GetPosition, s)
+        WriteLine("Erreur PCL pos {0}: {1}", GetPosition, s)
     End Sub
 
     Sub PCLError(format As String, arg0 As Object)
         Console.Write("Erreur PCL pos {0}: ", GetPosition)
-        Console.WriteLine(format, arg0)
+        WriteLine(format, arg0)
     End Sub
 
 End Module
@@ -410,7 +410,7 @@ Module modTilda
     End Sub
 
     Sub TildaExecute()
-        If bDebugTilda Then Console.WriteLine("<Exécution séquence tilda '{0}'>", sTildaText.ToString)
+        If bDebugTilda Then WriteLine("<Exécution séquence tilda '{0}'>", sTildaText.ToString)
         Dim tsCmd() As String = Split(sTildaText.ToString, " ".ToCharArray)
         Select Case LCase(tsCmd(0))
             Case "photo"

@@ -2,9 +2,9 @@
 //
 // 2021-09-23   PV  VS2022; Net6
 
-using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using static System.Console;
 
 namespace CS427;
 
@@ -24,19 +24,19 @@ internal class Program
         // The TryGetMember method is called.
         // Note that property names are case-insensitive.
 
-        Console.WriteLine(person.firstname + " " + person.lastname);
+        WriteLine(person.firstname + " " + person.lastname);
 
         // Getting the value of the Count property.
         // The TryGetMember is not called,
         // because the property is defined in the class.
-        Console.WriteLine("Number of dynamic properties:" + person.Count);
+        WriteLine("Number of dynamic properties:" + person.Count);
 
         // The following statement throws an exception at run time.
         // There is no "address" property,
         // so the TryGetMember method returns false and this causes a
         // RuntimeBinderException.
 
-        Console.WriteLine(person.address);
+        WriteLine(person.address);
     }
 }
 

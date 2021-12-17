@@ -28,7 +28,7 @@ namespace ArithmeticNamespace
 
             ConfigurationSectionGroup applicationSectionGroup = config.GetSectionGroup("applicationSettings");
             ConfigurationSection applicationConfigSection = applicationSectionGroup.Sections[GetDllNamespace() + ".Properties.Settings"];
-            ClientSettingsSection clientSection = (ClientSettingsSection)applicationConfigSection;
+            var clientSection = (ClientSettingsSection)applicationConfigSection;
             SettingElement applicationSetting = clientSection.Settings.Get(settingName);
             return applicationSetting?.Value.ValueXml.InnerText;
         }

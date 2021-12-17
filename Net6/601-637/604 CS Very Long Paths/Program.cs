@@ -16,8 +16,8 @@
 // 2019-04-10   PV      Doesn't work anymore?  Should document config update more in detail and check it in the code...
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.IO;
+using static System.Console;
 
 namespace CS604;
 
@@ -29,7 +29,7 @@ internal class Program
         reallyLongDirectory += @"\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
         reallyLongDirectory += @"\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ\abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        Console.WriteLine($"Creating a directory that is {reallyLongDirectory.Length} characters long");
+        WriteLine($"Creating a directory that is {reallyLongDirectory.Length} characters long");
         _ = Directory.CreateDirectory(reallyLongDirectory);
     }
 }

@@ -1,12 +1,11 @@
 ﻿// 2021-09-26   PV      VS2022; Net6
 
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using static System.Console;
 
 namespace CreateVignette;
 
@@ -47,7 +46,7 @@ internal class Test
         //{
         //    for (int i = 0; i < arrHeaders.Count; i++)
         //    {
-        //        Console.WriteLine("{0}\t{1}: {2}", i, arrHeaders[i], objFolder.GetDetailsOf(item, i));
+        //        WriteLine("{0}\t{1}: {2}", i, arrHeaders[i], objFolder.GetDetailsOf(item, i));
         //    }
         //}
         //Debugger.Break();
@@ -58,7 +57,7 @@ internal class Test
         int count = 0;
         foreach (PropertyItem propItem in propItems)
         {
-            Console.WriteLine("Property {0}, Id {1:X}, Type {2}, Len {3} ", count, propItem.Id, propItem.Type.ToString(), propItem.Len.ToString());
+            WriteLine("Property {0}, Id {1:X}, Type {2}, Len {3} ", count, propItem.Id, propItem.Type.ToString(), propItem.Len.ToString());
             count++;
         }
 
@@ -103,7 +102,7 @@ internal class Test
             vignette.SetPropertyItem(propItem);
 
         EncoderParameters eps = new(1);
-        eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
+        eps.Param[0] = new EncoderParameter(Encoder.Quality, JpegQuality);
         ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
 
         vignette.Save(vignettePath, ici, eps);

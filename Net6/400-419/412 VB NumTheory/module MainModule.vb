@@ -5,6 +5,7 @@
 ' 2021-09-23    PV  VS2022; Net6
 
 Imports System.Runtime.CompilerServices
+Imports System.Console
 
 #Disable Warning IDE0051 ' Remove unused private members
 
@@ -20,8 +21,8 @@ Module MainModule
         Dim np As Long = NumTheory.NextPrimeMillerRabin(100) * NumTheory.NextPrimeMillerRabin(200) * NumTheory.NextPrimeMillerRabin(300)
         Dim lf = NumTheory.Factors(np)
         Console.Write("factors of {0}: ", np)
-        lf.WriteLine()
-        Console.WriteLine()
+        lf.MyWriteLine()
+        WriteLine()
 
         TestNextPrime(AddressOf NumTheory.NextPrimeWilson, 1000000)
         TestNextPrime(AddressOf NumTheory.NextPrimeMillerRabin, 1000000)
@@ -43,18 +44,18 @@ Module MainModule
             Console.Write(start)
             Console.Write(" "c)
         Next
-        Console.WriteLine()
-        Console.WriteLine("Test of " & nextPrime.Method.ToString & ": " & sw.Elapsed.ToString)
-        Console.WriteLine()
+        WriteLine()
+        MyWriteLine("Test of " & nextPrime.Method.ToString & ": " & sw.Elapsed.ToString)
+        WriteLine()
     End Sub
 
     Private Sub TimeExec(ft As FunctionToTest, n As Long)
         Dim sw = Stopwatch.StartNew
         Dim np As Long = ft(n)
         sw.Stop()
-        Console.WriteLine("Test of " & ft.Method.ToString & ": " & sw.Elapsed.ToString)
-        Console.WriteLine(np.ToString & " prime(s) <= " & n.ToString & " found.")
-        Console.WriteLine()
+        MyWriteLine("Test of " & ft.Method.ToString & ": " & sw.Elapsed.ToString)
+        MyWriteLine(np.ToString & " prime(s) <= " & n.ToString & " found.")
+        WriteLine()
     End Sub
 
     Private Function TestWilson(n As Long) As Long
@@ -91,9 +92,9 @@ Module MainModule
     End Sub
 
     <Extension()>
-    Public Sub WriteLine(Of TSource)(source As IEnumerable(Of TSource))
+    Public Sub MyWriteLine(Of TSource)(source As IEnumerable(Of TSource))
         source.Write()
-        Console.WriteLine()
+        WriteLine()
     End Sub
 
 End Module

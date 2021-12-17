@@ -29,15 +29,15 @@ Module Module1
         Dim ts As TimeSpan
         Dim dSource As New DirectoryInfo(sSource)
         ts = DateTime.Now - t1
-        Console.WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
 
         Dim tFilesSource As FileInfo() = dSource.GetFiles
         ts = DateTime.Now - t1
-        Console.WriteLine(String.Format("$2: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine(String.Format("$2: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
 
         Dim tSubdirectoriesSource As DirectoryInfo() = dSource.GetDirectories
         ts = DateTime.Now - t1
-        Console.WriteLine(String.Format("$3: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine(String.Format("$3: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
 
         ' Build dictionaries with files/subdirectories infos
         Dim dicFilesSource As New Dictionary(Of String, FileInfo)(tFilesSource.Length, StringComparer.OrdinalIgnoreCase)
@@ -47,7 +47,7 @@ Module Module1
             dicFilesSource.Add(fiSource.Name, fiSource)
         Next
         ts = DateTime.Now - t1
-        Console.WriteLine(String.Format("$4: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine(String.Format("$4: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
 
         For Each diSource As DirectoryInfo In tSubdirectoriesSource
             ' Ignore SYSTEM+HIDDEN directories on source
@@ -59,7 +59,7 @@ Module Module1
 NextSource:
         Next
         ts = DateTime.Now - t1
-        Console.WriteLine(String.Format("$5: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine(String.Format("$5: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
     End Sub
 
     ' 2nd method: using DirectoryInfo.getFileSystemInfos
@@ -85,10 +85,10 @@ NextSource:
         Next
 
         ts = DateTime.Now - t1
-        Console.WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
         Dim fsi1 As FileSystemInfo = tfsiElements(4)
 
-        Console.WriteLine(String.Format("{0} files(s), {1} folder(s)", nFiles, nFolders))
+        WriteLine(String.Format("{0} files(s), {1} folder(s)", nFiles, nFolders))
     End Sub
 
     ' 3rd method, using Win32 system calls
@@ -135,9 +135,9 @@ NextSource:
         retval = FindClose(hsearch)
 
         ts = DateTime.Now - t1
-        Console.WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
 
-        Console.WriteLine(String.Format("{0} files(s), {1} folder(s)", colFiles.Count, colFolders.Count))
+        WriteLine(String.Format("{0} files(s), {1} folder(s)", colFiles.Count, colFolders.Count))
     End Sub
 
     ' -----------------------------------------------------------------
@@ -187,10 +187,10 @@ NextSource:
         Dim dwReserved1 As Integer
 
         ' TCHAR array 260 (MAX_PATH) entries, 520 bytes in unicode
-        <VBFixedString(520), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
+        <VBFixedString(520), MarshalAs(UnmanagedType.ByValTStr, SizeConst:=520)> Public cFileName As String
 
         ' TCHAR array 14 TCHAR's alternate filename 28 byes in unicode
-        <VBFixedString(28), MarshalAs(System.Runtime.InteropServices.UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
+        <VBFixedString(28), MarshalAs(UnmanagedType.ByValTStr, SizeConst:=28)> Public cAlternate As String
 
     End Structure
 
@@ -210,7 +210,7 @@ NextSource:
         End If
 
         Do
-            Console.WriteLine(findinfo.cFileName)
+            WriteLine(findinfo.cFileName)
             success = FindNextFileW(hsearch, findinfo)
         Loop Until success = 0  ' keep looping until no more matching files are found
 

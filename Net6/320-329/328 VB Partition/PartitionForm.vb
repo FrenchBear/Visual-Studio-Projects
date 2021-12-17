@@ -46,7 +46,7 @@ Public Class PartitionForm
         Next
         pic.Refresh()
 
-        pic.BackgroundImage.Save("C:\Temp\Partition.png", System.Drawing.Imaging.ImageFormat.Png)
+        pic.BackgroundImage.Save("C:\Temp\Partition.png", ImageFormat.Png)
     End Sub
 
     Private Sub DrawArmature(g As Graphics, nRow As Integer)

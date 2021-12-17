@@ -5,6 +5,7 @@
 // 2021-09-26   PV      VS2022; Net6
 
 using System;
+using static System.Console;
 
 namespace CS504;
 
@@ -15,7 +16,7 @@ internal class Program
         var pos = Adder();
         var neg = Adder();
         for (int i = 0; i < 10; i++)
-            Console.WriteLine("{0}, {1}", pos(i), neg(-2 * i));
+            WriteLine("{0}, {1}", pos(i), neg(-2 * i));
     }
 
     private static Func<int, int> Adder()

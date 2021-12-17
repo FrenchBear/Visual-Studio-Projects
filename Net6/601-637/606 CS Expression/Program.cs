@@ -33,9 +33,9 @@ internal class Program
             new List<ParameterExpression>() { paramExpr }
         );
 
-        Console.WriteLine();
-        Console.WriteLine(lambdaExpr);
-        Console.WriteLine(lambdaExpr.Compile().DynamicInvoke(1));
+        WriteLine();
+        WriteLine(lambdaExpr);
+        WriteLine(lambdaExpr.Compile().DynamicInvoke(1));
 
         ParameterExpression paramX = Expression.Parameter(typeof(int), "x");
         ParameterExpression paramY = Expression.Parameter(typeof(int), "y");
@@ -50,11 +50,11 @@ internal class Program
             new List<ParameterExpression>() { paramX, paramY }
         );
 
-        Console.WriteLine();
-        Console.WriteLine(lambdaExpr);
+        WriteLine();
+        WriteLine(lambdaExpr);
         _ = mv.VisiteExpression(lambdaExpr);
         // Raises an exception
-        //Console.WriteLine(lambdaExpr.Compile().DynamicInvoke(1<<30, 1<<30));
+        //WriteLine(lambdaExpr.Compile().DynamicInvoke(1<<30, 1<<30));
     }
 }
 
@@ -63,13 +63,13 @@ public class MyVisitor : ExpressionVisitor
     public Expression VisiteExpression(Expression expression)
     {
         Write("VisiteExpression: ");
-        Console.WriteLine(expression);
+        WriteLine(expression);
         return Visit(expression);
     }
 
     private int s = 0;
 
-    private void PrintLine(string st) => Console.WriteLine(new string(' ', 4 * s) + st);
+    private void PrintLine(string st) => WriteLine(new string(' ', 4 * s) + st);
 
     protected override MemberMemberBinding VisitMemberMemberBinding(MemberMemberBinding node)
     {

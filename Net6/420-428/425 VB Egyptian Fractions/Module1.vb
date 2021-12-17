@@ -3,6 +3,8 @@
 '
 ' 2021-09-23    PV  VS2022; Net6
 
+Imports System.Console
+
 Module Module1
 
     Sub Main()
@@ -35,7 +37,7 @@ Module Module1
             Catch ex As Exception
                 Console.Write(" <=== Exception " & ex.Message)
             Finally
-                Console.WriteLine()
+                WriteLine()
             End Try
         Next
     End Sub

@@ -5,7 +5,7 @@
 // 2012-02-02   PV  Refactoring
 // 2021-09-23   PV  VS2022; Net6
 
-using System;
+using static System.Console;
 
 namespace BigDecimalNS;
 
@@ -24,12 +24,12 @@ internal class Program
             unp1 = (un + r / un) / 2;
             nSteps++;
         } while (un != unp1);
-        Console.WriteLine("Found sqr({0}) with {1} decimals in {2} step(s):", r.ToString(), BigDecimal.Digits, nSteps);
-        Console.WriteLine(un.ToString());
+        WriteLine("Found sqr({0}) with {1} decimals in {2} step(s):", r.ToString(), BigDecimal.Digits, nSteps);
+        WriteLine(un.ToString());
 
         // Verification
-        Console.WriteLine();
-        Console.WriteLine((un * un - r).ToString());
+        WriteLine();
+        WriteLine((un * un - r).ToString());
 
     }
 }

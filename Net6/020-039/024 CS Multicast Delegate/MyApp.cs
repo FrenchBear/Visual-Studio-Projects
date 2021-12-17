@@ -7,6 +7,7 @@
 // 2021-09-18   PV  VS2022, Net6
 
 using System;
+using static System.Console;
 
 internal delegate void MyDelegate(string sMsg);
 
@@ -18,7 +19,7 @@ internal class MyApp
 
         d1 = new MyDelegate(Sub1);
         d2 = new MyDelegate(Sub2);
-        d3 = (MyDelegate)System.Delegate.Combine(d1, d2);
+        d3 = (MyDelegate)Delegate.Combine(d1, d2);
 
         d1("Hello 1");
         d2("Hello 2");
@@ -27,7 +28,7 @@ internal class MyApp
         _ = Console.ReadLine();
     }
 
-    private static void Sub1(string s) => Console.WriteLine("Sub1: " + s);
+    private static void Sub1(string s) => WriteLine("Sub1: " + s);
 
-    private static void Sub2(string s) => Console.WriteLine("Sub2: " + s);
+    private static void Sub2(string s) => WriteLine("Sub2: " + s);
 }

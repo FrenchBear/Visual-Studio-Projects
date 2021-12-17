@@ -10,7 +10,7 @@ Module Module1
     Sub Main()
         Dim d As Nullable(Of Date)
         d = Now
-        'Console.WriteLine("{0}, {1}", d.ToString, d.Day)
+        'WriteLine("{0}, {1}", d.ToString, d.Day)
 
         Dim d2 As NullDate
         d2 = New NullDate(Now)

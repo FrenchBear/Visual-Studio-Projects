@@ -8,7 +8,7 @@
 using System;
 using System.Windows.Input;
 
-namespace CS523B_UnblockMe_Solver_Visual;
+namespace CS523B;
 
 internal class RelayCommand<T> : ICommand
 {

@@ -83,7 +83,7 @@ Public Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New Font("Microsoft Sans Serif", 8.25!, FontStyle.Bold, GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New Point(8, 8)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New Size(114, 16)
@@ -101,7 +101,7 @@ Public Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New Font("Microsoft Sans Serif", 8.25!, FontStyle.Bold, GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New Point(8, 152)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New Size(95, 16)
@@ -154,7 +154,7 @@ Public Class Form1
         stObj2.iArg = 33 : stObj2.sArg = "titi"
         Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTâche1), stObj1)
         Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTâche2), stObj2)
-        System.Threading.Thread.Sleep(1000)
+        Threading.Thread.Sleep(1000)
 
     End Sub
 
@@ -247,7 +247,7 @@ Friend Class AsyncTest
 
     Public Sub Tâche(arg As Object)
         MsgBox("Début du thread")
-        System.Threading.Thread.Sleep(4000)
+        Threading.Thread.Sleep(4000)
         MsgBox("Argument: " & CStr(arg))
         AsyncOpOk.Set()
     End Sub

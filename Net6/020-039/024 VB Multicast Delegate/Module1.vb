@@ -14,7 +14,7 @@ Class MyApp
         Dim d1, d2, d3 As MyDelegate
         d1 = New MyDelegate(AddressOf Sub1)
         d2 = AddressOf Sub2
-        d3 = CType(System.Delegate.Combine(d1, d2), MyDelegate)
+        d3 = CType([Delegate].Combine(d1, d2), MyDelegate)
 
         d1.Invoke("Hello 1")
         d2("Hello 2")
@@ -24,11 +24,11 @@ Class MyApp
     End Sub
 
     Shared Sub Sub1(s As String)
-        Console.WriteLine("Sub1: " & s)
+        WriteLine("Sub1: " & s)
     End Sub
 
     Shared Sub Sub2(s As String)
-        Console.WriteLine("Sub2: " & s)
+        WriteLine("Sub2: " & s)
     End Sub
 
 End Class

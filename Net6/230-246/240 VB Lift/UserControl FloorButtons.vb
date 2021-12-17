@@ -28,19 +28,19 @@ Public Class FloorButtonsUserControl
 
     Public Property CallStatusUp() As Boolean
         Get
-            Return UpButton.BackColor <> System.Drawing.SystemColors.Control
+            Return UpButton.BackColor <> SystemColors.Control
         End Get
         Set(value As Boolean)
-            UpButton.BackColor = IIf(value, Color.Lime, System.Drawing.SystemColors.Control)
+            UpButton.BackColor = IIf(value, Color.Lime, SystemColors.Control)
         End Set
     End Property
 
     Public Property CallStatusDown() As Boolean
         Get
-            Return DownButton.BackColor <> System.Drawing.SystemColors.Control
+            Return DownButton.BackColor <> SystemColors.Control
         End Get
         Set(value As Boolean)
-            DownButton.BackColor = IIf(value, Color.Lime, System.Drawing.SystemColors.Control)
+            DownButton.BackColor = IIf(value, Color.Lime, SystemColors.Control)
         End Set
     End Property
 

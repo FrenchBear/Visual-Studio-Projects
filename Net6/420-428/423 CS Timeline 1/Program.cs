@@ -6,6 +6,7 @@
 
 using System;
 using System.Collections.Generic;
+using static System.Console;
 
 namespace CS423;
 
@@ -41,10 +42,10 @@ internal class Program
 
     private static void TimedEvent(double absoluteTime, TimelineEvent e)
     {
-        Console.WriteLine("TimedEvent t={0}, e={1}", absoluteTime, e.Name);
+        WriteLine("TimedEvent t={0}, e={1}", absoluteTime, e.Name);
         if (e is UserArrivedEvent uae)
         {
-            Console.WriteLine("User {0} arrived on level {1}, going to level {2}", uae.NumUser, uae.ArrivalLevel, uae.DestinationLevel);
+            WriteLine("User {0} arrived on level {1}, going to level {2}", uae.NumUser, uae.ArrivalLevel, uae.DestinationLevel);
         }
     }
 }

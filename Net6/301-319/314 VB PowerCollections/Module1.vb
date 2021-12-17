@@ -5,6 +5,7 @@
 ' 2021-09-20    PV  VS2022; Net6; Nuget XAct.Wintellect.PowerCollections
 
 Imports Wintellect.PowerCollections
+Imports System.Console
 
 Module Module1
 
@@ -25,13 +26,13 @@ Module Module1
             4,
             5
         }
-        Console.WriteLine("Set ----------")
+        WriteLine("Set ----------")
         Console.Write("s1:")
         For Each i As Integer In s1
             Console.Write(" "c)
             Console.Write(i)
         Next
-        Console.WriteLine()
+        WriteLine()
 
         Dim s2 As New [Set](Of Integer) From {
             2,
@@ -45,7 +46,7 @@ Module Module1
             Console.Write(" "c)
             Console.Write(i)
         Next
-        Console.WriteLine()
+        WriteLine()
 
         Dim s3 As [Set](Of Integer) = s1.Intersection(s2)
         Console.Write("Intersection:")
@@ -53,7 +54,7 @@ Module Module1
             Console.Write(" "c)
             Console.Write(i)
         Next
-        Console.WriteLine()
+        WriteLine()
 
         Dim s4 As [Set](Of Integer) = s1.Union(s2)
         Console.Write("Union:")
@@ -61,7 +62,7 @@ Module Module1
             Console.Write(" "c)
             Console.Write(i)
         Next
-        Console.WriteLine()
+        WriteLine()
 
         Dim s5 As [Set](Of Integer) = s1.Difference(s2)
         Console.Write("Difference (s1.Difference(s2)):")
@@ -69,7 +70,7 @@ Module Module1
             Console.Write(" "c)
             Console.Write(i)
         Next
-        Console.WriteLine()
+        WriteLine()
 
     End Sub
 

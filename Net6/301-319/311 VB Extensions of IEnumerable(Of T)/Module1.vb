@@ -21,7 +21,7 @@ Module Module1
         For Each fruit As String In ExtendedList
             output.AppendLine(fruit)
         Next
-        Console.WriteLine(output.ToString() & "(count=" & ExtendedList.Compte.ToString & ")")
+        WriteLine(output.ToString() & "(count=" & ExtendedList.Compte.ToString & ")")
 
         ' Create a collection of sequential integers
         ' from 1 to 10 and project their squares.
@@ -34,7 +34,7 @@ Module Module1
         For Each num As Integer In squares
             output.AppendLine(num)
         Next
-        Console.WriteLine(output.ToString())
+        WriteLine(output.ToString())
 
         ' Filter this list to retain even numbers
         'Dim FindEvenNumber As Predicate(Of Integer) = AddressOf IsEvenInteger
@@ -45,7 +45,7 @@ Module Module1
         For Each num As Integer In EvenList
             output.AppendLine(num)
         Next
-        Console.WriteLine(output.ToString())
+        WriteLine(output.ToString())
 
         'Dim P As Predicate(Of Integer) = AddressOf IsEvenInteger
         'Dim Q As Func(Of Integer, Boolean) = AddressOf IsEvenInteger

@@ -4,7 +4,6 @@
 // 2015-04-15   PV
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -40,7 +39,7 @@ internal class Program
             //settings.OmitXmlDeclaration = true;
             Indent = true
         };
-        using (XmlWriter writer = XmlWriter.Create(MenuFile, settings))
+        using (var writer = XmlWriter.Create(MenuFile, settings))
         {
             writer.WriteStartElement("MicrobiologyLauncherMenus");
             writer.WriteAttributeString("version", "1");
@@ -50,7 +49,7 @@ internal class Program
 
         // Read
         LauncherConfiguration Configuration2;
-        using XmlReader reader = XmlReader.Create(MenuFile);
+        using var reader = XmlReader.Create(MenuFile);
         do
             _ = reader.Read();
         while (reader.NodeType != XmlNodeType.Element);

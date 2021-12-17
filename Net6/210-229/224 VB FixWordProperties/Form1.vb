@@ -222,7 +222,7 @@ e As System.ComponentModel.DoWorkEventArgs) _
             MessageBox.Show(ex.Message)
         Finally
             app.Quit()
-            System.Runtime.InteropServices.
+            Runtime.InteropServices.
              Marshal.ReleaseComObject(app)
         End Try
     End Sub

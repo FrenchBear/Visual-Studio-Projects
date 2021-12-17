@@ -5,6 +5,7 @@
 
 using System;
 using System.Reflection;
+using static System.Console;
 
 #pragma warning disable CA1822 // Mark members as static
 
@@ -12,58 +13,58 @@ namespace CS039Lib;
 
 public class MaClasse
 {
-    public MaClasse() => Console.WriteLine("MaClasse.ctor()");
+    public MaClasse() => WriteLine("MaClasse.ctor()");
 
-    public static void MyMeth() => Console.WriteLine("MaClasse.MyMeth()");
+    public static void MyMeth() => WriteLine("MaClasse.MyMeth()");
 }
 
 public class MyLib
 {
     public MyLib()
     {
-        Console.WriteLine("Constructeur de MyLib");
-        Console.WriteLine();
+        WriteLine("Constructeur de MyLib");
+        WriteLine();
     }
 
     public void Test()
     {
-        Assembly a = Assembly.GetExecutingAssembly();
+        var a = Assembly.GetExecutingAssembly();
 
-        Console.WriteLine("Assembly:");
-        //Console.WriteLine("  CodeBase:       " + a.CodeBase);         // Obsolete
-        Console.WriteLine("  EntryPoint:     " + a.EntryPoint);
-        Console.WriteLine("  FullName:       " + a.FullName);
-        Console.WriteLine("  Location:       " + a.Location);
-        Console.WriteLine();
+        WriteLine("Assembly:");
+        //WriteLine("  CodeBase:       " + a.CodeBase);         // Obsolete
+        WriteLine("  EntryPoint:     " + a.EntryPoint);
+        WriteLine("  FullName:       " + a.FullName);
+        WriteLine("  Location:       " + a.Location);
+        WriteLine();
 
         object o1 = a.CreateInstance("MaClasse");
         MaClasse.MyMeth();
 
-        Console.WriteLine("GetCustomAttributes:");
+        WriteLine("GetCustomAttributes:");
         object[] tu = a.GetCustomAttributes(true);
         foreach (object u in tu)
-            Console.WriteLine("  " + u);
-        Console.WriteLine();
+            WriteLine("  " + u);
+        WriteLine();
 
-        Console.WriteLine("GetExportedTypes:");
+        WriteLine("GetExportedTypes:");
         foreach (Type t1 in a.GetExportedTypes())
-            Console.WriteLine("  " + t1.FullName);
-        Console.WriteLine();
+            WriteLine("  " + t1.FullName);
+        WriteLine();
 
-        Console.WriteLine("GetManifestResourceNames:");
+        WriteLine("GetManifestResourceNames:");
         foreach (string s in a.GetManifestResourceNames())
-            Console.WriteLine("  " + s);
-        Console.WriteLine();
+            WriteLine("  " + s);
+        WriteLine();
 
-        Console.WriteLine("GetReferencedAssemblies:");
+        WriteLine("GetReferencedAssemblies:");
         foreach (AssemblyName an in a.GetReferencedAssemblies())
-            Console.WriteLine("  " + an.FullName);
-        Console.WriteLine();
+            WriteLine("  " + an.FullName);
+        WriteLine();
 
         // Accès direct
-        AssemblyCompanyAttribute z1 = (AssemblyCompanyAttribute)a.GetCustomAttributes(typeof(AssemblyCompanyAttribute), true)[0];
-        Console.WriteLine(z1.Company);
-        AssemblyCopyrightAttribute z2 = (AssemblyCopyrightAttribute)a.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), true)[0];
-        Console.WriteLine(z2.Copyright);
+        var z1 = (AssemblyCompanyAttribute)a.GetCustomAttributes(typeof(AssemblyCompanyAttribute), true)[0];
+        WriteLine(z1.Company);
+        var z2 = (AssemblyCopyrightAttribute)a.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), true)[0];
+        WriteLine(z2.Copyright);
     }
 }

@@ -132,9 +132,9 @@ Public Class frmAnalyseUsers
         '
         'lvUsers
         '
-        Me.lvUsers.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lvUsers.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lvUsers.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chCN, Me.chOU, Me.chAccount, Me.chRemarques})
         Me.lvUsers.HideSelection = False
         Me.lvUsers.Location = New System.Drawing.Point(8, 207)
@@ -142,7 +142,7 @@ Public Class frmAnalyseUsers
         Me.lvUsers.Size = New System.Drawing.Size(1461, 350)
         Me.lvUsers.TabIndex = 4
         Me.lvUsers.UseCompatibleStateImageBehavior = False
-        Me.lvUsers.View = System.Windows.Forms.View.Details
+        Me.lvUsers.View = View.Details
         '
         'chCN
         '
@@ -193,7 +193,7 @@ Public Class frmAnalyseUsers
         'chkCompteVerrouillé
         '
         Me.chkCompteVerrouillé.Checked = True
-        Me.chkCompteVerrouillé.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkCompteVerrouillé.CheckState = CheckState.Checked
         Me.chkCompteVerrouillé.Location = New System.Drawing.Point(344, 30)
         Me.chkCompteVerrouillé.Name = "chkCompteVerrouillé"
         Me.chkCompteVerrouillé.Size = New System.Drawing.Size(312, 29)
@@ -203,7 +203,7 @@ Public Class frmAnalyseUsers
         'chkGrpBusiness
         '
         Me.chkGrpBusiness.Checked = True
-        Me.chkGrpBusiness.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkGrpBusiness.CheckState = CheckState.Checked
         Me.chkGrpBusiness.Location = New System.Drawing.Point(344, 118)
         Me.chkGrpBusiness.Name = "chkGrpBusiness"
         Me.chkGrpBusiness.Size = New System.Drawing.Size(384, 30)
@@ -213,7 +213,7 @@ Public Class frmAnalyseUsers
         'chkGrpSite
         '
         Me.chkGrpSite.Checked = True
-        Me.chkGrpSite.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkGrpSite.CheckState = CheckState.Checked
         Me.chkGrpSite.Location = New System.Drawing.Point(344, 89)
         Me.chkGrpSite.Name = "chkGrpSite"
         Me.chkGrpSite.Size = New System.Drawing.Size(384, 29)
@@ -223,7 +223,7 @@ Public Class frmAnalyseUsers
         'chkGrpfr_allusers_g
         '
         Me.chkGrpfr_allusers_g.Checked = True
-        Me.chkGrpfr_allusers_g.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkGrpfr_allusers_g.CheckState = CheckState.Checked
         Me.chkGrpfr_allusers_g.Location = New System.Drawing.Point(344, 59)
         Me.chkGrpfr_allusers_g.Name = "chkGrpfr_allusers_g"
         Me.chkGrpfr_allusers_g.Size = New System.Drawing.Size(384, 30)
@@ -233,7 +233,7 @@ Public Class frmAnalyseUsers
         'chkMdPExpiré
         '
         Me.chkMdPExpiré.Checked = True
-        Me.chkMdPExpiré.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkMdPExpiré.CheckState = CheckState.Checked
         Me.chkMdPExpiré.Location = New System.Drawing.Point(8, 118)
         Me.chkMdPExpiré.Name = "chkMdPExpiré"
         Me.chkMdPExpiré.Size = New System.Drawing.Size(312, 30)
@@ -243,7 +243,7 @@ Public Class frmAnalyseUsers
         'chkChangeMDPInterdit
         '
         Me.chkChangeMDPInterdit.Checked = True
-        Me.chkChangeMDPInterdit.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkChangeMDPInterdit.CheckState = CheckState.Checked
         Me.chkChangeMDPInterdit.Location = New System.Drawing.Point(8, 89)
         Me.chkChangeMDPInterdit.Name = "chkChangeMDPInterdit"
         Me.chkChangeMDPInterdit.Size = New System.Drawing.Size(312, 29)
@@ -253,7 +253,7 @@ Public Class frmAnalyseUsers
         'chkCompteDésactivé
         '
         Me.chkCompteDésactivé.Checked = True
-        Me.chkCompteDésactivé.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkCompteDésactivé.CheckState = CheckState.Checked
         Me.chkCompteDésactivé.Location = New System.Drawing.Point(8, 59)
         Me.chkCompteDésactivé.Name = "chkCompteDésactivé"
         Me.chkCompteDésactivé.Size = New System.Drawing.Size(248, 30)
@@ -263,7 +263,7 @@ Public Class frmAnalyseUsers
         'chkScriptOuverture
         '
         Me.chkScriptOuverture.Checked = True
-        Me.chkScriptOuverture.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkScriptOuverture.CheckState = CheckState.Checked
         Me.chkScriptOuverture.Location = New System.Drawing.Point(8, 30)
         Me.chkScriptOuverture.Name = "chkScriptOuverture"
         Me.chkScriptOuverture.Size = New System.Drawing.Size(248, 29)

@@ -4,6 +4,7 @@
 
 using System;
 using System.IO;
+using static System.Console;
 
 namespace CS_Path;
 
@@ -21,7 +22,7 @@ internal class Class1
         string sPath1 = "filename.ext";
         string sPath2 = Path.ChangeExtension(sPath1, ".zap");
 
-        Console.WriteLine("Path1: {0}\nPath2: {1}", sPath1, sPath2);
+        WriteLine("Path1: {0}\nPath2: {1}", sPath1, sPath2);
         //Console.ReadLine();
     }
 }

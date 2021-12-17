@@ -21,7 +21,7 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
         c(0) = New Carre55(i00, i01, i02, i03, i04, i10, i11, i12, i13, i14, i20, i21, i22, i23, i24)
         iNbt = 1
         If i00 + i01 + i02 + i03 + i04 + i10 + i11 + i12 + i13 + i14 + i20 + i21 + i22 + i23 + i24 <> 5 Then
-            Console.WriteLine("Définition de la pièce {0} incorrecte", hNP)
+            WriteLine("Définition de la pièce {0} incorrecte", hNP)
         End If
 
         Dim i, j As Integer
@@ -44,7 +44,7 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
 
     ' Traces
     Public Sub Dessin()
-        Console.WriteLine("Pièce {0} {1} iNbt={2}", hNumPiece, cPiece, iNbt)
+        WriteLine("Pièce {0} {1} iNbt={2}", hNumPiece, cPiece, iNbt)
     End Sub
 
 End Class

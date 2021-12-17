@@ -15,7 +15,7 @@ Module Module1
         'Dim b As Boolean = Wow64DisableWow64FsRedirection(x)
 
         Dim l As Long = New System.IO.FileInfo("C:\Windows\System32\Notepad.exe").Length
-        Console.WriteLine("l=" & l.ToString)
+        WriteLine("l=" & l.ToString)
     End Sub
 
 End Module

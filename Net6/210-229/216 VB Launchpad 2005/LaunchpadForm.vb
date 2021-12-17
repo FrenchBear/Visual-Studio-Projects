@@ -97,7 +97,7 @@ Public Class LaunchpadForm
                     If mc.sIconFile <> "" Then
                         If My.Computer.FileSystem.FileExists("..\Etc\" & mc.sIconFile) Then
                             If mc.sIconFile.EndsWith(".bmp") Then
-                                tsmiCommand.Image = Bitmap.FromFile("..\Etc\" & mc.sIconFile)
+                                tsmiCommand.Image = Image.FromFile("..\Etc\" & mc.sIconFile)
                             Else
                                 tsmiCommand.Image = New Icon("..\Etc\" & mc.sIconFile).ToBitmap
                             End If
@@ -135,7 +135,7 @@ Public Class LaunchpadForm
 
                             If My.Computer.FileSystem.FileExists("..\Etc\" & mc.sIconFile) Then
                                 If mc.sIconFile.EndsWith(".bmp") Then
-                                    b.Image = Bitmap.FromFile("..\Etc\" & mc.sIconFile)
+                                    b.Image = Image.FromFile("..\Etc\" & mc.sIconFile)
                                 Else
                                     b.Image = New Icon("..\Etc\" & mc.sIconFile).ToBitmap
                                 End If

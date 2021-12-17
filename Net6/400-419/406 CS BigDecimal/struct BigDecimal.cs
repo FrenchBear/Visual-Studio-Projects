@@ -85,7 +85,7 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
         var sb = new StringBuilder();
         if (n < 0) _ = sb.Append('-');
         _ = BigInteger.Abs(n) >= ScaleFactor ? sb.Append(BigInteger.Divide(BigInteger.Abs(n), ScaleFactor).ToString()) : sb.Append('0');
-        BigInteger d = BigInteger.Remainder(BigInteger.Abs(n), ScaleFactor);
+        var d = BigInteger.Remainder(BigInteger.Abs(n), ScaleFactor);
         if (d != 0)
         {
             _ = sb.Append('.');
@@ -102,7 +102,7 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
         //Check for null and compare run-time types.
         if (obj == null || GetType() != obj.GetType()) return false;
 
-        BigDecimal bd = (BigDecimal)obj;
+        var bd = (BigDecimal)obj;
         return n == bd.n;
     }
 
@@ -117,7 +117,7 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
 
         try
         {
-            BigDecimal bd = (BigDecimal)obj;
+            var bd = (BigDecimal)obj;
             return CompareTo(bd);
         }
         catch (Exception)

@@ -49,7 +49,7 @@ Public Class MyMsgBox3
         '@design Me.TrayLargeIcon = False
         '@design Me.TrayAutoArrange = True
         btnOk.Location = New Drawing.Point(52, 112)
-        btnOk.BackColor = System.Drawing.Color.RosyBrown
+        btnOk.BackColor = Drawing.Color.RosyBrown
 
         btnAide.Location = New Drawing.Point(124, 112)
         btnAide.Size = New Drawing.Size(56, 24)
@@ -57,7 +57,7 @@ Public Class MyMsgBox3
         btnAide.Text = "Aide"
 
         Me.AutoScaleBaseSize = New Drawing.Size(5, 13)
-        Me.BackColor = System.Drawing.Color.RosyBrown
+        Me.BackColor = Drawing.Color.RosyBrown
 
         Me.Controls.Add(btnAide)
     End Sub

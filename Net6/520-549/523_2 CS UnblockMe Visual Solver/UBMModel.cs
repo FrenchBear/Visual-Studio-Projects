@@ -8,8 +8,9 @@
 
 using System;
 using System.Collections.Generic;
+using static System.Console;
 
-namespace CS523B_UnblockMe_Solver_Visual;
+namespace CS523B;
 
 public class UBMModel
 {
@@ -39,14 +40,14 @@ private void UBModel()
     ShowConfig(Configuration);
 
     if (Configuration.IsValid(Pieces))
-        Console.WriteLine("Config Ok");
+        WriteLine("Config Ok");
     else
-        Console.WriteLine("Invalid config!");
+        WriteLine("Invalid config!");
 
     History.Add(Configuration.Signature());
     Move(1, Configuration);
 
-    Console.WriteLine("{0} configurations analyzed, {1} moves for solution", nbConfig, solutionMoves);
+    WriteLine("{0} configurations analyzed, {1} moves for solution", nbConfig, solutionMoves);
 }
      */
 
@@ -62,7 +63,7 @@ private void UBModel()
         if (config.Pos[redPiece] + Pieces[redPiece].Length == 6)
         {
             ShowConfig(config);
-            Console.WriteLine("Solution found, depth={0}", depth);
+            WriteLine("Solution found, depth={0}", depth);
             foundSolution = true;
             return true;
         }
@@ -111,7 +112,7 @@ private void UBModel()
 
     private void ShowConfig(Config config)
     {
-        Console.WriteLine();
+        WriteLine();
         for (int r = 0; r < 6; r++)
         {
             for (int c = 0; c < 6; c++)
@@ -138,7 +139,7 @@ private void UBModel()
                 Console.Write(ch);
             }
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine();
+            WriteLine();
         }
     }
 }

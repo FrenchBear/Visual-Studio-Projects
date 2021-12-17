@@ -24,13 +24,13 @@ Public Class CarButtonsUserControl
         For i As Integer = 0 To NumberOfFloors - 1
             Dim cb As Button
             cb = New Button With {
-                .BackColor = System.Drawing.SystemColors.Control,
-                .Font = New Font("Arial", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte)),
+                .BackColor = SystemColors.Control,
+                .Font = New Font("Arial", 14.25!, FontStyle.Bold, GraphicsUnit.Point, CType(0, Byte)),
                 .Location = New Point(3, 60 + 36 * i),
                 .Name = "btn" & CStr(NumberOfFloors - 1 - i),
                 .Size = New Size(42, 33),
                 .Text = CStr(NumberOfFloors - 1 - i),
-                .TextAlign = System.Drawing.ContentAlignment.TopCenter,
+                .TextAlign = ContentAlignment.TopCenter,
                 .UseVisualStyleBackColor = False
             }
 
@@ -84,10 +84,10 @@ Public Class CarButtonsUserControl
 
     Public Property CallStatus(iFloor As Integer) As Boolean
         Get
-            Return Me.Controls("btn" & CStr(iFloor)).BackColor <> System.Drawing.SystemColors.Control
+            Return Me.Controls("btn" & CStr(iFloor)).BackColor <> SystemColors.Control
         End Get
         Set(value As Boolean)
-            Me.Controls("btn" & CStr(iFloor)).BackColor = IIf(value, Color.Lime, System.Drawing.SystemColors.Control)
+            Me.Controls("btn" & CStr(iFloor)).BackColor = IIf(value, Color.Lime, SystemColors.Control)
         End Set
     End Property
 

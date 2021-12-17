@@ -47,7 +47,7 @@ Public Class Form1
         '
         'btnClose
         '
-        Me.btnClose.Font = New Font("Marlett", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(2, Byte))
+        Me.btnClose.Font = New Font("Marlett", 12.0!, FontStyle.Bold, GraphicsUnit.Point, CType(2, Byte))
         Me.btnClose.Location = New Point(352, 104)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New Size(24, 23)
@@ -60,10 +60,10 @@ Public Class Form1
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         Me.ClientSize = New Size(648, 512)
         Me.Controls.Add(Me.btnClose)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = FormBorderStyle.None
         Me.Name = "Form1"
         Me.Text = "Form1"
-        Me.TransparencyKey = System.Drawing.Color.White
+        Me.TransparencyKey = Color.White
         Me.ResumeLayout(False)
 
     End Sub
@@ -80,7 +80,7 @@ Public Class Form1
 
     Private Sub Form1_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
         If e.Button = MouseButtons.Left Then
-            Dim mousePos As Point = Control.MousePosition
+            Dim mousePos As Point = MousePosition
             mousePos.Offset(mouse_offset.X, mouse_offset.Y)
             Location = mousePos
         End If

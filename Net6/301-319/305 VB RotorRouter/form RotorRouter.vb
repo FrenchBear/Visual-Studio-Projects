@@ -55,7 +55,7 @@ Public Class frmRotorRouter
                 pic.BackgroundImage = picRescaled
                 pic.Refresh()
 
-                System.Windows.Forms.Application.DoEvents()
+                Application.DoEvents()
             End If
 
             Dim x, y As Integer

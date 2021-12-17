@@ -20,22 +20,22 @@ Module modMain
         End If
         sDir = My.Application.CommandLineArgs(0)
         If Not My.Computer.FileSystem.DirectoryExists(sDir) Then
-            Console.WriteLine("AutoCleaner: Can't find directory """ & sDir & """")
+            WriteLine("AutoCleaner: Can't find directory """ & sDir & """")
             End
         End If
 
-        'Console.WriteLine("$1")
-        sDir = System.IO.Path.GetFullPath(sDir)
-        'Console.WriteLine("$2: {0}", sDir)
+        'WriteLine("$1")
+        sDir = IO.Path.GetFullPath(sDir)
+        'WriteLine("$2: {0}", sDir)
 
         Dim llList As LinkedList(Of FileAndDate)
         Dim fad As FileAndDate
 
         ' Create a list of files sorted by date
         llList = New LinkedList(Of FileAndDate)
-        'Console.WriteLine("$3")
+        'WriteLine("$3")
         For Each sFileName As String In My.Computer.FileSystem.GetFiles(sDir)
-            'Console.WriteLine("$4: {0}", sFileName)
+            'WriteLine("$4: {0}", sFileName)
             fad = New FileAndDate With {
                 .sFileName = sFileName,
                 .LastWriteTime = My.Computer.FileSystem.GetFileInfo(sFileName).LastWriteTime
@@ -55,24 +55,24 @@ Module modMain
 
         ' Delete files starting with the older until 25% of the disk is available
         Dim di As IO.DriveInfo
-        'Console.WriteLine("$5")
+        'WriteLine("$5")
         For Each fad In llList
             di = My.Computer.FileSystem.GetDriveInfo(Left(sDir, 2))
-            'Console.WriteLine("$6: {0:G}", di.AvailableFreeSpace / di.TotalSize)
+            'WriteLine("$6: {0:G}", di.AvailableFreeSpace / di.TotalSize)
             If di.AvailableFreeSpace / di.TotalSize > 0.25 Then Exit For
 
-            Console.WriteLine("del {0}", fad.sFileName)
+            WriteLine("del {0}", fad.sFileName)
             Try
                 Kill(fad.sFileName)
             Catch ex As Exception
-                Console.WriteLine("*** Failed to delete """ & fad.sFileName & """: " & ex.Message)
+                WriteLine("*** Failed to delete """ & fad.sFileName & """: " & ex.Message)
             End Try
         Next
-        'Console.WriteLine("$8")
+        'WriteLine("$8")
     End Sub
 
     Sub UsageExit()
-        Console.WriteLine("Usage: AutoCleaner folder" & vbCrLf &
+        WriteLine("Usage: AutoCleaner folder" & vbCrLf &
                           "Cleans folder content")
         End
     End Sub

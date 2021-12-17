@@ -30,9 +30,9 @@ Public Class Form1
 
     Sub Convert(sFile As String)
         Dim i As Image
-        i = System.Drawing.Image.FromFile(sFile)
+        i = Image.FromFile(sFile)
 
-        i.Save(Replace(sDest & "\" & My.Computer.FileSystem.GetName(sFile), ".ico", ".png"), System.Drawing.Imaging.ImageFormat.Png)
+        i.Save(Replace(sDest & "\" & My.Computer.FileSystem.GetName(sFile), ".ico", ".png"), Imaging.ImageFormat.Png)
     End Sub
 
 End Class

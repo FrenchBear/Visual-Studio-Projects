@@ -8,6 +8,7 @@
 // 2021-09-18   PV  VS2022, Net6
 
 using System;
+using static System.Console;
 
 internal class Pentamino
 {
@@ -74,7 +75,7 @@ internal class Pentamino
         /*
             if (MAXLIG*MAXCOL!=5*MAXPIECE)
             {
-              Console.WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !");
+              WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !");
               return;
             }
         */
@@ -99,13 +100,13 @@ internal class Pentamino
         Jeu j = new();
 
         // Pavage
-        DateTime t0 = System.DateTime.Now;
+        DateTime t0 = DateTime.Now;
         Pavage(0, 0, j, (1 << MAXPIECE) - 1);
-        DateTime t1 = System.DateTime.Now;
+        DateTime t1 = DateTime.Now;
         TimeSpan t = t1.Subtract(t0);
 
-        Console.WriteLine("{0} pour {1} solutions\n", t, iNbSol);
-        Console.WriteLine("{0} appels à Pavage\n", iNbAppelPavage);
+        WriteLine("{0} pour {1} solutions\n", t, iNbSol);
+        WriteLine("{0} appels à Pavage\n", iNbAppelPavage);
 
         //Console.ReadLine();
     }
@@ -146,14 +147,14 @@ internal class Pentamino
             iNbSol++;
 
             /*
-            Console.WriteLine("Solution {0} trouvée", iNbSol);
+            WriteLine("Solution {0} trouvée", iNbSol);
             for (l=0 ; l<MAXLIG; l++)
             {
               for (c=0 ; c<MAXCOL ; c++)
-                Console.Write("{0:D2} ", tP[jeu[l, c]-1].hNumPiece);
-              Console.WriteLine();
+                Write("{0:D2} ", tP[jeu[l, c]-1].hNumPiece);
+              WriteLine();
             }
-            Console.WriteLine();
+            WriteLine();
             _ = Console.ReadLine();
             */
 

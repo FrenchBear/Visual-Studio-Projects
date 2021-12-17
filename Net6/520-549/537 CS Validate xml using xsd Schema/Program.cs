@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Xml;
 using System.Xml.Schema;
+using static System.Console;
 
 namespace ValidateSchema;
 
@@ -16,14 +17,14 @@ internal class Program
         roundingInfosSettings.ValidationType = ValidationType.Schema;
         roundingInfosSettings.ValidationEventHandler += new ValidationEventHandler(RoundingInfosSettingsValidationEventHandler);
 
-        XmlReader roundingInfos = XmlReader.Create("RoundingInfos-1.e5r", roundingInfosSettings);
+        var roundingInfos = XmlReader.Create("RoundingInfos-1.e5r", roundingInfosSettings);
 
         while (roundingInfos.Read())
         {
             Console.Write(roundingInfos.NodeType + " ");
             if (roundingInfos.NodeType == XmlNodeType.Element || roundingInfos.NodeType == XmlNodeType.EndElement)
                 Console.Write(roundingInfos.Name);
-            Console.WriteLine();
+            WriteLine();
         }
     }
 
@@ -32,12 +33,12 @@ internal class Program
         if (e.Severity == XmlSeverityType.Warning)
         {
             Console.Write("WARNING: ");
-            Console.WriteLine(e.Message);
+            WriteLine(e.Message);
         }
         else if (e.Severity == XmlSeverityType.Error)
         {
             Console.Write("ERROR: ");
-            Console.WriteLine(e.Message);
+            WriteLine(e.Message);
         }
         Debugger.Break();
     }

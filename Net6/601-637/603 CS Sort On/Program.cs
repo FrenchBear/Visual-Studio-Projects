@@ -68,15 +68,15 @@ internal static class Extensions
         {
             if (first)
             {
-                Console.Write('{');
+                Write('{');
                 first = false;
             }
             else
             {
-                Console.Write(", ");
+                Write(", ");
             }
 
-            Console.Write(item);
+            Write(item);
         }
         Console.WriteLine('}');
     }

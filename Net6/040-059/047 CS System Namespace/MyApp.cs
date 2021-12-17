@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Reflection;
+using static System.Console;
 
 internal class MyApp
 {
@@ -62,7 +63,7 @@ internal class MyApp
         }
         catch (Exception ex2)
         {
-            Console.WriteLine(ex2.Message);
+            WriteLine(ex2.Message);
             return;
         }
 
@@ -82,7 +83,7 @@ internal class MyApp
             while (enuMain.MoveNext())
             {
                 writer.WriteLine("<TD>");
-                Hashtable d = (Hashtable)enuMain.Value;
+                var d = (Hashtable)enuMain.Value;
                 if (d.Contains(ns))
                 {
                     /*
@@ -104,7 +105,7 @@ internal class MyApp
 
         writer.Close();
 
-        Console.WriteLine(@"Fichier c:\analyse.htm généré");    //, entrée pour continuer...");
+        WriteLine(@"Fichier c:\analyse.htm généré");    //, entrée pour continuer...");
         //Console.ReadLine();
     }
 
@@ -113,7 +114,7 @@ internal class MyApp
         dic = new Hashtable();
         dicMain.Add(sNomAssembly, dic);
 
-        Assembly a = System.Reflection.Assembly.LoadFrom(Path.Join(@"C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.10", sNomAssembly ));
+        var a = Assembly.LoadFrom(Path.Join(@"C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.10", sNomAssembly ));
 
         foreach (Module m in a.GetModules())
             AnalyseModule(m);
@@ -121,7 +122,7 @@ internal class MyApp
 
     private static void AnalyseModule(Module m)
     {
-        Console.WriteLine("Module {0}", m.Name);
+        WriteLine("Module {0}", m.Name);
 
         foreach (Type t in m.GetTypes())
             AnalyseType(t);
@@ -164,7 +165,7 @@ internal class MyApp
         if (t.IsUnicodeClass) Console.Write("UnicodeClass ");
         if (t.IsUnmanagedValueType) Console.Write("UnmanagedValueType ");
 
-        Console.WriteLine("  {0}/{1}", t.FullName);
+        WriteLine("  {0}/{1}", t.FullName);
         */
 
         if (!t.IsPublic) return;

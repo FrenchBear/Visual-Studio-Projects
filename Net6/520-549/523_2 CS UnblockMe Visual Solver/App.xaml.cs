@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace CS523B_UnblockMe_Solver_Visual;
+namespace CS523B;
 
 /// <summary>
 /// Interaction logic for App.xaml

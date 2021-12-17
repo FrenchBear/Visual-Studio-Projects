@@ -3,9 +3,9 @@
 // 2011-05-16   PV
 // 2021-09-23   PV  VS2022; Net6
 
-using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using static System.Console;
 
 namespace Rename_eMule_Incoming;
 
@@ -14,13 +14,13 @@ internal class Program
     private static void Main(string[] args)
     {
         var d = new DirectoryInfo(@"F:\eMule\Incoming");
-        Regex r = new(@"^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+        Regex r = new(@"^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", RegexOptions.IgnoreCase);
 
         foreach (FileInfo f in d.EnumerateFiles())
         {
             if (string.Compare(f.Extension, ".avi", true) == 0 || string.Compare(f.Extension, ".mkv", true) == 0)
             {
-                Console.WriteLine(f.Name);
+                WriteLine(f.Name);
                 Match m = r.Match(Path.GetFileNameWithoutExtension(f.Name));
                 if (m.Success)
                 {

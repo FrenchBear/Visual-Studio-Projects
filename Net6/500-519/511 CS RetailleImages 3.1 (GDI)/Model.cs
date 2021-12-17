@@ -59,7 +59,7 @@ public class Model
     public void DoGenerate(CancellationToken cancelToken, IProgress<ProgressInfo> progress)
     {
         // Build the list of files to process
-        processedFilesList = Directory.GetFiles(SourceFolder, "*.jpg", IncludeSubFolders ? System.IO.SearchOption.AllDirectories : System.IO.SearchOption.TopDirectoryOnly);
+        processedFilesList = Directory.GetFiles(SourceFolder, "*.jpg", IncludeSubFolders ? SearchOption.AllDirectories : SearchOption.TopDirectoryOnly);
 
         progress.Report(new ProgressInfo(0, processedFilesList.Length,
             $"Génération de {processedFilesList.Length} vignettes"));
@@ -187,7 +187,7 @@ public class Model
             vignette.SetPropertyItem(propItem);
 
         EncoderParameters eps = new(1);
-        eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
+        eps.Param[0] = new EncoderParameter(Encoder.Quality, JpegQuality);
         ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
 
         if (!Directory.Exists(Path.GetDirectoryName(vignettePath)))

@@ -7,6 +7,8 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-18    PV  VS2022, Net6
 
+Imports System.Console
+
 Module Pentamino
 
     Const MAXLIG As Integer = 12
@@ -77,7 +79,7 @@ Module Pentamino
         'Console.ReadLine()
 
         If (MAXLIG * MAXCOL <> 5 * MAXPIECE) Then
-            Console.WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !")
+            WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !")
             Exit Sub
         End If
 
@@ -106,8 +108,8 @@ Module Pentamino
         Dim t1 As System.DateTime = System.DateTime.Now
         Dim t As TimeSpan = t1.Subtract(t0)
 
-        Console.WriteLine("{0} pour {1} solutions\n", t, iNbSol)
-        Console.WriteLine("{0} appels à Pavage\n", iNbAppelPavage)
+        WriteLine("{0} pour {1} solutions\n", t, iNbSol)
+        WriteLine("{0} appels à Pavage\n", iNbAppelPavage)
 
         'Console.ReadLine()
     End Sub
@@ -143,15 +145,15 @@ Module Pentamino
             iNbSol += 1
 
 #If TraceSolution Then
-      Console.WriteLine("Solution {0} trouvée", iNbSol)
-      For l = 0 To MAXLIG - 1
-        For c = 0 To MAXCOL - 1
-          Console.Write("{0:D2} ", tP(jeu(l, c) - 1).hNumPiece)
-        Next
-        Console.WriteLine()
-      Next
-      Console.WriteLine()
-      Console.ReadLine()
+            WriteLine("Solution {0} trouvée", iNbSol)
+            For l = 0 To MAXLIG - 1
+                For c = 0 To MAXCOL - 1
+                    Write("{0:D2} ", tP(jeu(l, c) - 1).hNumPiece)
+                Next
+                WriteLine()
+            Next
+            WriteLine()
+            ReadLine()
 #End If
 
             Exit Sub

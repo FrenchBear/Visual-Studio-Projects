@@ -8,6 +8,7 @@
 // 2021-09-17   PV  VS2022/Net6
 
 using System;
+using static System.Console;
 
 namespace CS002;
 
@@ -34,10 +35,10 @@ public class MyApp
 {
     private static void F(params int[] targ)
     {
-        Console.WriteLine("# of arguments: {0}", targ.Length);
+        WriteLine("# of arguments: {0}", targ.Length);
         for (int i = 0; i < targ.Length; i++)
         {
-            Console.WriteLine("\tArg[{0}] = {1}", i, targ[i]);
+            WriteLine("\tArg[{0}] = {1}", i, targ[i]);
         }
     }
 
@@ -45,7 +46,7 @@ public class MyApp
 
     public static void Main()
     {
-        Console.WriteLine("System.Int64.MaxValue = {0}", System.Int64.MaxValue);
+        WriteLine("System.Int64.MaxValue = {0}", System.Int64.MaxValue);
 
         F();
         F(1, 2);
@@ -53,7 +54,7 @@ public class MyApp
 
         int a = 1, b = 2;
 
-        Console.WriteLine("a={0}, b={1}", a, b);
+        WriteLine("a={0}, b={1}", a, b);
 
         object oa = a;
         object ob = b;
@@ -61,31 +62,31 @@ public class MyApp
         a = (int)oa;
         b = (int)ob;
 
-        Console.WriteLine("a={0}, b={1}", a, b);
+        WriteLine("a={0}, b={1}", a, b);
 
         Pile p = new();
         p.Empile(1);
         p.Empile(2);
         p.Empile(3);
 
-        Console.WriteLine("Dépile: {0}", p.Dépile());
-        Console.WriteLine("Dépile: {0}", p.Dépile());
+        WriteLine("Dépile: {0}", p.Dépile());
+        WriteLine("Dépile: {0}", p.Dépile());
 
         try
         {
-            Console.WriteLine("Dépile: {0}", p.Dépile());
+            WriteLine("Dépile: {0}", p.Dépile());
         }
         catch (Exception e)
         {
-            Console.WriteLine("Échec au dépile: {0}", e.Message);
+            WriteLine("Échec au dépile: {0}", e.Message);
         }
         finally
         {
-            Console.WriteLine("Bloc finally");
+            WriteLine("Bloc finally");
         }
 
-        Console.WriteLine("12.3² = {0}", MyMath.Carré(12.3));
-        Console.WriteLine("Intégrale x²|0,1: {0}", MyMath.Intégrale(0.0, 1.0, new MyMath.FRéelle(MyMath.Carré)));
-        Console.WriteLine("Intégrale sin(x)|0,pi: {0}", MyMath.Intégrale(0.0, Math.PI, new MyMath.FRéelle(Math.Sin)));
+        WriteLine("12.3² = {0}", MyMath.Carré(12.3));
+        WriteLine("Intégrale x²|0,1: {0}", MyMath.Intégrale(0.0, 1.0, new MyMath.FRéelle(MyMath.Carré)));
+        WriteLine("Intégrale sin(x)|0,pi: {0}", MyMath.Intégrale(0.0, Math.PI, new MyMath.FRéelle(Math.Sin)));
     }
 }

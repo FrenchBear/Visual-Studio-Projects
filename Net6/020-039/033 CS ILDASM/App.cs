@@ -8,6 +8,7 @@
 
 using MaBibliotheque;
 using System;
+using static System.Console;
 
 namespace EssaisILDasm;
 
@@ -25,50 +26,50 @@ internal class MyApp
         try
         { MaClasseDerivee.TrucDangereux(35); }
         catch
-        { Console.WriteLine("Echec a l'appel de d.TrucDangereux(35)"); }
+        { WriteLine("Echec a l'appel de d.TrucDangereux(35)"); }
 
         try
         { MaClasseDerivee.TrucDangereux(0); }
         catch (Exception e)
-        { Console.WriteLine("Échec à l'appel de d.TrucDangereux(0): {0}", e.Message); }
-        Console.WriteLine();
+        { WriteLine("Échec à l'appel de d.TrucDangereux(0): {0}", e.Message); }
+        WriteLine();
 
         // Appel de méthodes virtuelles
         ActionBase(d, 2);
         d.MyBaseAction();
         MaClasseDeBase b = new(d);
         b.Action();
-        Console.WriteLine();
+        WriteLine();
 
         // Evénements
         d.MaMethodeBruyante1(3);
         ActionInterface(d);
-        Console.WriteLine();
+        WriteLine();
 
         // Indexers
-        Console.WriteLine("Index 0: {0}", d[0]);
-        Console.WriteLine("Index \"A\": {0}", d["A"]);
-        Console.WriteLine("Index 'A': {0}", d['A']);
-        Console.WriteLine("Index 3,4: {0}", d[3, 4]);
-        Console.WriteLine("Index 3,\"Z\": {0}", d[3, "Z"]);
-        Console.WriteLine();
+        WriteLine("Index 0: {0}", d[0]);
+        WriteLine("Index \"A\": {0}", d["A"]);
+        WriteLine("Index 'A': {0}", d['A']);
+        WriteLine("Index 3,4: {0}", d[3, 4]);
+        WriteLine("Index 3,\"Z\": {0}", d[3, "Z"]);
+        WriteLine();
 
         // Enum
         Jour j = Jour.Mardi;
-        Console.WriteLine("j = {0}", j);
+        WriteLine("j = {0}", j);
         j++;
-        Console.WriteLine("j = {0}", j);
-        Console.WriteLine();
+        WriteLine("j = {0}", j);
+        WriteLine();
 
         // Types valeur
         DBInt x = 123;
         DBInt y = DBInt.Null;
         DBInt z = x + y;
-        Console.WriteLine("x = {0}", x);
-        Console.WriteLine("y = {0}", y);
-        Console.WriteLine("z = {0}", z);
+        WriteLine("x = {0}", x);
+        WriteLine("y = {0}", y);
+        WriteLine("z = {0}", z);
 
-        _ = Console.ReadLine();
+        _ = ReadLine();
     }
 
     protected static void ActionBase(MaClasseDeBase b, int iVal)
@@ -83,5 +84,5 @@ internal class MyApp
         IMI.MaMethodeBruyante2(1);
     }
 
-    private static void D_Bip(object e, string sMsg) => Console.WriteLine("D_Bip(): {0}", sMsg);
+    private static void D_Bip(object e, string sMsg) => WriteLine("D_Bip(): {0}", sMsg);
 }

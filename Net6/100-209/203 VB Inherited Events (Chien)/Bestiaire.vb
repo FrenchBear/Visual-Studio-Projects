@@ -32,19 +32,19 @@ Module MainModule
     End Sub
 
     Private Sub Rex_Aboyer() Handles Rex.Aboyer
-        Console.WriteLine("Rex aboie")
+        WriteLine("Rex aboie")
     End Sub
 
     Private Sub Rex_Meurt() Handles Rex.Meurt
-        Console.WriteLine("Rex est mort")
+        WriteLine("Rex est mort")
     End Sub
 
     Private Sub Rex_Mordre() Handles Rex.Mordre
-        Console.WriteLine("Rex a mordu")
+        WriteLine("Rex a mordu")
     End Sub
 
     Private Sub Rex_Nait() Handles Rex.Nait
-        Console.WriteLine("Rex est né le " & Rex.NéLe)
+        WriteLine("Rex est né le " & Rex.NéLe)
     End Sub
 
 End Module
@@ -66,11 +66,11 @@ Public MustInherit Class EtreVivant
     End Sub
 
     Private Sub EtreVivant_Meurt() Handles Me.Meurt
-        Console.WriteLine("Un être vivant est mort")
+        WriteLine("Un être vivant est mort")
     End Sub
 
     Private Sub EtreVivant_Nait() Handles Me.Nait
-        Console.WriteLine("Un être vivant est né")
+        WriteLine("Un être vivant est né")
     End Sub
 
 End Class
@@ -90,27 +90,27 @@ Public Class Animal : Inherits EtreVivant
     End Sub
 
     Overridable Sub Crier()
-        Console.WriteLine("Un animal de race " & Race & " crie.")
+        WriteLine("Un animal de race " & Race & " crie.")
     End Sub
 
     Overridable Sub Lécher()
-        Console.WriteLine("Un animal de race " & Race & " lèche.")
+        WriteLine("Un animal de race " & Race & " lèche.")
     End Sub
 
     Sub Jouer()
-        Console.WriteLine("Un animal de race " & Race & " joue.")
+        WriteLine("Un animal de race " & Race & " joue.")
     End Sub
 
     Private Sub Animal_Meurt() Handles Me.Meurt
-        Console.WriteLine("Un animal de race " & Race & " est mort")
+        WriteLine("Un animal de race " & Race & " est mort")
     End Sub
 
     Private Sub Animal_Mordre() Handles Me.Mordre
-        Console.WriteLine("Un animal de race " & Race & " a mordu")
+        WriteLine("Un animal de race " & Race & " a mordu")
     End Sub
 
     Private Sub Animal_Nait() Handles Me.Nait
-        Console.WriteLine("Un animal de race " & Race & " est né")
+        WriteLine("Un animal de race " & Race & " est né")
     End Sub
 
 End Class
@@ -131,31 +131,31 @@ Public Class Chien : Inherits Animal
     End Sub
 
     Overrides Sub Crier()
-        Console.WriteLine(Nom & ": Wouaf !")
+        WriteLine(Nom & ": Wouaf !")
     End Sub
 
     NotOverridable Overrides Sub Lécher()
-        Console.WriteLine("Le chien " & Nom & " lèche")
+        WriteLine("Le chien " & Nom & " lèche")
     End Sub
 
     Overloads Sub Jouer()
-        Console.WriteLine("Le chien " & Nom & " joue.")
+        WriteLine("Le chien " & Nom & " joue.")
     End Sub
 
     Private Sub Chien_Aboyer() Handles Me.Aboyer
-        Console.WriteLine("Le chien " & Nom & " a aboyé")
+        WriteLine("Le chien " & Nom & " a aboyé")
     End Sub
 
     Private Sub Chien_Meurt() Handles Me.Meurt
-        Console.WriteLine("Le chien " & Nom & " est mort")
+        WriteLine("Le chien " & Nom & " est mort")
     End Sub
 
     Private Sub Chien_Mordre() Handles Me.Mordre
-        Console.WriteLine("Le chien " & Nom & " a mordu")
+        WriteLine("Le chien " & Nom & " a mordu")
     End Sub
 
     Private Sub Chien_Nait() Handles Me.Nait
-        Console.WriteLine("Le chien " & Nom & " est né")
+        WriteLine("Le chien " & Nom & " est né")
     End Sub
 
 End Class
@@ -167,15 +167,15 @@ Class Chiot : Inherits Chien
     End Sub
 
     Overrides Sub Crier()
-        Console.WriteLine(Nom & ": Wif !  Wif !")
+        WriteLine(Nom & ": Wif !  Wif !")
     End Sub
 
     'Overrides Sub Lécher()
-    '    Console.WriteLine("Le chiot " & nom & " lèche")
+    '    WriteLine("Le chiot " & nom & " lèche")
     'End Sub
 
     Overloads Sub Jouer()
-        Console.WriteLine("Le chiot " & Nom & " joue.")
+        WriteLine("Le chiot " & Nom & " joue.")
     End Sub
 
 End Class

@@ -53,7 +53,7 @@ Public Class Form1
         '
         'btnLoad
         '
-        Me.btnLoad.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnLoad.Anchor = (AnchorStyles.Top Or AnchorStyles.Right)
         Me.btnLoad.Location = New Point(284, 12)
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.TabIndex = 1
@@ -61,20 +61,20 @@ Public Class Form1
         '
         'PictureBox1
         '
-        Me.PictureBox1.Anchor = (((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right)
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Anchor = (((AnchorStyles.Top Or AnchorStyles.Bottom) _
+                    Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right)
+        Me.PictureBox1.BorderStyle = BorderStyle.FixedSingle
         Me.PictureBox1.Location = New Point(8, 12)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New Size(264, 246)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
         'btnKill
         '
-        Me.btnKill.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnKill.Anchor = (AnchorStyles.Top Or AnchorStyles.Right)
         Me.btnKill.Location = New Point(284, 108)
         Me.btnKill.Name = "btnKill"
         Me.btnKill.TabIndex = 1
@@ -82,7 +82,7 @@ Public Class Form1
         '
         'btnClear
         '
-        Me.btnClear.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnClear.Anchor = (AnchorStyles.Top Or AnchorStyles.Right)
         Me.btnClear.Location = New Point(284, 44)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.TabIndex = 1
@@ -90,7 +90,7 @@ Public Class Form1
         '
         'btnGC
         '
-        Me.btnGC.Anchor = (System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right)
+        Me.btnGC.Anchor = (AnchorStyles.Top Or AnchorStyles.Right)
         Me.btnGC.Location = New Point(284, 76)
         Me.btnGC.Name = "btnGC"
         Me.btnGC.TabIndex = 1
@@ -120,7 +120,7 @@ Public Class Form1
             Exit Sub
         End Try
 
-        PictureBox1.Image = System.Drawing.Image.FromFile(sCopyPath)
+        PictureBox1.Image = Image.FromFile(sCopyPath)
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
@@ -128,7 +128,7 @@ Public Class Form1
     End Sub
 
     Private Sub btnGC_Click(sender As Object, e As EventArgs) Handles btnGC.Click
-        System.GC.Collect()
+        GC.Collect()
     End Sub
 
     Private Sub btnKill_Click(sender As Object, e As EventArgs) Handles btnKill.Click

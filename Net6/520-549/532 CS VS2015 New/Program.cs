@@ -6,9 +6,6 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;                // Using Static
 
 namespace CS532;
@@ -38,7 +35,7 @@ internal class Program
                     }
                 }";
 
-        JObject consoleColorConfiguration = JObject.Parse(jsonText);
+        var consoleColorConfiguration = JObject.Parse(jsonText);
         // Null-conditional operator ?[ since JSon indexer does not raise an exception
         string colorText = consoleColorConfiguration?["ForegroundColor"]?["Normal"]?.Value<string>();
         if (Enum.TryParse(colorText, out ConsoleColor color))

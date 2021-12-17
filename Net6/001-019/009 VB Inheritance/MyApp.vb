@@ -17,7 +17,7 @@ End Module
 Class B
 
     Sub New()
-        Console.WriteLine("B.ctor")
+        WriteLine("B.ctor")
     End Sub
 
 End Class
@@ -27,7 +27,7 @@ Class D
 
     Sub New()
         'MyBase.New()   'Inutile, appelé automatiquement
-        Console.WriteLine("D.ctor")
+        WriteLine("D.ctor")
     End Sub
 
 End Class

@@ -14,8 +14,8 @@ Class MainWindow
     Private Sub OnLoad(sender As System.Object, e As RoutedEventArgs)
         Dim reEpisodeNum1 As New Regex("^[0-9]+x[0-9]+$")
         Dim reEpisodeNum2 As New Regex("^S([0-9]+)E([0-9]+)$")
-        For Each sFilename As String In System.IO.Directory.EnumerateFiles("C:\Users\Pierre\Downloads\eMule\Incoming")
-            Dim sBase As String = System.IO.Path.GetFileNameWithoutExtension(sFilename)
+        For Each sFilename As String In IO.Directory.EnumerateFiles("C:\Users\Pierre\Downloads\eMule\Incoming")
+            Dim sBase As String = IO.Path.GetFileNameWithoutExtension(sFilename)
 
             Dim p1 As Integer = sBase.IndexOf("["c)
             If p1 >= 0 Then
@@ -34,21 +34,21 @@ Class MainWindow
                 ElseIf reEpisodeNum2.IsMatch(s) Then
                     Dim m As Match = reEpisodeNum2.Matches(s)(0)
                     s = "- " & Format(Val(m.Groups(1).Captures(0).Value)) & "x" & Format(Val(m.Groups(2).Captures(0).Value)) & " -"
-                ElseIf s.Contains("Vostfr", System.StringComparison.InvariantCultureIgnoreCase) Then
+                ElseIf s.Contains("Vostfr", StringComparison.InvariantCultureIgnoreCase) Then
                     s = "- Vostfr"
                 ElseIf s = "fr" Then
                     s = "- Fr"
-                ElseIf s.Contains("HDTV", System.StringComparison.InvariantCultureIgnoreCase) Then
+                ElseIf s.Contains("HDTV", StringComparison.InvariantCultureIgnoreCase) Then
                     s = ""
-                ElseIf s.Contains("XVID", System.StringComparison.InvariantCultureIgnoreCase) Then
+                ElseIf s.Contains("XVID", StringComparison.InvariantCultureIgnoreCase) Then
                     s = ""
-                ElseIf s.Contains("BAWLS", System.StringComparison.InvariantCultureIgnoreCase) Then
+                ElseIf s.Contains("BAWLS", StringComparison.InvariantCultureIgnoreCase) Then
                     s = ""
-                ElseIf s.Contains("DIMENSION", System.StringComparison.InvariantCultureIgnoreCase) Then
+                ElseIf s.Contains("DIMENSION", StringComparison.InvariantCultureIgnoreCase) Then
                     s = ""
-                ElseIf s.Contains("FASTSUB", System.StringComparison.InvariantCultureIgnoreCase) Then
+                ElseIf s.Contains("FASTSUB", StringComparison.InvariantCultureIgnoreCase) Then
                     s = ""
-                ElseIf s.Contains("AlFleNi", System.StringComparison.InvariantCultureIgnoreCase) Then
+                ElseIf s.Contains("AlFleNi", StringComparison.InvariantCultureIgnoreCase) Then
                     s = ""
                 End If
 
@@ -58,14 +58,14 @@ Class MainWindow
                 End If
             Next
             sRes.Append("."c)
-            sRes.Append(System.IO.Path.GetExtension(sFilename))
+            sRes.Append(IO.Path.GetExtension(sFilename))
 
             Dim sNewName As String = Replace(sRes.ToString, "..", ".")
 
             ListBox1.Items.Add(sBase)
             ListBox1.Items.Add(sNewName)
 
-            System.IO.File.Move(sFilename, sNewName)
+            IO.File.Move(sFilename, sNewName)
         Next
     End Sub
 

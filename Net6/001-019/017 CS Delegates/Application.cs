@@ -9,16 +9,16 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-17   PV  VS2022/Net6
 
-using System;
+using static System.Console;
 
 internal class MaClasse
 {
-    public virtual void F(int i) => Console.WriteLine("MaClasse.F({0})", i);
+    public virtual void F(int i) => WriteLine("MaClasse.F({0})", i);
 }
 
 internal class MaDérivée : MaClasse
 {
-    public override void F(int i) => Console.WriteLine("MaDérivée.F({0})", i);
+    public override void F(int i) => WriteLine("MaDérivée.F({0})", i);
 }
 
 internal delegate void MyDelegate(int x);
@@ -35,8 +35,8 @@ internal class Test
         f(132);
         g(133);
 
-        _ = Console.ReadLine();
+        _ = ReadLine();
     }
 
-    private static void Zap(int iValeur) => Console.WriteLine("Zap({0})", iValeur);
+    private static void Zap(int iValeur) => WriteLine("Zap({0})", iValeur);
 }

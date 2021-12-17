@@ -17,9 +17,9 @@ Public Class PDFEditor
     Private Sub MyInitializeComponent()
         Me.PDFReader = New AcroPDFLib.AcroPDF
         CType(Me.PDFReader, ComponentModel.ISupportInitialize).BeginInit()
-        Me.PDFReader.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.PDFReader.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+                    Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right), AnchorStyles)
         Me.PDFReader.Enabled = True
         Me.PDFReader.Location = New Point(3, 3)
         Me.PDFReader.Name = "PDFReader"

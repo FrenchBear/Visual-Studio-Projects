@@ -4,9 +4,9 @@
 // 2013-07-03   PV      Sophisticated algorithm to rename including a suffix a to z, aa to zz, aaa to zzz if new name already exists
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using static System.Console;
 
 namespace RenameParen;
 
@@ -17,14 +17,14 @@ internal class Program
         Regex r = new(@"( *\([0-9]+\))\.");         // number between parentheses at the end of filename
         const string SearchRoot = @"C:\Music\Humour";
 
-        foreach (string file in System.IO.Directory.GetFiles(SearchRoot, "*.*", System.IO.SearchOption.AllDirectories))
+        foreach (string file in Directory.GetFiles(SearchRoot, "*.*", SearchOption.AllDirectories))
         {
             Match m = r.Match(file);
             if (m.Success)
             {
-                Console.WriteLine(file);
+                WriteLine(file);
                 string newFile = r.Replace(file, "a");
-                System.IO.File.Move(file, newFile);
+                File.Move(file, newFile);
                 continue;
 
                 // Ignore unreachable code warning
@@ -58,10 +58,10 @@ internal class Program
                     }
                 }
 
-                Console.WriteLine(file);
-                Console.WriteLine(newFile);
-                Console.WriteLine();
-                System.IO.File.Move(file, newFile);
+                WriteLine(file);
+                WriteLine(newFile);
+                WriteLine();
+                File.Move(file, newFile);
             }
         }
 

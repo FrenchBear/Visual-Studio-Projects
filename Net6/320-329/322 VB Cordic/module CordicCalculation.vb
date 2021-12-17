@@ -19,7 +19,7 @@ Module CordicCalculation
         For x As Double = -1 To 7 Step 1.0
             Dim t1 As Double = Math.Tan(x)
             Dim t2 As Double = CordicTanRadian(x)
-            Console.WriteLine("x={0}" & vbCrLf & "Math.Tan(x)={1}" & vbCrLf & "CordicTan(x)={2}", x, t1, t2)
+            WriteLine("x={0}" & vbCrLf & "Math.Tan(x)={1}" & vbCrLf & "CordicTan(x)={2}", x, t1, t2)
         Next
 
     End Sub
@@ -65,7 +65,7 @@ Module CordicCalculation
         v = 1.0
         For j As Integer = 0 To n
             a(j) = Math.Atan(v)
-            Console.WriteLine("{0}: {1}", v, a(j))
+            WriteLine("{0}: {1}", v, a(j))
             v /= 10.0
         Next
     End Sub

@@ -87,7 +87,7 @@ Public Class frmPicResize
         '
         'btnGo
         '
-        Me.btnGo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.btnGo.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
         Me.btnGo.Location = New Point(328, 8)
         Me.btnGo.Name = "btnGo"
         Me.btnGo.Size = New Size(104, 32)
@@ -96,9 +96,9 @@ Public Class frmPicResize
         '
         'lstTrace
         '
-        Me.lstTrace.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.lstTrace.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+                    Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right), AnchorStyles)
         Me.lstTrace.Location = New Point(8, 172)
         Me.lstTrace.Name = "lstTrace"
         Me.lstTrace.Size = New Size(312, 225)
@@ -195,7 +195,7 @@ Public Class frmPicResize
         Me.tbQuality.Size = New Size(220, 45)
         Me.tbQuality.TabIndex = 10
         Me.tbQuality.TickFrequency = 5
-        Me.tbQuality.TickStyle = System.Windows.Forms.TickStyle.TopLeft
+        Me.tbQuality.TickStyle = TickStyle.TopLeft
         '
         'Label1
         '
@@ -214,7 +214,7 @@ Public Class frmPicResize
         Me.Label2.Size = New Size(66, 16)
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "High Quality"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.Label2.TextAlign = ContentAlignment.TopRight
         '
         'frmPicResize
         '
@@ -247,13 +247,13 @@ Public Class frmPicResize
 
     Private Sub btnGo_Click(sender As Object, e As EventArgs) Handles btnGo.Click
 
-        If Not System.IO.Directory.Exists(txtSource.Text) Then
+        If Not IO.Directory.Exists(txtSource.Text) Then
             MsgBox("Répertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             txtSource.Focus()
             Exit Sub
         End If
 
-        If Not System.IO.Directory.Exists(txtDestination.Text) Then
+        If Not IO.Directory.Exists(txtDestination.Text) Then
             MsgBox("Répertoire destination inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             txtDestination.Focus()
             Exit Sub
@@ -286,8 +286,8 @@ Public Class frmPicResize
         For Each fic In dir.GetFiles("*.jpg")
             Try
                 GénèreVignette(fic.Name)
-                System.GC.Collect()
-                System.Threading.Thread.Sleep(0)
+                GC.Collect()
+                Threading.Thread.Sleep(0)
             Catch
             End Try
         Next

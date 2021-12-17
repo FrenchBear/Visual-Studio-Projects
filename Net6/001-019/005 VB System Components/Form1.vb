@@ -75,7 +75,7 @@ Public Class Form1
         Me.PrintPreviewDialog1.MaximumSize = New Drawing.Size(0, 0)
         Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         Me.PrintPreviewDialog1.Opacity = 1
-        Me.PrintPreviewDialog1.TransparencyKey = System.Drawing.Color.Empty
+        Me.PrintPreviewDialog1.TransparencyKey = Drawing.Color.Empty
         Me.PrintPreviewDialog1.Visible = False
         '
         'Form1

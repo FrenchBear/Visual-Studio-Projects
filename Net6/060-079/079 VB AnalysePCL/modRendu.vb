@@ -38,7 +38,7 @@ Module modRenduGraphique
     Private PageEnCours As UnePage
 
     Private Sub CreateNewPage()
-        imgCurrentPage = New Bitmap(iOutWidth, iOutHeight, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
+        imgCurrentPage = New Bitmap(iOutWidth, iOutHeight, PixelFormat.Format24bppRgb)
         PageEnCours = New UnePage
 
         imgCurrentPage.SetResolution(iDPI, iDPI)
@@ -96,7 +96,7 @@ Module modRenduGraphique
         myEncoderParameter = New EncoderParameter(myEncoder, EncoderValue.MultiFrame)
         myEncoderParameters.Param(0) = myEncoderParameter
         multi.Save(sNomficImage, myImageCodecInfo, myEncoderParameters)
-        If bVerbose Then Console.WriteLine("Page 1")
+        If bVerbose Then WriteLine("Page 1")
 
         Dim iPage As Integer = 2
 
@@ -113,7 +113,7 @@ Module modRenduGraphique
             myEncoderParameter = New EncoderParameter(myEncoder, EncoderValue.FrameDimensionPage)
             myEncoderParameters.Param(0) = myEncoderParameter
             multi.SaveAdd(nextbmp, myEncoderParameters)
-            If bVerbose Then Console.WriteLine("Page {0}", iPage)
+            If bVerbose Then WriteLine("Page {0}", iPage)
             iPage += 1
         End While
 
@@ -306,7 +306,7 @@ Module modRenduGraphique
                     b <<= 1
                 Next
             Next
-            System.Runtime.InteropServices.Marshal.Copy(pixBytes, 0, pData, RowByteSize)
+            Runtime.InteropServices.Marshal.Copy(pixBytes, 0, pData, RowByteSize)
             pData = IntPtr.op_Explicit(pData.ToInt32 + bdaImage3.Stride)
         Next
         bmpImage3.UnlockBits(bdaImage3)
@@ -319,7 +319,7 @@ Module modRenduGraphique
         Try
             bmpImage2 = Image.FromFile(sNomfic)
         Catch ex As Exception
-            Console.WriteLine("Échec à la lecture de {0}: {1}", sNomfic, ex.ToString)
+            WriteLine("Échec à la lecture de {0}: {1}", sNomfic, ex.ToString)
             Exit Sub
         End Try
         Dim k As Single = 850 / bmpImage2.Height
@@ -376,7 +376,7 @@ Module modRenduPCL
         staState.posY = staState.iTopMargin
     End Sub
 
-    ReadOnly d850 As System.Text.Decoder = System.Text.Encoding.GetEncoding(850).GetDecoder
+    ReadOnly d850 As System.Text.Decoder = Text.Encoding.GetEncoding(850).GetDecoder
 
     ' Imprime un caractère imprimable
     ' En pratique, bufférise le caractère
@@ -783,7 +783,7 @@ Module modConversionImage1Bit
     Public Function ImgTo1Bit(ByRef imgSource As Bitmap) As Bitmap
         If bTIFFCouleur Then Return imgSource
 
-        Dim b1 As New Bitmap(imgSource.Width, imgSource.Height, Imaging.PixelFormat.Format1bppIndexed)
+        Dim b1 As New Bitmap(imgSource.Width, imgSource.Height, PixelFormat.Format1bppIndexed)
         Dim b1d As BitmapData = b1.LockBits(New Rectangle(0, 0, b1.Width, b1.Height), ImageLockMode.ReadWrite, PixelFormat.Format1bppIndexed)
 
         Dim b24d As BitmapData = imgSource.LockBits(New Rectangle(0, 0, b1.Width, b1.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb)
@@ -807,7 +807,7 @@ Module modConversionImage1Bit
             Next
 
             ' On récupère une ligne de l'image couleur
-            System.Runtime.InteropServices.Marshal.Copy(pData24, tbRow24, 0, b24d.Stride)
+            Runtime.InteropServices.Marshal.Copy(pData24, tbRow24, 0, b24d.Stride)
 
             For x As Integer = 0 To b1.Width - 1
                 If tbRow24(3 * x) < 128 Then
@@ -823,7 +823,7 @@ Module modConversionImage1Bit
             Next
 
             ' On dessine une ligne de sortie
-            System.Runtime.InteropServices.Marshal.Copy(tbRow1, 0, pData1, b1d.Stride)
+            Runtime.InteropServices.Marshal.Copy(tbRow1, 0, pData1, b1d.Stride)
 
             pData1 = IntPtr.op_Explicit(pData1.ToInt32 + b1d.Stride)
             pData24 = IntPtr.op_Explicit(pData24.ToInt32 + b24d.Stride)

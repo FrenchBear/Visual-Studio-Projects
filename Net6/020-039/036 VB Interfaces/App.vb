@@ -6,6 +6,8 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-18    PV  VS2022, Net6
 
+Imports System.Console
+
 #Disable Warning CA1822 ' Mark members as static
 
 Public Class MyApp
@@ -16,7 +18,7 @@ Public Class MyApp
         t.MaMethodeBruyante1(1)
         CType(t, IMonInterface).MaMethodeBruyante1(2)
 
-        Console.ReadLine()
+        ReadLine()
     End Sub
 
 End Class
@@ -41,12 +43,12 @@ Public Class MaClasse
     Private iMembre As Integer
 
     Private Sub MonInterface_MaMethodeBruyante1(x As Integer) Implements IMonInterface.MaMethodeBruyante1
-        Console.WriteLine("Implémentation de MonInterface.MaMethodeBruyante1")
+        WriteLine("Implémentation de MonInterface.MaMethodeBruyante1")
     End Sub
 
     ' Implémentation privée de MaMethodeBruyante1
     Sub MaMethodeBruyante1(x As Integer)
-        Console.WriteLine("Implémentation privée de MaMethodeBruyante1")
+        WriteLine("Implémentation privée de MaMethodeBruyante1")
     End Sub
 
     Property MonInterface_MaPropriete() As Integer Implements IMonInterface.MaPropriete

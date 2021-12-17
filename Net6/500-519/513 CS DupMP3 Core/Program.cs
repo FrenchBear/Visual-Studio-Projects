@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using static System.Console;
 
 namespace DupMP31;
 
@@ -56,12 +57,12 @@ internal class Program
             for (int j = i + 1; j < AStringsList.Count; j++)
             {
                 if (AStringsList[i].Name != AStringsList[j].Name && IsCloseEnough(AStringsList[i], AStringsList[j], dist))
-                Console.WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
+                WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
             }
         }
 
         sw.Stop();
-        Console.WriteLine("time={0}", sw.Elapsed);
+        WriteLine("time={0}", sw.Elapsed);
     }
 
     private static bool IsCloseEnough(AString as1, AString as2, int dist)

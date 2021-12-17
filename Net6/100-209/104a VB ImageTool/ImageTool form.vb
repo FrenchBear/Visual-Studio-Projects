@@ -274,12 +274,12 @@ Public Class frmImageTool
     End Sub
 
     Sub SelectionTool_MouseDown(e As MouseEventArgs)
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Cross
+        Cursor.Current = Cursors.Cross
     End Sub
 
     Sub HandTool_MouseDown(e As MouseEventArgs)
         'System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Hand
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.NoMove2D
+        Cursor.Current = Cursors.NoMove2D
         hs0 = hsScrollBar.Value + pbDisplayedPic.Left
         vs0 = vsScrollBar.Value + pbDisplayedPic.Top
     End Sub
@@ -348,7 +348,7 @@ Public Class frmImageTool
                 SelectionTool_MouseUp(e)
             End If
         End If
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+        Cursor.Current = Cursors.Default
         RefreshToolBar()
     End Sub
 
@@ -423,8 +423,8 @@ Public Class frmImageTool
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
 
         ' First release pending file locks
-        System.GC.Collect()
-        System.GC.WaitForPendingFinalizers()
+        GC.Collect()
+        GC.WaitForPendingFinalizers()
 
         ' And save
         m_bmpOriginalImage.Save(m_doc.sPathName, ici, eps)

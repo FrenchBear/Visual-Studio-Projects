@@ -67,9 +67,9 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Debug.AutoFlush = True
-        System.Diagnostics.Debug.WriteLine("Début")
+        Debug.WriteLine("Début")
         Analyse("C:\Documents")
-        System.Diagnostics.Debug.WriteLine("Fin")
+        Debug.WriteLine("Fin")
     End Sub
 
     Sub Analyse(sPath As String)
@@ -84,7 +84,7 @@ Public Class Form1
         Dim fi As File
         For Each fi In fo.Files
             If Len(fi.Name) > 64 Then
-                System.Diagnostics.Debug.WriteLine("ren """ & sPath & "\" & fi.Name & """ """ & m64(fi.Name) & """")
+                Debug.WriteLine("ren """ & sPath & "\" & fi.Name & """ """ & m64(fi.Name) & """")
             End If
         Next
     End Sub

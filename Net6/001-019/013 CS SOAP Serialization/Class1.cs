@@ -6,6 +6,7 @@
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using static System.Console;
 
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
 
@@ -31,7 +32,7 @@ internal class TestSer
     {
         int objects = 1000;
 
-        Console.WriteLine("Writing " + objects + " objects to a file stream");
+        WriteLine("Writing " + objects + " objects to a file stream");
         Stream s = File.Open("testser.xml", FileMode.Create);
         //SoapFormatter f = new SoapFormatter();
         BinaryFormatter f = new();
@@ -40,12 +41,12 @@ internal class TestSer
             f.Serialize(s, new MaClasse(i, "abcdddddddddddddddddddddddddddddddd"));
         }
         s.Close();
-        Console.WriteLine("Writing done.");
+        WriteLine("Writing done.");
 
-        Console.WriteLine("Deserializing objects from file...");
+        WriteLine("Deserializing objects from file...");
         s = new BufferedStream(File.Open("testser.xml", FileMode.Open));
         MaClasse var = null;
-        Console.WriteLine("Start: " + DateTime.Now);
+        WriteLine("Start: " + DateTime.Now);
         try
         {
             for (int i = 1; i <= objects; i++)
@@ -55,11 +56,11 @@ internal class TestSer
         }
         catch (Exception e)
         {
-            Console.WriteLine("Deserialization failed: " + e.Message);
+            WriteLine("Deserialization failed: " + e.Message);
         }
         s.Close();
-        Console.WriteLine("End: " + DateTime.Now);
-        Console.WriteLine("The last object is: " + var);
+        WriteLine("End: " + DateTime.Now);
+        WriteLine("The last object is: " + var);
 
         _ = Console.ReadLine();
     }

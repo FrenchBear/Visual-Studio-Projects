@@ -5,6 +5,7 @@
 
 Imports System.IO
 Imports System.Xml.Serialization
+Imports System.Console
 
 ' The XmlRootAttribute allows you to set an alternate name
 ' (PurchaseOrder) of the XML element, the element namespace; by
@@ -197,47 +198,47 @@ Public Class Test
 
         Dim po As PurchaseOrder
         po = apo.Orders(1)
-        Console.WriteLine(("OrderDate: " & po.OrderDate))
+        WriteLine(("OrderDate: " & po.OrderDate))
 
         ' Read the shipping address.
         Dim shipTo As Address = po.ShipTo
         ReadAddress(shipTo, "Ship To:")
         ' Read the list of ordered items.
         Dim items As OrderedItem() = po.OrderedItems
-        Console.WriteLine("Items to be shipped:")
+        WriteLine("Items to be shipped:")
         Dim oi As OrderedItem
         For Each oi In items
-            Console.WriteLine((ControlChars.Tab & oi.ItemName & ControlChars.Tab &
+            WriteLine((ControlChars.Tab & oi.ItemName & ControlChars.Tab &
             oi.Description & ControlChars.Tab & oi.UnitPrice & ControlChars.Tab &
             oi.Quantity & ControlChars.Tab & oi.LineTotal))
         Next oi
         ' Read the subtotal, shipping cost, and total cost.
-        Console.WriteLine((New String(ControlChars.Tab, 5) &
+        WriteLine((New String(ControlChars.Tab, 5) &
         " Subtotal" & ControlChars.Tab & po.SubTotal))
-        Console.WriteLine(New String(ControlChars.Tab, 5) &
+        WriteLine(New String(ControlChars.Tab, 5) &
         " Shipping" & ControlChars.Tab & po.ShipCost)
-        Console.WriteLine(New String(ControlChars.Tab, 5) &
+        WriteLine(New String(ControlChars.Tab, 5) &
         " Total" & New String(ControlChars.Tab, 2) & po.TotalCost)
     End Sub 'ReadPO
 
     Protected Shared Sub ReadAddress(a As Address, label As String)
         ' Read the fields of the Address object.
-        Console.WriteLine(label)
-        Console.WriteLine(ControlChars.Tab & a.Name)
-        Console.WriteLine(ControlChars.Tab & a.Line1)
-        Console.WriteLine(ControlChars.Tab & a.City)
-        Console.WriteLine(ControlChars.Tab & a.State)
-        Console.WriteLine(ControlChars.Tab & a.Zip)
-        Console.WriteLine()
+        WriteLine(label)
+        WriteLine(ControlChars.Tab & a.Name)
+        WriteLine(ControlChars.Tab & a.Line1)
+        WriteLine(ControlChars.Tab & a.City)
+        WriteLine(ControlChars.Tab & a.State)
+        WriteLine(ControlChars.Tab & a.Zip)
+        WriteLine()
     End Sub 'ReadAddress
 
     Private Sub Serializer_UnknownNode(sender As Object, e As XmlNodeEventArgs)
-        Console.WriteLine(("Unknown Node:" & e.Name & ControlChars.Tab & e.Text))
+        WriteLine(("Unknown Node:" & e.Name & ControlChars.Tab & e.Text))
     End Sub 'serializer_UnknownNode
 
     Private Sub Serializer_UnknownAttribute(sender As Object, e As XmlAttributeEventArgs)
         Dim attr As Xml.XmlAttribute = e.Attr
-        Console.WriteLine(("Unknown attribute " & attr.Name & "='" & attr.Value & "'"))
+        WriteLine(("Unknown attribute " & attr.Name & "='" & attr.Value & "'"))
     End Sub 'serializer_UnknownAttribute
 
 End Class 'Test

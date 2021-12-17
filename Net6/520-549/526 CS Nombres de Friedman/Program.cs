@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using static System.Console;
 
 namespace CS526;
 
@@ -24,7 +25,7 @@ internal class Program
                 foreach (int c in CombineTwoNumbers(i, j, false))
             {
                 if (10 * i + j == c)
-                    Console.WriteLine(c);
+                    WriteLine(c);
             }
             }
         }

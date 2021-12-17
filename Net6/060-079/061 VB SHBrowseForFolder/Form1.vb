@@ -53,8 +53,8 @@ Public Class frmTest
         '
         'txtPath
         '
-        Me.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right)
+        Me.txtPath.Anchor = ((AnchorStyles.Top Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right)
         Me.txtPath.Location = New Point(8, 8)
         Me.txtPath.Name = "txtPath"
         Me.txtPath.Size = New Size(280, 20)
@@ -95,8 +95,8 @@ Class MyBrowser
         'b.StartLocation = FolderNameEditor.FolderBrowserFolder.Desktop
         Dim b As New FolderBrowser With {
             .Description = "Sélectionnez le répertoire",
-            .Style = FolderNameEditor.FolderBrowserStyles.RestrictToFilesystem,
-            .StartLocation = FolderNameEditor.FolderBrowserFolder.MyComputer
+            .Style = FolderBrowserStyles.RestrictToFilesystem,
+            .StartLocation = FolderBrowserFolder.MyComputer
         }
         b.ShowDialog()
         Return b.DirectoryPath

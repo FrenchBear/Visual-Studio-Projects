@@ -5,6 +5,7 @@
 // 2021-09-17   PV  VS2022/Net6
 
 using System;
+using static System.Console;
 
 internal class Complexe
 {
@@ -17,7 +18,7 @@ internal class Complexe
     {
         this.r = r;
         this.i = i;
-        Console.WriteLine("Constructeur {0}", this);
+        WriteLine("Constructeur {0}", this);
     }
 
     public Complexe(double r) : this(r, 0)
@@ -26,7 +27,7 @@ internal class Complexe
 
     ~Complexe()
     {
-        Console.WriteLine("Destructeur {0}", this);
+        WriteLine("Destructeur {0}", this);
     }
 
     public static implicit operator Complexe(double d) 
@@ -43,22 +44,22 @@ internal class MyApp
 {
     public static void Main()
     {
-        Console.WriteLine("Main.1 Mem: {0}", System.GC.GetTotalMemory(false));
+        WriteLine("Main.1 Mem: {0}", GC.GetTotalMemory(false));
         TestsComplexes();
-        Console.WriteLine("Main.2 Mem: {0}", System.GC.GetTotalMemory(false));
-        System.GC.Collect();
-        System.GC.WaitForPendingFinalizers();
-        Console.WriteLine("Main.3 Mem: {0}", System.GC.GetTotalMemory(false));
-        _ = Console.ReadLine();
+        WriteLine("Main.2 Mem: {0}", GC.GetTotalMemory(false));
+        GC.Collect();
+        GC.WaitForPendingFinalizers();
+        WriteLine("Main.3 Mem: {0}", GC.GetTotalMemory(false));
+        _ = ReadLine();
     }
 
     private static void TestsComplexes()
     {
-        Console.WriteLine("TestsComplexes.1 Mem: {0}", System.GC.GetTotalMemory(false));
+        WriteLine("TestsComplexes.1 Mem: {0}", GC.GetTotalMemory(false));
         Complexe a = new(1, 2);
-        Console.WriteLine("TestsComplexes.2 Mem: {0}", System.GC.GetTotalMemory(false));
+        WriteLine("TestsComplexes.2 Mem: {0}", GC.GetTotalMemory(false));
         Complexe b = new(1);
-        Console.WriteLine("TestsComplexes.3 Mem: {0}", System.GC.GetTotalMemory(false));
+        WriteLine("TestsComplexes.3 Mem: {0}", GC.GetTotalMemory(false));
         Complexe c = a + b;
 
         // Grâce à l'opérateur Complexe(double d)

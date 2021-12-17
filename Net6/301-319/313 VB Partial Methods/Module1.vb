@@ -22,14 +22,14 @@ Class TestClass
     End Sub
 
     Private Sub Toto(ByRef x As Integer)
-        Console.WriteLine("Hello World " & CStr(x))
+        WriteLine("Hello World " & CStr(x))
         x += 1
     End Sub
 
     Sub New()
         Dim a = 2
         Toto(a)
-        Console.WriteLine("a: " & a)
+        WriteLine("a: " & a)
     End Sub
 
 End Class

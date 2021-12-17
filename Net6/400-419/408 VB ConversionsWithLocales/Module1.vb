@@ -4,6 +4,7 @@
 ' 2021-09-23    PV  VS2022; Net6
 
 Imports System.Globalization
+Imports System.Console
 
 Module Module1
 
@@ -12,23 +13,23 @@ Module Module1
 
         ' US locale
         Dim usen As New CultureInfo("en-US")
-        Console.WriteLine(d.ToString(usen))
-        Console.WriteLine(Double.Parse("1003.14", usen))
-        Console.WriteLine(String.Format(usen, "{0:#,##0.###}  {0:N3}  {0:F3}", d))
-        Console.WriteLine()
+        WriteLine(d.ToString(usen))
+        WriteLine(Double.Parse("1003.14", usen))
+        WriteLine(String.Format(usen, "{0:#,##0.###}  {0:N3}  {0:F3}", d))
+        WriteLine()
 
         ' French locale
         Dim frfr As New CultureInfo("fr-FR")
-        Console.WriteLine(d.ToString(frfr))
-        Console.WriteLine(Double.Parse("3,14", frfr))
-        Console.WriteLine(String.Format(frfr, "{0:#,##0.###}  {0:N3}  {0:F3}", d))
-        Console.WriteLine()
+        WriteLine(d.ToString(frfr))
+        WriteLine(Double.Parse("3,14", frfr))
+        WriteLine(String.Format(frfr, "{0:#,##0.###}  {0:N3}  {0:F3}", d))
+        WriteLine()
 
         ' Invariant culture
         Dim ic = CultureInfo.InvariantCulture
-        Console.WriteLine(d.ToString(ic))
-        Console.WriteLine(Double.Parse("3.14", ic))
-        Console.WriteLine(String.Format(ic, "{0:#,##0.###}  {0:N3}  {0:F3}", d))
+        WriteLine(d.ToString(ic))
+        WriteLine(Double.Parse("3.14", ic))
+        WriteLine(String.Format(ic, "{0:#,##0.###}  {0:N3}  {0:F3}", d))
 
         ' Note: current thread default culture is CultureInfo.CurrentCulture
     End Sub

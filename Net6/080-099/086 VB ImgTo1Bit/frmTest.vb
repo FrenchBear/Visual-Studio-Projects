@@ -50,7 +50,7 @@ Public Class Form1
         '
         'PictureBox1
         '
-        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.BorderStyle = BorderStyle.FixedSingle
         Me.PictureBox1.Location = New Point(8, 8)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New Size(284, 264)
@@ -59,7 +59,7 @@ Public Class Form1
         '
         'PictureBox2
         '
-        Me.PictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox2.BorderStyle = BorderStyle.FixedSingle
         Me.PictureBox2.Location = New Point(300, 8)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New Size(284, 264)
@@ -91,7 +91,7 @@ End Class
 Friend Module ConversionImages
 
     Public Function imgTo1Bit(imgSource As Bitmap) As Bitmap
-        Dim bm As New Bitmap(imgSource.Width, imgSource.Height, Imaging.PixelFormat.Format1bppIndexed)
+        Dim bm As New Bitmap(imgSource.Width, imgSource.Height, PixelFormat.Format1bppIndexed)
         Dim bmd As BitmapData = bm.LockBits(New Rectangle(0, 0, bm.Width, bm.Height), ImageLockMode.ReadWrite, PixelFormat.Format1bppIndexed)
 
         Dim pData As IntPtr = bmd.Scan0
@@ -117,7 +117,7 @@ Friend Module ConversionImages
                 End If
             Next
 
-            System.Runtime.InteropServices.Marshal.Copy(tbRow, 0, pData, bmd.Stride)
+            Runtime.InteropServices.Marshal.Copy(tbRow, 0, pData, bmd.Stride)
             'pData = IntPtr.op_Explicit(pData.ToInt32 + bmd.Stride)
             pData += bmd.Stride
         Next

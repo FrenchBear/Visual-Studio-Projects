@@ -43,7 +43,7 @@ internal class Program
         };
 
         using StringWriter textWriter = new();
-        using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, settings))
+        using (var xmlWriter = XmlWriter.Create(textWriter, settings))
         {
             serializer.Serialize(xmlWriter, value);
         }
@@ -61,7 +61,7 @@ internal class Program
         // No settings need modifying here
 
         using StringReader textReader = new(xml);
-        using XmlReader xmlReader = XmlReader.Create(textReader, settings);
+        using var xmlReader = XmlReader.Create(textReader, settings);
         return (T)serializer.Deserialize(xmlReader);
     }
 }

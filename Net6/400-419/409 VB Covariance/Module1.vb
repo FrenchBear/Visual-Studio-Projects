@@ -17,7 +17,7 @@ Module Module1
         ' Contravariance
         Dim b As Action(Of Base) =
             Sub(target As Base)
-                Console.WriteLine(target.GetType.Name & ": " & target.ToString)
+                WriteLine(target.GetType.Name & ": " & target.ToString)
             End Sub
         Dim d As Action(Of Derived) = b         ' Contravariance, Because of definition Action(Of In T)(obj as T), type T is contravariant
         d(New Derived)

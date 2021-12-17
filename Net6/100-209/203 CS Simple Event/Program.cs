@@ -5,6 +5,7 @@
 // 2021-09-19   PV  VS2022; Net6
 
 using System;
+using static System.Console;
 
 namespace CS203;
 
@@ -32,11 +33,11 @@ internal class Program
         c2.Stop();
     }
 
-    private static void Car_EngineStartedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine started on {1}", (sender as Car).Name, e.StateChangedOn);
+    private static void Car_EngineStartedEvent(object sender, EngineStateChangedEventArgs e) => WriteLine("{0} engine started on {1}", (sender as Car).Name, e.StateChangedOn);
 
-    private static void Car_EngineStoppedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine stopped on {1}", (sender as Car).Name, e.StateChangedOn);
+    private static void Car_EngineStoppedEvent(object sender, EngineStateChangedEventArgs e) => WriteLine("{0} engine stopped on {1}", (sender as Car).Name, e.StateChangedOn);
 
-    private static void Car_EngineStateChangedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine state changed on {1}, IsEngineOn={2}", (sender as Car).Name, e.StateChangedOn, (sender as Car).IsEngineOn);
+    private static void Car_EngineStateChangedEvent(object sender, EngineStateChangedEventArgs e) => WriteLine("{0} engine state changed on {1}, IsEngineOn={2}", (sender as Car).Name, e.StateChangedOn, (sender as Car).IsEngineOn);
 }
 
 public class EngineStateChangedEventArgs : EventArgs

@@ -8,6 +8,7 @@
 // 2021-09-18   PV  VS2022, Net6
 
 using System;
+using static System.Console;
 
 namespace CS44;
 
@@ -58,9 +59,9 @@ internal class MyApp
     private static void Zap(object o)
     {
         Type t = o.GetType();
-        Console.WriteLine(t.Name);
+        WriteLine(t.Name);
 
-        MonAttribut m = (MonAttribut)t.GetCustomAttributes(typeof(MonAttribut), false)[0];
-        Console.WriteLine("{0}, {1}", m.IFlags, m.Info);
+        var m = (MonAttribut)t.GetCustomAttributes(typeof(MonAttribut), false)[0];
+        WriteLine("{0}, {1}", m.IFlags, m.Info);
     }
 }

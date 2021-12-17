@@ -8,6 +8,7 @@
 // 2021-09-26   PV      VS2022; Net6
 
 using System;
+using static System.Console;
 
 namespace DoubleAlmostEqual;
 
@@ -43,7 +44,7 @@ internal class Program
     private static void T(double d1, double d2, bool expectedresult)
     {
         if (DoubleAlmostEqual(d1, d2) != expectedresult)
-            Console.WriteLine($"{d1}=={d2}, expected {expectedresult}, got {DoubleAlmostEqual(d1, d2)}");
+            WriteLine($"{d1}=={d2}, expected {expectedresult}, got {DoubleAlmostEqual(d1, d2)}");
     }
 
     // My own version of double comparison for units coefficients

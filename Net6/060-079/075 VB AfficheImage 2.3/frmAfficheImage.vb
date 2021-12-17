@@ -164,7 +164,7 @@ Public Class frmAfficheImage
         '
         'msMain
         '
-        Me.msMain.Dock = System.Windows.Forms.DockStyle.None
+        Me.msMain.Dock = DockStyle.None
         Me.msMain.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.msMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.msNavigation, Me.msEdition, Me.msAffichage, Me.msHelp})
         Me.msMain.Location = New System.Drawing.Point(0, 48)
@@ -329,7 +329,7 @@ Public Class frmAfficheImage
         'miToolbar
         '
         Me.miToolbar.Checked = True
-        Me.miToolbar.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.miToolbar.CheckState = CheckState.Checked
         Me.miToolbar.Name = "miToolbar"
         Me.miToolbar.Size = New System.Drawing.Size(256, 44)
         Me.miToolbar.Text = "&Toolbar"
@@ -338,7 +338,7 @@ Public Class frmAfficheImage
         '
         Me.miStatusbar.Checked = True
         Me.miStatusbar.CheckOnClick = True
-        Me.miStatusbar.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.miStatusbar.CheckState = CheckState.Checked
         Me.miStatusbar.Name = "miStatusbar"
         Me.miStatusbar.Size = New System.Drawing.Size(256, 44)
         Me.miStatusbar.Text = "Status bar"
@@ -360,7 +360,7 @@ Public Class frmAfficheImage
         'tsMain
         '
         Me.tsMain.AllowItemReorder = True
-        Me.tsMain.Dock = System.Windows.Forms.DockStyle.None
+        Me.tsMain.Dock = DockStyle.None
         Me.tsMain.ImageScalingSize = New System.Drawing.Size(32, 32)
         Me.tsMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbOuvrir, Me.ToolStripSeparator6, Me.tsbPremier, Me.tsbPrécédent, Me.tsbSuivant, Me.tsbDernier, Me.ToolStripSeparator7, Me.tsbRetour, Me.tsbAuHasard, Me.ToolStripSeparator8, Me.tsbSupprimer, Me.ToolStripSeparator3, Me.lblPos, Me.cboFichiers})
         Me.tsMain.Location = New System.Drawing.Point(6, 0)
@@ -371,9 +371,9 @@ Public Class frmAfficheImage
         '
         'tsbOuvrir
         '
-        Me.tsbOuvrir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbOuvrir.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbOuvrir.Image = CType(resources.GetObject("tsbOuvrir.Image"), System.Drawing.Image)
-        Me.tsbOuvrir.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbOuvrir.ImageTransparentColor = Color.Magenta
         Me.tsbOuvrir.Name = "tsbOuvrir"
         Me.tsbOuvrir.Size = New System.Drawing.Size(46, 42)
         Me.tsbOuvrir.Text = "Ouvrir"
@@ -385,36 +385,36 @@ Public Class frmAfficheImage
         '
         'tsbPremier
         '
-        Me.tsbPremier.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbPremier.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbPremier.Image = CType(resources.GetObject("tsbPremier.Image"), System.Drawing.Image)
-        Me.tsbPremier.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbPremier.ImageTransparentColor = Color.Magenta
         Me.tsbPremier.Name = "tsbPremier"
         Me.tsbPremier.Size = New System.Drawing.Size(46, 42)
         Me.tsbPremier.Text = "Premier"
         '
         'tsbPrécédent
         '
-        Me.tsbPrécédent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbPrécédent.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbPrécédent.Image = CType(resources.GetObject("tsbPrécédent.Image"), System.Drawing.Image)
-        Me.tsbPrécédent.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbPrécédent.ImageTransparentColor = Color.Magenta
         Me.tsbPrécédent.Name = "tsbPrécédent"
         Me.tsbPrécédent.Size = New System.Drawing.Size(46, 42)
         Me.tsbPrécédent.Text = "Précédent"
         '
         'tsbSuivant
         '
-        Me.tsbSuivant.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbSuivant.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbSuivant.Image = CType(resources.GetObject("tsbSuivant.Image"), System.Drawing.Image)
-        Me.tsbSuivant.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbSuivant.ImageTransparentColor = Color.Magenta
         Me.tsbSuivant.Name = "tsbSuivant"
         Me.tsbSuivant.Size = New System.Drawing.Size(46, 42)
         Me.tsbSuivant.Text = "Suivant"
         '
         'tsbDernier
         '
-        Me.tsbDernier.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbDernier.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbDernier.Image = CType(resources.GetObject("tsbDernier.Image"), System.Drawing.Image)
-        Me.tsbDernier.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbDernier.ImageTransparentColor = Color.Magenta
         Me.tsbDernier.Name = "tsbDernier"
         Me.tsbDernier.Size = New System.Drawing.Size(46, 42)
         Me.tsbDernier.Text = "Dernier"
@@ -426,18 +426,18 @@ Public Class frmAfficheImage
         '
         'tsbRetour
         '
-        Me.tsbRetour.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbRetour.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbRetour.Image = CType(resources.GetObject("tsbRetour.Image"), System.Drawing.Image)
-        Me.tsbRetour.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbRetour.ImageTransparentColor = Color.Magenta
         Me.tsbRetour.Name = "tsbRetour"
         Me.tsbRetour.Size = New System.Drawing.Size(46, 42)
         Me.tsbRetour.Text = "Retour"
         '
         'tsbAuHasard
         '
-        Me.tsbAuHasard.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbAuHasard.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbAuHasard.Image = CType(resources.GetObject("tsbAuHasard.Image"), System.Drawing.Image)
-        Me.tsbAuHasard.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbAuHasard.ImageTransparentColor = Color.Magenta
         Me.tsbAuHasard.Name = "tsbAuHasard"
         Me.tsbAuHasard.Size = New System.Drawing.Size(46, 42)
         Me.tsbAuHasard.Text = "Au hasard"
@@ -449,9 +449,9 @@ Public Class frmAfficheImage
         '
         'tsbSupprimer
         '
-        Me.tsbSupprimer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.tsbSupprimer.DisplayStyle = ToolStripItemDisplayStyle.Image
         Me.tsbSupprimer.Image = CType(resources.GetObject("tsbSupprimer.Image"), System.Drawing.Image)
-        Me.tsbSupprimer.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsbSupprimer.ImageTransparentColor = Color.Magenta
         Me.tsbSupprimer.Name = "tsbSupprimer"
         Me.tsbSupprimer.Size = New System.Drawing.Size(46, 42)
         Me.tsbSupprimer.Text = "Supprimer"
@@ -469,7 +469,7 @@ Public Class frmAfficheImage
         '
         'cboFichiers
         '
-        Me.cboFichiers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboFichiers.DropDownStyle = ComboBoxStyle.DropDownList
         Me.cboFichiers.Name = "cboFichiers"
         Me.cboFichiers.Size = New System.Drawing.Size(300, 40)
         '
@@ -481,7 +481,7 @@ Public Class frmAfficheImage
         Me.tscMain.ContentPanel.AutoScroll = True
         Me.tscMain.ContentPanel.Controls.Add(Me.sbStatus)
         Me.tscMain.ContentPanel.Size = New System.Drawing.Size(656, 425)
-        Me.tscMain.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tscMain.Dock = DockStyle.Fill
         Me.tscMain.LeftToolStripPanelVisible = False
         Me.tscMain.Location = New System.Drawing.Point(0, 0)
         Me.tscMain.Name = "tscMain"
@@ -608,7 +608,7 @@ Public Class frmAfficheImage
     Private Sub Ouvrir()
         FolderBrowserDialog1.SelectedPath = GetSetting(VB6GetExeName(), "Config", "Path", "C:\")
         Dim result As DialogResult = FolderBrowserDialog1.ShowDialog()
-        If (result <> Windows.Forms.DialogResult.OK) Then Exit Sub
+        If (result <> DialogResult.OK) Then Exit Sub
         sRep = FolderBrowserDialog1.SelectedPath
         SaveSetting(VB6GetExeName(), "Config", "Path", sRep)
         If Microsoft.VisualBasic.Right(sRep, 1) <> "\" Then sRep &= "\"
@@ -706,7 +706,7 @@ Public Class frmAfficheImage
             If iOff = 0 Then Echelle.Text = FormatPercent(r1, 0)
 
             Dim imgOutput As Bitmap
-            imgOutput = New Bitmap(tImage(iOff).Width, tImage(iOff).Height, System.Drawing.Imaging.PixelFormat.Format32bppRgb)
+            imgOutput = New Bitmap(tImage(iOff).Width, tImage(iOff).Height, Imaging.PixelFormat.Format32bppRgb)
             Dim h As Graphics = Graphics.FromImage(imgOutput)
             h.Clear(Color.FromKnownColor(KnownColor.Control))
             h.DrawImage(tImage2(iOff), 0, 0, tImage2(iOff).Width * r1, tImage2(iOff).Height * r1)
@@ -819,26 +819,26 @@ Public Class frmAfficheImage
     Sub Supprimer()
         If cboFichiers.Items.Count = 0 Then Exit Sub
 
-        System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor
+        Cursor.Current = Cursors.WaitCursor
         Try
             tImage(0).Image = Nothing
             tImage2(0) = Nothing
-            System.GC.Collect()
-            System.Windows.Forms.Application.DoEvents()
-            System.GC.WaitForPendingFinalizers()
+            GC.Collect()
+            Application.DoEvents()
+            GC.WaitForPendingFinalizers()
 
             'Kill(sRep & cboFichiers.SelectedItem)
             ' On envoie dans la corbeille
             Dim MyComputer = New Microsoft.VisualBasic.Devices.Computer
             MyComputer.FileSystem.DeleteFile(sRep & cboFichiers.SelectedItem, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
 
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+            Cursor.Current = Cursors.Default
             cboFichiers.Items.RemoveAt(iPos)
             If iPos >= cboFichiers.Items.Count Then iPos = cboFichiers.Items.Count - 1
             PileImages.Pop()
             AfficheImage()
         Catch ex As Exception
-            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.Default
+            Cursor.Current = Cursors.Default
             MsgBox("Echec lors la suppression du fichier:" & vbCrLf & ex.Source & ": " & ex.Message)
         End Try
 
@@ -1000,7 +1000,7 @@ Public Class frmAfficheImage
             If tImage(i) Is Nothing Then
                 tImage(i) = New PictureBox
                 With tImage(i)
-                    .BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+                    .BorderStyle = BorderStyle.FixedSingle
                     .Name = "Image" & i + 1
                     .TabStop = False
                     .Visible = True
@@ -1037,7 +1037,7 @@ Public Class frmAfficheImage
 
         Dim sFile As String
         sFile = sRep & cboFichiers.Items(iPos)
-        System.Diagnostics.Process.Start(sFile)
+        Process.Start(sFile)
     End Sub
 
     Private Sub cboFichiers_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboFichiers.SelectedIndexChanged

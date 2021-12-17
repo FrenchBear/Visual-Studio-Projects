@@ -199,10 +199,10 @@ Public Class LVSystemForm
         '
         'picOut
         '
-        Me.picOut.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
-        Me.picOut.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picOut.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+            Or AnchorStyles.Left) _
+            Or AnchorStyles.Right), AnchorStyles)
+        Me.picOut.BorderStyle = BorderStyle.FixedSingle
         Me.picOut.Location = New Point(360, 8)
         Me.picOut.Name = "picOut"
         Me.picOut.Size = New Size(360, 456)
@@ -247,7 +247,7 @@ Public Class LVSystemForm
         Me.Controls.Add(Me.txtAngle)
         Me.Controls.Add(Me.lblAngle)
         Me.Controls.Add(Me.btnGénère)
-        Me.Font = New Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New Font("Tahoma", 8.25!, FontStyle.Regular, GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmLVSystem"
         Me.Text = "LVSystem, Application à la courbe de Hilbert"
         CType(Me.picOut, ComponentModel.ISupportInitialize).EndInit()
@@ -264,7 +264,7 @@ Public Class LVSystemForm
     Private tsRègles As String()
 
     Private Sub btnGénère_Click(sender As System.Object, e As EventArgs) Handles btnGénère.Click
-        System.Windows.Forms.Cursor.Current = Cursors.WaitCursor
+        Cursor.Current = Cursors.WaitCursor
 
         sChaîne = txtDépart.Text
         iNbItérations = Val(txtItérations.Text)
@@ -286,7 +286,7 @@ Public Class LVSystemForm
         txtFinal.Text = sChaîne
         txtAnalyse.Text = sAnalyseEtDessine(sChaîne)
 
-        System.Windows.Forms.Cursor.Current = Cursors.Default
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub frmLSystem_Resize(sender As Object, e As EventArgs) Handles Me.Resize
@@ -373,7 +373,7 @@ Public Class LVSystemForm
         Dim bmpOut As Bitmap
         If picOut.Size.Width <= 1 Or picOut.Size.Height <= 1 Then Return "Zone de dessin trop petite"
 
-        bmpOut = New Bitmap(picOut.Size.Width, picOut.Size.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb)
+        bmpOut = New Bitmap(picOut.Size.Width, picOut.Size.Height, Imaging.PixelFormat.Format24bppRgb)
         Dim graOut As Graphics
         graOut = Graphics.FromImage(bmpOut)
         graOut.Clear(Color.White)

@@ -53,7 +53,7 @@ Public Class Form1
         '
         'btnGénère
         '
-        Me.BtnGénère.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.BtnGénère.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
         Me.BtnGénère.Location = New Point(328, 8)
         Me.BtnGénère.Name = "btnGénère"
         Me.BtnGénère.Size = New Size(104, 32)
@@ -62,9 +62,9 @@ Public Class Form1
         '
         'lstTrace
         '
-        Me.LstTrace.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                Or System.Windows.Forms.AnchorStyles.Left) _
-                Or System.Windows.Forms.AnchorStyles.Right), AnchorStyles)
+        Me.LstTrace.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+                Or AnchorStyles.Left) _
+                Or AnchorStyles.Right), AnchorStyles)
         Me.LstTrace.Location = New Point(8, 8)
         Me.LstTrace.Name = "lstTrace"
         Me.LstTrace.Size = New Size(312, 394)
@@ -106,7 +106,7 @@ Public Class Form1
 
         Const sPath As String = "C:\Documents PV\Mes Images\Titus\"
 
-        sImg = "Titus " & Microsoft.VisualBasic.Strings.Right(Str(1000 + i), 3) & ".jpg"
+        sImg = "Titus " & Strings.Right(Str(1000 + i), 3) & ".jpg"
         sPathImg = sPath & sImg
         sPathVignette = sPath & "Vignettes\" & sImg
 
@@ -124,7 +124,7 @@ Public Class Form1
         ' Version simple avec un constructeur de la classe image
         Dim img2 As Bitmap
         img2 = New Bitmap(img, iNewWidth, iNewHeight)
-        img2.Save(sPathVignette, System.Drawing.Imaging.ImageFormat.Jpeg)
+        img2.Save(sPathVignette, ImageFormat.Jpeg)
 
         ' Version plus complexe où l'image est dessinnée avec DrawImage
         'Dim imgOutput As Bitmap

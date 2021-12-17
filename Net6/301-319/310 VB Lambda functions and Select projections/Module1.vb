@@ -29,7 +29,7 @@ Module Module1
             output.AppendLine(length.ToString)
         Next
 
-        Console.WriteLine(output.ToString())
+        WriteLine(output.ToString())
     End Sub
 
     Private Function LengthOfString(s As String) As Integer

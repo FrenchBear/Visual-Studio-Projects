@@ -7,6 +7,7 @@
 // 2021-09-18   PV  VS2022, Net6
 
 using System;
+using static System.Console;
 
 internal class MyApp
 {
@@ -31,17 +32,17 @@ internal class MyApp
             int b = 400000;
             t1[0] = a * b;
         }
-        Console.WriteLine("t1[0]: {0}", t1[0]);
+        WriteLine("t1[0]: {0}", t1[0]);
 
         object[] u1;
         u1 = null;
-        Console.WriteLine("u1==null: {0}", u1 == null);
+        WriteLine("u1==null: {0}", u1 == null);
 
         u1 = new Object[10];
-        Console.WriteLine("u1[0]==null: {0}", u1[0] == null);
+        WriteLine("u1[0]==null: {0}", u1[0] == null);
 
         u1[0] = new Object();
-        Console.WriteLine("u1[0]==null: {0}", u1[0] == null);
+        WriteLine("u1[0]==null: {0}", u1[0] == null);
 
         _ = Console.ReadLine();
     }

@@ -5,6 +5,8 @@
 ' 2013-03-08    PV
 ' 2021-09-26    PV      VS2022; Net6
 
+Imports System.Console
+
 Module App
 
     ' Max number of primes and max of sum too
@@ -13,11 +15,11 @@ Module App
     Sub Main()
         GeneratePrimesList(n)
 
-        'Console.WriteLine("2..{0}: {1} primes", n, nPrimes)
+        'WriteLine("2..{0}: {1} primes", n, nPrimes)
         'For i As Long = 0 To nPrimes - 1
         '    Console.Write("{0} ", tPrimes(i))
         'Next
-        'Console.WriteLine()
+        'WriteLine()
 
         ' Initialize count results
         Dim tc(n) As Pair
@@ -40,7 +42,7 @@ Module App
                 Console.Write("{0}: {1},  ", tc(i).Number, tc(i).Combinations)
             End If
         Next
-        Console.WriteLine()
+        WriteLine()
     End Sub
 
     ' This structure is only used for sorting, to keep track of initial index after sorting (stored in Number)

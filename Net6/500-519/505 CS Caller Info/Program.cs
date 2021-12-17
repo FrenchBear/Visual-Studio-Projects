@@ -4,11 +4,11 @@
 // 2013-01-28   PV
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using static System.Console;
 
-namespace _505_CS_Caller_Info;
+namespace CS505;
 
 internal class Program
 {
@@ -26,11 +26,11 @@ internal class Program
         [CallerFilePath] string sourceFilePath = "",
         [CallerLineNumber] int sourceLineNumber = 0)
     {
-        Console.WriteLine("member name: " + memberName);
-        Console.WriteLine("source file path: " + sourceFilePath);
-        Console.WriteLine("source line number: " + sourceLineNumber);
-        Console.WriteLine(i);
-        Console.WriteLine();
+        WriteLine("member name: " + memberName);
+        WriteLine("source file path: " + sourceFilePath);
+        WriteLine("source line number: " + sourceLineNumber);
+        WriteLine(i);
+        WriteLine();
     }
 
     // ========================================

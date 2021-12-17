@@ -4,6 +4,7 @@
 ' 2021-09-20    PV  VS2022; Net6
 
 Imports System.Data.SqlClient
+Imports System.Console
 
 Module Module1
 
@@ -16,11 +17,11 @@ Module Module1
             cmd = New SqlCommand(sSQL, conSQL)
             Dim r As SqlDataReader = cmd.ExecuteReader()
             While r.Read
-                Console.WriteLine("{0}: {1}", r("priorityLevelCode"), r("priorityLevelName"))
+                WriteLine("{0}: {1}", r("priorityLevelCode"), r("priorityLevelName"))
             End While
             r.Close()
             cmd.Dispose()
-            Console.WriteLine()
+            WriteLine()
 
             Dim startTicks As Long = DateTime.Now.Ticks
             Dim da As SqlDataAdapter, T As DataTable = Nothing
@@ -32,10 +33,10 @@ Module Module1
             Next
             Dim endTicks As Long = DateTime.Now.Ticks
             For Each column As DataColumn In T.Columns
-                Console.WriteLine("{0}: {1}, {2}", column.ColumnName, column.DataType.ToString, column.MaxLength)
+                WriteLine("{0}: {1}, {2}", column.ColumnName, column.DataType.ToString, column.MaxLength)
             Next
-            Console.WriteLine(T.Rows.Count)
-            Console.WriteLine("t={0}", (endTicks - startTicks) / 10000000.0 / 1000.0)
+            WriteLine(T.Rows.Count)
+            WriteLine("t={0}", (endTicks - startTicks) / 10000000.0 / 1000.0)
 
         End Using
 

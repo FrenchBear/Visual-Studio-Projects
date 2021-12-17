@@ -19,7 +19,6 @@
 // 2017-01-17   PV  Extract from CS601, to show the problem
 // 2021-09-26   PV      VS2022; Net6
 
-using System;
 using System.Text;
 using static System.Console;
 
@@ -29,7 +28,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.OutputEncoding = new UTF8Encoding();
+        OutputEncoding = new UTF8Encoding();
 
         WriteLine("Display φ and ϕ, shown as ϕ and φ in Consolas (and Calibri)");
     }

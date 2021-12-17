@@ -7,7 +7,7 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-18   PV  VS2022, Net6
 
-using System;
+using static System.Console;
 
 internal class Animal
 {
@@ -15,7 +15,7 @@ internal class Animal
 
     public Animal()
     {
-        Console.WriteLine("Constructeur Animal");
+        WriteLine("Constructeur Animal");
         Population++;
     }
 };
@@ -34,7 +34,7 @@ internal class AppTest
         Chien Pollux;
 
         Pollux = new Chien("Briard");
-        Console.WriteLine("Pop: {0}", Chien.Population);
+        WriteLine("Pop: {0}", Animal.Population);
 
         //  Remarque: dans le ILDASM :
         //  IL_000b:  ldstr      "Pop: {0}"
