@@ -9,6 +9,7 @@
 
 using System;
 using System.Diagnostics;
+using static System.Console;
 
 namespace CS525
 {
@@ -34,26 +35,18 @@ namespace CS525
                 fn = fnp1;
             }
 
-            Console.WriteLine();
-            Console.Write("(Pause)");
-            Console.ReadLine();
+            WriteLine();
+            Write("(Pause)");
+            ReadLine();
         }
 
         private static long Gcd(long a, long b)
         {
-            for (; ; )
-            {
-                if (b > a)
-                {
-                    long t = a;
-                    a = b;
-                    b = t;
-                }
-                long c = a % b;
-                if (c == 0) return b;
-                a = b;
-                b = c;
-            }
+            if (a <= 0 || b <= 0)
+                throw new ArgumentException("Negative or zero argument not supported");
+            while (b != 0)
+                (a, b) = (b, a % b);
+            return a;
         }
     }
 }

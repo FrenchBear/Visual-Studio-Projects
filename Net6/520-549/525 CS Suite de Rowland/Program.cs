@@ -8,6 +8,7 @@
 //
 // 2014-10-28   PV
 // 2021-09-26   PV      VS2022; Net6
+// 2021-12-17   PV      Better Gcd()
 
 using System;
 using System.Diagnostics;
@@ -39,16 +40,10 @@ internal class Program
 
     private static long Gcd(long a, long b)
     {
-        for (; ; )
-        {
-            if (b > a)
-            {
-                (a, b) = (b, a);
-            }
-            long c = a % b;
-            if (c == 0) return b;
-            a = b;
-            b = c;
-        }
+        if (a <= 0 || b <= 0)
+            throw new ArgumentException("Negative or zero argument not supported");
+        while (b != 0)
+            (a, b) = (b, a % b);
+        return a;
     }
 }

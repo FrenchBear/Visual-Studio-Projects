@@ -51,7 +51,7 @@ internal class Program
     }
 
     /// <summary>
-    /// Return Greatest Common Divisor using Euclidean Algorithm
+    /// Greatest Common Divisor using Euclidean Algorithm
     /// </summary>
     private static int Gcd(int a, int b)
     {
