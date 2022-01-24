@@ -9,11 +9,13 @@
 // 2014-03-25   PV      SHA512 & 385; .Net version
 // 2019-10-14   PV      VS2019; Added Go examples "x" and "X"
 // 2021-09-26   PV      VS2022; Net6
+// 2022-01-24   PV      Get_sha_512_file
 
 using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using static System.Console;
+using System.IO;
 
 #pragma warning disable SYSLIB0021 // Type or member is obsolete
 
@@ -24,6 +26,10 @@ internal class Program
     private static void Main()
     {
         WriteLine("CS 519 SHA-2");
+
+        // Test file, just because I need this function in another app
+        string s = Get_sha_512_file("sha256-384-512.pdf");
+        Debug.Assert(s == "69bd8e9faaedfc01015772621086dbc3e6c0b3d3f6daac57fd39efd14ab31bc3c43707fb84f60986d127916464c910d5f3bbd0f476fb72a5411e3d5ce57d8248");
 
         // Test rotation function
         uint u32 = 0xcafe;
@@ -144,6 +150,17 @@ internal class Program
         Debug.Assert(hsb.ToString() == hashed);
     }
 
+    private static string Get_sha_512_file(string file)
+    {
+        var hasher = SHA512.Create();
+        using var fs = new FileStream(file, FileMode.Open);
+        var hash = hasher.ComputeHash(fs);
+        StringBuilder hsb = new();
+        foreach (byte b in hash)
+            _ = hsb.Append(b.ToString("x2"));
+        return hsb.ToString();
+    }
+
     private static void Test_sha_384(string s, string hashed)
     {
         // Use local implementation
@@ -171,8 +188,10 @@ internal class Program
         int lB = s.Length;      // Message length in Bytes (only process ascii here, one byte per character)
         int lb = 8 * lB;        // Message length in bits
         nb = lb / blocksize;    // Number of blocks of 512 bits
-        if (lb == 0 || lb % blocksize != 0) nb++;
-        if ((lb % blocksize) >= (blocksize - lengthsize)) nb++;
+        if (lb == 0 || lb % blocksize != 0)
+            nb++;
+        if ((lb % blocksize) >= (blocksize - lengthsize))
+            nb++;
 
         tb = new byte[nb * (blocksize / 8)];
         for (int i = 0; i < lB; i++)

@@ -10,4 +10,9 @@
         <Description>Example of implementation of SHA-2 hashing</Description>
         <Copyright>Copyright ©2014 Pierre Violent</Copyright>
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="sha256-384-512.pdf">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
 </Project>
