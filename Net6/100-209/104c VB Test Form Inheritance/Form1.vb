@@ -4,7 +4,7 @@
 Public Class Form1
 
     Private Sub Button1_Click(sender As System.Object, e As EventArgs)
-        frmDerived2.ShowDialog()
+        Derived2Form.ShowDialog()
     End Sub
 
 End Class

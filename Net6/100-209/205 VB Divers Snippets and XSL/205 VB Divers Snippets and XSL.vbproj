@@ -11,6 +11,7 @@
         <Copyright>Copyright @ ES 2004</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
     <ItemGroup>
         <Import Include="System.Data" />

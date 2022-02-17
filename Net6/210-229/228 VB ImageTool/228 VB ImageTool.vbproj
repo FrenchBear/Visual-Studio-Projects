@@ -7,9 +7,10 @@
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>ImageTool</Title>
-		<Copyright>Copyright ©  2006</Copyright>
+		<Copyright>Copyright @2006-2022 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
+		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
 	<ItemGroup>
 		<Import Include="System.Data" />

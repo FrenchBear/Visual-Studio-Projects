@@ -8,9 +8,10 @@
         <Authors>Pierre Violent</Authors>
         <Title>Illusion</Title>
         <Company>PV</Company>
-        <Copyright>Copyright @PV 2004</Copyright>
+        <Copyright>Copyright @Pierre Violent 2004-2022</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
     <ItemGroup>
         <Import Include="System.Data" />

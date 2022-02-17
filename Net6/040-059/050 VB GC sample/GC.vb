@@ -9,6 +9,7 @@ Option Explicit On
 Option Strict On
 
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
+#Disable Warning CA1816 ' Dispose methods should call SuppressFinalize
 
 '=====================================================================
 '  File:      GC.vb

@@ -11,6 +11,7 @@
         <Copyright>Copyright ©2013 Pierre Violent</Copyright>
         <ApplicationIcon>retaille.ico</ApplicationIcon>
         <UseWPF>true</UseWPF>
-		<UseWindowsForms>true</UseWindowsForms>
+        <UseWindowsForms>true</UseWindowsForms>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 </Project>

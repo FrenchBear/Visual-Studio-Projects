@@ -8,10 +8,11 @@
         <Authors>Pierre Violent</Authors>
         <Title>WindowsApplication2</Title>
         <Company>ES</Company>
-        <Copyright>Copyright @ ES 2004</Copyright>
+        <Copyright>Copyright @2004-2022 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
         <StartupObject>VB218.Form1</StartupObject>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
     <ItemGroup>
         <Import Include="System.Data" />
@@ -33,12 +34,12 @@
             <Generator>MyApplicationCodeGenerator</Generator>
             <LastGenOutput>Application.Designer.vb</LastGenOutput>
         </None>
-		<Compile Update="My Project\MyResources.Designer.vb">
-			<AutoGen>True</AutoGen>
-			<DesignTime>True</DesignTime>
-			<DependentUpon>MyResources.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
+        <Compile Update="My Project\MyResources.Designer.vb">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>MyResources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
     <ItemGroup>
       <EmbeddedResource Update="My Project\Resources.resx">
         <CustomToolNamespace>My.Resources</CustomToolNamespace>

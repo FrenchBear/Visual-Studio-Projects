@@ -7,10 +7,11 @@
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
         <Title>VB306 AllStatusBarStyles</Title>
-        <Copyright>Copyright ©2008-2021 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2008-2022 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
         <StartupObject>VB306.Form1</StartupObject>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
     <ItemGroup>
         <Import Include="System.Data" />
@@ -23,7 +24,7 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Application.myapp</DependentUpon>
         </Compile>
-	</ItemGroup>
+    </ItemGroup>
     <ItemGroup>
         <None Update="My Project\Application.myapp">
             <Generator>MyApplicationCodeGenerator</Generator>

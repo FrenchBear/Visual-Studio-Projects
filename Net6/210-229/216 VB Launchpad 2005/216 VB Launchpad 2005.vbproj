@@ -13,6 +13,7 @@
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
 		<StartupObject>Launchpad2005.LaunchpadForm</StartupObject>
+		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
 
 	<ItemGroup>

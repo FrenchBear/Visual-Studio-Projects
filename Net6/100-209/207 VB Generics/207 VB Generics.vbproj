@@ -8,9 +8,10 @@
         <Authors>Pierre Violent</Authors>
         <Title>VB207</Title>
         <Company>ES</Company>
-        <Copyright>Copyright @2004-2021 Pierre Violent</Copyright>
+        <Copyright>Copyright @2004-2022 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
     <ItemGroup>
         <Import Include="System.Data" />

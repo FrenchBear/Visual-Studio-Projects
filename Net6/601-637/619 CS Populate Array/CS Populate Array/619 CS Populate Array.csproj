@@ -8,7 +8,7 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>CS619 Populate Array</Title>
 		<Description>Various tests to fill a C# array with a constant</Description>
-		<Copyright>Copyright ©2017-2021 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2017-2022 Pierre Violent</Copyright>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

@@ -8,7 +8,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>AnalysePCL</Title>
         <Description>D�codage de PCL et g�n�ration de TIFF</Description>
-        <Copyright>Copyright © 2003-2021 Pierre Violent</Copyright>
+        <Copyright>Copyright © 2003-2022 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
     </PropertyGroup>
     <ItemGroup>

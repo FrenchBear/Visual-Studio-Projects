@@ -8,9 +8,10 @@
         <Authors>Pierre Violent</Authors>
         <Title>WindowsApplication1</Title>
         <Company>ES</Company>
-        <Copyright>Copyright @ ES 2004</Copyright>
+        <Copyright>Copyright @2004-2022 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
     <ItemGroup>
         <Import Include="System.Data" />

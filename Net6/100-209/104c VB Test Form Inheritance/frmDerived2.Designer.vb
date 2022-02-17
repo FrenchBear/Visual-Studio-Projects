@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class frmDerived2
+Partial Class Derived2Form
     Inherits TemplateForm
 
     'Form overrides dispose to clean up the component list.

@@ -215,7 +215,9 @@ Namespace CodeDOMExample
             start.Statements.Add(cs2)
 
             ' Build a call to System.Console.ReadLine.
+#Disable Warning CA1825 ' Avoid zero-length array allocations
             Dim csReadLine As New CodeMethodInvokeExpression(csSystemConsoleType, "ReadLine")
+#Enable Warning CA1825 ' Avoid zero-length array allocations
 
             ' Add the ReadLine statement.
             start.Statements.Add(csReadLine)

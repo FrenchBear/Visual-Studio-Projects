@@ -1,16 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>net6.0-windows</TargetFramework>
-        <OutputType>WinExe</OutputType>
-        <RootNamespace>MessageQueueTest</RootNamespace>
-        <AssemblyName>MessageQueue</AssemblyName>
-        <Version>1.0.0</Version>
-        <Authors>Pierre Violent</Authors>
-        <Title>CS309 MessageQueue</Title>
-        <Copyright>Copyright ©2008-2021 Pierre Violent</Copyright>
-        <UseWindowsForms>true</UseWindowsForms>
-    </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Experimental.System.Messaging" Version="1.1.0" />
-    </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>MessageQueueTest</RootNamespace>
+		<AssemblyName>MessageQueue</AssemblyName>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Title>CS309 MessageQueue</Title>
+		<Copyright>Copyright ©2008-2022 Pierre Violent</Copyright>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NeutralLanguage>en</NeutralLanguage>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Experimental.System.Messaging" Version="1.1.0" />
+	</ItemGroup>
 </Project>

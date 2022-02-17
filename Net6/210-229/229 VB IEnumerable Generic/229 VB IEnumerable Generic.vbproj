@@ -8,9 +8,10 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>101 IEnumerable Generic</Title>
 		<Company>SGS</Company>
-		<Copyright>Copyright � SGS 2005</Copyright>
+		<Copyright>Copyright @2005-2022 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
+		<NeutralLanguage>en</NeutralLanguage>
 	</PropertyGroup>
 	<ItemGroup>
 		<Import Include="System.Data" />
