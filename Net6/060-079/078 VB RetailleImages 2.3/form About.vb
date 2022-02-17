@@ -4,7 +4,7 @@
 ' 2021-09-19    PV  VS2022, Net6
 
 Public Class AboutForm
-    Private Sub AboutForm_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub AboutForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         TitleLabel.Text = My.Application.Info.Title & " - " & My.Application.Info.Description
         CopyrightLabel.Text = My.Application.Info.Copyright
         BuildLabel.Text = "Build " & My.Application.Info.Version.ToString

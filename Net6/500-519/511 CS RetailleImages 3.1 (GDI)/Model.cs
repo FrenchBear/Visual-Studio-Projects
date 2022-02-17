@@ -73,15 +73,15 @@ public class Model
         // through IProgress interface
         _ = Task.Run(/* async */ () =>
           {
-              int n = 0;      // Number of active hashing tasks
-            int p = 0;      // Number of processed files
+              var n = 0;      // Number of active hashing tasks
+            var p = 0;      // Number of processed files
 
             // Hash MAX_PARALLISM files in parallel
-            foreach (string file in processedFilesList)
+            foreach (var file in processedFilesList)
               {
                   if (cancelToken.IsCancellationRequested) goto ExitGenerate;
 
-                  string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
+                  var s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
                 lt.Add(Task.Run(() => ConvertImage(s)));
                   n++;
                   if (n == MAX_PARALLISM)
@@ -136,20 +136,20 @@ public class Model
         string fileNameHRStripped;
         if (Path.GetDirectoryName(fileName).EndsWith(" HR", StringComparison.InvariantCultureIgnoreCase))
         {
-            string d = Path.GetDirectoryName(fileName);
+            var d = Path.GetDirectoryName(fileName);
             fileNameHRStripped = Path.Combine(d.Remove(d.Length - 3, 3), Path.GetFileName(fileName));
         }
         else
             fileNameHRStripped = fileName;
 
-        string imagePath = Path.Combine(SourceFolder, fileName);
-        string vignettePath = Path.Combine(TargetFolder, fileNameHRStripped);
+        var imagePath = Path.Combine(SourceFolder, fileName);
+        var vignettePath = Path.Combine(TargetFolder, fileNameHRStripped);
 
         // Using GDI
         System.Drawing.Image image = new System.Drawing.Bitmap(imagePath);
 
-        int originalWidth = image.Width;
-        int originalHeight = image.Height;
+        var originalWidth = image.Width;
+        var originalHeight = image.Height;
         int newWidth, newHeight;
         if (originalWidth > originalHeight)
         {
@@ -183,12 +183,12 @@ public class Model
         // GDI
         System.Drawing.Image vignette = new System.Drawing.Bitmap(image, newWidth, newHeight);
         // Preserve origiginal image EXIF attributes
-        foreach (PropertyItem propItem in image.PropertyItems)
+        foreach (var propItem in image.PropertyItems)
             vignette.SetPropertyItem(propItem);
 
         EncoderParameters eps = new(1);
         eps.Param[0] = new EncoderParameter(Encoder.Quality, JpegQuality);
-        ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
+        var ici = GetEncoderInfo("image/jpeg");
 
         if (!Directory.Exists(Path.GetDirectoryName(vignettePath)))
             _ = Directory.CreateDirectory(Path.GetDirectoryName(vignettePath));
@@ -200,8 +200,7 @@ public class Model
     private static ImageCodecInfo GetEncoderInfo(string mimeType)
     {
         int j;
-        ImageCodecInfo[] encoders;
-        encoders = ImageCodecInfo.GetImageEncoders();
+        var encoders = ImageCodecInfo.GetImageEncoders();
         for (j = 0; j <= encoders.Length; j++)
             if (encoders[j].MimeType == mimeType)
                 return encoders[j];

@@ -2,6 +2,7 @@
 '
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.ComponentModel
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -15,7 +16,7 @@ Class BasicDataEntryForm
         InitializeComponent()
     End Sub
 
-    Private ReadOnly components As System.ComponentModel.IContainer = Nothing
+    Private ReadOnly components As IContainer = Nothing
 
     Protected Overrides Sub Dispose(disposing As Boolean)
         If disposing AndAlso Not (components Is Nothing) Then

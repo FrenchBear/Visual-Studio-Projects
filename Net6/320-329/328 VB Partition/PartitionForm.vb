@@ -24,7 +24,7 @@ Public Class PartitionForm
     ReadOnly MeasureWidth As Integer = 200
     ReadOnly TempsWidth As Integer = 50
 
-    Private Sub StartButton_Click(sender As System.Object, e As EventArgs) Handles StartButton.Click
+    Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         Dim w As Integer = 2 * xOff + KeyWidth + 4 * MeasureWidth
         Dim h As Integer = 2 * yOff + 4 * RowHeight + KeyHeight + 50
         Dim picBitmap As New Bitmap(w, h, PixelFormat.Format24bppRgb)

@@ -34,7 +34,7 @@ public class RE_ExtraData
 {
     public double BaseData { get; set; }
 
-    public override bool Equals(Object obj) => obj is RE_ExtraData other && BaseData == other.BaseData;
+    public override bool Equals(object obj) => obj is RE_ExtraData other && BaseData == other.BaseData;
 
     public override int GetHashCode() => BaseData.GetHashCode();
 }
@@ -44,7 +44,7 @@ public class RE_ExtraDataChemistry : RE_ExtraData
 {
     public double Uncertainty { get; set; }
 
-    public override bool Equals(Object obj) 
+    public override bool Equals(object obj) 
         => obj is RE_ExtraDataChemistry other && base.Equals(obj) && Uncertainty == other.Uncertainty;
 
     public override int GetHashCode() => base.GetHashCode() ^ Uncertainty.GetHashCode();

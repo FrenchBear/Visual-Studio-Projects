@@ -6,15 +6,16 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022, Net6
+Imports System.Reflection
 
 #Disable Warning IDE1006 ' Naming Styles
 
 
-Public Class frmInfos
+Public Class InfosForm
     Inherits Form
 
-    Private iRang As Integer = 0
-    Private ReadOnly iInitialWidth As Integer
+    Private _iRang As Integer = 0
+    Private ReadOnly _iInitialWidth As Integer
 
 #Region " Windows Form Designer generated code "
 
@@ -25,7 +26,7 @@ Public Class frmInfos
         InitializeComponent()
 
         'Add any initialization after the InitializeComponent() call
-        iInitialWidth = Me.Size.Width - 130
+        _iInitialWidth = Me.Size.Width - 130
     End Sub
 
     'Form overrides dispose to clean up the component list.
@@ -57,14 +58,14 @@ Public Class frmInfos
         Me.btnInfos.TabIndex = 0
         Me.btnInfos.Text = "Infos"
         '
-        'frmInfos
+        'InfosForm
         '
         Me.AutoScaleBaseSize = New Size(5, 13)
         Me.AutoScroll = True
         Me.AutoScrollMargin = New Size(0, 6)
         Me.ClientSize = New Size(544, 357)
         Me.Controls.AddRange(New Control() {Me.btnInfos})
-        Me.Name = "frmInfos"
+        Me.Name = "InfosForm"
         Me.Text = "Infos sur l'assembly"
         Me.ResumeLayout(False)
 
@@ -76,7 +77,7 @@ Public Class frmInfos
         btnInfos.Visible = False
 
         Dim vi As FileVersionInfo
-        vi = FileVersionInfo.GetVersionInfo(Reflection.Assembly.GetExecutingAssembly.Location)
+        vi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly.Location)
 
         Info("FileName", vi.FileName)
         Info("Comments", vi.Comments)
@@ -106,17 +107,17 @@ Public Class frmInfos
         Info("SpecialBuild", vi.SpecialBuild)
 
         ' Attribut privé
-        Dim a As Reflection.Assembly
-        a = Reflection.Assembly.GetExecutingAssembly
-        Dim tPV As Object()
-        tPV = a.GetCustomAttributes(GetType(AssemblyPVAttribute), False)
-        If (tPV Is Nothing) Or tPV.Length = 0 Then
+        Dim a As Assembly
+        a = Assembly.GetExecutingAssembly
+        Dim tPv As Object()
+        tPv = a.GetCustomAttributes(GetType(AssemblyPvAttribute), False)
+        If (tPv Is Nothing) Or tPv.Length = 0 Then
             Info("PV", "(nothing) ")
         Else
-            Dim PV As AssemblyPVAttribute
-            PV = tPV(0)
-            Info("PV.iFlags", PV.iFlags)
-            Info("PV.Info", PV.Info)
+            Dim pv As AssemblyPvAttribute
+            pv = tPv(0)
+            Info("PV.iFlags", pv.Flags)
+            Info("PV.Info", pv.Info)
         End If
 
         ' On recalibre les txtInfo après l'apparition de la ScrollBar
@@ -124,28 +125,28 @@ Public Class frmInfos
         For Each c In Me.Controls
             If TypeOf c Is TextBox Then
                 '        Debug.WriteLine("Name: " & c.Name & " Width: " & c.Size.Width)
-                c.Size = New Size(iInitialWidth, c.Size.Height)
+                c.Size = New Size(_iInitialWidth, c.Size.Height)
             End If
         Next
     End Sub
 
     Private Sub Info(sLabel As String, sValeur As String)
-        iRang += 1
+        _iRang += 1
 
         Dim l As New Label()
         Dim t As New TextBox()
 
         With l
             .AutoSize = True
-            .Location = New Point(6, 22 * (iRang - 1) + 6)
-            .Name = "lblInfo" & iRang
+            .Location = New Point(6, 22 * (_iRang - 1) + 6)
+            .Name = "lblInfo" & _iRang
             .Text = sLabel
         End With
 
         With t
-            .Location = New Point(100, 22 * (iRang - 1) + 6)
-            .Name = "txtInfo" & iRang
-            .Size = New Size(iInitialWidth, 20)
+            .Location = New Point(100, 22 * (_iRang - 1) + 6)
+            .Name = "txtInfo" & _iRang
+            .Size = New Size(_iInitialWidth, 20)
             .Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
             .ReadOnly = True
             .Text = sValeur

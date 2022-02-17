@@ -14,12 +14,11 @@ namespace EssaisILDasm;
 
 internal class MyApp
 {
-    public static void Main(String[] args)
+    public static void Main(string[] args)
     {
         MaClasseDerivee.MaMethodeStatique();
 
-        MaClasseDerivee d;
-        d = new MaClasseDerivee();
+        var d = new MaClasseDerivee();
         d.Bip += new GestionnaireDeBip(D_Bip);
 
         // Try+Catch
@@ -55,7 +54,7 @@ internal class MyApp
         WriteLine();
 
         // Enum
-        Jour j = Jour.Mardi;
+        var j = Jour.Mardi;
         WriteLine("j = {0}", j);
         j++;
         WriteLine("j = {0}", j);
@@ -63,8 +62,8 @@ internal class MyApp
 
         // Types valeur
         DBInt x = 123;
-        DBInt y = DBInt.Null;
-        DBInt z = x + y;
+        var y = DBInt.Null;
+        var z = x + y;
         WriteLine("x = {0}", x);
         WriteLine("y = {0}", y);
         WriteLine("z = {0}", z);

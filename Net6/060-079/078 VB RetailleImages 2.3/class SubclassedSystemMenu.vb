@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 ''' </summary>
 ''' <remarks>From http://www.codeproject.com/vb/net/SubclassedSystemMenu.asp</remarks>
 Public Class SubclassedSystemMenu
-    Inherits System.Windows.Forms.NativeWindow
+    Inherits NativeWindow
     Implements IDisposable
 
 #Region "Win32 API Declares"
@@ -69,8 +69,8 @@ Public Class SubclassedSystemMenu
 #End Region
 
 #Region "Methods"
-    <System.Diagnostics.DebuggerStepThrough()>
-    Protected Overrides Sub WndProc(ByRef m As System.Windows.Forms.Message)
+    <DebuggerStepThrough()>
+    Protected Overrides Sub WndProc(ByRef m As Message)
         Select Case m.Msg
             Case WM_SYSCOMMAND
 
@@ -87,8 +87,8 @@ Public Class SubclassedSystemMenu
         End Select
     End Sub
 
-    <System.Diagnostics.DebuggerStepThrough()>
-    Public Sub Dispose() Implements System.IDisposable.Dispose
+    <DebuggerStepThrough()>
+    Public Sub Dispose() Implements IDisposable.Dispose
         If Not Me.Handle.Equals(IntPtr.Zero) Then
             GC.SuppressFinalize(Me)
             Me.ReleaseHandle()

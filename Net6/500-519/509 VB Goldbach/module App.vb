@@ -39,7 +39,7 @@ Module App
         'Array.Sort(Of Pair)(tc, New PairComparer())
         For i As Integer = 0 To n
             If tc(i).Combinations > 0 Then
-                Console.Write("{0}: {1},  ", tc(i).Number, tc(i).Combinations)
+                Write("{0}: {1},  ", tc(i).Number, tc(i).Combinations)
             End If
         Next
         WriteLine()

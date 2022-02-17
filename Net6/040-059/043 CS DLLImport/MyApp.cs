@@ -9,7 +9,7 @@ using System;
 using System.Runtime.InteropServices;
 using static System.Console;
 
-internal class MyApp
+internal static class MyApp
 {
     [DllImport("Kernel32", EntryPoint = "GetSystemDirectory", CharSet = CharSet.Unicode)]
     public static extern uint GSD(System.Text.StringBuilder str, int len);

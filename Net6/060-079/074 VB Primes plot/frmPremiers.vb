@@ -2,6 +2,8 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022, Net6
+Imports System.ComponentModel
+Imports System.Drawing.Imaging
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -32,7 +34,7 @@ Public Class frmPremiers
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -44,19 +46,19 @@ Public Class frmPremiers
     Friend WithEvents Panel1 As Panel
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnCrible = New System.Windows.Forms.Button()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.StatusBar1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.btnCrible = New Button()
+        Me.Panel1 = New Panel()
+        Me.StatusStrip1 = New StatusStrip()
+        Me.StatusBar1 = New ToolStripStatusLabel()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnCrible
         '
-        Me.btnCrible.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnCrible.Location = New System.Drawing.Point(416, 20)
+        Me.btnCrible.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        Me.btnCrible.Location = New Point(416, 20)
         Me.btnCrible.Name = "btnCrible"
-        Me.btnCrible.Size = New System.Drawing.Size(180, 56)
+        Me.btnCrible.Size = New Size(180, 56)
         Me.btnCrible.TabIndex = 0
         Me.btnCrible.Text = "Crible"
         '
@@ -64,34 +66,34 @@ Public Class frmPremiers
         '
         Me.Panel1.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
             Or AnchorStyles.Left) _
-            Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or AnchorStyles.Right), AnchorStyles)
         Me.Panel1.BackColor = Color.RosyBrown
-        Me.Panel1.Location = New System.Drawing.Point(19, 20)
+        Me.Panel1.Location = New Point(19, 20)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(377, 461)
+        Me.Panel1.Size = New Size(377, 461)
         Me.Panel1.TabIndex = 2
         Me.Panel1.Visible = False
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 552)
+        Me.StatusStrip1.ImageScalingSize = New Size(32, 32)
+        Me.StatusStrip1.Items.AddRange(New ToolStripItem() {Me.StatusBar1})
+        Me.StatusStrip1.Location = New Point(0, 552)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(608, 22)
+        Me.StatusStrip1.Size = New Size(608, 22)
         Me.StatusStrip1.TabIndex = 3
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'StatusBar1
         '
         Me.StatusBar1.Name = "StatusBar1"
-        Me.StatusBar1.Size = New System.Drawing.Size(593, 12)
+        Me.StatusBar1.Size = New Size(593, 12)
         Me.StatusBar1.Spring = True
         '
         'frmPremiers
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(12, 32)
-        Me.ClientSize = New System.Drawing.Size(608, 574)
+        Me.AutoScaleBaseSize = New Size(12, 32)
+        Me.ClientSize = New Size(608, 574)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btnCrible)
@@ -140,7 +142,7 @@ Public Class frmPremiers
     End Sub
 
     Private Sub Form1_Paint(sender As Object, e As PaintEventArgs) Handles MyBase.Paint
-        Dim myBitmap As New Bitmap(Panel1.Width, Panel1.Height, Imaging.PixelFormat.Format24bppRgb)
+        Dim myBitmap As New Bitmap(Panel1.Width, Panel1.Height, PixelFormat.Format24bppRgb)
         Dim nbp As Integer = 0
 
         If Not bResizeEnCours Then

@@ -26,18 +26,18 @@ internal class Program
 
         // Project the length of each string and
         // put the length values into an enumerable object.
-        IEnumerable<int> lengths;
+        //IEnumerable<int> lengths;
         // With a lambda function
-        lengths = fruits.Select(fruit => fruit.Length);
+        var lengths = fruits.Select(fruit => fruit.Length);
 
         // With a generic delegate
         // Note: a custom delegate does not work since there are no delegates conversions
-        Func<string, int> selector = LengthOfString;
+        var selector = LengthOfString;
         lengths = fruits.Select(selector);
 
         // Display the results.
         System.Text.StringBuilder output = new();
-        foreach (int length in lengths)
+        foreach (var length in lengths)
             _ = output.AppendLine(length.ToString());
 
         WriteLine(output.ToString());

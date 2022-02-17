@@ -16,15 +16,15 @@ internal class Program
         var d = new DirectoryInfo(@"F:\eMule\Incoming");
         Regex r = new(@"^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", RegexOptions.IgnoreCase);
 
-        foreach (FileInfo f in d.EnumerateFiles())
+        foreach (var f in d.EnumerateFiles())
         {
             if (string.Compare(f.Extension, ".avi", true) == 0 || string.Compare(f.Extension, ".mkv", true) == 0)
             {
                 WriteLine(f.Name);
-                Match m = r.Match(Path.GetFileNameWithoutExtension(f.Name));
+                var m = r.Match(Path.GetFileNameWithoutExtension(f.Name));
                 if (m.Success)
                 {
-                    string newName = f.DirectoryName + "\\" + Clean(m.Groups["p"].Value) + " - " + m.Groups["e"].Value + " - " + Clean(m.Groups["s"].Value) + Path.GetExtension(f.Name);
+                    var newName = f.DirectoryName + "\\" + Clean(m.Groups["p"].Value) + " - " + m.Groups["e"].Value + " - " + Clean(m.Groups["s"].Value) + Path.GetExtension(f.Name);
                     if (newName != f.FullName)
                         File.Move(f.FullName, newName);
                 }

@@ -13,9 +13,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string s = "this is a string";
+        var s = "this is a string";
         Regex r = new(@"(\s|^)\w");
-        string t = r.Replace(s, m => m.Value.ToUpperInvariant());
+        var t = r.Replace(s, m => m.Value.ToUpperInvariant());
         WriteLine(t);
     }
 }

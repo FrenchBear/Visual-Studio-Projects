@@ -18,17 +18,16 @@ internal class Program
     private static void Main(string[] args)
     {
         // Prepare data
-        List<LauncherGroup> groupsList;
-        groupsList = new List<LauncherGroup>
+        var groupsList = new List<LauncherGroup>
         {
             new LauncherGroup { Name = "Group 1", SquaresList = new List<LauncherSquare> { new LauncherSquare { Name = "Square 1.1", Image = "Image 1.1" }, new LauncherSquare { Name = "Square 1.2", Image = "Image 1.2" } } },
             new LauncherGroup { Name = "Group 2", SquaresList = new List<LauncherSquare> { new LauncherSquare { Name = "Square 2", Image = "Image 2" } } },
             new LauncherGroup { Name = "Group 3", SquaresList = new List<LauncherSquare> { new LauncherSquare { Name = "Square 3.1", Image = "Image 3.1" }, new LauncherSquare { Name = "Square 3.2", Image = "Image 3.2" }, new LauncherSquare { Name = "Square 3.3", Image = "Image 3.3" } } }
         };
 
-        LauncherConfiguration Configuration = new() { GoupsList = groupsList };
+        LauncherConfiguration configuration = new() { GoupsList = groupsList };
 
-        string MenuFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "LauncherMenus.xml");
+        var menuFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "LauncherMenus.xml");
         XmlSerializer serializer = new(typeof(LauncherConfiguration));
         var ns = new XmlSerializerNamespaces();
         ns.Add("", "");
@@ -39,24 +38,24 @@ internal class Program
             //settings.OmitXmlDeclaration = true;
             Indent = true
         };
-        using (var writer = XmlWriter.Create(MenuFile, settings))
+        using (var writer = XmlWriter.Create(menuFile, settings))
         {
             writer.WriteStartElement("MicrobiologyLauncherMenus");
             writer.WriteAttributeString("version", "1");
-            serializer.Serialize(writer, Configuration, ns);
+            serializer.Serialize(writer, configuration, ns);
             writer.WriteEndElement();
         }
 
         // Read
-        LauncherConfiguration Configuration2;
-        using var reader = XmlReader.Create(MenuFile);
+        LauncherConfiguration configuration2;
+        using var reader = XmlReader.Create(menuFile);
         do
             _ = reader.Read();
         while (reader.NodeType != XmlNodeType.Element);
         if (reader.Name != "MicrobiologyLauncherMenus") Debugger.Break();
         if (reader.GetAttribute("version") != "1") Debugger.Break(); ;
         _ = reader.Read();
-        Configuration2 = (LauncherConfiguration)serializer.Deserialize(reader);
+        configuration2 = (LauncherConfiguration)serializer.Deserialize(reader);
     }
 }
 

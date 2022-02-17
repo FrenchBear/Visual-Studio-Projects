@@ -31,7 +31,7 @@ Public Class Form1
         Return freq
     End Function
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim c1 As Long = QueryPerformanceCounter()
 
         For i As Integer = 1 To 1
@@ -47,7 +47,7 @@ Public Class Form1
                "Encrypt in " & t2_ms.ToString & "ms")
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim sw As New Stopwatch
         sw.Start()
         Analyze()

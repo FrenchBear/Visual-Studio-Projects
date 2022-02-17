@@ -10,6 +10,7 @@
 
 Option Compare Text
 
+Imports System.IO
 Imports System.Text.RegularExpressions
 Imports vb = Microsoft.VisualBasic
 
@@ -46,9 +47,9 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Folder selection through windows standard folder selection dialog box
     ''' </summary>
-    Private Sub btnSelectFolder_Click(sender As System.Object, e As EventArgs) Handles btnSelectFolder.Click
+    Private Sub btnSelectFolder_Click(sender As Object, e As EventArgs) Handles btnSelectFolder.Click
         FolderBrowserDialog1.SelectedPath = txtFolder.Text
-        If FolderBrowserDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+        If FolderBrowserDialog1.ShowDialog = DialogResult.OK Then
             txtFolder.Text = FolderBrowserDialog1.SelectedPath
         End If
     End Sub
@@ -56,7 +57,7 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Action OnClick Preview button
     ''' </summary>
-    Private Sub btnPreview_Click(sender As System.Object, e As EventArgs) Handles btnPreview.Click
+    Private Sub btnPreview_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
         tsslText.Text = "Working..."
         StatusStrip1.Refresh()
         nbFile = 0
@@ -69,7 +70,7 @@ Public Class frmRenameFiles
     ''' <summary>
     ''' Action onClick Rename button
     ''' </summary>
-    Private Sub btnRename_Click(sender As System.Object, e As EventArgs) Handles btnRename.Click
+    Private Sub btnRename_Click(sender As Object, e As EventArgs) Handles btnRename.Click
         tsslText.Text = "Working..."
         StatusStrip1.Refresh()
         If lvPreview.Items.Count = 0 Then PrepareRename()
@@ -109,7 +110,7 @@ Public Class frmRenameFiles
         End If
 
         For Each sFile As String In My.Computer.FileSystem.GetFiles(s)
-            Dim sBaseName As String = IO.Path.GetFileName(sFile)
+            Dim sBaseName As String = Path.GetFileName(sFile)
             If txtLike.Text = "" OrElse sBaseName Like txtLike.Text Then
                 lvPreview.Items.Add(sFolder & sBaseName)
                 nbFile += 1
@@ -118,7 +119,7 @@ Public Class frmRenameFiles
 
         If chkIncludeSubfolders.Checked Then
             For Each sSubFolder As String In My.Computer.FileSystem.GetDirectories(s)
-                Analyze(sRootPath, sFolder & IO.Path.GetFileName(sSubFolder))
+                Analyze(sRootPath, sFolder & Path.GetFileName(sSubFolder))
             Next
         End If
     End Sub
@@ -233,7 +234,7 @@ Public Class frmRenameFiles
                     Try
                         'VB version complains when new name differs only by case from old name...
                         'My.Computer.FileSystem.RenameFile(txtFolder.Text & "\" & sOldName, sNewName)
-                        IO.File.Move(txtFolder.Text & "\" & sOldName, txtFolder.Text & "\" & sNewName)
+                        File.Move(txtFolder.Text & "\" & sOldName, txtFolder.Text & "\" & sNewName)
                         nbRename += 1
                     Catch ex As Exception
                         nbFail += 1

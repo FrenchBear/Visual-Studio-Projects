@@ -18,11 +18,11 @@ internal class Program
     private static void Main(string[] args)
     {
         // Nombres à deux chiffres
-        for (int i = 1; i < 10; i++)
+        for (var i = 1; i < 10; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (var j = 0; j < 10; j++)
             {
-                foreach (int c in CombineTwoNumbers(i, j, false))
+                foreach (var c in CombineTwoNumbers(i, j, false))
             {
                 if (10 * i + j == c)
                     WriteLine(c);
@@ -31,16 +31,16 @@ internal class Program
         }
 
         // Nombres à trois chiffres
-        for (int i = 1; i < 10; i++)
+        for (var i = 1; i < 10; i++)
         {
-            for (int j = 0; j < 10; j++)
+            for (var j = 0; j < 10; j++)
             {
-                for (int k = 0; k < 10; k++)
+                for (var k = 0; k < 10; k++)
         {
             // ( i op j ) op k
-            foreach (int ij in CombineTwoNumbers(i, j, true))
+            foreach (var ij in CombineTwoNumbers(i, j, true))
                     {
-                        foreach (int c in CombineTwoNumbers(ij, k, false))
+                        foreach (var c in CombineTwoNumbers(ij, k, false))
             {
                 if (100 * i + 10 * j + k == c)
                     Found(c);
@@ -48,9 +48,9 @@ internal class Program
                     }
 
                     // (i op k) op j
-                    foreach (int ik in CombineTwoNumbers(i, k, true))
+                    foreach (var ik in CombineTwoNumbers(i, k, true))
                     {
-                        foreach (int c in CombineTwoNumbers(ik, j, false))
+                        foreach (var c in CombineTwoNumbers(ik, j, false))
             {
                 if (100 * i + 10 * j + k == c)
                     Found(c);
@@ -58,9 +58,9 @@ internal class Program
                     }
 
                     // (j op k) op i
-                    foreach (int jk in CombineTwoNumbers(j, k, true))
+                    foreach (var jk in CombineTwoNumbers(j, k, true))
                     {
-                        foreach (int c in CombineTwoNumbers(jk, i, false))
+                        foreach (var c in CombineTwoNumbers(jk, i, false))
             {
                 if (100 * i + 10 * j + k == c)
                     Found(c);
@@ -88,11 +88,11 @@ internal class Program
         {
             if (b >= 0)
             {
-                if (int.TryParse(a + b.ToString(), out int c)) yield return c;
+                if (int.TryParse(a + b.ToString(), out var c)) yield return c;
             }
             if (a >= 0)
             {
-                if (int.TryParse(b + a.ToString(), out int c)) yield return c;
+                if (int.TryParse(b + a.ToString(), out var c)) yield return c;
             }
         }
         yield return a + b;
@@ -113,7 +113,7 @@ internal class Program
     // IntPow(0,0) returns 1 while it should be undefined or an error
     private static int IntPow(int x, int pow)
     {
-        int ret = 1;
+        var ret = 1;
         while (pow != 0)
         {
             if ((pow & 1) == 1)

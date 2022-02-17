@@ -6,6 +6,7 @@
 ' 2010-04-15    PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
 
+Imports System.Drawing.Drawing2D
 Imports System.Drawing.Imaging
 
 #Disable Warning IDE1006 ' Naming Styles
@@ -29,7 +30,7 @@ Public Class frmRotorRouter
 
     ReadOnly picScale As Integer = 2
 
-    Private Sub btnStart_Click(sender As System.Object, e As EventArgs) Handles btnStart.Click
+    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         btnStart.Enabled = False
 
         Dim picBitmap As New Bitmap(2 * r + 1, 2 * r + 1, PixelFormat.Format24bppRgb)
@@ -50,7 +51,7 @@ Public Class frmRotorRouter
                 'pic.Refresh()
 
                 Dim g As Graphics = Graphics.FromImage(picRescaled)
-                g.SmoothingMode = Drawing2D.SmoothingMode.None
+                g.SmoothingMode = SmoothingMode.None
                 g.DrawImage(picBitmap, 0, 0, picScale * (2 * r + 1), picScale * (2 * r + 1))
                 pic.BackgroundImage = picRescaled
                 pic.Refresh()

@@ -4,6 +4,7 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022, Net6
 
+Imports System.ComponentModel
 Imports System.Drawing.Imaging
 
 #Disable Warning IDE1006 ' Naming Styles
@@ -41,7 +42,7 @@ Public Class frmLabyrinthe
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -55,7 +56,7 @@ Public Class frmLabyrinthe
         Me.btnGénère = New Button()
         Me.pic = New PictureBox()
         Me.lblDimensions = New Label()
-        CType(Me.pic, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pic, ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGénère
@@ -94,7 +95,7 @@ Public Class frmLabyrinthe
         Me.Controls.Add(Me.btnGénère)
         Me.Name = "frmLabyrinthe"
         Me.Text = "Labyrinthe"
-        CType(Me.pic, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pic, ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

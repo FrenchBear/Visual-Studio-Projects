@@ -17,11 +17,11 @@ internal class Program
         BitVector32 myBVb = new(0);
 
         // Creates masks to isolate each of the first five bit flags.
-        int myBit1 = BitVector32.CreateMask();
-        int myBit2 = BitVector32.CreateMask(myBit1);
-        int myBit3 = BitVector32.CreateMask(myBit2);
-        int myBit4 = BitVector32.CreateMask(myBit3);
-        int myBit5 = BitVector32.CreateMask(myBit4);
+        var myBit1 = BitVector32.CreateMask();
+        var myBit2 = BitVector32.CreateMask(myBit1);
+        var myBit3 = BitVector32.CreateMask(myBit2);
+        var myBit4 = BitVector32.CreateMask(myBit3);
+        var myBit5 = BitVector32.CreateMask(myBit4);
         WriteLine("Initial:               \t{0}", myBVb.ToString());
 
         // Sets the third bit to TRUE.
@@ -40,10 +40,10 @@ internal class Program
 
         // Creates four sections in the BitVector32 with maximum values 6, 3, 1, and 15.
         // mySect3, which uses exactly one bit, can also be used as a bit flag.
-        BitVector32.Section mySect1 = BitVector32.CreateSection(6);
-        BitVector32.Section mySect2 = BitVector32.CreateSection(3, mySect1);
-        BitVector32.Section mySect3 = BitVector32.CreateSection(1, mySect2);
-        BitVector32.Section mySect4 = BitVector32.CreateSection(15, mySect3);
+        var mySect1 = BitVector32.CreateSection(6);
+        var mySect2 = BitVector32.CreateSection(3, mySect1);
+        var mySect3 = BitVector32.CreateSection(1, mySect2);
+        var mySect4 = BitVector32.CreateSection(15, mySect3);
 
         // Displays the values of the sections.
         WriteLine("Initial values:");

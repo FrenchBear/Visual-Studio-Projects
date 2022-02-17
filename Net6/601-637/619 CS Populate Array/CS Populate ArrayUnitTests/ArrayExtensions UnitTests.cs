@@ -12,10 +12,10 @@ public class ArrayExtensionsUnitTests
     {
         var ti = new int[10_000_000];
         ti.Populate(3);
-        for (int i = 0; i < ti.GetLength(0); i++)
+        for (var i = 0; i < ti.GetLength(0); i++)
             Assert.AreEqual(ti[i], 3);
         ti.Populate(7);
-        for (int i = 0; i < ti.GetLength(0); i++)
+        for (var i = 0; i < ti.GetLength(0); i++)
             Assert.AreEqual(ti[i], 7);
     }
 
@@ -24,10 +24,10 @@ public class ArrayExtensionsUnitTests
     {
         var ti = new int[10_000_000];
         ti.PopulateParallel(3);
-        for (int i = 0; i < ti.GetLength(0); i++)
+        for (var i = 0; i < ti.GetLength(0); i++)
             Assert.AreEqual(ti[i], 3);
         ti.PopulateParallel(7);
-        for (int i = 0; i < ti.GetLength(0); i++)
+        for (var i = 0; i < ti.GetLength(0); i++)
             Assert.AreEqual(ti[i], 7);
     }
 }

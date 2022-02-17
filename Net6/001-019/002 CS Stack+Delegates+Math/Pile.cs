@@ -33,7 +33,7 @@ public class Pile
         }
         else
         {
-            Noeud temp = tête;
+            var temp = tête;
             tête = tête.suivant;
             return temp.élément;
         }

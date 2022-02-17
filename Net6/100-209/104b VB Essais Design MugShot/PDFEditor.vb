@@ -7,16 +7,19 @@
 
 Option Compare Text
 
+Imports System.ComponentModel
+Imports AcroPDFLib
+
 Public Class PDFEditor
     Inherits GenericEditor
 
-    Friend WithEvents PDFReader As AcroPDFLib.AcroPDF
+    Friend WithEvents PDFReader As AcroPDF
 
     ' Dynamic empirical loading of COM component AxAcroPDF
     ' When statically loaded on this UserControl, crashes VisualStudio every 30s...
     Private Sub MyInitializeComponent()
-        Me.PDFReader = New AcroPDFLib.AcroPDF
-        CType(Me.PDFReader, ComponentModel.ISupportInitialize).BeginInit()
+        Me.PDFReader = New AcroPDF
+        CType(Me.PDFReader, ISupportInitialize).BeginInit()
         Me.PDFReader.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
                     Or AnchorStyles.Left) _
                     Or AnchorStyles.Right), AnchorStyles)
@@ -27,7 +30,7 @@ Public Class PDFEditor
         Me.PDFReader.Size = New Size(Me.Width - 6, Me.Height - 6)
         Me.PDFReader.TabIndex = 0
         Me.Controls.Add(Me.PDFReader)
-        CType(Me.PDFReader, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PDFReader, ISupportInitialize).EndInit()
     End Sub
 
     Public Overrides Sub DoEdit(ed As EditDoc)

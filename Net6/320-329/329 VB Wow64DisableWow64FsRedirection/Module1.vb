@@ -2,6 +2,7 @@
 '
 ' 2012-02-25    PV  VS2010
 ' 2021-09-22    PV  VS2022; Net6
+Imports System.IO
 
 Module Module1
 
@@ -14,7 +15,7 @@ Module Module1
     Sub Main()
         'Dim b As Boolean = Wow64DisableWow64FsRedirection(x)
 
-        Dim l As Long = New System.IO.FileInfo("C:\Windows\System32\Notepad.exe").Length
+        Dim l As Long = New FileInfo("C:\Windows\System32\Notepad.exe").Length
         WriteLine("l=" & l.ToString)
     End Sub
 

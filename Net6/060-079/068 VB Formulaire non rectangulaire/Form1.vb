@@ -1,6 +1,7 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022, Net6
+Imports System.ComponentModel
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -33,7 +34,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -41,22 +42,22 @@ Public Class Form1
     Friend WithEvents btnClose As Button
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Me.btnClose = New Button
+        Dim resources = New ComponentResourceManager(GetType(Form1))
+        Me.btnClose = New Button()
         Me.SuspendLayout()
         '
         'btnClose
         '
-        Me.btnClose.Font = New Font("Marlett", 12.0!, FontStyle.Bold, GraphicsUnit.Point, CType(2, Byte))
-        Me.btnClose.Location = New Point(352, 104)
+        Me.btnClose.Font = New Font("Marlett", 12.0!, FontStyle.Bold, GraphicsUnit.Point)
+        Me.btnClose.Location = New Point(634, 192)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New Size(24, 23)
+        Me.btnClose.Size = New Size(43, 42)
         Me.btnClose.TabIndex = 0
         Me.btnClose.Text = "r"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.AutoScaleBaseSize = New Size(9, 24)
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), Image)
         Me.ClientSize = New Size(648, 512)
         Me.Controls.Add(Me.btnClose)

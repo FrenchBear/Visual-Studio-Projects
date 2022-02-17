@@ -105,7 +105,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim a1 As New ArticleTreeNode("pomme", 1.3)
         Dim a2 As New ArticleTreeNode("poire", 1.5)
         TreeView1.Nodes.Add(a1)

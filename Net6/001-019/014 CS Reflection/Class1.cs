@@ -19,8 +19,8 @@ public class GetMemberMethodImpl
 {
     public static void Main()
     {
-        Type t = typeof(Bar);
-        foreach (MethodInfo m in t.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
+        var t = typeof(Bar);
+        foreach (var m in t.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
         {
             MethodInfo dm;
 
@@ -35,11 +35,11 @@ public class GetMemberMethodImpl
 
     public static MethodInfo GetDeclaringMethod(MethodInfo m)
     {
-        Type t = m.DeclaringType;
-        foreach (Type i in t.GetInterfaces())
+        var t = m.DeclaringType;
+        foreach (var i in t.GetInterfaces())
         {
-            InterfaceMapping map = t.GetInterfaceMap(i);
-            for (int j = 0; j < map.TargetMethods.Length; j++)
+            var map = t.GetInterfaceMap(i);
+            for (var j = 0; j < map.TargetMethods.Length; j++)
             {
                 if (map.TargetMethods[j] == m)
                     return map.InterfaceMethods[j];

@@ -7,6 +7,8 @@
 ' 2021-09-19    PV  VS2022, Net6
 
 Imports System.Drawing.Imaging
+Imports System.Runtime.InteropServices
+Imports System.Text
 
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
 
@@ -67,7 +69,7 @@ Module modRenduGraphique
         End If
 
         Dim myImageCodecInfo As ImageCodecInfo
-        Dim myEncoder As Encoder
+        Dim myEncoder As Imaging.Encoder
         Dim myEncoderParameter As EncoderParameter
         Dim myEncoderParameters As EncoderParameters
         Dim multi As Bitmap
@@ -86,7 +88,7 @@ Module modRenduGraphique
         myImageCodecInfo = GetEncoderInfo("image/tiff")
         ' Create an Encoder object based on the GUID
         ' for the SaveFlag parameter category.
-        myEncoder = Encoder.SaveFlag
+        myEncoder = Imaging.Encoder.SaveFlag
         ' Create an EncoderParameters object.
         ' An EncoderParameters object has an array of EncoderParameter
         ' objects. In this case, there is only one
@@ -306,7 +308,7 @@ Module modRenduGraphique
                     b <<= 1
                 Next
             Next
-            Runtime.InteropServices.Marshal.Copy(pixBytes, 0, pData, RowByteSize)
+            Marshal.Copy(pixBytes, 0, pData, RowByteSize)
             pData = IntPtr.op_Explicit(pData.ToInt32 + bdaImage3.Stride)
         Next
         bmpImage3.UnlockBits(bdaImage3)
@@ -330,7 +332,7 @@ Module modRenduGraphique
 End Module
 
 Module modRenduPCL
-    Private sPCLText As New Text.StringBuilder
+    Private sPCLText As New StringBuilder
 
     Class PCLState
         Public posX, posY As Integer              ' Coordonnées en decipoints
@@ -376,7 +378,7 @@ Module modRenduPCL
         staState.posY = staState.iTopMargin
     End Sub
 
-    ReadOnly d850 As System.Text.Decoder = Text.Encoding.GetEncoding(850).GetDecoder
+    ReadOnly d850 As Decoder = Encoding.GetEncoding(850).GetDecoder
 
     ' Imprime un caractère imprimable
     ' En pratique, bufférise le caractère
@@ -428,7 +430,7 @@ Module modRenduPCL
 
         staState.posX += RGTextOut(staState.sFont, staState.fFontSize, staState.bFontBold, staState.bFontItalic, staState.bFontUnderline, staState.bFontNarrow, staState.iLeftOffset + staState.posX, staState.iTopOffset + staState.posY, sPCLText.ToString)
 
-        sPCLText = New Text.StringBuilder
+        sPCLText = New StringBuilder
     End Sub
 
     ' "Ejecte" la page PCL = ferme la page du rendu graphique, et met à jour l'état PCL
@@ -807,7 +809,7 @@ Module modConversionImage1Bit
             Next
 
             ' On récupère une ligne de l'image couleur
-            Runtime.InteropServices.Marshal.Copy(pData24, tbRow24, 0, b24d.Stride)
+            Marshal.Copy(pData24, tbRow24, 0, b24d.Stride)
 
             For x As Integer = 0 To b1.Width - 1
                 If tbRow24(3 * x) < 128 Then
@@ -823,7 +825,7 @@ Module modConversionImage1Bit
             Next
 
             ' On dessine une ligne de sortie
-            Runtime.InteropServices.Marshal.Copy(tbRow1, 0, pData1, b1d.Stride)
+            Marshal.Copy(tbRow1, 0, pData1, b1d.Stride)
 
             pData1 = IntPtr.op_Explicit(pData1.ToInt32 + b1d.Stride)
             pData24 = IntPtr.op_Explicit(pData24.ToInt32 + b24d.Stride)

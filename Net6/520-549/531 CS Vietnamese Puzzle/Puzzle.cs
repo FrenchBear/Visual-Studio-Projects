@@ -43,8 +43,8 @@ internal class Program
 
     private static void Test(Func<List<double>, IEnumerable<List<double>>> f, List<double> l)
     {
-        int np = 0;                  // Number of permutations
-        int ns = 0;                  // Number of solutions
+        var np = 0;                  // Number of permutations
+        var ns = 0;                  // Number of solutions
         var sw = Stopwatch.StartNew();
 
         foreach (var x in f(l))
@@ -79,12 +79,12 @@ internal class Program
         {
             // For each element of the list, return the element 1st, followed by all permutations of
             // the rest of the list
-            for (int i = 0; i < l.Count; i++)
+            for (var i = 0; i < l.Count; i++)
             {
-                T element = l[i];
+                var element = l[i];
                 var copy = new List<T>(l);
                 copy.RemoveAt(i);
-                foreach (List<T> permut in IteratorPermutator(copy))
+                foreach (var permut in IteratorPermutator(copy))
                 {
                     permut.Insert(0, element);
                     yield return permut;
@@ -104,11 +104,11 @@ internal class Program
             return new List<List<T>> { l, new List<T> { l[1], l[0] } };
 
         var r = new List<List<T>>();
-        for (int i = 0; i < l.Count; i++)
+        for (var i = 0; i < l.Count; i++)
         {
             var s = new List<T>(l);
             s.RemoveAt(i);
-            foreach (List<T> x in ListOfPermut(s))
+            foreach (var x in ListOfPermut(s))
             {
                 x.Insert(0, l[i]);
                 r.Add(x);
@@ -166,9 +166,9 @@ internal class StackPermutator<T> : IEnumerable<List<T>>
                     // and push a list with this element added to the list of already
                     // permuted elements, remaining one
                     // less element in the non-permuted part
-                    for (int i = x.list.Count - 1; i >= x.level; i--)
+                    for (var i = x.list.Count - 1; i >= x.level; i--)
                     {
-                        T element = x.list[i];
+                        var element = x.list[i];
                         var copy = new List<T>(x.list);
                         copy.RemoveAt(i);
                         copy.Insert(x.level, element);
@@ -206,8 +206,8 @@ internal static class ExtensionMethods
     public static void ConsoleWrite<T>(this IEnumerable<T> source)
     {
         Console.Write("{");
-        bool first = true;
-        foreach (T item in source)
+        var first = true;
+        foreach (var item in source)
         {
             if (first)
                 first = false;

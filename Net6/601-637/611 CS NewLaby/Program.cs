@@ -107,8 +107,8 @@ internal class Program
 {
     private static void Main()
     {
-        int rows = 15;
-        int cols = 30;
+        var rows = 15;
+        var cols = 30;
 
         var l = new Laby(rows, cols, false);
         l.PrintLabyrinth();
@@ -135,17 +135,17 @@ public class Laby
         this.cols = cols;
         this.isDetailedBuild = isDetailedBuild;
 
-        for (int i = 0; i < 1; i++)
+        for (var i = 0; i < 1; i++)
         {
             Cells = new int[rows + 1, cols + 1];
 
             // Build bordering walls
-            for (int r = 1; r <= rows; r++)
+            for (var r = 1; r <= rows; r++)
             {
                 Cells[r, 0] |= right;
                 Cells[r, cols] |= right;
             }
-            for (int c = 1; c <= cols; c++)
+            for (var c = 1; c <= cols; c++)
             {
                 Cells[0, c] |= bottom;
                 Cells[rows, c] |= bottom;
@@ -161,17 +161,17 @@ public class Laby
 
     public void PrintLabyrinth()
     {
-        for (int r = 0; r <= rows; r++)
+        for (var r = 0; r <= rows; r++)
         {
             if (r > 0)
             {
-                for (int c = 0; c <= cols; c++)
+                for (var c = 0; c <= cols; c++)
                 {
                     Write((Cells[r, c] & right) != 0 ? "  |" : "   ");
                 }
                 WriteLine();
             }
-            for (int c = 0; c <= cols; c++)
+            for (var c = 0; c <= cols; c++)
             {
                 Write((Cells[r, c] & bottom) != 0 ? "--+" : "  +");
             }
@@ -200,9 +200,9 @@ public class Laby
         {
             if (cmax > cmin)
             {
-                int c = rnd.Next(cmin, cmax);
-                int rHole = rnd.Next(rmin, rmax);
-                for (int r = rmin; r <= rmax; r++)
+                var c = rnd.Next(cmin, cmax);
+                var rHole = rnd.Next(rmin, rmax);
+                for (var r = rmin; r <= rmax; r++)
                 {
                     if (r != rHole)
                         Cells[r, c] |= right;
@@ -226,9 +226,9 @@ public class Laby
         {
             if (rmax > rmin)
             {
-                int r = rnd.Next(rmin, rmax);
-                int cHole = rnd.Next(cmin, cmax);
-                for (int c = cmin; c <= cmax; c++)
+                var r = rnd.Next(rmin, rmax);
+                var cHole = rnd.Next(cmin, cmax);
+                for (var c = cmin; c <= cmax; c++)
                 {
                     if (c != cHole)
                         Cells[r, c] |= bottom;

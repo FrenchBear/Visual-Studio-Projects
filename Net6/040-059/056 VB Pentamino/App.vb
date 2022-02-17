@@ -103,9 +103,9 @@ Module Pentamino
         Dim j As New Jeu()
 
         ' Pavage
-        Dim t0 As System.DateTime = System.DateTime.Now
+        Dim t0 As DateTime = DateTime.Now
         Pavage(0, 0, j, Pow2(MAXPIECE) - 1)
-        Dim t1 As System.DateTime = System.DateTime.Now
+        Dim t1 As DateTime = DateTime.Now
         Dim t As TimeSpan = t1.Subtract(t0)
 
         WriteLine("{0} pour {1} solutions\n", t, iNbSol)
@@ -170,7 +170,7 @@ Module Pentamino
 
                     ' Trop large,  Trop haut, Doit être décalée trop à gauche: on continue
                     If c + ca.cmax - ca.iOffsetCol > MAXCOL Or l + ca.lmax > MAXLIG Or c < ca.iOffsetCol Then
-                        GoTo [continue]
+                        GoTo cont
                     End If
 
                     bCollision = False
@@ -198,7 +198,7 @@ Module Pentamino
                         Pavage(l, c, jeu2, iMasquePieces And Not Pow2(i))
                     End If
 
-[continue]:
+Cont:
                 Next
             End If
         Next

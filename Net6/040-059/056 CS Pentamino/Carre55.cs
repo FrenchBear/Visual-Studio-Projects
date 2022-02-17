@@ -18,8 +18,8 @@ internal class Carre55
     private Carre55()
     {
         tMotif = new bool[5, 5];
-        for (int l = 0; l < 5; l++)
-            for (int c = 0; c < 5; c++)
+        for (var l = 0; l < 5; l++)
+            for (var c = 0; c < 5; c++)
                 tMotif[l, c] = false;
         lmax = cmax = 0;
         iOffsetCol = 0;

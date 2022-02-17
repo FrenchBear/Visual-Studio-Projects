@@ -33,7 +33,7 @@ internal class Program
 
         WriteLine("e = Enumerable.Range(0, 1000)");
         e = Enumerable.Range(0, 1000);
-        for (int i = 0; i < 3; i++)
+        for (var i = 0; i < 3; i++)
         {
             WriteLine($"e.Choice1(): {e.Choice1()}");
             WriteLine($"e.Choice2(): {e.Choice2()}");
@@ -115,9 +115,9 @@ public static class Extensions
         // If list contains 2 elements, probability element 2 is selected = 1/2
         // If list contains 3 elements, probability element 3 is selected = 1/3 (and 2/3 to remain the one chosen before)
         // ...
-        int count = 0;
+        var count = 0;
         T current = default;
-        foreach (T item in e)
+        foreach (var item in e)
         {
             count++;
             if (rnd.NextDouble() > 1.0 - 1.0 / count)
@@ -135,7 +135,7 @@ public static class Extensions
     public static T Choice3<T>(this IEnumerable<T> e)
     {
         // Variant of Choice2 using Aggregate
-        int count = 0;
+        var count = 0;
         return e.Aggregate((T aggregated, T item) => (rnd.NextDouble() < 1.0 / ++count) ? item : aggregated);
     }
 
@@ -154,9 +154,9 @@ public static class Extensions
     /// <returns></returns>
     public static string AsString<T>(this IEnumerable<T> e)
     {
-        bool bFirst = true;
+        var bFirst = true;
         var sb = new StringBuilder();
-        foreach (T item in e)
+        foreach (var item in e)
         {
             if (bFirst)
             {
@@ -193,11 +193,11 @@ public static class Extensions
     /// <param name="list">A list in a given order</param>
     public static void Shuffle<T>(this IList<T> list)
     {
-        int n = list.Count;
+        var n = list.Count;
         while (n > 1)
         {
             n--;
-            int k = ThreadSafeRandom.ThisThreadsRandom.Next(n + 1);
+            var k = ThreadSafeRandom.ThisThreadsRandom.Next(n + 1);
             (list[k], list[n]) = (list[n], list[k]);
         }
     }

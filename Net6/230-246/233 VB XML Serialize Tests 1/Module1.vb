@@ -6,6 +6,7 @@
 Imports System.IO
 Imports System.Xml.Serialization
 Imports System.Console
+Imports System.Xml
 
 ' The XmlRootAttribute allows you to set an alternate name
 ' (PurchaseOrder) of the XML element, the element namespace; by
@@ -105,7 +106,7 @@ Public Class Test
         }
         ' Set ShipTo and BillTo to the same addressee.
         po1.ShipTo = billAddress
-        po1.OrderDate = System.DateTime.Now.ToLongDateString()
+        po1.OrderDate = DateTime.Now.ToLongDateString()
 
         ' Create an OrderedItem object.
         Dim i1 As New OrderedItem With {
@@ -143,7 +144,7 @@ Public Class Test
         }
         ' Set ShipTo and BillTo to the same addressee.
         po2.ShipTo = billAddress2
-        po2.OrderDate = System.DateTime.Now.ToLongDateString()
+        po2.OrderDate = DateTime.Now.ToLongDateString()
 
         ' Create an OrderedItem object.
         Dim i2 As New OrderedItem With {
@@ -237,7 +238,7 @@ Public Class Test
     End Sub 'serializer_UnknownNode
 
     Private Sub Serializer_UnknownAttribute(sender As Object, e As XmlAttributeEventArgs)
-        Dim attr As Xml.XmlAttribute = e.Attr
+        Dim attr As XmlAttribute = e.Attr
         WriteLine(("Unknown attribute " & attr.Name & "='" & attr.Value & "'"))
     End Sub 'serializer_UnknownAttribute
 

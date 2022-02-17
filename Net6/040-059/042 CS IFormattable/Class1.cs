@@ -20,7 +20,7 @@ internal struct Complexe : IFormattable
 
     public override string ToString() => $"({r},{i})";
 
-    public String ToString(String sFormat, IFormatProvider fp)
+    public string ToString(string sFormat, IFormatProvider fp)
     {
         if (sFormat != null) 
             switch (sFormat.ToLower())
@@ -33,13 +33,13 @@ internal struct Complexe : IFormattable
     }
 }
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {
-        WriteLine("{0:N0}", Int16.MaxValue);
-        WriteLine("{0:N0}", Int32.MaxValue);
-        WriteLine("{0:N0}", Int64.MaxValue);
+        WriteLine("{0:N0}", short.MaxValue);
+        WriteLine("{0:N0}", int.MaxValue);
+        WriteLine("{0:N0}", long.MaxValue);
 
         Complexe c = new(1, 1);
         WriteLine("{0}", c.ToString());

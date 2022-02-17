@@ -21,7 +21,7 @@ internal class Meute<T> where T : Animal
 
     public void Enerver()
     {
-        foreach (T a in mCol)
+        foreach (var a in mCol)
         {
             a.Enerver();
         }

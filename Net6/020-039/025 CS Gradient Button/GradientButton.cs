@@ -61,8 +61,8 @@ public class GradientButton : Button
     {
         base.OnPaint(pe);
 
-        Graphics g = pe.Graphics;
-        Rectangle clientRect = ClientRectangle;
+        var g = pe.Graphics;
+        var clientRect = ClientRectangle;
 
         // On n'écrase pas les bords
         clientRect.Inflate(-1, -1);

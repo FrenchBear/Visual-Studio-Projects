@@ -2,12 +2,13 @@
 ' 2006-10-01    PV VS2005
 ' 2012-02-25	PV VS2010
 ' 2021-09-17    PV  VS2022/Net6
+Imports System.Windows.Forms
 
 #Disable Warning IDE1006 ' Naming Styles
 #Disable Warning IDE0052 ' Remove unread private members
 
 Public Class frmZoo
-    Inherits Windows.Forms.Form
+    Inherits Form
 
     Public Const vbCrLf As String = Chr(13) & Chr(10)
 
@@ -26,7 +27,7 @@ Public Class frmZoo
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private ReadOnly components As ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     Private WithEvents TextBox1 As Windows.Forms.TextBox
     Private WithEvents BtnTypeName As Windows.Forms.Button
@@ -176,12 +177,12 @@ Public Class frmZoo
 
 #End Region
 
-    Private Sub btnTypeName_Click_1(sender As System.Object, e As EventArgs) Handles BtnTypeName.Click
+    Private Sub btnTypeName_Click_1(sender As Object, e As EventArgs) Handles BtnTypeName.Click
         Dim i As Integer
         MsgBox("TypeName: " & TypeName(i))
     End Sub
 
-    Private Sub Button1_Click_1(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Dim Rex As New Chien(CStr(TxtChien.Text))
         Dim Fluffy As New Chiot("Fluffy")
         Dim Félix As New Chat(CStr(TxtChat.Text))

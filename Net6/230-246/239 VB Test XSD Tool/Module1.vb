@@ -2,6 +2,9 @@
 '
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
+Imports System.Text
+Imports System.Xml
+Imports System.Xml.Serialization
 
 Module Module1
 
@@ -22,9 +25,9 @@ Module Module1
 
         t.Items = New TaskType() {m1, m2}
 
-        Dim s As New Xml.Serialization.XmlSerializer(GetType(Project))
-        Dim xtw As New Xml.XmlTextWriter("..\..\p.xml", Text.Encoding.UTF8) With {
-            .Formatting = Xml.Formatting.Indented
+        Dim s As New XmlSerializer(GetType(Project))
+        Dim xtw As New XmlTextWriter("..\..\p.xml", Encoding.UTF8) With {
+            .Formatting = Formatting.Indented
         }
         s.Serialize(xtw, p)
         xtw.Close()

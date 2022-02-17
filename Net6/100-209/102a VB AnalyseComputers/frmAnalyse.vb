@@ -4,6 +4,8 @@
 ' 11/02/04 1.1  Présentation en tableau
 ' 01/10/2006 PV VS 2005
 
+Imports System.ComponentModel
+Imports System.Text
 Imports System.Text.RegularExpressions
 Imports VB = Microsoft.VisualBasic
 
@@ -46,7 +48,7 @@ Public Class frmAnalyse
         MyBase.Dispose(disposing)
     End Sub
 
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -71,25 +73,25 @@ Public Class frmAnalyse
     Friend WithEvents chWhenChanged As ColumnHeader
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
-        Dim resources As New System.ComponentModel.ComponentResourceManager(GetType(frmAnalyse))
-        Me.btnAnalyse = New System.Windows.Forms.Button()
-        Me.lblAnalyse = New System.Windows.Forms.Label()
-        Me.txtSite = New System.Windows.Forms.TextBox()
-        Me.lblLégende = New System.Windows.Forms.Label()
-        Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.tabHTML = New System.Windows.Forms.TabPage()
-        Me.IEDoc = New System.Windows.Forms.WebBrowser()
-        Me.tabListe = New System.Windows.Forms.TabPage()
-        Me.lvListe = New System.Windows.Forms.ListView()
-        Me.chPoste = New System.Windows.Forms.ColumnHeader()
-        Me.chSite = New System.Windows.Forms.ColumnHeader()
-        Me.chOU = New System.Windows.Forms.ColumnHeader()
-        Me.chDescription = New System.Windows.Forms.ColumnHeader()
-        Me.chWhenCreated = New System.Windows.Forms.ColumnHeader()
-        Me.chWhenChanged = New System.Windows.Forms.ColumnHeader()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.cmdCopie = New System.Windows.Forms.ToolStripMenuItem()
+        Me.components = New Container()
+        Dim resources As New ComponentResourceManager(GetType(frmAnalyse))
+        Me.btnAnalyse = New Button()
+        Me.lblAnalyse = New Label()
+        Me.txtSite = New TextBox()
+        Me.lblLégende = New Label()
+        Me.TabControl1 = New TabControl()
+        Me.tabHTML = New TabPage()
+        Me.IEDoc = New WebBrowser()
+        Me.tabListe = New TabPage()
+        Me.lvListe = New ListView()
+        Me.chPoste = New ColumnHeader()
+        Me.chSite = New ColumnHeader()
+        Me.chOU = New ColumnHeader()
+        Me.chDescription = New ColumnHeader()
+        Me.chWhenCreated = New ColumnHeader()
+        Me.chWhenChanged = New ColumnHeader()
+        Me.ContextMenuStrip1 = New ContextMenuStrip(Me.components)
+        Me.cmdCopie = New ToolStripMenuItem()
         Me.TabControl1.SuspendLayout()
         Me.tabHTML.SuspendLayout()
         Me.tabListe.SuspendLayout()
@@ -98,34 +100,34 @@ Public Class frmAnalyse
         '
         'btnAnalyse
         '
-        Me.btnAnalyse.Location = New System.Drawing.Point(932, 11)
+        Me.btnAnalyse.Location = New Point(932, 11)
         Me.btnAnalyse.Name = "btnAnalyse"
-        Me.btnAnalyse.Size = New System.Drawing.Size(180, 56)
+        Me.btnAnalyse.Size = New Size(180, 56)
         Me.btnAnalyse.TabIndex = 2
         Me.btnAnalyse.Text = "&Analyser"
         '
         'lblAnalyse
         '
         Me.lblAnalyse.AutoSize = True
-        Me.lblAnalyse.Location = New System.Drawing.Point(10, 19)
+        Me.lblAnalyse.Location = New Point(10, 19)
         Me.lblAnalyse.Name = "lblAnalyse"
-        Me.lblAnalyse.Size = New System.Drawing.Size(493, 32)
+        Me.lblAnalyse.Size = New Size(493, 32)
         Me.lblAnalyse.TabIndex = 0
         Me.lblAnalyse.Text = "Site à analyser dans Workstations && Printers :"
         '
         'txtSite
         '
-        Me.txtSite.Location = New System.Drawing.Point(586, 11)
+        Me.txtSite.Location = New Point(586, 11)
         Me.txtSite.Name = "txtSite"
-        Me.txtSite.Size = New System.Drawing.Size(326, 39)
+        Me.txtSite.Size = New Size(326, 39)
         Me.txtSite.TabIndex = 1
         '
         'lblLégende
         '
         Me.lblLégende.AutoSize = True
-        Me.lblLégende.Location = New System.Drawing.Point(10, 79)
+        Me.lblLégende.Location = New Point(10, 79)
         Me.lblLégende.Name = "lblLégende"
-        Me.lblLégende.Size = New System.Drawing.Size(762, 32)
+        Me.lblLégende.Size = New Size(762, 32)
         Me.lblLégende.TabIndex = 3
         Me.lblLégende.Text = "ou=Workstations && Printers,ou=fr,dc=eame,dc=global,dc=sgs,dc=com"
         '
@@ -133,39 +135,39 @@ Public Class frmAnalyse
         '
         Me.TabControl1.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
             Or AnchorStyles.Left) _
-            Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or AnchorStyles.Right), AnchorStyles)
         Me.TabControl1.Controls.Add(Me.tabHTML)
         Me.TabControl1.Controls.Add(Me.tabListe)
-        Me.TabControl1.Location = New System.Drawing.Point(10, 117)
+        Me.TabControl1.Location = New Point(10, 117)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1410, 1019)
+        Me.TabControl1.Size = New Size(1410, 1019)
         Me.TabControl1.TabIndex = 5
         '
         'tabHTML
         '
         Me.tabHTML.Controls.Add(Me.IEDoc)
-        Me.tabHTML.Location = New System.Drawing.Point(8, 46)
+        Me.tabHTML.Location = New Point(8, 46)
         Me.tabHTML.Name = "tabHTML"
-        Me.tabHTML.Size = New System.Drawing.Size(1394, 965)
+        Me.tabHTML.Size = New Size(1394, 965)
         Me.tabHTML.TabIndex = 0
         Me.tabHTML.Text = "Synthèse en couleurs"
         '
         'IEDoc
         '
         Me.IEDoc.Dock = DockStyle.Fill
-        Me.IEDoc.Location = New System.Drawing.Point(0, 0)
-        Me.IEDoc.MinimumSize = New System.Drawing.Size(20, 20)
+        Me.IEDoc.Location = New Point(0, 0)
+        Me.IEDoc.MinimumSize = New Size(20, 20)
         Me.IEDoc.Name = "IEDoc"
-        Me.IEDoc.Size = New System.Drawing.Size(1394, 965)
+        Me.IEDoc.Size = New Size(1394, 965)
         Me.IEDoc.TabIndex = 0
         '
         'tabListe
         '
         Me.tabListe.Controls.Add(Me.lvListe)
-        Me.tabListe.Location = New System.Drawing.Point(8, 46)
+        Me.tabListe.Location = New Point(8, 46)
         Me.tabListe.Name = "tabListe"
-        Me.tabListe.Size = New System.Drawing.Size(1680, 1345)
+        Me.tabListe.Size = New Size(1680, 1345)
         Me.tabListe.TabIndex = 1
         Me.tabListe.Text = "Liste"
         '
@@ -173,13 +175,13 @@ Public Class frmAnalyse
         '
         Me.lvListe.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
             Or AnchorStyles.Left) _
-            Or AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lvListe.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.chPoste, Me.chSite, Me.chOU, Me.chDescription, Me.chWhenCreated, Me.chWhenChanged})
+            Or AnchorStyles.Right), AnchorStyles)
+        Me.lvListe.Columns.AddRange(New ColumnHeader() {Me.chPoste, Me.chSite, Me.chOU, Me.chDescription, Me.chWhenCreated, Me.chWhenChanged})
         Me.lvListe.FullRowSelect = True
         Me.lvListe.GridLines = True
-        Me.lvListe.Location = New System.Drawing.Point(20, 19)
+        Me.lvListe.Location = New Point(20, 19)
         Me.lvListe.Name = "lvListe"
-        Me.lvListe.Size = New System.Drawing.Size(1623, 1236)
+        Me.lvListe.Size = New Size(1623, 1236)
         Me.lvListe.TabIndex = 0
         Me.lvListe.UseCompatibleStateImageBehavior = False
         Me.lvListe.View = View.Details
@@ -216,27 +218,27 @@ Public Class frmAnalyse
         '
         'ContextMenuStrip1
         '
-        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdCopie})
+        Me.ContextMenuStrip1.ImageScalingSize = New Size(32, 32)
+        Me.ContextMenuStrip1.Items.AddRange(New ToolStripItem() {Me.cmdCopie})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(290, 42)
+        Me.ContextMenuStrip1.Size = New Size(290, 42)
         '
         'cmdCopie
         '
         Me.cmdCopie.Name = "cmdCopie"
-        Me.cmdCopie.Size = New System.Drawing.Size(289, 38)
+        Me.cmdCopie.Size = New Size(289, 38)
         Me.cmdCopie.Text = "Copie toute la liste"
         '
         'frmAnalyse
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(12, 32)
-        Me.ClientSize = New System.Drawing.Size(1431, 1140)
+        Me.AutoScaleBaseSize = New Size(12, 32)
+        Me.ClientSize = New Size(1431, 1140)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.lblLégende)
         Me.Controls.Add(Me.txtSite)
         Me.Controls.Add(Me.lblAnalyse)
         Me.Controls.Add(Me.btnAnalyse)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Name = "frmAnalyse"
         Me.Text = "Analyse les objets Computer dans AD"
         Me.TabControl1.ResumeLayout(False)
@@ -281,13 +283,13 @@ Public Class frmAnalyse
     End Class
 
     ' La chaîne finale
-    Dim sHTML As System.Text.StringBuilder
+    Dim sHTML As StringBuilder
 
     ' Les couleurs utilisées pour les sous-OU
     ReadOnly tColor As Color() = {Color.Pink, Color.Gold, Color.Chartreuse, Color.Aqua, Color.Violet, Color.LightCoral, Color.CornflowerBlue, Color.Wheat, Color.LightGray, Color.OrangeRed, Color.MediumOrchid, Color.LightGray}
 
     ' Lancement de l'analyse
-    Private Sub btnAnalyse_Click(sender As System.Object, e As EventArgs) Handles btnAnalyse.Click
+    Private Sub btnAnalyse_Click(sender As Object, e As EventArgs) Handles btnAnalyse.Click
         IEDoc.Document.Body.InnerHtml = "Analyse en cours..."
         RefreshIE()
 
@@ -797,7 +799,7 @@ Public Class frmAnalyse
         '  "A:link    {color: #0000FF; font: 10pt Tahoma, Arial; font-weight:bold}" &
         '  "A:visited {color: #FF00FF; font: 10pt Tahoma, Arial; font-weight:bold}"
         'd.body.Style.marginTop = "4pt"
-        d.body.innerHTML = "Selectionnez le site à analyser (exemple: cch) et cliquez sur le bouton Analyser."
+        d.Body.InnerHtml = "Selectionnez le site à analyser (exemple: cch) et cliquez sur le bouton Analyser."
     End Sub
 
     ' Utilitaire: rafaîchit la fenêtre IE
@@ -809,7 +811,7 @@ Public Class frmAnalyse
 
     ' Affichage HTML
     Sub Affiche()
-        sHTML = New Text.StringBuilder
+        sHTML = New StringBuilder
         Dim enumSites As IDictionaryEnumerator = slSitesAD.GetEnumerator()
         While enumSites.MoveNext
             AfficheUnSite(CType(enumSites.Value, SiteAD))
@@ -1014,8 +1016,8 @@ Public Class frmAnalyse
 
 
     ' Copie dans le presse-papiers
-    Private Sub cmdCopie_Click(sender As System.Object, e As EventArgs) Handles cmdCopie.Click
-        Dim sbPP As New Text.StringBuilder
+    Private Sub cmdCopie_Click(sender As Object, e As EventArgs) Handles cmdCopie.Click
+        Dim sbPP As New StringBuilder
         For i As Integer = 0 To lvListe.Columns.Count - 1
             If i > 0 Then sbPP.Append(Chr(9))
             sbPP.Append(lvListe.Columns(i).Text)

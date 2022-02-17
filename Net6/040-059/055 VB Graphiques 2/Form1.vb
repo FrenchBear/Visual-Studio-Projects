@@ -130,7 +130,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub btnDessine_Click(sender As System.Object, e As EventArgs) Handles btnDessine.Click
+    Private Sub btnDessine_Click(sender As Object, e As EventArgs) Handles btnDessine.Click
         g.Clear(Color.FromKnownColor(KnownColor.MistyRose))
         g.FillRectangle(New SolidBrush(Color.Red), 40, 40, 140, 140)
         g.DrawString("Hello World", Me.Font, New SolidBrush(Color.Black), 10, 10)

@@ -24,9 +24,9 @@ internal class Program
         };
 
         // Null-conditional operators ?[ and ?. (note that ?[ is useless on a dictionary since it'll raise an exception if the index does not exist...)
-        int? i = directory?["Pierre"].Company?.Length;
+        var i = directory?["Pierre"].Company?.Length;
 
-        string jsonText = @"{
+        var jsonText = @"{
                 'ForegroundColor': {
                     'Error': 'Red',
                     'Warning': 'Red',
@@ -37,7 +37,7 @@ internal class Program
 
         var consoleColorConfiguration = JObject.Parse(jsonText);
         // Null-conditional operator ?[ since JSon indexer does not raise an exception
-        string colorText = consoleColorConfiguration?["ForegroundColor"]?["Normal"]?.Value<string>();
+        var colorText = consoleColorConfiguration?["ForegroundColor"]?["Normal"]?.Value<string>();
         if (Enum.TryParse(colorText, out ConsoleColor color))
             ForegroundColor = color;
     }

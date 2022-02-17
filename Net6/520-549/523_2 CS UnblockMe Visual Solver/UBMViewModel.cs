@@ -61,7 +61,7 @@ internal class UBMViewModel : INotifyPropertyChanged
     {
         w.myGrid.Children.Clear();
 
-        for (int i = 0; i < m.Configuration.Length; i++)
+        for (var i = 0; i < m.Configuration.Length; i++)
         {
             Rectangle r = new();
             if (m.Pieces[i].IsHorizontal)

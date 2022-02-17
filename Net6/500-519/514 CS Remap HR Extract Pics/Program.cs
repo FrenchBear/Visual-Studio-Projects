@@ -19,10 +19,10 @@ internal class Program
         const string sourceHRPath = @"D:\PicturesSkull\2011\2011-08 Florida HR";
 
         var extractList = Directory.GetFiles(extractLRPath, "*.jpg");
-        foreach (string extractFile in extractList)
+        foreach (var extractFile in extractList)
         {
-            string source = Path.Combine(sourceHRPath, Path.GetFileName(extractFile));
-            string dest = Path.Combine(extractHRPath, Path.GetFileName(extractFile));
+            var source = Path.Combine(sourceHRPath, Path.GetFileName(extractFile));
+            var dest = Path.Combine(extractHRPath, Path.GetFileName(extractFile));
 
             if (!File.Exists(source))
                 Debugger.Break();

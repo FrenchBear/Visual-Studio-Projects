@@ -40,23 +40,14 @@ End Class
 
 <AttributeUsage(AttributeTargets.All)> Class TestAttribute
     Inherits Attribute
-    Private m_SomeValue As String
 
-    Public Sub New(Value As String)
-        m_SomeValue = Value
+    Public Sub New(value As String)
+        SomeValue = value
     End Sub
 
-    Public Sub Attr(AttrValue As String)
+    Public Sub Attr(attrValue As String)
         'Add method code here.
     End Sub
 
-    Public Property SomeValue() As String  ' A named parameter.
-        Get
-            Return m_SomeValue
-        End Get
-        Set(Value As String)
-            m_SomeValue = Value
-        End Set
-    End Property
-
+    Public Property SomeValue As String
 End Class

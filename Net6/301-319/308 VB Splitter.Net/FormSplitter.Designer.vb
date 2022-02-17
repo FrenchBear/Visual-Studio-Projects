@@ -1,4 +1,6 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> Partial Class Form1
+Imports Microsoft.VisualBasic.CompilerServices
+
+<DesignerGenerated()> Partial Class Form1
 #Region "Windows Form Designer generated code "
     <System.Diagnostics.DebuggerNonUserCode()> Public Sub New()
         MyBase.New()

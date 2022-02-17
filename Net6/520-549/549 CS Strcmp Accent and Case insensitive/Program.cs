@@ -21,13 +21,13 @@ internal class Program
 
     private static void Main()
     {
-        string s1 = "MaÏs";
-        string s2 = "Mais";
+        var s1 = "MaÏs";
+        var s2 = "Mais";
 
         //string s1 = "Cœur";
         //string s2 = "Coeur";
 
-        int cmp = string.Compare(s1, s2, CultureInfo.CurrentCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase);
+        var cmp = string.Compare(s1, s2, CultureInfo.CurrentCulture, CompareOptions.IgnoreNonSpace | CompareOptions.IgnoreCase);
 
         WriteLine($"cmp(\"{s1}\", \"{s2}\"): {cmp}");
         WriteLine($"ContainsAICI ITS:   {ContainsAICI(file, "ITS")}");
@@ -48,10 +48,10 @@ internal class Program
     private static void TimeExec(StringToString f)
     {
         var sw = Stopwatch.StartNew();
-        for (int i = 0; i < 100000; i++)
+        for (var i = 0; i < 100000; i++)
         {
-            string sSource = file;
-            string sRes = f(sSource);
+            var sSource = file;
+            var sRes = f(sSource);
         }
         WriteLine($"Time: {sw.Elapsed}");
     }
@@ -59,7 +59,7 @@ internal class Program
     private static string RemoveDiacritics(string text)
     {
         StringBuilder sb = new();
-        foreach (char ch in text.Normalize(NormalizationForm.FormD))
+        foreach (var ch in text.Normalize(NormalizationForm.FormD))
         {
             if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
                 _ = sb.Append(ch);

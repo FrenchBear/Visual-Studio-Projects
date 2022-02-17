@@ -6,6 +6,7 @@
 ' 2010-07-19	PV  VS2010
 ' 2021-09-18    PV  VS2022, Net6
 
+Imports System.ComponentModel
 Imports System.Drawing
 Imports System.Drawing.Imaging
 Imports System.Windows.Forms
@@ -164,7 +165,7 @@ Public Class frmAffichage
 
 #End Region
 
-    Private Sub btnAnalyse_Click(sender As System.Object, e As EventArgs) Handles btnAnalyse.Click
+    Private Sub btnAnalyse_Click(sender As Object, e As EventArgs) Handles btnAnalyse.Click
         btnAnalyse.Enabled = False
         btnPause.Enabled = True
         btnStop.Enabled = True
@@ -206,7 +207,7 @@ Public Class frmAffichage
         pic.Refresh()
     End Sub
 
-    Private Sub btnPause_Click(sender As System.Object, e As EventArgs) Handles btnPause.Click
+    Private Sub btnPause_Click(sender As Object, e As EventArgs) Handles btnPause.Click
         If bPause Then
             bPause = False
             btnPause.Text = "Pause"
@@ -218,7 +219,7 @@ Public Class frmAffichage
         End If
     End Sub
 
-    Private Sub btnStop_Click(sender As System.Object, e As EventArgs) Handles btnStop.Click
+    Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
         bStop = True
         If bPause Then
             bPause = False
@@ -227,7 +228,7 @@ Public Class frmAffichage
         ModeNavigation()
     End Sub
 
-    Private Sub vsSol_Scroll(sender As System.Object, e As ScrollEventArgs) Handles vsSol.Scroll
+    Private Sub vsSol_Scroll(sender As Object, e As ScrollEventArgs) Handles vsSol.Scroll
         txtSolution.Text = "Valeur: " & vsSol.Value
         DessineUneSolution(vsSol.Value, CType(alSolutions(vsSol.Value - 1), Jeu))
     End Sub
@@ -241,12 +242,12 @@ Public Class frmAffichage
         End With
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         MsgBox("Min: " & vsSol.Minimum & vbCrLf & "Max: " & vsSol.Maximum & vbCrLf & "Val: " & vsSol.Value)
     End Sub
 
     ' Au cas où on ferme la feuille en mode pause
-    Private Sub OnFormClose(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.Closing
+    Private Sub OnFormClose(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
         bStop = True
     End Sub
 

@@ -4,13 +4,7 @@
 ' 2021-09-20    PV  VS2022; Net6
 
 Public Class CarButtonsUserControl
-    Private ReadOnly m_iIndex As Integer
-
-    Public ReadOnly Property Index() As Integer
-        Get
-            Return m_iIndex
-        End Get
-    End Property
+    Public ReadOnly Property Index As Integer
 
     Public Event CarRequest(uccb As CarButtonsUserControl, iFloor As Integer)
 
@@ -18,7 +12,7 @@ Public Class CarButtonsUserControl
         ' This call is required by the Windows Form Designer.
         InitializeComponent()
 
-        m_iIndex = iIndex
+        Index = iIndex
 
         ' Add any initialization after the InitializeComponent() call.
         For i As Integer = 0 To NumberOfFloors - 1
@@ -32,7 +26,7 @@ Public Class CarButtonsUserControl
                 .Text = CStr(NumberOfFloors - 1 - i),
                 .TextAlign = ContentAlignment.TopCenter,
                 .UseVisualStyleBackColor = False
-            }
+                }
 
             Me.Controls.Add(cb)
 
@@ -40,7 +34,7 @@ Public Class CarButtonsUserControl
         Next
     End Sub
 
-    Private Sub CarButton_Click(sender As System.Object, e As EventArgs)
+    Private Sub CarButton_Click(sender As Object, e As EventArgs)
         RaiseEvent CarRequest(Me, Val(CType(sender, Button).Text))
     End Sub
 
@@ -90,5 +84,4 @@ Public Class CarButtonsUserControl
             Me.Controls("btn" & CStr(iFloor)).BackColor = IIf(value, Color.Lime, SystemColors.Control)
         End Set
     End Property
-
 End Class

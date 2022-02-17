@@ -19,8 +19,8 @@ internal class Class1
     [STAThread]
     private static void Main(string[] args)
     {
-        string sPath1 = "filename.ext";
-        string sPath2 = Path.ChangeExtension(sPath1, ".zap");
+        var sPath1 = "filename.ext";
+        var sPath2 = Path.ChangeExtension(sPath1, ".zap");
 
         WriteLine("Path1: {0}\nPath2: {1}", sPath1, sPath2);
         //Console.ReadLine();

@@ -49,30 +49,30 @@ internal class Program
         // Comparison with operators
         var e21 = new Entier2(2);
         var e22 = new Entier2(5);
-        bool b2 = e21 > e22;
+        var b2 = e21 > e22;
 
         // Comparison with IComparable
         var e11 = new Entier1(2);
         var e12 = new Entier1(5);
-        int i1 = e11.CompareTo(e12);
+        var i1 = e11.CompareTo(e12);
 
         // Comparison with IComparable<T>
         var e31 = new Entier3(2);
         var e32 = new Entier3(5);
-        int i3 = e31.CompareTo(e32);
+        var i3 = e31.CompareTo(e32);
 
         // Comparison with Comparer<T>.Default
-        Comparer<Entier3> myComparer = Comparer<Entier3>.Default;
-        int i4 = myComparer.Compare(e31, e32);
+        var myComparer = Comparer<Entier3>.Default;
+        var i4 = myComparer.Compare(e31, e32);
 
         // Comparison using Comparison delegate
         int myComparison(Entier3 x3, Entier3 y3) => x3.Value - y3.Value;
-        int i5 = myComparison(e31, e32);
+        var i5 = myComparison(e31, e32);
 
         // String comparisons
-        int si1 = string.Compare("sun", "dry");
+        var si1 = string.Compare("sun", "dry");
         // Trick: StringComparison is just an enum, not a static member returning a Comparison!!!
-        int si2 = string.Compare("sun", "dry", StringComparison.InvariantCultureIgnoreCase);
+        var si2 = string.Compare("sun", "dry", StringComparison.InvariantCultureIgnoreCase);
         SortedSet<string> sl1 = new(StringComparer.InvariantCultureIgnoreCase);
     }
 }
@@ -150,8 +150,8 @@ internal static class ExtensionMethods
     public static string ToString<T>(this IEnumerable<T> collection)
     {
         StringBuilder sb = new();
-        bool first = true;
-        foreach (T item in collection)
+        var first = true;
+        foreach (var item in collection)
         {
             if (first)
             {

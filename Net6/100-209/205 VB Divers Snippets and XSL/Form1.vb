@@ -7,10 +7,11 @@
 #Disable Warning IDE0060 ' Remove unused parameter
 
 Imports System.Runtime.InteropServices
+Imports System.Runtime.Serialization
 
 Public Class Form1
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         CallMessageBox()
     End Sub
 
@@ -41,8 +42,8 @@ Public Class Form1
         End Sub
 
         Public Sub New(
-info As Runtime.Serialization.SerializationInfo,
-context As Runtime.Serialization.StreamingContext)
+info As SerializationInfo,
+context As StreamingContext)
             MyBase.New(info, context)
             ' Insert code here for custom properties here.
         End Sub
@@ -50,17 +51,7 @@ context As Runtime.Serialization.StreamingContext)
     End Class
 
     Structure Kustomer
-        Private nameValue As String
-
-        Public Property Name() As String
-            Get
-                Return nameValue
-            End Get
-            Set(value As String)
-                nameValue = value
-            End Set
-        End Property
-
+        Public Property Name As String
     End Structure
 
     Enum EvenNumbers

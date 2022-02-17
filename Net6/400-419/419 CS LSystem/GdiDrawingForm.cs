@@ -124,7 +124,7 @@ public partial class GdiDrawingForm: Form
         pd.PrinterSettings.PrinterName = PrintersList.SelectedItem.ToString();
 
         // Select A4 paper
-        for (int i = 0; i < pd.PrinterSettings.PaperSizes.Count; i++)
+        for (var i = 0; i < pd.PrinterSettings.PaperSizes.Count; i++)
         {
             var pkSize = pd.PrinterSettings.PaperSizes[i];
             if (pkSize.PaperName.Contains("A4"))
@@ -146,7 +146,7 @@ public partial class GdiDrawingForm: Form
 
     private void Pd_PrintPage(object sender, PrintPageEventArgs ev)
     {
-        Graphics g = ev.Graphics;
+        var g = ev.Graphics;
         var pr = ev.PageSettings.PrinterResolution;
 
         g.DrawLine(new Pen(Color.Black), 10, 10, ev.PageBounds.Width - 20, ev.PageBounds.Height - 20);

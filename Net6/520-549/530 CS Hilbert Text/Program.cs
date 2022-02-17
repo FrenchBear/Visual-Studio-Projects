@@ -19,10 +19,10 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        int depth = 4;                  // Level 1 is the first drawing as an upside down U
+        var depth = 4;                  // Level 1 is the first drawing as an upside down U
 
         // L-System definition for Hilbert curve
-        string axiom = "X";
+        var axiom = "X";
         var rules = new Dictionary<char, string> { { 'X', "-YF+XFX+FY-" }, { 'Y', "+XF-YFY-FX+" } };
 
         // In Out cell cencoding matrix
@@ -37,16 +37,16 @@ internal class Program
             {Blocks.hz, Blocks.vt, Blocks.hz, Blocks.vt, Blocks.xx}
         };
 
-        int side = (int)Math.Pow(2, depth);     // # side of output square grid
+        var side = (int)Math.Pow(2, depth);     // # side of output square grid
         var tc = new Blocks[side, side];  // Table of cells for output
 
-        int a = 0;          // Current angular orientation: 0=East, 1=North, 2=West, 3=South
-        int en = 4;         // Previous cell entrance, 4=no entrance (1st cell)
-        int cx = 0;         // Current x
-        int cy = side - 1;  // Current y
+        var a = 0;          // Current angular orientation: 0=East, 1=North, 2=West, 3=South
+        var en = 4;         // Previous cell entrance, 4=no entrance (1st cell)
+        var cx = 0;         // Current x
+        var cy = side - 1;  // Current y
 
         // Scans the full instruchon chain returned by iterator and build output table tc
-        foreach (char c in LSystemIterator(depth, axiom, rules))
+        foreach (var c in LSystemIterator(depth, axiom, rules))
         {
             switch (c)      // Only process drawing instructions - + and F
             {
@@ -82,9 +82,9 @@ internal class Program
         };
 
         // Draw curve
-        for (int y = 0; y < side; y++)
+        for (var y = 0; y < side; y++)
         {
-            for (int x = 0; x < side; x++)
+            for (var x = 0; x < side; x++)
                 Console.Write(boxes[tc[y, x]]);
             WriteLine();
         }
@@ -97,17 +97,17 @@ internal class Program
         // Special case, depth==0, simply returns axiom
         if (depth == 0)
         {
-            foreach (char c in axiom)
+            foreach (var c in axiom)
                 yield return c;
             yield break;
         }
 
         // General case, apply transformation rules on depth-1 version
-        foreach (char c in LSystemIterator(depth - 1, axiom, rules))
+        foreach (var c in LSystemIterator(depth - 1, axiom, rules))
         {
             if (rules.ContainsKey(c))
             {
-                foreach (char c2 in rules[c])
+                foreach (var c2 in rules[c])
                     yield return c2;
             }
             else

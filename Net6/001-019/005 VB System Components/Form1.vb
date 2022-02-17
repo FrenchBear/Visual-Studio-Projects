@@ -2,12 +2,13 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25    PV  VS2010
 ' 2021-09-17    PV  VS2022/Net6
+Imports System.Windows.Forms
 
 #Disable Warning IDE1006 ' Naming Styles
 #Disable Warning IDE0052 ' Remove unread private members
 
 Public Class Form1
-    Inherits Windows.Forms.Form
+    Inherits Form
 
     Public Sub New()
         MyBase.New()
@@ -29,7 +30,7 @@ Public Class Form1
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private ReadOnly components As ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     Private WithEvents btnAperçu As Windows.Forms.Button
 
@@ -47,7 +48,7 @@ Public Class Form1
         Me.NumericUpDown1 = New Windows.Forms.NumericUpDown()
         Me.btnAperçu = New Windows.Forms.Button()
         Me.PrintPreviewDialog1 = New Windows.Forms.PrintPreviewDialog()
-        CType(Me.NumericUpDown1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NumericUpDown1
@@ -85,14 +86,14 @@ Public Class Form1
         Me.Controls.AddRange(New Windows.Forms.Control() {Me.btnAperçu, Me.NumericUpDown1})
         Me.Name = "Form1"
         Me.Text = "Form1"
-        CType(Me.NumericUpDown1, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
 #End Region
 
-    Private Sub btnAperçu_Click(sender As System.Object, e As EventArgs) Handles btnAperçu.Click
+    Private Sub btnAperçu_Click(sender As Object, e As EventArgs) Handles btnAperçu.Click
         PrintPreviewDialog1.ShowDialog()
     End Sub
 

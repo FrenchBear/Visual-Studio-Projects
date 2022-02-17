@@ -1,7 +1,9 @@
-﻿Partial Public Class Form1
-    Inherits System.Windows.Forms.Form
+﻿Imports System.ComponentModel
 
-    <System.Diagnostics.DebuggerNonUserCode()>
+Partial Public Class Form1
+    Inherits Form
+
+    <DebuggerNonUserCode()>
     Public Sub New()
         MyBase.New()
 
@@ -11,7 +13,7 @@
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <DebuggerNonUserCode()>
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -20,33 +22,33 @@
     End Sub
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button
+        Me.Button1 = New Button
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(205, 13)
+        Me.Button1.Location = New Point(205, 13)
         Me.Button1.Name = "Button1"
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Button1"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.ClientSize = New System.Drawing.Size(292, 266)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.ClientSize = New Size(292, 266)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button1 As Button
 
 End Class

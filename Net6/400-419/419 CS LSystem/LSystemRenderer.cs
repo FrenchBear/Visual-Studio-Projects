@@ -39,12 +39,12 @@ public abstract class LSystemRenderer
     // If rendingWidth == rendingHeight == 0 then there is no scaling pass
     public Rect Rend(double rendingWidth, double rendingHeight)
     {
-        int pass = 0;                           // pass=0: measure, pass=1: drawing
+        var pass = 0;                           // pass=0: measure, pass=1: drawing
 
-        double r = 0.0;                         // Final scale factor; declare here to avoid compiler complaining about a variable used before its assignment
+        var r = 0.0;                         // Final scale factor; declare here to avoid compiler complaining about a variable used before its assignment
 
-        double x0 = 0.0;                        // xmin for pass2
-        double y0 = 0.0;                        // ymin for pass2
+        var x0 = 0.0;                        // xmin for pass2
+        var y0 = 0.0;                        // ymin for pass2
 
         if (rendingHeight == 0 && rendingWidth == 0)
         {
@@ -53,9 +53,9 @@ public abstract class LSystemRenderer
         }
 
         var sb = new StringBuilder();
-        foreach (char c in _s)
+        foreach (var c in _s)
             sb.Append(c);
-        string ss = sb.ToString();
+        var ss = sb.ToString();
 
         for (; ; pass++)
         {
@@ -69,20 +69,20 @@ public abstract class LSystemRenderer
             double nx;                          // New X position
             double ny;                          // New Y position
 
-            double angleIncrement = 2 * Math.PI / _angle;
+            var angleIncrement = 2 * Math.PI / _angle;
 
-            int generalOrientation = 1;         // General orientation, changed to -1 by !
-            char escapeChar = '\0';             // Different than \0 when processing @ or \ or / escape sequence
-            string escapeOptions = "";          // Accumulated I and or Q for @ sequence
-            string argumentNum = "";            // Buffer to accumulate @, \ and / numeric argument
+            var generalOrientation = 1;         // General orientation, changed to -1 by !
+            var escapeChar = '\0';             // Different than \0 when processing @ or \ or / escape sequence
+            var escapeOptions = "";          // Accumulated I and or Q for @ sequence
+            var argumentNum = "";            // Buffer to accumulate @, \ and / numeric argument
 
             double rx;                          // Scale factor on x axis
             double ry;                          // Scale factor on y axis
 
-            double xmax = 0.0;                  // Extent measured during pass 0 to calculate scale factors, or pass 1 to return final extent
-            double xmin = 0.0;
-            double ymax = 0.0;
-            double ymin = 0.0;
+            var xmax = 0.0;                  // Extent measured during pass 0 to calculate scale factors, or pass 1 to return final extent
+            var xmin = 0.0;
+            var ymax = 0.0;
+            var ymin = 0.0;
 
             if (pass == 0)
                 r = 0;
@@ -90,9 +90,9 @@ public abstract class LSystemRenderer
             var sw = Stopwatch.StartNew();
 
             // Step 1, calculate the extent (pass==0) or draw (pass==1)
-            for (int i = 0; i < ss.Length; i++)
+            for (var i = 0; i < ss.Length; i++)
             {
-                char c = ss[i];
+                var c = ss[i];
 
                 // General timeout at 2s for measuring or rendering
                 if (sw.ElapsedMilliseconds > 2000)
@@ -123,7 +123,7 @@ public abstract class LSystemRenderer
                                 escapeOptions += c;
                                 continue;
                             }
-                            double f = double.Parse(argumentNum, CultureInfo.InvariantCulture);
+                            var f = double.Parse(argumentNum, CultureInfo.InvariantCulture);
                             if (escapeOptions == "IQ")
                                 f = 1.0 / Math.Sqrt(f);
                             else if (escapeOptions == "QI")

@@ -89,7 +89,7 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
         if (d != 0)
         {
             _ = sb.Append('.');
-            string sz = d.ToString();
+            var sz = d.ToString();
             _ = sb.Append('0', Digits - sz.Length);
             _ = sb.Append(sz);
         }
@@ -97,7 +97,7 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
     }
 
     // Otherwise C# compiler is not happy
-    public override bool Equals(Object obj)
+    public override bool Equals(object obj)
     {
         //Check for null and compare run-time types.
         if (obj == null || GetType() != obj.GetType()) return false;

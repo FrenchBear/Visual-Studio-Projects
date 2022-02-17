@@ -125,7 +125,7 @@ Partial Public Class Toto
     Public Shared Function Zap(i As Integer) As Integer
         Dim x As IEnumerable
         x = (New AboutBox1()).Controls
-        Dim c As Windows.Forms.Control
+        Dim c As Control
         For Each c In x
 
         Next

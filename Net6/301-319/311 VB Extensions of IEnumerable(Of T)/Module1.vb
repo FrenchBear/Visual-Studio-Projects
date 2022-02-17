@@ -6,6 +6,7 @@
 ' 2021-09-20    PV  VS2022; Net6; MsgBox -> Console.WriteLine
 
 Imports System.Runtime.CompilerServices
+Imports System.Text
 
 Module Module1
 
@@ -17,7 +18,7 @@ Module Module1
         Dim ExtendedList As IEnumerable(Of String) = fruits.AddHeadElement("pinapple")
 
         ' Display the results.
-        Dim output As New Text.StringBuilder
+        Dim output As New StringBuilder
         For Each fruit As String In ExtendedList
             output.AppendLine(fruit)
         Next
@@ -30,7 +31,7 @@ Module Module1
             Enumerable.Range(1, 10).Select(Function(x) x * x).AddHeadElement(473)
 
         ' Display the output.
-        output = New Text.StringBuilder
+        output = New StringBuilder
         For Each num As Integer In squares
             output.AppendLine(num)
         Next
@@ -41,7 +42,7 @@ Module Module1
         'Dim EvenList As IEnumerable(Of Integer) = squares.Filter(FindEvenNumber)
         Dim EvenList As IEnumerable(Of Integer) = squares.Filter(Function(n As Integer) (n And 1) = 0)
 
-        output = New Text.StringBuilder
+        output = New StringBuilder
         For Each num As Integer In EvenList
             output.AppendLine(num)
         Next

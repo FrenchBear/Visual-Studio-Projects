@@ -2,7 +2,9 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
 
+Imports System.IO
 Imports System.Xml
+Imports System.Xml.Serialization
 
 Public Class Form1
 
@@ -25,7 +27,7 @@ Public Class Form1
         Public titre As String
         Public auteur As String
         Public quantité As Integer
-        Public Chapites As New Generic.List(Of Chapitre)
+        Public Chapites As New List(Of Chapitre)
 
         Public Overrides Function ToString() As String
             ToString = "Book:" & vbCrLf &
@@ -53,30 +55,30 @@ Public Class Form1
             .Add(New Book.Chapitre(3, "Troisième chapitre", -7.7))
         End With
 
-        Dim writer As New Serialization.XmlSerializer(GetType(Book))
-        Dim file As New IO.StreamWriter(AppPath() & "\IntroToVB.xml")
+        Dim writer As New XmlSerializer(GetType(Book))
+        Dim file As New StreamWriter(AppPath() & "\IntroToVB.xml")
         writer.Serialize(file, introToVB)
         file.Close()
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         WriteXML()
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ReadXML()
     End Sub
 
     Public Sub ReadXML()
-        Dim reader As New Serialization.XmlSerializer(GetType(Book))
-        Dim file As New IO.StreamReader(AppPath() & "\IntroToVB.xml")
+        Dim reader As New XmlSerializer(GetType(Book))
+        Dim file As New StreamReader(AppPath() & "\IntroToVB.xml")
         Dim introToVB As Book
         introToVB = CType(reader.Deserialize(file), Book)
 
         MsgBox("read: " & introToVB.ToString)
     End Sub
 
-    Private Sub Button3_Click(sender As System.Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         IterateThroughNodes()
     End Sub
 

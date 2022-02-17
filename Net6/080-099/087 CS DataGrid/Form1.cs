@@ -148,11 +148,9 @@ public class Form1 : Form
     {
         DataTable myTable = new("Suppliers");
 
-        DataColumn col1;
-        col1 = myTable.Columns.Add("Nom", Type.GetType("System.String"));
+        var col1 = myTable.Columns.Add("Nom", Type.GetType("System.String"));
         col1.ReadOnly = true;
-        DataColumn col2;
-        col2 = myTable.Columns.Add("Tel", Type.GetType("System.Int32"));
+        var col2 = myTable.Columns.Add("Tel", Type.GetType("System.Int32"));
 
         _ = myTable.Rows.Add(new object[] { "Pierre", 8873 });
         _ = myTable.Rows.Add(new object[] { "Xavier", 8317 });

@@ -49,7 +49,7 @@ internal class Program
         t1 = t2;        // This is allowed, contrary to tuples created with Tuple<>
         WriteLine("t1: " + t1);
         t1.r += 1.0;    // mutable...
-        (string Alpha, string Beta) = ("Hello", "World");
+        (var Alpha, var Beta) = ("Hello", "World");
 
         // Following conversions are not supported...
         //Tuple<int, int> myTuple1 = (3, 4);
@@ -58,7 +58,7 @@ internal class Program
         Tuple<int, int> myTuple3 = (3, 4).Construct();      // An extension method can be used
 
         // Actually, real type is ValueTuple
-        ValueTuple<int, int> myValueTuple1 = (2, 7);
+        var myValueTuple1 = (2, 7);
         //ValueTuple<int, int> myValueTuple2 = (once: 2, upon: 7);
 
         // Convoluted method to make a tuple enumerable, just to do it
@@ -80,10 +80,10 @@ internal class Program
         WriteLine($"Sum: {sum}, Count: {count}");
 
         var p = new Point(3.14, 2.71);
-        (double X, double Y) = p;                           // Class supporting a Deconstruct method
+        (var X, var Y) = p;                           // Class supporting a Deconstruct method
         WriteLine($"X={X}, Y={Y}");
         Tuple<int, int> t78 = new(7, 8);
-        (int Z, int T) = t78;                               // Deconstruction using extension method
+        (var Z, var T) = t78;                               // Deconstruction using extension method
         WriteLine($"Z={Z}, T={T}");
         var (Z1, _) = t78;                                  // Discard element during deconstruction
 
@@ -93,13 +93,13 @@ internal class Program
         WriteLine($"zr={zr}, zi={zi}");
 
         // Function returning a reference (but intellisense does not show it)
-        string s1 = "Hello";
-        string s2 = "World";
+        var s1 = "Hello";
+        var s2 = "World";
         Choose(true, ref s1, ref s2) = "Modified";
         WriteLine($"s1:{s1}, s2:{s2}");
 
         // Local ref
-        ref string rs = ref s2;
+        ref var rs = ref s2;
         rs = "String";
         WriteLine($"After modifying rs, s2:{s2}");
 
@@ -111,7 +111,7 @@ internal class Program
         if (o is int i || (o is string s && int.TryParse(s, out i))) { /* use i */ }
 
         // Out variables declared in method call
-        WriteLine(double.TryParse("3,1416", out double dval) ? $"dval={dval}" : "double.TryParse failed");
+        WriteLine(double.TryParse("3,1416", out var dval) ? $"dval={dval}" : "double.TryParse failed");
     }
 
     // Local function and tuples

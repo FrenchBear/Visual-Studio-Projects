@@ -14,7 +14,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string s = "ắ";
+        var s = "ắ";
         Decomp(s, NormalizationForm.FormC);
         Decomp(s, NormalizationForm.FormD);
         Decomp(s, NormalizationForm.FormKC);
@@ -23,9 +23,9 @@ internal class Program
 
     private static void Decomp(string s, NormalizationForm nf)
     {
-        string sd = s.Normalize(nf);
+        var sd = s.Normalize(nf);
         Console.Write(nf + ": ");
-        foreach (char c in sd)
+        foreach (var c in sd)
         {
             Console.Write("u+" + ((int)c).ToString("x4") + " ");
         }

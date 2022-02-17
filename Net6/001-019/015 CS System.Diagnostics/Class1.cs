@@ -11,7 +11,7 @@ using static System.Console;
 
 namespace CS015;
 
-public class InOut
+public static class InOut
 {
     private static int Zap()
     {
@@ -21,10 +21,8 @@ public class InOut
 
     public static void Main()
     {
-        int i = 0;
-        int j;
-
-        j = i > Zap() ? 0 : 3;
+        var i = 0;
+        var j = i > Zap() ? 0 : 3;
 
         WriteLine("j: " + j);
         _ = Console.ReadLine();

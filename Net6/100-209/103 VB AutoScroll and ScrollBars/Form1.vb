@@ -18,7 +18,7 @@ Public Class Form1
         Debug.Print(Str(e.ScrollOrientation) & " - " & Str(e.NewValue))
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         MsgBox("HS:" & vbCrLf &
           "  Value: " & Str(Panel1.HorizontalScroll.Value) & vbCrLf &
           "  Min:   " & Str(Panel1.HorizontalScroll.Minimum) & vbCrLf &
@@ -27,13 +27,13 @@ Public Class Form1
           "  LC:    " & Str(Panel1.HorizontalScroll.LargeChange))
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         MsgBox("Pic:" & vbCrLf &
           "  Width:  " & Str(PictureBox1.Width) & vbCrLf &
           "  Height: " & Str(PictureBox1.Height))
     End Sub
 
-    Private Sub HScrollBar1_Scroll(sender As System.Object, e As ScrollEventArgs) Handles HScrollBar1.Scroll
+    Private Sub HScrollBar1_Scroll(sender As Object, e As ScrollEventArgs) Handles HScrollBar1.Scroll
         Debug.Print(e.NewValue.ToString)
     End Sub
 
@@ -45,7 +45,7 @@ Public Class Form1
         Debug.Print(HScrollBar2.Value)
     End Sub
 
-    Private Sub Button3_Click(sender As System.Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         MsgBox("HS2:" & vbCrLf &
           "  Value: " & Str(HScrollBar2.Value) & vbCrLf &
           "  Min:   " & Str(HScrollBar2.Minimum) & vbCrLf &

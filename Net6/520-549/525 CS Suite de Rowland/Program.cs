@@ -29,8 +29,8 @@ internal class Program
         long n;
         for (n = 2; n < 100000000; n++)
         {
-            long fnp1 = fn + Gcd(n, fn);
-            long gn = fnp1 - fn;
+            var fnp1 = fn + Gcd(n, fn);
+            var gn = fnp1 - fn;
             if (gn == 191) Debugger.Break();
             if (gn > 1)
                 Console.Write("{0} ", fnp1 - fn);

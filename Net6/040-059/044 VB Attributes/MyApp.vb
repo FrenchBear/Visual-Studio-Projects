@@ -9,29 +9,15 @@
 
 <AttributeUsage(AttributeTargets.Class)> Public Class MonAttribut
     Inherits Attribute
-    Private ReadOnly iPriv As Integer
-    Private sInfo As String
 
     Public Sub New(iVal As Integer)
-        iPriv = iVal
-        sInfo = ""
+        Flags = iVal
+        Info = ""
     End Sub
 
-    Public Property Info() As String
-        Get
-            Return sInfo
-        End Get
-        Set(Value As String)
-            sInfo = Value
-        End Set
-    End Property
+    Public Property Info As String
 
-    Public ReadOnly Property IFlags() As Integer
-        Get
-            Return iPriv
-        End Get
-    End Property
-
+    Public ReadOnly Property Flags As Integer
 End Class
 
 <MonAttribut(1, Info:="Info de MaClasse1")> Class MaClasse1
@@ -64,7 +50,7 @@ Class MyApp
 
         Dim m As MonAttribut
         m = CType(tob.GetCustomAttributes(tat, False)(0), MonAttribut)
-        WriteLine("{0}, {1}", m.IFlags, m.Info)
+        WriteLine("{0}, {1}", m.Flags, m.Info)
     End Sub
 
 End Class

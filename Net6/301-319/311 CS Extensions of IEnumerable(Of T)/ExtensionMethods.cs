@@ -13,7 +13,7 @@ public static class ExtensionMethodsClasses
     // Extension of IEnumerable<T>
     public static IEnumerable<T> DoubleListe<T>(this IEnumerable<T> source)
     {
-        foreach (T item in source)
+        foreach (var item in source)
         {
             yield return item;
             yield return item;
@@ -24,8 +24,8 @@ public static class ExtensionMethodsClasses
     public static void Write<T>(this IEnumerable<T> source)
     {
         Console.Write("{");
-        bool first = true;
-        foreach (T item in source)
+        var first = true;
+        foreach (var item in source)
         {
             if (first)
                 first = false;

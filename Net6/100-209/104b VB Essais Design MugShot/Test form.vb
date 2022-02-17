@@ -1,11 +1,12 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.IO
 
 #Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmTest
 
-    Private Sub frmTest_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmTest_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim loc As String = "C:\Users\Pierr\OneDrive\PicturesODMisc\Animals\Dogs\Titus"
         lvNewDocuments.Items.Add(New ListViewItemDoc(loc + "\Photo 039.jpg"))
         lvNewDocuments.Items.Add(New ListViewItemDoc(loc + "\Photo 040.jpg"))
@@ -28,7 +29,7 @@ Public Class frmTest
         }
 
         ge = Nothing
-        Select Case IO.Path.GetExtension(ed.sPathName)
+        Select Case Path.GetExtension(ed.sPathName)
             Case ".jpg"
                 myTextEditor.Visible = False
                 myPDFEditor.Visible = False
@@ -57,13 +58,13 @@ Public Class frmTest
         gbNewDocuments.Enabled = Not ge.m_bDirty
     End Sub
 
-    Private Sub btnAdd_Click(sender As System.Object, e As EventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         OpenFileDialog1.CheckFileExists = True
         OpenFileDialog1.Filter = "All files (*.*)|*.*"
         OpenFileDialog1.FilterIndex = 1
         OpenFileDialog1.RestoreDirectory = True
         OpenFileDialog1.FileName = ""
-        If OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If OpenFileDialog1.ShowDialog() = DialogResult.OK Then
             lvNewDocuments.Items.Add(New ListViewItemDoc(OpenFileDialog1.FileName))
         End If
     End Sub
@@ -77,7 +78,7 @@ Class ListViewItemDoc
 
     Public Sub New(sPath As String)
         m_sPathName = sPath
-        Me.Text = IO.Path.GetFileName(sPath)
+        Me.Text = Path.GetFileName(sPath)
         Me.SubItems.Add(FileLen(sPath).ToString)
         Me.SubItems.Add(FileDateTime(sPath).ToString)
     End Sub

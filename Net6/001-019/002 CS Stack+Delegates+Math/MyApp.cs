@@ -12,20 +12,19 @@ using static System.Console;
 
 namespace CS002;
 
-public class MyMath
+public static class MyMath
 {
     public delegate double FRéelle(double arg);
 
     public static double Intégrale(double binf, double bsup, FRéelle f)
     {
         int i;
-        double v;
-        const int PAS = 1000;
+        double v = 0;
+        const int pas = 1000;
 
-        v = 0;
-        for (i = 0; i < PAS; i++)
-            v += f(binf + (bsup - binf) * (i + 0.5) / PAS);
-        return v * (bsup - binf) / PAS;
+        for (i = 0; i < pas; i++)
+            v += f(binf + (bsup - binf) * (i + 0.5) / pas);
+        return v * (bsup - binf) / pas;
     }
 
     public static double Carré(double x) => x * x;
@@ -36,7 +35,7 @@ public class MyApp
     private static void F(params int[] targ)
     {
         WriteLine("# of arguments: {0}", targ.Length);
-        for (int i = 0; i < targ.Length; i++)
+        for (var i = 0; i < targ.Length; i++)
         {
             WriteLine("\tArg[{0}] = {1}", i, targ[i]);
         }
@@ -46,7 +45,7 @@ public class MyApp
 
     public static void Main()
     {
-        WriteLine("System.Int64.MaxValue = {0}", System.Int64.MaxValue);
+        WriteLine("System.Int64.MaxValue = {0}", long.MaxValue);
 
         F();
         F(1, 2);

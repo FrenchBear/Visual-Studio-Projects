@@ -86,19 +86,19 @@ Public Class Form1
         Next
     End Sub
 
-    Private Sub Pic_Click(sender As System.Object, e As EventArgs) Handles Pic.Click
+    Private Sub Pic_Click(sender As Object, e As EventArgs) Handles Pic.Click
         Clipboard.Clear()
         Clipboard.SetImage(picBitmap)
         Beep()
     End Sub
 
-    Private Sub tbk1_Scroll(sender As System.Object, e As EventArgs) Handles tbk1.Scroll
+    Private Sub tbk1_Scroll(sender As Object, e As EventArgs) Handles tbk1.Scroll
         k1 = tbk1.Value / 100
         lblk1.Text = "k1 " & k1
         Redraw()
     End Sub
 
-    Private Sub tbk2_Scroll(sender As System.Object, e As EventArgs) Handles tbk2.Scroll
+    Private Sub tbk2_Scroll(sender As Object, e As EventArgs) Handles tbk2.Scroll
         k2 = tbk2.Value / 100
         lblk2.Text = "k2 " & k2
         Redraw()

@@ -69,10 +69,10 @@ private void UBModel()
         }
 
         // try to move each piece in both directions 1 step
-        for (int i = 0; i < config.Length; i++)
+        for (var i = 0; i < config.Length; i++)
         {
             // Move left/up 1 position
-            Config newConfig = config.Clone();
+            var newConfig = config.Clone();
             newConfig.Pos[i]--;
             if (!History.Contains(newConfig.Signature()) && newConfig.IsValid(Pieces))
             {
@@ -113,9 +113,9 @@ private void UBModel()
     private void ShowConfig(Config config)
     {
         WriteLine();
-        for (int r = 0; r < 6; r++)
+        for (var r = 0; r < 6; r++)
         {
-            for (int c = 0; c < 6; c++)
+            for (var c = 0; c < 6; c++)
             {
                 byte i;
                 for (i = 0; i < config.Length; i++)
@@ -132,9 +132,8 @@ private void UBModel()
                     }
                 }
 
-                char ch;
                 Console.BackgroundColor = i == config.Length ? ConsoleColor.Black : i == redPiece ? ConsoleColor.Red : Colors[i];
-                ch = (char)183;     // centered dot
+                var ch = (char)183;     // centered dot
                 Console.Write(ch);
                 Console.Write(ch);
             }
@@ -173,13 +172,13 @@ public struct Config
     // Check the validity of a configuration
     public bool IsValid(Block[] Pieces)
     {
-        for (int i = 0; i < Length; i++)
+        for (var i = 0; i < Length; i++)
         {
             // Check that the piece is in the board
             if (Pos[i] == 255 || Pos[i] + Pieces[i].Length > 6) return false;
 
             // Check that it doesn't cover another piece
-            for (int j = 0; j < Length; j++)
+            for (var j = 0; j < Length; j++)
             {
                 if (j != i)
                 {

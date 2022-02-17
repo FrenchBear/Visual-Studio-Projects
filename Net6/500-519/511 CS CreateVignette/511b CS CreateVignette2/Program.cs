@@ -28,15 +28,15 @@ internal class Test
 
     public string ConvertImage(string fileName)
     {
-        string imagePath = Path.Combine(SourceFolder, fileName);
-        string vignettePath = Path.Combine(TargetFolder, fileName);
+        var imagePath = Path.Combine(SourceFolder, fileName);
+        var vignettePath = Path.Combine(TargetFolder, fileName);
 
         // Using GDI
         System.Drawing.Image image = new System.Drawing.Bitmap(imagePath);
         DumpPropItems(image);
 
-        int originalWidth = image.Width;
-        int originalHeight = image.Height;
+        var originalWidth = image.Width;
+        var originalHeight = image.Height;
         int newWidth, newHeight;
         if (originalWidth > originalHeight)
         {
@@ -71,14 +71,14 @@ internal class Test
         System.Drawing.Image vignette = new System.Drawing.Bitmap(image, newWidth, newHeight);
 
         // Transfer original EXIF attributes
-        foreach (PropertyItem propItem in image.PropertyItems)
+        foreach (var propItem in image.PropertyItems)
             vignette.SetPropertyItem(propItem);
         //vignette.SetPropertyItem(image.PropertyItems[0]);
         //DumpPropItems(vignette);
 
         EncoderParameters eps = new(1);
         eps.Param[0] = new EncoderParameter(Encoder.Quality, JpegQuality);
-        ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
+        var ici = GetEncoderInfo("image/jpeg");
 
         vignette.Save(vignettePath, ici, eps);
         Debugger.Break();
@@ -100,12 +100,12 @@ internal class Test
 
     private static void DumpPropItems(System.Drawing.Image image)
     {
-        PropertyItem[] propItems = image.PropertyItems;
-        int count = 0;
-        foreach (PropertyItem propItem in propItems)
+        var propItems = image.PropertyItems;
+        var count = 0;
+        foreach (var propItem in propItems)
         {
             Console.Write("Property {0}, Id {1:X}, Type {2}, Len {3}, ", count, propItem.Id, propItem.Type.ToString(), propItem.Len.ToString());
-            for (int j = 0; j < propItem.Len; j++)
+            for (var j = 0; j < propItem.Len; j++)
             {
                 var b = propItem.Value[j];
                 Console.Write(b is >= 32 and <= 127 ? (char)b : '?');
@@ -118,8 +118,7 @@ internal class Test
     private static ImageCodecInfo GetEncoderInfo(string mimeType)
     {
         int j;
-        ImageCodecInfo[] encoders;
-        encoders = ImageCodecInfo.GetImageEncoders();
+        var encoders = ImageCodecInfo.GetImageEncoders();
         for (j = 0; j <= encoders.Length; j++)
         {
             if (encoders[j].MimeType == mimeType)

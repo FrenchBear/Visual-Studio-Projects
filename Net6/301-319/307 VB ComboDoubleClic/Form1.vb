@@ -10,7 +10,7 @@ Public Class Form1
     ' Record the last click with the current time
     Dim lastClick As Date = Now
 
-    Private Sub ComboBox1_MouseClick(sender As System.Object, e As MouseEventArgs) Handles ComboBox1.MouseClick
+    Private Sub ComboBox1_MouseClick(sender As Object, e As MouseEventArgs) Handles ComboBox1.MouseClick
         ' Test if in the last time plus the milliseconds it takes for a double click
         ' there was another click, activate the code (there was a double click)
         If Now < lastClick.AddMilliseconds(SystemInformation.DoubleClickTime) Then

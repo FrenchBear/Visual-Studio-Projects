@@ -6,6 +6,11 @@
 Option Strict Off
 Option Explicit On
 
+Imports System.ComponentModel
+Imports System.Reflection
+Imports System.Resources
+Imports MSScriptControl
+
 #Disable Warning IDE1006 ' Naming Styles
 
 Friend Class frmTestScripting
@@ -13,7 +18,7 @@ Friend Class frmTestScripting
 
 #Region "Code généré par le Concepteur Windows Form "
 
-    Private ReadOnly ScriptControl1 As New MSScriptControl.ScriptControl
+    Private ReadOnly ScriptControl1 As New ScriptControl
 
     Public Sub New()
         MyBase.New()
@@ -23,7 +28,7 @@ Friend Class frmTestScripting
             Else
                 Try
                     'Pour le formulaire de démarrage, la première instance créée est l'instance par défaut.
-                    If Reflection.Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
+                    If Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
                         m_vb6FormDefInstance = Me
                     End If
                 Catch
@@ -47,7 +52,7 @@ Friend Class frmTestScripting
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
     Public ToolTip1 As ToolTip
     Public WithEvents Command5 As Button
@@ -60,8 +65,8 @@ Friend Class frmTestScripting
     'Il peut être modifié à l'aide du Concepteur Windows Form.
     'Ne pas le modifier à l'aide de l'éditeur de code.
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.components = New ComponentModel.Container
-        Dim resources As New Resources.ResourceManager(GetType(frmTestScripting))
+        Me.components = New Container
+        Dim resources As New ResourceManager(GetType(frmTestScripting))
         Me.ToolTip1 = New ToolTip(Me.components)
         Me.Command5 = New Button
         Me.Command4 = New Button
@@ -175,21 +180,21 @@ Friend Class frmTestScripting
     ' frmTestScripting
     ' Essais avec le contrôle ScriptControl
 
-    Private Sub Command1_Click(eventSender As System.Object, eventArgs As EventArgs) Handles Command1.Click
+    Private Sub Command1_Click(eventSender As Object, eventArgs As EventArgs) Handles Command1.Click
         ScriptControl1.Run("NameMe", Array.Empty(Of Object)())
     End Sub
 
-    Private Sub Command2_Click(eventSender As System.Object, eventArgs As EventArgs) Handles Command2.Click
+    Private Sub Command2_Click(eventSender As Object, eventArgs As EventArgs) Handles Command2.Click
         EvalFunc()
     End Sub
 
-    Private Sub Command3_Click(eventSender As System.Object, eventArgs As EventArgs) Handles Command3.Click
+    Private Sub Command3_Click(eventSender As Object, eventArgs As EventArgs) Handles Command3.Click
         ScriptControl1.ExecuteStatement("x = 100")
         MsgBox(ScriptControl1.Eval("x = 100")) ' True
         MsgBox(ScriptControl1.Eval("x = 100/2")) ' False
     End Sub
 
-    Private Sub Command4_Click(eventSender As System.Object, eventArgs As EventArgs) Handles Command4.Click
+    Private Sub Command4_Click(eventSender As Object, eventArgs As EventArgs) Handles Command4.Click
         Dim modX As MSScriptControl.Module
         modX = ScriptControl1.Modules.Add("myMod")
         Dim strX As String
@@ -203,7 +208,7 @@ Friend Class frmTestScripting
         objX.Hello()
     End Sub
 
-    Private Sub Command5_Click(eventSender As System.Object, eventArgs As EventArgs) Handles Command5.Click
+    Private Sub Command5_Click(eventSender As Object, eventArgs As EventArgs) Handles Command5.Click
         Dim script As String
         script = "Sub TestWord()" & vbCrLf & "dim wd" & vbCrLf & "Set wd = CreateObject(""Word.application"")" & vbCrLf & "wd.Visible = True" & vbCrLf & "wd.Documents.Add" & vbCrLf & "wd.Selection.TypeText (""Il était un petit navire"")" & vbCrLf & "wd.Selection.TypeParagraph" & vbCrLf & "End Sub"
 
@@ -216,7 +221,7 @@ Friend Class frmTestScripting
         omw.TestWord()
     End Sub
 
-    Private Sub frmTestScripting_Load(eventSender As System.Object, eventArgs As EventArgs) Handles MyBase.Load
+    Private Sub frmTestScripting_Load(eventSender As Object, eventArgs As EventArgs) Handles MyBase.Load
         Dim strCode As String
         strCode = "Sub NameMe()" & vbCrLf & " Dim strName" & vbCrLf & " strName = InputBox(""Nom?"")" & vbCrLf & " MsgBox ""Votre nom est "" & strName" & vbCrLf & "End Sub"
         ScriptControl1.AddCode(strCode)

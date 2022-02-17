@@ -71,9 +71,9 @@ public static class Extensionmethods
         Func<T1, IEnumerable<T2>> inputSelector,
         Func<T1, T2, TOutput> resultSelector)
     {
-        foreach (T1 first in src)
+        foreach (var first in src)
         {
-            foreach (T2 second in inputSelector(first))
+            foreach (var second in inputSelector(first))
             yield return resultSelector(first, second);
         }
     }

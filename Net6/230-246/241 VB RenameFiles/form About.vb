@@ -8,7 +8,7 @@
 
 Public Class frmAbout
 
-    Private Sub frmAbout_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmAbout_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         lblTitle.Text = My.Application.Info.Title & " - " & My.Application.Info.Description
         lblCopyright.Text = My.Application.Info.Copyright
         lblBuild.Text = "Version " & My.Application.Info.Version.ToString

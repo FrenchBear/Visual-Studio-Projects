@@ -3,6 +3,7 @@
 ' 2003-08-07    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
+Imports System.ComponentModel
 
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
 
@@ -32,7 +33,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.

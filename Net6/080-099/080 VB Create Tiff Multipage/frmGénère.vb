@@ -1,5 +1,6 @@
 ' 2012-02-25	PV  VS2010
 
+Imports System.ComponentModel
 Imports System.Drawing.Imaging
 
 Public Class Form1
@@ -28,7 +29,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -72,7 +73,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim multi As Bitmap
         Dim page2 As Bitmap
         Dim page3 As Bitmap
@@ -155,7 +156,7 @@ Public Class Form1
         Return Nothing
     End Function
 
-    Private Sub ListCodecsButton_Click(sender As System.Object, e As EventArgs) Handles ListCodecsButton.Click
+    Private Sub ListCodecsButton_Click(sender As Object, e As EventArgs) Handles ListCodecsButton.Click
         Dim f As New frmCodecs
         f.Show()
     End Sub

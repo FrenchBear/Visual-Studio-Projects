@@ -37,27 +37,27 @@ public class MyLib
         WriteLine("  Location:       " + a.Location);
         WriteLine();
 
-        object o1 = a.CreateInstance("MaClasse");
+        var o1 = a.CreateInstance("MaClasse");
         MaClasse.MyMeth();
 
         WriteLine("GetCustomAttributes:");
-        object[] tu = a.GetCustomAttributes(true);
-        foreach (object u in tu)
+        var tu = a.GetCustomAttributes(true);
+        foreach (var u in tu)
             WriteLine("  " + u);
         WriteLine();
 
         WriteLine("GetExportedTypes:");
-        foreach (Type t1 in a.GetExportedTypes())
+        foreach (var t1 in a.GetExportedTypes())
             WriteLine("  " + t1.FullName);
         WriteLine();
 
         WriteLine("GetManifestResourceNames:");
-        foreach (string s in a.GetManifestResourceNames())
+        foreach (var s in a.GetManifestResourceNames())
             WriteLine("  " + s);
         WriteLine();
 
         WriteLine("GetReferencedAssemblies:");
-        foreach (AssemblyName an in a.GetReferencedAssemblies())
+        foreach (var an in a.GetReferencedAssemblies())
             WriteLine("  " + an.FullName);
         WriteLine();
 

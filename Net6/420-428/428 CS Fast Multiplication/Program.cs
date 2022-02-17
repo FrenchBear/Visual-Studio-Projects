@@ -21,8 +21,8 @@ public class Program
     {
         const int digits = 50000;
 
-        string n1string = GetRandomStringNumber(digits);
-        string n2string = GetRandomStringNumber(digits);
+        var n1string = GetRandomStringNumber(digits);
+        var n2string = GetRandomStringNumber(digits);
 
         var sn1 = new SlicedNumber(n1string);
         var sn2 = new SlicedNumber(n2string);
@@ -42,7 +42,7 @@ public class Program
         swBigNumber.Stop();
 
         // Verification using BigInteger class
-        string s = bnBigBumber.ToString();
+        var s = bnBigBumber.ToString();
         Debug.Assert(snSchool.ToString() == s);
         Debug.Assert(snFastMult.ToString() == s);
 
@@ -92,11 +92,11 @@ public class SlicedNumber
             sign = 1;
         }
 
-        int p1 = s.Length - 1;
-        int p2 = 1;
+        var p1 = s.Length - 1;
+        var p2 = 1;
         nslices = p1 / 9 + 1;
         slices = new long[nslices];
-        for (int i = 0; p2 > 0; i++)
+        for (var i = 0; p2 > 0; i++)
         {
             p2 = p1 - digitsPerSlice + 1;
             if (p2 < 0) p2 = 0;
@@ -109,7 +109,7 @@ public class SlicedNumber
     public SlicedNumber Copy()
     {
         var copy = new SlicedNumber(nslices);
-        for (int i = 0; i < nslices; i++)
+        for (var i = 0; i < nslices; i++)
             copy.slices[i] = slices[i];
         copy.sign = sign;
         return copy;
@@ -117,7 +117,7 @@ public class SlicedNumber
 
     private void Redim(int newNslices)
     {
-        long[] newSlices = new long[newNslices];
+        var newSlices = new long[newNslices];
         Array.Copy(slices, newSlices, Math.Min(newNslices, nslices));
         nslices = newNslices;
         slices = newSlices;
@@ -128,7 +128,7 @@ public class SlicedNumber
         var sb = new StringBuilder();
         if (sign < 0)
             _ = sb.Append('-');
-        for (int i = nslices - 1; i >= 0; i--)
+        for (var i = nslices - 1; i >= 0; i--)
             _ = sb.Append(slices[i].ToString(i == nslices - 1 ? "D" : "D9"));
         return sb.ToString();
     }
@@ -139,7 +139,7 @@ public class SlicedNumber
     public void NormalizeSlices()
     {
         long carry = 0;
-        for (int i = 0; i < nslices; i++)
+        for (var i = 0; i < nslices; i++)
         {
             if (carry != 0) slices[i] += carry;
             if (slices[i] < 0)
@@ -149,7 +149,7 @@ public class SlicedNumber
             }
             else if (slices[i] >= range)
             {
-                carry = Math.DivRem(slices[i], range, out long rem);
+                carry = Math.DivRem(slices[i], range, out var rem);
                 slices[i] = rem;
             }
             else
@@ -173,7 +173,7 @@ public class SlicedNumber
     // public for unit testing
     public void TrimNonSignificantZeroes()
     {
-        int nslices2 = nslices - 1;
+        var nslices2 = nslices - 1;
         while (nslices2 >= 0 && slices[nslices2] == 0)
             nslices2--;
         if (nslices2 < 0) nslices2 = 0;
@@ -185,9 +185,9 @@ public class SlicedNumber
     public static SlicedNumber MultSchool(SlicedNumber n1, SlicedNumber n2)
     {
         SlicedNumber res = new(n1.nslices + n2.nslices - 1);
-        for (int i2 = 0; i2 < n2.nslices; i2++)
+        for (var i2 = 0; i2 < n2.nslices; i2++)
         {
-            for (int i1 = 0; i1 < n1.nslices; i1++)
+            for (var i1 = 0; i1 < n1.nslices; i1++)
                 res.slices[i1 + i2] += n1.slices[i1] * n2.slices[i2];
             res.NormalizeSlices();
         }
@@ -204,7 +204,7 @@ public class SlicedNumber
     {
         if (n1.nslices < n2.nslices) return -1;
         if (n1.nslices > n2.nslices) return 1;
-        int i = n1.nslices - 1;
+        var i = n1.nslices - 1;
         while (i >= 0)
         {
             if (n1.slices[i] < n2.slices[i]) return -1;
@@ -221,9 +221,9 @@ public class SlicedNumber
         // When n1 and n2 have the same sign, it's easy
         if (n1.sign == n2.sign)
         {
-            for (int i1 = 0; i1 < n1.nslices; i1++)
+            for (var i1 = 0; i1 < n1.nslices; i1++)
                 res.slices[i1] = n1.slices[i1];
-            for (int i2 = 0; i2 < n2.nslices; i2++)
+            for (var i2 = 0; i2 < n2.nslices; i2++)
                 res.slices[i2] += n2.slices[i2];
             res.sign = n1.sign;
             return res;
@@ -241,9 +241,9 @@ public class SlicedNumber
             max = n2;
             min = n1;
         }
-        for (int iMax = 0; iMax < max.nslices; iMax++)
+        for (var iMax = 0; iMax < max.nslices; iMax++)
             res.slices[iMax] = max.slices[iMax];
-        for (int iMin = 0; iMin < min.nslices; iMin++)
+        for (var iMin = 0; iMin < min.nslices; iMin++)
             res.slices[iMin] -= min.slices[iMin];
         res.sign = max.sign;
         res.NormalizeSlices();
@@ -254,7 +254,7 @@ public class SlicedNumber
     // Return n1-n2
     public static SlicedNumber Subtract(SlicedNumber n1, SlicedNumber n2)
     {
-        SlicedNumber n2opposite = n2.Copy();
+        var n2opposite = n2.Copy();
         n2opposite.sign = -n2.sign;
         return Add(n1, n2opposite);
     }
@@ -269,7 +269,7 @@ public class SlicedNumber
         {
             if (n1.slices[0] == 0) return n1;           // Avoid a useless multiplication loop and a trim
             var res = new SlicedNumber(n2.nslices);
-            for (int i2 = 0; i2 < n2.nslices; i2++)
+            for (var i2 = 0; i2 < n2.nslices; i2++)
                 res.slices[i2] = n2.slices[i2] * n1.slices[0];
             res.NormalizeSlices();
             res.sign = n1.sign * n2.sign;
@@ -279,7 +279,7 @@ public class SlicedNumber
         {
             if (n2.slices[0] == 0) return n2;           // Avoid a useless multiplication loop and a trim
             var res = new SlicedNumber(n1.nslices);
-            for (int i1 = 0; i1 < n1.nslices; i1++)
+            for (var i1 = 0; i1 < n1.nslices; i1++)
                 res.slices[i1] = n1.slices[i1] * n2.slices[0];
             res.NormalizeSlices();
             res.sign = n1.sign * n2.sign;
@@ -287,9 +287,9 @@ public class SlicedNumber
         }
 
         // Ok, now that trivial cases have been eliminated, the recursive algorithm
-        int p = Math.Min(n1.nslices / 2, n2.nslices / 2);
-        SplitInTwo(n1, p, out SlicedNumber a, out SlicedNumber b);
-        SplitInTwo(n2, p, out SlicedNumber c, out SlicedNumber d);
+        var p = Math.Min(n1.nslices / 2, n2.nslices / 2);
+        SplitInTwo(n1, p, out var a, out var b);
+        SplitInTwo(n2, p, out var c, out var d);
 
         // Result
         SlicedNumber r = new(n1.nslices + n2.nslices - 1)
@@ -298,23 +298,23 @@ public class SlicedNumber
         };
 
         // 1st product: ac
-        SlicedNumber ac = FastMult(a, c);
-        for (int i = 0; i < ac.nslices; i++)
+        var ac = FastMult(a, c);
+        for (var i = 0; i < ac.nslices; i++)
             r.slices[i] = ac.slices[i];
 
         // 2nd product: bd
-        SlicedNumber bd = FastMult(b, d);
-        int nslices2 = bd.nslices + 2 * p;
+        var bd = FastMult(b, d);
+        var nslices2 = bd.nslices + 2 * p;
         if (nslices2 > r.nslices)
             r.Redim(nslices2);
-        for (int i = 0; i < bd.nslices; i++)
+        for (var i = 0; i < bd.nslices; i++)
             r.slices[i + 2 * p] += bd.slices[i];
 
         // 3rd product
         var bma = Subtract(b, a);
         var cmd = Subtract(c, d);
         var p3 = Add(Add(FastMult(bma, cmd), ac), bd);
-        for (int i = 0; i < p3.nslices; i++)
+        for (var i = 0; i < p3.nslices; i++)
             r.slices[i + p] += p3.slices[i];
 
         r.NormalizeSlices();
@@ -329,7 +329,7 @@ public class SlicedNumber
         b = new SlicedNumber(n.nslices - nslices1);
         a.sign = n.sign;
         b.sign = n.sign;
-        for (int i = 0; i < n.nslices; i++)
+        for (var i = 0; i < n.nslices; i++)
         {
             if (i < a.nslices)
                 a.slices[i] = n.slices[i];

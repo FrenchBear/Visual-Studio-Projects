@@ -16,11 +16,11 @@ public static class LSystemProcessor
     // Memory use is exp(depth)
     public static string LSystemString(int depth, string axiom, IDictionary<char, string> rules)
     {
-        string s = axiom;
-        for (int i = 0; i < depth; i++)
+        var s = axiom;
+        for (var i = 0; i < depth; i++)
         {
             StringBuilder s2 = new();
-            foreach (char c in s)
+            foreach (var c in s)
                 _ = rules.ContainsKey(c) ? s2.Append(rules[c]) : s2.Append(c);
             s = s2.ToString();
         }
@@ -35,17 +35,17 @@ public static class LSystemProcessor
         // Special case, depth==0, simply returns axiom
         if (depth == 0)
         {
-            foreach (char c in axiom)
+            foreach (var c in axiom)
                 yield return c;
             yield break;
         }
 
         // General case, apply transformation rules on depth-1 version
-        foreach (char c in LSystemIterator(depth - 1, axiom, rules))
+        foreach (var c in LSystemIterator(depth - 1, axiom, rules))
         {
             if (rules.ContainsKey(c))
             {
-                foreach (char c2 in rules[c])
+                foreach (var c2 in rules[c])
                     yield return c2;
             }
             else

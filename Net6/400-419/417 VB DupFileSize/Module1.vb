@@ -5,6 +5,7 @@
 ' 2021-09-23    PV  VS2022; Net6
 
 Imports System.IO
+Imports System.Text
 
 Module Module1
 
@@ -12,7 +13,7 @@ Module Module1
         Const sPath As String = "\\Tera4\backup\TERAX\Video"   '\Bear"
         Const sPattern As String = "*.*"
 
-        Dim sw As New StreamWriter("c:\out.txt", False, Text.Encoding.Default)
+        Dim sw As New StreamWriter("c:\out.txt", False, Encoding.Default)
 
         Dim diTop As New DirectoryInfo(sPath)
         Dim tfi As FileInfo() = diTop.EnumerateFiles(sPattern, SearchOption.AllDirectories).OrderBy(Function(fi As FileInfo) fi.Length).ToArray

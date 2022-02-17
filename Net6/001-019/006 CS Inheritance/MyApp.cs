@@ -40,7 +40,7 @@ internal class D : B
     }
 }
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {

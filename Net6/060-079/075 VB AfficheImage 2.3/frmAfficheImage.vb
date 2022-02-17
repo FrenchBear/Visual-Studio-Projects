@@ -8,9 +8,13 @@
 ' 2012-12-31	PV  2.3: Suivant/Précédent navigue iRowSize^2 images
 ' 2021-09-19    PV  VS2022, Net6
 
+Imports System.ComponentModel
+Imports System.Drawing.Imaging
 Imports System.IO
 Imports System.Reflection
 Imports System.Runtime.InteropServices
+Imports Microsoft.VisualBasic.Devices
+Imports Microsoft.VisualBasic.FileIO
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -40,7 +44,7 @@ Public Class frmAfficheImage
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -98,57 +102,57 @@ Public Class frmAfficheImage
     Friend WithEvents miAperçuWindows As ToolStripMenuItem
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As New System.ComponentModel.ComponentResourceManager(GetType(frmAfficheImage))
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.msMain = New System.Windows.Forms.MenuStrip()
-        Me.msNavigation = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miOuvrir = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.miPremier = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miPrécédent = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miSuivant = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miDernier = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.miAuHasard = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miRetourArrière = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.miQuitter = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msEdition = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miSupprimer = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.miCopierCheminImage = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miAperçuWindows = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msAffichage = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ms1Image = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ms4Images = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ms9Images = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ms16Images = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
-        Me.miToolbar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miStatusbar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.msHelp = New System.Windows.Forms.ToolStripMenuItem()
-        Me.miÀProposDe = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsMain = New System.Windows.Forms.ToolStrip()
-        Me.tsbOuvrir = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbPremier = New System.Windows.Forms.ToolStripButton()
-        Me.tsbPrécédent = New System.Windows.Forms.ToolStripButton()
-        Me.tsbSuivant = New System.Windows.Forms.ToolStripButton()
-        Me.tsbDernier = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbRetour = New System.Windows.Forms.ToolStripButton()
-        Me.tsbAuHasard = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
-        Me.tsbSupprimer = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.lblPos = New System.Windows.Forms.ToolStripLabel()
-        Me.cboFichiers = New System.Windows.Forms.ToolStripComboBox()
-        Me.tscMain = New System.Windows.Forms.ToolStripContainer()
-        Me.sbStatus = New System.Windows.Forms.StatusStrip()
-        Me.Fichier = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Resolution = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Taille = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Echelle = New System.Windows.Forms.ToolStripStatusLabel()
+        Dim resources = New ComponentResourceManager(GetType(frmAfficheImage))
+        Me.FolderBrowserDialog1 = New FolderBrowserDialog()
+        Me.msMain = New MenuStrip()
+        Me.msNavigation = New ToolStripMenuItem()
+        Me.miOuvrir = New ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New ToolStripSeparator()
+        Me.miPremier = New ToolStripMenuItem()
+        Me.miPrécédent = New ToolStripMenuItem()
+        Me.miSuivant = New ToolStripMenuItem()
+        Me.miDernier = New ToolStripMenuItem()
+        Me.ToolStripSeparator2 = New ToolStripSeparator()
+        Me.miAuHasard = New ToolStripMenuItem()
+        Me.miRetourArrière = New ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New ToolStripSeparator()
+        Me.miQuitter = New ToolStripMenuItem()
+        Me.msEdition = New ToolStripMenuItem()
+        Me.miSupprimer = New ToolStripMenuItem()
+        Me.ToolStripSeparator5 = New ToolStripSeparator()
+        Me.miCopierCheminImage = New ToolStripMenuItem()
+        Me.miAperçuWindows = New ToolStripMenuItem()
+        Me.msAffichage = New ToolStripMenuItem()
+        Me.ms1Image = New ToolStripMenuItem()
+        Me.ms4Images = New ToolStripMenuItem()
+        Me.ms9Images = New ToolStripMenuItem()
+        Me.ms16Images = New ToolStripMenuItem()
+        Me.ToolStripSeparator9 = New ToolStripSeparator()
+        Me.miToolbar = New ToolStripMenuItem()
+        Me.miStatusbar = New ToolStripMenuItem()
+        Me.msHelp = New ToolStripMenuItem()
+        Me.miÀProposDe = New ToolStripMenuItem()
+        Me.tsMain = New ToolStrip()
+        Me.tsbOuvrir = New ToolStripButton()
+        Me.ToolStripSeparator6 = New ToolStripSeparator()
+        Me.tsbPremier = New ToolStripButton()
+        Me.tsbPrécédent = New ToolStripButton()
+        Me.tsbSuivant = New ToolStripButton()
+        Me.tsbDernier = New ToolStripButton()
+        Me.ToolStripSeparator7 = New ToolStripSeparator()
+        Me.tsbRetour = New ToolStripButton()
+        Me.tsbAuHasard = New ToolStripButton()
+        Me.ToolStripSeparator8 = New ToolStripSeparator()
+        Me.tsbSupprimer = New ToolStripButton()
+        Me.ToolStripSeparator3 = New ToolStripSeparator()
+        Me.lblPos = New ToolStripLabel()
+        Me.cboFichiers = New ToolStripComboBox()
+        Me.tscMain = New ToolStripContainer()
+        Me.sbStatus = New StatusStrip()
+        Me.Fichier = New ToolStripStatusLabel()
+        Me.Resolution = New ToolStripStatusLabel()
+        Me.Taille = New ToolStripStatusLabel()
+        Me.Echelle = New ToolStripStatusLabel()
         Me.msMain.SuspendLayout()
         Me.tsMain.SuspendLayout()
         Me.tscMain.ContentPanel.SuspendLayout()
@@ -165,173 +169,173 @@ Public Class frmAfficheImage
         'msMain
         '
         Me.msMain.Dock = DockStyle.None
-        Me.msMain.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.msMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.msNavigation, Me.msEdition, Me.msAffichage, Me.msHelp})
-        Me.msMain.Location = New System.Drawing.Point(0, 48)
+        Me.msMain.ImageScalingSize = New Size(32, 32)
+        Me.msMain.Items.AddRange(New ToolStripItem() {Me.msNavigation, Me.msEdition, Me.msAffichage, Me.msHelp})
+        Me.msMain.Location = New Point(0, 0)
         Me.msMain.Name = "msMain"
-        Me.msMain.Size = New System.Drawing.Size(656, 40)
+        Me.msMain.Size = New Size(656, 33)
         Me.msMain.TabIndex = 11
         Me.msMain.Text = "MenuStrip1"
         '
         'msNavigation
         '
-        Me.msNavigation.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miOuvrir, Me.ToolStripSeparator1, Me.miPremier, Me.miPrécédent, Me.miSuivant, Me.miDernier, Me.ToolStripSeparator2, Me.miAuHasard, Me.miRetourArrière, Me.ToolStripSeparator4, Me.miQuitter})
+        Me.msNavigation.DropDownItems.AddRange(New ToolStripItem() {Me.miOuvrir, Me.ToolStripSeparator1, Me.miPremier, Me.miPrécédent, Me.miSuivant, Me.miDernier, Me.ToolStripSeparator2, Me.miAuHasard, Me.miRetourArrière, Me.ToolStripSeparator4, Me.miQuitter})
         Me.msNavigation.Name = "msNavigation"
-        Me.msNavigation.Size = New System.Drawing.Size(150, 36)
+        Me.msNavigation.Size = New Size(114, 29)
         Me.msNavigation.Text = "&Navigation"
         '
         'miOuvrir
         '
-        Me.miOuvrir.Image = CType(resources.GetObject("miOuvrir.Image"), System.Drawing.Image)
+        Me.miOuvrir.Image = CType(resources.GetObject("miOuvrir.Image"), Image)
         Me.miOuvrir.Name = "miOuvrir"
         Me.miOuvrir.ShortcutKeyDisplayString = "?"
-        Me.miOuvrir.Size = New System.Drawing.Size(427, 44)
+        Me.miOuvrir.Size = New Size(330, 42)
         Me.miOuvrir.Text = "&Ouvrir"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(424, 6)
+        Me.ToolStripSeparator1.Size = New Size(327, 6)
         '
         'miPremier
         '
-        Me.miPremier.Image = CType(resources.GetObject("miPremier.Image"), System.Drawing.Image)
+        Me.miPremier.Image = CType(resources.GetObject("miPremier.Image"), Image)
         Me.miPremier.Name = "miPremier"
         Me.miPremier.ShortcutKeyDisplayString = "Debut"
-        Me.miPremier.Size = New System.Drawing.Size(427, 44)
+        Me.miPremier.Size = New Size(330, 42)
         Me.miPremier.Text = "Premier"
         '
         'miPrécédent
         '
-        Me.miPrécédent.Image = CType(resources.GetObject("miPrécédent.Image"), System.Drawing.Image)
+        Me.miPrécédent.Image = CType(resources.GetObject("miPrécédent.Image"), Image)
         Me.miPrécédent.Name = "miPrécédent"
         Me.miPrécédent.ShortcutKeyDisplayString = "-"
-        Me.miPrécédent.Size = New System.Drawing.Size(427, 44)
+        Me.miPrécédent.Size = New Size(330, 42)
         Me.miPrécédent.Text = "Précédent"
         '
         'miSuivant
         '
-        Me.miSuivant.Image = CType(resources.GetObject("miSuivant.Image"), System.Drawing.Image)
+        Me.miSuivant.Image = CType(resources.GetObject("miSuivant.Image"), Image)
         Me.miSuivant.Name = "miSuivant"
         Me.miSuivant.ShortcutKeyDisplayString = "+"
-        Me.miSuivant.Size = New System.Drawing.Size(427, 44)
+        Me.miSuivant.Size = New Size(330, 42)
         Me.miSuivant.Text = "Suivant"
         '
         'miDernier
         '
-        Me.miDernier.Image = CType(resources.GetObject("miDernier.Image"), System.Drawing.Image)
+        Me.miDernier.Image = CType(resources.GetObject("miDernier.Image"), Image)
         Me.miDernier.Name = "miDernier"
         Me.miDernier.ShortcutKeyDisplayString = "Fin"
-        Me.miDernier.Size = New System.Drawing.Size(427, 44)
+        Me.miDernier.Size = New Size(330, 42)
         Me.miDernier.Text = "Dernier"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(424, 6)
+        Me.ToolStripSeparator2.Size = New Size(327, 6)
         '
         'miAuHasard
         '
-        Me.miAuHasard.Image = CType(resources.GetObject("miAuHasard.Image"), System.Drawing.Image)
+        Me.miAuHasard.Image = CType(resources.GetObject("miAuHasard.Image"), Image)
         Me.miAuHasard.Name = "miAuHasard"
         Me.miAuHasard.ShortcutKeyDisplayString = "*"
-        Me.miAuHasard.Size = New System.Drawing.Size(427, 44)
+        Me.miAuHasard.Size = New Size(330, 42)
         Me.miAuHasard.Text = "Au hasard"
         '
         'miRetourArrière
         '
-        Me.miRetourArrière.Image = CType(resources.GetObject("miRetourArrière.Image"), System.Drawing.Image)
+        Me.miRetourArrière.Image = CType(resources.GetObject("miRetourArrière.Image"), Image)
         Me.miRetourArrière.Name = "miRetourArrière"
         Me.miRetourArrière.ShortcutKeyDisplayString = "Backaspace"
-        Me.miRetourArrière.Size = New System.Drawing.Size(427, 44)
+        Me.miRetourArrière.Size = New Size(330, 42)
         Me.miRetourArrière.Text = "Retour arrière"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(424, 6)
+        Me.ToolStripSeparator4.Size = New Size(327, 6)
         '
         'miQuitter
         '
         Me.miQuitter.Name = "miQuitter"
         Me.miQuitter.ShortcutKeyDisplayString = "Alt+F4"
-        Me.miQuitter.Size = New System.Drawing.Size(427, 44)
+        Me.miQuitter.Size = New Size(330, 42)
         Me.miQuitter.Text = "&Quitter"
         '
         'msEdition
         '
-        Me.msEdition.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miSupprimer, Me.ToolStripSeparator5, Me.miCopierCheminImage, Me.miAperçuWindows})
+        Me.msEdition.DropDownItems.AddRange(New ToolStripItem() {Me.miSupprimer, Me.ToolStripSeparator5, Me.miCopierCheminImage, Me.miAperçuWindows})
         Me.msEdition.Name = "msEdition"
-        Me.msEdition.Size = New System.Drawing.Size(108, 36)
+        Me.msEdition.Size = New Size(83, 29)
         Me.msEdition.Text = "&Edition"
         '
         'miSupprimer
         '
-        Me.miSupprimer.Image = CType(resources.GetObject("miSupprimer.Image"), System.Drawing.Image)
+        Me.miSupprimer.Image = CType(resources.GetObject("miSupprimer.Image"), Image)
         Me.miSupprimer.Name = "miSupprimer"
         Me.miSupprimer.ShortcutKeyDisplayString = "Suppr"
-        Me.miSupprimer.Size = New System.Drawing.Size(448, 44)
+        Me.miSupprimer.Size = New Size(333, 34)
         Me.miSupprimer.Text = "&Supprimer"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(445, 6)
+        Me.ToolStripSeparator5.Size = New Size(330, 6)
         '
         'miCopierCheminImage
         '
         Me.miCopierCheminImage.Name = "miCopierCheminImage"
-        Me.miCopierCheminImage.Size = New System.Drawing.Size(448, 44)
+        Me.miCopierCheminImage.Size = New Size(333, 34)
         Me.miCopierCheminImage.Text = "&Copier le chemin de l'image"
         '
         'miAperçuWindows
         '
         Me.miAperçuWindows.Name = "miAperçuWindows"
-        Me.miAperçuWindows.Size = New System.Drawing.Size(448, 44)
+        Me.miAperçuWindows.Size = New Size(333, 34)
         Me.miAperçuWindows.Text = "&Aperçu Windows"
         '
         'msAffichage
         '
-        Me.msAffichage.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ms1Image, Me.ms4Images, Me.ms9Images, Me.ms16Images, Me.ToolStripSeparator9, Me.miToolbar, Me.miStatusbar})
+        Me.msAffichage.DropDownItems.AddRange(New ToolStripItem() {Me.ms1Image, Me.ms4Images, Me.ms9Images, Me.ms16Images, Me.ToolStripSeparator9, Me.miToolbar, Me.miStatusbar})
         Me.msAffichage.Name = "msAffichage"
-        Me.msAffichage.Size = New System.Drawing.Size(135, 36)
+        Me.msAffichage.Size = New Size(103, 29)
         Me.msAffichage.Text = "&Affichage"
         '
         'ms1Image
         '
         Me.ms1Image.Name = "ms1Image"
-        Me.ms1Image.Size = New System.Drawing.Size(256, 44)
+        Me.ms1Image.Size = New Size(196, 34)
         Me.ms1Image.Text = "&1 image"
         '
         'ms4Images
         '
         Me.ms4Images.Name = "ms4Images"
-        Me.ms4Images.Size = New System.Drawing.Size(256, 44)
+        Me.ms4Images.Size = New Size(196, 34)
         Me.ms4Images.Text = "&4 images"
         '
         'ms9Images
         '
         Me.ms9Images.Name = "ms9Images"
-        Me.ms9Images.Size = New System.Drawing.Size(256, 44)
+        Me.ms9Images.Size = New Size(196, 34)
         Me.ms9Images.Text = "&9 images"
         '
         'ms16Images
         '
         Me.ms16Images.Name = "ms16Images"
-        Me.ms16Images.Size = New System.Drawing.Size(256, 44)
+        Me.ms16Images.Size = New Size(196, 34)
         Me.ms16Images.Text = "1&6 images"
         '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
-        Me.ToolStripSeparator9.Size = New System.Drawing.Size(253, 6)
+        Me.ToolStripSeparator9.Size = New Size(193, 6)
         '
         'miToolbar
         '
         Me.miToolbar.Checked = True
         Me.miToolbar.CheckState = CheckState.Checked
         Me.miToolbar.Name = "miToolbar"
-        Me.miToolbar.Size = New System.Drawing.Size(256, 44)
+        Me.miToolbar.Size = New Size(196, 34)
         Me.miToolbar.Text = "&Toolbar"
         '
         'miStatusbar
@@ -340,138 +344,138 @@ Public Class frmAfficheImage
         Me.miStatusbar.CheckOnClick = True
         Me.miStatusbar.CheckState = CheckState.Checked
         Me.miStatusbar.Name = "miStatusbar"
-        Me.miStatusbar.Size = New System.Drawing.Size(256, 44)
+        Me.miStatusbar.Size = New Size(196, 34)
         Me.miStatusbar.Text = "Status bar"
         '
         'msHelp
         '
-        Me.msHelp.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.miÀProposDe})
+        Me.msHelp.DropDownItems.AddRange(New ToolStripItem() {Me.miÀProposDe})
         Me.msHelp.Name = "msHelp"
-        Me.msHelp.Size = New System.Drawing.Size(45, 36)
+        Me.msHelp.Size = New Size(36, 29)
         Me.msHelp.Text = "&?"
         '
         'miÀProposDe
         '
-        Me.miÀProposDe.Image = CType(resources.GetObject("miÀProposDe.Image"), System.Drawing.Image)
+        Me.miÀProposDe.Image = CType(resources.GetObject("miÀProposDe.Image"), Image)
         Me.miÀProposDe.Name = "miÀProposDe"
-        Me.miÀProposDe.Size = New System.Drawing.Size(299, 44)
+        Me.miÀProposDe.Size = New Size(231, 34)
         Me.miÀProposDe.Text = "&À propos de ..."
         '
         'tsMain
         '
         Me.tsMain.AllowItemReorder = True
         Me.tsMain.Dock = DockStyle.None
-        Me.tsMain.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.tsMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsbOuvrir, Me.ToolStripSeparator6, Me.tsbPremier, Me.tsbPrécédent, Me.tsbSuivant, Me.tsbDernier, Me.ToolStripSeparator7, Me.tsbRetour, Me.tsbAuHasard, Me.ToolStripSeparator8, Me.tsbSupprimer, Me.ToolStripSeparator3, Me.lblPos, Me.cboFichiers})
-        Me.tsMain.Location = New System.Drawing.Point(6, 0)
+        Me.tsMain.ImageScalingSize = New Size(32, 32)
+        Me.tsMain.Items.AddRange(New ToolStripItem() {Me.tsbOuvrir, Me.ToolStripSeparator6, Me.tsbPremier, Me.tsbPrécédent, Me.tsbSuivant, Me.tsbDernier, Me.ToolStripSeparator7, Me.tsbRetour, Me.tsbAuHasard, Me.ToolStripSeparator8, Me.tsbSupprimer, Me.ToolStripSeparator3, Me.lblPos, Me.cboFichiers})
+        Me.tsMain.Location = New Point(4, 33)
         Me.tsMain.Name = "tsMain"
-        Me.tsMain.Size = New System.Drawing.Size(650, 48)
+        Me.tsMain.Size = New Size(652, 41)
         Me.tsMain.TabIndex = 12
         Me.tsMain.Text = "Navigation"
         '
         'tsbOuvrir
         '
         Me.tsbOuvrir.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbOuvrir.Image = CType(resources.GetObject("tsbOuvrir.Image"), System.Drawing.Image)
+        Me.tsbOuvrir.Image = CType(resources.GetObject("tsbOuvrir.Image"), Image)
         Me.tsbOuvrir.ImageTransparentColor = Color.Magenta
         Me.tsbOuvrir.Name = "tsbOuvrir"
-        Me.tsbOuvrir.Size = New System.Drawing.Size(46, 42)
+        Me.tsbOuvrir.Size = New Size(36, 36)
         Me.tsbOuvrir.Text = "Ouvrir"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 48)
+        Me.ToolStripSeparator6.Size = New Size(6, 41)
         '
         'tsbPremier
         '
         Me.tsbPremier.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbPremier.Image = CType(resources.GetObject("tsbPremier.Image"), System.Drawing.Image)
+        Me.tsbPremier.Image = CType(resources.GetObject("tsbPremier.Image"), Image)
         Me.tsbPremier.ImageTransparentColor = Color.Magenta
         Me.tsbPremier.Name = "tsbPremier"
-        Me.tsbPremier.Size = New System.Drawing.Size(46, 42)
+        Me.tsbPremier.Size = New Size(36, 36)
         Me.tsbPremier.Text = "Premier"
         '
         'tsbPrécédent
         '
         Me.tsbPrécédent.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbPrécédent.Image = CType(resources.GetObject("tsbPrécédent.Image"), System.Drawing.Image)
+        Me.tsbPrécédent.Image = CType(resources.GetObject("tsbPrécédent.Image"), Image)
         Me.tsbPrécédent.ImageTransparentColor = Color.Magenta
         Me.tsbPrécédent.Name = "tsbPrécédent"
-        Me.tsbPrécédent.Size = New System.Drawing.Size(46, 42)
+        Me.tsbPrécédent.Size = New Size(36, 36)
         Me.tsbPrécédent.Text = "Précédent"
         '
         'tsbSuivant
         '
         Me.tsbSuivant.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbSuivant.Image = CType(resources.GetObject("tsbSuivant.Image"), System.Drawing.Image)
+        Me.tsbSuivant.Image = CType(resources.GetObject("tsbSuivant.Image"), Image)
         Me.tsbSuivant.ImageTransparentColor = Color.Magenta
         Me.tsbSuivant.Name = "tsbSuivant"
-        Me.tsbSuivant.Size = New System.Drawing.Size(46, 42)
+        Me.tsbSuivant.Size = New Size(36, 36)
         Me.tsbSuivant.Text = "Suivant"
         '
         'tsbDernier
         '
         Me.tsbDernier.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbDernier.Image = CType(resources.GetObject("tsbDernier.Image"), System.Drawing.Image)
+        Me.tsbDernier.Image = CType(resources.GetObject("tsbDernier.Image"), Image)
         Me.tsbDernier.ImageTransparentColor = Color.Magenta
         Me.tsbDernier.Name = "tsbDernier"
-        Me.tsbDernier.Size = New System.Drawing.Size(46, 42)
+        Me.tsbDernier.Size = New Size(36, 36)
         Me.tsbDernier.Text = "Dernier"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 48)
+        Me.ToolStripSeparator7.Size = New Size(6, 41)
         '
         'tsbRetour
         '
         Me.tsbRetour.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbRetour.Image = CType(resources.GetObject("tsbRetour.Image"), System.Drawing.Image)
+        Me.tsbRetour.Image = CType(resources.GetObject("tsbRetour.Image"), Image)
         Me.tsbRetour.ImageTransparentColor = Color.Magenta
         Me.tsbRetour.Name = "tsbRetour"
-        Me.tsbRetour.Size = New System.Drawing.Size(46, 42)
+        Me.tsbRetour.Size = New Size(36, 36)
         Me.tsbRetour.Text = "Retour"
         '
         'tsbAuHasard
         '
         Me.tsbAuHasard.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbAuHasard.Image = CType(resources.GetObject("tsbAuHasard.Image"), System.Drawing.Image)
+        Me.tsbAuHasard.Image = CType(resources.GetObject("tsbAuHasard.Image"), Image)
         Me.tsbAuHasard.ImageTransparentColor = Color.Magenta
         Me.tsbAuHasard.Name = "tsbAuHasard"
-        Me.tsbAuHasard.Size = New System.Drawing.Size(46, 42)
+        Me.tsbAuHasard.Size = New Size(36, 36)
         Me.tsbAuHasard.Text = "Au hasard"
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 48)
+        Me.ToolStripSeparator8.Size = New Size(6, 41)
         '
         'tsbSupprimer
         '
         Me.tsbSupprimer.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbSupprimer.Image = CType(resources.GetObject("tsbSupprimer.Image"), System.Drawing.Image)
+        Me.tsbSupprimer.Image = CType(resources.GetObject("tsbSupprimer.Image"), Image)
         Me.tsbSupprimer.ImageTransparentColor = Color.Magenta
         Me.tsbSupprimer.Name = "tsbSupprimer"
-        Me.tsbSupprimer.Size = New System.Drawing.Size(46, 42)
+        Me.tsbSupprimer.Size = New Size(36, 36)
         Me.tsbSupprimer.Text = "Supprimer"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 48)
+        Me.ToolStripSeparator3.Size = New Size(6, 41)
         '
         'lblPos
         '
         Me.lblPos.Name = "lblPos"
-        Me.lblPos.Size = New System.Drawing.Size(50, 42)
+        Me.lblPos.Size = New Size(40, 36)
         Me.lblPos.Text = "Pos"
         '
         'cboFichiers
         '
         Me.cboFichiers.DropDownStyle = ComboBoxStyle.DropDownList
         Me.cboFichiers.Name = "cboFichiers"
-        Me.cboFichiers.Size = New System.Drawing.Size(300, 40)
+        Me.cboFichiers.Size = New Size(300, 33)
         '
         'tscMain
         '
@@ -480,61 +484,61 @@ Public Class frmAfficheImage
         '
         Me.tscMain.ContentPanel.AutoScroll = True
         Me.tscMain.ContentPanel.Controls.Add(Me.sbStatus)
-        Me.tscMain.ContentPanel.Size = New System.Drawing.Size(656, 425)
+        Me.tscMain.ContentPanel.Size = New Size(656, 439)
         Me.tscMain.Dock = DockStyle.Fill
         Me.tscMain.LeftToolStripPanelVisible = False
-        Me.tscMain.Location = New System.Drawing.Point(0, 0)
+        Me.tscMain.Location = New Point(0, 0)
         Me.tscMain.Name = "tscMain"
         Me.tscMain.RightToolStripPanelVisible = False
-        Me.tscMain.Size = New System.Drawing.Size(656, 513)
+        Me.tscMain.Size = New Size(656, 513)
         Me.tscMain.TabIndex = 13
         Me.tscMain.Text = "tscMain"
         '
         'tscMain.TopToolStripPanel
         '
-        Me.tscMain.TopToolStripPanel.Controls.Add(Me.msMain)
         Me.tscMain.TopToolStripPanel.Controls.Add(Me.tsMain)
+        Me.tscMain.TopToolStripPanel.Controls.Add(Me.msMain)
         '
         'sbStatus
         '
-        Me.sbStatus.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.sbStatus.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Fichier, Me.Resolution, Me.Taille, Me.Echelle})
-        Me.sbStatus.Location = New System.Drawing.Point(0, 383)
+        Me.sbStatus.ImageScalingSize = New Size(32, 32)
+        Me.sbStatus.Items.AddRange(New ToolStripItem() {Me.Fichier, Me.Resolution, Me.Taille, Me.Echelle})
+        Me.sbStatus.Location = New Point(0, 408)
         Me.sbStatus.Name = "sbStatus"
-        Me.sbStatus.Size = New System.Drawing.Size(656, 42)
+        Me.sbStatus.Size = New Size(656, 31)
         Me.sbStatus.TabIndex = 0
         Me.sbStatus.Text = "StatusStrip1"
         '
         'Fichier
         '
         Me.Fichier.Name = "Fichier"
-        Me.Fichier.Size = New System.Drawing.Size(341, 32)
+        Me.Fichier.Size = New Size(341, 24)
         Me.Fichier.Spring = True
         '
-        'Réslution
+        'Resolution
         '
         Me.Resolution.AutoSize = False
-        Me.Resolution.Name = "Réslution"
-        Me.Resolution.Size = New System.Drawing.Size(100, 32)
+        Me.Resolution.Name = "Resolution"
+        Me.Resolution.Size = New Size(100, 24)
         '
         'Taille
         '
         Me.Taille.AutoSize = False
         Me.Taille.Name = "Taille"
-        Me.Taille.Size = New System.Drawing.Size(100, 32)
+        Me.Taille.Size = New Size(100, 24)
         '
         'Echelle
         '
         Me.Echelle.AutoSize = False
         Me.Echelle.Name = "Echelle"
-        Me.Echelle.Size = New System.Drawing.Size(100, 32)
+        Me.Echelle.Size = New Size(100, 24)
         '
         'frmAfficheImage
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(12, 32)
-        Me.ClientSize = New System.Drawing.Size(656, 513)
+        Me.AutoScaleBaseSize = New Size(9, 24)
+        Me.ClientSize = New Size(656, 513)
         Me.Controls.Add(Me.tscMain)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.KeyPreview = True
         Me.MainMenuStrip = Me.msMain
         Me.Name = "frmAfficheImage"
@@ -646,7 +650,7 @@ Public Class frmAfficheImage
 
         ' Puis on analyse les sous-répertoires
         Dim sSubDir As String
-        Dim MyComputer = New Microsoft.VisualBasic.Devices.Computer
+        Dim MyComputer = New Computer
         For Each sSubDir In MyComputer.FileSystem.GetDirectories(sRep & sRel)
             sFic = MyComputer.FileSystem.GetName(sSubDir)
             Analyse1Rep(sRel & sFic & "\")
@@ -706,7 +710,7 @@ Public Class frmAfficheImage
             If iOff = 0 Then Echelle.Text = FormatPercent(r1, 0)
 
             Dim imgOutput As Bitmap
-            imgOutput = New Bitmap(tImage(iOff).Width, tImage(iOff).Height, Imaging.PixelFormat.Format32bppRgb)
+            imgOutput = New Bitmap(tImage(iOff).Width, tImage(iOff).Height, PixelFormat.Format32bppRgb)
             Dim h As Graphics = Graphics.FromImage(imgOutput)
             h.Clear(Color.FromKnownColor(KnownColor.Control))
             h.DrawImage(tImage2(iOff), 0, 0, tImage2(iOff).Width * r1, tImage2(iOff).Height * r1)
@@ -829,8 +833,8 @@ Public Class frmAfficheImage
 
             'Kill(sRep & cboFichiers.SelectedItem)
             ' On envoie dans la corbeille
-            Dim MyComputer = New Microsoft.VisualBasic.Devices.Computer
-            MyComputer.FileSystem.DeleteFile(sRep & cboFichiers.SelectedItem, FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
+            Dim MyComputer = New Computer
+            MyComputer.FileSystem.DeleteFile(sRep & cboFichiers.SelectedItem, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin)
 
             Cursor.Current = Cursors.Default
             cboFichiers.Items.RemoveAt(iPos)

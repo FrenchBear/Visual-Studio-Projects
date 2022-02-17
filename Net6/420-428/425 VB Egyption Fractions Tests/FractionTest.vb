@@ -14,21 +14,11 @@ Imports VB425
 <TestClass()>
 <CLSCompliant(False)>
 Public Class FractionTest
-
-    Private testContextInstance As TestContext
-
     '''<summary>
     '''Gets or sets the test context which provides
     '''information about and functionality for the current test run.
     '''</summary>
-    Public Property TestContext() As TestContext
-        Get
-            Return testContextInstance
-        End Get
-        Set(value As TestContext)
-            testContextInstance = value
-        End Set
-    End Property
+    Public Property TestContext As TestContext
 
 #Region "Additional test attributes"
 
@@ -187,5 +177,4 @@ Public Class FractionTest
         Assert.AreEqual(True, f1 = f2)
         Assert.AreEqual(False, f1 <> f2)
     End Sub
-
 End Class

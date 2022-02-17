@@ -23,18 +23,18 @@ internal class Program
 
         T(0.9999999999e-24, 1e-24, true);
 
-        double[] values = new double[] { 0.0, 0.9999999999e-24, 1e-24, 1.00000000001e-24, 1e-23, 1e-15, 0.9999999999e-5, 1e-5, 1.00000000001e-5, 1e-1, 0.9999999999, 1.0, 1.00000000001, 1e1, 0.9999999999e5, 1e5, 1.00000000001e5, 1e15, 1e23, 0.9999999999e24, 1e24, 1.00000000001e24 };
-        int[] classes = new int[] { 1, 2, 2, 2, 3, 4, 5, 5, 5, 6, 7, 7, 7, 8, 9, 9, 9, 10, 11, 12, 12, 12 };
+        var values = new double[] { 0.0, 0.9999999999e-24, 1e-24, 1.00000000001e-24, 1e-23, 1e-15, 0.9999999999e-5, 1e-5, 1.00000000001e-5, 1e-1, 0.9999999999, 1.0, 1.00000000001, 1e1, 0.9999999999e5, 1e5, 1.00000000001e5, 1e15, 1e23, 0.9999999999e24, 1e24, 1.00000000001e24 };
+        var classes = new int[] { 1, 2, 2, 2, 3, 4, 5, 5, 5, 6, 7, 7, 7, 8, 9, 9, 9, 10, 11, 12, 12, 12 };
 
-        for (int i = 0; i < values.Length; i++)
+        for (var i = 0; i < values.Length; i++)
         {
-            double d1 = values[i];
-            foreach (int s1 in new int[] { -1, 1 })
+            var d1 = values[i];
+            foreach (var s1 in new int[] { -1, 1 })
             {
-                for (int j = 0; j < values.Length; j++)
+                for (var j = 0; j < values.Length; j++)
                 {
-                    double d2 = values[j];
-                    foreach (int s2 in new int[] { -1, 1 })
+                    var d2 = values[j];
+                    foreach (var s2 in new int[] { -1, 1 })
                         T(d1 * s1, d2 * s2, (s1 == s2 && classes[i] == classes[j]) || (d1 == 0.0 && d2 == 0.0));
                 }
             }

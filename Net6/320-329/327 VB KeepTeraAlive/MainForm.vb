@@ -11,12 +11,12 @@ Public Class MainForm
 
     Private colDrives As New Collection
 
-    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DrivesTextBox.Text = My.Settings.Drives
         PeriodTextBox.Text = My.Settings.Period.ToString
     End Sub
 
-    Private Sub StartStopButton_Click(sender As System.Object, e As EventArgs) Handles StartStopButton.Click
+    Private Sub StartStopButton_Click(sender As Object, e As EventArgs) Handles StartStopButton.Click
         If StartStopButton.Text = "Start" Then
             ActionStart()
         Else
@@ -58,7 +58,7 @@ Public Class MainForm
         StatusTextBox.AppendText(vbCrLf & "*** Stopped")
     End Sub
 
-    Private Sub PingTimer_Tick(sender As System.Object, e As EventArgs) Handles PingTimer.Tick
+    Private Sub PingTimer_Tick(sender As Object, e As EventArgs) Handles PingTimer.Tick
         PingAction()
     End Sub
 

@@ -19,7 +19,7 @@ internal class Program
         WriteLine("App appSetting:  " + GetAppSetting("MyAppSetting"));
         WriteLine("App Typed applicationSetting: " + Properties.Settings.Default.MyApplicationSetting);
         WriteLine("DLL applicationSetting:  " + a.GetApplicationSetting("MySettingString"));
-        WriteLine("DLL Typed applicationSetting:  " + a.GetTypedApplicationSetting("MySettingString"));
+        WriteLine("DLL Typed applicationSetting:  " + ArithmeticClass.GetTypedApplicationSetting("MySettingString"));
         WriteLine("DLL appSetting:  " + a.GetAppSetting("MyDLLAppSetting"));
         WriteLine("DLL Resource String: " + a.GetStringResource("MyResourceString"));
     }

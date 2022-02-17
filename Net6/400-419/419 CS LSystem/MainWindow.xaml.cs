@@ -45,7 +45,7 @@ public partial class MainWindow: Window
     // Returns false in case of a problem, otherwise returns true and variables drawString and angle are filled
     private bool OkGenerate()
     {
-        if (!int.TryParse(LevelTextBox.Text, out int d))
+        if (!int.TryParse(LevelTextBox.Text, out var d))
         {
             _ = MessageBox.Show("Invalid depth", "LSystemProcessor", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             return false;
@@ -70,10 +70,10 @@ public partial class MainWindow: Window
         }
 
         Dictionary<char, string> rules = new();
-        foreach (string s in ss.Rules.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+        foreach (var s in ss.Rules.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
         {
-            char c = s.ToUpperInvariant().Split('=')[0][0];
-            string r = s.ToUpperInvariant().Split('=')[1];
+            var c = s.ToUpperInvariant().Split('=')[0][0];
+            var r = s.ToUpperInvariant().Split('=')[1];
             if (rules.ContainsKey(c))
                 rules[c] += r;
             else
@@ -84,7 +84,7 @@ public partial class MainWindow: Window
         // Show the 1st 1000 chars of out string
         StringBuilder sb = new();
         //foreach (char c in drawString)
-        for (int i = 0; i < sb.Length && i < 1000; i++)
+        for (var i = 0; i < sb.Length && i < 1000; i++)
             sb.Append(sb[i]);
         OutStringTextBox.Text = sb.ToString();
 
@@ -134,7 +134,7 @@ public partial class MainWindow: Window
 
     private void SourceFileComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
     {
-        string file = e.AddedItems[0].ToString();
+        var file = e.AddedItems[0].ToString();
         b.SelectFile(file);
     }
 

@@ -4,6 +4,7 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+Imports System.ComponentModel
 Imports System.IO
 Imports System.Text.RegularExpressions
 
@@ -33,7 +34,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -77,7 +78,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Const sPath As String = "F:\Documents\comics"
 
         Dim diRoot As New DirectoryInfo(sPath)
@@ -104,7 +105,7 @@ Public Class Form1
         MsgBox(nbFic & " fichiers traités" & vbCrLf & nbMatch & " images" & vbCrLf & nbMove & " déplacments" & vbCrLf & nbDir & " répertoires créés")
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Const sPath As String = "F:\Development\Visual Studio Projects\"
 
         Dim diRoot As New DirectoryInfo(sPath)

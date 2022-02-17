@@ -5,16 +5,16 @@
 
 Public Class FormMain
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim x As New BasicDataEntryForm
         x.Show()
     End Sub
 
-    Private Sub Button11_Click(sender As System.Object, e As EventArgs) Handles Button11.Click
+    Private Sub Button11_Click(sender As Object, e As EventArgs) Handles Button11.Click
         'Nop
     End Sub
 
-    Private Sub Button7_Click(sender As System.Object, e As EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Dim f2 As New Form2
         f2.Show()
     End Sub

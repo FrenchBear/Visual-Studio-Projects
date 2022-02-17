@@ -16,7 +16,7 @@ Module Module1
                 fr = New Fraction(r.Next(2, 15), r.Next(1, 49))
             Loop While fr.Numerator = 1 Or fr.Denominator = 1       ' Eliminate trivial fractions
 
-            Console.Write("{0} = ", fr)
+            Write("{0} = ", fr)
             Dim isFirst As Boolean = True
             Dim fSum As Fraction = Nothing
             Try
@@ -25,17 +25,17 @@ Module Module1
                         isFirst = False
                         fSum = f
                     Else
-                        Console.Write("+ ")
+                        Write("+ ")
                         fSum += f
                     End If
-                    Console.Write("{0} ", f)
+                    Write("{0} ", f)
                 Next
-                Console.Write("= {0}", fSum)
-                If fSum <> fr Then Console.Write(" <========= *** Different!")
+                Write("= {0}", fSum)
+                If fSum <> fr Then Write(" <========= *** Different!")
             Catch ex As OverflowException
-                Console.Write(" <=== Overflow")
+                Write(" <=== Overflow")
             Catch ex As Exception
-                Console.Write(" <=== Exception " & ex.Message)
+                Write(" <=== Exception " & ex.Message)
             Finally
                 WriteLine()
             End Try

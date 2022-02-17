@@ -5,7 +5,7 @@
 
 Public Class SchedulerForm
 
-    Private Sub StartButton_Click(sender As System.Object, e As EventArgs) Handles StartButton.Click
+    Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         Trace("Start")
 
         ReDim tCar(NumberOfCars - 1)

@@ -37,7 +37,7 @@ internal class Program
 
         WriteLine();
         WriteLine("t = typeof(Nullable)");
-        Type t = typeof(Nullable);
+        var t = typeof(Nullable);
         WriteLine("t.IsGenericType: {0}", t.IsGenericType);
         WriteLine("t.IsGenericTypeDefinition: {0}", t.IsGenericTypeDefinition);
         WriteLine("t.IsConstructedGenericType: {0}", t.IsConstructedGenericType);

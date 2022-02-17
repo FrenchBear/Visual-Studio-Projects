@@ -3,7 +3,7 @@
 
 Public Class Form1
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs)
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         Derived2Form.ShowDialog()
     End Sub
 

@@ -92,7 +92,7 @@ public class Module1
         WriteLine("c = {0}", c);
 
         // Le compilo VB sait passer une propriété par référence !
-        int __tmp = c.A;
+        var __tmp = c.A;
         Complément255(ref __tmp);
         c.A = __tmp;
 

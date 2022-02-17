@@ -9,11 +9,11 @@ Public Class FloorButtonsUserControl
 
     Public Event FloorRequestDown(ucfb As FloorButtonsUserControl)
 
-    Private Sub UpButton_Click(sender As System.Object, e As EventArgs) Handles UpButton.Click
+    Private Sub UpButton_Click(sender As Object, e As EventArgs) Handles UpButton.Click
         RaiseEvent FloorRequestUp(Me)
     End Sub
 
-    Private Sub DownButton_Click(sender As System.Object, e As EventArgs) Handles DownButton.Click
+    Private Sub DownButton_Click(sender As Object, e As EventArgs) Handles DownButton.Click
         RaiseEvent FloorRequestDown(Me)
     End Sub
 

@@ -55,7 +55,7 @@ public partial class MainWindow : Window
 #pragma warning disable CA2101 // Specify marshaling for P/Invoke string arguments
     [DllImport("user32.dll")]
 #pragma warning restore CA2101 // Specify marshaling for P/Invoke string arguments
-    private static extern bool InsertMenu(IntPtr hMenu, Int32 wPosition, Int32 wFlags, Int32 wIDNewItem, string lpNewItem);
+    private static extern bool InsertMenu(IntPtr hMenu, int wPosition, int wFlags, int wIDNewItem, string lpNewItem);
 
     /// Define our Constants we will use
     private const int WmSyscommand = 0x112;

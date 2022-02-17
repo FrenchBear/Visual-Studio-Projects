@@ -90,7 +90,7 @@ public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
         {
             // Check if dependency object is valid.
             // NOTE: Validation.GetHasError works for controls that have validation rules attached
-            bool isValid = !Validation.GetHasError(node);
+            var isValid = !Validation.GetHasError(node);
             if (!isValid)
             {
                 // If the dependency object is invalid, and it can receive the focus,
@@ -102,7 +102,7 @@ public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
         }
 
         // If this dependency object is valid, check all child dependency objects
-        foreach (object subnode in LogicalTreeHelper.GetChildren(node))
+        foreach (var subnode in LogicalTreeHelper.GetChildren(node))
             if (subnode is DependencyObject obj)
                 // If a child dependency object is invalid, return false immediately, otherwise keep checking
                 if (!IsValid(obj)) return false;
@@ -141,7 +141,7 @@ public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
         {
             SelectedPath = SourceFolder
         };
-        System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+        var result = dialog.ShowDialog();
         if (result == System.Windows.Forms.DialogResult.OK)
             SourceFolder = dialog.SelectedPath;
     }
@@ -150,7 +150,7 @@ public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
         var dialog = new System.Windows.Forms.FolderBrowserDialog();
         dialog.SelectedPath = TargetFolder != null && TargetFolder != "" && Directory.Exists(TargetFolder) ? TargetFolder : SourceFolder;
-        System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+        var result = dialog.ShowDialog();
         if (result == System.Windows.Forms.DialogResult.OK)
             TargetFolder = dialog.SelectedPath;
     }

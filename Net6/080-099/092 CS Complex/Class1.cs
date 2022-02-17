@@ -14,7 +14,7 @@ internal class Class1
     [STAThread]
     private static void Main(string[] args)
     {
-        P3(1.0, -6.0, 11.0, -6.0, out Complex r1, out Complex r2, out Complex r3);
+        P3(1.0, -6.0, 11.0, -6.0, out var r1, out var r2, out var r3);
         // 3 solutions réelles, 1, 2 et 3
         WriteLine("x1={0}\nx2={1}\nx3={2}", r1, r2, r3);
         //Console.ReadLine();

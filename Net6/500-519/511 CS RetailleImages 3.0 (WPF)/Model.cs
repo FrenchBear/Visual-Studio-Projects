@@ -69,15 +69,15 @@ public class Model
         // through IProgress interface
         _ = Task.Run(/* async */ () =>
           {
-              int n = 0;      // Number of active hashing tasks
-            int p = 0;      // Number of processed files
+              var n = 0;      // Number of active hashing tasks
+            var p = 0;      // Number of processed files
 
             // Hash MAX_PARALLISM files in parallel
-            foreach (string file in processedFilesList)
+            foreach (var file in processedFilesList)
               {
                   if (cancelToken.IsCancellationRequested) goto ExitGenerate;
 
-                  string s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
+                  var s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
                 lt.Add(Task.Run(() => ConvertImage(s)));
                   n++;
                   if (n == MAX_PARALLISM)
@@ -129,8 +129,8 @@ public class Model
 
     private string ConvertImage(string fileName)
     {
-        string imagePath = Path.Combine(SourceFolder, fileName);
-        string vignettePath = Path.Combine(TargetFolder, fileName);
+        var imagePath = Path.Combine(SourceFolder, fileName);
+        var vignettePath = Path.Combine(TargetFolder, fileName);
 
         BitmapImage bi = new(new Uri(imagePath));
 
@@ -165,7 +165,7 @@ public class Model
         }
 
         // WPF resizing and save
-        BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
+        var bi2 = ResizeBitmap(bi, newWidth, newHeight);
         JpegBitmapEncoder encoder = new()
         {
             QualityLevel = JpegQuality

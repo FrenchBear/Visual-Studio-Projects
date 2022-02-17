@@ -16,7 +16,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        BigInteger number = Factorial(100);
+        var number = Factorial(100);
         WriteLine(number);
         WriteLine();
 
@@ -27,7 +27,7 @@ internal class Program
         var primes = Tuple.Create(2, "three", 5, 7, 11, 13, 17, 19);
         WriteLine(primes);
         WriteLine();
-        Tuple<int, string> t = MyFunction();
+        var t = MyFunction();
         WriteLine("{0} {1}", t.Item1, t.Item2);
         WriteLine();
 

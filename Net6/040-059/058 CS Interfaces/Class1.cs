@@ -25,19 +25,19 @@ internal class MaClasse
 
     private static void TestEgalite()
     {
-        string s1 = "hello";
+        var s1 = "hello";
 #pragma warning disable CS0618 // Type or member is obsolete
-        string s2 = string.Copy(s1);
+        var s2 = string.Copy(s1);
 #pragma warning restore CS0618 // Type or member is obsolete
         WriteLine("s1==s2: {0}", s1 == s2);
         WriteLine("(object)s1==(object)s2: {0}", (object)s1 == (object)s2);
         //	WriteLine("s1 is s2: {0}", s1 is s2);
         WriteLine("s1.Equals(s2): {0}", s1.Equals(s2));
 
-        string a = 3.14.ToString();
+        var a = 3.14.ToString();
         WriteLine(a);
 
-        int[] b = new int[5];
+        var b = new int[5];
     }
 
     private static void TestInterface()
@@ -53,21 +53,21 @@ internal class MaClasse
     private static void TestDecimal()
     {
         decimal d = 0;
-        for (int i = 0; i < 100; i++)
+        for (var i = 0; i < 100; i++)
             d += 0.01m;
         WriteLine("decimal: {0}\t{1}", d, d - 1m);
 
         double r = 0;
-        for (int i = 0; i < 100; i++)
+        for (var i = 0; i < 100; i++)
             r += 0.01d;
         WriteLine("double: {0}\t{1}", r, r - 1.0d);
 
         float f = 0;
-        for (int i = 0; i < 100; i++)
+        for (var i = 0; i < 100; i++)
             f += 0.01f;
         WriteLine("float: {0}\t{1}", f, f - 1.0f);
 
-        decimal d2 = 12345678901234567890123456789m;
+        var d2 = 12345678901234567890123456789m;
         WriteLine("d2:{0}", d2);
         WriteLine("d3:{0}", decimal.MaxValue);
     }

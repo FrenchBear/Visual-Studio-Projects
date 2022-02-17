@@ -175,7 +175,7 @@ Class PentaminoSolveur
 
                     ' Trop large,  Trop haut, Doit être décalée trop à gauche: on continue
                     If c + ca.cmax - ca.iOffsetCol > MAXCOL Or l + ca.lmax > MAXLIG Or c < ca.iOffsetCol Then
-                        GoTo [continue]
+                        GoTo Cont
                     End If
 
                     bCollision = False
@@ -203,7 +203,7 @@ Class PentaminoSolveur
                         Pavage(l, c, jeu2, iMasquePieces And Not Pow2(i))
                     End If
 
-[continue]:
+Cont:
                 Next
             End If
         Next

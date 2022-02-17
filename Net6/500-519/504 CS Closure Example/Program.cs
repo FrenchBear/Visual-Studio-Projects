@@ -15,13 +15,13 @@ internal class Program
     {
         var pos = Adder();
         var neg = Adder();
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
             WriteLine("{0}, {1}", pos(i), neg(-2 * i));
     }
 
     private static Func<int, int> Adder()
     {
-        int sum = 0;
+        var sum = 0;
         return (int x) =>
         {
             sum += x;

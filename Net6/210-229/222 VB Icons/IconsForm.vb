@@ -2,10 +2,11 @@
 '
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.Drawing.Imaging
 
 Public Class IconsForm
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim redBrush As New SolidBrush(Color.LightSalmon)
         Dim formGraphics As Graphics
         formGraphics = Me.CreateGraphics()
@@ -49,7 +50,7 @@ Public Class IconsForm
         Dim bm4 As Bitmap
         Dim Gris1 As Color = Color.FromArgb(224, 223, 227)
         Dim Gris2 As Color = Color.FromArgb(255, 0, 0)
-        bm4 = New Bitmap(16, 16, Imaging.PixelFormat.Format32bppArgb)
+        bm4 = New Bitmap(16, 16, PixelFormat.Format32bppArgb)
         For y = 0 To 15
             For x = 0 To 15
                 Dim p As Color

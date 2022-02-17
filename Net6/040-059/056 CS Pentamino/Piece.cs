@@ -27,12 +27,12 @@ internal class Piece
         if (i00 + i01 + i02 + i03 + i04 + i10 + i11 + i12 + i13 + i14 + i20 + i21 + i22 + i23 + i24 != 5)
             WriteLine("Définition de la pièce {0} incorrecte", hNP);
 
-        for (int i = 1; i < 8; i++)
+        for (var i = 1; i < 8; i++)
         {
-            Carre55 ct = c[0].Transformation(i);
-            bool bDejaVu = false;
+            var ct = c[0].Transformation(i);
+            var bDejaVu = false;
 
-            for (int j = 0; j < iNbt; j++)
+            for (var j = 0; j < iNbt; j++)
                 if (Carre55.Egalite(c[j], ct))
                 {
                     bDejaVu = true;

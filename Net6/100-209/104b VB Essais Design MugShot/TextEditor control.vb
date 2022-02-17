@@ -45,24 +45,24 @@ Public Class TextEditor
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbRevertToSaved_Click(sender As System.Object, e As EventArgs) Handles tsbRevertToSaved.Click
+    Private Sub tsbRevertToSaved_Click(sender As Object, e As EventArgs) Handles tsbRevertToSaved.Click
         OpenDoc()
     End Sub
 
-    Private Sub tsbSave_Click(sender As System.Object, e As EventArgs) Handles tsbSave.Click
+    Private Sub tsbSave_Click(sender As Object, e As EventArgs) Handles tsbSave.Click
         My.Computer.FileSystem.WriteAllText(m_doc.sPathName, txtText.Text, False)
         m_bDirty = False
         RefreshToolBar()
     End Sub
 
-    Private Sub txtText_TextChanged(sender As System.Object, e As EventArgs) Handles txtText.TextChanged
+    Private Sub txtText_TextChanged(sender As Object, e As EventArgs) Handles txtText.TextChanged
         If Not m_bDirty Then
             m_bDirty = True
             RefreshToolBar()
         End If
     End Sub
 
-    Private Sub tsbPrint_Click(sender As System.Object, e As EventArgs) Handles tsbPrint.Click
+    Private Sub tsbPrint_Click(sender As Object, e As EventArgs) Handles tsbPrint.Click
         If m_bDirty Then
             MsgBox("Printing a modified file is not supported." & vbCrLf &
                    "Save file, or revert changes before printing.", MsgBoxStyle.Exclamation)

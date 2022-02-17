@@ -11,40 +11,45 @@
 Option Strict On
 Option Explicit On
 
+Imports System.CodeDom.Compiler
+Imports System.ComponentModel
+Imports System.ComponentModel.Design
+Imports System.Configuration
+Imports System.Runtime.CompilerServices
 
 Namespace My
-    
-    <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0"),  _
-     Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
+
+    <CompilerGenerated(),
+     GeneratedCode("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0"),
+     EditorBrowsable(EditorBrowsableState.Advanced)>
     Partial Friend NotInheritable Class MySettings
-        Inherits Global.System.Configuration.ApplicationSettingsBase
-        
-        Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
-        
+        Inherits ApplicationSettingsBase
+
+        Private Shared defaultInstance As MySettings = CType(Synchronized(New MySettings()), MySettings)
+
 #Region "My.Settings Auto-Save Functionality"
 #If _MyType = "WindowsForms" Then
-    Private Shared addedHandler As Boolean
+        Private Shared addedHandler As Boolean
 
-    Private Shared addedHandlerLockObject As New Object
+        Private Shared addedHandlerLockObject As New Object
 
-    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)> _
-    Private Shared Sub AutoSaveSettings(sender As Global.System.Object, e As Global.System.EventArgs)
-        If My.Application.SaveMySettingsOnExit Then
-            My.Settings.Save()
-        End If
-    End Sub
+        <DebuggerNonUserCode(), EditorBrowsable(EditorBrowsableState.Advanced)>
+        Private Shared Sub AutoSaveSettings(sender As Object, e As EventArgs)
+            If Application.SaveMySettingsOnExit Then
+                Settings.Save()
+            End If
+        End Sub
 #End If
 #End Region
-        
+
         Public Shared ReadOnly Property [Default]() As MySettings
             Get
-                
+
 #If _MyType = "WindowsForms" Then
-               If Not addedHandler Then
+                If Not addedHandler Then
                     SyncLock addedHandlerLockObject
                         If Not addedHandler Then
-                            AddHandler My.Application.Shutdown, AddressOf AutoSaveSettings
+                            AddHandler Application.Shutdown, AddressOf AutoSaveSettings
                             addedHandler = True
                         End If
                     End SyncLock
@@ -53,283 +58,283 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Folder() As String
             Get
-                Return CType(Me("Folder"),String)
+                Return CType(Me("Folder"), String)
             End Get
             Set
-                Me("Folder") = value
+                Me("Folder") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Title() As String
             Get
-                Return CType(Me("Title"),String)
+                Return CType(Me("Title"), String)
             End Get
             Set
-                Me("Title") = value
+                Me("Title") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Subject() As String
             Get
-                Return CType(Me("Subject"),String)
+                Return CType(Me("Subject"), String)
             End Get
             Set
-                Me("Subject") = value
+                Me("Subject") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Author() As String
             Get
-                Return CType(Me("Author"),String)
+                Return CType(Me("Author"), String)
             End Get
             Set
-                Me("Author") = value
+                Me("Author") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Manager() As String
             Get
-                Return CType(Me("Manager"),String)
+                Return CType(Me("Manager"), String)
             End Get
             Set
-                Me("Manager") = value
+                Me("Manager") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Company() As String
             Get
-                Return CType(Me("Company"),String)
+                Return CType(Me("Company"), String)
             End Get
             Set
-                Me("Company") = value
+                Me("Company") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Category() As String
             Get
-                Return CType(Me("Category"),String)
+                Return CType(Me("Category"), String)
             End Get
             Set
-                Me("Category") = value
+                Me("Category") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Keywords() As String
             Get
-                Return CType(Me("Keywords"),String)
+                Return CType(Me("Keywords"), String)
             End Get
             Set
-                Me("Keywords") = value
+                Me("Keywords") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property Comments() As String
             Get
-                Return CType(Me("Comments"),String)
+                Return CType(Me("Comments"), String)
             End Get
             Set
-                Me("Comments") = value
+                Me("Comments") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode(),
+         DefaultSettingValue("")>
         Public Property HyperlinkBase() As String
             Get
-                Return CType(Me("HyperlinkBase"),String)
+                Return CType(Me("HyperlinkBase"), String)
             End Get
             Set
-                Me("HyperlinkBase") = value
+                Me("HyperlinkBase") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseTitle() As Boolean
             Get
-                Return CType(Me("UseTitle"),Boolean)
+                Return CType(Me("UseTitle"), Boolean)
             End Get
             Set
-                Me("UseTitle") = value
+                Me("UseTitle") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseSubject() As Boolean
             Get
-                Return CType(Me("UseSubject"),Boolean)
+                Return CType(Me("UseSubject"), Boolean)
             End Get
             Set
-                Me("UseSubject") = value
+                Me("UseSubject") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseAuthor() As Boolean
             Get
-                Return CType(Me("UseAuthor"),Boolean)
+                Return CType(Me("UseAuthor"), Boolean)
             End Get
             Set
-                Me("UseAuthor") = value
+                Me("UseAuthor") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseManager() As Boolean
             Get
-                Return CType(Me("UseManager"),Boolean)
+                Return CType(Me("UseManager"), Boolean)
             End Get
             Set
-                Me("UseManager") = value
+                Me("UseManager") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseCompany() As Boolean
             Get
-                Return CType(Me("UseCompany"),Boolean)
+                Return CType(Me("UseCompany"), Boolean)
             End Get
             Set
-                Me("UseCompany") = value
+                Me("UseCompany") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseCategory() As Boolean
             Get
-                Return CType(Me("UseCategory"),Boolean)
+                Return CType(Me("UseCategory"), Boolean)
             End Get
             Set
-                Me("UseCategory") = value
+                Me("UseCategory") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseKeywords() As Boolean
             Get
-                Return CType(Me("UseKeywords"),Boolean)
+                Return CType(Me("UseKeywords"), Boolean)
             End Get
             Set
-                Me("UseKeywords") = value
+                Me("UseKeywords") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseComments() As Boolean
             Get
-                Return CType(Me("UseComments"),Boolean)
+                Return CType(Me("UseComments"), Boolean)
             End Get
             Set
-                Me("UseComments") = value
+                Me("UseComments") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseHyperlinkBase() As Boolean
             Get
-                Return CType(Me("UseHyperlinkBase"),Boolean)
+                Return CType(Me("UseHyperlinkBase"), Boolean)
             End Get
             Set
-                Me("UseHyperlinkBase") = value
+                Me("UseHyperlinkBase") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Location() As Global.System.Drawing.Point
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
+        Public Property Location() As Point
             Get
-                Return CType(Me("Location"),Global.System.Drawing.Point)
+                Return CType(Me("Location"), Point)
             End Get
             Set
-                Me("Location") = value
+                Me("Location") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property LookInSubfolders() As Boolean
             Get
-                Return CType(Me("LookInSubfolders"),Boolean)
+                Return CType(Me("LookInSubfolders"), Boolean)
             End Get
             Set
-                Me("LookInSubfolders") = value
+                Me("LookInSubfolders") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
         Public Property UseDocName() As Boolean
             Get
-                Return CType(Me("UseDocName"),Boolean)
+                Return CType(Me("UseDocName"), Boolean)
             End Get
             Set
-                Me("UseDocName") = value
+                Me("UseDocName") = Value
             End Set
         End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
-        Public Property Size() As Global.System.Drawing.Size
+
+        <UserScopedSetting(),
+         DebuggerNonUserCode()>
+        Public Property Size() As Size
             Get
-                Return CType(Me("Size"),Global.System.Drawing.Size)
+                Return CType(Me("Size"), Size)
             End Get
             Set
-                Me("Size") = value
+                Me("Size") = Value
             End Set
         End Property
     End Class
 End Namespace
 
 Namespace My
-    
-    <Global.Microsoft.VisualBasic.HideModuleNameAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute()>  _
+
+    <HideModuleName(),
+     DebuggerNonUserCode(),
+     CompilerGenerated()>
     Friend Module MySettingsProperty
-        
-        <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.FixWordProperties.My.MySettings
+
+        <HelpKeyword("My.Settings")>
+        Friend ReadOnly Property Settings() As MySettings
             Get
-                Return Global.FixWordProperties.My.MySettings.Default
+                Return MySettings.Default
             End Get
         End Property
     End Module

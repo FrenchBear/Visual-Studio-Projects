@@ -58,7 +58,7 @@ public class DynamicDictionary : DynamicObject
     {
         // Converting the property name to lowercase
         // so that property names become case-insensitive.
-        string name = binder.Name.ToLower();
+        var name = binder.Name.ToLower();
 
         // If the property name is found in a dictionary,
         // set the result parameter to the property value and return true.

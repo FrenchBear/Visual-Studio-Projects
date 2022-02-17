@@ -16,7 +16,7 @@ Public Class frmTest
 
     Private ReadOnly ERROR_ACCESS_DENIED As Integer = 5
 
-    Private Sub btnShellExecute_Click(sender As System.Object, e As EventArgs) Handles btnShellExecute.Click
+    Private Sub btnShellExecute_Click(sender As Object, e As EventArgs) Handles btnShellExecute.Click
         Dim iRet As Integer = ShellExecute(txtCommand.Text)
         MsgBox("Ret: " & iRet)
     End Sub

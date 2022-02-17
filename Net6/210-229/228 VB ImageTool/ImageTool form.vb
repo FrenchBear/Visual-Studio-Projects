@@ -5,6 +5,8 @@
 
 Option Compare Text
 
+Imports System.Drawing.Imaging
+
 #Disable Warning IDE0060 ' Remove unused parameter
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -105,7 +107,7 @@ Public Class frmImageTool
         sbpScale.Text = FormatPercent(fRatio, 0)
 
         Dim imgOutput As Bitmap
-        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, Imaging.PixelFormat.Format32bppRgb)
+        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, PixelFormat.Format32bppRgb)
         Dim h As Graphics = Graphics.FromImage(imgOutput)
         h.Clear(Color.FromKnownColor(KnownColor.Control))
         h.DrawImage(imOriginalImage, 0, 0, imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio)
@@ -165,7 +167,7 @@ Public Class frmImageTool
         bValidZoom = False
     End Function
 
-    Private Sub tsbZoomReduce_Click(sender As System.Object, e As EventArgs) Handles tsbZoomReduce.Click
+    Private Sub tsbZoomReduce_Click(sender As Object, e As EventArgs) Handles tsbZoomReduce.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * fRatio + 0.5
@@ -177,7 +179,7 @@ Public Class frmImageTool
         If tscboZoom.Text <> Str(z) & "%" Then AfterZoomChange(Str(z) & "%")
     End Sub
 
-    Private Sub tsbZoomEnlarge_Click(sender As System.Object, e As EventArgs) Handles tsbZoomEnlarge.Click
+    Private Sub tsbZoomEnlarge_Click(sender As Object, e As EventArgs) Handles tsbZoomEnlarge.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * fRatio + 0.5
@@ -195,19 +197,19 @@ Public Class frmImageTool
         ResizeMe()
     End Sub
 
-    Private Sub vsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles vsScrollBar.Scroll
+    Private Sub vsScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles vsScrollBar.Scroll
         If vsScrollBar.Value <> -pbDisplayedPic.Top Then pbDisplayedPic.Top = -vsScrollBar.Value
     End Sub
 
-    Private Sub hsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles hsScrollBar.Scroll
+    Private Sub hsScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles hsScrollBar.Scroll
         If hsScrollBar.Value <> -pbDisplayedPic.Left Then pbDisplayedPic.Left = -hsScrollBar.Value
     End Sub
 
-    Private Sub tsbHandTool_Click(sender As System.Object, e As EventArgs) Handles tsbHandTool.Click
+    Private Sub tsbHandTool_Click(sender As Object, e As EventArgs) Handles tsbHandTool.Click
         tsbSelectionTool.Checked = False
     End Sub
 
-    Private Sub tsbSelectionTool_Click(sender As System.Object, e As EventArgs) Handles tsbSelectionTool.Click
+    Private Sub tsbSelectionTool_Click(sender As Object, e As EventArgs) Handles tsbSelectionTool.Click
         tsbHandTool.Checked = False
     End Sub
 
@@ -251,7 +253,7 @@ Public Class frmImageTool
 
     Sub SelectionTool_MouseMove(e As MouseEventArgs)
         Dim imgOutput As Bitmap
-        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, Imaging.PixelFormat.Format32bppRgb)
+        imgOutput = New Bitmap(imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio, PixelFormat.Format32bppRgb)
         Dim h As Graphics = Graphics.FromImage(imgOutput)
         h.Clear(Color.FromKnownColor(KnownColor.Control))
         h.DrawImage(imOriginalImage, 0, 0, imOriginalImage.Width * fRatio, imOriginalImage.Height * fRatio)
@@ -307,12 +309,12 @@ Public Class frmImageTool
         Cursor.Current = Cursors.Default
     End Sub
 
-    Private Sub btnRotate90Left_Click(sender As System.Object, e As EventArgs) Handles btnRotate90Left.Click
+    Private Sub btnRotate90Left_Click(sender As Object, e As EventArgs) Handles btnRotate90Left.Click
         imOriginalImage.RotateFlip(RotateFlipType.Rotate270FlipNone)
         ResizeMe()
     End Sub
 
-    Private Sub btnRotate90Right_Click(sender As System.Object, e As EventArgs) Handles btnRotate90Right.Click
+    Private Sub btnRotate90Right_Click(sender As Object, e As EventArgs) Handles btnRotate90Right.Click
         imOriginalImage.RotateFlip(RotateFlipType.Rotate90FlipNone)
         ResizeMe()
     End Sub

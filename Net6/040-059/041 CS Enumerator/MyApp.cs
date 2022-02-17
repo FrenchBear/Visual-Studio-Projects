@@ -8,7 +8,7 @@
 using System.Collections;
 using static System.Console;
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {
@@ -19,7 +19,7 @@ internal class MyApp
             WriteLine(i);
         WriteLine();
 
-        IEnumerator e1 = t1.GetEnumerator();
+        var e1 = t1.GetEnumerator();
         while (e1.MoveNext())
             WriteLine(e1.Current.ToString());
         WriteLine();
@@ -31,7 +31,7 @@ internal class MyApp
             WriteLine(i);
         WriteLine();
 
-        IDictionaryEnumerator e2 = t2.GetDictionaryEnumerator();
+        var e2 = t2.GetDictionaryEnumerator();
         while (e2.MoveNext())
             WriteLine(e2.Key + " -> " + e2.Value);
         WriteLine();

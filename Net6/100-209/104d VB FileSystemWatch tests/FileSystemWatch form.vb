@@ -9,7 +9,7 @@ Imports System.IO
 
 Public Class frmFileSystemWatch
 
-    Private Sub FileSystemWatcher1_Changed(sender As System.Object, e As FileSystemEventArgs) Handles FileSystemWatcher1.Changed
+    Private Sub FileSystemWatcher1_Changed(sender As Object, e As FileSystemEventArgs) Handles FileSystemWatcher1.Changed
         Trace("Changed", e.ChangeType, e.FullPath, e.Name)
 
     End Sub
@@ -104,11 +104,11 @@ Public Class frmFileSystemWatch
         lstTrace.SelectedIndex = lstTrace.Items.Count - 1
     End Sub
 
-    Private Sub btnPoll_Click(sender As System.Object, e As EventArgs) Handles btnPoll.Click
+    Private Sub btnPoll_Click(sender As Object, e As EventArgs) Handles btnPoll.Click
         PollWatchedFolders()
     End Sub
 
-    Private Sub timPollTimer_Tick(sender As System.Object, e As EventArgs) Handles timPollTimer.Tick
+    Private Sub timPollTimer_Tick(sender As Object, e As EventArgs) Handles timPollTimer.Tick
         timPollTimer.Enabled = False
         PollWatchedFolders()
     End Sub

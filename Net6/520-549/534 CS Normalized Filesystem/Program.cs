@@ -16,9 +16,9 @@ internal class Program
     {
         denormalizedName = normalizedName.Normalize(NormalizationForm.FormD);
 
-        using (FileStream fs = File.Create(Path.Combine(@"c:\temp", normalizedName)))
+        using (var fs = File.Create(Path.Combine(@"c:\temp", normalizedName)))
         {
-            Byte[] info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
+            var info = new UTF8Encoding(true).GetBytes("This is some text in the file.");
             fs.Write(info, 0, info.Length);
         }
 
@@ -29,8 +29,8 @@ internal class Program
         else
         {
             WriteLine("Denormalized does not exist");
-            using FileStream fs = File.Create(Path.Combine(@"c:\temp", denormalizedName));
-            Byte[] info = new UTF8Encoding(true).GetBytes("Another file.");
+            using var fs = File.Create(Path.Combine(@"c:\temp", denormalizedName));
+            var info = new UTF8Encoding(true).GetBytes("Another file.");
             fs.Write(info, 0, info.Length);
         }
 

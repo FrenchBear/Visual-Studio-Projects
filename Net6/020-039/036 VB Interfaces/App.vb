@@ -40,8 +40,6 @@ End Interface
 Public Class MaClasse
     Implements IMonInterface
 
-    Private iMembre As Integer
-
     Private Sub MonInterface_MaMethodeBruyante1(x As Integer) Implements IMonInterface.MaMethodeBruyante1
         WriteLine("Implémentation de MonInterface.MaMethodeBruyante1")
     End Sub
@@ -51,14 +49,8 @@ Public Class MaClasse
         WriteLine("Implémentation privée de MaMethodeBruyante1")
     End Sub
 
-    Property MonInterface_MaPropriete() As Integer Implements IMonInterface.MaPropriete
-        Get
-            Return iMembre
-        End Get
-        Set(Value As Integer)
-            iMembre = Value
-        End Set
-    End Property
+    Public Property MonInterface_MaPropriete As Integer Implements IMonInterface.MaPropriete
+
 
     Event Bip As GestionnaireDeBip Implements IMonInterface.Bip
 
@@ -73,5 +65,4 @@ Public Class MaClasse
             Return "Item[""" & index & """]"
         End Get
     End Property
-
 End Class

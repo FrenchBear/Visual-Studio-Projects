@@ -6,6 +6,7 @@
 ' 2006-04-13    PV
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.ComponentModel
 
 #Disable Warning IDE1006 ' Naming Styles
 #Disable Warning IDE0051 ' Remove unused private members
@@ -64,7 +65,7 @@ Public Class GenericEditor
             myProcess.StartInfo.Verb = sAction
             myProcess.StartInfo.CreateNoWindow = True
             myProcess.Start()
-        Catch ex As ComponentModel.Win32Exception
+        Catch ex As Win32Exception
             If ex.NativeErrorCode = ERROR_FILE_NOT_FOUND Then
                 WriteLine((ex.Message + ". Check the path."))
             Else
@@ -78,27 +79,28 @@ Public Class GenericEditor
     End Sub
 
     Private Sub InitializeComponent()
-        Dim resources As New ComponentModel.ComponentResourceManager(GetType(GenericEditor))
-        Me.tsGeneric = New ToolStrip
-        Me.tsbGenericSave = New ToolStripButton
-        Me.tsbGenericRevertToSaved = New ToolStripButton
-        Me.tssGeneric1 = New ToolStripSeparator
-        Me.tsbGenericPrint = New ToolStripButton
-        Me.gbDocumentProperties = New GroupBox
-        Me.txtComments = New TextBox
-        Me.txtTitle = New TextBox
-        Me.lblComments = New Label
-        Me.lblTitle = New Label
+        Dim resources = New ComponentResourceManager(GetType(GenericEditor))
+        Me.tsGeneric = New ToolStrip()
+        Me.tsbGenericSave = New ToolStripButton()
+        Me.tsbGenericRevertToSaved = New ToolStripButton()
+        Me.tssGeneric1 = New ToolStripSeparator()
+        Me.tsbGenericPrint = New ToolStripButton()
+        Me.gbDocumentProperties = New GroupBox()
+        Me.txtComments = New TextBox()
+        Me.txtTitle = New TextBox()
+        Me.lblComments = New Label()
+        Me.lblTitle = New Label()
         Me.tsGeneric.SuspendLayout()
         Me.gbDocumentProperties.SuspendLayout()
         Me.SuspendLayout()
         '
         'tsGeneric
         '
+        Me.tsGeneric.ImageScalingSize = New Size(24, 24)
         Me.tsGeneric.Items.AddRange(New ToolStripItem() {Me.tsbGenericSave, Me.tsbGenericRevertToSaved, Me.tssGeneric1, Me.tsbGenericPrint})
         Me.tsGeneric.Location = New Point(0, 0)
         Me.tsGeneric.Name = "tsGeneric"
-        Me.tsGeneric.Size = New Size(428, 25)
+        Me.tsGeneric.Size = New Size(769, 33)
         Me.tsGeneric.TabIndex = 2
         Me.tsGeneric.Text = "ToolStrip1"
         '
@@ -108,7 +110,7 @@ Public Class GenericEditor
         Me.tsbGenericSave.Image = CType(resources.GetObject("tsbGenericSave.Image"), Image)
         Me.tsbGenericSave.ImageTransparentColor = Color.Magenta
         Me.tsbGenericSave.Name = "tsbGenericSave"
-        Me.tsbGenericSave.Size = New Size(23, 22)
+        Me.tsbGenericSave.Size = New Size(34, 28)
         Me.tsbGenericSave.Text = "Save"
         Me.tsbGenericSave.ToolTipText = "Save Text"
         '
@@ -118,14 +120,14 @@ Public Class GenericEditor
         Me.tsbGenericRevertToSaved.Image = CType(resources.GetObject("tsbGenericRevertToSaved.Image"), Image)
         Me.tsbGenericRevertToSaved.ImageTransparentColor = Color.Magenta
         Me.tsbGenericRevertToSaved.Name = "tsbGenericRevertToSaved"
-        Me.tsbGenericRevertToSaved.Size = New Size(23, 22)
+        Me.tsbGenericRevertToSaved.Size = New Size(34, 28)
         Me.tsbGenericRevertToSaved.Text = "Revert"
         Me.tsbGenericRevertToSaved.ToolTipText = "Revert to saved text"
         '
         'tssGeneric1
         '
         Me.tssGeneric1.Name = "tssGeneric1"
-        Me.tssGeneric1.Size = New Size(6, 25)
+        Me.tssGeneric1.Size = New Size(6, 33)
         '
         'tsbGenericPrint
         '
@@ -133,7 +135,7 @@ Public Class GenericEditor
         Me.tsbGenericPrint.Image = CType(resources.GetObject("tsbGenericPrint.Image"), Image)
         Me.tsbGenericPrint.ImageTransparentColor = Color.Magenta
         Me.tsbGenericPrint.Name = "tsbGenericPrint"
-        Me.tsbGenericPrint.Size = New Size(23, 22)
+        Me.tsbGenericPrint.Size = New Size(34, 28)
         Me.tsbGenericPrint.Text = "Print"
         '
         'gbDocumentProperties
@@ -143,9 +145,9 @@ Public Class GenericEditor
         Me.gbDocumentProperties.Controls.Add(Me.lblComments)
         Me.gbDocumentProperties.Controls.Add(Me.lblTitle)
         Me.gbDocumentProperties.Dock = DockStyle.Top
-        Me.gbDocumentProperties.Location = New Point(0, 25)
+        Me.gbDocumentProperties.Location = New Point(0, 33)
         Me.gbDocumentProperties.Name = "gbDocumentProperties"
-        Me.gbDocumentProperties.Size = New Size(428, 96)
+        Me.gbDocumentProperties.Size = New Size(769, 96)
         Me.gbDocumentProperties.TabIndex = 3
         Me.gbDocumentProperties.TabStop = False
         Me.gbDocumentProperties.Text = "Document Properties"
@@ -153,20 +155,20 @@ Public Class GenericEditor
         'txtComments
         '
         Me.txtComments.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Left) _
-                    Or AnchorStyles.Right), AnchorStyles)
+            Or AnchorStyles.Right), AnchorStyles)
         Me.txtComments.Location = New Point(66, 42)
         Me.txtComments.Multiline = True
         Me.txtComments.Name = "txtComments"
-        Me.txtComments.Size = New Size(359, 48)
+        Me.txtComments.Size = New Size(700, 48)
         Me.txtComments.TabIndex = 3
         '
         'txtTitle
         '
         Me.txtTitle.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Left) _
-                    Or AnchorStyles.Right), AnchorStyles)
+            Or AnchorStyles.Right), AnchorStyles)
         Me.txtTitle.Location = New Point(66, 16)
         Me.txtTitle.Name = "txtTitle"
-        Me.txtTitle.Size = New Size(359, 21)
+        Me.txtTitle.Size = New Size(700, 27)
         Me.txtTitle.TabIndex = 2
         '
         'lblComments
@@ -174,7 +176,7 @@ Public Class GenericEditor
         Me.lblComments.AutoSize = True
         Me.lblComments.Location = New Point(3, 45)
         Me.lblComments.Name = "lblComments"
-        Me.lblComments.Size = New Size(57, 13)
+        Me.lblComments.Size = New Size(89, 21)
         Me.lblComments.TabIndex = 1
         Me.lblComments.Text = "Comments"
         '
@@ -183,7 +185,7 @@ Public Class GenericEditor
         Me.lblTitle.AutoSize = True
         Me.lblTitle.Location = New Point(3, 19)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New Size(27, 13)
+        Me.lblTitle.Size = New Size(43, 21)
         Me.lblTitle.TabIndex = 0
         Me.lblTitle.Text = "Title"
         '
@@ -191,9 +193,9 @@ Public Class GenericEditor
         '
         Me.Controls.Add(Me.gbDocumentProperties)
         Me.Controls.Add(Me.tsGeneric)
-        Me.Font = New Font("Tahoma", 8.25!, FontStyle.Regular, GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New Font("Tahoma", 8.25!, FontStyle.Regular, GraphicsUnit.Point)
         Me.Name = "GenericEditor"
-        Me.Size = New Size(428, 360)
+        Me.Size = New Size(769, 571)
         Me.tsGeneric.ResumeLayout(False)
         Me.tsGeneric.PerformLayout()
         Me.gbDocumentProperties.ResumeLayout(False)

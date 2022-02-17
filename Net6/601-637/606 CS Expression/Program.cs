@@ -22,10 +22,10 @@ internal class Program
         _ = mv.VisiteExpression(e2);
 
         // A parameter for the lambda expression.
-        ParameterExpression paramExpr = Expression.Parameter(typeof(int), "arg");
+        var paramExpr = Expression.Parameter(typeof(int), "arg");
 
         // This expression represents a lambda expression that adds 1 to the parameter value.
-        LambdaExpression lambdaExpr = Expression.Lambda(
+        var lambdaExpr = Expression.Lambda(
             Expression.Add(
                 paramExpr,
                 Expression.Constant(1)
@@ -37,8 +37,8 @@ internal class Program
         WriteLine(lambdaExpr);
         WriteLine(lambdaExpr.Compile().DynamicInvoke(1));
 
-        ParameterExpression paramX = Expression.Parameter(typeof(int), "x");
-        ParameterExpression paramY = Expression.Parameter(typeof(int), "y");
+        var paramX = Expression.Parameter(typeof(int), "x");
+        var paramY = Expression.Parameter(typeof(int), "y");
         lambdaExpr = Expression.Lambda(
             Expression.AddChecked(
                 paramX,

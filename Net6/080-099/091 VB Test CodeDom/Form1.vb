@@ -164,7 +164,7 @@ Namespace CodeDOMExample
             '
             'CodeDomExampleForm
             '
-            Me.ClientSize = New System.Drawing.Size(672, 574)
+            Me.ClientSize = New Size(672, 574)
             Me.Name = "CodeDomExampleForm"
             Me.ResumeLayout(False)
 

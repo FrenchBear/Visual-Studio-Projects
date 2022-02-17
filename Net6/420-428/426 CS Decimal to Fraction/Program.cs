@@ -17,8 +17,8 @@ internal class Program
     private static void Main()
     {
         WriteLine("Stern-Brocot algorithm to transform a periodic decimal suite into a fraction\n");
-        double f = 0.1415926535;
-        DoubleToFraction(f, out long rNum, out long rDen);
+        var f = 0.1415926535;
+        DoubleToFraction(f, out var rNum, out var rDen);
         WriteLine("{0} = {1}/{2}", f, rNum, rDen);
 
         f = 3.1415926535;
@@ -35,13 +35,13 @@ internal class Program
 
         // Check we get expected results
         WriteLine("\nTesting 1 million fractions with n,d in [1..1000]");
-        for (int i = 1; i <= 1000; i++)
+        for (var i = 1; i <= 1000; i++)
         {
-            for (int j = 1; j <= 1000; j++)
+            for (var j = 1; j <= 1000; j++)
         {
             f = (double)i / (double)j;
             DoubleToFraction(f, out rNum, out rDen);
-            int pgdc = Gcd(i, j);
+            var pgdc = Gcd(i, j);
             if (i != rNum * pgdc || j != rDen * pgdc)
                 Debugger.Break();
         }
@@ -74,14 +74,14 @@ internal class Program
             return;
         }
 
-        int sign = 1;
+        var sign = 1;
         if (f < 0)
         {
             sign = -1;
             f = -f;
         }
 
-        long off = (long)Math.Floor(f);
+        var off = (long)Math.Floor(f);
         f -= off;
         if (f <= epsilon)
         {
@@ -96,7 +96,7 @@ internal class Program
             rNum = infNum + supNum;
             rDen = infDen + supDen;
 
-            double r = rNum / (double)rDen;
+            var r = rNum / (double)rDen;
             if (Math.Abs(r - f) < epsilon)
             {
                 rNum = (rNum + off * rDen) * sign;

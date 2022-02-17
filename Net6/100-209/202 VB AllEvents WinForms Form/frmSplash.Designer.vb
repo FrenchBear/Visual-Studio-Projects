@@ -1,7 +1,10 @@
-﻿Partial Public Class frmSplash
-    Inherits System.Windows.Forms.Form
+﻿Imports System.ComponentModel
+Imports VB202.My.Resources
 
-    <System.Diagnostics.DebuggerNonUserCode()>
+Partial Public Class frmSplash
+    Inherits Form
+
+    <DebuggerNonUserCode()>
     Public Sub New()
         MyBase.New()
 
@@ -11,7 +14,7 @@
     End Sub
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <DebuggerNonUserCode()>
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -20,22 +23,22 @@
     End Sub
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
     '<System.Diagnostics.DebuggerStepThrough()> 
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSplash))
+        Dim resources As ComponentResourceManager = New ComponentResourceManager(GetType(frmSplash))
         '
         'frmSplash
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(5, 13)
-        Me.BackgroundImage = My.Resources.MyResources.GrizzlyPasContent
-        Me.ClientSize = New System.Drawing.Size(389, 385)
+        Me.AutoScaleBaseSize = New Size(5, 13)
+        Me.BackgroundImage = GrizzlyPasContent
+        Me.ClientSize = New Size(389, 385)
         Me.ControlBox = False
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Name = "frmSplash"
         Me.Text = "Splash screen"
 

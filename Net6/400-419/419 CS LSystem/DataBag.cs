@@ -21,7 +21,7 @@ internal class DataBag
     public DataBag()
     {
         SourceFiles = new ObservableCollection<string>();
-        foreach (string file in Directory.GetFiles("Systems", "*.l"))
+        foreach (var file in Directory.GetFiles("Systems", "*.l"))
             SourceFiles.Add(Path.GetFileName(file));
         SourceFiles.Add("(new)");
 
@@ -49,7 +49,7 @@ internal class DataBag
                 while ((line = sr.ReadLine()) != null)
                 {
                     string lineComment;
-                    int startComment = line.IndexOf(';');
+                    var startComment = line.IndexOf(';');
                     if (startComment >= 0)
                     {
                         lineComment = line[startComment..];
@@ -68,7 +68,7 @@ internal class DataBag
                         lineComment = "";
                     }
 
-                    int p = line.IndexOf('{');
+                    var p = line.IndexOf('{');
                     if (p >= 0)
                     {
                         line = line[..(p - 1)].Trim();
@@ -93,10 +93,10 @@ internal class DataBag
                     line = line.Trim();
                     if (line.StartsWith("Angle", StringComparison.InvariantCultureIgnoreCase))
                     {
-                        int p1 = 5;
+                        var p1 = 5;
                         while (char.IsWhiteSpace(line[p1]) || line[p1] == '=')
                             p1++;
-                        if (int.TryParse(line[p1..], out int a))
+                        if (int.TryParse(line[p1..], out var a))
                             ss.Angle = a;
                     }
                     else if (line.StartsWith("Axiom", StringComparison.InvariantCultureIgnoreCase))
@@ -123,7 +123,7 @@ internal class DataBag
 
         // Finally add to exposed (inherited) list
         SourceSystems.Clear();
-        foreach (SourceSystem sourceSystem in sl)
+        foreach (var sourceSystem in sl)
             SourceSystems.Add(sourceSystem);
     }
 }

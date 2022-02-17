@@ -28,24 +28,21 @@ internal class ClsFile
     private static void Main(string[] args)
     {
         string sType;
-        bool bRename = false;
+        var bRename = false;
 
         //string[] tsFiles = Directory.GetFiles(@"C:\Development\Eurofins\Dvpt France\Eurodat 4.5\ProcSql", "*.sql");
-        string[] tsFiles = Directory.GetFiles(@"C:\SVN\eLIMS\Trunk\eLims\SE Implementation\Stored Procedures\Eurodat4", "E4*.sql");
+        var tsFiles = Directory.GetFiles(@"C:\SVN\eLIMS\Trunk\eLims\SE Implementation\Stored Procedures\Eurodat4", "E4*.sql");
 
-        foreach (string s in tsFiles)
+        foreach (var s in tsFiles)
         {
-            string sFilename;
-            sFilename = Path.GetFileName(s);
+            var sFilename = Path.GetFileName(s);
             bRename = false;
 
             using (FileStream fs = new(s, FileMode.Open, FileAccess.Read))
             using (BinaryReader br = new(fs))
             {
-                byte[] tbBuffer;
-                int l = (int)fs.Length;
-
-                tbBuffer = br.ReadBytes(l);
+                var l = (int)fs.Length;
+                var tbBuffer = br.ReadBytes(l);
 
                 sType = tbBuffer[0] == 0xFF && tbBuffer[1] == 0xFE
                     ? "Unicode"
@@ -55,7 +52,7 @@ internal class ClsFile
 
                 if (sType == "Unicode")
                 {
-                    for (int i = 0; i < l; i++)
+                    for (var i = 0; i < l; i++)
                     {
                         if (tbBuffer[i] == 13 && tbBuffer[i + 1] == 10)
                         {

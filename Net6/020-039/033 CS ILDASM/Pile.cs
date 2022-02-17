@@ -24,7 +24,7 @@ public class Pile
             throw new Exception("Depile sur pile vide");
         else
         {
-            Noeud temp = tete;
+            var temp = tete;
             tete = tete.suivant;
             return temp.element;
         }

@@ -24,7 +24,7 @@ public partial class AboutWindow : Window
         var myAssembly = Assembly.GetExecutingAssembly();
         var aTitleAttr = (AssemblyTitleAttribute)Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyTitleAttribute));
         var aDescAttr = (AssemblyDescriptionAttribute)Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyDescriptionAttribute));
-        string sAssemblyVersion = myAssembly.GetName().Version.ToString();
+        var sAssemblyVersion = myAssembly.GetName().Version.ToString();
         var aCopyrightAttr = (AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(myAssembly, typeof(AssemblyCopyrightAttribute));
 
         AssemblyTitle.Text = aTitleAttr.Title;

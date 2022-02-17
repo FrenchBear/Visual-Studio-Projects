@@ -66,14 +66,14 @@ internal class BinaryTree<T> : IEnumerable<T>
         {
             if (Node.LeftNode != null)
             {
-                foreach (T item in EnumerateInOrder(Node.LeftNode))
+                foreach (var item in EnumerateInOrder(Node.LeftNode))
                     yield return item;
             }
 
             yield return Node.Item;
             if (Node.RightNode != null)
             {
-                foreach (T item in EnumerateInOrder(Node.RightNode))
+                foreach (var item in EnumerateInOrder(Node.RightNode))
                     yield return item;
             }
         }
@@ -121,7 +121,7 @@ internal static class MyExtensions
     // Iterate an action on an IEnumerable
     static public void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
     {
-        foreach (T item in collection)
+        foreach (var item in collection)
             action(item);
     }
 }

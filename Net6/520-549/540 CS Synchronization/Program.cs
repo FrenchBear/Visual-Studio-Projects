@@ -31,7 +31,7 @@ internal class Program
                         hs.Enqueue(i);
                         Monitor.Exit(hs);
                     });
-                for (int i = 0; i < 30; i++)
+                for (var i = 0; i < 30; i++)
                     Write($"{hs.Dequeue()} ");
                 WriteLine();
             });
@@ -48,7 +48,7 @@ internal class Program
                             hs.Enqueue(i);
                         }
                     });
-                for (int i = 0; i < 30; i++)
+                for (var i = 0; i < 30; i++)
                     Write($"{hs.Dequeue()} ");
                 WriteLine();
             });
@@ -61,12 +61,12 @@ internal class Program
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                     (int i) =>
                     {
-                        bool gotLock = false;
+                        var gotLock = false;
                         sl.Enter(ref gotLock);      // Enter blocks access if not available
                         hs.Enqueue(i);
                         sl.Exit();
                     });
-                for (int i = 0; i < 30; i++)
+                for (var i = 0; i < 30; i++)
                     Write($"{hs.Dequeue()} ");
                 WriteLine();
             });
@@ -77,9 +77,9 @@ internal class Program
                 var hs = new ConcurrentQueue<int>();
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                     (int i) => hs.Enqueue(i));
-                for (int i = 0; i < 30; i++)
+                for (var i = 0; i < 30; i++)
                 {
-                    _ = hs.TryDequeue(out int n);   // Will always succeed, single-threaded here
+                    _ = hs.TryDequeue(out var n);   // Will always succeed, single-threaded here
                     Write($"{n} ");
                 }
                 WriteLine();
@@ -88,8 +88,8 @@ internal class Program
         TestAction("1M ++ with lock",
             () =>
             {
-                var lockObject = new Object();
-                int sum = 0;
+                var lockObject = new object();
+                var sum = 0;
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                     (int i) =>
                     {
@@ -103,7 +103,7 @@ internal class Program
         TestAction("1M ++ with Increment",
             () =>
             {
-                int sum = 0;
+                var sum = 0;
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                     (int i) => _ = Increment(ref sum));
             });
@@ -111,7 +111,7 @@ internal class Program
         TestAction("1M ++ with Mutex",
             () =>
             {
-                int sum = 0;
+                var sum = 0;
                 var m = new Mutex();
                 Enumerable.Range(0, 1_000_000).AsParallel().ForAll(
                     (int i) =>
@@ -128,7 +128,7 @@ internal class Program
         WriteLine(message);
         var ti = Stopwatch.StartNew();
         action();
-        long t0 = ti.ElapsedMilliseconds;
+        var t0 = ti.ElapsedMilliseconds;
         WriteLine($"Durée: {(int)(t0 / 1000)}.{t0 % 1000:D4}\n");
     }
 }

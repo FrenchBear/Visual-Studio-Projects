@@ -3,12 +3,13 @@
 ' 2001-06-26    PV
 ' 2006-10-01    PV  VS 2005
 ' 2021-09-18    PV  VS2022, Net6
+Imports System.Windows.Forms
 
 #Disable Warning IDE1006 ' Naming Styles
 #Disable Warning IDE0052 ' Remove unread private members
 
 Public Class frmTest
-    Inherits Windows.Forms.Form
+    Inherits Form
 
     Public Sub New()
         MyBase.New()
@@ -30,7 +31,7 @@ Public Class frmTest
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private ReadOnly components As ComponentModel.Container
+    Private ReadOnly components As System.ComponentModel.Container
 
     Private WithEvents TextBox1 As Windows.Forms.TextBox
     Private WithEvents btnTestA As Windows.Forms.Button
@@ -87,7 +88,7 @@ Public Class frmTest
 
 #End Region
 
-    Private Sub btnTest_Click_1(sender As System.Object, e As EventArgs) Handles btnTestRE.Click
+    Private Sub btnTest_Click_1(sender As Object, e As EventArgs) Handles btnTestRE.Click
         If bCtrlFournisseurRE(TextBox1.Text) Then
             MsgBox("Ok")
         Else
@@ -95,7 +96,7 @@ Public Class frmTest
         End If
     End Sub
 
-    Private Sub btnTestA_Click(sender As System.Object, e As EventArgs) Handles btnTestA.Click
+    Private Sub btnTestA_Click(sender As Object, e As EventArgs) Handles btnTestA.Click
         If bCtrlFournisseurA(TextBox1.Text) Then
             MsgBox("Ok")
         Else

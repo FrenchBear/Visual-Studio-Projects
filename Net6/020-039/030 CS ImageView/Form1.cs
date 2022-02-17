@@ -74,7 +74,7 @@ public class MyForm : Form
 
         if (ofd.ShowDialog() == DialogResult.OK)
         {
-            string fileName = ofd.FileName;
+            var fileName = ofd.FileName;
             if (fileName.Length != 0)
             {
                 _FilterIndex = ofd.FilterIndex;
@@ -124,7 +124,7 @@ public class MyForm : Form
     {
         if (_MyBitmap != null)
         {
-            Graphics g = e.Graphics;
+            var g = e.Graphics;
             if (_NativeSize)
                 g.DrawImage(_MyBitmap, AutoScrollPosition.X, AutoScrollPosition.Y, _MyBitmap.Width, _MyBitmap.Height);
             else

@@ -9,27 +9,26 @@
 using System;
 using static System.Console;
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {
-        int[] t1;
-        t1 = new int[10];
+        var t1 = new int[10];
 
         int[] t2 =
         {
             1,2,3,4,5
         };
 
-        int[] t3 = new int[]
+        var t3 = new int[]
         {
           1,2,3,4,5
         };
 
         unchecked
         {
-            int a = 500000;
-            int b = 400000;
+            var a = 500000;
+            var b = 400000;
             t1[0] = a * b;
         }
         WriteLine("t1[0]: {0}", t1[0]);
@@ -38,10 +37,10 @@ internal class MyApp
         u1 = null;
         WriteLine("u1==null: {0}", u1 == null);
 
-        u1 = new Object[10];
+        u1 = new object[10];
         WriteLine("u1[0]==null: {0}", u1[0] == null);
 
-        u1[0] = new Object();
+        u1[0] = new object();
         WriteLine("u1[0]==null: {0}", u1[0] == null);
 
         _ = Console.ReadLine();

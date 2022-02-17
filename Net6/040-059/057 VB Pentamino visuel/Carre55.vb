@@ -146,9 +146,9 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
         For l = 0 To 4
             For c = 0 To 4
                 If tMotif(l, c) Then
-                    Console.Write("\xdb\xdb")
+                    Write("\xdb\xdb")
                 Else
-                    Console.Write("\xfa\xfa")
+                    Write("\xfa\xfa")
                 End If
             Next
             WriteLine()

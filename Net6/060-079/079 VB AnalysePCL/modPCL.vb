@@ -4,6 +4,7 @@
 ' 2012-02-25	PV  VS2010
 ' 2017-05-02    PV  GitHub et VS2017
 ' 2021-09-19    PV  VS2022, Net6
+Imports System.Text
 
 Module modPCL
 
@@ -291,7 +292,7 @@ Module modMacros
     Public bLearningMacro As Boolean
 
     Private Class PCLMacro
-        Public sMacroText As New Text.StringBuilder
+        Public sMacroText As New StringBuilder
         Public bIsRunning As Boolean
     End Class
 
@@ -399,10 +400,10 @@ Module modPCLError
 End Module
 
 Module modTilda
-    Dim sTildaText As System.Text.StringBuilder
+    Dim sTildaText As StringBuilder
 
     Sub TildaClearBuffer()
-        sTildaText = New Text.StringBuilder
+        sTildaText = New StringBuilder
     End Sub
 
     Sub TildaLearn(b As Byte)

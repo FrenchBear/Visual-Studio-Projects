@@ -13,7 +13,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        IEnumerable<int> r = Enumerable.Range(10, 10).DoubleListe();
+        var r = Enumerable.Range(10, 10).DoubleListe();
         r.WriteLine();
     }
 }

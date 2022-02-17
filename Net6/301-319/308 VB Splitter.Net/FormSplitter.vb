@@ -15,7 +15,7 @@ Friend Class Form1
     Private mbMoving As Boolean
     Private y0 As Integer
 
-    Private Sub imgSplitter_MouseDown(eventSender As System.Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseDown
+    Private Sub imgSplitter_MouseDown(eventSender As Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseDown
         With imgSplitter
             picSplitter.SetBounds(.Left, .Top, .Width, .Height)
         End With
@@ -24,7 +24,7 @@ Friend Class Form1
         mbMoving = True
     End Sub
 
-    Private Sub imgSplitter_MouseMove(eventSender As System.Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseMove
+    Private Sub imgSplitter_MouseMove(eventSender As Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseMove
         Dim iPos As Integer
         Dim iTableTop As Integer = 100
         Dim iSplitLimit As Integer = 10
@@ -39,7 +39,7 @@ Friend Class Form1
         End If
     End Sub
 
-    Private Sub imgSplitter_MouseUp(eventSender As System.Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseUp
+    Private Sub imgSplitter_MouseUp(eventSender As Object, eventArgs As MouseEventArgs) Handles imgSplitter.MouseUp
         Dim iPos As Integer
 
         Dim iTableTop As Integer = 100

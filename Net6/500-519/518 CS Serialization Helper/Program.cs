@@ -23,7 +23,7 @@ internal class Program
             Val = 25
         };
 
-        string s1 = Serialize(x);
+        var s1 = Serialize(x);
         string s2 = x.ToXmlString();
         Debugger.Break();
     }

@@ -14,9 +14,9 @@ internal class Program
         var r = new Random();
         var s = new SortedSet<double>();
 
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
             _ = s.Add(r.NextDouble());
-        foreach (double d in s)
+        foreach (var d in s)
             WriteLine(d);
 
         // New style
@@ -45,7 +45,7 @@ internal static class ExtensionMethods
 
     public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
     {
-        foreach (T item in collection)
+        foreach (var item in collection)
             action(item);
         return collection;
     }

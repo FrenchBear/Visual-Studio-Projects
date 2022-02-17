@@ -3,7 +3,7 @@
 
 Public Class TemplateUserControl
 
-    Private Sub ToolStripButton1_Click(sender As System.Object, e As EventArgs)
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs)
         If GroupBox1.Dock = DockStyle.None Then
             GroupBox1.Dock = DockStyle.Top
         Else

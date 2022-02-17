@@ -5,6 +5,7 @@
 ' 2006-08-04    PV
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
+Imports System.IO
 
 Module modMain
     Dim sDir As String
@@ -25,7 +26,7 @@ Module modMain
         End If
 
         'WriteLine("$1")
-        sDir = IO.Path.GetFullPath(sDir)
+        sDir = Path.GetFullPath(sDir)
         'WriteLine("$2: {0}", sDir)
 
         Dim llList As LinkedList(Of FileAndDate)
@@ -54,7 +55,7 @@ Module modMain
         Next
 
         ' Delete files starting with the older until 25% of the disk is available
-        Dim di As IO.DriveInfo
+        Dim di As DriveInfo
         'WriteLine("$5")
         For Each fad In llList
             di = My.Computer.FileSystem.GetDriveInfo(Left(sDir, 2))

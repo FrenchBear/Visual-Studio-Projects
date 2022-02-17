@@ -16,9 +16,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Action<Vehicle> maintenanceAction;
-
-        maintenanceAction = VehicleMaintenance;             // "Normal" case
+        var maintenanceAction = VehicleMaintenance;             // "Normal" case
         maintenanceAction = ContraptionMaintenance;         // Contravariance use here, delegate use a less derived type
         //maintenanceAction = InflateBicycleTires;          // Not permitted, delegate can access members only present in Bicycle;
 

@@ -1,11 +1,12 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.IO
 
 #Disable Warning IDE1006 ' Naming Styles
 
 Public Class TestForm
 
-    Private Sub TestForm_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub TestForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim loc As String = "C:\Users\Pierr\OneDrive\PicturesODMisc\Animals\Dogs\Titus"
         lvNewDocuments.Items.Add(New ListViewItemDoc(loc + "\Photo 039.jpg"))
         lvNewDocuments.Items.Add(New ListViewItemDoc(loc + "\Photo 040.jpg"))
@@ -35,7 +36,7 @@ Class ListViewItemDoc
 
     Public Sub New(sPath As String)
         m_sPathName = sPath
-        Me.Text = IO.Path.GetFileName(sPath)
+        Me.Text = Path.GetFileName(sPath)
         Me.SubItems.Add(FileLen(sPath).ToString)
         Me.SubItems.Add(FileDateTime(sPath).ToString)
     End Sub

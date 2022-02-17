@@ -70,7 +70,7 @@ internal struct Complex : IFormattable
         if (format == null)
             format = "G";
 
-        char cFormat = format[..1].ToUpper().ToCharArray()[0];
+        var cFormat = format[..1].ToUpper().ToCharArray()[0];
 
         return cFormat switch
         {
@@ -115,7 +115,7 @@ internal class TestFormat
     private static void DoOutput(string sTitre, object o, string[] tFormat)
     {
         WriteLine(sTitre);
-        foreach (string sFormat in tFormat)
+        foreach (var sFormat in tFormat)
         {
             WriteLine("{0,-20}|{1}|", sFormat, string.Format(sFormat, o));
         }

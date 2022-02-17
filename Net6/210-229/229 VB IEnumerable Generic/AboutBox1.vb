@@ -1,14 +1,15 @@
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.IO
 
 Public Class AboutBox1
 
-    Private Sub AboutBox1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub AboutBox1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Set the title of the form.
         Dim ApplicationTitle As String
         If My.Application.Info.Title <> "" Then
             ApplicationTitle = My.Application.Info.Title
         Else
-            ApplicationTitle = IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
+            ApplicationTitle = Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
         End If
         Me.Text = String.Format("About {0}", ApplicationTitle)
         ' Initialize all of the text displayed on the About Box.
@@ -21,7 +22,7 @@ Public Class AboutBox1
         Me.TextBoxDescription.Text = My.Application.Info.Description
     End Sub
 
-    Private Sub OKButton_Click(sender As System.Object, e As EventArgs) Handles OKButton.Click
+    Private Sub OKButton_Click(sender As Object, e As EventArgs) Handles OKButton.Click
         Me.Close()
     End Sub
 

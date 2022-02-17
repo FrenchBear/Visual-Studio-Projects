@@ -1,1 +1,3 @@
-﻿<Assembly: Runtime.CompilerServices.InternalsVisibleTo("VB425TestProject")>
+﻿Imports System.Runtime.CompilerServices
+
+<Assembly: InternalsVisibleTo("VB425TestProject")>

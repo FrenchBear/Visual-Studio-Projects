@@ -43,7 +43,7 @@ internal class MaClasse2
 {
 }
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {
@@ -58,7 +58,7 @@ internal class MyApp
 
     private static void Zap(object o)
     {
-        Type t = o.GetType();
+        var t = o.GetType();
         WriteLine(t.Name);
 
         var m = (MonAttribut)t.GetCustomAttributes(typeof(MonAttribut), false)[0];

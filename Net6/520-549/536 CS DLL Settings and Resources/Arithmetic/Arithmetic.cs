@@ -23,31 +23,31 @@ namespace ArithmeticNamespace
             // Doesn't work, return the config for the application, not the DLL
             //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
-            string dllPath = GetType().Assembly.Location;
-            Configuration config = ConfigurationManager.OpenExeConfiguration(dllPath);
+            var dllPath = GetType().Assembly.Location;
+            var config = ConfigurationManager.OpenExeConfiguration(dllPath);
 
-            ConfigurationSectionGroup applicationSectionGroup = config.GetSectionGroup("applicationSettings");
-            ConfigurationSection applicationConfigSection = applicationSectionGroup.Sections[GetDllNamespace() + ".Properties.Settings"];
+            var applicationSectionGroup = config.GetSectionGroup("applicationSettings");
+            var applicationConfigSection = applicationSectionGroup.Sections[GetDllNamespace() + ".Properties.Settings"];
             var clientSection = (ClientSettingsSection)applicationConfigSection;
-            SettingElement applicationSetting = clientSection.Settings.Get(settingName);
+            var applicationSetting = clientSection.Settings.Get(settingName);
             return applicationSetting?.Value.ValueXml.InnerText;
         }
 
         // Trick to get base namespace instead of hardcoding the string
         private string GetDllNamespace()
         {
-            Type type = GetType();
-            return type.FullName.Substring(0, type.FullName.LastIndexOf('.'));
+            var type = GetType();
+            return type.FullName?.Substring(0, type.FullName.LastIndexOf('.')) ?? "";
         }
 
         // Returns a specific applicationSetting from dll.config using typed access
-        public string GetTypedApplicationSetting(string settingName) 
+        public static string GetTypedApplicationSetting(string settingName) 
             => (string)Properties.Settings.Default[settingName];
 
         // Return appSetting from dll.config
         public string GetAppSetting(string settingName)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(GetType().Assembly.Location);
+            var config = ConfigurationManager.OpenExeConfiguration(GetType().Assembly.Location);
             return config.AppSettings.Settings[settingName].Value;
         }
 
@@ -57,13 +57,10 @@ namespace ArithmeticNamespace
 
         public Stream GetImageResource(string imageName, string defaultValue)
         {
-            Assembly _assembly;
-            Stream _imageStream;
-            const string MyNameSpace = "Arithmetic";
-
-            _assembly = Assembly.GetExecutingAssembly();
-            _imageStream = _assembly.GetManifestResourceStream(MyNameSpace + "." + imageName);
-            return _imageStream;
+            const string myNameSpace = "Arithmetic";
+            var assembly = Assembly.GetExecutingAssembly();
+            var imageStream = assembly.GetManifestResourceStream(myNameSpace + "." + imageName);
+            return imageStream;
         }
     }
 }

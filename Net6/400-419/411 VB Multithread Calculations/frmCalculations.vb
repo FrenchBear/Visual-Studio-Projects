@@ -38,7 +38,7 @@ Public Class CalculationsForm
         lblTotalCalculations.Text = "TotalCalculations are " & TotalCalculations.ToString
     End Sub
 
-    Private Sub Calculator1_FactorialComplete(Factorial As System.Double, TotalCalculations As System.Double) Handles Calculator1.FactorialComplete
+    Private Sub Calculator1_FactorialComplete(Factorial As Double, TotalCalculations As Double) Handles Calculator1.FactorialComplete
         ' BeginInvoke causes asynchronous execution to begin at the address
         ' specified by the delegate. Simply put, it transfers execution of
         ' this method back to the main thread. Any parameters required by
@@ -47,15 +47,15 @@ Public Class CalculationsForm
         Me.BeginInvoke(New FHandler(AddressOf FactHandler), New Object() {Factorial, TotalCalculations})
     End Sub
 
-    Private Sub Calculator1_FactorialMinusComplete(Factorial As System.Double, TotalCalculations As System.Double) Handles Calculator1.FactorialMinusComplete
+    Private Sub Calculator1_FactorialMinusComplete(Factorial As Double, TotalCalculations As Double) Handles Calculator1.FactorialMinusComplete
         Me.BeginInvoke(New FHandler(AddressOf Fact1Handler), New Object() {Factorial, TotalCalculations})
     End Sub
 
-    Private Sub Calculator1_AddTwoComplete(Result As System.Int32, TotalCalculations As System.Double) Handles Calculator1.AddTwoComplete
+    Private Sub Calculator1_AddTwoComplete(Result As Int32, TotalCalculations As Double) Handles Calculator1.AddTwoComplete
         Me.BeginInvoke(New A2Handler(AddressOf Add2Handler), New Object() {Result, TotalCalculations})
     End Sub
 
-    Private Sub Calculator1_LoopComplete(TotalCalculations As System.Double, Counter As System.Int32) Handles Calculator1.LoopComplete
+    Private Sub Calculator1_LoopComplete(TotalCalculations As Double, Counter As Int32) Handles Calculator1.LoopComplete
         Me.BeginInvoke(New LDhandler(AddressOf LDoneHandler), New Object() {TotalCalculations, Counter})
     End Sub
 

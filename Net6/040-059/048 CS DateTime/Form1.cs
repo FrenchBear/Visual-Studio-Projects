@@ -40,13 +40,13 @@ public class Form1 : Form
 
     public void Chrono(sub s)
     {
-        string sNomFonction = s.GetInvocationList()[0].Method.Name;
+        var sNomFonction = s.GetInvocationList()[0].Method.Name;
         Trace("Debut " + sNomFonction);
-        DateTime t1 = DateTime.Now;
+        var t1 = DateTime.Now;
         s();
-        DateTime t2 = DateTime.Now;
+        var t2 = DateTime.Now;
         Trace("Fin " + sNomFonction);
-        TimeSpan ts = t2 - t1;
+        var ts = t2 - t1;
         Trace("Durée: " + ts);
         Trace();
     }
@@ -60,7 +60,7 @@ public class Form1 : Form
 
     private void TestInterne(IDictionary d)
     {
-        for (int i = 1; i < 20000; i++)
+        for (var i = 1; i < 20000; i++)
         {
             d.Add(r.Next(), null);
         }

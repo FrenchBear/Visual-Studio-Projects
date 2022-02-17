@@ -36,14 +36,14 @@ public partial class Scene1
         {
             MemoryStream ms = new();
             StreamWriter sw = new(ms);
-            string str = TextBox1.Text;
+            var str = TextBox1.Text;
             sw.Write(str);
             sw.Flush();
             ms.Flush();
             ms.Position = 0;
             try
             {
-                object content = XamlReader.Load(ms);
+                var content = XamlReader.Load(ms);
                 if (content != null)
                 {
                     cc.Children.Clear();

@@ -1,8 +1,10 @@
-﻿Partial Class CDemo
-    Inherits System.ComponentModel.Component
+﻿Imports System.ComponentModel
 
-    <System.Diagnostics.DebuggerNonUserCode()>
-    Public Sub New(ByVal container As System.ComponentModel.IContainer)
+Partial Class CDemo
+    Inherits Component
+
+    <DebuggerNonUserCode()>
+    Public Sub New(ByVal container As IContainer)
         MyClass.New()
 
         'Required for Windows.Forms Class Composition Designer support
@@ -13,7 +15,7 @@
     End Sub
 
     'Component overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -25,14 +27,14 @@
     End Sub
 
     'Required by the Component Designer
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
     'NOTE: The following procedure is required by the Component Designer
     'It can be modified using the Component Designer.
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        components = New System.ComponentModel.Container()
+        components = New Container()
     End Sub
 
 End Class

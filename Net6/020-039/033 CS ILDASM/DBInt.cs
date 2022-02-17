@@ -2,25 +2,25 @@ using System;
 
 namespace MaBibliotheque;
 
-public struct DBInt
+public readonly struct DBInt
 {
     public static readonly DBInt Null = new();
-    private readonly int value;
-    private readonly bool defined;
+    private readonly int Value;
+    private readonly bool Defined;
 
-    public bool IsNull => !defined;
+    public bool IsNull => !Defined;
 
     private DBInt(int x)
     {
-        value = x;
-        defined = true;
+        Value = x;
+        Defined = true;
     }
 
-    public static DBInt operator +(DBInt x, DBInt y) => !x.defined || !y.defined ? Null : new DBInt(x.value + y.value);
+    public static DBInt operator +(DBInt x, DBInt y) => !x.Defined || !y.Defined ? Null : new DBInt(x.Value + y.Value);
 
     public static implicit operator DBInt(int x) => new(x);
 
-    public static explicit operator int(DBInt x) => x.defined ? x.value : throw new Exception("Valeur NULL");
+    public static explicit operator int(DBInt x) => x.Defined ? x.Value : throw new Exception("Valeur NULL");
 
-    public override string ToString() => defined ? value.ToString() : "<NULL>";
+    public override string ToString() => Defined ? Value.ToString() : "<NULL>";
 }

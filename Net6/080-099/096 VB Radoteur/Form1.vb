@@ -5,6 +5,7 @@
 ' 2011-09-26	PV  VS2010 and reading words from a file --> doesn't work, should not be recursive...
 
 Imports System.Collections.Generic
+Imports System.ComponentModel
 Imports System.IO
 
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
@@ -36,7 +37,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -106,7 +107,7 @@ Public Class Form1
     Private Const isFromFile As Boolean = True
 
     ' Initialize words list and show it
-    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If isFromFile Then
             ' Read words from c:\radoteur.txt
             tsWords = New List(Of String)()
@@ -166,7 +167,7 @@ Public Class Form1
         Debug.WriteLine("Source: nm:" & nm.ToString & "  nw:" & nw.ToString & " = " & (nm / nw).ToString("0.00%"))
     End Sub
 
-    Private Sub btnGo_Click(sender As System.Object, e As EventArgs) Handles btnGo.Click
+    Private Sub btnGo_Click(sender As Object, e As EventArgs) Handles btnGo.Click
         ' Radoteur
         iMaxWords = tsWords.Count - 1
 

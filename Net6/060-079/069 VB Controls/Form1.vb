@@ -2,6 +2,7 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022, Net6
+Imports System.ComponentModel
 
 Public Class Form1
     Inherits Form
@@ -29,7 +30,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.

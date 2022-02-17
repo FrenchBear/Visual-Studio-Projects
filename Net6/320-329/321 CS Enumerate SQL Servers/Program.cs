@@ -18,8 +18,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string[] ts = GetServers();
-        foreach (string s in ts)
+        var ts = GetServers();
+        foreach (var s in ts)
             WriteLine(s);
    
     }
@@ -54,12 +54,12 @@ internal class Program
     public static string[] GetServers()
     {
         string[] retval = null;
-        string txt = string.Empty;
-        IntPtr henv = IntPtr.Zero;
-        IntPtr hconn = IntPtr.Zero;
+        var txt = string.Empty;
+        var henv = IntPtr.Zero;
+        var hconn = IntPtr.Zero;
         StringBuilder inString = new(SQL_DRIVER_STR);
         StringBuilder outString = new(DEFAULT_RESULT_SIZE);
-        short inStringLength = (short)inString.Length;
+        var inStringLength = (short)inString.Length;
         short lenNeeded = 0;
 
         try
@@ -83,8 +83,8 @@ internal class Program
                                 }
                             }
                             txt = outString.ToString();
-                            int start = txt.IndexOf("{") + 1;
-                            int len = txt.IndexOf("}") - start;
+                            var start = txt.IndexOf("{") + 1;
+                            var len = txt.IndexOf("}") - start;
                             txt = (start > 0) && (len > 0) ? txt.Substring(start, len) : string.Empty;
                         }
                     }

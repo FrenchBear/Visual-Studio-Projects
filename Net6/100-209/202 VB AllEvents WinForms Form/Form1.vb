@@ -1,10 +1,11 @@
 ﻿' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010  Added missing events
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.ComponentModel
 
 Public Class Form1
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim c As New Chien
 
         Dim a As Animal = c
@@ -431,7 +432,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Form1_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles Me.Validating
+    Private Sub Form1_Validating(sender As Object, e As CancelEventArgs) Handles Me.Validating
         Debug.WriteLine("Form1_Validating")
 
     End Sub
@@ -441,23 +442,23 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Form1_ClientSizeChanged(sender As System.Object, e As EventArgs) Handles MyBase.ClientSizeChanged
+    Private Sub Form1_ClientSizeChanged(sender As Object, e As EventArgs) Handles MyBase.ClientSizeChanged
         Debug.WriteLine("Form1_ClientSizeChanged")
     End Sub
 
-    Private Sub Form1_HelpButtonClicked(sender As System.Object, e As System.ComponentModel.CancelEventArgs) Handles MyBase.HelpButtonClicked
+    Private Sub Form1_HelpButtonClicked(sender As Object, e As CancelEventArgs) Handles MyBase.HelpButtonClicked
         Debug.WriteLine("Form1_HelpButtonClicked")
     End Sub
 
-    Private Sub Form1_PreviewKeyDown(sender As System.Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
+    Private Sub Form1_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
         Debug.WriteLine("Form1_PreviewKeyDown")
     End Sub
 
-    Private Sub Form1_RightToLeftLayoutChanged(sender As System.Object, e As EventArgs) Handles MyBase.RightToLeftLayoutChanged
+    Private Sub Form1_RightToLeftLayoutChanged(sender As Object, e As EventArgs) Handles MyBase.RightToLeftLayoutChanged
         Debug.WriteLine("Form1_RightToLeftLayoutChanged")
     End Sub
 
-    Private Sub Form1_Shown(sender As System.Object, e As EventArgs) Handles MyBase.Shown
+    Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Debug.WriteLine("Form1_Shown")
     End Sub
 

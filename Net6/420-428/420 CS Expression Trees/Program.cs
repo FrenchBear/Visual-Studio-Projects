@@ -22,7 +22,7 @@ internal class Program
         var operation = (ConditionalExpression)Signe.Body;
         var test = (BinaryExpression)operation.Test;
         var ifTrue = (ConstantExpression)operation.IfTrue;
-        Expression ifFalse = operation.IfFalse;
+        var ifFalse = operation.IfFalse;
         /*
         ParameterExpression left = (ParameterExpression)operation.;
         ConstantExpression right = (ConstantExpression)operation.Right;
@@ -31,10 +31,10 @@ internal class Program
         WriteLine("Decomposed expression: {0} => {1} ? {2} : {3}",
             param.Name, test, ifTrue, ifFalse);
 
-        Func<int, int> SigneCompiled = Signe.Compile();
-        int s1 = SigneCompiled(3);
-        int s2 = SigneCompiled(0);
-        int s3 = SigneCompiled(-7);
+        var SigneCompiled = Signe.Compile();
+        var s1 = SigneCompiled(3);
+        var s2 = SigneCompiled(0);
+        var s3 = SigneCompiled(-7);
 
         /* Does not work...
         Expression<Func<long, long>> Factorial1 = x => x <= 2 ? x : x * Factorial1(x - 1);
@@ -48,16 +48,16 @@ internal class Program
         */
 
         // Creating a parameter expression.
-        ParameterExpression value = Expression.Parameter(typeof(int), "value");
+        var value = Expression.Parameter(typeof(int), "value");
 
         // Creating an expression to hold a local variable.
-        ParameterExpression result = Expression.Parameter(typeof(int), "result");
+        var result = Expression.Parameter(typeof(int), "result");
 
         // Creating a label to jump to from a loop.
-        LabelTarget label = Expression.Label(typeof(int));
+        var label = Expression.Label(typeof(int));
 
         // Creating a method body.
-        BlockExpression block = Expression.Block(
+        var block = Expression.Block(
             // Adding a local variable.
             new[] { result },
             // Assigning a constant to a local variable: result = 1
@@ -82,7 +82,7 @@ internal class Program
         var factorialTree = Expression.Lambda<Func<int, int>>(block, value);
 
         // Compile and execute an expression tree.
-        int factorial = Expression.Lambda<Func<int, int>>(block, value).Compile()(5);
+        var factorial = Expression.Lambda<Func<int, int>>(block, value).Compile()(5);
 
         WriteLine(factorial);
 

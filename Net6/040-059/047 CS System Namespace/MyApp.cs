@@ -9,7 +9,7 @@ using System.IO;
 using System.Reflection;
 using static System.Console;
 
-internal class MyApp
+internal static class MyApp
 {
     private static Hashtable dicMain;
     private static Hashtable dic;
@@ -69,15 +69,15 @@ internal class MyApp
 
         writer.WriteLine("<HTML><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=0><TR><TH></TH>");
         SortedList slMain = new(dicMain);
-        IDictionaryEnumerator enuMain = slMain.GetEnumerator();
+        var enuMain = slMain.GetEnumerator();
         while (enuMain.MoveNext())
             writer.Write("<TH>{0}</TH>", enuMain.Key);
         writer.WriteLine("</TD>");
 
-        IDictionaryEnumerator enuNameSpaces = slNameSpaces.GetEnumerator();
+        var enuNameSpaces = slNameSpaces.GetEnumerator();
         while (enuNameSpaces.MoveNext())
         {
-            string ns = enuNameSpaces.Key.ToString();
+            var ns = enuNameSpaces.Key.ToString();
             writer.WriteLine("<TR VAlign=\"Top\"><TD>{0}</TD>", ns);
             enuMain.Reset();
             while (enuMain.MoveNext())
@@ -116,7 +116,7 @@ internal class MyApp
 
         var a = Assembly.LoadFrom(Path.Join(@"C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.10", sNomAssembly ));
 
-        foreach (Module m in a.GetModules())
+        foreach (var m in a.GetModules())
             AnalyseModule(m);
     }
 
@@ -124,7 +124,7 @@ internal class MyApp
     {
         WriteLine("Module {0}", m.Name);
 
-        foreach (Type t in m.GetTypes())
+        foreach (var t in m.GetTypes())
             AnalyseType(t);
     }
 
@@ -177,8 +177,8 @@ internal class MyApp
         string bn = t.FullName.Substring(p+1);	  // basename
         */
 
-        string ns = t.Namespace;
-        string bn = t.Name;
+        var ns = t.Namespace;
+        var bn = t.Name;
 
         if (t.IsClass) bn = "class " + bn;
         if (t.IsValueType && !t.IsEnum) bn = "struct " + bn;

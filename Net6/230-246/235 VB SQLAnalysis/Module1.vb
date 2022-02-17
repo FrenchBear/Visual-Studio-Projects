@@ -3,6 +3,7 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
 
+Imports System.Text
 Imports System.Text.RegularExpressions
 
 Module Module1
@@ -14,7 +15,7 @@ Module Module1
         Dim c1 As Long = QueryPerformanceCounter()
         Dim sOriginal As String = My.Computer.FileSystem.ReadAllText(sFile)
         sOriginal = "CREATE    FUNCTION    [dbo].[toto]()" & vbCrLf & "AS SELECT * FROM T1"
-        Dim sbMasked As New Text.StringBuilder(sOriginal)
+        Dim sbMasked As New StringBuilder(sOriginal)
         Dim c2 As Long = QueryPerformanceCounter()
 
         ' Mask comments and strings

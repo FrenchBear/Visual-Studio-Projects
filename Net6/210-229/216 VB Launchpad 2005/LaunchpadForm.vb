@@ -6,14 +6,15 @@
 
 Option Compare Text
 
+Imports System.Xml
 Imports vb = Microsoft.VisualBasic
 
 #Disable Warning IDE1006 ' Naming Styles
 
 Public Class LaunchpadForm
-    ReadOnly colMenus As New Generic.Dictionary(Of String, MenuCommand)
+    ReadOnly colMenus As New Dictionary(Of String, MenuCommand)
 
-    Private Sub GenericClick(sender As System.Object, e As EventArgs)
+    Private Sub GenericClick(sender As Object, e As EventArgs)
         Dim mc As MenuCommand = colMenus(sender.tag)
 
         'If mc.iType = MenuCommand.MenuCommandTypeEnum.mctCommand Then
@@ -31,20 +32,20 @@ Public Class LaunchpadForm
     End Sub
 
     Private Sub LaunchpadForm_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Dim reader As New Xml.XmlTextReader("Menu.xml")
+        Dim reader As New XmlTextReader("Menu.xml")
         Dim mc As MenuCommand
         While reader.Read()
             reader.MoveToContent()
-            If reader.NodeType = Xml.XmlNodeType.Element And reader.Name = "Info" Then
+            If reader.NodeType = XmlNodeType.Element And reader.Name = "Info" Then
                 ' nop
-            ElseIf reader.NodeType = Xml.XmlNodeType.Element And reader.Name = "MenuCommand" Then
+            ElseIf reader.NodeType = XmlNodeType.Element And reader.Name = "MenuCommand" Then
                 Dim iNiv As Integer = 0
                 mc = New MenuCommand With {
                     .iType = CInt(reader.GetAttribute("Type")),
                     .iLevel = CInt(reader.GetAttribute("Level"))
                 }
                 While reader.Read
-                    If reader.NodeType = Xml.XmlNodeType.Element Then
+                    If reader.NodeType = XmlNodeType.Element Then
                         iNiv += 1
                         Select Case reader.Name
                             Case "UserKey"
@@ -70,7 +71,7 @@ Public Class LaunchpadForm
                                 mc.bVisibleInUserMode = CBool(reader.Value)
                         End Select
                     End If
-                    If reader.NodeType = Xml.XmlNodeType.EndElement Then
+                    If reader.NodeType = XmlNodeType.EndElement Then
                         iNiv -= 1
                         If iNiv < 0 Then Exit While
                     End If
@@ -86,7 +87,7 @@ Public Class LaunchpadForm
         'MsgBox("Found: " & colMenus.Count & " menus")
         Dim tsmiHead(4), tsmiCommand As ToolStripMenuItem
         Dim bSepButton As Boolean = False
-        For Each x As Generic.KeyValuePair(Of String, MenuCommand) In colMenus
+        For Each x As KeyValuePair(Of String, MenuCommand) In colMenus
             mc = x.Value
             Select Case mc.iType
                 Case MenuCommand.MenuCommandTypeEnum.mctMenuHeader, MenuCommand.MenuCommandTypeEnum.mctCommand, MenuCommand.MenuCommandTypeEnum.mctInternal, MenuCommand.MenuCommandTypeEnum.mctPlugIn, MenuCommand.MenuCommandTypeEnum.mctVBASub, MenuCommand.MenuCommandTypeEnum.mctVBScript
@@ -193,7 +194,7 @@ Public Class LaunchpadForm
 
     End Function
 
-    Private Sub cmdExit_Click(sender As System.Object, e As EventArgs) Handles cmdExit.Click
+    Private Sub cmdExit_Click(sender As Object, e As EventArgs) Handles cmdExit.Click
         Me.Close()
     End Sub
 

@@ -14,16 +14,15 @@ internal class Program
     private static void Main(string[] args)
     {
         const int n = 15;
-        double[] ta, tsin, tcos;
-        ta = new double[n];
-        tsin = new double[n];
-        tcos = new double[n];
+        var ta = new double[n];
+        var tsin = new double[n];
+        var tcos = new double[n];
 
         // Build a table of cos and sin for 1, 0.1, 0.01, 0.001, ...
         // Of course, for the real algorithm, we should use predefined constants
         // and probably better distributed than that -- now what's the optimal?
-        double a = 1.0;
-        for (int i = 0; i < n; i++)
+        var a = 1.0;
+        for (var i = 0; i < n; i++)
         {
             ta[i] = a;
             tsin[i] = Math.Sin(a);
@@ -32,20 +31,20 @@ internal class Program
         }
 
         // Take a random angle (0..Pi/2)
-        double a0 = 1.1823614786;
+        var a0 = 1.1823614786;
 
         a = a0;
         // Start with non-rotated vector (1,0)
-        double x = 1.0;
-        double y = 0.0;
+        var x = 1.0;
+        var y = 0.0;
         // Do incremental rotation of 1, 0.1, 0.01.. to rotate the value of a
-        for (int i = 0; i < n; i++)
+        for (var i = 0; i < n; i++)
         {
             while (a >= ta[i])
             {
                 // Coordinates before rotation
-                double x0 = x;
-                double y0 = y;
+                var x0 = x;
+                var y0 = y;
 
                 // We do an incremental rotation of ta[i]
                 a -= ta[i];

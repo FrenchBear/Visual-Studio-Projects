@@ -17,14 +17,14 @@ internal class Program
 
     private static void AddDivisorFilter(int d)
     {
-        int divisor = Math.Min(d, 100);
+        var divisor = Math.Min(d, 100);
         filters.Add(n => n % divisor == 0);
     }
 
     private static void WriteLine<T>(IEnumerable<T> list)
     {
-        bool first = true;
-        foreach (T item in list)
+        var first = true;
+        foreach (var item in list)
         {
             if (first)
             {
@@ -50,7 +50,7 @@ internal class Program
         IEnumerable<int> vi = new List<int> { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
         WriteLine(vi);
 
-        foreach (Predicate<int> item in filters)
+        foreach (var item in filters)
             vi = vi.Where(n => !item(n));
         WriteLine(vi);
     }

@@ -16,8 +16,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Version OSVer = Environment.OSVersion.Version;
-        int BuildVersion = GetBuildVersion();
+        var OSVer = Environment.OSVersion.Version;
+        var BuildVersion = GetBuildVersion();
 
         WriteLine("OSVer: " + OSVer);
         WriteLine("Build Version: {0}", BuildVersion);
@@ -27,14 +27,14 @@ internal class Program
 
     private static string RegistryRead(string RegistryPath, string Field, string DefaultValue)
     {
-        string rtn = "";
-        string backSlash = "";
-        string newRegistryPath = "";
+        var rtn = "";
+        var backSlash = "";
+        var newRegistryPath = "";
 
         try
         {
             RegistryKey OurKey = null;
-            string[] split_result = RegistryPath.Split('\\');
+            var split_result = RegistryPath.Split('\\');
 
             if (split_result.Length > 0)
             {
@@ -48,7 +48,7 @@ internal class Program
 
                 if (OurKey != null)
                 {
-                    for (int i = 1; i < split_result.Length; i++)
+                    for (var i = 1; i < split_result.Length; i++)
                     {
                         newRegistryPath += backSlash + split_result[i];
                         backSlash = "\\";

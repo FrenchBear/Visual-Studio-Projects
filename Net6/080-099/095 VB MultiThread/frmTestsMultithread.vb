@@ -3,6 +3,8 @@
 ' 2004-04-17    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
+Imports System.ComponentModel
+Imports System.Threading
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -32,7 +34,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -136,9 +138,9 @@ Public Class Form1
 #End Region
 
     ' 1. Utilisation d'une classe spécifique et de Thread.Start
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim tskTâche As New clsTâches
-        Dim Thread1 As New Threading.Thread(AddressOf tskTâche.UneTâche)
+        Dim Thread1 As New Thread(AddressOf tskTâche.UneTâche)
 
         tskTâche.sTexte = "Toto"
         Thread1.Start()
@@ -147,14 +149,14 @@ Public Class Form1
     End Sub
 
     ' 2. Thread pooling
-    Private Sub Button2_Click(sender As System.Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Dim stObj1 As New StateObjet
         Dim stObj2 As New StateObjet
         stObj1.iArg = 10 : stObj1.sArg = "toto"
         stObj2.iArg = 33 : stObj2.sArg = "titi"
-        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTâche1), stObj1)
-        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTâche2), stObj2)
-        Threading.Thread.Sleep(1000)
+        ThreadPool.QueueUserWorkItem(New WaitCallback(AddressOf MaTâche1), stObj1)
+        ThreadPool.QueueUserWorkItem(New WaitCallback(AddressOf MaTâche2), stObj2)
+        Thread.Sleep(1000)
 
     End Sub
 
@@ -175,7 +177,7 @@ Public Class Form1
     End Sub
 
     ' 3. Utilisation de delegates
-    Private Sub Button3_Click(sender As System.Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim cb As New AsyncCallback(AddressOf OnComplete)
         Dim del As New DelegateMaTâche(AddressOf MaTâche)
         del.BeginInvoke(cb, del)
@@ -192,7 +194,7 @@ Public Class Form1
     End Sub
 
     ' 4. Synchronisation
-    Private Sub Button4_Click(sender As System.Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim maQ As New Queue
         maQ.Enqueue("Il était")
         maQ.Enqueue("un petit")
@@ -208,7 +210,7 @@ Public Class Form1
     End Sub
 
     ' 5. Synchronisation via Threading.AutoResetEvent
-    Private Sub Button5_Click(sender As System.Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         Dim AT As New AsyncTest
         AT.StartTask()
     End Sub
@@ -236,18 +238,18 @@ End Class
 
 ' 5. Synchronisation via Threading.AutoResetEvent
 Friend Class AsyncTest
-    Private Shared ReadOnly AsyncOpOk As New Threading.AutoResetEvent(False)
+    Private Shared ReadOnly AsyncOpOk As New AutoResetEvent(False)
 
     Public Sub StartTask()
         Dim arg As String = "toto"
-        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf Tâche), arg)
+        ThreadPool.QueueUserWorkItem(New WaitCallback(AddressOf Tâche), arg)
         AsyncOpOk.WaitOne()
         MsgBox("Fin du thread.")
     End Sub
 
     Public Sub Tâche(arg As Object)
         MsgBox("Début du thread")
-        Threading.Thread.Sleep(4000)
+        Thread.Sleep(4000)
         MsgBox("Argument: " & CStr(arg))
         AsyncOpOk.Set()
     End Sub

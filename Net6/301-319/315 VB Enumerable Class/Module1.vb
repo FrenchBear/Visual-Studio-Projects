@@ -8,6 +8,7 @@
 
 Imports System.Console
 Imports System.Runtime.CompilerServices
+Imports System.Text
 
 Module Module1
 
@@ -293,7 +294,7 @@ Module Module1
     ' In this example, 8.2, 15@ (decimal), CType(6, Short) and CType(7, Byte) are NOT returned
     ' In object example, a Puppy is returned by OfType(Of Dog)
     Sub TestOfType()
-        Dim t As Object() = New Object() {"Hello", 12, False, 5, #8/25/2008#, 8.2, 15@, New Text.StringBuilder, CType(6, Short), CType(7, Byte)}
+        Dim t As Object() = New Object() {"Hello", 12, False, 5, #8/25/2008#, 8.2, 15@, New StringBuilder, CType(6, Short), CType(7, Byte)}
         Dim li As IEnumerable(Of Integer) = t.OfType(Of Integer)()
 
         Dim ld As New List(Of Dog) From {

@@ -2,6 +2,8 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022, Net6
+Imports System.ComponentModel
+Imports System.IO
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -32,7 +34,7 @@ Public Class frmEssaisIO
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -64,10 +66,10 @@ Public Class frmEssaisIO
 #End Region
 
     Private Sub btnEssaisIO_Click(sender As Object, e As EventArgs) Handles btnEssaisIO.Click
-        Dim fbm As IO.DirectoryInfo
-        fbm = New IO.DirectoryInfo("C:\Music\MP3P\Eurovision")
+        Dim fbm As DirectoryInfo
+        fbm = New DirectoryInfo("C:\Music\MP3P\Eurovision")
         MsgBox("Nb fichiers: " & fbm.GetFiles.Length)
-        For Each f As IO.FileInfo In fbm.GetFiles
+        For Each f As FileInfo In fbm.GetFiles
             Debug.WriteLine(f.Name)
         Next
     End Sub

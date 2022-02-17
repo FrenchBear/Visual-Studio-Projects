@@ -20,7 +20,7 @@ internal class Program
     private static void Main()
     {
         //int n = 1000000000;
-        int n = 32000 * 8;
+        var n = 32000 * 8;
         var tb = new bool[n];
 
         var sw1 = Stopwatch.StartNew();
@@ -51,7 +51,7 @@ internal class Program
         var segments = new ArraySegment<T>[cores];
 
         var step = array.Length / cores;
-        for (int i = 0; i < cores; i++)
+        for (var i = 0; i < cores; i++)
         {
             segments[i] = new ArraySegment<T>(array, i * step, step);
         }
@@ -63,13 +63,13 @@ internal class Program
         }
 
         var initializers = new Task[cores];
-        for (int i = 0; i < cores; i++)
+        for (var i = 0; i < cores; i++)
         {
             var index = i;
             var t = new Task(() =>
             {
                 var s = segments[index];
-                for (int j = 0; j < s.Count; j++)
+                for (var j = 0; j < s.Count; j++)
                 {
                     array[j + s.Offset] = value;
                 }
@@ -88,14 +88,14 @@ internal class Program
         var step = al / cores;
 
         var tasks = new Task[cores];
-        for (int i = 0; i < cores; i++)
+        for (var i = 0; i < cores; i++)
         {
             var index = i;
             tasks[i] = new Task(() =>
             {
-                int low = step * index;
-                int high = (index == cores - 1) ? al - 1 : low + step - 1;
-                for (int j = low; j <= high; j++)
+                var low = step * index;
+                var high = (index == cores - 1) ? al - 1 : low + step - 1;
+                for (var j = low; j <= high; j++)
                     array[j] = value;
             });
             tasks[i].Start();
@@ -110,7 +110,7 @@ public static class ArrayExtensions
     // Simplest extension method, just fill value using a simple loop
     public static void Populate<T>(this T[] arr, T value)
     {
-        for (int i = 0; i < arr.Length; i++)
+        for (var i = 0; i < arr.Length; i++)
             arr[i] = value;
     }
 
@@ -123,14 +123,14 @@ public static class ArrayExtensions
         var al = array.Length;
         var step = al / cores;
         var tasks = new Task[cores];
-        for (int i = 0; i < cores; i++)
+        for (var i = 0; i < cores; i++)
         {
             var index = i;
             tasks[i] = new Task(() =>
             {
                 var low = index * step;
-                int high = (index == cores - 1) ? al - 1 : low + step - 1;
-                for (int j = low; j <= high; j++)
+                var high = (index == cores - 1) ? al - 1 : low + step - 1;
+                for (var j = low; j <= high; j++)
                     array[j] = value;
             });
             tasks[i].Start();

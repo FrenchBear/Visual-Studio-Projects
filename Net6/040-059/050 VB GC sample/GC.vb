@@ -215,7 +215,7 @@ Public Module ModMain
         Public Overloads Shared Sub Display(s As String)
             Dim x As Integer
             For x = 0 To indent * 3 - 1
-                Console.Write(" ")
+                Write(" ")
             Next
             WriteLine(s)
         End Sub

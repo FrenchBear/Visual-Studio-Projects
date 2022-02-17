@@ -3,12 +3,13 @@
 '
 ' 2001-01-27    PV
 ' 2021-09-18    PV  VS2022, Net6
+Imports System.Windows.Forms
 
 #Disable Warning IDE1006 ' Naming Styles
 #Disable Warning IDE0052 ' Remove unread private members
 
 Public Class MyMsgBox2
-    Inherits Windows.Forms.Form
+    Inherits Form
 
     Public Sub New()
         MyBase.New()
@@ -30,7 +31,7 @@ Public Class MyMsgBox2
 #Region " Windows Form Designer generated code "
 
     'Required by the Windows Form Designer
-    Private components As ComponentModel.Container
+    Private components As System.ComponentModel.Container
 
     Protected WithEvents btnOk As Windows.Forms.Button
     Private WithEvents txtInfo As Windows.Forms.TextBox
@@ -42,7 +43,7 @@ Public Class MyMsgBox2
     'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Me.components = New ComponentModel.Container
+        Me.components = New System.ComponentModel.Container
         Me.btnOk = New Windows.Forms.Button
         Me.Label1 = New Windows.Forms.Label
         Me.txtInfo = New Windows.Forms.TextBox

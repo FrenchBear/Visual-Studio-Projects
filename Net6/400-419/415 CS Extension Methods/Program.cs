@@ -14,7 +14,7 @@ namespace CS415_Extension_Methods
     {
         private static void Main(string[] args)
         {
-            string s = "hello world";
+            var s = "hello world";
             string t = s.Reverse().Concat();
             int n = s.WordCount();
 
@@ -28,13 +28,13 @@ namespace ExtensionMethods
 {
     public static class MyExtensions
     {
-        public static int WordCount(this String str) => str.Split(new char[] { ' ', '.', '?' },
+        public static int WordCount(this string str) => str.Split(new char[] { ' ', '.', '?' },
                              StringSplitOptions.RemoveEmptyEntries).Length;
 
-        public static String Concat(this IEnumerable<char> ie)
+        public static string Concat(this IEnumerable<char> ie)
         {
             var sb = new StringBuilder();
-            foreach (char c in ie)
+            foreach (var c in ie)
                 _ = sb.Append(c);
             return sb.ToString();
         }

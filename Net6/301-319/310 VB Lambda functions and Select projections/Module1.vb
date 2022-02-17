@@ -4,6 +4,7 @@
 ' 2012-02-25    PV  VS2010
 ' 2012-03-04    List --> IEnumerable; Console output; C# version
 ' 2021-09-20    PV  VS2022; Net6
+Imports System.Text
 
 Module Module1
 
@@ -24,7 +25,7 @@ Module Module1
         lengths = fruits.Select(selector)
 
         ' Display the results.
-        Dim output As New Text.StringBuilder
+        Dim output As New StringBuilder
         For Each length As Integer In lengths
             output.AppendLine(length.ToString)
         Next

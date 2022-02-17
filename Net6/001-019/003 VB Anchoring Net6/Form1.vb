@@ -6,6 +6,8 @@
 ' 2006-10-01    PV      VS2005
 ' 2012-02-25    PV      VS2010
 ' 2021-09-16    PV      VS2021/Net6 - Complete rewrite, since original controls are not support anymore in .Net Core
+Imports System.ComponentModel
+Imports System.IO
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -32,11 +34,11 @@ Public Class FormAncrage
         End
     End Sub
 
-    Protected Sub FileSystemWatcher1_Changed(sender As Object, e As IO.FileSystemEventArgs) Handles FileSystemWatcher1.Changed
+    Protected Sub FileSystemWatcher1_Changed(sender As Object, e As FileSystemEventArgs) Handles FileSystemWatcher1.Changed
         Trace(e.ToString & ": " & e.FullPath)
     End Sub
 
-    Private Sub btnOk_Click(sender As System.Object, e As EventArgs) Handles btnOk.Click
+    Private Sub btnOk_Click(sender As Object, e As EventArgs) Handles btnOk.Click
         Trace("btnOk_Click")
     End Sub
 
@@ -61,7 +63,7 @@ Public Class FormAncrage
         Trace("TextBox2_LostFocus")
     End Sub
 
-    Private Sub TextBox1_Validating(sender As Object, e As ComponentModel.CancelEventArgs) Handles TextBox1.Validating
+    Private Sub TextBox1_Validating(sender As Object, e As CancelEventArgs) Handles TextBox1.Validating
         Trace("TextBox1_Validating")
     End Sub
 
@@ -69,7 +71,7 @@ Public Class FormAncrage
         Trace("TextBox1_Validated")
     End Sub
 
-    Private Sub TextBox2_Validating(sender As Object, e As ComponentModel.CancelEventArgs) Handles TextBox2.Validating
+    Private Sub TextBox2_Validating(sender As Object, e As CancelEventArgs) Handles TextBox2.Validating
         Trace("TextBox2_Validating")
     End Sub
 
@@ -77,7 +79,7 @@ Public Class FormAncrage
         Trace("TextBox2_Validated")
     End Sub
 
-    Private Sub MenuItem2_Click(sender As System.Object, e As EventArgs) Handles MenuItem2.Click
+    Private Sub MenuItem2_Click(sender As Object, e As EventArgs) Handles MenuItem2.Click
         Trace("MenuItem2_Click")
     End Sub
 
@@ -85,7 +87,7 @@ Public Class FormAncrage
         Trace("Form_Activated")
     End Sub
 
-    Public Sub Form_ChangeUICues(sender As Object, e As Windows.Forms.UICuesEventArgs) Handles Me.ChangeUICues
+    Public Sub Form_ChangeUICues(sender As Object, e As UICuesEventArgs) Handles Me.ChangeUICues
         Trace("Form_ChangeUICues")
     End Sub
 
@@ -97,15 +99,15 @@ Public Class FormAncrage
         Trace("Form_Closed")
     End Sub
 
-    Public Sub Form_Closing(sender As Object, e As ComponentModel.CancelEventArgs) Handles Me.Closing
+    Public Sub Form_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Trace("Form_Closing")
     End Sub
 
-    Public Sub Form_ControlAdded(sender As Object, e As Windows.Forms.ControlEventArgs) Handles Me.ControlAdded
+    Public Sub Form_ControlAdded(sender As Object, e As ControlEventArgs) Handles Me.ControlAdded
         Trace("Form_ControlAdded:  " & e.Control.ToString)
     End Sub
 
-    Public Sub Form_ControlRemoved(sender As Object, e As Windows.Forms.ControlEventArgs) Handles Me.ControlRemoved
+    Public Sub Form_ControlRemoved(sender As Object, e As ControlEventArgs) Handles Me.ControlRemoved
         Trace("Form_ControlRemoved")
     End Sub
 
@@ -121,7 +123,7 @@ Public Class FormAncrage
         Trace("Form_Enter")
     End Sub
 
-    Public Sub Form_GiveFeedback(sender As Object, e As Windows.Forms.GiveFeedbackEventArgs) Handles Me.GiveFeedback
+    Public Sub Form_GiveFeedback(sender As Object, e As GiveFeedbackEventArgs) Handles Me.GiveFeedback
         Trace("Form_GiveFeedback")
     End Sub
 
@@ -137,27 +139,27 @@ Public Class FormAncrage
         Trace("Form_HandleDestroyed")
     End Sub
 
-    Public Sub Form_HelpRequested(sender As Object, hlpevent As Windows.Forms.HelpEventArgs) Handles Me.HelpRequested
+    Public Sub Form_HelpRequested(sender As Object, hlpevent As HelpEventArgs) Handles Me.HelpRequested
         Trace("Form_HelpRequested")
     End Sub
 
-    Public Sub Form_Invalidated(sender As Object, e As Windows.Forms.InvalidateEventArgs) Handles Me.Invalidated
+    Public Sub Form_Invalidated(sender As Object, e As InvalidateEventArgs) Handles Me.Invalidated
         Trace("Form_Invalidated")
     End Sub
 
-    Public Sub Form_KeyDown(sender As Object, e As Windows.Forms.KeyEventArgs) Handles Me.KeyDown
+    Public Sub Form_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         Trace("Form_KeyDown")
     End Sub
 
-    Public Sub Form_KeyPress(sender As Object, e As Windows.Forms.KeyPressEventArgs) Handles Me.KeyPress
+    Public Sub Form_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         Trace("Form_KeyPress")
     End Sub
 
-    Public Sub Form_KeyUp(sender As Object, e As Windows.Forms.KeyEventArgs) Handles Me.KeyUp
+    Public Sub Form_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         Trace("Form_KeyUp")
     End Sub
 
-    Public Sub Form_Layout(sender As Object, e As Windows.Forms.LayoutEventArgs) Handles Me.Layout
+    Public Sub Form_Layout(sender As Object, e As LayoutEventArgs) Handles Me.Layout
         Trace("Form_Layout")
     End Sub
 
@@ -177,7 +179,7 @@ Public Class FormAncrage
         Trace("Form_MenuStart")
     End Sub
 
-    Public Sub Form_MouseWheel(sender As Object, e As Windows.Forms.MouseEventArgs) Handles Me.MouseWheel
+    Public Sub Form_MouseWheel(sender As Object, e As MouseEventArgs) Handles Me.MouseWheel
         Trace("Form_MouseWheel")
     End Sub
 
@@ -185,15 +187,15 @@ Public Class FormAncrage
         Trace("Form_Move")
     End Sub
 
-    Public Sub Form_Paint(sender As Object, e As Windows.Forms.PaintEventArgs) Handles Me.Paint
+    Public Sub Form_Paint(sender As Object, e As PaintEventArgs) Handles Me.Paint
         Trace("Form_Paint")
     End Sub
 
-    Public Sub Form_QueryAccessibilityHelp(sender As Object, e As Windows.Forms.QueryAccessibilityHelpEventArgs) Handles Me.QueryAccessibilityHelp
+    Public Sub Form_QueryAccessibilityHelp(sender As Object, e As QueryAccessibilityHelpEventArgs) Handles Me.QueryAccessibilityHelp
         Trace("Form_QueryAccessibilityHelp")
     End Sub
 
-    Public Sub Form_QueryContinueDrag(sender As Object, e As Windows.Forms.QueryContinueDragEventArgs) Handles Me.QueryContinueDrag
+    Public Sub Form_QueryContinueDrag(sender As Object, e As QueryContinueDragEventArgs) Handles Me.QueryContinueDrag
         Trace("Form_QueryContinueDrag")
     End Sub
 
@@ -215,11 +217,11 @@ Public Class FormAncrage
     'Public Sub Form_MouseLeave(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.MouseLeave
     '  Trace("Form_MouseLeave")
     'End Sub
-    Public Sub Form_MouseDown(sender As Object, e As Windows.Forms.MouseEventArgs) Handles Me.MouseDown
+    Public Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles Me.MouseDown
         Trace("Form_MouseDown")
     End Sub
 
-    Public Sub Form_MouseUp(sender As Object, e As Windows.Forms.MouseEventArgs) Handles Me.MouseUp
+    Public Sub Form_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         Trace("Form_MouseUp")
     End Sub
 
@@ -229,7 +231,7 @@ Public Class FormAncrage
     '  Public Sub Form_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles Me.MouseMove
     '    trace("Form_MouseMove")
     '  End Sub
-    Public Sub Form_DragEnter(sender As Object, e As Windows.Forms.DragEventArgs) Handles Me.DragEnter
+    Public Sub Form_DragEnter(sender As Object, e As DragEventArgs) Handles Me.DragEnter
         Trace("Form_DragEnter")
     End Sub
 
@@ -237,7 +239,7 @@ Public Class FormAncrage
         Trace("Form_DragLeave")
     End Sub
 
-    Public Sub Form_DragOver(sender As Object, e As Windows.Forms.DragEventArgs) Handles Me.DragOver
+    Public Sub Form_DragOver(sender As Object, e As DragEventArgs) Handles Me.DragOver
         Trace("Form_DragOver")
     End Sub
 
@@ -253,7 +255,7 @@ Public Class FormAncrage
         Trace("Form_VisibleChanged")
     End Sub
 
-    Private Sub Form_Validating(sender As Object, e As ComponentModel.CancelEventArgs) Handles Me.Validating
+    Private Sub Form_Validating(sender As Object, e As CancelEventArgs) Handles Me.Validating
         Trace("Form_Validating")
     End Sub
 
@@ -345,107 +347,107 @@ Public Class FormAncrage
         Trace("Form_ImeModeChanged")
     End Sub
 
-    Private Sub Form_InputLanguageChanged(sender As Object, e As Windows.Forms.InputLanguageChangedEventArgs) Handles Me.InputLanguageChanged
+    Private Sub Form_InputLanguageChanged(sender As Object, e As InputLanguageChangedEventArgs) Handles Me.InputLanguageChanged
         Trace("Form_InputLanguageChanged")
     End Sub
 
-    Private Sub Form_InputLanguageChanging(sender As Object, e As Windows.Forms.InputLanguageChangingEventArgs) Handles Me.InputLanguageChanging
+    Private Sub Form_InputLanguageChanging(sender As Object, e As InputLanguageChangingEventArgs) Handles Me.InputLanguageChanging
         Trace("Form_InputLanguageChanging")
     End Sub
 
-    Private Sub Form_AutoSizeChanged(sender As System.Object, e As EventArgs) Handles Me.AutoSizeChanged
+    Private Sub Form_AutoSizeChanged(sender As Object, e As EventArgs) Handles Me.AutoSizeChanged
         Trace("Form_AutoSizeChanged")
     End Sub
 
-    Private Sub Form_FormClosed(sender As System.Object, e As Windows.Forms.FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub Form_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         Trace("Form_FormClosed")
     End Sub
 
-    Private Sub Form_FormClosing(sender As System.Object, e As Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Trace("Form_FormClosing")
     End Sub
 
-    Private Sub Form_HelpButtonClicked(sender As System.Object, e As ComponentModel.CancelEventArgs) Handles MyBase.HelpButtonClicked
+    Private Sub Form_HelpButtonClicked(sender As Object, e As CancelEventArgs) Handles MyBase.HelpButtonClicked
         Trace("Form_HelpButtonClicked")
     End Sub
 
-    Private Sub Form_AutoValidateChanged(sender As System.Object, e As EventArgs) Handles MyBase.AutoValidateChanged
+    Private Sub Form_AutoValidateChanged(sender As Object, e As EventArgs) Handles MyBase.AutoValidateChanged
         Trace("Form_AutoValidateChanged")
     End Sub
 
-    Private Sub Form_BackgroundImageLayoutChanged(sender As System.Object, e As EventArgs) Handles MyBase.BackgroundImageLayoutChanged
+    Private Sub Form_BackgroundImageLayoutChanged(sender As Object, e As EventArgs) Handles MyBase.BackgroundImageLayoutChanged
         Trace("Form_BackgroundImageLayoutChanged")
     End Sub
 
-    Private Sub Form_ClientSizeChanged(sender As System.Object, e As EventArgs) Handles MyBase.ClientSizeChanged
+    Private Sub Form_ClientSizeChanged(sender As Object, e As EventArgs) Handles MyBase.ClientSizeChanged
         Trace("Form_ClientSizeChanged")
     End Sub
 
-    Private Sub Form_ContextMenuStripChanged(sender As System.Object, e As EventArgs) Handles MyBase.ContextMenuStripChanged
+    Private Sub Form_ContextMenuStripChanged(sender As Object, e As EventArgs) Handles MyBase.ContextMenuStripChanged
         Trace("Form_ContextMenuStripChanged")
     End Sub
 
-    Private Sub Form_DragDrop(sender As System.Object, e As Windows.Forms.DragEventArgs) Handles MyBase.DragDrop
+    Private Sub Form_DragDrop(sender As Object, e As DragEventArgs) Handles MyBase.DragDrop
         Trace("Form_DragDrop")
     End Sub
 
-    Private Sub Form_MouseCaptureChanged(sender As System.Object, e As EventArgs) Handles MyBase.MouseCaptureChanged
+    Private Sub Form_MouseCaptureChanged(sender As Object, e As EventArgs) Handles MyBase.MouseCaptureChanged
         Trace("Form_MouseCaptureChanged")
     End Sub
 
-    Private Sub Form_MouseClick(sender As System.Object, e As Windows.Forms.MouseEventArgs) Handles MyBase.MouseClick
+    Private Sub Form_MouseClick(sender As Object, e As MouseEventArgs) Handles MyBase.MouseClick
         Trace("Form_MouseClick")
     End Sub
 
-    Private Sub Form_MouseDoubleClick(sender As System.Object, e As Windows.Forms.MouseEventArgs) Handles MyBase.MouseDoubleClick
+    Private Sub Form_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles MyBase.MouseDoubleClick
         Trace("Form_MouseDoubleClick")
     End Sub
 
-    Private Sub Form_MouseEnter(sender As System.Object, e As EventArgs) Handles MyBase.MouseEnter
+    Private Sub Form_MouseEnter(sender As Object, e As EventArgs) Handles MyBase.MouseEnter
         Trace("Form_MouseEnter")
     End Sub
 
-    Private Sub Form_MouseHover(sender As System.Object, e As EventArgs) Handles MyBase.MouseHover
+    Private Sub Form_MouseHover(sender As Object, e As EventArgs) Handles MyBase.MouseHover
         Trace("Form_MouseHover")
     End Sub
 
-    Private Sub Form_MouseLeave(sender As System.Object, e As EventArgs) Handles MyBase.MouseLeave
+    Private Sub Form_MouseLeave(sender As Object, e As EventArgs) Handles MyBase.MouseLeave
         Trace("Form_MouseLeave")
     End Sub
 
-    Private Sub Form_MouseMove(sender As System.Object, e As Windows.Forms.MouseEventArgs) Handles MyBase.MouseMove
+    Private Sub Form_MouseMove(sender As Object, e As MouseEventArgs) Handles MyBase.MouseMove
         'Trace("Form_MouseMove")
     End Sub
 
-    Private Sub Form_PaddingChanged(sender As System.Object, e As EventArgs) Handles MyBase.PaddingChanged
+    Private Sub Form_PaddingChanged(sender As Object, e As EventArgs) Handles MyBase.PaddingChanged
         Trace("Form_PaddingChanged")
     End Sub
 
-    Private Sub Form_PreviewKeyDown(sender As System.Object, e As Windows.Forms.PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
+    Private Sub Form_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs) Handles MyBase.PreviewKeyDown
         Trace("Form_PreviewKeyDown")
     End Sub
 
-    Private Sub Form_RegionChanged(sender As System.Object, e As EventArgs) Handles MyBase.RegionChanged
+    Private Sub Form_RegionChanged(sender As Object, e As EventArgs) Handles MyBase.RegionChanged
         Trace("Form_RegionChanged")
     End Sub
 
-    Private Sub Form_ResizeBegin(sender As System.Object, e As EventArgs) Handles MyBase.ResizeBegin
+    Private Sub Form_ResizeBegin(sender As Object, e As EventArgs) Handles MyBase.ResizeBegin
         Trace("Form_ResizeBegin")
     End Sub
 
-    Private Sub Form_ResizeEnd(sender As System.Object, e As EventArgs) Handles MyBase.ResizeEnd
+    Private Sub Form_ResizeEnd(sender As Object, e As EventArgs) Handles MyBase.ResizeEnd
         Trace("Form_ResizeEnd")
     End Sub
 
-    Private Sub Form_RightToLeftLayoutChanged(sender As System.Object, e As EventArgs) Handles MyBase.RightToLeftLayoutChanged
+    Private Sub Form_RightToLeftLayoutChanged(sender As Object, e As EventArgs) Handles MyBase.RightToLeftLayoutChanged
         Trace("Form_RightToLeftLayoutChanged")
     End Sub
 
-    Private Sub Form_Scroll(sender As System.Object, e As Windows.Forms.ScrollEventArgs) Handles MyBase.Scroll
+    Private Sub Form_Scroll(sender As Object, e As ScrollEventArgs) Handles MyBase.Scroll
         Trace("Form_Scroll")
     End Sub
 
-    Private Sub Form_Shown(sender As System.Object, e As EventArgs) Handles MyBase.Shown
+    Private Sub Form_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         Trace("Form_Shown")
     End Sub
 

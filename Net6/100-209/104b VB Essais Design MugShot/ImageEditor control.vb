@@ -249,7 +249,7 @@ Public Class ImageEditor
         bValidZoom = False
     End Function
 
-    Private Sub tsbZoomReduce_Click(sender As System.Object, e As EventArgs) Handles tsbZoomReduce.Click
+    Private Sub tsbZoomReduce_Click(sender As Object, e As EventArgs) Handles tsbZoomReduce.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * m_fRatio + 0.5
@@ -261,7 +261,7 @@ Public Class ImageEditor
         If tscboZoom.Text <> Str(z) & "%" Then AfterZoomChange(Str(z) & "%")
     End Sub
 
-    Private Sub tsbZoomEnlarge_Click(sender As System.Object, e As EventArgs) Handles tsbZoomEnlarge.Click
+    Private Sub tsbZoomEnlarge_Click(sender As Object, e As EventArgs) Handles tsbZoomEnlarge.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * m_fRatio + 0.5
@@ -282,23 +282,23 @@ Public Class ImageEditor
     ' ====================================================
     ' Pan using scrollbars
 
-    Private Sub vsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles vsScrollBar.Scroll
+    Private Sub vsScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles vsScrollBar.Scroll
         If vsScrollBar.Value <> -pbDisplayedPic.Top Then pbDisplayedPic.Top = -vsScrollBar.Value
     End Sub
 
-    Private Sub hsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles hsScrollBar.Scroll
+    Private Sub hsScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles hsScrollBar.Scroll
         If hsScrollBar.Value <> -pbDisplayedPic.Left Then pbDisplayedPic.Left = -hsScrollBar.Value
     End Sub
 
     ' ====================================================
     ' Selection and Pan using mouse
 
-    Private Sub tsbHandTool_Click(sender As System.Object, e As EventArgs) Handles tsbHandTool.Click
+    Private Sub tsbHandTool_Click(sender As Object, e As EventArgs) Handles tsbHandTool.Click
         m_bHandMode = True
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbSelectionTool_Click(sender As System.Object, e As EventArgs) Handles tsbSelectionTool.Click
+    Private Sub tsbSelectionTool_Click(sender As Object, e As EventArgs) Handles tsbSelectionTool.Click
         m_bHandMode = False
         RefreshToolBar()
     End Sub
@@ -416,7 +416,7 @@ Public Class ImageEditor
     ' ====================================================
     ' Rotations
 
-    Private Sub tsbRotate90Left_Click(sender As System.Object, e As EventArgs) Handles tsbRotate90Left.Click
+    Private Sub tsbRotate90Left_Click(sender As Object, e As EventArgs) Handles tsbRotate90Left.Click
         m_bDirty = True
         If m_bSelectionAvailable Then
             Dim xp1, yp1, xp2, yp2 As Integer
@@ -431,7 +431,7 @@ Public Class ImageEditor
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbRotate90Right_Click(sender As System.Object, e As EventArgs) Handles tsbRotate90Right.Click
+    Private Sub tsbRotate90Right_Click(sender As Object, e As EventArgs) Handles tsbRotate90Right.Click
         m_bDirty = True
         If m_bSelectionAvailable Then
             Dim xp1, yp1, xp2, yp2 As Integer
@@ -449,7 +449,7 @@ Public Class ImageEditor
     ' ====================================================
     ' Clear selection and crop
 
-    Private Sub tsbClearSelection_Click(sender As System.Object, e As EventArgs) Handles tsbClearSelection.Click
+    Private Sub tsbClearSelection_Click(sender As Object, e As EventArgs) Handles tsbClearSelection.Click
         ClearSelection()
         RefreshToolBar()
     End Sub
@@ -459,7 +459,7 @@ Public Class ImageEditor
         RefreshImage()
     End Sub
 
-    Private Sub tsbCropSelection_Click(sender As System.Object, e As EventArgs) Handles tsbCropSelection.Click
+    Private Sub tsbCropSelection_Click(sender As Object, e As EventArgs) Handles tsbCropSelection.Click
         m_bDirty = True
         Dim imgCroppedImage As Bitmap
         imgCroppedImage = New Bitmap(m_rectSelection.Width, m_rectSelection.Height, Graphics.FromImage(m_bmpOriginalImage))
@@ -476,7 +476,7 @@ Public Class ImageEditor
     ' ====================================================
     ' Save
 
-    Private Sub tsbSave_Click(sender As System.Object, e As EventArgs) Handles tsbSave.Click
+    Private Sub tsbSave_Click(sender As Object, e As EventArgs) Handles tsbSave.Click
         ' Quqlity Control
         Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(80))
@@ -510,14 +510,14 @@ Public Class ImageEditor
     ' ====================================================
     ' Revert
 
-    Private Sub tsbRevertToSaved_Click(sender As System.Object, e As EventArgs) Handles tsbRevertToSaved.Click
+    Private Sub tsbRevertToSaved_Click(sender As Object, e As EventArgs) Handles tsbRevertToSaved.Click
         OpenDoc()
     End Sub
 
     ' ====================================================
     ' Print and ShellOpen
 
-    Private Sub tsbPrint_Click(sender As System.Object, e As EventArgs) Handles tsbPrint.Click
+    Private Sub tsbPrint_Click(sender As Object, e As EventArgs) Handles tsbPrint.Click
         If m_bDirty Then
             MsgBox("Printing a modified file is not supported." & vbCrLf &
                    "Save file, or revert changes before printing.", MsgBoxStyle.Exclamation)
@@ -527,7 +527,7 @@ Public Class ImageEditor
         ShellPrint()
     End Sub
 
-    Private Sub tsbShellOpen_Click(sender As System.Object, e As EventArgs) Handles tsbShellOpen.Click
+    Private Sub tsbShellOpen_Click(sender As Object, e As EventArgs) Handles tsbShellOpen.Click
         If m_bDirty Then
             MsgBox("Opening a modified file is not supported." & vbCrLf &
                    "Save file, or revert changes before opening.", MsgBoxStyle.Exclamation)

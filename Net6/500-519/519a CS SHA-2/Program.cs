@@ -28,7 +28,7 @@ internal class Program
         WriteLine("CS 519 SHA-2");
 
         // Test file, just because I need this function in another app
-        string s = Get_sha_512_file("sha256-384-512.pdf");
+        var s = Get_sha_512_file("sha256-384-512.pdf");
         Debug.Assert(s == "69bd8e9faaedfc01015772621086dbc3e6c0b3d3f6daac57fd39efd14ab31bc3c43707fb84f60986d127916464c910d5f3bbd0f476fb72a5411e3d5ce57d8248");
 
         // Test rotation function
@@ -122,11 +122,11 @@ internal class Program
         Debug.Assert(SHA_256(s) == hashed);
 
         // Use .Net Framework version
-        byte[] bytes = Encoding.UTF8.GetBytes(s);
+        var bytes = Encoding.UTF8.GetBytes(s);
         using SHA256Managed hashstring = new();
-        byte[] hash = hashstring.ComputeHash(bytes);
+        var hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
-        foreach (byte b in hash)
+        foreach (var b in hash)
             _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
@@ -141,11 +141,11 @@ internal class Program
         Debug.Assert(SHA_512(s) == hashed);
 
         // Use .Net Framework version
-        byte[] bytes = Encoding.UTF8.GetBytes(s);
+        var bytes = Encoding.UTF8.GetBytes(s);
         using SHA512Managed hashstring = new();
-        byte[] hash = hashstring.ComputeHash(bytes);
+        var hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
-        foreach (byte b in hash)
+        foreach (var b in hash)
             _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
@@ -156,7 +156,7 @@ internal class Program
         using var fs = new FileStream(file, FileMode.Open);
         var hash = hasher.ComputeHash(fs);
         StringBuilder hsb = new();
-        foreach (byte b in hash)
+        foreach (var b in hash)
             _ = hsb.Append(b.ToString("x2"));
         return hsb.ToString();
     }
@@ -167,11 +167,11 @@ internal class Program
         Debug.Assert(SHA_384(s) == hashed);
 
         // Use .Net Framework version
-        byte[] bytes = Encoding.UTF8.GetBytes(s);
+        var bytes = Encoding.UTF8.GetBytes(s);
         using SHA384Managed hashstring = new();
-        byte[] hash = hashstring.ComputeHash(bytes);
+        var hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
-        foreach (byte b in hash)
+        foreach (var b in hash)
             _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
@@ -185,8 +185,8 @@ internal class Program
         // append length of message (without the '1' bit or padding), _in bits_, as 64-bit big-endian integer
         // (this will make the entire post-processed length a multiple of 512 bits)
 
-        int lB = s.Length;      // Message length in Bytes (only process ascii here, one byte per character)
-        int lb = 8 * lB;        // Message length in bits
+        var lB = s.Length;      // Message length in Bytes (only process ascii here, one byte per character)
+        var lb = 8 * lB;        // Message length in bits
         nb = lb / blocksize;    // Number of blocks of 512 bits
         if (lb == 0 || lb % blocksize != 0)
             nb++;
@@ -194,18 +194,18 @@ internal class Program
             nb++;
 
         tb = new byte[nb * (blocksize / 8)];
-        for (int i = 0; i < lB; i++)
+        for (var i = 0; i < lB; i++)
         {
             tb[i] = (byte)s[i];
         }
-        int j = lB;
+        var j = lB;
         tb[j++] = 0x80;
         while ((j % (blocksize / 8)) != (blocksize - lengthsize) / 8)
             tb[j++] = 0;
         // Length is always 32-bit in this implementation
         if (lengthsize == 128)
         {
-            for (int i = 0; i < 8; i++)
+            for (var i = 0; i < 8; i++)
                 tb[j++] = 0;
         }
 
@@ -283,20 +283,20 @@ internal class Program
 
         // tb: Table of bytes
         // nb: Number of blocks
-        Preprocessing(s, 512, 64, out byte[] tb, out int nb);
+        Preprocessing(s, 512, 64, out var tb, out var nb);
 
         // Process the message in successive 512-bit chunks:
         // break message into 512-bit chunks for each chunk
 
         // br is the bloc rank (number)
-        for (int br = 0; br < nb; br++)
+        for (var br = 0; br < nb; br++)
         {
             // create a 64-entry message schedule array w[0..63] of 32-bit words
             // (The initial values in w[0..63] don't matter, so many implementations zero them here)
-            uint[] w = new uint[64];
+            var w = new uint[64];
 
             // copy chunk into first 16 words w[0..15] of the message schedule array
-            for (int i = 0; i < 64; i += 4)
+            for (var i = 0; i < 64; i += 4)
                 w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)tb[(br << 6) + i + 3];
 
             // Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
@@ -304,26 +304,26 @@ internal class Program
             //      s0 := (w[i-15] rightrotate 7) xor (w[i-15] rightrotate 18) xor (w[i-15] rightshift 3)
             //      s1 := (w[i-2] rightrotate 17) xor (w[i-2] rightrotate 19) xor (w[i-2] rightshift 10)
             //      w[i] := w[i-16] + s0 + w[i-7] + s1
-            for (int i = 16; i < 64; i++)
+            for (var i = 16; i < 64; i++)
             {
-                uint s0 = RightRotate(w[i - 15], 7) ^ RightRotate(w[i - 15], 18) ^ (w[i - 15] >> 3);
-                uint s1 = RightRotate(w[i - 2], 17) ^ RightRotate(w[i - 2], 19) ^ (w[i - 2] >> 10);
+                var s0 = RightRotate(w[i - 15], 7) ^ RightRotate(w[i - 15], 18) ^ (w[i - 15] >> 3);
+                var s1 = RightRotate(w[i - 2], 17) ^ RightRotate(w[i - 2], 19) ^ (w[i - 2] >> 10);
                 w[i] = w[i - 16] + s0 + w[i - 7] + s1;
             }
 
             // Initialize working variables to current hash value:
-            uint a = h[0];
-            uint b = h[1];
-            uint c = h[2];
-            uint d = h[3];
-            uint e = h[4];
-            uint f = h[5];
-            uint g = h[6];
-            uint hh = h[7];
+            var a = h[0];
+            var b = h[1];
+            var c = h[2];
+            var d = h[3];
+            var e = h[4];
+            var f = h[5];
+            var g = h[6];
+            var hh = h[7];
 
             // Compression function main loop:
             // for i from 0 to 63
-            for (int i = 0; i < 64; i++)
+            for (var i = 0; i < 64; i++)
             {
                 // S1 := (e rightrotate 6) xor (e rightrotate 11) xor (e rightrotate 25)
                 // ch := (e and f) xor ((not e) and g)
@@ -332,12 +332,12 @@ internal class Program
                 // maj := (a and b) xor (a and c) xor (b and c)
                 // temp2 := S0 + maj
 
-                uint S1 = RightRotate(e, 6) ^ RightRotate(e, 11) ^ RightRotate(e, 25);
-                uint ch = (e & f) ^ ((~e) & g);
-                uint temp1 = hh + S1 + ch + k[i] + w[i];
-                uint S0 = RightRotate(a, 2) ^ RightRotate(a, 13) ^ RightRotate(a, 22);
-                uint maj = (a & b) ^ (a & c) ^ (b & c);
-                uint temp2 = S0 + maj;
+                var S1 = RightRotate(e, 6) ^ RightRotate(e, 11) ^ RightRotate(e, 25);
+                var ch = (e & f) ^ ((~e) & g);
+                var temp1 = hh + S1 + ch + k[i] + w[i];
+                var S0 = RightRotate(a, 2) ^ RightRotate(a, 13) ^ RightRotate(a, 22);
+                var maj = (a & b) ^ (a & c) ^ (b & c);
+                var temp2 = S0 + maj;
 
                 hh = g;
                 g = f;
@@ -430,20 +430,20 @@ internal class Program
         // Premare message in blocks of 1024 bits (stored in bytes), with a length encoded on 128 bits
         // tb: Table of bytes
         // nb: Number of blocks
-        Preprocessing(s, 1024, 128, out byte[] tb, out int nb);
+        Preprocessing(s, 1024, 128, out var tb, out var nb);
 
         // Process the message in successive 1024-bit chunks:
         // break message into 1024-bit chunks for each chunk
 
         // br is the bloc rank (number)
-        for (int br = 0; br < nb; br++)
+        for (var br = 0; br < nb; br++)
         {
             // create a 80-entry message schedule array w[0..79] of 64-bit words
             // (The initial values in w[0..79] don't matter, so many implementations zero them here)
-            ulong[] w = new ulong[80];
+            var w = new ulong[80];
 
             // copy chunk into first 16 long words w[0..15] of the message schedule array
-            for (int i = 0; i < 128; i += 8)
+            for (var i = 0; i < 128; i += 8)
             {
                 w[i >> 3] = ((ulong)tb[(br << 7) + i + 0] << 56) + ((ulong)tb[(br << 7) + i + 1] << 48) + ((ulong)tb[(br << 7) + i + 2] << 40) + ((ulong)tb[(br << 7) + i + 3] << 32) +
                             ((ulong)tb[(br << 7) + i + 4] << 24) + ((ulong)tb[(br << 7) + i + 5] << 16) + ((ulong)tb[(br << 7) + i + 6] << 8) + (ulong)tb[(br << 7) + i + 7];
@@ -454,26 +454,26 @@ internal class Program
             //      s0 := (w[i-15] rightrotate 1) xor (w[i-15] rightrotate 8) xor (w[i-15] rightshift 7)
             //      s1 := (w[i-2] rightrotate 19) xor (w[i-2] rightrotate 61) xor (w[i-2] rightshift 6)
             //      w[i] := w[i-16] + s0 + w[i-7] + s1
-            for (int i = 16; i < 80; i++)
+            for (var i = 16; i < 80; i++)
             {
-                ulong s0 = RightRotate(w[i - 15], 1) ^ RightRotate(w[i - 15], 8) ^ (w[i - 15] >> 7);
-                ulong s1 = RightRotate(w[i - 2], 19) ^ RightRotate(w[i - 2], 61) ^ (w[i - 2] >> 6);
+                var s0 = RightRotate(w[i - 15], 1) ^ RightRotate(w[i - 15], 8) ^ (w[i - 15] >> 7);
+                var s1 = RightRotate(w[i - 2], 19) ^ RightRotate(w[i - 2], 61) ^ (w[i - 2] >> 6);
                 w[i] = w[i - 16] + s0 + w[i - 7] + s1;
             }
 
             // Initialize working variables to current hash value:
-            ulong a = h[0];
-            ulong b = h[1];
-            ulong c = h[2];
-            ulong d = h[3];
-            ulong e = h[4];
-            ulong f = h[5];
-            ulong g = h[6];
-            ulong hh = h[7];
+            var a = h[0];
+            var b = h[1];
+            var c = h[2];
+            var d = h[3];
+            var e = h[4];
+            var f = h[5];
+            var g = h[6];
+            var hh = h[7];
 
             // Compression function main loop:
             // 80 rounds for sha512
-            for (int i = 0; i < 80; i++)
+            for (var i = 0; i < 80; i++)
             {
                 // S1 := (e rightrotate 14) xor (e rightrotate 18) xor (e rightrotate 41)
                 // ch := (e and f) xor ((not e) and g)
@@ -482,12 +482,12 @@ internal class Program
                 // maj := (a and b) xor (a and c) xor (b and c)
                 // temp2 := S0 + maj
 
-                ulong S1 = RightRotate(e, 14) ^ RightRotate(e, 18) ^ RightRotate(e, 41);
-                ulong ch = (e & f) ^ ((~e) & g);
-                ulong temp1 = hh + S1 + ch + k[i] + w[i];
-                ulong S0 = RightRotate(a, 28) ^ RightRotate(a, 34) ^ RightRotate(a, 39);
-                ulong maj = (a & b) ^ (a & c) ^ (b & c);
-                ulong temp2 = S0 + maj;
+                var S1 = RightRotate(e, 14) ^ RightRotate(e, 18) ^ RightRotate(e, 41);
+                var ch = (e & f) ^ ((~e) & g);
+                var temp1 = hh + S1 + ch + k[i] + w[i];
+                var S0 = RightRotate(a, 28) ^ RightRotate(a, 34) ^ RightRotate(a, 39);
+                var maj = (a & b) ^ (a & c) ^ (b & c);
+                var temp2 = S0 + maj;
 
                 hh = g;
                 g = f;

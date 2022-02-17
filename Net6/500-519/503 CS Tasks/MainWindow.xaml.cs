@@ -24,9 +24,9 @@ public partial class MainWindow : Window
         var lt = new List<Task<double>>();
 
         AddTrace("Begin All");
-        for (int i = 1; i <= 6; i++)
+        for (var i = 1; i <= 6; i++)
         {
-            int j = i;  // Avoid compiler bug with loop variables used in closures
+            var j = i;  // Avoid compiler bug with loop variables used in closures
             lt.Add(Task.Run(() => LongMethod(j)));
         }
         /*
@@ -48,9 +48,9 @@ public partial class MainWindow : Window
     private double LongMethod(int p)
     {
         AddTrace($"Begin {p}");
-        double d = 0.0;
-        int l = (int)(10000000 * (1.0 + 2.0 * rnd.NextDouble()));
-        for (int i = 0; i < l; i++)
+        var d = 0.0;
+        var l = (int)(10000000 * (1.0 + 2.0 * rnd.NextDouble()));
+        for (var i = 0; i < l; i++)
             d = Math.Asin(Math.Acos(Math.Atan(Math.Tan(Math.Cos(Math.Sin(9.0 / 180.0 * Math.PI)))))) * 180.0 / Math.PI - 9.0;
         AddTrace($"End {p}");
         return d;
@@ -58,7 +58,7 @@ public partial class MainWindow : Window
 
     private void AddTrace(string s)
     {
-        string s1 = s + "  " + DateTime.Now.ToString("HH:mm:ss.fff");
+        var s1 = s + "  " + DateTime.Now.ToString("HH:mm:ss.fff");
         _ = Dispatcher.BeginInvoke(new Action(delegate
               {
                   _ = listBox.Items.Add(s1);

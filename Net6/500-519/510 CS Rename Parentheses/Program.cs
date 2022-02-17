@@ -17,13 +17,13 @@ internal class Program
         Regex r = new(@"( *\([0-9]+\))\.");         // number between parentheses at the end of filename
         const string SearchRoot = @"C:\Music\Humour";
 
-        foreach (string file in Directory.GetFiles(SearchRoot, "*.*", SearchOption.AllDirectories))
+        foreach (var file in Directory.GetFiles(SearchRoot, "*.*", SearchOption.AllDirectories))
         {
-            Match m = r.Match(file);
+            var m = r.Match(file);
             if (m.Success)
             {
                 WriteLine(file);
-                string newFile = r.Replace(file, "a");
+                var newFile = r.Replace(file, "a");
                 File.Move(file, newFile);
                 continue;
 
@@ -32,10 +32,10 @@ internal class Program
                 // Rename mechanism
                 const string replace = ".jpg";
 
-                string newFile2 = r.Replace(file, replace);  // file; // file.Replace('(', '[').Replace(')', ']');
-                char c0 = '`';
-                char c1 = '`';
-                char c2 = 'a';
+                var newFile2 = r.Replace(file, replace);  // file; // file.Replace('(', '[').Replace(')', ']');
+                var c0 = '`';
+                var c1 = '`';
+                var c2 = 'a';
                 while (File.Exists(newFile))
                 {
                     newFile = c0 != '`'

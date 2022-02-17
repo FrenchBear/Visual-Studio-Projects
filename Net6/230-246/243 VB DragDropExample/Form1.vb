@@ -66,7 +66,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         pb.AllowDrop = True
     End Sub
 
@@ -84,7 +84,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub pb_Click(sender As System.Object, e As EventArgs) Handles pb.Click
+    Private Sub pb_Click(sender As Object, e As EventArgs) Handles pb.Click
 
     End Sub
 

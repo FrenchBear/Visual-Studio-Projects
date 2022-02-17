@@ -11,15 +11,18 @@
 Option Strict On
 Option Explicit On
 
+Imports System.CodeDom.Compiler
+Imports System.Configuration
+Imports System.Runtime.CompilerServices
 
 
-<Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
- Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")>  _
+<CompilerGenerated(),
+ GeneratedCode("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")>
 Partial Friend NotInheritable Class MySettings
-    Inherits Global.System.Configuration.ApplicationSettingsBase
-    
-    Private Shared defaultInstance As MySettings = CType(Global.System.Configuration.ApplicationSettingsBase.Synchronized(New MySettings()),MySettings)
-    
+    Inherits ApplicationSettingsBase
+
+    Private Shared defaultInstance As MySettings = CType(Synchronized(New MySettings()), MySettings)
+
     Public Shared ReadOnly Property [Default]() As MySettings
         Get
             Return defaultInstance

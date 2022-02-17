@@ -6,7 +6,9 @@
 Option Compare Text
 
 Imports System.IO
+Imports System.Xml
 Imports System.Xml.Serialization
+Imports Microsoft.VisualBasic.FileIO
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -14,7 +16,7 @@ Public Class Form1
     Dim sConfigPath As String
     Dim all As CheckSPConfigurations
 
-    Private Sub btnExecute_Click(sender As System.Object, e As EventArgs) Handles btnExecute.Click
+    Private Sub btnExecute_Click(sender As Object, e As EventArgs) Handles btnExecute.Click
         'If txtServer.Text = "" Or txtDatabase.Text = "" Then
         '    MsgBox("Invalid config, Server or Database empty", MsgBoxStyle.Exclamation)
         '    Exit Sub
@@ -99,14 +101,14 @@ Public Class Form1
     End Sub
 
     Private Sub serializer_UnknownAttribute(sender As Object, e As XmlAttributeEventArgs)
-        Dim attr As Xml.XmlAttribute = e.Attr
+        Dim attr As XmlAttribute = e.Attr
         MsgBox("Unknown attribute " & attr.Name & "='" & attr.Value & "'")
     End Sub
 
     Public Sub SaveConfig()
         ' Rename old config file .bak
         Try
-            My.Computer.FileSystem.DeleteFile(sConfigPath & ".bak", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.SendToRecycleBin)
+            My.Computer.FileSystem.DeleteFile(sConfigPath & ".bak", UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin)
         Catch ex As Exception
         End Try
         Try

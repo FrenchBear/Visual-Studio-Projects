@@ -11,15 +11,15 @@ internal class Program
     {
         var sc = new SomeClass();
 
-        Func<int, int> del = sc.GetDelegate();
-        int i1 = del(10);
-        int i2 = del(3);
+        var del = sc.GetDelegate();
+        var i1 = del(10);
+        var i2 = del(3);
         WriteLine(i1);
         WriteLine(i2);
 
-        Func<int, int> del2 = sc.GetDelegate2();
-        int j1 = del2(10);
-        int j2 = del2(3);
+        var del2 = sc.GetDelegate2();
+        var j1 = del2(10);
+        var j2 = del2(3);
         WriteLine(j1);
         WriteLine(j2);
     }
@@ -32,7 +32,7 @@ internal class SomeClass
     // test of a closure accessing instance local variable and instance class variable
     public Func<int, int> GetDelegate()
     {
-        int sum = 0;
+        var sum = 0;
         return delegate (int x)
         {
             sum += x;
@@ -58,8 +58,7 @@ internal class SomeClass
 
     public Func<int, int> GetDelegate2()
     {
-        DisplayClass1 locals2;
-        locals2 = new DisplayClass1
+        var locals2 = new DisplayClass1
         {
             __this = this,
             sum = 0

@@ -100,10 +100,10 @@ internal class Pentamino
         Jeu j = new();
 
         // Pavage
-        DateTime t0 = DateTime.Now;
+        var t0 = DateTime.Now;
         Pavage(0, 0, j, (1 << MAXPIECE) - 1);
-        DateTime t1 = DateTime.Now;
-        TimeSpan t = t1.Subtract(t0);
+        var t1 = DateTime.Now;
+        var t = t1.Subtract(t0);
 
         WriteLine("{0} pour {1} solutions\n", t, iNbSol);
         WriteLine("{0} appels à Pavage\n", iNbAppelPavage);
@@ -114,7 +114,7 @@ internal class Pentamino
     private static void Pavage(int lstart, int cstart, Jeu jeu, int iMasquePieces)
     {
         int l, c = 0;
-        bool bTrouvé = false;
+        var bTrouvé = false;
 
         if (iNbSol > MAXSOLUTION) return;
 
@@ -167,16 +167,15 @@ internal class Pentamino
             if ((iMasquePieces & (1 << i)) != 0)
                 for (j = 0; j < tP[i].iNbt; j++)	// Pour chacune des transformations
                 {
-                    Carre55 ca = tP[i].c[j];
+                    var ca = tP[i].c[j];
                     int l2, c2;
-                    bool bCollision;
+                    var bCollision = false;
 
                     if (c + ca.cmax - ca.iOffsetCol > MAXCOL ||	  // Trop large
                         l + ca.lmax > MAXLIG ||				  // Trop haut
                         c < ca.iOffsetCol)					  // Doit être décalée trop à gauche
                         continue;
 
-                    bCollision = false;
                     for (l2 = 0; l2 < ca.lmax; l2++)
                     {
                         for (c2 = 0; c2 < ca.cmax; c2++)

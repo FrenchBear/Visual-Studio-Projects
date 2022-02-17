@@ -34,7 +34,7 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     /// <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
     public void MaMethodeBruyante1(int iNbBip)
     {
-        for (int i = 0; i < iNbBip; i++)
+        for (var i = 0; i < iNbBip; i++)
         {
             Bip(this, "MaMethodeBruyante1");
         }
@@ -46,7 +46,7 @@ public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     /// <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
     void IMonInterface.MaMethodeBruyante2(int iNbBip)
     {
-        for (int i = 0; i < iNbBip; i++)
+        for (var i = 0; i < iNbBip; i++)
         {
             Bip(this, "MaMethodeBruyante2");
         }

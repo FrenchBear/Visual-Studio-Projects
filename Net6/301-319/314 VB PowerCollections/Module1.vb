@@ -27,10 +27,10 @@ Module Module1
             5
         }
         WriteLine("Set ----------")
-        Console.Write("s1:")
+        Write("s1:")
         For Each i As Integer In s1
-            Console.Write(" "c)
-            Console.Write(i)
+            Write(" "c)
+            Write(i)
         Next
         WriteLine()
 
@@ -41,34 +41,34 @@ Module Module1
             7,
             11
         }
-        Console.Write("s2:")
+        Write("s2:")
         For Each i As Integer In s2
-            Console.Write(" "c)
-            Console.Write(i)
+            Write(" "c)
+            Write(i)
         Next
         WriteLine()
 
         Dim s3 As [Set](Of Integer) = s1.Intersection(s2)
-        Console.Write("Intersection:")
+        Write("Intersection:")
         For Each i As Integer In s3
-            Console.Write(" "c)
-            Console.Write(i)
+            Write(" "c)
+            Write(i)
         Next
         WriteLine()
 
         Dim s4 As [Set](Of Integer) = s1.Union(s2)
-        Console.Write("Union:")
+        Write("Union:")
         For Each i As Integer In s4
-            Console.Write(" "c)
-            Console.Write(i)
+            Write(" "c)
+            Write(i)
         Next
         WriteLine()
 
         Dim s5 As [Set](Of Integer) = s1.Difference(s2)
-        Console.Write("Difference (s1.Difference(s2)):")
+        Write("Difference (s1.Difference(s2)):")
         For Each i As Integer In s5
-            Console.Write(" "c)
-            Console.Write(i)
+            Write(" "c)
+            Write(i)
         Next
         WriteLine()
 

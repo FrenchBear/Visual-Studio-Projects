@@ -8,6 +8,9 @@
 
 Option Explicit On
 
+Imports System.ComponentModel
+Imports Scripting
+
 #Disable Warning IDE1006 ' Naming Styles
 
 Public Class frmElimineDoublons
@@ -36,7 +39,7 @@ Public Class frmElimineDoublons
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -89,7 +92,7 @@ Public Class frmElimineDoublons
     Const sDirOld As String = "D:\StreamRipper\Old"
 
     <CLSCompliant(False)>
-    Function sNomRéduit(f As Scripting.File) As String
+    Function sNomRéduit(f As File) As String
         Dim sClé As String
         sClé = f.Name
         Dim p As Integer
@@ -102,11 +105,11 @@ Public Class frmElimineDoublons
     End Function
 
     <CLSCompliant(False)>
-    Sub DeplaceFichier(ByRef f1 As Scripting.File, ByRef sDest As String, ByRef fldDest As Scripting.Folder)
+    Sub DeplaceFichier(ByRef f1 As File, ByRef sDest As String, ByRef fldDest As Folder)
         Try
             f1.Move(sDest & "\")
         Catch ex As Exception
-            Dim f2 As Scripting.File
+            Dim f2 As File
             f2 = fldDest.Files(f1.Name)
             Debug.Assert(Not (f2 Is Nothing))
             If f1.Size > f2.Size Then
@@ -125,8 +128,8 @@ Public Class frmElimineDoublons
         Dim dicFic As New Hashtable
         Dim lstFic As New Queue
 
-        Dim fso As New Scripting.FileSystemObject
-        Dim fldTemp, fldSave As Scripting.Folder
+        Dim fso As New FileSystemObject
+        Dim fldTemp, fldSave As Folder
         fldTemp = fso.GetFolder(sDirTemp)
         fldSave = fso.GetFolder(sDirSave)
         Dim nbDoub As Integer
@@ -135,22 +138,22 @@ Public Class frmElimineDoublons
 
         ' Partie 1: on déplace les fichiers de temp --> save
         ' En cas de conflit on garde le plus gros
-        For Each f As Scripting.File In fldTemp.Files
-            If StrComp(Microsoft.VisualBasic.Right(f.Name, 4), ".mp3", CompareMethod.Text) = 0 Then
+        For Each f As File In fldTemp.Files
+            If StrComp(Microsoft.VisualBasic.Right(f.Name, 4), ".mp3", Microsoft.VisualBasic.CompareMethod.Text) = 0 Then
                 DeplaceFichier(f, sDirSave, fldSave)
             End If
         Next
 
         ' 2ème partie, élimination des doublons
         Dim sClé As String
-        For Each f As Scripting.File In fldSave.Files
-            If StrComp(Microsoft.VisualBasic.Right(f.Name, 4), ".mp3", CompareMethod.Text) <> 0 Then GoTo [continue]
+        For Each f As File In fldSave.Files
+            If StrComp(Microsoft.VisualBasic.Right(f.Name, 4), ".mp3", Microsoft.VisualBasic.CompareMethod.Text) <> 0 Then GoTo cont
             sClé = sNomRéduit(f)
 
             Try
                 dicFic.Add(sClé, f)
             Catch
-                Dim f2 As Scripting.File
+                Dim f2 As File
                 f2 = dicFic(sClé)
                 Trace("Doublon possible: " & f2.Name & " (" & f2.Size & ") - " & f.Name & " (" & f.Size & ") - " & sClé)
                 nbDoub += 1
@@ -180,7 +183,7 @@ Public Class frmElimineDoublons
                 End If
             End Try
 
-[continue]:
+cont:
         Next
         Trace("")
         Trace(dicFic.Count & " fichiers trouvés, " & nbDoub & " doublons")

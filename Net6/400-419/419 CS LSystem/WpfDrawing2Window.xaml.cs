@@ -30,8 +30,8 @@ public partial class WpfDrawing2Window : Window
     {
         Title = title + " - WpfDrawing2Window (Using PathGeometry and PathFigure)";
         Wpf2LSystemRenderer wr = new(s, angle);
-        wr.Rend(0, 0, out PathFigure pf, out Rect r);
-        double maxExtent = Math.Max(r.Width, r.Height);
+        wr.Rend(0, 0, out var pf, out var r);
+        var maxExtent = Math.Max(r.Width, r.Height);
         myGeometryDrawing.Pen = new Pen(Brushes.Black, Math.Sqrt(maxExtent) / 10.0);
         myPathGeometry.Figures.Add(pf);      // Generate PathFigure and add it to screen control
     }

@@ -9,10 +9,10 @@
 Class Population(Of aType As EtreVivant)
     Implements IEnumerable
 
-    Protected mCol As Generic.List(Of aType)
+    Protected mCol As List(Of aType)
 
     Sub New()
-        mCol = New Generic.List(Of aType)
+        mCol = New List(Of aType)
     End Sub
 
     Overridable Sub Add(a As aType)

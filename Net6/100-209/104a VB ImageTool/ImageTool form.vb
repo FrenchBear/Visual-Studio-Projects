@@ -210,7 +210,7 @@ Public Class frmImageTool
         bValidZoom = False
     End Function
 
-    Private Sub tsbZoomReduce_Click(sender As System.Object, e As EventArgs) Handles tsbZoomReduce.Click
+    Private Sub tsbZoomReduce_Click(sender As Object, e As EventArgs) Handles tsbZoomReduce.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * m_fRatio + 0.5
@@ -222,7 +222,7 @@ Public Class frmImageTool
         If tscboZoom.Text <> Str(z) & "%" Then AfterZoomChange(Str(z) & "%")
     End Sub
 
-    Private Sub tsbZoomEnlarge_Click(sender As System.Object, e As EventArgs) Handles tsbZoomEnlarge.Click
+    Private Sub tsbZoomEnlarge_Click(sender As Object, e As EventArgs) Handles tsbZoomEnlarge.Click
         Dim z, z0 As Integer
         If tscboZoom.Text = "Auto" Then
             z0 = 100 * m_fRatio + 0.5
@@ -240,20 +240,20 @@ Public Class frmImageTool
         RefreshImage()
     End Sub
 
-    Private Sub vsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles vsScrollBar.Scroll
+    Private Sub vsScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles vsScrollBar.Scroll
         If vsScrollBar.Value <> -pbDisplayedPic.Top Then pbDisplayedPic.Top = -vsScrollBar.Value
     End Sub
 
-    Private Sub hsScrollBar_Scroll(sender As System.Object, e As ScrollEventArgs) Handles hsScrollBar.Scroll
+    Private Sub hsScrollBar_Scroll(sender As Object, e As ScrollEventArgs) Handles hsScrollBar.Scroll
         If hsScrollBar.Value <> -pbDisplayedPic.Left Then pbDisplayedPic.Left = -hsScrollBar.Value
     End Sub
 
-    Private Sub tsbHandTool_Click(sender As System.Object, e As EventArgs) Handles tsbHandTool.Click
+    Private Sub tsbHandTool_Click(sender As Object, e As EventArgs) Handles tsbHandTool.Click
         m_bHandMode = True
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbSelectionTool_Click(sender As System.Object, e As EventArgs) Handles tsbSelectionTool.Click
+    Private Sub tsbSelectionTool_Click(sender As Object, e As EventArgs) Handles tsbSelectionTool.Click
         m_bHandMode = False
         RefreshToolBar()
     End Sub
@@ -364,7 +364,7 @@ Public Class frmImageTool
 
     End Sub
 
-    Private Sub tsbRotate90Left_Click(sender As System.Object, e As EventArgs) Handles tsbRotate90Left.Click
+    Private Sub tsbRotate90Left_Click(sender As Object, e As EventArgs) Handles tsbRotate90Left.Click
         m_bDirty = True
         If m_bSelectionAvailable Then
             Dim xp1, yp1, xp2, yp2 As Integer
@@ -378,7 +378,7 @@ Public Class frmImageTool
         RefreshImage()
     End Sub
 
-    Private Sub tsbRotate90Right_Click(sender As System.Object, e As EventArgs) Handles tsbRotate90Right.Click
+    Private Sub tsbRotate90Right_Click(sender As Object, e As EventArgs) Handles tsbRotate90Right.Click
         m_bDirty = True
         If m_bSelectionAvailable Then
             Dim xp1, yp1, xp2, yp2 As Integer
@@ -397,12 +397,12 @@ Public Class frmImageTool
         RefreshImage()
     End Sub
 
-    Private Sub tsbClearSelection_Click(sender As System.Object, e As EventArgs) Handles tsbClearSelection.Click
+    Private Sub tsbClearSelection_Click(sender As Object, e As EventArgs) Handles tsbClearSelection.Click
         ClearSelection()
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbCropSelection_Click(sender As System.Object, e As EventArgs) Handles tsbCropSelection.Click
+    Private Sub tsbCropSelection_Click(sender As Object, e As EventArgs) Handles tsbCropSelection.Click
         m_bDirty = True
         Dim imgCroppedImage As Bitmap
         imgCroppedImage = New Bitmap(m_rectSelection.Width, m_rectSelection.Height, Graphics.FromImage(m_bmpOriginalImage))
@@ -416,7 +416,7 @@ Public Class frmImageTool
         RefreshToolBar()
     End Sub
 
-    Private Sub tsbSave_Click(sender As System.Object, e As EventArgs) Handles tsbSave.Click
+    Private Sub tsbSave_Click(sender As Object, e As EventArgs) Handles tsbSave.Click
         ' Quqlity Control
         Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(80))

@@ -22,16 +22,16 @@ internal class Program
         tsin = new double[n];
         tcos = new double[n];
 
-        for (double z = -10.0; z < 10.0; z += 0.25)
+        for (var z = -10.0; z < 10.0; z += 0.25)
         {
-            double s = SinCordic(z);
+            var s = SinCordic(z);
             WriteLine("sin({0,4:F1}) = {1,6:F3} {2}*", z, s, new string(' ', (int)(20 * (1 + s))));
         }
         WriteLine();
 
         // Take a random angle (0..Pi/2)
-        double a0 = 1.1823614786;
-        CordicCompute(a0, out double sin, out double cos);
+        var a0 = 1.1823614786;
+        CordicCompute(a0, out var sin, out var cos);
 
         WriteLine("a={0}", a0);
         WriteLine("Math:   c={0}\t\t\ts={1}", Math.Cos(a0), Math.Sin(a0));
@@ -45,7 +45,7 @@ internal class Program
 
     private static double SinCordic(double angle)
     {
-        bool invertSign = false;
+        var invertSign = false;
 
         if (angle < 0)
         {
@@ -62,7 +62,7 @@ internal class Program
         if (angle > Math.PI / 2)
             angle = Math.PI - angle;
 
-        CordicCompute(angle, out double sin, out double cos);
+        CordicCompute(angle, out var sin, out var cos);
 
         return invertSign ? -sin : sin;
     }
@@ -81,9 +81,9 @@ internal class Program
         cos = Math.Cos(angle);
 
         // Start at π/4, with both sin and cos = (√2)/2
-        double a = Math.PI / 4;             // Math.PI / 2;
-        double s = Math.Sqrt(2.0) / 2.0;    // 1.0;
-        double c = s;                       // 0.0;
+        var a = Math.PI / 4;             // Math.PI / 2;
+        var s = Math.Sqrt(2.0) / 2.0;    // 1.0;
+        var c = s;                       // 0.0;
 
         // Start with horizontal unitary vector for result
         cos = 1;
@@ -96,8 +96,8 @@ internal class Program
                 angle -= a;
 
                 // Coordinates before rotation
-                double x0 = cos;
-                double y0 = sin;
+                var x0 = cos;
+                var y0 = sin;
 
                 // Standard rotation matrix times vector (cos, sin)
                 cos = x0 * c - y0 * s;
@@ -108,7 +108,7 @@ internal class Program
             a /= 2.0;
             if (a < 1e-17) break;
 
-            double c2 = c;
+            var c2 = c;
             c = Math.Sqrt((c + 1.0) / 2.0);
             s /= Math.Sqrt(2 * (1.0 + c2));
         }

@@ -31,7 +31,7 @@
     <value>Assembly</value>
   </data>
   <data name="$this.Name">
-    <value>frmInfos</value>
+    <value>InfosForm</value>
   </data>
   <resheader name="ResMimeType">
     <value>text/microsoft-resx</value>

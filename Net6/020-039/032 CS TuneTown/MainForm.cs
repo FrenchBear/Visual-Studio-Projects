@@ -134,7 +134,7 @@ public class MainForm : Form
     {
         if (TuneView.Items.Count != 0)
         {
-            ListViewItem item = TuneView.FocusedItem;
+            var item = TuneView.FocusedItem;
             if (item != null)
             {
                 AddEditForm dlg = new()
@@ -158,7 +158,7 @@ public class MainForm : Form
     {
         if (TuneView.Items.Count != 0)
         {
-            ListViewItem item = TuneView.FocusedItem;
+            var item = TuneView.FocusedItem;
             if (item != null)
                 item.Remove();
         }
@@ -170,15 +170,15 @@ public class MainForm : Form
     {
         try
         {
-            StreamWriter writer = File.CreateText(
+            var writer = File.CreateText(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TuneTownData.ttd");
             try
             {
-                for (int i = 0; i < TuneView.Items.Count; i++)
+                for (var i = 0; i < TuneView.Items.Count; i++)
                 {
-                    string s1 = TuneView.Items[i].Text;
-                    string s2 = TuneView.Items[i].SubItems[1].Text;
-                    string s3 = TuneView.Items[i].SubItems[2].Text;
+                    var s1 = TuneView.Items[i].Text;
+                    var s2 = TuneView.Items[i].SubItems[1].Text;
+                    var s3 = TuneView.Items[i].SubItems[2].Text;
                     writer.WriteLine(s1);
                     writer.WriteLine(s2);
                     writer.WriteLine(s3);
@@ -203,7 +203,7 @@ public class MainForm : Form
     {
         try
         {
-            StreamReader reader = File.OpenText(
+            var reader = File.OpenText(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\TuneTownData.ttd");
 
             try
@@ -214,9 +214,9 @@ public class MainForm : Form
                     s1 = reader.ReadLine();
                     if (s1 != null)
                     {
-                        string s2 = reader.ReadLine();
-                        string s3 = reader.ReadLine();
-                        ListViewItem item = new(new String[] { s1, s2, s3 });
+                        var s2 = reader.ReadLine();
+                        var s3 = reader.ReadLine();
+                        ListViewItem item = new(new string[] { s1, s2, s3 });
                         _ = TuneView.Items.Add(item);
                         item.Focused = true;
                     }

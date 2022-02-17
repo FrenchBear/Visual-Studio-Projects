@@ -54,7 +54,7 @@ public class MyVisualHost : FrameworkElement
 
         DrawingVisual drawingVisual = new();
         // Retrieve the DrawingContext in order to create new drawing content.
-        using (DrawingContext dc = drawingVisual.RenderOpen())
+        using (var dc = drawingVisual.RenderOpen())
         {
             Wpf1LSystemRenderer wr = new(s, angle);
             wr.Rend(dc, aw, ah);

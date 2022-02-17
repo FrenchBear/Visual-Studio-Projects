@@ -15,7 +15,7 @@ internal class Program
         // petit est présent deux fois
         SortedSet<string> myStringSet = new(new string[] { "Il", "était", "un", "petit", "petit", "navire" });
 
-        foreach (string s in myStringSet)
+        foreach (var s in myStringSet)
         {
             Console.Write(s);
             Console.Write(" ");

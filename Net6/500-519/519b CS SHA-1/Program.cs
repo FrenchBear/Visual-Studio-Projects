@@ -56,11 +56,11 @@ internal class Program
         Debug.Assert(SHA1(s) == hashed);
 
         // Use .Net Framework version
-        byte[] bytes = Encoding.UTF8.GetBytes(s);
+        var bytes = Encoding.UTF8.GetBytes(s);
         using SHA1Managed hashstring = new();
-        byte[] hash = hashstring.ComputeHash(bytes);
+        var hash = hashstring.ComputeHash(bytes);
         StringBuilder hsb = new();
-        foreach (byte b in hash)
+        foreach (var b in hash)
             _ = hsb.Append(b.ToString("x2"));
         Debug.Assert(hsb.ToString() == hashed);
     }
@@ -74,25 +74,25 @@ internal class Program
         // append length of message (without the '1' bit or padding), _in bits_, as 64-bit big-endian integer
         // (this will make the entire post-processed length a multiple of 512 bits)
 
-        int lB = s.Length;      // Message length in Bytes (only process ascii here, one byte per character)
-        int lb = 8 * lB;        // Message length in bits
+        var lB = s.Length;      // Message length in Bytes (only process ascii here, one byte per character)
+        var lb = 8 * lB;        // Message length in bits
         nb = lb / blocksize;    // Number of blocks of 512 bits
         if (lb == 0 || lb % blocksize != 0) nb++;
         if ((lb % blocksize) >= (blocksize - lengthsize)) nb++;
 
         tb = new byte[nb * (blocksize / 8)];
-        for (int i = 0; i < lB; i++)
+        for (var i = 0; i < lB; i++)
         {
             tb[i] = (byte)s[i];
         }
-        int j = lB;
+        var j = lB;
         tb[j++] = 0x80;
         while ((j % (blocksize / 8)) != (blocksize - lengthsize) / 8)
             tb[j++] = 0;
         // Length is always 32-bit in this implementation
         if (lengthsize == 128)
         {
-            for (int i = 0; i < 8; i++)
+            for (var i = 0; i < 8; i++)
                 tb[j++] = 0;
         }
 
@@ -127,39 +127,39 @@ internal class Program
 
         // tb: Table of bytes
         // nb: Number of blocks
-        Preprocessing(s, 512, 64, out byte[] tb, out int nb);
+        Preprocessing(s, 512, 64, out var tb, out var nb);
 
         // Process the message in successive 512-bit chunks:
         // break message into 512-bit chunks for each chunk
 
         // br is the bloc rank (number)
-        for (int br = 0; br < nb; br++)
+        for (var br = 0; br < nb; br++)
         {
             // create a 80-entry message schedule array w[0..79] of 32-bit words
-            uint[] w = new uint[80];
+            var w = new uint[80];
 
             // copy chunk into first 16 words w[0..15] of the message schedule array
-            for (int i = 0; i < 64; i += 4)
+            for (var i = 0; i < 64; i += 4)
                 w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)tb[(br << 6) + i + 3];
 
             // Extend the first 16 words into the remaining 64 words w[16..79] of the message schedule array:
             // for i from 16 to 79:
             //     w[i] = (w[i - 3] xor w[i - 8] xor w[i - 14] xor w[i - 16]) leftrotate 1
-            for (int i = 16; i < 80; i++)
+            for (var i = 16; i < 80; i++)
             {
                 w[i] = LeftRotate(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
             }
 
             // Initialize working variables to current hash value:
-            uint a = h[0];
-            uint b = h[1];
-            uint c = h[2];
-            uint d = h[3];
-            uint e = h[4];
+            var a = h[0];
+            var b = h[1];
+            var c = h[2];
+            var d = h[3];
+            var e = h[4];
 
             // Compression function main loop:
             // for i from 0 to 79
-            for (int i = 0; i < 80; i++)
+            for (var i = 0; i < 80; i++)
             {
                 //if 0 ≤ i ≤ 19 then
                 //    f = (b and c) or ((not b) and d)
@@ -203,7 +203,7 @@ internal class Program
                     k = 0xCA62C1D6;
                 }
 
-                uint temp = LeftRotate(a, 5) + f + e + k + w[i];
+                var temp = LeftRotate(a, 5) + f + e + k + w[i];
                 e = d;
                 d = c;
                 c = LeftRotate(b, 30);

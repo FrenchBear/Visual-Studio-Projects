@@ -4,31 +4,15 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022, Net6
 
-#Disable Warning IDE1006 ' Naming Styles
-
-<AttributeUsage(AttributeTargets.Assembly)> Public Class AssemblyPVAttribute
+<AttributeUsage(AttributeTargets.Assembly)> Public Class AssemblyPvAttribute
     Inherits Attribute
-    Private ReadOnly iPriv As Integer
-    Private sInfo As String
 
     Public Sub New(iVal As Integer)
-        iPriv = iVal
-        sInfo = ""
+        Flags = iVal
+        Info = ""
     End Sub
 
-    Public Property Info() As String
-        Get
-            Return sInfo
-        End Get
-        Set(Value As String)
-            sInfo = Value
-        End Set
-    End Property
+    Public Property Info As String
 
-    Public ReadOnly Property iFlags() As Integer
-        Get
-            Return iPriv
-        End Get
-    End Property
-
+    Public ReadOnly Property Flags As Integer
 End Class

@@ -12,7 +12,7 @@ Public Class TestPrintForm
 
     Private ReadOnly ERROR_ACCESS_DENIED As Integer = 5
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim myProcess As New Process()
 
         Try

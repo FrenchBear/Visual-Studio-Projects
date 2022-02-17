@@ -5,7 +5,7 @@
 
 using System;
 
-internal class MyApp
+internal static class MyApp
 {
     static public void Main()
     {

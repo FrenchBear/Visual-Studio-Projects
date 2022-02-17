@@ -98,7 +98,7 @@ public class SlicedNumberTest
     [TestMethod()]
     public void ToStringTest()
     {
-        string s = "1";
+        var s = "1";
         SlicedNumber target = new(s);
         Assert.AreEqual(s, target.ToString());
 
@@ -193,8 +193,7 @@ public class SlicedNumberTest
         SlicedNumber n1 = new("8");
         SlicedNumber n2 = new("7");
         SlicedNumber expected = new("56");
-        SlicedNumber actual;
-        actual = SlicedNumber.MultSchool(n1, n2);
+        var actual = SlicedNumber.MultSchool(n1, n2);
         Assert.AreEqual(expected.ToString(), actual.ToString());
 
         n1 = new SlicedNumber("8000000004");
@@ -218,7 +217,7 @@ public class SlicedNumberTest
     public void SplitInTwoTest()
     {
         SlicedNumber n = new("12345123456789");
-        SlicedNumber.SplitInTwo(n, 1, out SlicedNumber a, out SlicedNumber b);
+        SlicedNumber.SplitInTwo(n, 1, out var a, out var b);
         Assert.AreEqual(new SlicedNumber("123456789").ToString(), a.ToString());
         Assert.AreEqual(new SlicedNumber("12345").ToString(), b.ToString());
     }
@@ -256,8 +255,7 @@ public class SlicedNumberTest
         SlicedNumber n1 = new("8");
         SlicedNumber n2 = new("7");
         SlicedNumber expected = new("15");
-        SlicedNumber actual;
-        actual = SlicedNumber.Add(n1, n2);
+        var actual = SlicedNumber.Add(n1, n2);
         Assert.AreEqual(expected.ToString(), actual.ToString());
 
         n1 = new SlicedNumber("8000000004");
@@ -282,8 +280,7 @@ public class SlicedNumberTest
         SlicedNumber n1 = new("8");
         SlicedNumber n2 = new("7");
         SlicedNumber expected = new("1");
-        SlicedNumber actual;
-        actual = SlicedNumber.Subtract(n1, n2);
+        var actual = SlicedNumber.Subtract(n1, n2);
         Assert.AreEqual(expected.ToString(), actual.ToString());
 
         n1 = new SlicedNumber("-8000000004");
@@ -308,8 +305,7 @@ public class SlicedNumberTest
         SlicedNumber n1 = new("8");
         SlicedNumber n2 = new("7");
         SlicedNumber expected = new("56");
-        SlicedNumber actual;
-        actual = SlicedNumber.FastMult(n1, n2);
+        var actual = SlicedNumber.FastMult(n1, n2);
         Assert.AreEqual(expected.ToString(), actual.ToString());
 
         n1 = new SlicedNumber("8000000004");

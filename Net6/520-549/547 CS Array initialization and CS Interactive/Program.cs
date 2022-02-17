@@ -19,7 +19,7 @@ internal class Program
         var ts1 = new[] { "A", "B", "C" };                   // Initialization of an array implicitly declared
         var ts2 = new List<string> { "A", "B", "C" };
         string[] ts3 = { "A", "B" };
-        int[] t3 = new int[3] { 0, 1, 2 };                  // Explicit initialization of an array (though dimension cannot be put in LHS)
+        var t3 = new int[3] { 0, 1, 2 };                  // Explicit initialization of an array (though dimension cannot be put in LHS)
         int[] t4 = { 1, 2, 3, 4 };
     }
 }

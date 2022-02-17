@@ -26,8 +26,8 @@ internal class Test
 
     public string ConvertImage(string fileName)
     {
-        string imagePath = Path.Combine(SourceFolder, fileName);
-        string vignettePath = Path.Combine(TargetFolder, fileName);
+        var imagePath = Path.Combine(SourceFolder, fileName);
+        var vignettePath = Path.Combine(TargetFolder, fileName);
 
         BitmapImage bi = new(new Uri(imagePath));
 
@@ -68,7 +68,7 @@ internal class Test
             }
         }
 
-        BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
+        var bi2 = ResizeBitmap(bi, newWidth, newHeight);
         JpegBitmapEncoder encoder = new()
         {
             QualityLevel = JpegQuality

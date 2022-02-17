@@ -1,14 +1,17 @@
 ' 2021-09-19    PV  VS2022; Net6
 
+Imports System.ComponentModel
 Imports System.IO
+Imports System.Runtime.InteropServices
+Imports Microsoft.Office.Interop.Word
 Imports Microsoft.Office.Interop.Word.WdBuiltInProperty
 Imports Word = Microsoft.Office.Interop.Word
 
 #Disable Warning IDE1006 ' Naming Styles
 
 Public Class Form1
-    Private app As Word.Application
-    Private doc As Word.Document
+    Private app As Application
+    Private doc As Document
 
     Private Sub Form1_FormClosing(
 sender As Object,
@@ -21,7 +24,7 @@ e As FormClosingEventArgs) _
     End Sub
 
     Private Sub Form1_Load(
-sender As System.Object,
+sender As Object,
 e As EventArgs) _
      Handles MyBase.Load
 
@@ -63,7 +66,7 @@ e As EventArgs) _
     End Sub
 
     Private Sub folderButton_Click(
-sender As System.Object,
+sender As Object,
 e As EventArgs) _
      Handles folderButton.Click
 
@@ -71,14 +74,14 @@ e As EventArgs) _
         ' files to be modified.
         fbd.ShowNewFolderButton = False
         fbd.SelectedPath = folderLabel.Text
-        If fbd.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If fbd.ShowDialog() = DialogResult.OK Then
             folderLabel.Text = fbd.SelectedPath
         End If
         My.Settings.Folder = fbd.SelectedPath
     End Sub
 
     Private Sub HandleDocs(path As String,
-e As System.ComponentModel.DoWorkEventArgs)
+e As DoWorkEventArgs)
 
         Try
             If bgw.CancellationPending Then
@@ -170,7 +173,7 @@ e As System.ComponentModel.DoWorkEventArgs)
             doc.Revisions.AcceptAll()
 
             ' Delete all comments:
-            For Each cmt As Word.Comment In doc.Comments
+            For Each cmt As Comment In doc.Comments
                 cmt.Delete()
             Next
 
@@ -193,7 +196,7 @@ e As System.ComponentModel.DoWorkEventArgs)
     End Function
 
     Private Sub makeChangesButton_Click(
-sender As System.Object,
+sender As Object,
 e As EventArgs) _
      Handles makeChangesButton.Click
         makeChangesButton.Enabled = False
@@ -202,34 +205,33 @@ e As EventArgs) _
     End Sub
 
     Private Sub cancelButton_Click(
-sender As System.Object,
+sender As Object,
 e As EventArgs) Handles cancelSearchButton.Click
 
         bgw.CancelAsync()
     End Sub
 
     Private Sub bgw_DoWork(
-sender As System.Object,
-e As System.ComponentModel.DoWorkEventArgs) _
+sender As Object,
+e As DoWorkEventArgs) _
      Handles bgw.DoWork
 
         ' Open Word, and handle the documents
         ' in the specified folder.
         Try
-            app = New Word.Application
+            app = New Application
             HandleDocs(folderLabel.Text, e)
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         Finally
             app.Quit()
-            Runtime.InteropServices.
-             Marshal.ReleaseComObject(app)
+            Marshal.ReleaseComObject(app)
         End Try
     End Sub
 
     Private Sub bgw_ProgressChanged(
 sender As Object,
-e As System.ComponentModel.ProgressChangedEventArgs) _
+e As ProgressChangedEventArgs) _
      Handles bgw.ProgressChanged
 
         statusLabel.Text = "Updating " & e.UserState.ToString
@@ -237,7 +239,7 @@ e As System.ComponentModel.ProgressChangedEventArgs) _
 
     Private Sub bgw_RunWorkerCompleted(
 sender As Object,
-e As System.ComponentModel.RunWorkerCompletedEventArgs) _
+e As RunWorkerCompletedEventArgs) _
      Handles bgw.RunWorkerCompleted
 
         Dim statusText As String = "Ready"
@@ -250,8 +252,8 @@ e As System.ComponentModel.RunWorkerCompletedEventArgs) _
     End Sub
 
     Private Sub SetProperty(
-chk As CheckBox,
-prop As Word.WdBuiltInProperty,
+chk As System.Windows.Forms.CheckBox,
+prop As WdBuiltInProperty,
 txt As TextBox)
 
         ' If the supplied CheckBox control is checked,

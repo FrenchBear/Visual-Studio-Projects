@@ -4,7 +4,9 @@
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
+Imports System.ComponentModel
 Imports System.Drawing.Imaging
+Imports System.Runtime.InteropServices
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -34,7 +36,7 @@ Public Class Form1
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -81,7 +83,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PictureBox1.Image = Image.FromFile("pv.jpg")
         PictureBox2.Image = imgTo1Bit(PictureBox1.Image)
     End Sub
@@ -117,7 +119,7 @@ Friend Module ConversionImages
                 End If
             Next
 
-            Runtime.InteropServices.Marshal.Copy(tbRow, 0, pData, bmd.Stride)
+            Marshal.Copy(tbRow, 0, pData, bmd.Stride)
             'pData = IntPtr.op_Explicit(pData.ToInt32 + bmd.Stride)
             pData += bmd.Stride
         Next

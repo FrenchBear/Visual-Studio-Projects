@@ -33,10 +33,10 @@ public partial class MainWindow : Window
 
     private static void DoWork(CancellationToken cancelToken, IProgress<string> progress)
     {
-        int i = 0;
+        var i = 0;
         _ = Task.Run(async () =>
           {
-              Thread t2 = Thread.CurrentThread;
+              var t2 = Thread.CurrentThread;
             //Debugger.Break();
 
             while (!cancelToken.IsCancellationRequested)
@@ -51,7 +51,7 @@ public partial class MainWindow : Window
 
     private void button1_Click(object sender, RoutedEventArgs e)
     {
-        Thread t1 = Thread.CurrentThread;
+        var t1 = Thread.CurrentThread;
         //Debugger.Break();
 
         if (button1.Content.ToString() == "Start")
@@ -148,10 +148,10 @@ public partial class MainWindow : Window
         AddTrace("T0.Status: " + T[0].Status);
         AddTrace("T1.Status: " + T[1].Status);
         AddTrace("T2.Status: " + T[2].Status);
-        int j = listBox.Items.Count;
+        var j = listBox.Items.Count;
 
         //Debugger.Break();
-        int i = await Task.Run(() => Task.WaitAny(T));
+        var i = await Task.Run(() => Task.WaitAny(T));
         //int i = Task.WaitAny(T);
         AddTrace($"T{i} terminated");
         await Task.Run(() => Task.WaitAll(T));
@@ -185,8 +185,7 @@ public partial class MainWindow : Window
 
     private static async Task<double> LongCalcAsync(Func<double, double> f, double input)
     {
-        double r;
-        r = await Task.Run(() => f(input));
+        var r = await Task.Run(() => f(input));
         return r;
     }
 

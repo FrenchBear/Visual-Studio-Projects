@@ -3,6 +3,9 @@
 ' 2003-08-05    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
+Imports System.ComponentModel
+Imports System.Drawing.Imaging
+Imports System.IO
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -32,7 +35,7 @@ Public Class frmAnalyse
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -391,8 +394,8 @@ Public Class frmAnalyse
 
 #End Region
 
-    Private Sub btnAnalyse_Click(sender As System.Object, e As EventArgs) Handles btnAnalyse.Click
-        Dim bmp As New Bitmap(112, 112, Imaging.PixelFormat.Format24bppRgb)
+    Private Sub btnAnalyse_Click(sender As Object, e As EventArgs) Handles btnAnalyse.Click
+        Dim bmp As New Bitmap(112, 112, PixelFormat.Format24bppRgb)
 
         Dim l, c, c2, col As Integer
         For l = 0 To 111
@@ -410,15 +413,15 @@ Public Class frmAnalyse
         bmp.RotateFlip(RotateFlipType.Rotate180FlipX)
         'Dim sPath As String = My.Application.Info.DirectoryPath.Replace("\bin", "")
         'bmp.Save(sPath & "\oldImage.gif", System.Drawing.Imaging.ImageFormat.Gif)
-        bmp.Save("oldImage.gif", Imaging.ImageFormat.Gif)
+        bmp.Save("oldImage.gif", ImageFormat.Gif)
 
         PictureBox1.Image = bmp
     End Sub
 
-    Private Sub btnEncode_Click(sender As System.Object, e As EventArgs) Handles btnEncode.Click
+    Private Sub btnEncode_Click(sender As Object, e As EventArgs) Handles btnEncode.Click
         'Dim sPath As String = My.Application.Info.DirectoryPath.Replace("\bin", "")
         'Dim sw As New IO.StreamWriter(sPath & "\LogoSGS.txt")
-        Dim sw As New IO.StreamWriter("LogoSGS.txt")
+        Dim sw As New StreamWriter("LogoSGS.txt")
         Dim bmp As Bitmap
         bmp = PictureBox2.Image
         bmp.RotateFlip(RotateFlipType.Rotate180FlipX)
@@ -435,14 +438,14 @@ Public Class frmAnalyse
         sw.Close()
     End Sub
 
-    Private Sub frmAnalyse_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub frmAnalyse_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Dim sPath As String = My.Application.Info.DirectoryPath.Replace("\bin", "")
         'PictureBox2.Image = Image.FromFile(sPath & "\LogoSGS.bmp")
         PictureBox2.Image = Image.FromFile("LogoSGS.bmp")
     End Sub
 
-    Private Sub btnVérifie_Click(sender As System.Object, e As EventArgs) Handles btnVérifie.Click
-        Dim bmp As New Bitmap(112, 112, Imaging.PixelFormat.Format24bppRgb)
+    Private Sub btnVérifie_Click(sender As Object, e As EventArgs) Handles btnVérifie.Click
+        Dim bmp As New Bitmap(112, 112, PixelFormat.Format24bppRgb)
 
         Dim l, c, c2, col As Integer
         For l = 0 To 111

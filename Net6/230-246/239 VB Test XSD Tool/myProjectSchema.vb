@@ -11,6 +11,8 @@
 Option Strict Off
 Option Explicit On
 
+Imports System.CodeDom.Compiler
+Imports System.ComponentModel
 Imports System.Xml.Serialization
 
 '
@@ -18,12 +20,12 @@ Imports System.Xml.Serialization
 '
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42"),
- System.SerializableAttribute(),
- System.Diagnostics.DebuggerStepThroughAttribute(),
- System.ComponentModel.DesignerCategoryAttribute("code"),
- System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=True),
- System.Xml.Serialization.XmlRootAttribute([Namespace]:="http://tempuri.org/XMLSchema.xsd", IsNullable:=False)>
+<GeneratedCode("xsd", "2.0.50727.42"),
+ Serializable(),
+ DebuggerStepThrough(),
+ DesignerCategory("code"),
+ XmlType(AnonymousType:=True),
+ XmlRoot([Namespace]:="http://tempuri.org/XMLSchema.xsd", IsNullable:=False)>
 Partial Public Class Project
 
     Private targetField As TargetType
@@ -55,7 +57,7 @@ Partial Public Class Project
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property DefaultTargets() As String
         Get
             Return Me.defaultTargetsField
@@ -66,7 +68,7 @@ Partial Public Class Project
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property InitialTargets() As String
         Get
             Return Me.initialTargetsField
@@ -78,11 +80,11 @@ Partial Public Class Project
 End Class
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42"),
- System.SerializableAttribute(),
- System.Diagnostics.DebuggerStepThroughAttribute(),
- System.ComponentModel.DesignerCategoryAttribute("code"),
- System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://tempuri.org/XMLSchema.xsd")>
+<GeneratedCode("xsd", "2.0.50727.42"),
+ Serializable(),
+ DebuggerStepThrough(),
+ DesignerCategory("code"),
+ XmlType([Namespace]:="http://tempuri.org/XMLSchema.xsd")>
 Partial Public Class TargetType
 
     Private itemsField() As TaskType
@@ -90,8 +92,8 @@ Partial Public Class TargetType
     Private nameField As String
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlElementAttribute("Message", GetType(TargetTypeTaskMessage)),
-     System.Xml.Serialization.XmlElementAttribute("MkDir", GetType(TargetTypeTaskMkDir))>
+    <XmlElement("Message", GetType(TargetTypeTaskMessage)),
+     XmlElement("MkDir", GetType(TargetTypeTaskMkDir))>
     Public Property Items() As TaskType()
         Get
             Return Me.itemsField
@@ -102,7 +104,7 @@ Partial Public Class TargetType
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property Name() As String
         Get
             Return Me.nameField
@@ -114,11 +116,11 @@ Partial Public Class TargetType
 End Class
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42"),
- System.SerializableAttribute(),
- System.Diagnostics.DebuggerStepThroughAttribute(),
- System.ComponentModel.DesignerCategoryAttribute("code"),
- System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://tempuri.org/XMLSchema.xsd")>
+<GeneratedCode("xsd", "2.0.50727.42"),
+ Serializable(),
+ DebuggerStepThrough(),
+ DesignerCategory("code"),
+ XmlType([Namespace]:="http://tempuri.org/XMLSchema.xsd")>
 Partial Public Class ImportType
 
     Private nameField As String
@@ -135,11 +137,11 @@ Partial Public Class ImportType
 End Class
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42"),
- System.SerializableAttribute(),
- System.Diagnostics.DebuggerStepThroughAttribute(),
- System.ComponentModel.DesignerCategoryAttribute("code"),
- System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://tempuri.org/XMLSchema.xsd")>
+<GeneratedCode("xsd", "2.0.50727.42"),
+ Serializable(),
+ DebuggerStepThrough(),
+ DesignerCategory("code"),
+ XmlType([Namespace]:="http://tempuri.org/XMLSchema.xsd")>
 Partial Public Class TaskType
 
     Private outputField() As TaskTypeOutput
@@ -147,7 +149,7 @@ Partial Public Class TaskType
     Private conditionField As String
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlElementAttribute("Output")>
+    <XmlElement("Output")>
     Public Property Output() As TaskTypeOutput()
         Get
             Return Me.outputField
@@ -158,7 +160,7 @@ Partial Public Class TaskType
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property Condition() As String
         Get
             Return Me.conditionField
@@ -170,11 +172,11 @@ Partial Public Class TaskType
 End Class
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42"),
- System.SerializableAttribute(),
- System.Diagnostics.DebuggerStepThroughAttribute(),
- System.ComponentModel.DesignerCategoryAttribute("code"),
- System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=True)>
+<GeneratedCode("xsd", "2.0.50727.42"),
+ Serializable(),
+ DebuggerStepThrough(),
+ DesignerCategory("code"),
+ XmlType(AnonymousType:=True)>
 Partial Public Class TaskTypeOutput
 
     Private taskParameterField As String
@@ -186,7 +188,7 @@ Partial Public Class TaskTypeOutput
     Private conditionField As String
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property TaskParameter() As String
         Get
             Return Me.taskParameterField
@@ -197,7 +199,7 @@ Partial Public Class TaskTypeOutput
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property ItemName() As String
         Get
             Return Me.itemNameField
@@ -208,7 +210,7 @@ Partial Public Class TaskTypeOutput
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property PropertyName() As String
         Get
             Return Me.propertyNameField
@@ -219,7 +221,7 @@ Partial Public Class TaskTypeOutput
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property Condition() As String
         Get
             Return Me.conditionField
@@ -231,12 +233,12 @@ Partial Public Class TaskTypeOutput
 End Class
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42"),
- System.SerializableAttribute(),
- System.Diagnostics.DebuggerStepThroughAttribute(),
- System.ComponentModel.DesignerCategoryAttribute("code"),
- System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=True),
- System.Xml.Serialization.XmlRootAttribute("Message", [Namespace]:="http://tempuri.org/XMLSchema.xsd", IsNullable:=False)>
+<GeneratedCode("xsd", "2.0.50727.42"),
+ Serializable(),
+ DebuggerStepThrough(),
+ DesignerCategory("code"),
+ XmlType(AnonymousType:=True),
+ XmlRoot("Message", [Namespace]:="http://tempuri.org/XMLSchema.xsd", IsNullable:=False)>
 Partial Public Class TargetTypeTaskMessage
     Inherits TaskType
 
@@ -245,7 +247,7 @@ Partial Public Class TargetTypeTaskMessage
     Private textField As String
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property Importance() As String
         Get
             Return Me.importanceField
@@ -256,7 +258,7 @@ Partial Public Class TargetTypeTaskMessage
     End Property
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property Text() As String
         Get
             Return Me.textField
@@ -268,19 +270,19 @@ Partial Public Class TargetTypeTaskMessage
 End Class
 
 '''<remarks/>
-<System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42"),
- System.SerializableAttribute(),
- System.Diagnostics.DebuggerStepThroughAttribute(),
- System.ComponentModel.DesignerCategoryAttribute("code"),
- System.Xml.Serialization.XmlTypeAttribute(AnonymousType:=True),
- System.Xml.Serialization.XmlRootAttribute("MkDir", [Namespace]:="http://tempuri.org/XMLSchema.xsd", IsNullable:=False)>
+<GeneratedCode("xsd", "2.0.50727.42"),
+ Serializable(),
+ DebuggerStepThrough(),
+ DesignerCategory("code"),
+ XmlType(AnonymousType:=True),
+ XmlRoot("MkDir", [Namespace]:="http://tempuri.org/XMLSchema.xsd", IsNullable:=False)>
 Partial Public Class TargetTypeTaskMkDir
     Inherits TaskType
 
     Private directoriesField As String
 
     '''<remarks/>
-    <System.Xml.Serialization.XmlAttributeAttribute()>
+    <XmlAttribute()>
     Public Property Directories() As String
         Get
             Return Me.directoriesField

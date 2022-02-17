@@ -12,7 +12,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        int[] a = new int[] { 0, 1, 2, 3, 4, 5 };
+        var a = new int[] { 0, 1, 2, 3, 4, 5 };
         a.WriteLine();
         Test(a);
         a.WriteLine();
@@ -25,8 +25,8 @@ internal static class Extensions
 {
     public static void WriteLine<T>(this T[] a)
     {
-        bool bFirst = true;
-        foreach (T e in a)
+        var bFirst = true;
+        foreach (var e in a)
         {
             if (bFirst)
             {

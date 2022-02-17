@@ -16,27 +16,27 @@ internal class TestSer
     private class MaClasse
     {
         private readonly int i;
-        private readonly String s;
+        private readonly string s;
 
-        public MaClasse(int i, String s)
+        public MaClasse(int i, string s)
         {
             this.i = i;
             this.s = s;
         }
 
-        public override String ToString() 
+        public override string ToString() 
             => "i:" + i + ", s:" + s;
     }
 
     public static void Main(string[] args)
     {
-        int objects = 1000;
+        var objects = 1000;
 
         WriteLine("Writing " + objects + " objects to a file stream");
         Stream s = File.Open("testser.xml", FileMode.Create);
         //SoapFormatter f = new SoapFormatter();
         BinaryFormatter f = new();
-        for (int i = 1; i <= objects; i++)
+        for (var i = 1; i <= objects; i++)
         {
             f.Serialize(s, new MaClasse(i, "abcdddddddddddddddddddddddddddddddd"));
         }
@@ -49,7 +49,7 @@ internal class TestSer
         WriteLine("Start: " + DateTime.Now);
         try
         {
-            for (int i = 1; i <= objects; i++)
+            for (var i = 1; i <= objects; i++)
             {
                 var = (MaClasse)f.Deserialize(s);
             }

@@ -1,9 +1,12 @@
-<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Imports System.ComponentModel
+Imports Microsoft.VisualBasic.CompilerServices
+
+<DesignerGenerated()>
 Partial Class SchedulerForm
-    Inherits System.Windows.Forms.Form
+    Inherits Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()>
+    <DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -12,42 +15,42 @@ Partial Class SchedulerForm
     End Sub
 
     'Required by the Windows Form Designer
-    Private components As System.ComponentModel.IContainer
+    Private components As IContainer
 
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()>
+    <DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.TraceLabel = New System.Windows.Forms.ListBox
-        Me.StartButton = New System.Windows.Forms.Button
+        Me.TraceLabel = New ListBox
+        Me.StartButton = New Button
         Me.SuspendLayout()
         '
         'lbTrace
         '
-        Me.TraceLabel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TraceLabel.Anchor = CType((((AnchorStyles.Top Or AnchorStyles.Bottom) _
+                    Or AnchorStyles.Left) _
+                    Or AnchorStyles.Right), AnchorStyles)
         Me.TraceLabel.FormattingEnabled = True
-        Me.TraceLabel.Location = New System.Drawing.Point(12, 41)
+        Me.TraceLabel.Location = New Point(12, 41)
         Me.TraceLabel.Name = "lbTrace"
-        Me.TraceLabel.Size = New System.Drawing.Size(411, 316)
+        Me.TraceLabel.Size = New Size(411, 316)
         Me.TraceLabel.TabIndex = 0
         '
         'btnStart
         '
-        Me.StartButton.Location = New System.Drawing.Point(12, 12)
+        Me.StartButton.Location = New Point(12, 12)
         Me.StartButton.Name = "btnStart"
-        Me.StartButton.Size = New System.Drawing.Size(75, 23)
+        Me.StartButton.Size = New Size(75, 23)
         Me.StartButton.TabIndex = 1
         Me.StartButton.Text = "Start"
         Me.StartButton.UseVisualStyleBackColor = True
         '
         'SchedulerForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(435, 366)
+        Me.AutoScaleDimensions = New SizeF(6.0!, 13.0!)
+        Me.AutoScaleMode = AutoScaleMode.Font
+        Me.ClientSize = New Size(435, 366)
         Me.Controls.Add(Me.StartButton)
         Me.Controls.Add(Me.TraceLabel)
         Me.Name = "SchedulerForm"
@@ -55,7 +58,7 @@ Partial Class SchedulerForm
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TraceLabel As System.Windows.Forms.ListBox
-    Friend WithEvents StartButton As System.Windows.Forms.Button
+    Friend WithEvents TraceLabel As ListBox
+    Friend WithEvents StartButton As Button
 
 End Class

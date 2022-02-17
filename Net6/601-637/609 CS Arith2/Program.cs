@@ -85,22 +85,22 @@ public class Int4d : ISimpleArith<Int4d>
     // Addition 4d+4d -> (4d carry, 4d result)
     public (Int4d high, Int4d low) Plus(params Int4d[] list)
     {
-        int x = val;
+        var x = val;
         // Assume we've less than 10000 items in list so result can be two Int4d
-        foreach (Int4d item in list)
+        foreach (var item in list)
             x += item.val;
 
-        int h = x / k;
-        int l = x % k;
+        var h = x / k;
+        var l = x % k;
         return (new Int4d(h), new Int4d(l));
     }
 
     // Multiplication 4d*4d -> (4d high, 4d low)
     public (Int4d high, Int4d low) Mult(Int4d other)
     {
-        int x = val * other.val;
-        int h = x / k;
-        int l = x % k;
+        var x = val * other.val;
+        var h = x / k;
+        var l = x % k;
         return (new Int4d(h), new Int4d(l));
     }
 
@@ -172,15 +172,15 @@ public class DA<T> : ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
 
     public (DA<T> high, DA<T> low) Plus(params DA<T>[] list)
     {
-        T h, l, ovh, ovl;
+        T h, l;
         (h = new T()).FromOther(high);
         (l = new T()).FromOther(low);
         //(ovl = new T()).FromString("0");
         //(ovh = new T()).FromString("0");
-        ovl = new T();
-        ovh = new T();
+        var ovl = new T();
+        var ovh = new T();
 
-        foreach (DA<T> item in list)
+        foreach (var item in list)
         {
             T ov1, ov2;
             (ov1, l) = l.Plus(item.low);
@@ -197,8 +197,8 @@ public class DA<T> : ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
         T highH, highL;
 
         (lowH, lowL) = low.Mult(other.low);
-        (T t1h, T t1l) = high.Mult(other.low);
-        (T t2h, T t2l) = low.Mult(other.high);
+        (var t1h, var t1l) = high.Mult(other.low);
+        (var t2h, var t2l) = low.Mult(other.high);
         (highH, highL) = high.Mult(other.high);
 
         T ov1, ov2;
@@ -222,31 +222,31 @@ internal class Program
 {
     private static void Test<T>() where T : ISimpleArith<T>, new()
     {
-        int d = new T().Digits;
+        var d = new T().Digits;
         var rnd = new Random();
 
         string GetRandomNumber()
         {
             var sb = new StringBuilder(d);
-            for (int i = 0; i < d; i++)
+            for (var i = 0; i < d; i++)
                 _ = sb.Append((char)(48 + rnd.Next(0, 10)));
             return sb.ToString();
         }
 
         WriteLine($"Test Int{d}d");
-        string astr = GetRandomNumber();
-        string bstr = GetRandomNumber();
+        var astr = GetRandomNumber();
+        var bstr = GetRandomNumber();
         var sw = Stopwatch.StartNew();
         T a, b;
         (a = new T()).FromString(astr);
         (b = new T()).FromString(bstr);
         WriteLine($"a{d}: {a.ToString()}");
         WriteLine($"b{d}: {b.ToString()}");
-        (T h, T l) = a.Plus(b);
-        string sumstr = h.ToString2(l);
+        (var h, var l) = a.Plus(b);
+        var sumstr = h.ToString2(l);
         WriteLine($"a{d}+b{d}: {sumstr}");
         (h, l) = a.Mult(b);
-        string prodstr = h.ToString2(l);
+        var prodstr = h.ToString2(l);
         WriteLine($"a{d}.b{d}: {prodstr}");
         sw.Stop();
 
@@ -270,7 +270,7 @@ internal class Program
         (b = new Int4d()).FromString("7000");
         WriteLine($"a: {a}");
         WriteLine($"b: {b}");
-        (Int4d h, Int4d l) = a.Plus(b);
+        (var h, var l) = a.Plus(b);
         WriteLine($"a+b: " + h.ToString2(l));
         (h, l) = a.Mult(b);
         WriteLine($"a.b: " + h.ToString2(l));
@@ -281,7 +281,7 @@ internal class Program
         (b8 = new DA<Int4d>()).FromString("87654321");
         WriteLine($"a8: {a8}");
         WriteLine($"b8: {b8}");
-        (DA<Int4d> h8, DA<Int4d> l8) = a8.Plus(b8);
+        (var h8, var l8) = a8.Plus(b8);
         WriteLine($"a8+b8: " + h8.ToString2(l8));
         (h8, l8) = a8.Mult(b8);
         WriteLine($"a8.b8: " + h8.ToString2(l8));
@@ -292,7 +292,7 @@ internal class Program
         (b16 = new DA<DA<Int4d>>()).FromString("8765432187654321");
         WriteLine($"a16: {a16}");
         WriteLine($"b16: {b16}");
-        (DA<DA<Int4d>> h16, DA<DA<Int4d>> l16) = a16.Plus(b16);
+        (var h16, var l16) = a16.Plus(b16);
         WriteLine($"a16+b16: " + h16.ToString2(l16));
         (h16, l16) = a16.Mult(b16);
         WriteLine($"a16.b16: " + h16.ToString2(l16));

@@ -40,7 +40,7 @@ internal class Complexe
         => new(a.r + b.r, a.i + b.i);
 };
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {
@@ -60,11 +60,11 @@ internal class MyApp
         WriteLine("TestsComplexes.2 Mem: {0}", GC.GetTotalMemory(false));
         Complexe b = new(1);
         WriteLine("TestsComplexes.3 Mem: {0}", GC.GetTotalMemory(false));
-        Complexe c = a + b;
+        var c = a + b;
 
         // Grâce à l'opérateur Complexe(double d)
         Complexe d = 2;
-        Complexe e = a + 1;
+        var e = a + 1;
         Complexe f = (byte)2;
     }
 }

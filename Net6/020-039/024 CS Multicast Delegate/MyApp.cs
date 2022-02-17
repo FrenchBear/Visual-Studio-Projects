@@ -11,15 +11,15 @@ using static System.Console;
 
 internal delegate void MyDelegate(string sMsg);
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {
-        MyDelegate d1, d2, d3;
+        //MyDelegate d1, d2, d3;
 
-        d1 = new MyDelegate(Sub1);
-        d2 = new MyDelegate(Sub2);
-        d3 = (MyDelegate)Delegate.Combine(d1, d2);
+        var d1 = new MyDelegate(Sub1);
+        var d2 = new MyDelegate(Sub2);
+        var d3 = (MyDelegate)Delegate.Combine(d1, d2);
 
         d1("Hello 1");
         d2("Hello 2");

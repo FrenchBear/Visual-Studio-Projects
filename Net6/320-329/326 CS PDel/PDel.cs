@@ -44,7 +44,7 @@ internal class Program
     private static int Main(string[] args)
     {
         var inputSourceList = new List<InputSource>();
-        bool isWithFinalPause = false;
+        var isWithFinalPause = false;
 
         // Process arguments
         foreach (var t in args)
@@ -101,13 +101,13 @@ internal class Program
                 }
 
                 // Ok, check it's a valid path/pattern
-                string path = Path.GetDirectoryName(t) ?? "";
+                var path = Path.GetDirectoryName(t) ?? "";
                 if (path.Length == 0) path = ".";
-                string pattern = Path.GetFileName(t);
+                var pattern = Path.GetFileName(t);
                 try
                 {
                     // For now just test if we can enumerate files, don't care about recursing
-                    string[] files = Directory.GetFiles(WidePath(path), pattern);
+                    var files = Directory.GetFiles(WidePath(path), pattern);
                 }
                 catch (Exception ex)
                 {
@@ -138,7 +138,7 @@ internal class Program
         }
 
         // Do the delete
-        foreach (InputSource loopInputSource in inputSourceList)
+        foreach (var loopInputSource in inputSourceList)
             PDel(loopInputSource.path, loopInputSource.pattern);
 
         if (isWithFinalPause)
@@ -190,9 +190,9 @@ internal class Program
         try
         {
             files = Directory.GetFiles(WidePath(path), pattern, System.IO.SearchOption.TopDirectoryOnly);
-            foreach (string fileName in files)
+            foreach (var fileName in files)
             {
-                string normalFileName = UnwidePath(fileName);
+                var normalFileName = UnwidePath(fileName);
 
                 // Delete one file
                 if (normalFileName.Length < MAX_PATH)
@@ -227,8 +227,8 @@ internal class Program
 
             if (isRecurseMode)
             {
-                string[] folders = Directory.GetDirectories(WidePath(path), "*.*", System.IO.SearchOption.TopDirectoryOnly);
-                foreach (string directoryName in folders)
+                var folders = Directory.GetDirectories(WidePath(path), "*.*", System.IO.SearchOption.TopDirectoryOnly);
+                foreach (var directoryName in folders)
                 {
                     // Ignore SYSTEM+HIDDEN folders
                     DirectoryInfo di = new(directoryName);
@@ -243,7 +243,7 @@ internal class Program
                     // If we are deleting all files, then delete folders too
                     if (pattern == "*.*")
                     {
-                        string normalDirectoryName = UnwidePath(directoryName);
+                        var normalDirectoryName = UnwidePath(directoryName);
 
                         // Delete one directory
                         if (normalDirectoryName.Length < MAX_PATH)
@@ -298,18 +298,18 @@ internal class Program
     {
         // Get information for this assembly
         var asm = Assembly.GetExecutingAssembly();
-        AssemblyName asmName = asm.GetName();
-        Version? v = asmName.Version;
-        string asmTitle = ((AssemblyTitleAttribute)asm.GetCustomAttributes(
+        var asmName = asm.GetName();
+        var v = asmName.Version;
+        var asmTitle = ((AssemblyTitleAttribute)asm.GetCustomAttributes(
             typeof(AssemblyTitleAttribute), false)[0]).Title;
-        string asmDesc = ((AssemblyDescriptionAttribute)asm.GetCustomAttributes(
+        var asmDesc = ((AssemblyDescriptionAttribute)asm.GetCustomAttributes(
             typeof(AssemblyDescriptionAttribute), false)[0]).Description;
 
-        string s = asmTitle + " " + v?.Major + "." + v?.Minor + ": " + asmDesc;
+        var s = asmTitle + " " + v?.Major + "." + v?.Minor + ": " + asmDesc;
 
         if (includeExtendedHelp)
         {
-            string asmCopyright = ((AssemblyCopyrightAttribute)asm.GetCustomAttributes(
+            var asmCopyright = ((AssemblyCopyrightAttribute)asm.GetCustomAttributes(
                 typeof(AssemblyCopyrightAttribute), false)[0]).Copyright;
             s += "\n" + asmCopyright;
         }

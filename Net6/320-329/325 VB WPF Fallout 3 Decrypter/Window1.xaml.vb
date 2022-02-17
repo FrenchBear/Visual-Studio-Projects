@@ -13,7 +13,7 @@ Partial Class Window1
         InitializeComponent()
     End Sub
 
-    Private Sub AddButton_Click(sender As System.Object, e As RoutedEventArgs) Handles AddButton.Click
+    Private Sub AddButton_Click(sender As Object, e As RoutedEventArgs) Handles AddButton.Click
         If WordTextBox.Text <> "" And IsNumeric(PlacedTextBox.Text) Then
             If Word1TextBox.Text = "" Then
                 Word1TextBox.Text = WordTextBox.Text
@@ -47,7 +47,7 @@ Partial Class Window1
         ClearAll()
     End Sub
 
-    Private Sub ClearButton_Click(sender As System.Object, e As RoutedEventArgs) Handles ClearButton.Click
+    Private Sub ClearButton_Click(sender As Object, e As RoutedEventArgs) Handles ClearButton.Click
         ClearAll()
     End Sub
 
@@ -74,7 +74,7 @@ Partial Class Window1
         Status4Label.Content = ""
     End Sub
 
-    Private Sub WordTextBox_TextChanged(sender As System.Object, e As TextChangedEventArgs) Handles WordTextBox.TextChanged
+    Private Sub WordTextBox_TextChanged(sender As Object, e As TextChangedEventArgs) Handles WordTextBox.TextChanged
         If WordTextBox.Text = "" Then
             AnalysisLabel.Content = ""
             ClearStatuses()

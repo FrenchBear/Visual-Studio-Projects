@@ -11,7 +11,7 @@ Public Class Form1
     Public counList As List(Of Country)
     Public persList As List(Of Person)
 
-    Private Sub Form1_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         custList = New List(Of Customer) From {
                  New Customer With {.custId = 1, .custName = "Strawberry Fields", .custCountryId = 1},
                  New Customer With {.custId = 2, .custName = "Joe Banana", .custCountryId = 1},
@@ -29,7 +29,7 @@ Public Class Form1
              }
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         ' By default, it's a simple cartesian product
         OutText.AppendText("Test 1, cartesian product" & vbCrLf)
         Dim qry1 = From cu In custList, co In counList

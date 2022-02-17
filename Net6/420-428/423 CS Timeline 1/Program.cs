@@ -23,9 +23,9 @@ internal class Program
         t.AddRelativeEvent(2.0, e2);
 
         var r = new Random();
-        for (int i = 0; i < 4; i++)
+        for (var i = 0; i < 4; i++)
         {
-            int arrivalLevel = r.Next(maxLevel + 1);
+            var arrivalLevel = r.Next(maxLevel + 1);
             int destinationLevel;
             do
                 destinationLevel = r.Next(maxLevel + 1);
@@ -84,7 +84,7 @@ internal class Timeline
     {
         while (tl.Count > 0)
         {
-            KeyValuePair<double, TimelineEvent> kvp = tl.TakeFirst();
+            var kvp = tl.TakeFirst();
             nowTime = kvp.Key;
             TimedEvent?.Invoke(kvp.Key, kvp.Value);
             kvp.Value.ExecuteAction(nowTime);

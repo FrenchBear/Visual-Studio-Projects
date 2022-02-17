@@ -7,7 +7,11 @@
 ' 2012-02-25	PV  VS2010; .Net Framework Client Profile 4.0
 ' 2021-09-19    PV  VS2022, Net6
 
+Imports System.ComponentModel
 Imports System.Drawing.Imaging
+Imports System.IO
+Imports System.Resources
+Imports System.Threading
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -41,7 +45,7 @@ Public Class frmPicResize
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -65,7 +69,7 @@ Public Class frmPicResize
     Friend WithEvents tbQuality As TrackBar
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As New Resources.ResourceManager(GetType(frmPicResize))
+        Dim resources As New ResourceManager(GetType(frmPicResize))
         Me.btnGo = New Button
         Me.lstTrace = New ListBox
         Me.lblSource = New Label
@@ -82,7 +86,7 @@ Public Class frmPicResize
         Me.tbQuality = New TrackBar
         Me.Label1 = New Label
         Me.Label2 = New Label
-        CType(Me.tbQuality, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbQuality, ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGo
@@ -238,7 +242,7 @@ Public Class frmPicResize
         Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Name = "frmPicResize"
         Me.Text = "Picture Resize Tool"
-        CType(Me.tbQuality, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbQuality, ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -247,13 +251,13 @@ Public Class frmPicResize
 
     Private Sub btnGo_Click(sender As Object, e As EventArgs) Handles btnGo.Click
 
-        If Not IO.Directory.Exists(txtSource.Text) Then
+        If Not Directory.Exists(txtSource.Text) Then
             MsgBox("Répertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             txtSource.Focus()
             Exit Sub
         End If
 
-        If Not IO.Directory.Exists(txtDestination.Text) Then
+        If Not Directory.Exists(txtDestination.Text) Then
             MsgBox("Répertoire destination inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             txtDestination.Focus()
             Exit Sub
@@ -279,15 +283,15 @@ Public Class frmPicResize
         btnGo.Enabled = False
         Trace("Début de la génération")
 
-        Dim dir As IO.DirectoryInfo
-        dir = New IO.DirectoryInfo(txtSource.Text)
-        Dim fic As IO.FileInfo
+        Dim dir As DirectoryInfo
+        dir = New DirectoryInfo(txtSource.Text)
+        Dim fic As FileInfo
 
         For Each fic In dir.GetFiles("*.jpg")
             Try
                 GénèreVignette(fic.Name)
                 GC.Collect()
-                Threading.Thread.Sleep(0)
+                Thread.Sleep(0)
             Catch
             End Try
         Next

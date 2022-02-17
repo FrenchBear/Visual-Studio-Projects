@@ -110,7 +110,7 @@ Public Class frmPaint
 
     End Sub
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim newBitmap As New Bitmap(300, 300, PixelFormat.Format32bppArgb)
         Dim g As Graphics = Graphics.FromImage(newBitmap)
         g.Clear(Color.Aquamarine)

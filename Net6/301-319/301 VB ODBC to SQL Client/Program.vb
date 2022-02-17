@@ -3,6 +3,7 @@
 ' 2012-02-25    PV  VS2010; App 32-bit
 ' 2021-09-20    PV  VS2022; Net6.  Use Microsoft.Win32.Registry instead of My.Computer.Registry
 
+Imports System.Data.SqlClient
 Imports Microsoft.Win32
 
 #Disable Warning CA1416 ' Validate platform compatibility
@@ -26,10 +27,10 @@ Module Program
 
         Dim s As String
         s = "Data Source=" & sDataSource & ";Initial Catalog=" & sDatabase & ";Persist Security Info=True;User ID=EurodatOnLine;Password=madeinchina"
-        Dim conSQL As SqlClient.SqlConnection
-        conSQL = New SqlClient.SqlConnection(s)
+        Dim conSQL As SqlConnection
+        conSQL = New SqlConnection(s)
         conSQL.Open()
-        Dim cmdSQL As SqlClient.SqlCommand
+        Dim cmdSQL As SqlCommand
         cmdSQL = conSQL.CreateCommand
         cmdSQL.CommandText = "SELECT COUNT(*) FROM Operators"
         Dim n As Integer = cmdSQL.ExecuteScalar

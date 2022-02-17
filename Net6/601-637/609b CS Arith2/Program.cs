@@ -77,7 +77,7 @@ public interface IMetaSimpleArith<T>
 public class MetaIntBase : IMetaSimpleArith<IntBase>
 {
     // Factory from string
-    public IntBase FromString(string s) => string.IsNullOrEmpty(s) || s.Length > IntBase.digits || !int.TryParse(s, out int val)
+    public IntBase FromString(string s) => string.IsNullOrEmpty(s) || s.Length > IntBase.digits || !int.TryParse(s, out var val)
             ? throw new ArgumentException("Invalid constructor call")
             : new IntBase(val);
 
@@ -87,21 +87,21 @@ public class MetaIntBase : IMetaSimpleArith<IntBase>
     // Addition of a paramarray of IntBase, high part contains the overflow carry
     public (IntBase high, IntBase low) Plus(params IntBase[] list)
     {
-        int x = list.First().val;
-        foreach (IntBase item in list.Skip(1))
+        var x = list.First().val;
+        foreach (var item in list.Skip(1))
             x += item.val;
 
-        int h = x / IntBase.k;
-        int l = x % IntBase.k;
+        var h = x / IntBase.k;
+        var l = x % IntBase.k;
         return (new IntBase(h), new IntBase(l));
     }
 
     // Multiplication of two IntBase.  Internally no need for long, an int can store 8 digits.
     public (IntBase high, IntBase low) Mult(IntBase a, IntBase b)
     {
-        int x = a.val * b.val;
-        int h = x / IntBase.k;
-        int l = x % IntBase.k;
+        var x = a.val * b.val;
+        var h = x / IntBase.k;
+        var l = x % IntBase.k;
         return (new IntBase(h), new IntBase(l));
     }
 
@@ -163,13 +163,12 @@ public class MetaDA<T, MetaT> : IMetaSimpleArith<DA<T, MetaT>>
 
     public (DA<T, MetaT> high, DA<T, MetaT> low) Plus(params DA<T, MetaT>[] list)
     {
-        T h, l, ovh, ovl;
-        h = list.First().high;      // Not starting with 0 and adding 1st element is
-        l = list.First().low;       // a huuuuuuuuuge performance improvement (both C# and C++)
-        ovl = new T();
-        ovh = list.Length == 1 ? new T() : default;
+        var h = list.First().high;      // Not starting with 0 and adding 1st element is
+        var l = list.First().low;       // a huuuuuuuuuge performance improvement (both C# and C++)
+        var ovl = new T();
+        var ovh = list.Length == 1 ? new T() : default;
 
-        foreach (DA<T, MetaT> item in list.Skip(1))
+        foreach (var item in list.Skip(1))
         {
             T ov1, ov2;
             (ov1, l) = m.Plus(l, item.low);
@@ -186,8 +185,8 @@ public class MetaDA<T, MetaT> : IMetaSimpleArith<DA<T, MetaT>>
         T highH, highL;
 
         (lowH, lowL) = m.Mult(a.low, b.low);
-        (T t1h, T t1l) = m.Mult(a.high, b.low);
-        (T t2h, T t2l) = m.Mult(a.low, b.high);
+        (var t1h, var t1l) = m.Mult(a.high, b.low);
+        (var t2h, var t2l) = m.Mult(a.low, b.high);
         (highH, highL) = m.Mult(a.high, b.high);
 
         T ov1, ov2;
@@ -256,32 +255,31 @@ internal class Program
         where T : ISimpleArith<T>, new()
         where MetaT : IMetaSimpleArith<T>, new()
     {
-        int d = new T().Digits;
+        var d = new T().Digits;
         var rnd = new Random();
 
         string GetRandomNumber()
         {
             var sb = new StringBuilder(d);
-            for (int i = 0; i < d; i++)
+            for (var i = 0; i < d; i++)
                 _ = sb.Append((char)(48 + rnd.Next(0, 10)));
             return sb.ToString();
         }
 
         WriteLine($"Test Int{d}d");
-        string astr = GetRandomNumber();
-        string bstr = GetRandomNumber();
+        var astr = GetRandomNumber();
+        var bstr = GetRandomNumber();
         var sw = Stopwatch.StartNew();
-        T a, b;
         var m = new MetaT();
-        a = m.FromString(astr);
-        b = m.FromString(bstr);
+        var a = m.FromString(astr);
+        var b = m.FromString(bstr);
         WriteLine($"a{d}: {a.ToString()}");
         WriteLine($"b{d}: {b.ToString()}");
-        (T h, T l) = m.Plus(a, b);
-        string sumstr = m.ToString2(h, l);
+        (var h, var l) = m.Plus(a, b);
+        var sumstr = m.ToString2(h, l);
         WriteLine($"a{d}+b{d}: {sumstr}");
         (h, l) = m.Mult(a, b);
-        string prodstr = m.ToString2(h, l);
+        var prodstr = m.ToString2(h, l);
         WriteLine($"a{d}.b{d}: {prodstr}");
         sw.Stop();
 
@@ -300,26 +298,24 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        IntBase a, b;
         MetaIntBase m = new();
 
-        a = m.FromString("8000");
-        b = m.FromString("7000");
+        var a = m.FromString("8000");
+        var b = m.FromString("7000");
         WriteLine($"a: {a}");
         WriteLine($"b: {b}");
-        (IntBase h, IntBase l) = m.Plus(a, b);
+        (var h, var l) = m.Plus(a, b);
         WriteLine($"a+b: " + m.ToString2(h, l));
         (h, l) = m.Mult(a, b);
         WriteLine($"a.b: " + m.ToString2(h, l));
         WriteLine();
 
-        DA<IntBase, MetaIntBase> a8, b8;
         MetaDA<IntBase, MetaIntBase> m8 = new();
-        a8 = m8.FromString("12345678");
-        b8 = m8.FromString("87654321");
+        var a8 = m8.FromString("12345678");
+        var b8 = m8.FromString("87654321");
         WriteLine($"a8: {a8}");
         WriteLine($"b8: {b8}");
-        (DA<IntBase, MetaIntBase> h8, DA<IntBase, MetaIntBase> l8) = m8.Plus(a8, b8);
+        (var h8, var l8) = m8.Plus(a8, b8);
         WriteLine($"a8+b8: " + m8.ToString2(h8, l8));
         (h8, l8) = m8.Mult(a8, b8);
         WriteLine($"a8.b8: " + m8.ToString2(h8, l8));

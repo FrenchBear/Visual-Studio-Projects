@@ -34,13 +34,13 @@ internal class Program
             2
         };
 
-        int nv = 3;
+        var nv = 3;
         while (nv <= n)
         {
             if (!tb[(nv - 1) / 2])
             {
                 li.Add(nv);
-                int nvr = nv + nv + nv;          // skip even numbers
+                var nvr = nv + nv + nv;          // skip even numbers
                 while (nvr <= n)
                 {
                     // this test actually slows execution down about 20%

@@ -2,6 +2,7 @@
 '
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
+Imports System.Drawing.Printing
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -9,7 +10,7 @@ Public Class Form1
 
     Public iPrintedPage As Integer
 
-    Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles btnPreview.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnPreview.Click
         ActionPrint()
     End Sub
 
@@ -27,7 +28,7 @@ Public Class Form1
     End Sub
 
     ' Printing
-    Private Sub PrintDocument1_PrintPage(sender As System.Object, e As Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
         iPrintedPage += 1
 
         Dim rOut As Rectangle
@@ -44,14 +45,14 @@ Public Class Form1
         e.HasMorePages = iPrintedPage <= 2
     End Sub
 
-    Private Sub btnPageSetup_Click(sender As System.Object, e As EventArgs) Handles btnPageSetup.Click
-        PageSetupDialog1.PageSettings = New Drawing.Printing.PageSettings
-        PageSetupDialog1.PrinterSettings = New Drawing.Printing.PrinterSettings
+    Private Sub btnPageSetup_Click(sender As Object, e As EventArgs) Handles btnPageSetup.Click
+        PageSetupDialog1.PageSettings = New PageSettings
+        PageSetupDialog1.PrinterSettings = New PrinterSettings
 
         PageSetupDialog1.AllowMargins = False
         PageSetupDialog1.AllowPrinter = False
 
-        If PageSetupDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
+        If PageSetupDialog1.ShowDialog = DialogResult.OK Then
             MsgBox("New settings")
         End If
     End Sub

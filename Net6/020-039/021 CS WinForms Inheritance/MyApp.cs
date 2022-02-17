@@ -6,7 +6,7 @@
 // 2012-02-25   PV  VS2010
 // 2021-09-18   PV  VS2022, Net6
 
-internal class MyApp
+internal static class CS021
 {
     public static void Main()
     {

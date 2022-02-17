@@ -2,17 +2,18 @@
 '
 ' 2011-10-22    PV
 ' 2021-09-23    PV  VS2022; Net6
+Imports System.Threading
 
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
 
 Public Class Calculator
 
     ' Declares the variables you will use to hold your thread objects.
-    Public FactorialThread As Threading.Thread
+    Public FactorialThread As Thread
 
-    Public FactorialMinusOneThread As Threading.Thread
-    Public AddTwoThread As Threading.Thread
-    Public LoopThread As Threading.Thread
+    Public FactorialMinusOneThread As Thread
+    Public AddTwoThread As Thread
+    Public LoopThread As Thread
 
     Public varAddTwo As Integer
     Public varFact1 As Integer
@@ -101,17 +102,17 @@ Public Class Calculator
         Select Case threadNumber
             Case 1
                 ' Sets the thread using the AddressOf the subroutine where the thread will start.
-                FactorialThread = New Threading.Thread(AddressOf Factorial)
+                FactorialThread = New Thread(AddressOf Factorial)
                 ' Starts the thread.
                 FactorialThread.Start()
             Case 2
-                FactorialMinusOneThread = New Threading.Thread(AddressOf FactorialMinusOne)
+                FactorialMinusOneThread = New Thread(AddressOf FactorialMinusOne)
                 FactorialMinusOneThread.Start()
             Case 3
-                AddTwoThread = New Threading.Thread(AddressOf AddTwo)
+                AddTwoThread = New Thread(AddressOf AddTwo)
                 AddTwoThread.Start()
             Case 4
-                LoopThread = New Threading.Thread(AddressOf RunALoop)
+                LoopThread = New Thread(AddressOf RunALoop)
                 LoopThread.Start()
         End Select
     End Sub

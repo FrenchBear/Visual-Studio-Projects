@@ -87,7 +87,7 @@ Module modMainAnaPCL
 
         If bDebugMacros Or bDebugPCL Or bVerbose Or bDebugTilda Then
             WriteLine("[Entrée] pour continuer...")
-            Console.ReadLine()
+            ReadLine()
         End If
     End Sub
 
@@ -127,15 +127,15 @@ Module modDebug
     Public bDebugTilda As Boolean = False
 
     Public Sub TraceWrite(s As String)
-        If bDebugPCL Then Console.Write(s)
+        If bDebugPCL Then Write(s)
     End Sub
 
     Public Sub TraceWrite(format As String, arg0 As Object)
-        If bDebugPCL Then Console.Write(format, arg0)
+        If bDebugPCL Then Write(format, arg0)
     End Sub
 
     Public Sub TraceWrite(format As String, arg0 As Object, arg1 As Object)
-        If bDebugPCL Then Console.Write(format, arg0, arg1)
+        If bDebugPCL Then Write(format, arg0, arg1)
     End Sub
 
     Public Sub TraceWriteLine()

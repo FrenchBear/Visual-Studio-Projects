@@ -12,6 +12,9 @@
 ' 2006-10-01    PV  VS 2005
 ' 2010-07-19    PV  VS 2010
 ' 2012-02-05    PV  Nettoyage
+Imports System.ComponentModel
+Imports System.Drawing.Imaging
+Imports System.Text
 
 #Disable Warning IDE1006 ' Naming Styles
 
@@ -41,7 +44,7 @@ Public Class LVSystemForm
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private ReadOnly components As System.ComponentModel.IContainer
+    Private ReadOnly components As IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.
@@ -81,7 +84,7 @@ Public Class LVSystemForm
         Me.picOut = New PictureBox()
         Me.ExempleHilbertButton = New Button()
         Me.ExempleDragonButton = New Button()
-        CType(Me.picOut, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picOut, ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnGénère
@@ -250,7 +253,7 @@ Public Class LVSystemForm
         Me.Font = New Font("Tahoma", 8.25!, FontStyle.Regular, GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmLVSystem"
         Me.Text = "LVSystem, Application à la courbe de Hilbert"
-        CType(Me.picOut, ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picOut, ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -263,7 +266,7 @@ Public Class LVSystemForm
     Private iAngle As Integer
     Private tsRègles As String()
 
-    Private Sub btnGénère_Click(sender As System.Object, e As EventArgs) Handles btnGénère.Click
+    Private Sub btnGénère_Click(sender As Object, e As EventArgs) Handles btnGénère.Click
         Cursor.Current = Cursors.WaitCursor
 
         sChaîne = txtDépart.Text
@@ -311,8 +314,8 @@ Public Class LVSystemForm
     End Function
 
     Private Shared Function sInverse(s0 As String) As String
-        Dim s As Text.StringBuilder
-        s = New Text.StringBuilder
+        Dim s As StringBuilder
+        s = New StringBuilder
         For i As Integer = s0.Length - 1 To 0 Step -1
             Select Case s0.Chars(i)
                 Case "+"c
@@ -373,7 +376,7 @@ Public Class LVSystemForm
         Dim bmpOut As Bitmap
         If picOut.Size.Width <= 1 Or picOut.Size.Height <= 1 Then Return "Zone de dessin trop petite"
 
-        bmpOut = New Bitmap(picOut.Size.Width, picOut.Size.Height, Imaging.PixelFormat.Format24bppRgb)
+        bmpOut = New Bitmap(picOut.Size.Width, picOut.Size.Height, PixelFormat.Format24bppRgb)
         Dim graOut As Graphics
         graOut = Graphics.FromImage(bmpOut)
         graOut.Clear(Color.White)
@@ -401,14 +404,14 @@ Public Class LVSystemForm
         Next
     End Function
 
-    Private Sub ExempleHilbertButton_Click(sender As System.Object, e As EventArgs) Handles ExempleHilbertButton.Click
+    Private Sub ExempleHilbertButton_Click(sender As Object, e As EventArgs) Handles ExempleHilbertButton.Click
         txtDépart.Text = "+F-F-F+"
         txtRègles.Text = "S=+~SF-SFS-F~S+"
         txtAngle.Text = "4"
         txtItérations.Text = "5"
     End Sub
 
-    Private Sub ExempleDragonButton_Click(sender As System.Object, e As EventArgs) Handles ExempleDragonButton.Click
+    Private Sub ExempleDragonButton_Click(sender As Object, e As EventArgs) Handles ExempleDragonButton.Click
         txtDépart.Text = "F"
         txtRègles.Text = "S=+S--~S+"
         txtAngle.Text = "8"

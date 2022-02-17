@@ -2,12 +2,13 @@
 '
 ' 2012-02-25	PV  VS2010
 ' 2021-09-19    PV  VS2022; Net6
+Imports System.Timers
 
 #Disable Warning IDE1006 ' Naming Styles
 #Disable Warning CA1822 ' Mark members as static
 
 Module Module1
-    Dim WithEvents t As Timers.Timer
+    Dim WithEvents t As Timer
     Dim bStop As Boolean
     Dim sGlobalRes As String
 
@@ -20,7 +21,7 @@ Module Module1
         Dim k1 As MaClasse
         k1 = New MaClasse
         c = 0
-        t = New Timers.Timer With {
+        t = New Timer With {
             .AutoReset = False,
             .Interval = 1000,
             .Enabled = True
@@ -106,7 +107,7 @@ Module Module1
         MsgBox(sGlobalRes)
     End Sub
 
-    Private Sub t_Elapsed(sender As Object, e As Timers.ElapsedEventArgs) Handles t.Elapsed
+    Private Sub t_Elapsed(sender As Object, e As ElapsedEventArgs) Handles t.Elapsed
         bStop = True
     End Sub
 

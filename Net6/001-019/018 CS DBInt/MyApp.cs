@@ -10,7 +10,7 @@ using static System.Console;
 
 namespace CS018;
 
-public struct DBInt
+public readonly struct DBInt
 {
     public static readonly DBInt Null = new();
     private readonly int value;
@@ -34,13 +34,13 @@ public struct DBInt
     public override string ToString() => defined ? value.ToString() : "(Null)";
 }
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {
         DBInt x = 123;
-        DBInt y = DBInt.Null;
-        DBInt z = x + y;
+        var y = DBInt.Null;
+        var z = x + y;
 
         WriteLine("x = {0}", x);
         WriteLine("y = {0}", y);

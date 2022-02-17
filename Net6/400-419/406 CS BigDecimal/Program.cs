@@ -16,8 +16,8 @@ internal class Program
         // Calcul of sqrt(r), Héron suite (u(n+1)=(u(n)+r/u(n))/2, u(0)=r/2, quadratics convergence
         BigDecimal r = 2;
         BigDecimal un;
-        BigDecimal unp1 = r / 2;
-        int nSteps = 0;
+        var unp1 = r / 2;
+        var nSteps = 0;
         do
         {
             un = unp1;

@@ -7,7 +7,7 @@
 
 Public Class Form2
 
-    Private Sub aboutToolStripMenuItem_Click(sender As System.Object, e As EventArgs) Handles aboutToolStripMenuItem.Click
+    Private Sub aboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles aboutToolStripMenuItem.Click
         MsgBox("A propos")
     End Sub
 

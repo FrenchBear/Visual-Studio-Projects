@@ -5,17 +5,18 @@
 
 Option Compare Text
 
+Imports System.IO
 Imports System.Text
 Imports System.Text.RegularExpressions
 Imports System.Windows
 
 Class MainWindow
 
-    Private Sub OnLoad(sender As System.Object, e As RoutedEventArgs)
+    Private Sub OnLoad(sender As Object, e As RoutedEventArgs)
         Dim reEpisodeNum1 As New Regex("^[0-9]+x[0-9]+$")
         Dim reEpisodeNum2 As New Regex("^S([0-9]+)E([0-9]+)$")
-        For Each sFilename As String In IO.Directory.EnumerateFiles("C:\Users\Pierre\Downloads\eMule\Incoming")
-            Dim sBase As String = IO.Path.GetFileNameWithoutExtension(sFilename)
+        For Each sFilename As String In Directory.EnumerateFiles("C:\Users\Pierre\Downloads\eMule\Incoming")
+            Dim sBase As String = Path.GetFileNameWithoutExtension(sFilename)
 
             Dim p1 As Integer = sBase.IndexOf("["c)
             If p1 >= 0 Then
@@ -58,14 +59,14 @@ Class MainWindow
                 End If
             Next
             sRes.Append("."c)
-            sRes.Append(IO.Path.GetExtension(sFilename))
+            sRes.Append(Path.GetExtension(sFilename))
 
             Dim sNewName As String = Replace(sRes.ToString, "..", ".")
 
             ListBox1.Items.Add(sBase)
             ListBox1.Items.Add(sNewName)
 
-            IO.File.Move(sFilename, sNewName)
+            File.Move(sFilename, sNewName)
         Next
     End Sub
 

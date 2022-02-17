@@ -59,7 +59,7 @@ public partial class MainWindow : Window
         };
 
         // Show open file dialog box
-        bool? result = dlg.ShowDialog();
+        var result = dlg.ShowDialog();
 
         // Process open file dialog box results
         if (result == true)
@@ -120,7 +120,7 @@ public partial class MainWindow : Window
         };
 
         // Show save file dialog box
-        bool? result = dlg.ShowDialog();
+        var result = dlg.ShowDialog();
 
         // Process save file dialog box results
         if (result == true)

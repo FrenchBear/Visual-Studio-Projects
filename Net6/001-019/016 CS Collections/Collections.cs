@@ -14,7 +14,7 @@ internal class TestCollections
 {
     public static void PrintKeysAndValues(IDictionary myCollection)
     {
-        IDictionaryEnumerator myEnumerator = myCollection.GetEnumerator();
+        var myEnumerator = myCollection.GetEnumerator();
         WriteLine("-KEY-\t-VALUE-");
         while (myEnumerator.MoveNext())
         {
@@ -103,12 +103,12 @@ internal class TestCollections
         PrintKeysAndValues(s);
 
         WriteLine("Clés triées par indice:");
-        for (int i = 0; i < s.Count; i++)
+        for (var i = 0; i < s.Count; i++)
             WriteLine("{0}: {1} {2}", i, s.GetKey(i), s.GetByIndex(i));
     }
 }
 
-internal class MyApp
+internal static class MyApp
 {
     public static void Main()
     {

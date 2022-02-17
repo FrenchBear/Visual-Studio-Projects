@@ -27,7 +27,7 @@ internal class AString
             if (reducedList == null)
             {
                 var l = new List<AString>();
-                for (int i = 0; i < Name.Length; i++)
+                for (var i = 0; i < Name.Length; i++)
                     l.Add(new AString { Name = Name.Remove(i, 1) });
                 reducedList = l;
             }
@@ -46,14 +46,14 @@ internal class Program
         List<AString> AStringsList = new();
 
         // Retrieve list of files first and build ListAFiles
-        foreach (string item in Directory.GetFiles(folder, "*.mp3", SearchOption.AllDirectories))
+        foreach (var item in Directory.GetFiles(folder, "*.mp3", SearchOption.AllDirectories))
             AStringsList.Add(new AString { FullPath = item, Name = Path.GetFileName(item) });
 
         var sw = Stopwatch.StartNew();
 
-        for (int i = 0; i < AStringsList.Count; i++)
+        for (var i = 0; i < AStringsList.Count; i++)
         {
-            for (int j = i + 1; j < AStringsList.Count; j++)
+            for (var j = i + 1; j < AStringsList.Count; j++)
             {
                 if (IsCloseEnough(AStringsList[i], AStringsList[j], dist))
                 WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
@@ -66,8 +66,8 @@ internal class Program
 
     private static bool IsCloseEnough(AString as1, AString as2, int dist)
     {
-        string s1 = as1.Name;
-        string s2 = as2.Name;
+        var s1 = as1.Name;
+        var s2 = as2.Name;
 
         // Quick exit
         if (Math.Abs(s1.Length - s2.Length) > dist) return false;
@@ -83,7 +83,7 @@ internal class Program
         // One character is different?
         if (dist == 1 && s1.Length == s2.Length)
         {
-            for (int i = 0; i < s1.Length - 1; i++)
+            for (var i = 0; i < s1.Length - 1; i++)
             {
                 if (as1.ReducedList[i].Name == as2.ReducedList[i].Name)
                     return true;
@@ -97,7 +97,7 @@ internal class Program
         }
 
         // dist>1: remove 1 char from s1 and do it recursively with dist-1
-        for (int i = 0; i < s1.Length; i++)
+        for (var i = 0; i < s1.Length; i++)
         {
             if (IsCloseEnough(as1.ReducedList[i], as2, dist - 1))
                 return true;

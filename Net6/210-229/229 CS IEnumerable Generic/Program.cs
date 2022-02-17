@@ -16,7 +16,7 @@ internal class Program
     private static void Main(string[] args)
     {
         CityCollection cities = new();
-        foreach (string city in cities.Reverse())
+        foreach (var city in cities.Reverse())
             Trace.WriteLine(city);
 
         //toto t = new toto();
@@ -30,7 +30,7 @@ public class CityCollection : IEnumerable<string>
 
     public IEnumerable<string> Reverse()
     {
-        for (int i = m_Cities.Length; i-- != 0;)
+        for (var i = m_Cities.Length; i-- != 0;)
             yield return m_Cities[i];
     }
 
@@ -86,7 +86,7 @@ public class C2 : IMachin
         //{
         //}
 
-        foreach (KeyValuePair<int, string> kv in d)
+        foreach (var kv in d)
         {
         }
 

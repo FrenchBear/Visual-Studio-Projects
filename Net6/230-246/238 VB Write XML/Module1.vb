@@ -5,7 +5,11 @@
 ' 2012-02-25	PV  VS2010
 ' 2021-09-20    PV  VS2022; Net6
 
+Imports System.Text
 Imports System.Xml
+Imports System.Xml.Serialization
+Imports System.Xml.XPath
+Imports System.Xml.Xsl
 
 Module Module1
 
@@ -26,7 +30,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim xtw As New XmlTextWriter("..\..\TestResults1.xml", Text.Encoding.UTF8)
+        Dim xtw As New XmlTextWriter("..\..\TestResults1.xml", Encoding.UTF8)
         With xtw
             .Formatting = Formatting.Indented
             .WriteStartDocument()
@@ -111,7 +115,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim xtw As New XmlTextWriter("..\..\TestResults3_Intermediate.xml", Text.Encoding.UTF8)
+        Dim xtw As New XmlTextWriter("..\..\TestResults3_Intermediate.xml", Encoding.UTF8)
         With xtw
             .Formatting = Formatting.Indented
             .WriteStartDocument()
@@ -145,13 +149,13 @@ Module Module1
         xtw.Close()
 
         ' Then transform this Xml file using an Xsl stylesteet
-        Dim xpd As New XPath.XPathDocument("..\..\TestResults3_Intermediate.xml")
+        Dim xpd As New XPathDocument("..\..\TestResults3_Intermediate.xml")
         'Dim xslt As Xsl.XslTransform = New Xsl.XslTransform
         'xslt.Load("..\..\TransformSheet.xsl")
-        Dim xslt2 As New Xsl.XslCompiledTransform()
+        Dim xslt2 As New XslCompiledTransform()
         xslt2.Load("..\..\TransformSheet.xsl")
 
-        Dim xtw2 As New XmlTextWriter("..\..\TestResults3.xml", Text.Encoding.UTF8) With {
+        Dim xtw2 As New XmlTextWriter("..\..\TestResults3.xml", Encoding.UTF8) With {
             .Formatting = Formatting.Indented
         }
         xtw2.WriteStartDocument()
@@ -202,8 +206,8 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim s As New Serialization.XmlSerializer(GetType(TestResults))
-        Dim xtw As New XmlTextWriter("..\..\TestResults5.xml", Text.Encoding.UTF8) With {
+        Dim s As New XmlSerializer(GetType(TestResults))
+        Dim xtw As New XmlTextWriter("..\..\TestResults5.xml", Encoding.UTF8) With {
             .Formatting = Formatting.Indented
         }
 
@@ -239,10 +243,10 @@ End Module
 
 Public Class Result
 
-    <Serialization.XmlAttribute()>
+    <XmlAttribute()>
     Public id As String
 
-    <Serialization.XmlElement("input")>
+    <XmlElement("input")>
     Public input As String
 
     Public expected As String
@@ -251,7 +255,7 @@ End Class
 
 Public Class TestResults
 
-    <Serialization.XmlElement(ElementName:="result", Type:=GetType(Result))>
+    <XmlElement(ElementName:="result", Type:=GetType(Result))>
     Public Results As New ArrayList
 
 End Class
@@ -274,7 +278,7 @@ Class Hand
     End Sub
 
     Public Overrides Function ToString() As String
-        Dim s As New Text.StringBuilder
+        Dim s As New StringBuilder
         For i As Integer = 0 To 4
             If i > 0 Then s.Append(" "c)
             s.Append(tDice(i).ToString)
