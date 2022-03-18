@@ -25,56 +25,61 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.StatusStrip1 = New StatusStrip
-        Me.StatusStrip2 = New StatusStrip
-        Me.StatusStrip3 = New StatusStrip
-        Me.StatusStrip4 = New StatusStrip
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.StatusStrip2 = New System.Windows.Forms.StatusStrip()
+        Me.StatusStrip3 = New System.Windows.Forms.StatusStrip()
+        Me.StatusStrip4 = New System.Windows.Forms.StatusStrip()
         Me.SuspendLayout()
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.GripStyle = ToolStripGripStyle.Visible
-        Me.StatusStrip1.Location = New Point(0, 451)
+        Me.StatusStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 524)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New Size(689, 22)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 16, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(804, 22)
         Me.StatusStrip1.TabIndex = 0
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'StatusStrip2
         '
-        Me.StatusStrip2.Location = New Point(0, 429)
+        Me.StatusStrip2.Location = New System.Drawing.Point(0, 502)
         Me.StatusStrip2.Name = "StatusStrip2"
-        Me.StatusStrip2.Size = New Size(689, 22)
+        Me.StatusStrip2.Padding = New System.Windows.Forms.Padding(1, 0, 16, 0)
+        Me.StatusStrip2.Size = New System.Drawing.Size(804, 22)
         Me.StatusStrip2.TabIndex = 1
         Me.StatusStrip2.Text = "StatusStrip2"
         '
         'StatusStrip3
         '
-        Me.StatusStrip3.Location = New Point(0, 407)
+        Me.StatusStrip3.Location = New System.Drawing.Point(0, 480)
         Me.StatusStrip3.Name = "StatusStrip3"
-        Me.StatusStrip3.Size = New Size(689, 22)
+        Me.StatusStrip3.Padding = New System.Windows.Forms.Padding(1, 0, 16, 0)
+        Me.StatusStrip3.Size = New System.Drawing.Size(804, 22)
         Me.StatusStrip3.TabIndex = 2
         Me.StatusStrip3.Text = "StatusStrip3"
         '
         'StatusStrip4
         '
-        Me.StatusStrip4.Location = New Point(0, 385)
+        Me.StatusStrip4.Location = New System.Drawing.Point(0, 458)
         Me.StatusStrip4.Name = "StatusStrip4"
-        Me.StatusStrip4.Size = New Size(689, 22)
+        Me.StatusStrip4.Padding = New System.Windows.Forms.Padding(1, 0, 16, 0)
+        Me.StatusStrip4.Size = New System.Drawing.Size(804, 22)
         Me.StatusStrip4.TabIndex = 3
         Me.StatusStrip4.Text = "StatusStrip4"
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = AutoScaleMode.Font
-        Me.ClientSize = New Size(689, 473)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(804, 546)
         Me.Controls.Add(Me.StatusStrip4)
         Me.Controls.Add(Me.StatusStrip3)
         Me.Controls.Add(Me.StatusStrip2)
         Me.Controls.Add(Me.StatusStrip1)
+        Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Text = "VB306 All Status Bar Styles"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -26,7 +26,7 @@ Public Class frmRotorRouter
 
     ReadOnly r As Integer = 100
     ReadOnly n = 15000
-    ReadOnly nRefresh = 15
+    ReadOnly nRefresh = 50      ' Refres every nRefresh passes
 
     ReadOnly picScale As Integer = 2
 
