@@ -186,7 +186,7 @@ internal static class MyApp
         if (t.IsInterface) bn = "interface " + bn;
 
         // Collection globale des namespaces
-        if (ns == null) ns = "(global)";
+        ns ??= "(global)";  // if (ns == null) ns = "(global)";
         if (!slNameSpaces.Contains(ns))
             slNameSpaces.Add(ns, null);
 

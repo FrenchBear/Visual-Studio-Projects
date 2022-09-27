@@ -67,8 +67,7 @@ internal struct Complex : IFormattable
 
     public string ToString(string format, IFormatProvider formatProvider)
     {
-        if (format == null)
-            format = "G";
+        format ??= "G";     // if (format == null) format = "G";
 
         var cFormat = format[..1].ToUpper().ToCharArray()[0];
 
