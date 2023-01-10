@@ -1,8 +1,8 @@
 ﻿' 325 VB WPF Fallout 3 Decrypter
 '
-' 2012-02-25	PV  VS2010
-' 2021-09-22    PV  VS2022; Net6
-' 2023-01-10	PV		Net7
+' 2012-02-25	PV      VS2010
+' 2021-09-22    PV      VS2022; Net6
+' 2023-01-10	PV		Net7; Much better interface using a grid
 
 Option Explicit On
 Option Compare Text
@@ -64,7 +64,7 @@ Partial Class Window1
         Placed3TextBox.Text = ""
         Placed4TextBox.Text = ""
         ClearStatuses()
-        AnalysisLabel.Content = ""
+        'AnalysisLabel.Content = ""
         WordTextBox.Focus()
     End Sub
 
