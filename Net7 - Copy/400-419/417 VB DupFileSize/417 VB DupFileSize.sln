@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "417 VB DupFileSize", "417 VB DupFileSize.vbproj", "{CE65C7F8-50F9-4616-9EF2-B6E9DB9AA994}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE65C7F8-50F9-4616-9EF2-B6E9DB9AA994}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE65C7F8-50F9-4616-9EF2-B6E9DB9AA994}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE65C7F8-50F9-4616-9EF2-B6E9DB9AA994}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE65C7F8-50F9-4616-9EF2-B6E9DB9AA994}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A418B86-3E7F-44CA-942B-2CDE7751E3F2}
+	EndGlobalSection
+EndGlobal

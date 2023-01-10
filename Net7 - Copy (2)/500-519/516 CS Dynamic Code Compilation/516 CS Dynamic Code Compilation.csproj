@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS516</RootNamespace>
+        <AssemblyName>CS516</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS516 Dynamic Code Compilation</Title>
+        <Description>Test of compilation and execution at run-time</Description>
+        <Copyright>Copyright ©2013 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

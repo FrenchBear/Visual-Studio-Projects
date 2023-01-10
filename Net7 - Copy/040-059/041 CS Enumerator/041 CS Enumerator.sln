@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31710.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "041 CS Enumerator", "041 CS Enumerator.csproj", "{1A6DD43C-9F12-4C4E-8674-EAB37DDD8283}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A6DD43C-9F12-4C4E-8674-EAB37DDD8283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6DD43C-9F12-4C4E-8674-EAB37DDD8283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6DD43C-9F12-4C4E-8674-EAB37DDD8283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6DD43C-9F12-4C4E-8674-EAB37DDD8283}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA0E1222-CFE9-4AE2-B568-93B4B61225E9}
+	EndGlobalSection
+EndGlobal

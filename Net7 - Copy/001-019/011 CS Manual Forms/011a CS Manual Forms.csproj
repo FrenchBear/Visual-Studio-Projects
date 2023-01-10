@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<AssemblyName>CS011a</AssemblyName>
+		<RootNamespace>CS011a</RootNamespace>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>Hello1</RootNamespace>
+		<ApplicationVersion>1.0.0</ApplicationVersion>
+		<Authors>Copyright ©2010-2023 Pierre Violent</Authors>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Update="System">
+			<Name>System</Name>
+		</Reference>
+		<Reference Update="System.Drawing">
+			<Name>System.Drawing</Name>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="2-Hello.cs" />
+	</ItemGroup>
+</Project>

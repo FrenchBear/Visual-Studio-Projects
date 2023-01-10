@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "411 VB Multithread Calculations", "411 VB Multithread Calculations.vbproj", "{7C14A281-F425-42FE-9458-874CD7305245}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C14A281-F425-42FE-9458-874CD7305245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C14A281-F425-42FE-9458-874CD7305245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C14A281-F425-42FE-9458-874CD7305245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C14A281-F425-42FE-9458-874CD7305245}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EBB8F27-0D31-4C5C-974E-A11DAEB75939}
+	EndGlobalSection
+EndGlobal

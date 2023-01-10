@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows7.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>VB314</RootNamespace>
+        <AssemblyName>VB314</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>VB314 PowerCollections</Title>
+        <Copyright>Copyright ©2008-2023 Pierre Violent</Copyright>
+        <StartupObject>Sub Main</StartupObject>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="XAct.Wintellect.PowerCollections" Version="0.0.1">
+        <NoWarn>NU1701</NoWarn>
+      </PackageReference>
+    </ItemGroup>
+</Project>

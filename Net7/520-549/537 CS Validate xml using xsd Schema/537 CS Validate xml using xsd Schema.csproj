@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS537</RootNamespace>
+        <AssemblyName>CS537</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS537 ValidateSchema</Title>
+        <Copyright>Copyright ©2015-2023 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>RI3</RootNamespace>
+        <AssemblyName>CS511</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>RetailleImages</Title>
+        <Description>Redimensionnement d'un ensemble d'images (GDI)</Description>
+        <Copyright>Copyright ©2006-2023 Pierre Violent</Copyright>
+        <ApplicationIcon>Retaille.ico</ApplicationIcon>
+        <UseWPF>true</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+    </ItemGroup>
+</Project>

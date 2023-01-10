@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS511a</RootNamespace>
+        <AssemblyName>CS511a</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS511 CreateVignette1</Title>
+        <Copyright>Copyright ©2013-2023 Pierre Violent</Copyright>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+</Project>

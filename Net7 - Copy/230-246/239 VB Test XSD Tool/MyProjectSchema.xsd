@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd" elementFormDefault="qualified" xmlns="http://tempuri.org/XMLSchema.xsd" xmlns:mstns="http://tempuri.org/XMLSchema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Project">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="TargetOrImportType" />
+      </xs:sequence>
+      <xs:attribute name="DefaultTargets" type="xs:string" />
+      <xs:attribute name="InitialTargets" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="TargetOrImportType">
+    <xs:choice>
+      <xs:element name="Target" type="TargetType" />
+      <xs:element name="Import" type="ImportType" />
+    </xs:choice>
+  </xs:group>
+  <xs:complexType name="TargetType">
+    <xs:sequence>
+      <xs:sequence minOccurs="1" maxOccurs="unbounded">
+        <xs:element ref="Task" />
+      </xs:sequence>
+    </xs:sequence>
+    <xs:attribute name="Name" type="non_empty_string" />
+  </xs:complexType>
+  <xs:simpleType name="non_empty_string">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Task" type="TaskType" abstract="true" />
+  <xs:complexType name="TaskType">
+    <xs:sequence minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="Output">
+        <xs:annotation>
+          <xs:documentation>
+            <!-- _locID_text="TaskType_Output" _locComment="" -->Optional element specifying a specific task output to be gathered
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="TaskParameter" type="non_empty_string" use="required">
+            <xs:annotation>
+              <xs:documentation>
+                <!-- _locID_text="TaskType_Output_TaskParameter" _locComment="" -->Task parameter to gather. Matches the name of a .NET Property on the task class that has an [Output] attribute
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="ItemName" type="non_empty_string" use="optional">
+            <xs:annotation>
+              <xs:documentation>
+                <!-- _locID_text="TaskType_Output_ItemName" _locComment="" -->Optional name of an item list to put the gathered outputs into. Either ItemName or PropertyName must be specified
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="PropertyName" type="non_empty_string" use="optional">
+            <xs:annotation>
+              <xs:documentation>
+                <!-- _locID_text="TaskType_Output_PropertyName" _locComment="" -->Optional name of a property to put the gathered output into. Either PropertyName or ItemName must be specified
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Condition" type="xs:string" use="optional">
+            <xs:annotation>
+              <xs:documentation>
+                <!-- _locID_text="TaskType_Output_Condition" _locComment="" -->Optional expression evaluated to determine whether the output should be gathered
+              </xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Condition" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          <!-- _locID_text="TaskType_Condition" _locComment="" -->Optional expression evaluated to determine whether the task should be executed
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <!-- We don't need the anyAttribute here because other types deriving from this type will add the right attributes.-->
+  </xs:complexType>
+  <xs:simpleType name="Importance">
+    <xs:union memberTypes="non_empty_string    ">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="high" />
+          <xs:enumeration value="normal" />
+          <xs:enumeration value="low" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:union>
+  </xs:simpleType>
+  <xs:complexType name="ImportType">
+    <xs:sequence>
+      <xs:element name="Name" type="non_empty_string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Message" substitutionGroup="Task">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="TaskType">
+          <xs:attribute name="Importance" type="Importance" />
+          <xs:attribute name="Text" type="xs:string" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element substitutionGroup="Task" name="MkDir">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="TaskType">
+          <xs:sequence />
+          <xs:attribute name="Directories" type="non_empty_string" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "509 VB Goldbach", "509 VB Goldbach.vbproj", "{8EFF496A-4A3C-4305-86F3-6D73274E92AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8EFF496A-4A3C-4305-86F3-6D73274E92AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EFF496A-4A3C-4305-86F3-6D73274E92AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EFF496A-4A3C-4305-86F3-6D73274E92AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EFF496A-4A3C-4305-86F3-6D73274E92AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAC5B889-E681-4BF7-AB30-D6F09F6F6654}
+	EndGlobalSection
+EndGlobal

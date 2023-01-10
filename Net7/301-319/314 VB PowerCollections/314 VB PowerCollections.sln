@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "314 VB PowerCollections", "314 VB PowerCollections.vbproj", "{6BDF9F70-EE7F-473C-8AD4-31B2EA60210F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BDF9F70-EE7F-473C-8AD4-31B2EA60210F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BDF9F70-EE7F-473C-8AD4-31B2EA60210F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BDF9F70-EE7F-473C-8AD4-31B2EA60210F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BDF9F70-EE7F-473C-8AD4-31B2EA60210F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6DB96B7-FD11-4F31-A2C9-19998348FD7E}
+	EndGlobalSection
+EndGlobal

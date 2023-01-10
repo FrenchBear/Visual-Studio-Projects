@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>VB425</RootNamespace>
+        <AssemblyName>VB425</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>425 VB Egyptian Fractions</Title>
+        <Copyright>Copyright ©2012-2023 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

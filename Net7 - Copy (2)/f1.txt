@@ -1,0 +1,532 @@
+./001-019/002 CS Stack+Delegates+Math/MyApp.cs:                                                                                           ISO-8859 text, with CRLF line terminators
+./001-019/002 CS Stack+Delegates+Math/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./001-019/002 CS Stack+Delegates+Math/obj/Debug/net7.0/002 CS Stack+Delegates+Math.AssemblyInfo.cs:                                       UTF-8 Unicode text, with CRLF line terminators
+./001-019/002 CS Stack+Delegates+Math/Pile.cs:                                                                                            ISO-8859 text, with CRLF line terminators
+./001-019/004 CS WindowsApplication/frmHello.cs:                                                                                          C source, ISO-8859 text, with CRLF line terminators
+./001-019/004 CS WindowsApplication/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                              ASCII text, with CRLF line terminators
+./001-019/004 CS WindowsApplication/obj/Debug/net7.0-windows/004 CS WindowsApplication.AssemblyInfo.cs:                                   UTF-8 Unicode text, with CRLF line terminators
+./001-019/006 CS Inheritance/MyApp.cs:                                                                                                    ISO-8859 text, with CRLF line terminators
+./001-019/006 CS Inheritance/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                             ASCII text, with CRLF line terminators
+./001-019/006 CS Inheritance/obj/Debug/net7.0/006 CS Inheritance.AssemblyInfo.cs:                                                         UTF-8 Unicode text, with CRLF line terminators
+./001-019/010 CS Simple Forms/Form1.cs:                                                                                                   C source, ISO-8859 text, with CRLF line terminators
+./001-019/010 CS Simple Forms/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./001-019/010 CS Simple Forms/obj/Debug/net7.0-windows/010 CS Simple Forms.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./001-019/011 CS Manual Forms/1-Hello.cs:                                                                                                 C source, ISO-8859 text, with CRLF line terminators
+./001-019/011 CS Manual Forms/2-Hello.cs:                                                                                                 ASCII text, with CRLF line terminators
+./001-019/011 CS Manual Forms/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./001-019/011 CS Manual Forms/obj/Debug/net7.0-windows/011a CS Manual Forms.AssemblyInfo.cs:                                              UTF-8 Unicode text, with CRLF line terminators
+./001-019/011 CS Manual Forms/obj/Debug/net7.0-windows/011b CS Manual Forms.AssemblyInfo.cs:                                              UTF-8 Unicode text, with CRLF line terminators
+./001-019/012 CS Operators/012.cs:                                                                                                        ISO-8859 text, with CRLF line terminators
+./001-019/012 CS Operators/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                               ASCII text, with CRLF line terminators
+./001-019/012 CS Operators/obj/Debug/net7.0/012 CS Operators.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./001-019/013 CS SOAP Serialization/Class1.cs:                                                                                            C source, ASCII text, with CRLF line terminators
+./001-019/013 CS SOAP Serialization/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                      ASCII text, with CRLF line terminators
+./001-019/013 CS SOAP Serialization/obj/Debug/net7.0/013 CS SOAP Serialization.AssemblyInfo.cs:                                           UTF-8 Unicode text, with CRLF line terminators
+./001-019/014 CS Reflection/Class1.cs:                                                                                                    ISO-8859 text, with CRLF line terminators
+./001-019/014 CS Reflection/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./001-019/014 CS Reflection/obj/Debug/net7.0/014 CS Reflection.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./001-019/015 CS System.Diagnostics/Class1.cs:                                                                                            ISO-8859 text, with CRLF line terminators
+./001-019/015 CS System.Diagnostics/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                      ASCII text, with CRLF line terminators
+./001-019/015 CS System.Diagnostics/obj/Debug/net7.0/015 CS System.Diagnostics.AssemblyInfo.cs:                                           UTF-8 Unicode text, with CRLF line terminators
+./001-019/016 CS Collections/Collections.cs:                                                                                              ISO-8859 text, with CRLF line terminators
+./001-019/016 CS Collections/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                             ASCII text, with CRLF line terminators
+./001-019/016 CS Collections/obj/Debug/net7.0/016 CS Collections.AssemblyInfo.cs:                                                         UTF-8 Unicode text, with CRLF line terminators
+./001-019/017 CS Delegates/Application.cs:                                                                                                ISO-8859 text, with CRLF line terminators
+./001-019/017 CS Delegates/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                               ASCII text, with CRLF line terminators
+./001-019/017 CS Delegates/obj/Debug/net7.0/017 CS Delegates.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./001-019/018 CS DBInt/MyApp.cs:                                                                                                          ISO-8859 text, with CRLF line terminators
+./001-019/018 CS DBInt/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                   ASCII text, with CRLF line terminators
+./001-019/018 CS DBInt/obj/Debug/net7.0/018 CS DBInt.AssemblyInfo.cs:                                                                     UTF-8 Unicode text, with CRLF line terminators
+./001-019/019 CS Forms/MyApp.cs:                                                                                                          ISO-8859 text, with CRLF line terminators
+./001-019/019 CS Forms/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                           ASCII text, with CRLF line terminators
+./001-019/019 CS Forms/obj/Debug/net7.0-windows/019 CS Forms.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./020-039/020 CS et VB et CPP/MyApp.cs:                                                                                                   C source, ISO-8859 text, with CRLF line terminators
+./020-039/021 CS WinForms Inheritance/MsgBox2.cs:                                                                                         C source, ISO-8859 text, with CRLF line terminators
+./020-039/021 CS WinForms Inheritance/MsgBox3.cs:                                                                                         C source, UTF-8 Unicode text, with CRLF line terminators
+./020-039/021 CS WinForms Inheritance/MyApp.cs:                                                                                           ISO-8859 text, with CRLF line terminators
+./020-039/021 CS WinForms Inheritance/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                            ASCII text, with CRLF line terminators
+./020-039/021 CS WinForms Inheritance/obj/Debug/net7.0-windows/021 CS WinForms Inheritance.AssemblyInfo.cs:                               UTF-8 Unicode text, with CRLF line terminators
+./020-039/024 CS Multicast Delegate/MyApp.cs:                                                                                             ASCII text, with CRLF line terminators
+./020-039/024 CS Multicast Delegate/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                      ASCII text, with CRLF line terminators
+./020-039/024 CS Multicast Delegate/obj/Debug/net7.0/024 CS Multicast Delegate.AssemblyInfo.cs:                                           UTF-8 Unicode text, with CRLF line terminators
+./020-039/025 CS Gradient Button/GradientButton.cs:                                                                                       C source, ISO-8859 text, with CRLF line terminators
+./020-039/025 CS Gradient Button/MyForm.cs:                                                                                               C source, ISO-8859 text, with CRLF line terminators
+./020-039/025 CS Gradient Button/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                 ASCII text, with CRLF line terminators
+./020-039/025 CS Gradient Button/obj/Debug/net7.0-windows/025 CS Gradient Button.AssemblyInfo.cs:                                         UTF-8 Unicode text, with CRLF line terminators
+./020-039/030 CS ImageView/Form1.cs:                                                                                                      ASCII text, with CRLF line terminators
+./020-039/030 CS ImageView/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                       ASCII text, with CRLF line terminators
+./020-039/030 CS ImageView/obj/Debug/net7.0-windows/030 CS ImageView.AssemblyInfo.cs:                                                     UTF-8 Unicode text, with CRLF line terminators
+./020-039/031 XML/Class1.cs:                                                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./020-039/031 XML/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                        ASCII text, with CRLF line terminators
+./020-039/031 XML/obj/Debug/net7.0/031 XML.AssemblyInfo.cs:                                                                               UTF-8 Unicode text, with CRLF line terminators
+./020-039/032 CS TuneTown/AddEditForm.cs:                                                                                                 C source, ASCII text, with CRLF line terminators
+./020-039/032 CS TuneTown/MainForm.cs:                                                                                                    ISO-8859 text, with CRLF line terminators
+./020-039/032 CS TuneTown/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./020-039/032 CS TuneTown/obj/Debug/net7.0-windows/032 CS TuneTown.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./020-039/033 CS ILDASM/App.cs:                                                                                                           ISO-8859 text, with CRLF line terminators
+./020-039/033 CS ILDASM/ClasseDeBase.cs:                                                                                                  C source, ISO-8859 text, with CRLF line terminators
+./020-039/033 CS ILDASM/ClasseDerivee.cs:                                                                                                 C source, ISO-8859 text, with CRLF line terminators
+./020-039/033 CS ILDASM/DBInt.cs:                                                                                                         ASCII text, with CRLF line terminators
+./020-039/033 CS ILDASM/GlobalClass.cs:                                                                                                   C source, ASCII text, with CRLF line terminators
+./020-039/033 CS ILDASM/Interface.cs:                                                                                                     ISO-8859 text, with CRLF line terminators
+./020-039/033 CS ILDASM/Jour.cs:                                                                                                          ASCII text, with CRLF line terminators
+./020-039/033 CS ILDASM/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./020-039/033 CS ILDASM/obj/Debug/net7.0/033 CS ILDASM.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./020-039/033 CS ILDASM/obj/Debug/net7.0/033b CS Bibliothèque.AssemblyInfo.cs:                                                            UTF-8 Unicode text, with CRLF line terminators
+./020-039/033 CS ILDASM/Pile.cs:                                                                                                          ASCII text, with CRLF line terminators
+./020-039/038 CS Tableaux/MyApp.cs:                                                                                                       ISO-8859 text, with CRLF line terminators
+./020-039/038 CS Tableaux/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                ASCII text, with CRLF line terminators
+./020-039/038 CS Tableaux/obj/Debug/net7.0/038 CS Tableaux.AssemblyInfo.cs:                                                               UTF-8 Unicode text, with CRLF line terminators
+./020-039/039 CS Deployment/MyApp.cs:                                                                                                     ASCII text, with CRLF line terminators
+./020-039/039 CS Deployment/MyLib.cs:                                                                                                     C source, ISO-8859 text, with CRLF line terminators
+./020-039/039 CS Deployment/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./020-039/039 CS Deployment/obj/Debug/net7.0/039 CS App.AssemblyInfo.cs:                                                                  UTF-8 Unicode text, with CRLF line terminators
+./020-039/039 CS Deployment/obj/Debug/net7.0/039 CS Lib.AssemblyInfo.cs:                                                                  UTF-8 Unicode text, with CRLF line terminators
+./040-059/041 CS Enumerator/MyApp.cs:                                                                                                     ISO-8859 text, with CRLF line terminators
+./040-059/041 CS Enumerator/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./040-059/041 CS Enumerator/obj/Debug/net7.0/041 CS Enumerator.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./040-059/041 CS Enumerator/TroisEntiers1.cs:                                                                                             ISO-8859 text, with CRLF line terminators
+./040-059/041 CS Enumerator/TroisEntiers2.cs:                                                                                             ISO-8859 text, with CRLF line terminators
+./040-059/041 CS Enumerator/TroisEntiers3.cs:                                                                                             ISO-8859 text, with CRLF line terminators
+./040-059/041 CS Enumerator/TroisEntiers4.cs:                                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./040-059/042 CS IFormattable/Class1.cs:                                                                                                  ISO-8859 text, with CRLF line terminators
+./040-059/042 CS IFormattable/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                            ASCII text, with CRLF line terminators
+./040-059/042 CS IFormattable/obj/Debug/net7.0/042 CS IFormattable.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./040-059/043 CS DLLImport/MyApp.cs:                                                                                                      ASCII text, with CRLF line terminators
+./040-059/043 CS DLLImport/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                               ASCII text, with CRLF line terminators
+./040-059/043 CS DLLImport/obj/Debug/net7.0/043 CS DLLImport.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./040-059/044 CS Attributes/MyApp.cs:                                                                                                     ASCII text, with CRLF line terminators
+./040-059/044 CS Attributes/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./040-059/044 CS Attributes/obj/Debug/net7.0/044 CS Attributes.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./040-059/047 CS System Namespace/MyApp.cs:                                                                                               HTML document, ISO-8859 text, with CRLF line terminators
+./040-059/047 CS System Namespace/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./040-059/047 CS System Namespace/obj/Debug/net7.0/047 CS System Namespace.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./040-059/048 CS DateTime/Form1.cs:                                                                                                       C source, ISO-8859 text, with CRLF line terminators
+./040-059/048 CS DateTime/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./040-059/048 CS DateTime/obj/Debug/net7.0-windows/048 CS DateTime.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./040-059/049 CS Fichiers/MyApp.cs:                                                                                                       ASCII text, with CRLF line terminators
+./040-059/049 CS Fichiers/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                ASCII text, with CRLF line terminators
+./040-059/049 CS Fichiers/obj/Debug/net7.0/049 CS Fichiers.AssemblyInfo.cs:                                                               UTF-8 Unicode text, with CRLF line terminators
+./040-059/053 CS Static Inheritance/Class1.cs:                                                                                            ISO-8859 text, with CRLF line terminators
+./040-059/053 CS Static Inheritance/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                      ASCII text, with CRLF line terminators
+./040-059/053 CS Static Inheritance/obj/Debug/net7.0/053 CS Static Inheritance.AssemblyInfo.cs:                                           UTF-8 Unicode text, with CRLF line terminators
+./040-059/056 CS Pentamino/App.cs:                                                                                                        ISO-8859 text, with CRLF line terminators
+./040-059/056 CS Pentamino/Carre55.cs:                                                                                                    C source, ISO-8859 text, with CRLF line terminators
+./040-059/056 CS Pentamino/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                               ASCII text, with CRLF line terminators
+./040-059/056 CS Pentamino/obj/Debug/net7.0/056 CS Pentamino.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./040-059/056 CS Pentamino/Piece.cs:                                                                                                      ISO-8859 text, with CRLF line terminators
+./040-059/058 CS Interfaces/Class1.cs:                                                                                                    C source, ASCII text, with CRLF line terminators
+./040-059/058 CS Interfaces/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./040-059/058 CS Interfaces/obj/Debug/net7.0/058 CS Interfaces.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./040-059/059 CS ByRef Fields+Inheritance/Class1.cs:                                                                                      C source, ISO-8859 text, with CRLF line terminators
+./040-059/059 CS ByRef Fields+Inheritance/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                ASCII text, with CRLF line terminators
+./040-059/059 CS ByRef Fields+Inheritance/obj/Debug/net7.0/059 CS ByRef Fields and Inheritance.AssemblyInfo.cs:                           UTF-8 Unicode text, with CRLF line terminators
+./080-099/083 CS String.Format/clsTestFormat.cs:                                                                                          ISO-8859 text, with CRLF line terminators
+./080-099/083 CS String.Format/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                           ASCII text, with CRLF line terminators
+./080-099/083 CS String.Format/obj/Debug/net7.0/083 CS String.Format.AssemblyInfo.cs:                                                     UTF-8 Unicode text, with CRLF line terminators
+./080-099/087 CS DataGrid/Form1.cs:                                                                                                       C source, ISO-8859 text, with CRLF line terminators
+./080-099/087 CS DataGrid/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./080-099/087 CS DataGrid/obj/Debug/net7.0-windows/087 CS DataGrid.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./080-099/092 CS Complex/Class1.cs:                                                                                                       ISO-8859 text, with very long lines, with CRLF line terminators
+./080-099/092 CS Complex/Complex.cs:                                                                                                      ASCII text, with CRLF line terminators
+./080-099/092 CS Complex/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                 ASCII text, with CRLF line terminators
+./080-099/092 CS Complex/obj/Debug/net7.0/092 CS Complex.AssemblyInfo.cs:                                                                 UTF-8 Unicode text, with CRLF line terminators
+./080-099/093 CS Path/Class1.cs:                                                                                                          ISO-8859 text, with CRLF line terminators
+./080-099/093 CS Path/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                    ASCII text, with CRLF line terminators
+./080-099/093 CS Path/obj/Debug/net7.0/093 CS Path.AssemblyInfo.cs:                                                                       UTF-8 Unicode text, with CRLF line terminators
+./100-209/101 CS File/File.cs:                                                                                                            C source, ASCII text, with CRLF line terminators
+./100-209/101 CS File/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                    ASCII text, with CRLF line terminators
+./100-209/101 CS File/obj/Debug/net7.0/101 CS File.AssemblyInfo.cs:                                                                       UTF-8 Unicode text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/App.xaml.cs:                                                                                        UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/MainWindow.xaml.cs:                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                            ASCII text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/obj/Debug/net7.0-windows/202 CS AllEvents WPF Window.AssemblyInfo.cs:                               UTF-8 Unicode text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/obj/Debug/net7.0-windows/App.g.i.cs:                                                                C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                         C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/Properties/Resources.Designer.cs:                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/202 CS AllEvents WPF Window/Properties/Settings.Designer.cs:                                                                    UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/203 CS Inherited Events (Chien)/class Meute.cs:                                                                                 C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/203 CS Inherited Events (Chien)/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                ASCII text, with CRLF line terminators
+./100-209/203 CS Inherited Events (Chien)/obj/Debug/net7.0/203 CS Inherited Events (Chien).AssemblyInfo.cs:                               UTF-8 Unicode text, with CRLF line terminators
+./100-209/203 CS Inherited Events (Chien)/Program.cs:                                                                                     C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./100-209/203 CS Simple Event/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                            ASCII text, with CRLF line terminators
+./100-209/203 CS Simple Event/obj/Debug/net7.0/203 CS Simple Event.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./100-209/203 CS Simple Event/Program.cs:                                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./210-229/210 CS Type Characters/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                         ASCII text, with CRLF line terminators
+./210-229/210 CS Type Characters/obj/Debug/net7.0/210 CS Type Characters.AssemblyInfo.cs:                                                 UTF-8 Unicode text, with CRLF line terminators
+./210-229/210 CS Type Characters/Program.cs:                                                                                              C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./210-229/229 CS IEnumerable Generic/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                     ASCII text, with CRLF line terminators
+./210-229/229 CS IEnumerable Generic/obj/Debug/net7.0/229 CS IEnumerable Generic.AssemblyInfo.cs:                                         UTF-8 Unicode text, with CRLF line terminators
+./210-229/229 CS IEnumerable Generic/Program.cs:                                                                                          C source, ASCII text, with CRLF line terminators
+./301-319/309 CS MessageQueue/Form1.cs:                                                                                                   C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/309 CS MessageQueue/Form1.Designer.cs:                                                                                          UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/309 CS MessageQueue/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./301-319/309 CS MessageQueue/obj/Debug/net7.0-windows/309 CS MessageQueue.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./301-319/309 CS MessageQueue/Program.cs:                                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/309 CS MessageQueue/Properties/Resources.Designer.cs:                                                                           UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/309 CS MessageQueue/Properties/Settings.Designer.cs:                                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/310 CS Lambda functions and Select projections/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                 ASCII text, with CRLF line terminators
+./301-319/310 CS Lambda functions and Select projections/obj/Debug/net7.0/310 CS Lambda functions and Select projections.AssemblyInfo.cs: UTF-8 Unicode text, with CRLF line terminators
+./301-319/310 CS Lambda functions and Select projections/Program.cs:                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/311 CS Extensions of IEnumerable(Of T)/ExtensionMethods.cs:                                                                     UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/311 CS Extensions of IEnumerable(Of T)/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                         ASCII text, with CRLF line terminators
+./301-319/311 CS Extensions of IEnumerable(Of T)/obj/Debug/net7.0/311 CS Extensions of IEnumerable(Of T).AssemblyInfo.cs:                 UTF-8 Unicode text, with CRLF line terminators
+./301-319/311 CS Extensions of IEnumerable(Of T)/Program.cs:                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./301-319/317 CS Crible/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./301-319/317 CS Crible/obj/Debug/net7.0/317 CS Crible.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./301-319/317 CS Crible/Program.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/321 CS Enumerate SQL Servers/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                   ASCII text, with CRLF line terminators
+./320-329/321 CS Enumerate SQL Servers/obj/Debug/net7.0/321 CS Enumerate SQL Servers.AssemblyInfo.cs:                                     UTF-8 Unicode text, with CRLF line terminators
+./320-329/321 CS Enumerate SQL Servers/Program.cs:                                                                                        C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/App.xaml.cs:                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                     ASCII text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/obj/Debug/net7.0-windows/324 CS WPF Controls Gallery Sample.AssemblyInfo.cs:                 UTF-8 Unicode text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/obj/Debug/net7.0-windows/App.g.i.cs:                                                         C++ source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/obj/Debug/net7.0-windows/scene1.g.i.cs:                                                      C++ source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/Properties/Resources.Designer.cs:                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/Properties/Settings.Designer.cs:                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/324 CS WPF Controls Gallery Sample/scene1.xaml.cs:                                                                              C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./320-329/326 CS PDel/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                    ASCII text, with CRLF line terminators
+./320-329/326 CS PDel/obj/Debug/net7.0/326 CS PDel.AssemblyInfo.cs:                                                                       UTF-8 Unicode text, with CRLF line terminators
+./320-329/326 CS PDel/PDel.cs:                                                                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/400 CS Numerics and Tuples/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                     ASCII text, with CRLF line terminators
+./400-419/400 CS Numerics and Tuples/obj/Debug/net7.0/400 CS Numerics and Tuples.AssemblyInfo.cs:                                         UTF-8 Unicode text, with CRLF line terminators
+./400-419/400 CS Numerics and Tuples/Program.cs:                                                                                          C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/401 CS SortedSet/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                               ASCII text, with CRLF line terminators
+./400-419/401 CS SortedSet/obj/Debug/net7.0/401 CS SortedSet.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./400-419/401 CS SortedSet/Program.cs:                                                                                                    UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/402 CS Initializers/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                            ASCII text, with CRLF line terminators
+./400-419/402 CS Initializers/obj/Debug/net7.0/402 CS Initializers.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./400-419/402 CS Initializers/Program.cs:                                                                                                 C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/405 CS Rename eMule Incoming/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                   ASCII text, with CRLF line terminators
+./400-419/405 CS Rename eMule Incoming/obj/Debug/net7.0/405 CS Rename eMule Incoming.AssemblyInfo.cs:                                     UTF-8 Unicode text, with CRLF line terminators
+./400-419/405 CS Rename eMule Incoming/Program.cs:                                                                                        UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/406 CS BigDecimal/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./400-419/406 CS BigDecimal/obj/Debug/net7.0/406 CS BigDecimal.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./400-419/406 CS BigDecimal/Program.cs:                                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/406 CS BigDecimal/struct BigDecimal.cs:                                                                                         ASCII text, with CRLF line terminators
+./400-419/415 CS Extension Methods/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                       ASCII text, with CRLF line terminators
+./400-419/415 CS Extension Methods/obj/Debug/net7.0/415 CS Extension Methods.AssemblyInfo.cs:                                             UTF-8 Unicode text, with CRLF line terminators
+./400-419/415 CS Extension Methods/Program.cs:                                                                                            C++ source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/App.xaml.cs:                                                                                                     UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/DataBag.cs:                                                                                                      ASCII text, with CRLF line terminators
+./400-419/419 CS LSystem/GdiDrawingForm.cs:                                                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/GdiDrawingForm.Designer.cs:                                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/HelpWindow.xaml.cs:                                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/LSystemProcessor.cs:                                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/LSystemRenderer.cs:                                                                                              ASCII text, with CRLF line terminators
+./400-419/419 CS LSystem/MainWindow.xaml.cs:                                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                         ASCII text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/419 CS LSystem.AssemblyInfo.cs:                                                         UTF-8 Unicode text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/App.g.i.cs:                                                                             C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/GeneratedInternalTypeHelper.g.i.cs:                                                     C++ source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/HelpWindow.g.i.cs:                                                                      C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                                      C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/WpfDrawing1Window.g.i.cs:                                                               C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/WpfDrawing2Window.g.i.cs:                                                               C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/obj/Debug/net7.0-windows/WpfDrawing3Window.g.i.cs:                                                               C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/Properties/Resources.Designer.cs:                                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/Properties/Settings.Designer.cs:                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/SourceSystems.cs:                                                                                                ASCII text, with CRLF line terminators
+./400-419/419 CS LSystem/WpfDrawing1Window.xaml.cs:                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/WpfDrawing2Window.xaml.cs:                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./400-419/419 CS LSystem/WpfDrawing3Window.xaml.cs:                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/420 CS Expression Trees/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./420-428/420 CS Expression Trees/obj/Debug/net7.0/420 CS Expression Trees.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./420-428/420 CS Expression Trees/Program.cs:                                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/421 CS Recursive Iterator and Data Pipeline/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                    ASCII text, with CRLF line terminators
+./420-428/421 CS Recursive Iterator and Data Pipeline/obj/Debug/net7.0/421 CS Recursive Iterator and Data Pipeline.AssemblyInfo.cs:       UTF-8 Unicode text, with CRLF line terminators
+./420-428/421 CS Recursive Iterator and Data Pipeline/Program.cs:                                                                         UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/421 CS Recursive Iterator and Data Pipeline v2/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                 ASCII text, with CRLF line terminators
+./420-428/421 CS Recursive Iterator and Data Pipeline v2/obj/Debug/net7.0/421 CS Recursive Iterator and Data Pipeline v2.AssemblyInfo.cs: UTF-8 Unicode text, with CRLF line terminators
+./420-428/421 CS Recursive Iterator and Data Pipeline v2/Program.cs:                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/422 CS Closures/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                ASCII text, with CRLF line terminators
+./420-428/422 CS Closures/obj/Debug/net7.0/422 CS Closures.AssemblyInfo.cs:                                                               UTF-8 Unicode text, with CRLF line terminators
+./420-428/422 CS Closures/Program.cs:                                                                                                     UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/423 CS Timeline 1/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./420-428/423 CS Timeline 1/obj/Debug/net7.0/423 CS Timeline 1.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./420-428/423 CS Timeline 1/Program.cs:                                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/424 CS Delegates Contravariance/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                ASCII text, with CRLF line terminators
+./420-428/424 CS Delegates Contravariance/obj/Debug/net7.0/424 CS Delegates Contravariance.AssemblyInfo.cs:                               UTF-8 Unicode text, with CRLF line terminators
+./420-428/424 CS Delegates Contravariance/Program.cs:                                                                                     C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/426 CS Decimal to Fraction/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                     ASCII text, with CRLF line terminators
+./420-428/426 CS Decimal to Fraction/obj/Debug/net7.0/426 CS Decimal to Fraction.AssemblyInfo.cs:                                         UTF-8 Unicode text, with CRLF line terminators
+./420-428/426 CS Decimal to Fraction/Program.cs:                                                                                          UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/427 CS DynamicObject/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                           ASCII text, with CRLF line terminators
+./420-428/427 CS DynamicObject/obj/Debug/net7.0/427 CS DynamicObject.AssemblyInfo.cs:                                                     UTF-8 Unicode text, with CRLF line terminators
+./420-428/427 CS DynamicObject/Program.cs:                                                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/428 CS Fast Multiplication/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                     ASCII text, with CRLF line terminators
+./420-428/428 CS Fast Multiplication/obj/Debug/net7.0/428 CS Fast Multiplication.AssemblyInfo.cs:                                         UTF-8 Unicode text, with CRLF line terminators
+./420-428/428 CS Fast Multiplication/Program.cs:                                                                                          UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./420-428/428 CS Fast Multiplication Tests/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                               ASCII text, with CRLF line terminators
+./420-428/428 CS Fast Multiplication Tests/obj/Debug/net7.0/428 CS Fast Multiplication Tests.AssemblyInfo.cs:                             ASCII text, with CRLF line terminators
+./420-428/428 CS Fast Multiplication Tests/SlicedNumberTest.cs:                                                                           UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/App.xaml.cs:                                                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/MainWindow.xaml.cs:                                                                                     UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/NavigationContext.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                ASCII text, with CRLF line terminators
+./500-519/500 CS async Navigation/obj/Debug/net7.0-windows/500 CS async Navigation.AssemblyInfo.cs:                                       UTF-8 Unicode text, with CRLF line terminators
+./500-519/500 CS async Navigation/obj/Debug/net7.0-windows/App.g.i.cs:                                                                    C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                             C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/obj/Debug/net7.0-windows/Views/UC1.g.i.cs:                                                              C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/obj/Debug/net7.0-windows/Views/UC2.g.i.cs:                                                              C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/Properties/Resources.Designer.cs:                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/Properties/Settings.Designer.cs:                                                                        UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/Views/UC1.xaml.cs:                                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/500 CS async Navigation/Views/UC2.xaml.cs:                                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/501 CS async implementation/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./500-519/501 CS async implementation/obj/Debug/net7.0/501 CS async implementation.AssemblyInfo.cs:                                       UTF-8 Unicode text, with CRLF line terminators
+./500-519/501 CS async implementation/Program.cs:                                                                                         C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/502 CS Tasks/App.xaml.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/502 CS Tasks/MainWindow.xaml.cs:                                                                                                C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/502 CS Tasks/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                           ASCII text, with CRLF line terminators
+./500-519/502 CS Tasks/obj/Debug/net7.0-windows/502 CS Tasks.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./500-519/502 CS Tasks/obj/Debug/net7.0-windows/App.g.i.cs:                                                                               C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/502 CS Tasks/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                                        C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/502 CS Tasks/Properties/Resources.Designer.cs:                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/502 CS Tasks/Properties/Settings.Designer.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/503 CS Tasks/App.xaml.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/503 CS Tasks/MainWindow.xaml.cs:                                                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/503 CS Tasks/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                           ASCII text, with CRLF line terminators
+./500-519/503 CS Tasks/obj/Debug/net7.0-windows/503 CS Tasks.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./500-519/503 CS Tasks/obj/Debug/net7.0-windows/App.g.i.cs:                                                                               C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/503 CS Tasks/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                                        C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/503 CS Tasks/Properties/Resources.Designer.cs:                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/503 CS Tasks/Properties/Settings.Designer.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/504 CS Closure Example/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                         ASCII text, with CRLF line terminators
+./500-519/504 CS Closure Example/obj/Debug/net7.0/504 CS Closure Example.AssemblyInfo.cs:                                                 UTF-8 Unicode text, with CRLF line terminators
+./500-519/504 CS Closure Example/Program.cs:                                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/505 CS Caller Info/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                             ASCII text, with CRLF line terminators
+./500-519/505 CS Caller Info/obj/Debug/net7.0/505 CS Caller Info.AssemblyInfo.cs:                                                         UTF-8 Unicode text, with CRLF line terminators
+./500-519/505 CS Caller Info/Program.cs:                                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/506 CS Ribbon/App.xaml.cs:                                                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/506 CS Ribbon/MainWindow.xaml.cs:                                                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/506 CS Ribbon/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                          ASCII text, with CRLF line terminators
+./500-519/506 CS Ribbon/obj/Debug/net7.0-windows/506 CS Ribbon.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./500-519/506 CS Ribbon/obj/Debug/net7.0-windows/App.g.i.cs:                                                                              C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/506 CS Ribbon/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                                       C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/506 CS Ribbon/Properties/Resources.Designer.cs:                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/506 CS Ribbon/Properties/Settings.Designer.cs:                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/507 CS String Normalize/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./500-519/507 CS String Normalize/obj/Debug/net7.0/507 CS String Normalize.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./500-519/507 CS String Normalize/Program.cs:                                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/508 CS ReadOnly Collections/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./500-519/508 CS ReadOnly Collections/obj/Debug/net7.0/508 CS ReadOnly Collections.AssemblyInfo.cs:                                       UTF-8 Unicode text, with CRLF line terminators
+./500-519/508 CS ReadOnly Collections/Program.cs:                                                                                         C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/510 CS Rename Parentheses/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                      ASCII text, with CRLF line terminators
+./500-519/510 CS Rename Parentheses/obj/Debug/net7.0/510 CS Rename Parentheses.AssemblyInfo.cs:                                           UTF-8 Unicode text, with CRLF line terminators
+./500-519/510 CS Rename Parentheses/Program.cs:                                                                                           C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511a CS CreateVignette1/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:          ASCII text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511a CS CreateVignette1/obj/Debug/net7.0-windows/511a CS CreateVignette1.AssemblyInfo.cs:                 UTF-8 Unicode text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511a CS CreateVignette1/Program.cs:                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511b CS CreateVignette2/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:          ASCII text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511b CS CreateVignette2/obj/Debug/net7.0-windows/511b CS CreateVignette2.AssemblyInfo.cs:                 UTF-8 Unicode text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511b CS CreateVignette2/Program.cs:                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511c CS CreateVignette3/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:          ASCII text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511c CS CreateVignette3/obj/Debug/net7.0-windows/511c CS CreateVignette3.AssemblyInfo.cs:                 UTF-8 Unicode text, with CRLF line terminators
+./500-519/511 CS CreateVignette/511c CS CreateVignette3/Program.cs:                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/App.xaml.cs:                                                                                    UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/MainWindow.xaml.cs:                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/Model.cs:                                                                                       C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                        ASCII text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/obj/Debug/net7.0-windows/511 CS RetailleImages 3.0 (WPF).AssemblyInfo.cs:                       UTF-8 Unicode text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/obj/Debug/net7.0-windows/App.g.i.cs:                                                            C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                     C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/Properties/Resources.Designer.cs:                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/Properties/Settings.Designer.cs:                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/RelayCommand.cs:                                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.0 (WPF)/ViewModel.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/AboutWindow.xaml.cs:                                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/App.xaml.cs:                                                                                    UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/MainWindow.xaml.cs:                                                                             C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/Model.cs:                                                                                       C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                        ASCII text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/obj/Debug/net7.0-windows/511 CS RetailleImages 3.1 (GDI).AssemblyInfo.cs:                       UTF-8 Unicode text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/obj/Debug/net7.0-windows/AboutWindow.g.i.cs:                                                    C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/obj/Debug/net7.0-windows/App.g.i.cs:                                                            C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/obj/Debug/net7.0-windows/GeneratedInternalTypeHelper.g.i.cs:                                    C++ source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                     C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/Properties/Resources.Designer.cs:                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/Properties/Settings.Designer.cs:                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/RelayCommand.cs:                                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/511 CS RetailleImages 3.1 (GDI)/ViewModel.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/513 CS DupMP3/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./500-519/513 CS DupMP3/obj/Debug/net7.0/513 CS DupMP3.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./500-519/513 CS DupMP3/Program.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/513 CS DupMP3 Core/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                             ASCII text, with CRLF line terminators
+./500-519/513 CS DupMP3 Core/obj/Debug/net7.0/513 DupMP3 Core.AssemblyInfo.cs:                                                            UTF-8 Unicode text, with CRLF line terminators
+./500-519/513 CS DupMP3 Core/Program.cs:                                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/514 CS Remap HR Extract Pics/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                   ASCII text, with CRLF line terminators
+./500-519/514 CS Remap HR Extract Pics/obj/Debug/net7.0/514 CS Remap HR Extract Pics.AssemblyInfo.cs:                                     UTF-8 Unicode text, with CRLF line terminators
+./500-519/514 CS Remap HR Extract Pics/Program.cs:                                                                                        UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/515 CS Equals and inheritance/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                  ASCII text, with CRLF line terminators
+./500-519/515 CS Equals and inheritance/obj/Debug/net7.0/515 CS Equals and inheritance.AssemblyInfo.cs:                                   UTF-8 Unicode text, with CRLF line terminators
+./500-519/515 CS Equals and inheritance/Program.cs:                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/516 CS Dynamic Code Compilation/Program.cs:                                                                                     UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/517 CS IsDerivedFromType/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                       ASCII text, with CRLF line terminators
+./500-519/517 CS IsDerivedFromType/obj/Debug/net7.0/517 CS IsDerivedFromType.AssemblyInfo.cs:                                             UTF-8 Unicode text, with CRLF line terminators
+./500-519/517 CS IsDerivedFromType/Program.cs:                                                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/518 CS Serialization Helper/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./500-519/518 CS Serialization Helper/obj/Debug/net7.0/518 CS Serialization Helper.AssemblyInfo.cs:                                       UTF-8 Unicode text, with CRLF line terminators
+./500-519/518 CS Serialization Helper/Program.cs:                                                                                         UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/519a CS SHA-2/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./500-519/519a CS SHA-2/obj/Debug/net7.0/519a CS SHA-2.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./500-519/519a CS SHA-2/Program.cs:                                                                                                       C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./500-519/519b CS SHA-1/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./500-519/519b CS SHA-1/obj/Debug/net7.0/519b CS SHA-1.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./500-519/519b CS SHA-1/Program.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/520 CS StringDecomposition/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                     ASCII text, with CRLF line terminators
+./520-549/520 CS StringDecomposition/obj/Debug/net7.0/520 CS StringDecomposition.AssemblyInfo.cs:                                         UTF-8 Unicode text, with CRLF line terminators
+./520-549/520 CS StringDecomposition/Program.cs:                                                                                          UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/AboutWindow.xaml.cs:                                                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/App.xaml.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/MainWindow.xaml.cs:                                                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                           ASCII text, with CRLF line terminators
+./520-549/522 CS Ed850/obj/Debug/net7.0-windows/522 CS Ed850.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./520-549/522 CS Ed850/obj/Debug/net7.0-windows/AboutWindow.g.i.cs:                                                                       C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/obj/Debug/net7.0-windows/App.g.i.cs:                                                                               C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/obj/Debug/net7.0-windows/MainWindow.g.i.cs:                                                                        C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/Properties/Resources.Designer.cs:                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/522 CS Ed850/Properties/Settings.Designer.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_1 CS UnblockMe Solver/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                      ASCII text, with CRLF line terminators
+./520-549/523_1 CS UnblockMe Solver/obj/Debug/net7.0/523_1 CS UnblockMe Solver.AssemblyInfo.cs:                                           UTF-8 Unicode text, with CRLF line terminators
+./520-549/523_1 CS UnblockMe Solver/Program.cs:                                                                                           UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/App.xaml.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/obj/Debug/net7.0-windows/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                       ASCII text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/obj/Debug/net7.0-windows/523 CS UnblockMe Solver Visual.AssemblyInfo.cs:                       UTF-8 Unicode text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/obj/Debug/net7.0-windows/App.g.i.cs:                                                           C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/obj/Debug/net7.0-windows/UBMWindow.g.i.cs:                                                     C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/Properties/Resources.Designer.cs:                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/Properties/Settings.Designer.cs:                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/RelayCommand.cs:                                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/UBMModel.cs:                                                                                   C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/UBMViewModel.cs:                                                                               UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/523_2 CS UnblockMe Visual Solver/UBMWindow.xaml.cs:                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/524 CS Cordic/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./520-549/524 CS Cordic/obj/Debug/net7.0/524 CS Cordic.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./520-549/524 CS Cordic/Program.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/524b CS Cordic HalfTrig/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./520-549/524b CS Cordic HalfTrig/obj/Debug/net7.0/524b CS Cordic HalfTrig.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./520-549/524b CS Cordic HalfTrig/Program.cs:                                                                                             C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/525 CS Suite de Rowland/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./520-549/525 CS Suite de Rowland/obj/Debug/net7.0/525 CS Suite de Rowland.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./520-549/525 CS Suite de Rowland/Program.cs:                                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/526 CS Nombres de Friedman/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                     ASCII text, with CRLF line terminators
+./520-549/526 CS Nombres de Friedman/obj/Debug/net7.0/526 CS Nombres de Friedman.AssemblyInfo.cs:                                         UTF-8 Unicode text, with CRLF line terminators
+./520-549/526 CS Nombres de Friedman/Program.cs:                                                                                          UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/527 CS List Serialization/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                      ASCII text, with CRLF line terminators
+./520-549/527 CS List Serialization/obj/Debug/net7.0/527 CS List Serialization.AssemblyInfo.cs:                                           UTF-8 Unicode text, with CRLF line terminators
+./520-549/527 CS List Serialization/Program.cs:                                                                                           UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/528 CS This Is A String/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                        ASCII text, with CRLF line terminators
+./520-549/528 CS This Is A String/obj/Debug/net7.0/528 CS This Is A String.AssemblyInfo.cs:                                               UTF-8 Unicode text, with CRLF line terminators
+./520-549/528 CS This Is A String/Program.cs:                                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/529 CS Boxes/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                   ASCII text, with CRLF line terminators
+./520-549/529 CS Boxes/obj/Debug/net7.0/529 CS Boxes.AssemblyInfo.cs:                                                                     UTF-8 Unicode text, with CRLF line terminators
+./520-549/529 CS Boxes/Program.cs:                                                                                                        UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/530 CS Hilbert Text/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                            ASCII text, with CRLF line terminators
+./520-549/530 CS Hilbert Text/obj/Debug/net7.0/530 CS Hilbert Text.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./520-549/530 CS Hilbert Text/Program.cs:                                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/531 CS Vietnamese Puzzle/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                       ASCII text, with CRLF line terminators
+./520-549/531 CS Vietnamese Puzzle/obj/Debug/net7.0/531 CS Vietnamese Puzzle.AssemblyInfo.cs:                                             UTF-8 Unicode text, with CRLF line terminators
+./520-549/531 CS Vietnamese Puzzle/Puzzle.cs:                                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/532 CS VS2015 New/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./520-549/532 CS VS2015 New/obj/Debug/net7.0/532 CS VS2015 New.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./520-549/532 CS VS2015 New/Program.cs:                                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/533 CS String Distance/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                         ASCII text, with CRLF line terminators
+./520-549/533 CS String Distance/obj/Debug/net7.0/533 CS String Distance.AssemblyInfo.cs:                                                 UTF-8 Unicode text, with CRLF line terminators
+./520-549/533 CS String Distance/Program.cs:                                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/534 CS Normalized Filesystem/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                   ASCII text, with CRLF line terminators
+./520-549/534 CS Normalized Filesystem/obj/Debug/net7.0/534 CS Normalized Filesystem.AssemblyInfo.cs:                                     UTF-8 Unicode text, with CRLF line terminators
+./520-549/534 CS Normalized Filesystem/Program.cs:                                                                                        UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/535 CS DoubleAlmostEqual/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                       ASCII text, with CRLF line terminators
+./520-549/535 CS DoubleAlmostEqual/obj/Debug/net7.0/535 CS DoubleAlmostEqual.AssemblyInfo.cs:                                             UTF-8 Unicode text, with CRLF line terminators
+./520-549/535 CS DoubleAlmostEqual/Program.cs:                                                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/Arithmetic/Arithmetic.cs:                                                                     C++ source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/Arithmetic/obj/Debug/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.cs:          ASCII text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/Arithmetic/obj/Debug/netstandard2.0/536 CS DLL Settings and Resources.AssemblyInfo.cs:        UTF-8 Unicode text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/Arithmetic/Properties/Resources.Designer.cs:                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/Arithmetic/Properties/Settings.Designer.cs:                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/TestApplication/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:              ASCII text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/TestApplication/obj/Debug/net7.0/536 CS DLL Settings and Resources Test.AssemblyInfo.cs:      UTF-8 Unicode text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/TestApplication/Program.cs:                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/536 CS DLL Settings and Resources/TestApplication/Properties/Settings.Designer.cs:                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/537 CS Validate xml using xsd Schema/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                           ASCII text, with CRLF line terminators
+./520-549/537 CS Validate xml using xsd Schema/obj/Debug/net7.0/537 CS Validate xml using xsd Schema.AssemblyInfo.cs:                     UTF-8 Unicode text, with CRLF line terminators
+./520-549/537 CS Validate xml using xsd Schema/Program.cs:                                                                                UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/540 CS Synchronization/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                         ASCII text, with CRLF line terminators
+./520-549/540 CS Synchronization/obj/Debug/net7.0/540 CS Synchronization.AssemblyInfo.cs:                                                 UTF-8 Unicode text, with CRLF line terminators
+./520-549/540 CS Synchronization/Program.cs:                                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/541 CS BitVector32/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                             ASCII text, with CRLF line terminators
+./520-549/541 CS BitVector32/obj/Debug/net7.0/541 CS BitVector32.AssemblyInfo.cs:                                                         UTF-8 Unicode text, with CRLF line terminators
+./520-549/541 CS BitVector32/Program.cs:                                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/542 CS Arrays ByRef/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                            ASCII text, with CRLF line terminators
+./520-549/542 CS Arrays ByRef/obj/Debug/net7.0/542 CS Arrays ByRef.AssemblyInfo.cs:                                                       UTF-8 Unicode text, with CRLF line terminators
+./520-549/542 CS Arrays ByRef/Program.cs:                                                                                                 UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/543 CS Arrays/CSArrays.cs:                                                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/543 CS Arrays/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./520-549/543 CS Arrays/obj/Debug/net7.0/543 CS Arrays.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./520-549/544 CS SkipAt and Choice/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                       ASCII text, with CRLF line terminators
+./520-549/544 CS SkipAt and Choice/obj/Debug/net7.0/544 CS SkipAt Choice GetRange Shuffle.AssemblyInfo.cs:                                UTF-8 Unicode text, with CRLF line terminators
+./520-549/544 CS SkipAt and Choice/Program.cs:                                                                                            UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/547 CS Array initialization and CS Interactive/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                 ASCII text, with CRLF line terminators
+./520-549/547 CS Array initialization and CS Interactive/obj/Debug/net7.0/547 CS Array initialization and CS Interactive.AssemblyInfo.cs: UTF-8 Unicode text, with CRLF line terminators
+./520-549/547 CS Array initialization and CS Interactive/Program.cs:                                                                      C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./520-549/549 CS Strcmp Accent and Case insensitive/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                      ASCII text, with CRLF line terminators
+./520-549/549 CS Strcmp Accent and Case insensitive/obj/Debug/net7.0/549 CS Strcmp Accent and Case insensitive.AssemblyInfo.cs:           UTF-8 Unicode text, with CRLF line terminators
+./520-549/549 CS Strcmp Accent and Case insensitive/Program.cs:                                                                           UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/601 CS,VB Visual Studio 2017 New Features/601 CS/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:               ASCII text, with CRLF line terminators
+./601-637/601 CS,VB Visual Studio 2017 New Features/601 CS/obj/Debug/net7.0/601 CS VS2017.AssemblyInfo.cs:                                UTF-8 Unicode text, with CRLF line terminators
+./601-637/601 CS,VB Visual Studio 2017 New Features/601 CS/Program.cs:                                                                    C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/603 CS Sort On/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                 ASCII text, with CRLF line terminators
+./601-637/603 CS Sort On/obj/Debug/net7.0/603 CS Sort On.AssemblyInfo.cs:                                                                 UTF-8 Unicode text, with CRLF line terminators
+./601-637/603 CS Sort On/Program.cs:                                                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/604 CS Very Long Paths/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                         ASCII text, with CRLF line terminators
+./601-637/604 CS Very Long Paths/obj/Debug/net7.0/604 CS Win10 DotNet 4.6.2 Long Paths.AssemblyInfo.cs:                                   UTF-8 Unicode text, with CRLF line terminators
+./601-637/604 CS Very Long Paths/Program.cs:                                                                                              UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/605 CS GetBuildVersion/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                         ASCII text, with CRLF line terminators
+./601-637/605 CS GetBuildVersion/obj/Debug/net7.0/605 CS GetBuildVersion.AssemblyInfo.cs:                                                 UTF-8 Unicode text, with CRLF line terminators
+./601-637/605 CS GetBuildVersion/Program.cs:                                                                                              C source, UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/606 CS Expression/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./601-637/606 CS Expression/obj/Debug/net7.0/606 CS ExpressionApp.AssemblyInfo.cs:                                                        UTF-8 Unicode text, with CRLF line terminators
+./601-637/606 CS Expression/Program.cs:                                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/607 CS Higher Order Lambdas/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./601-637/607 CS Higher Order Lambdas/obj/Debug/net7.0/607 CS Higher Order Lambdas.AssemblyInfo.cs:                                       UTF-8 Unicode text, with CRLF line terminators
+./601-637/607 CS Higher Order Lambdas/Program.cs:                                                                                         UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/608 CS phi and phi/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                             ASCII text, with CRLF line terminators
+./601-637/608 CS phi and phi/obj/Debug/net7.0/608 CS phi and phi.AssemblyInfo.cs:                                                         UTF-8 Unicode text, with CRLF line terminators
+./601-637/608 CS phi and phi/Program.cs:                                                                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/609 CS Arith2/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                  ASCII text, with CRLF line terminators
+./601-637/609 CS Arith2/obj/Debug/net7.0/609 CS Arith2.AssemblyInfo.cs:                                                                   UTF-8 Unicode text, with CRLF line terminators
+./601-637/609 CS Arith2/Program.cs:                                                                                                       UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/609b CS Arith2/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                 ASCII text, with CRLF line terminators
+./601-637/609b CS Arith2/obj/Debug/net7.0/609b CS Arith2.AssemblyInfo.cs:                                                                 UTF-8 Unicode text, with CRLF line terminators
+./601-637/609b CS Arith2/Program.cs:                                                                                                      UTF-8 Unicode (with BOM) text, with very long lines, with CRLF line terminators
+./601-637/611 CS NewLaby/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                                 ASCII text, with CRLF line terminators
+./601-637/611 CS NewLaby/obj/Debug/net7.0/611 CS NewLaby.AssemblyInfo.cs:                                                                 UTF-8 Unicode text, with CRLF line terminators
+./601-637/611 CS NewLaby/Program.cs:                                                                                                      UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/611b CS NewLaby Tests/NewLaby Tests.cs:                                                                                         UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/611b CS NewLaby Tests/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                          ASCII text, with CRLF line terminators
+./601-637/611b CS NewLaby Tests/obj/Debug/net7.0/611b CS NewLaby Tests.AssemblyInfo.cs:                                                   ASCII text, with CRLF line terminators
+./601-637/619 CS Populate Array/CS Populate Array/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                        ASCII text, with CRLF line terminators
+./601-637/619 CS Populate Array/CS Populate Array/obj/Debug/net7.0/619 CS Populate Array.AssemblyInfo.cs:                                 UTF-8 Unicode text, with CRLF line terminators
+./601-637/619 CS Populate Array/CS Populate Array/Program.cs:                                                                             UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/619 CS Populate Array/CS Populate ArrayUnitTests/ArrayExtensions UnitTests.cs:                                                  UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/619 CS Populate Array/CS Populate ArrayUnitTests/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:               ASCII text, with CRLF line terminators
+./601-637/619 CS Populate Array/CS Populate ArrayUnitTests/obj/Debug/net7.0/619 CS Populate Array UnitTests.AssemblyInfo.cs:              ASCII text, with CRLF line terminators
+./601-637/632 CS ReadOnly Collections/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                    ASCII text, with CRLF line terminators
+./601-637/632 CS ReadOnly Collections/obj/Debug/net7.0/632 CS ReadOnly Collections.AssemblyInfo.cs:                                       UTF-8 Unicode text, with CRLF line terminators
+./601-637/632 CS ReadOnly Collections/Program.cs:                                                                                         UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/634 CS CPP Lambda/634 CS LambdaCS/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                              ASCII text, with CRLF line terminators
+./601-637/634 CS CPP Lambda/634 CS LambdaCS/obj/Debug/net7.0/634 CS LambdaCS.AssemblyInfo.cs:                                             UTF-8 Unicode text, with CRLF line terminators
+./601-637/634 CS CPP Lambda/634 CS LambdaCS/Program.cs:                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/635 CS IComparable and IComparer/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                               ASCII text, with CRLF line terminators
+./601-637/635 CS IComparable and IComparer/obj/Debug/net7.0/635 CS IComparable and IComparer.AssemblyInfo.cs:                             UTF-8 Unicode text, with CRLF line terminators
+./601-637/635 CS IComparable and IComparer/Program.cs:                                                                                    UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/636 CS SelectMany/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                              ASCII text, with CRLF line terminators
+./601-637/636 CS SelectMany/obj/Debug/net7.0/636 CS SelectMany.AssemblyInfo.cs:                                                           UTF-8 Unicode text, with CRLF line terminators
+./601-637/636 CS SelectMany/Program.cs:                                                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./601-637/637 CS Enumerate/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs:                                               ASCII text, with CRLF line terminators
+./601-637/637 CS Enumerate/obj/Debug/net7.0/637 CS Enumerate.AssemblyInfo.cs:                                                             UTF-8 Unicode text, with CRLF line terminators
+./601-637/637 CS Enumerate/Program.cs:                                                                                                    UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./Latest/640 CS Enumerate Net6/640 CS Enumerate Net6/Constellations.cs:                                                                   UTF-8 Unicode (with BOM) text, with CRLF line terminators
+./Latest/640 CS Enumerate Net6/640 CS Enumerate Net6/Program.cs:                                                                          UTF-8 Unicode (with BOM) text, with CRLF line terminators

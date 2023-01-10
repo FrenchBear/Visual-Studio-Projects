@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>VB409</RootNamespace>
+        <AssemblyName>VBCovariance</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>VB409 Covariance</Title>
+        <Copyright>Copyright ©2011-2023 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

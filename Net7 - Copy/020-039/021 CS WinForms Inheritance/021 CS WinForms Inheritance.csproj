@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<AssemblyName>CS021</AssemblyName>
+		<RootNamespace>CS021</RootNamespace>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Copyright>Copyright ©2001-2023 Pierre Violent</Copyright>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+</Project>

@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS612</RootNamespace>
+        <AssemblyName>CS612</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS612 ReadOnly Collections</Title>
+        <Copyright>Copyright ©2013-2023 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<AssemblyName>CS032</AssemblyName>
+		<RootNamespace>CS032</RootNamespace>
+		<Version>1.1.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Title>TuneTown</Title>
+		<Description>Essais C#</Description>
+		<Copyright>MSDN F�vrier 2001/P.VIOLENT</Copyright>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+</Project>

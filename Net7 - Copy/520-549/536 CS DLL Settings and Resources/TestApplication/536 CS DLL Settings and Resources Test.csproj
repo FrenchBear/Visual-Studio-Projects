@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS536D</RootNamespace>
+        <AssemblyName>CS536D</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS536 DLL Settings and Resources Test</Title>
+        <Copyright>Copyright ©2015-2023 Pierre Violent</Copyright>
+    </PropertyGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Arithmetic\536 CS DLL Settings and Resources.csproj" />
+    </ItemGroup>
+</Project>

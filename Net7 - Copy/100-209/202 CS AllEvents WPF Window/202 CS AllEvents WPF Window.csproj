@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>CS202</RootNamespace>
+        <AssemblyName>CS202</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>202 CS AllEvents WPF Window</Title>
+        <Copyright>Copyright ©2012 Pierre Violent</Copyright>
+        <UseWPF>true</UseWPF>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+</Project>

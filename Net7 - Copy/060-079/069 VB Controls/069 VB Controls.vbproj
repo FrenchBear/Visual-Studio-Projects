@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>VB069</RootNamespace>
+        <AssemblyName>VB069</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Copyright>Copyright ©2023 Pierre Violent</Copyright>
+        <UseWindowsForms>true</UseWindowsForms>
+        <StartupObject>VB069.Form1</StartupObject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Import Include="System.Data" />
+        <Import Include="System.Drawing" />
+        <Import Include="System.Windows.Forms" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="My Project\Application.Designer.vb">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Application.myapp</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="My Project\Application.myapp">
+            <Generator>MyApplicationCodeGenerator</Generator>
+            <LastGenOutput>Application.Designer.vb</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="My Project\" />
+    </ItemGroup>
+
+</Project>

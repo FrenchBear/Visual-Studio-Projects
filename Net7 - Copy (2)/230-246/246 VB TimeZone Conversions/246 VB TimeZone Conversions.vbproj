@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>VB246</RootNamespace>
+        <AssemblyName>VB246</AssemblyName>
+        <Version>1.1.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Copyright>Copyright ©Pierre Violent 2006-2023</Copyright>
+    </PropertyGroup>
+</Project>
