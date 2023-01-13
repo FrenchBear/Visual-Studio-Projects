@@ -2,7 +2,7 @@
 '
 ' 2012-02-25	PV      VS2010
 ' 2021-09-22    PV      VS2022; Net6
-' 2023-01-10	PV		Net7; Much better interface using a grid
+' 2023-01-10	PV		Net7; Much better interface using a grid; Partial check
 
 Option Explicit On
 Option Compare Text
@@ -84,7 +84,11 @@ Partial Class Window1
             ClearStatuses()
         ElseIf WordTextBox.Text.Length <> Word1TextBox.Text.Length Then
             AnalysisLabel.Content = "Enter next word"
-            ClearStatuses()
+            'ClearStatuses()
+            CompareWord(WordTextBox.Text, Word1TextBox.Text, Val(Placed1TextBox.Text), Status1Label)
+            If Placed2TextBox.Text <> "" Then CompareWord(WordTextBox.Text, Word2TextBox.Text, Val(Placed2TextBox.Text), Status2Label)
+            If Placed3TextBox.Text <> "" Then CompareWord(WordTextBox.Text, Word3TextBox.Text, Val(Placed3TextBox.Text), Status3Label)
+            If Placed4TextBox.Text <> "" Then CompareWord(WordTextBox.Text, Word4TextBox.Text, Val(Placed4TextBox.Text), Status4Label)
         Else
             CompareWord(WordTextBox.Text, Word1TextBox.Text, Val(Placed1TextBox.Text), Status1Label)
             If Placed2TextBox.Text <> "" Then CompareWord(WordTextBox.Text, Word2TextBox.Text, Val(Placed2TextBox.Text), Status2Label)
@@ -101,14 +105,20 @@ Partial Class Window1
     End Sub
 
     Private Shared Sub CompareWord(Word As String, Guessed As String, Placed As Integer, lblStatus As Label)
-        If Word.Length <> Guessed.Length Then
-            lblStatus.Content = "#Err"
-            lblStatus.Foreground = Brushes.Red
+        Dim bPartialCheck = Word.Length <> Guessed.Length
+
+        Dim Match As Integer = 0
+        For i As Integer = 0 To Word.Length - 1
+            If Word.Chars(i) = Guessed.Chars(i) Then Match += 1
+        Next
+        If bPartialCheck Then
+            If Match > Placed Then
+                lblStatus.Content = "NO"
+                lblStatus.Foreground = Brushes.Red
+            Else
+                lblStatus.Content = ""
+            End If
         Else
-            Dim Match As Integer = 0
-            For i As Integer = 0 To Word.Length - 1
-                If Word.Chars(i) = Guessed.Chars(i) Then Match += 1
-            Next
             If Match = Placed Then
                 lblStatus.Content = "OK"
                 lblStatus.Foreground = Brushes.DarkGreen
