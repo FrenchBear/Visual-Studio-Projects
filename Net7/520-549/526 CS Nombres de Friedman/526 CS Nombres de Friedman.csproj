@@ -8,5 +8,6 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS526 Nombres de Friedman</Title>
         <Copyright>Copyright ©2014-2023 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 </Project>
