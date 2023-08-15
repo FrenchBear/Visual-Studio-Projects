@@ -1,8 +1,8 @@
 ﻿// 83 CS Format
 // Tests de String.Format
 // 2003-08-03   PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
 //
 // The format parameter is embedded with zero or more format items of the form, {index[,alignment][:formatString]}, where:
 //
@@ -54,7 +54,7 @@ using System.Globalization;
 using System.Threading;
 using static System.Console;
 
-internal readonly struct Complex : IFormattable
+internal readonly struct Complex: IFormattable
 {
     private readonly double x, y;
 

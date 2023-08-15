@@ -53,7 +53,7 @@ public interface ISimpleArith<T>
 
 // Base arithmetic class providing 4 decimal digits precision using
 // native (processor) support of Plus and Mult
-public class Int4d : ISimpleArith<Int4d>
+public class Int4d: ISimpleArith<Int4d>
 {
     // Native storage for base class
     private int val;
@@ -70,14 +70,16 @@ public class Int4d : ISimpleArith<Int4d>
     // Not part of interface, just for base class
     private Int4d(int x)
     {
-        if (x < 0 || x > k) throw new ArgumentException("Invalid constructor call");
+        if (x < 0 || x > k)
+            throw new ArgumentException("Invalid constructor call");
         val = x;
     }
 
     // Actually this should be a constructor, but constructors can't be included in interfaces
     public void FromString(string x)
     {
-        if (string.IsNullOrEmpty(x) || x.Length > digits || !int.TryParse(x, out val)) throw new ArgumentException("Invalid constructor call");
+        if (string.IsNullOrEmpty(x) || x.Length > digits || !int.TryParse(x, out val))
+            throw new ArgumentException("Invalid constructor call");
     }
 
     // Same here, actually copy constructor
@@ -121,7 +123,7 @@ public class Int4d : ISimpleArith<Int4d>
 // Double Arithmetic: provides twice the capacity of type T that implements ISimpleArith
 // and this class in turn also implements ISimpleArith
 // so it's Ok to instantiate DA<Int4d>, DA<DA<Int4d>>, DA<DA<DA<Int4d>>>...
-public class DA<T> : ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
+public class DA<T>: ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
 {
     protected T high;
     protected T low;
@@ -150,7 +152,8 @@ public class DA<T> : ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
     // function is a replacement for public DA(string x).  Note it makes the class mutable...
     public void FromString(string x)
     {
-        if (string.IsNullOrEmpty(x) || x.Length > digits) throw new ArgumentException("Invalid constructor call");
+        if (string.IsNullOrEmpty(x) || x.Length > digits)
+            throw new ArgumentException("Invalid constructor call");
         if (x.Length > digits / 2)
         {
             (high = new T()).FromString(x[..^(digits / 2)]);

@@ -26,7 +26,7 @@ internal class Awaitable
     public Awaiter GetAwaiter() => new();
 }
 
-internal class Awaiter : INotifyCompletion
+internal class Awaiter: INotifyCompletion
 {
     public bool BeginAwait(Action continuation) => false;
 

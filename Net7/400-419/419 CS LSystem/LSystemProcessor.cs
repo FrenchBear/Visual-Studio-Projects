@@ -1,8 +1,8 @@
 ﻿// LSystemProcessor class
 // Two implementations of a LSystem processor
 //
-// 2012-02-05   PV  First version
-// 2021-09-23   PV  VS2022; Net6
+// 2012-02-05	PV		First version
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System.Collections.Generic;

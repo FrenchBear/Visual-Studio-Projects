@@ -109,7 +109,8 @@ internal class Program
 
         // Pattern and try
         object o = "12";
-        if (o is int i || (o is string s && int.TryParse(s, out i))) { /* use i */ }
+        if (o is int i || (o is string s && int.TryParse(s, out i)))
+        { /* use i */ }
 
         // Out variables declared in method call
         WriteLine(double.TryParse("3,1416", out var dval) ? $"dval={dval}" : "double.TryParse failed");
@@ -122,7 +123,8 @@ internal class Program
 
         static (int current, int previous) Fib(int i)
         {
-            if (i == 0) return (1, 0);
+            if (i == 0)
+                return (1, 0);
             var (p, pp) = Fib(i - 1);
             return (p + pp, p);
         }
@@ -144,7 +146,7 @@ internal class Program
                     WriteLine(s);
                     break;
 
-                case object[] {Length: > 0} a:          // case conditions
+                case object[] { Length: > 0 } a:          // case conditions
                     var (sum, count) = Tally(a);
                     Add(sum, count);
                     break;
@@ -168,24 +170,30 @@ internal class Program
     {
         // Type pattern: no promotion, no conversion...
         int? i1 = 100, i2 = null;
-        if (i1 is int i) WriteLine($"i1 is int {i}");
+        if (i1 is int i)
+            WriteLine($"i1 is int {i}");
         //if (i1 is short h) WriteLine($"i1 is short {h}");
-        if (i2 is int ibis) WriteLine($"i2 is int {ibis}");
+        if (i2 is int ibis)
+            WriteLine($"i2 is int {ibis}");
 
         short? h1 = 1024;
         //if (h1 is int half) WriteLine($"h1 is int {half}");
 
         float? f1 = 3.1416e10F;
-        if (f1 is float f) WriteLine($"f1 is float {f}");
+        if (f1 is float f)
+            WriteLine($"f1 is float {f}");
         //if (f1 is double d1) WriteLine($"f1 is double {d1}");
         //if (f1 is decimal d2) WriteLine($"f1 is decimal {d2}");
 
         // Constant pattern (match if expression==constant is true)
-        if (i1 is 100) WriteLine($"i1 is 100");
-        if (i1 is 101) WriteLine($"i1 is 101");
+        if (i1 is 100)
+            WriteLine($"i1 is 100");
+        if (i1 is 101)
+            WriteLine($"i1 is 101");
 
         // var pattern (always succeeds)
-        if (i1 is var v) WriteLine($"i1 is var {v}");
+        if (i1 is var v)
+            WriteLine($"i1 is var {v}");
 
         // Wildcard pattern (always a match, but not accepted here, useless in a 'is' construction anyway)
         // if (i1 is *) WriteLine($"i1 is *");
@@ -240,7 +248,7 @@ public static class ExtensionMethods
     }
 }
 
-public class T9Enumerator<T> : IEnumerable<T>
+public class T9Enumerator<T>: IEnumerable<T>
 {
     private (T s1, T s2, T s3, T s4, T s5, T s6, T s7, T s8, T s9) localTuple;
 

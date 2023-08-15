@@ -2,7 +2,7 @@
 ' Classe de base pour un héritage visuel (simple boîte d'info)
 '
 ' 2001-01-27    PV
-' 2021-09-18    PV  VS2022, Net6
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 Imports System.Windows.Forms
 

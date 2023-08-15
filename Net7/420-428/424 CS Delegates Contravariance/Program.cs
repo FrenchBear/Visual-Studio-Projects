@@ -1,11 +1,10 @@
 ﻿// 424 CS Delegates Contravariance
 //
-// 2012-04-06   PV  Simple example of contravariance in delegates:
+// 2012-04-06	PV		Simple example of contravariance in delegates:
 //                  allow the use of a delegate with less derived arguments than in its definition
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
-using System;
 using static System.Console;
 
 #pragma warning disable IDE0051 // Remove unused private members
@@ -54,12 +53,12 @@ internal class Contraption
     public int ContraptionField;
 }
 
-internal class Vehicle : Contraption
+internal class Vehicle: Contraption
 {
     public int VehicleField;
 }
 
-internal class Bicycle : Vehicle
+internal class Bicycle: Vehicle
 {
     public int BicycleField;
 }

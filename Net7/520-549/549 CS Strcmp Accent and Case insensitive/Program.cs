@@ -14,6 +14,8 @@ using System.Linq;
 using System.Text;
 using static System.Console;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 namespace CS549;
 
 internal class Program
@@ -41,7 +43,7 @@ internal class Program
 
     // StringContains both Accent Insensitive and Case Insensitive
     // Note that oe=œ because of InvariantCulture locale, not because of RemoveDiacritics
-    private static bool ContainsAICI(string searched, string value) 
+    private static bool ContainsAICI(string searched, string value)
         => RemoveDiacritics(searched).Contains(RemoveDiacritics(value), StringComparison.InvariantCultureIgnoreCase);
 
     private delegate string StringToString(string s);

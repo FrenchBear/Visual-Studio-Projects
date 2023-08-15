@@ -1,5 +1,5 @@
-﻿// 01/10/2006   PV  VS 2005
-// 2021-09-18   PV  VS2022, Net6
+﻿// 01/10/2006	PV		VS 2005
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using static System.Console;

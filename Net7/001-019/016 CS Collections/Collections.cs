@@ -1,15 +1,18 @@
 ﻿// Essais des collections de System.Collections
 // Je fais pas encore bien la difference entre HashTable et Dictionary...
-// 2001-02-21   PV  (ajout de SortedList)
-// 2001-08-15   PV  Beta2; fin de Dictionnary: règle le problème !!!!!!!
-// 2006-10-01   PV  VS2005: Found a substitute for Hashtable(hcp, comparer) which is now obsolete...
-// 2012-02-25   PV  VS2010
-// 2021-09-17   PV  VS2022/Net6
+//
+// 2001-02-21   PV      (ajout de SortedList)
+// 2001-08-15   PV      Beta2; fin de Dictionnary: règle le problème !!!!!!!
+// 2006-10-01   PV      VS2005: Found a substitute for Hashtable(hcp, comparer) which is now obsolete...
+// 2012-02-25   PV      VS2010
+// 2021-09-17   PV      VS2022/Net6
 // 2023-01-10	PV		Net7
 
 using System;
 using System.Collections;
 using static System.Console;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 internal class TestCollections
 {
@@ -46,7 +49,7 @@ internal class TestCollections
         PrintKeysAndValues(h);
     }
 
-    private class MyComparer : IEqualityComparer
+    private class MyComparer: IEqualityComparer
     {
         public new bool Equals(object x, object y) => x.Equals(y);
 

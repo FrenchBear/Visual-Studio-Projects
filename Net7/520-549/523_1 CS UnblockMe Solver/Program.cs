@@ -167,15 +167,16 @@ internal struct Config
     }
 
     // Equivalent of Pos, but packed in a 32-bit integer
-    public int Signature() => Pos[0] + (Pos[1] << 3) + (Pos[2] << 6) + (Pos[3] << 9) + (Pos[4] << 12) + (Pos[5] << 15) + (Pos[6] << 18) + (Pos[7] << 21) + (Pos[8] << 24); // +(Pos[9] << 27);
+    public readonly int Signature() => Pos[0] + (Pos[1] << 3) + (Pos[2] << 6) + (Pos[3] << 9) + (Pos[4] << 12) + (Pos[5] << 15) + (Pos[6] << 18) + (Pos[7] << 21) + (Pos[8] << 24); // +(Pos[9] << 27);
 
     // Check the validity of a configuration
-    public bool IsValid(Block[] Pieces)
+    public readonly bool IsValid(Block[] Pieces)
     {
         for (var i = 0; i < Length; i++)
         {
             // Check that the piece is in the board
-            if (Pos[i] == 255 || Pos[i] + Pieces[i].Length > 6) return false;
+            if (Pos[i] == 255 || Pos[i] + Pieces[i].Length > 6)
+                return false;
 
             // Check that it doesn't cover another piece
             for (var j = 0; j < Length; j++)

@@ -20,6 +20,8 @@ using System.Linq;
 using System.Text;
 using static System.Console;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 namespace CS544SkipAtChoice;
 
 internal class Program
@@ -50,7 +52,7 @@ public static class Extensions
     /// Internal enumerable class providing the object returned by SkipAt extension
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    private class SkipAtEnumerator<T> : IEnumerable<T>
+    private class SkipAtEnumerator<T>: IEnumerable<T>
     {
         private readonly IEnumerator<T> originalEnumerator;
         private readonly int start, count;
@@ -207,7 +209,7 @@ public static class Extensions
     /// Internal enumerable class providing the object returned by GetRange extension
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    private class GetRangeEnumerator<T> : IEnumerable<T>
+    private class GetRangeEnumerator<T>: IEnumerable<T>
     {
         private readonly IEnumerator<T> originalEnumerator;
         private readonly int start, count;
@@ -258,6 +260,6 @@ public static class ThreadSafeRandom
     [ThreadStatic]
     private static Random Local;
 
-    public static Random ThisThreadsRandom 
+    public static Random ThisThreadsRandom
         => Local ??= new Random(unchecked(Environment.TickCount * 31 + Environment.CurrentManagedThreadId));
 }

@@ -103,7 +103,8 @@ internal class Program
 
                 // Ok, check it's a valid path/pattern
                 var path = Path.GetDirectoryName(t) ?? "";
-                if (path.Length == 0) path = ".";
+                if (path.Length == 0)
+                    path = ".";
                 var pattern = Path.GetFileName(t);
                 try
                 {

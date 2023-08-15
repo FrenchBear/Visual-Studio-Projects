@@ -2,7 +2,7 @@
 ' New possibilities in .Net Framework 4 to intialize objects and collections
 '
 ' 2010-02-24    PV
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 

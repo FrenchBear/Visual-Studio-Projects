@@ -18,10 +18,7 @@ using System.Windows;
 
 namespace CS502;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow: Window
 {
     public MainWindow()
     {
@@ -38,9 +35,9 @@ public partial class MainWindow : Window
         _ = Task.Run(async () =>
           {
               var t2 = Thread.CurrentThread;
-            //Debugger.Break();
+              //Debugger.Break();
 
-            while (!cancelToken.IsCancellationRequested)
+              while (!cancelToken.IsCancellationRequested)
               {
                   progress.Report(i++.ToString());
                   await Task.Delay(100, cancelToken);

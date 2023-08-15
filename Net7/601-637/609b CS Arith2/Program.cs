@@ -75,7 +75,7 @@ public interface IMetaSimpleArith<T>
 }
 
 // MetaClass for IntBase
-public class MetaIntBase : IMetaSimpleArith<IntBase>
+public class MetaIntBase: IMetaSimpleArith<IntBase>
 {
     // Factory from string
     public IntBase FromString(string s) => string.IsNullOrEmpty(s) || s.Length > IntBase.digits || !int.TryParse(s, out var val)
@@ -112,7 +112,7 @@ public class MetaIntBase : IMetaSimpleArith<IntBase>
 
 // Base arithmetic class providing 4 decimal digits precision using
 // native (processor) support of int
-public class IntBase : ISimpleArith<IntBase>
+public class IntBase: ISimpleArith<IntBase>
 {
     // Native storage for base class
     internal int val;
@@ -131,7 +131,8 @@ public class IntBase : ISimpleArith<IntBase>
     // Not part of interface, called by MetaClass
     internal IntBase(int x)
     {
-        if (x < 0 || x > k) throw new ArgumentException("Invalid constructor call");
+        if (x < 0 || x > k)
+            throw new ArgumentException("Invalid constructor call");
         val = x;
     }
 
@@ -145,14 +146,14 @@ public class IntBase : ISimpleArith<IntBase>
 }
 
 // Associated MetaClass of DA<T, MetaT>
-public class MetaDA<T, MetaT> : IMetaSimpleArith<DA<T, MetaT>>
+public class MetaDA<T, MetaT>: IMetaSimpleArith<DA<T, MetaT>>
     where T : ISimpleArith<T>, new()
     where MetaT : IMetaSimpleArith<T>, new()
 {
     // Metaclass is a singleton
     private static readonly MetaT m = new();
 
-    public DA<T, MetaT> FromString(string s) 
+    public DA<T, MetaT> FromString(string s)
         => string.IsNullOrEmpty(s) || s.Length > DA<T, MetaT>.digits
             ? throw new ArgumentException("Invalid constructor call")
             : s.Length > DA<T, MetaT>.digits / 2
@@ -204,7 +205,7 @@ public class MetaDA<T, MetaT> : IMetaSimpleArith<DA<T, MetaT>>
 // Double Arithmetic: provides twice the capacity of type T that implements ISimpleArith
 // and this class in turn also implements ISimpleArith
 // so it's Ok to instantiate DA<Int4d>, DA<DA<Int4d>>, DA<DA<DA<Int4d>>>...
-public class DA<T, MetaT> : ISimpleArith<DA<T, MetaT>>
+public class DA<T, MetaT>: ISimpleArith<DA<T, MetaT>>
     where T : ISimpleArith<T>, new()
     where MetaT : IMetaSimpleArith<T>, new()
 {

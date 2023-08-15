@@ -17,7 +17,7 @@ public interface INavigationContext<T, TResult> where T : UIElement
 
 // NavigationContext is implemented only one time, and a provider will give easy access
 // (similar to the relation between IEnumerator and IEnumerable)
-public class NavigationContext<T, TResult> : INavigationContext<T, TResult> where T : UIElement
+public class NavigationContext<T, TResult>: INavigationContext<T, TResult> where T : UIElement
 {
     public NavigationContext(T element) => this.element = element;
 

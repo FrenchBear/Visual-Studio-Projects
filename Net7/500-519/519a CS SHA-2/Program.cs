@@ -13,10 +13,10 @@
 // 2023-01-10	PV		Net7
 
 using System.Diagnostics;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using static System.Console;
-using System.IO;
 
 namespace SHA_2;
 

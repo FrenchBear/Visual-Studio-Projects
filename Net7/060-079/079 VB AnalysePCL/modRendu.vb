@@ -1,10 +1,10 @@
 ﻿' modRendu - Rendu graphique du convertisseur PCL -> TIF
 ' 2003-07-17    PV
-' 2003-08-07    PV  Calcul de la largeur avec MeasureCharacterRanges au lieu de MeasureString
-' 2003-08-08    PV  Optimisation pages en N&B et conversion 1 bit 'bestiale'
-' 2012-02-25	PV  VS2010
-' 2017-05-02    PV  GitHub et VS2017
-' 2021-09-19    PV  VS2022, Net6
+' 2003-08-07 	PV		Calcul de la largeur avec MeasureCharacterRanges au lieu de MeasureString
+' 2003-08-08 	PV		Optimisation pages en N&B et conversion 1 bit 'bestiale'
+' 2012-02-25	PV		VS2010
+' 2017-05-02 	PV		GitHub et VS2017
+' 2021-09-19 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.Drawing.Imaging

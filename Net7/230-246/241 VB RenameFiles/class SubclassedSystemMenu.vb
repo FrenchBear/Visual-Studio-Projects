@@ -3,9 +3,9 @@
 ' From http://www.codeproject.com/vb/net/SubclassedSystemMenu.asp
 '
 ' 2006-05-03    PV
-' 2012-02-25	PV  VS2010
-' 2021-09-20    PV  VS2022; Net6
-' 2021-12-05    PV  AppendMenuW and parameter marshalling
+' 2012-02-25	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6
+' 2021-12-05 	PV		AppendMenuW and parameter marshalling
 ' 2023-01-10	PV		Net7
 
 Imports System.Runtime.InteropServices

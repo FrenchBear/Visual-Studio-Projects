@@ -1,6 +1,6 @@
 // Piece.h: interface for the Piece class.
 //
-// 2017-06-05	PV	VS2017, simplification du code MSC/stdafx et version 4x4 pour The Talos Principle
+// 2017-06-05	PV		VS2017, simplification du code MSC/stdafx et version 4x4 pour The Talos Principle
 
 class Piece
 {

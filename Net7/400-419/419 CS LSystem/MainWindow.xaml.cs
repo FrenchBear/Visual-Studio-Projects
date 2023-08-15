@@ -1,8 +1,8 @@
 ﻿// 419 CS LSystem
 //
 // 2012-02-05   PV
-// 2012-02-28   PV  Clean databinding (DataBag), support for multiple .l files
-// 2021-09-23   PV  VS2022; Net6
+// 2012-02-28	PV		Clean databinding (DataBag), support for multiple .l files
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -12,9 +12,6 @@ using System.Windows;
 
 namespace CS419;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
 public partial class MainWindow: Window
 {
     private IEnumerable<char> drawString;

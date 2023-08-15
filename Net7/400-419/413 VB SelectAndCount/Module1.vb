@@ -1,7 +1,7 @@
 ﻿' 413 VB SelectAndCount
 '
 ' 2011-10-23    PV
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Module Module1

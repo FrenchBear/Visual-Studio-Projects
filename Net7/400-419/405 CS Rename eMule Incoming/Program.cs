@@ -1,7 +1,7 @@
 ﻿// 405 Rename eMule Incoming
 //
 // 2011-05-16   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System.IO;
@@ -31,7 +31,7 @@ internal partial class Program
             }
     }
 
-    private static string Clean(string s) 
+    private static string Clean(string s)
         => s.Replace('.', ' ').Trim(new char[] { ' ', '-' });
 
     [GeneratedRegex("^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", RegexOptions.IgnoreCase, "fr-FR")]

@@ -1,11 +1,11 @@
 ﻿' 19 VB Forms
 ' Essai de création manuel d'une feuille par création de MyForm qui hérite de Form
 ' 2001-01-18    PV
-' 2001-01-27    PV  Evénements, trois manières d'enregistrer
-' 2001-08-15    PV  Beta2, fin de la prise en charge d'élénements automatique sur le nom (ex: button1_click)
-' 2006-10-01    PV  VS2005
-' 2012-02-25	PV  VS2010
-' 2021-09-17    PV  VS2022/Net6
+' 2001-01-27 	PV		Evénements, trois manières d'enregistrer
+' 2001-08-15 	PV		Beta2, fin de la prise en charge d'élénements automatique sur le nom (ex: button1_click)
+' 2006-10-01 	PV		VS2005
+' 2012-02-25	PV		VS2010
+' 2021-09-17 	PV		VS2022/Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.Drawing

@@ -7,6 +7,8 @@ using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 namespace CreateVignette;
 
 internal class Program

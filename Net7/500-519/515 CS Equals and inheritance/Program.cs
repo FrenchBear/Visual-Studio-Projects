@@ -7,7 +7,6 @@
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 
-using System;
 using System.Diagnostics;
 
 namespace CS515;
@@ -41,11 +40,11 @@ public class RE_ExtraData
 }
 
 // Specialized version for chemistry
-public class RE_ExtraDataChemistry : RE_ExtraData
+public class RE_ExtraDataChemistry: RE_ExtraData
 {
     public double Uncertainty { get; set; }
 
-    public override bool Equals(object obj) 
+    public override bool Equals(object obj)
         => obj is RE_ExtraDataChemistry other && base.Equals(obj) && Uncertainty == other.Uncertainty;
 
     public override int GetHashCode() => base.GetHashCode() ^ Uncertainty.GetHashCode();

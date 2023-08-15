@@ -1,8 +1,8 @@
 ﻿' Play with Regex in VB.Net
 '
 ' 2001-06-26    PV
-' 2006-10-01    PV  VS 2005
-' 2021-09-18    PV  VS2022, Net6
+' 2006-10-01 	PV		VS 2005
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 Imports System.Windows.Forms
 

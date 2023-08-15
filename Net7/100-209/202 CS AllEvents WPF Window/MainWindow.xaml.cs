@@ -1,7 +1,7 @@
 ﻿// 202 CS AllEvents WPF Window
 //
-// 2012-02-28   PV  Stylus and Touch events ignored
-// 2021-09-19   PV  VS2022; Net6
+// 2012-02-28	PV		Stylus and Touch events ignored
+// 2021-09-19	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -13,10 +13,7 @@ using System.Windows.Input;
 
 namespace CS202;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow: Window
 {
     public MainWindow() => InitializeComponent();
 

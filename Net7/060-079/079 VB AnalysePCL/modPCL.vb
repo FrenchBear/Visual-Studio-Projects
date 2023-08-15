@@ -1,9 +1,9 @@
 ﻿' modPCL - Analyseur PCL du convertisseur PCL -> TIF
 ' 2003-07-17    PV
-' 2003-08-07    PV  Gestion des séquences ~()
-' 2012-02-25	PV  VS2010
-' 2017-05-02    PV  GitHub et VS2017
-' 2021-09-19    PV  VS2022, Net6
+' 2003-08-07 	PV		Gestion des séquences ~()
+' 2012-02-25	PV		VS2010
+' 2017-05-02 	PV		GitHub et VS2017
+' 2021-09-19 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 Imports System.Text
 

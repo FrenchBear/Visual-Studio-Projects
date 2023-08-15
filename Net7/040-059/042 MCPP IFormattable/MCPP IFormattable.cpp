@@ -1,10 +1,10 @@
 ﻿// Essais de formateurs en C++
 //
 // 2001-02-18	PV
-// 2006-10-01	PV	Version VS 2005
-// 2012-02-25   PV  VS2010
-// 2017-04-30	PV	VS2017; Git
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		Version VS 2005
+// 2012-02-25   PV		VS2010
+// 2017-04-30	PV		VS2017; Git
+// 2021-09-18   PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 #include "stdafx.h"

@@ -1,5 +1,5 @@
-﻿' 2006-10-01    PV  VS2005
-' 2021-09-18    PV  VS2022, Net6
+﻿' 2006-10-01 	PV		VS2005
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
 Public Class Piece

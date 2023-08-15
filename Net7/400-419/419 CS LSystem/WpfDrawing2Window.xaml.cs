@@ -2,8 +2,8 @@
 // Creates a PathFigure, and places it on an existing PathGeometry on the interface
 // Very simple, since it does stretching and centering automatically.
 //
-// 2012-02-05   PV  First version
-// 2021-09-23   PV  VS2022; Net6
+// 2012-02-05	PV		First version
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -13,16 +13,14 @@ using System.Windows.Media;
 
 namespace CS419;
 
-/// <summary>
-/// Interaction logic for WpfDrawing2Window.xaml
-/// </summary>
-public partial class WpfDrawing2Window : Window
+public partial class WpfDrawing2Window: Window
 {
     public WpfDrawing2Window() => InitializeComponent();
 
     protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
     {
-        if (e.Key == System.Windows.Input.Key.Escape) Close();
+        if (e.Key == System.Windows.Input.Key.Escape)
+            Close();
         base.OnKeyDown(e);
     }
 
@@ -38,7 +36,7 @@ public partial class WpfDrawing2Window : Window
     }
 
     // Implementation of renderer for WFP2
-    private class Wpf2LSystemRenderer : LSystemRenderer
+    private class Wpf2LSystemRenderer: LSystemRenderer
     {
         private PathFigure _pf;
 

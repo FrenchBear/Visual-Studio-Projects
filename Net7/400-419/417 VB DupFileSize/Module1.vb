@@ -3,7 +3,7 @@
 ' 2023-01-10	PV		Net7
 
 ' 2010-12-17    FPVI
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 
 Imports System.IO
 Imports System.Text

@@ -1,7 +1,7 @@
 ﻿// 210 CS Type Characters
 //
-// 2012-02-25   PV  First version
-// 2021-09-19   PV  VS2022; Net6
+// 2012-02-25	PV		First version
+// 2021-09-19	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value

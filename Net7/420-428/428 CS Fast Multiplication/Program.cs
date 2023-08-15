@@ -3,7 +3,7 @@
 // Mostly a programming exercise to explore algorithms, since using dynamic objects for multiplication kills any performance!
 //
 // 2012-05-01   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -100,7 +100,8 @@ public class SlicedNumber
         for (var i = 0; p2 > 0; i++)
         {
             p2 = p1 - digitsPerSlice + 1;
-            if (p2 < 0) p2 = 0;
+            if (p2 < 0)
+                p2 = 0;
             slices[i] = long.Parse(s.Substring(p2, p1 - p2 + 1));
             p1 -= digitsPerSlice;
         }
@@ -142,7 +143,8 @@ public class SlicedNumber
         long carry = 0;
         for (var i = 0; i < nslices; i++)
         {
-            if (carry != 0) slices[i] += carry;
+            if (carry != 0)
+                slices[i] += carry;
             if (slices[i] < 0)
             {
                 carry = slices[i] / range - 1;
@@ -177,7 +179,8 @@ public class SlicedNumber
         var nslices2 = nslices - 1;
         while (nslices2 >= 0 && slices[nslices2] == 0)
             nslices2--;
-        if (nslices2 < 0) nslices2 = 0;
+        if (nslices2 < 0)
+            nslices2 = 0;
         if (nslices2 + 1 != nslices)
             Redim(nslices2 + 1);
     }
@@ -203,13 +206,17 @@ public class SlicedNumber
     // public for unit testing
     public static int AbsCompare(SlicedNumber n1, SlicedNumber n2)
     {
-        if (n1.nslices < n2.nslices) return -1;
-        if (n1.nslices > n2.nslices) return 1;
+        if (n1.nslices < n2.nslices)
+            return -1;
+        if (n1.nslices > n2.nslices)
+            return 1;
         var i = n1.nslices - 1;
         while (i >= 0)
         {
-            if (n1.slices[i] < n2.slices[i]) return -1;
-            if (n1.slices[i] > n2.slices[i]) return 1;
+            if (n1.slices[i] < n2.slices[i])
+                return -1;
+            if (n1.slices[i] > n2.slices[i])
+                return 1;
             i--;
         }
         return 0;
@@ -268,7 +275,8 @@ public class SlicedNumber
         // Direct case if either input has 1 slice
         if (n1.nslices == 1)
         {
-            if (n1.slices[0] == 0) return n1;           // Avoid a useless multiplication loop and a trim
+            if (n1.slices[0] == 0)
+                return n1;           // Avoid a useless multiplication loop and a trim
             var res = new SlicedNumber(n2.nslices);
             for (var i2 = 0; i2 < n2.nslices; i2++)
                 res.slices[i2] = n2.slices[i2] * n1.slices[0];
@@ -278,7 +286,8 @@ public class SlicedNumber
         }
         if (n2.nslices == 1)
         {
-            if (n2.slices[0] == 0) return n2;           // Avoid a useless multiplication loop and a trim
+            if (n2.slices[0] == 0)
+                return n2;           // Avoid a useless multiplication loop and a trim
             var res = new SlicedNumber(n1.nslices);
             for (var i1 = 0; i1 < n1.nslices; i1++)
                 res.slices[i1] = n1.slices[i1] * n2.slices[0];

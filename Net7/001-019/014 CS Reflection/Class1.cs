@@ -4,10 +4,10 @@
 // Void ibar.c() Interface Method: Void c() Interface: ibar
 // Void ibar.b() Interface Method: Void b() Interface: ibar
 // Void ifoo.a() Interface Method: Void a() Interface: ifoo
-// 2001-08-11   PV  Adapté Beta2
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-17   PV  VS2022/Net6
+// 2001-08-11	PV		Adapté Beta2
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -50,7 +50,7 @@ public class GetMemberMethodImpl
     }
 }
 
-public class Bar : IBar
+public class Bar: IBar
 {
     void IFoo.A() => WriteLine("bar.a");
 
@@ -66,7 +66,7 @@ public interface IFoo
     void A();
 }
 
-public interface IBar : IFoo
+public interface IBar: IFoo
 {
     void B();
 

@@ -2,8 +2,8 @@
 // From http://jordev.net/forums/thread/1399.aspx
 //
 // 2008-12-01   PV
-// 2012-02-25   PV  VS2010
-// 2021-09-22   PV  VS2022; Net6
+// 2012-02-25	PV		VS2010
+// 2021-09-22	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 #pragma warning disable CA2101 // Specify marshaling for P/Invoke string arguments
@@ -22,7 +22,7 @@ internal class Program
         var ts = GetServers();
         foreach (var s in ts)
             WriteLine(s);
-   
+
     }
 
 #pragma warning disable SYSLIB1054 // Use 'LibraryImportAttribute' instead of 'DllImportAttribute' to generate P/Invoke marshalling code at compile time

@@ -13,10 +13,7 @@ using System.Windows.Media.Imaging;
 
 namespace RI3;
 
-/// <summary>
-/// Interaction logic for AboutWindow.xaml
-/// </summary>
-public partial class AboutWindow : Window
+public partial class AboutWindow: Window
 {
     public AboutWindow()
     {
@@ -42,7 +39,7 @@ public partial class AboutWindow : Window
 /// Usage sample: Image Stretch="None" Source="{common:Icon /ControlsTester;component/icons/custom-reports.ico, 16}"
 /// Or: Image Source="{common:Icon Source={Binding IconResource},Size=16} "
 /// </summary>
-public class IconExtension : MarkupExtension
+public class IconExtension: MarkupExtension
 {
     private string source;
 

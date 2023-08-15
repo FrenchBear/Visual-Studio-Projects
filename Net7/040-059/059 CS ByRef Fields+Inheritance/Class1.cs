@@ -1,10 +1,10 @@
 ﻿// 059 CS ByRef Fields+Inheritance
 //
-// 2001-08-17   PV  Essai de transmission de champ et de propriété par référence (ne marche pas en VB6)
+// 2001-08-17	PV		Essai de transmission de champ et de propriété par référence (ne marche pas en VB6)
 //                  + essais méthodes/classes abstraites, scellées, virtuelles...
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010  sealed is an equivalent for methods to VB NotOverridable
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010  sealed is an equivalent for methods to VB NotOverridable
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 #pragma warning disable CA1050 // Declare types in namespaces
@@ -28,7 +28,7 @@ public abstract class Zap
     public abstract void MO2();
 }
 
-public class Couleur : Zap
+public class Couleur: Zap
 {
     // Si la variable n'est pas static, ça provoque un débordement de pile
     // Non détecté par le compilo
@@ -70,7 +70,7 @@ public class Couleur : Zap
     public /* NotOverridable */ override void OV1() => WriteLine("Couleur.OV1()");
 }
 
-public sealed class CouleurClaire : Couleur
+public sealed class CouleurClaire: Couleur
 {
     public CouleurClaire() => WriteLine("CouleurClaire.New()");
 

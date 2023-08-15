@@ -120,7 +120,7 @@ internal class Program
 }
 
 // Stack-based permutator
-internal class StackPermutator<T> : IEnumerable<List<T>>
+internal class StackPermutator<T>: IEnumerable<List<T>>
 {
     // Just keep a copy of the list since enumerator is retrieved later
     private readonly List<T> list;
@@ -131,7 +131,7 @@ internal class StackPermutator<T> : IEnumerable<List<T>>
 
     System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
-    private class MyEnumerator : IEnumerator<List<T>>
+    private class MyEnumerator: IEnumerator<List<T>>
     {
         // Stack to store elements not fully permuted
         private readonly Stack<ListLevel<T>> stack;

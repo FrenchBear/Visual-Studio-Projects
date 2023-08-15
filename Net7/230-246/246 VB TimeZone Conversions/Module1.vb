@@ -1,8 +1,8 @@
 ﻿' 246 VB TimeZone Conversions
 '
-' 2012-02-25	PV  VS2010
-' 2021-09-20    PV  VS2022; Net6
-' 2021-12-05    PV  Better output
+' 2012-02-25	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6
+' 2021-12-05 	PV		Better output
 ' 2023-01-10	PV		Net7
 
 Module Module1

@@ -10,10 +10,7 @@ using System.Windows;
 
 namespace Ed850;
 
-/// <summary>
-/// Interaction logic for AboutWindow.xaml
-/// </summary>
-public partial class AboutWindow : Window
+public partial class AboutWindow: Window
 {
     public AboutWindow()
     {

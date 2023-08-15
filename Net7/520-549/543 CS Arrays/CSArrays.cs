@@ -19,7 +19,8 @@ internal class CSArrays
         Write($"mat3: {mat3.Length} = ");
         for (var i = 0; i < mat3.Rank; i++)
         {
-            if (i > 0) Write(" * ");
+            if (i > 0)
+                Write(" * ");
             Write(mat3.GetLength(i));
         }
         WriteLine();

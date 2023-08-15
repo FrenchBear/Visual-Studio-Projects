@@ -7,7 +7,7 @@ public abstract class MonOrigine
     public abstract void Action();
 }
 
-public class MaClasseDeBase : MonOrigine
+public class MaClasseDeBase: MonOrigine
 {
     private int iMembreDeBase;
 

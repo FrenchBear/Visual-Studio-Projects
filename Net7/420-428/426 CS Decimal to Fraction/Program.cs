@@ -4,7 +4,7 @@
 // a side property of Farey suites (Fn = ordered fractions with a denominator <= n)
 //
 // 2012-04-15   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -39,13 +39,13 @@ internal class Program
         for (var i = 1; i <= 1000; i++)
         {
             for (var j = 1; j <= 1000; j++)
-        {
-            f = (double)i / (double)j;
-            DoubleToFraction(f, out rNum, out rDen);
-            var pgdc = Gcd(i, j);
-            if (i != rNum * pgdc || j != rDen * pgdc)
-                Debugger.Break();
-        }
+            {
+                f = (double)i / (double)j;
+                DoubleToFraction(f, out rNum, out rDen);
+                var pgdc = Gcd(i, j);
+                if (i != rNum * pgdc || j != rDen * pgdc)
+                    Debugger.Break();
+            }
         }
 
         WriteLine("Test Ok!");
@@ -90,8 +90,10 @@ internal class Program
             rDen = 1;
             return;
         }
-        long infNum = 0; long infDen = 1;
-        long supNum = 1; long supDen = 0;
+        long infNum = 0;
+        long infDen = 1;
+        long supNum = 1;
+        long supDen = 0;
         for (; ; )
         {
             rNum = infNum + supNum;

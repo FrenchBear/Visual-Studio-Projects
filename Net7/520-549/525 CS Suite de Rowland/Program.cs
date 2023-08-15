@@ -32,7 +32,8 @@ internal class Program
         {
             var fnp1 = fn + Gcd(n, fn);
             var gn = fnp1 - fn;
-            if (gn == 191) Debugger.Break();
+            if (gn == 191)
+                Debugger.Break();
             if (gn > 1)
                 Console.Write("{0} ", fnp1 - fn);
             fn = fnp1;

@@ -1,9 +1,9 @@
 ﻿// Drawing of a LSystem result using GDI
 // Simply draws on the Graphics of a PictureBox placed on the form
 //
-// 2012-02-05   PV  First version
-// 2021-09-23   PV  VS2022; Net6
-// 2021-12-11   PV  Support for color
+// 2012-02-05   PV      First version
+// 2021-09-23   PV      VS2022; Net6
+// 2021-12-11   PV      Support for color
 // 2023-01-10	PV		Net7
 
 using System;
@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace CS419;
 

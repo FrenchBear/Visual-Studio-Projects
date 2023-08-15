@@ -13,7 +13,7 @@ using System.Windows.Shapes;
 
 namespace CS523B;
 
-internal class UBMViewModel : INotifyPropertyChanged
+internal class UBMViewModel: INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 

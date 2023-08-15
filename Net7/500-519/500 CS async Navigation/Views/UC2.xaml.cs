@@ -3,10 +3,7 @@ using System.Windows.Controls;
 
 namespace CS500;
 
-/// <summary>
-/// Interaction logic for UC2.xaml
-/// </summary>
-public partial class UC2 : UserControl, INavigationContextProvider<UC2, NavigationResult>
+public partial class UC2: UserControl, INavigationContextProvider<UC2, NavigationResult>
 {
     public UC2()
     {

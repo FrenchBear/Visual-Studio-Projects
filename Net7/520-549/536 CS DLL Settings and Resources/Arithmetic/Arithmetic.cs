@@ -6,7 +6,6 @@
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 
-using System;
 using System.Configuration;
 using System.IO;
 using System.Reflection;
@@ -15,7 +14,7 @@ namespace ArithmeticNamespace
 {
     public class ArithmeticClass
     {
-        public int Plus(int a, int b) 
+        public int Plus(int a, int b)
             => a + b;
 
         // Return applicationSetting from dll.config
@@ -42,7 +41,7 @@ namespace ArithmeticNamespace
         }
 
         // Returns a specific applicationSetting from dll.config using typed access
-        public static string GetTypedApplicationSetting(string settingName) 
+        public static string GetTypedApplicationSetting(string settingName)
             => (string)Properties.Settings.Default[settingName];
 
         // Return appSetting from dll.config
@@ -53,7 +52,7 @@ namespace ArithmeticNamespace
         }
 
         // Returns a string embedded in dll resources
-        public string GetStringResource(string stringName) 
+        public string GetStringResource(string stringName)
             => Properties.Resources.ResourceManager.GetString(stringName);
 
         public Stream GetImageResource(string imageName, string defaultValue)

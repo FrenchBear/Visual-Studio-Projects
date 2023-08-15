@@ -91,7 +91,7 @@ internal class Entier
 }
 
 // IComparable, for old code
-internal class Entier1 : Entier, IComparable
+internal class Entier1: Entier, IComparable
 {
     public Entier1(int value) : base(value)
     {
@@ -103,13 +103,13 @@ internal class Entier1 : Entier, IComparable
 }
 
 // IComparer<T>, to build objects that implements specific sorting
-internal class EntierComparer : IComparer<Entier>
+internal class EntierComparer: IComparer<Entier>
 {
     public int Compare(Entier x, Entier y) => x.Value - y.Value;
 }
 
 // Implements operators >, >=, <, <=
-internal class Entier2 : Entier
+internal class Entier2: Entier
 {
     public Entier2(int value) : base(value)
     {
@@ -130,7 +130,7 @@ internal class Entier2 : Entier
 // op_LessThan, and op_LessThanOrEqual operators to return values that are consistent with CompareTo.
 // In addition, you should also implement IEquatable<T>.
 // See the IEquatable<T> article for complete information.
-internal class Entier3 : Entier, IComparable<Entier3>
+internal class Entier3: Entier, IComparable<Entier3>
 {
     public Entier3(int value) : base(value)
     {
@@ -141,7 +141,7 @@ internal class Entier3 : Entier, IComparable<Entier3>
 
 // IComparer<T>, to build objects that implements specific sorting
 // Here Entier3 is sorted using alphabetical sorting
-internal class Entier3Comparer : IComparer<Entier3>
+internal class Entier3Comparer: IComparer<Entier3>
 {
     public int Compare(Entier3 x, Entier3 y) => string.Compare(x.Value.ToString(), y.Value.ToString(), StringComparison.Ordinal);
 }

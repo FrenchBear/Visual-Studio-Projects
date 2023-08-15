@@ -2,7 +2,7 @@
 // http://msdn.microsoft.com/en-us/library/bb397951(v=vs.110).aspx
 //
 // 2012-03-04   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;

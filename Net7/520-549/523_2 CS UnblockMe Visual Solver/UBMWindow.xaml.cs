@@ -10,10 +10,7 @@ using System.Windows.Input;
 
 namespace CS523B;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class UBMWindow : Window
+public partial class UBMWindow: Window
 {
     public UBMWindow()
     {

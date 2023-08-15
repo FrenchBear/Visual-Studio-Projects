@@ -1,13 +1,13 @@
 ﻿' 233 VB XML Serialize Tests 1
 '
-' 2012-02-25	PV  VS2010
-' 2021-09-20    PV  VS2022; Net6
+' 2012-02-25	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
-Imports System.IO
-Imports System.Xml.Serialization
 Imports System.Console
+Imports System.IO
 Imports System.Xml
+Imports System.Xml.Serialization
 
 ' The XmlRootAttribute allows you to set an alternate name
 ' (PurchaseOrder) of the XML element, the element namespace; by

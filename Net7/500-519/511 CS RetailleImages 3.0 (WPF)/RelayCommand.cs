@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace RI3;
 
-internal class RelayCommand<T> : ICommand
+internal class RelayCommand<T>: ICommand
 {
     private readonly Predicate<T> canExecute;
     private readonly Action<T> execute;

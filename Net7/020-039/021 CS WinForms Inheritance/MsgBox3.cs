@@ -2,13 +2,13 @@
 // Classe WinForm dérivée
 //
 // 2001-01-27   PV
-// 2021-09-18   PV  VS2022, Net6
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 #pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable CA1050 // Declare types in namespaces
 
-public sealed class MsgBox3 : MsgBox2
+public sealed class MsgBox3: MsgBox2
 {
     private System.ComponentModel.IContainer components;
 

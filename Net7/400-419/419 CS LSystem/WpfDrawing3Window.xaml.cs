@@ -1,8 +1,8 @@
 ﻿// Drawing of a LSystemProcessor result using WPF (3rd version)
 // Uses a StreamGeometry
 //
-// 2012-02-26   PV  First version
-// 2021-09-23   PV  VS2022; Net6
+// 2012-02-26	PV		First version
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -12,16 +12,14 @@ using System.Windows.Media;
 
 namespace CS419;
 
-/// <summary>
-/// Interaction logic for WpfDrawing2Window.xaml
-/// </summary>
-public partial class WpfDrawing3Window : Window
+public partial class WpfDrawing3Window: Window
 {
     public WpfDrawing3Window() => InitializeComponent();
 
     protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
     {
-        if (e.Key == System.Windows.Input.Key.Escape) Close();
+        if (e.Key == System.Windows.Input.Key.Escape)
+            Close();
         base.OnKeyDown(e);
     }
 
@@ -37,7 +35,7 @@ public partial class WpfDrawing3Window : Window
     }
 
     // Implementation of renderer for WFP3
-    private class Wpf3LSystemRenderer : LSystemRenderer
+    private class Wpf3LSystemRenderer: LSystemRenderer
     {
         private StreamGeometryContext _context;
 
@@ -55,7 +53,7 @@ public partial class WpfDrawing3Window : Window
             _context = null;
         }
 
-        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroked, int color) 
+        protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroked, int color)
             => _context.LineTo(new Point(x2, y2), isStroked, true);
     }
 }

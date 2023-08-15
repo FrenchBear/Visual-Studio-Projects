@@ -2,8 +2,8 @@
 // Essais de remplissage de DataGridView
 //
 // 2003-08-08   PV
-// 2006-10-01   PV  VS2005
-// 2011-12-30   PV  VS2010  Updated connection string
+// 2006-10-01   PV      VS2005
+// 2011-12-30   PV      VS2010  Updated connection string
 // 2023-01-10	PV		Net7
 
 using System;
@@ -12,8 +12,9 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 #pragma warning disable CA1050 // Declare types in namespaces
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-public class Form1 : Form
+public class Form1: Form
 {
     private DataGridView dataGrid1;
     private DataGridView dataGrid2;

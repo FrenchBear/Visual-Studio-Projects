@@ -107,7 +107,8 @@ internal class Program
 
             // Compute sin and cos of half-angle for next step
             a /= 2.0;
-            if (a < 1e-17) break;
+            if (a < 1e-17)
+                break;
 
             var c2 = c;
             c = Math.Sqrt((c + 1.0) / 2.0);

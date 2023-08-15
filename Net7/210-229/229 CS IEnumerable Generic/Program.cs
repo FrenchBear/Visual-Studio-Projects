@@ -1,7 +1,7 @@
 ﻿// 229 CS IEnumerable Generic
 //
-// 2012-02-25   PV  VS2010
-// 2021-09-19   PV  VS2022; Net6
+// 2012-02-25   PV      VS2010
+// 2021-09-19   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System.Collections;
@@ -25,7 +25,7 @@ internal class Program
     }
 }
 
-public class CityCollection : IEnumerable<string>
+public class CityCollection: IEnumerable<string>
 {
     private readonly string[] m_Cities = { "New York", "Paris", "London" };
 
@@ -53,7 +53,7 @@ public class Toto
 {
     private IMachin MaFonction(int a, int b) => new Internal(a, b);
 
-    public class Internal : IMachin
+    public class Internal: IMachin
     {
         private readonly int m_a, m_b;
 
@@ -69,7 +69,7 @@ public class Toto
     public int Zap(int i) => MaFonction(2, 3).Bidule(i);
 }
 
-public class C2 : IMachin
+public class C2: IMachin
 {
     private readonly LinkedList<string> l = new();
     private readonly Dictionary<int, string> d = new();
@@ -87,9 +87,11 @@ public class C2 : IMachin
         //{
         //}
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
         foreach (var kv in d)
         {
         }
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
 
         return 0;
     }

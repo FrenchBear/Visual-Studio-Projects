@@ -1,6 +1,6 @@
 ﻿// 427 CS DynamicObject
 //
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ internal class Program
 }
 
 // The class derived from DynamicObject.
-public class DynamicDictionary : DynamicObject
+public class DynamicDictionary: DynamicObject
 {
     // The inner dictionary.
     private readonly Dictionary<string, object> dictionary = new();

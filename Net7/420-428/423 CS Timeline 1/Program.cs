@@ -1,8 +1,8 @@
 ﻿// 423 CS TimeLine 1
 // Core classes for a time-based simulation
 //
-// 2012-03-09   PV  First version, after *years* of thinking about it...
-// 2021-09-23   PV  VS2022; Net6
+// 2012-03-09	PV		First version, after *years* of thinking about it...
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -51,7 +51,7 @@ internal class Program
     }
 }
 
-internal class SortedQueue<TKey, TValue> : SortedList<TKey, TValue>
+internal class SortedQueue<TKey, TValue>: SortedList<TKey, TValue>
 {
     public KeyValuePair<TKey, TValue> TakeFirst()
     {
@@ -109,7 +109,7 @@ internal class TimelineEvent
     public void ExecuteAction(double nowTime) => _action?.Invoke(nowTime, this);
 }
 
-internal class UserArrivedEvent : TimelineEvent
+internal class UserArrivedEvent: TimelineEvent
 {
     private static int numUserSource;
 

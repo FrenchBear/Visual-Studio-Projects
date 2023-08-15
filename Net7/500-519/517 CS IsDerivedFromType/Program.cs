@@ -9,6 +9,8 @@ using System;
 using System.Reflection;
 using static System.Console;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 namespace CS517;
 
 internal class Program

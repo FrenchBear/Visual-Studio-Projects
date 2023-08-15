@@ -1,8 +1,8 @@
 ﻿' 095 VB MultiThread
 ' Essais de multithreading en VB
 ' 2004-04-17    PV
-' 2006-10-01    PV  VS2005
-' 2012-02-25	PV  VS2010
+' 2006-10-01 	PV		VS2005
+' 2012-02-25	PV		VS2010
 ' 2023-01-10	PV		Net7
 Imports System.ComponentModel
 Imports System.Threading

@@ -1,9 +1,9 @@
 ﻿' Lambda functions and Select projections
 '
 ' 2008-08-20    PV
-' 2012-02-25    PV  VS2010
+' 2012-02-25 	PV		VS2010
 ' 2012-03-04    List --> IEnumerable; Console output; C# version
-' 2021-09-20    PV  VS2022; Net6
+' 2021-09-20 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 Imports System.Text
 

@@ -16,7 +16,7 @@
 //     more like the representative glyph shown for U+03D5(ϕ, the “straight“ form).
 //     See the Greek table in the character code charts http://www.unicode.org/charts/PDF/U0370.pdf
 //
-// 2017-01-17   PV  Extract from CS601, to show the problem
+// 2017-01-17	PV		Extract from CS601, to show the problem
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 

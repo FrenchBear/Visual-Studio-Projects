@@ -3,8 +3,8 @@
 // Actually should implement the same members as BigInteger struct itself
 //
 // 2011-07-04   PV
-// 2012-02-02   PV  Refactoring; CompareTo, interfaces
-// 2021-09-23   PV  VS2022; Net6
+// 2012-02-02   PV      Refactoring; CompareTo, interfaces
+// 2021-09-23   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -13,7 +13,7 @@ using System.Text;
 
 namespace BigDecimalNS;
 
-internal struct BigDecimal : IComparable<BigDecimal>, IComparable
+internal struct BigDecimal: IComparable<BigDecimal>, IComparable
 {
     // Definition of precision
     public const int Digits = 750;                   // Number of decimals
@@ -81,10 +81,11 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
     static public bool operator <=(BigDecimal b1, BigDecimal b2) => b1.n <= b2.n;
 
     // Standard string representation
-    public override string ToString()
+    public override readonly string ToString()
     {
         var sb = new StringBuilder();
-        if (n < 0) _ = sb.Append('-');
+        if (n < 0)
+            _ = sb.Append('-');
         _ = BigInteger.Abs(n) >= ScaleFactor ? sb.Append(BigInteger.Divide(BigInteger.Abs(n), ScaleFactor).ToString()) : sb.Append('0');
         var d = BigInteger.Remainder(BigInteger.Abs(n), ScaleFactor);
         if (d != 0)
@@ -98,10 +99,11 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
     }
 
     // Otherwise C# compiler is not happy
-    public override bool Equals(object obj)
+    public override readonly bool Equals(object obj)
     {
         //Check for null and compare run-time types.
-        if (obj == null || GetType() != obj.GetType()) return false;
+        if (obj == null || GetType() != obj.GetType())
+            return false;
 
         var bd = (BigDecimal)obj;
         return n == bd.n;
@@ -109,12 +111,13 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
 
     // For free!
     // But Resharper indicates a warning: Non-readonly field referenced...
-    public override int GetHashCode() => n.GetHashCode();
+    public override readonly int GetHashCode() => n.GetHashCode();
 
     // For IComparable interface
-    public int CompareTo(object obj)
+    public readonly int CompareTo(object obj)
     {
-        if (obj == null) return 1;
+        if (obj == null)
+            return 1;
 
         try
         {
@@ -136,5 +139,5 @@ internal struct BigDecimal : IComparable<BigDecimal>, IComparable
     */
 
     // implicit interface IComparable<BigDecimal> implementation
-    public int CompareTo(BigDecimal other) => n.CompareTo(other.n);
+    public readonly int CompareTo(BigDecimal other) => n.CompareTo(other.n);
 }

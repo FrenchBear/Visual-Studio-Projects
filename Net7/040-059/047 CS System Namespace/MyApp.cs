@@ -1,7 +1,7 @@
 ﻿// 2001 PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -115,7 +115,7 @@ internal static class MyApp
         dic = new Hashtable();
         dicMain.Add(sNomAssembly, dic);
 
-        var a = Assembly.LoadFrom(Path.Join(@"C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.10", sNomAssembly ));
+        var a = Assembly.LoadFrom(Path.Join(@"C:\Program Files\dotnet\shared\Microsoft.NETCore.App\5.0.10", sNomAssembly));
 
         foreach (var m in a.GetModules())
             AnalyseModule(m);
@@ -169,7 +169,8 @@ internal static class MyApp
         WriteLine("  {0}/{1}", t.FullName);
         */
 
-        if (!t.IsPublic) return;
+        if (!t.IsPublic)
+            return;
 
         /*
         int p;
@@ -181,10 +182,14 @@ internal static class MyApp
         var ns = t.Namespace;
         var bn = t.Name;
 
-        if (t.IsClass) bn = "class " + bn;
-        if (t.IsValueType && !t.IsEnum) bn = "struct " + bn;
-        if (t.IsEnum) bn = "enum " + bn;
-        if (t.IsInterface) bn = "interface " + bn;
+        if (t.IsClass)
+            bn = "class " + bn;
+        if (t.IsValueType && !t.IsEnum)
+            bn = "struct " + bn;
+        if (t.IsEnum)
+            bn = "enum " + bn;
+        if (t.IsInterface)
+            bn = "interface " + bn;
 
         // Collection globale des namespaces
         ns ??= "(global)";  // if (ns == null) ns = "(global)";

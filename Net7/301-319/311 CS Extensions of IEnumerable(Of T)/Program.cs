@@ -1,11 +1,10 @@
 ﻿// 311 CS Extensions of IEnumerable(Of T)
 //
 // 2012-03-03   PV
-// 2021-09-20   PV  VS2022; Net6
+// 2021-09-20	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using ExtensionMethods;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace CS311;

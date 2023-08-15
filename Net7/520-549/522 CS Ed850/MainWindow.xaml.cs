@@ -16,10 +16,7 @@ using System.Windows.Input;
 
 namespace Ed850;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow: Window
 {
     internal static RoutedUICommand About = new("À propos de...", "About", typeof(MainWindow), new InputGestureCollection() { new KeyGesture(Key.I, ModifierKeys.Control) });
 
@@ -39,7 +36,8 @@ public partial class MainWindow : Window
     private void NewExecuted(object sender, ExecutedRoutedEventArgs e)
     {
         var z = CanContinue();
-        if (!z) return;
+        if (!z)
+            return;
 
         MyTextBox.Text = "";
         IsDirty = false;
@@ -49,7 +47,8 @@ public partial class MainWindow : Window
     private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
     {
         var z = CanContinue();
-        if (!z) return;
+        if (!z)
+            return;
 
         // Configure open file dialog box
         Microsoft.Win32.OpenFileDialog dlg = new()
@@ -152,7 +151,7 @@ public partial class MainWindow : Window
     }
 }
 
-public class DataBag : INotifyPropertyChanged
+public class DataBag: INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
 
@@ -174,6 +173,6 @@ public class DataBag : INotifyPropertyChanged
         }
     }
 
-    public string WindowCaption 
+    public string WindowCaption
         => _FileName == null ? "ED850 - (Nouveau)" : "ED850 - " + _FileName;
 }

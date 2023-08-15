@@ -2,8 +2,8 @@
 ' From http://www.dreamincode.net/forums/showtopic39350.htm
 '
 ' 2008-05-11    PV
-' 2012-02-25	PV  VS2010
-' 2021-09-20    PV  VS2022; Net6
+' 2012-02-25	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Public Class Form1

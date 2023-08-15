@@ -1,8 +1,8 @@
 ﻿' Class NumTheory
 ' Essais de code sur les nombres premiers
 '
-' 2011-10-22 PV
-' 2021-09-23    PV  VS2022; Net6
+' 2011-10-22    PV
+' 2021-09-23    PV      VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Class NumTheory

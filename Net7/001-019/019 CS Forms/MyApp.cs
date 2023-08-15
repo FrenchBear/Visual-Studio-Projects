@@ -2,10 +2,10 @@
 // Création "manuelle" d'une feuille en dérivant MyForm de la classe Form
 // Plus quelques handlers d'événements
 // 2001-01-27   PV
-// 2001-08-15   PV  Beta2
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-17   PV  VS2022/Net6
+// 2001-08-15	PV		Beta2
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace CS019;
 
-public class MyForm : Form
+public class MyForm: Form
 {
     private readonly Button btnNew;
     private readonly Button button1;
@@ -58,7 +58,7 @@ public class MyForm : Form
     }
 
     // Handler commun à button1 et button2
-    private void OnClick(object sender, EventArgs evArgs) 
+    private void OnClick(object sender, EventArgs evArgs)
         => _ = sender == button1 ? MessageBox.Show("Hello Button 1") : MessageBox.Show("Hello Button 2");
 
     private void OnNewClick(object sender, EventArgs evArgs)

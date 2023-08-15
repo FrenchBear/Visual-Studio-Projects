@@ -54,7 +54,8 @@ internal class Program
             for (var i = 0; i < s1.Length; i++)
             {
                 var s1b = s1.Remove(i, 1);
-                if (StringDistance(s1b, s2, distance - 1)) return true;
+                if (StringDistance(s1b, s2, distance - 1))
+                    return true;
             }
         }
         // delete 1 char from s2
@@ -63,7 +64,8 @@ internal class Program
             for (var i = 0; i < s2.Length; i++)
             {
                 var s2b = s2.Remove(i, 1);
-                if (StringDistance(s1, s2b, distance - 1)) return true;
+                if (StringDistance(s1, s2b, distance - 1))
+                    return true;
             }
         }
         // replace 1 char
@@ -72,7 +74,8 @@ internal class Program
             for (var i = 0; i < s1.Length; i++)
             {
                 var s1b = s1[..i] + s2[i] + s1[(i + 1)..];
-                if (StringDistance(s1b, s2, distance - 1)) return true;
+                if (StringDistance(s1b, s2, distance - 1))
+                    return true;
             }
         }
 

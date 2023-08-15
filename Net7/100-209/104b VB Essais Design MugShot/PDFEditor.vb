@@ -1,9 +1,9 @@
 ﻿' PDFEditor UserControl
 ' PDF edit/view control
 '
-' 2006-04-13    PV  First version
-' 2012-02-25	PV  VS2010
-' 2021-09-19    PV  VS2022; Net6 (Note: this doesn't work in Net6, will check it later)
+' 2006-04-13 	PV		First version
+' 2012-02-25	PV		VS2010
+' 2021-09-19 	PV		VS2022; Net6 (Note: this doesn't work in Net6, will check it later)
 ' 2023-01-10	PV		Net7
 
 Option Compare Text

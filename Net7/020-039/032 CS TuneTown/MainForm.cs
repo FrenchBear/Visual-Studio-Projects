@@ -3,9 +3,9 @@
 //
 // 2001-02-03   PV
 // 2001-08-19   PV	Beta2
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace TuneTownNS;
 
-public class MainForm : Form
+public class MainForm: Form
 {
     private Button RemoveButton;
     private Button EditButton;

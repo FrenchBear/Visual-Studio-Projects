@@ -1,10 +1,11 @@
 ﻿// Carre44.cpp: implementation of the Carre44 class
 // Représente une grille 4x4 et implante des transformations de base (rotation/symétrie)
+// 
 // 1998-12-26	PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2017-06-05	PV	VS2017, simplification du code MSC/stdafx et version 4x4 pour The Talos Principle
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01   PV		VS2005
+// 2012-02-25   PV		VS2010
+// 2017-06-05	PV		VS2017, simplification du code MSC/stdafx et version 4x4 pour The Talos Principle
+// 2021-09-18   PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 #include <stdio.h>

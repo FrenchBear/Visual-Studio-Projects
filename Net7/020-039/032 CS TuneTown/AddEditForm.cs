@@ -1,12 +1,12 @@
-﻿// 01/10/2006   PV  VS 2005
-// 2021-09-18   PV  VS2022, Net6
+﻿// 01/10/2006	PV		VS 2005
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 #pragma warning disable IDE0052 // Remove unread private members
 
 namespace TuneTownNS;
 
-public class AddEditForm : System.Windows.Forms.Form
+public class AddEditForm: System.Windows.Forms.Form
 {
     public string Title
     {

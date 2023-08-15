@@ -1,7 +1,7 @@
 ﻿// 514 CS Remap HR Extract Pics
 // Tool to reselct HR original pics based on a LR extract
 //
-// 2013-07-23   PV  Second version, the first one has been deleted by accident...
+// 2013-07-23	PV		Second version, the first one has been deleted by accident...
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 

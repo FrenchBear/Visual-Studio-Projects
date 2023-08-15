@@ -1,7 +1,7 @@
 ﻿' Exemple de CodeDom (doc MSDN sur CodeDomProvider Class)
 ' 2004-01-06    PV
-' 2006-10-01    PV  VS2005
-' 2012-02-25	PV  VS2010
+' 2006-10-01 	PV		VS2005
+' 2012-02-25	PV		VS2010
 ' 2023-01-10	PV		Net7
 
 Imports System.CodeDom

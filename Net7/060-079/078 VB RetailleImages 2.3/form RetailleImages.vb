@@ -2,13 +2,13 @@
 ' Application de redimensionnement d'images en VB.Net
 '
 ' 2003-07       PV
-' 2003-07-30    PV  Contrôle de la qualité
-' 2006-10-01    PV  VS 2005
-' 2007-05/18    PV  About... in system menu
-' 2007-05-21    PV  Les images plus petites gardent leur taille; option récursive
-' 2009-10-15    PV  VS 2008 et ajout suffixe R automatiquement
-' 2012-02-25	PV  VS2010; .Net Framework Client Profile 4.0
-' 2021-09-19    PV  VS2022, Net6
+' 2003-07-30 	PV		Contrôle de la qualité
+' 2006-10-01 	PV		VS 2005
+' 2007-05/18 	PV		About... in system menu
+' 2007-05-21 	PV		Les images plus petites gardent leur taille; option récursive
+' 2009-10-15 	PV		VS 2008 et ajout suffixe R automatiquement
+' 2012-02-25	PV		VS2010; .Net Framework Client Profile 4.0
+' 2021-09-19 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
 Option Explicit On

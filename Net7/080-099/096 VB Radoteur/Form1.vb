@@ -1,11 +1,10 @@
 ﻿' Radoteur
 ' Word-building application
 ' 2004-06-28    PV
-' 2006-10-01    PV  VS2005
-' 2011-09-26	PV  VS2010 and reading words from a file --> doesn't work, should not be recursive...
+' 2006-10-01 	PV		VS2005
+' 2011-09-26	PV		VS2010 and reading words from a file --> doesn't work, should not be recursive...
 ' 2023-01-10	PV		Net7
 
-Imports System.Collections.Generic
 Imports System.ComponentModel
 Imports System.IO
 

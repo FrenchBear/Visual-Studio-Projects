@@ -1,14 +1,14 @@
 ﻿' 37: Essais ADO over ODBC
 '
 ' 2001-02-06    PV
-' 2006-10-01    PV  VS2005  Changed database
-' 2012-02-25	PV  VS2010  Changed database again!
-' 2021-09-18    PV  VS2022, Net6
+' 2006-10-01 	PV		VS2005  Changed database
+' 2012-02-25	PV		VS2010  Changed database again!
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
+Imports System.Console
 Imports System.Data
 Imports System.Data.Odbc
-Imports System.Console
 
 Class App
 

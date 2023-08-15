@@ -1,11 +1,11 @@
 ﻿' 408 VB ConversionsWithLocales
 '
 ' 2011-08-23    PV
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
-Imports System.Globalization
 Imports System.Console
+Imports System.Globalization
 
 Module Module1
 

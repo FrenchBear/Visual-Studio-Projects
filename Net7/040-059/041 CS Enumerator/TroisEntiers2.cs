@@ -2,15 +2,15 @@
 // ThreeIntegers2 implémente une fonction GetDictionaryEnumerator retournant un
 // énumérateur de type IDictionaryEnumerator (key+value)
 // 2001-02-18   PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using System;
 using System.Collections;
 
-internal class ThreeIntegers2 : IEnumerable
+internal class ThreeIntegers2: IEnumerable
 {
     private readonly int i1, i2, i3;
 
@@ -25,7 +25,7 @@ internal class ThreeIntegers2 : IEnumerable
 
     public virtual IDictionaryEnumerator GetDictionaryEnumerator() => new MonEnumerateur(this);
 
-    private class MonEnumerateur : IDictionaryEnumerator
+    private class MonEnumerateur: IDictionaryEnumerator
     {
         private int pos;
         private readonly ThreeIntegers2 tcur;

@@ -1,7 +1,7 @@
 ﻿// 419 CS LSystem
 //
 // 2012-02-05   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ internal class SourceSystem
     public override string ToString() => Name;
 }
 
-internal class SourceSystemComparer : IComparer<SourceSystem>
+internal class SourceSystemComparer: IComparer<SourceSystem>
 {
     public int Compare(SourceSystem x, SourceSystem y) => string.Compare(x.Name, y.Name, true, CultureInfo.InvariantCulture);
 }

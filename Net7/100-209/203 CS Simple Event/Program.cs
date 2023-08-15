@@ -2,7 +2,7 @@
 //
 // Simple example of class providing an event
 // 2013-09-02   PV
-// 2021-09-19   PV  VS2022; Net6
+// 2021-09-19	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -41,7 +41,7 @@ internal class Program
     private static void Car_EngineStateChangedEvent(object sender, EngineStateChangedEventArgs e) => WriteLine("{0} engine state changed on {1}, IsEngineOn={2}", (sender as Car).Name, e.StateChangedOn, (sender as Car).IsEngineOn);
 }
 
-public class EngineStateChangedEventArgs : EventArgs
+public class EngineStateChangedEventArgs: EventArgs
 {
     public EngineStateChangedEventArgs(DateTime stateChangedOn) => StateChangedOn = stateChangedOn;
 

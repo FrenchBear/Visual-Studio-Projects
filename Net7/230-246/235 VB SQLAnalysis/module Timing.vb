@@ -6,7 +6,7 @@
 ' Dim c2 As Long = QueryPerformanceCounter
 ' Dim t1_ms As Long = (c2 - c1) * 1000.0 / QueryPerformanceFrequency
 '
-' 2021-09-20    PV  VS2022; Net6
+' 2021-09-20 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 

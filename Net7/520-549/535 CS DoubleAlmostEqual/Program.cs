@@ -51,11 +51,16 @@ internal class Program
     // My own version of double comparison for units coefficients
     private static bool DoubleAlmostEqual(double d1, double d2)
     {
-        if (d1 == d2) return true;                              // simple case, if binary equality, done.
-        if (d1 == 0.0 || d2 == 0.0) return false;               // 0.0 compared to not 0.0 s always false here
-        if (Math.Sign(d1) != Math.Sign(d2)) return false;       // A positive is never equals to a negative
-        if (d1 < 0) d1 = -d1;
-        if (d2 < 0) d2 = -d2;
+        if (d1 == d2)
+            return true;                              // simple case, if binary equality, done.
+        if (d1 == 0.0 || d2 == 0.0)
+            return false;               // 0.0 compared to not 0.0 s always false here
+        if (Math.Sign(d1) != Math.Sign(d2))
+            return false;       // A positive is never equals to a negative
+        if (d1 < 0)
+            d1 = -d1;
+        if (d2 < 0)
+            d2 = -d2;
         return Math.Abs(Math.Log(d1) - Math.Log(d2)) < 1e-8;    // Compare based on magnitude
         // With natural log, if d1 and d2 differ on the 11th decimal, the difference in logs is ~1e-11 --> 1e-8 = match on ~8 significant digits
     }

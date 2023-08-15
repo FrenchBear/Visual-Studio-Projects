@@ -1,9 +1,9 @@
 ﻿' Utilisation de ShellExecute en environnement .Net
 '
 ' 2008-10-10    PV
-' 2009-06-03    PV  Added ExpandEnvironmentVariables
-' 2012-02-25    PV  VS2010
-' 2021-09-20    PV  VS2022; Net6
+' 2009-06-03 	PV		Added ExpandEnvironmentVariables
+' 2012-02-25 	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.ComponentModel

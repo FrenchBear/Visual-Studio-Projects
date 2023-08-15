@@ -2,7 +2,7 @@
 // Tests with classes BigInteger and Tuple of .Net Framework 4
 //
 // 2010-02-24   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;

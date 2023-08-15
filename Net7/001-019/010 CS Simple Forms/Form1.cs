@@ -1,9 +1,9 @@
 ﻿// 010 CS Simple Forms
 // Essais élémentaires du designer en C#
 // PV janvier 2001
-// 2006-10-01   PV  V2005
-// 2012-02-25   PV  VS2010
-// 2021-09-17   PV  VS2022/Net6
+// 2006-10-01	PV		V2005
+// 2012-02-25	PV		VS2010
+// 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
 
 using System.Windows.Forms;
@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace CS010;
 
-public class Form1 : Form
+public class Form1: Form
 {
     private System.ComponentModel.Container components;
 

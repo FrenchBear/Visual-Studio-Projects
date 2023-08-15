@@ -3,9 +3,9 @@
 //
 // 2001-01-29   PV
 // 2001-08-15   PV	Beta2: le miracle ne marche plus !!!
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -15,7 +15,7 @@ using System.Windows.Forms;
 #pragma warning disable IDE1006 // Naming Styles
 #pragma warning disable CA1050 // Declare types in namespaces
 
-public class MyForm : Form
+public class MyForm: Form
 {
     private Button button1;
     private GradientButton button2;

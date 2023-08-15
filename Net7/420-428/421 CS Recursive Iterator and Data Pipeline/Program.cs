@@ -3,7 +3,7 @@
 // Inspired by http://msdn.microsoft.com/en-us/magazine/cc163682.aspx
 //
 // 2012-03-04   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -21,7 +21,7 @@ internal class Node<T>
 }
 
 // Simple binary tree, unbalanced...
-internal class BinaryTree<T> : IEnumerable<T>
+internal class BinaryTree<T>: IEnumerable<T>
     where T : IComparable
 {
     private Node<T> m_Root;
@@ -86,11 +86,12 @@ internal class Program
     private static void Main()
     {
         Random r = new();
-        double Rnd() => r.NextDouble(); 
+        double Rnd() => r.NextDouble();
 
         // tests of Array global initialization
         double[] tr10, tu10, tv10;
-        tr10 = Array.ConvertAll(new double[10], /*(Converter<double, double>)*/delegate { return Rnd(); });
+        tr10 = Array.ConvertAll(new double[10], /*(Converter<double, double>)*/delegate
+        { return Rnd(); });
         tu10 = Array.ConvertAll(new double[10], x => Rnd());
         tv10 = Generate(10, Rnd).ToArray();
 

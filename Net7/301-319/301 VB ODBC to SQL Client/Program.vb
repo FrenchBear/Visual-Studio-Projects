@@ -1,7 +1,7 @@
 ﻿' 301 VB ODBC to SQL Client
 '
-' 2012-02-25    PV  VS2010; App 32-bit
-' 2021-09-20    PV  VS2022; Net6.  Use Microsoft.Win32.Registry instead of My.Computer.Registry
+' 2012-02-25 	PV		VS2010; App 32-bit
+' 2021-09-20 	PV		VS2022; Net6.  Use Microsoft.Win32.Registry instead of My.Computer.Registry
 ' 2023-01-10	PV		Net7
 
 Imports System.Data.SqlClient

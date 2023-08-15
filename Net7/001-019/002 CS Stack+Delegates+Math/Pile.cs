@@ -2,8 +2,8 @@
 // Implantation d'une classe pile très simple
 //
 // 2001 PV
-// 2010-05-01   PV  VS2010
-// 2021-09-17   PV  VS2022/Net6
+// 2010-05-01	PV		VS2010
+// 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
 
 using System;

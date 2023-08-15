@@ -2,9 +2,9 @@
 ' From Complexités, JP Delahaye, P.231
 '
 ' 2008-01-23    PV
-' 2008-02-01    PV  Rescaling
-' 2010-04-15    PV  VS2010
-' 2021-09-20    PV  VS2022; Net6
+' 2008-02-01 	PV		Rescaling
+' 2010-04-15 	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.Drawing.Drawing2D

@@ -1,12 +1,12 @@
 ﻿' frmRenameFiles
 ' Quick tool to rename a series of files in a folder
 '
-' 2006-07-26    PV  Version 2.0 in VB.Net
-' 2006-07-28    PV  2.1 Like filter, ^^ ^& ^l ^u in replacement expression, about box, columns sorting
-' 2006-09-27    PV  2.2 Option "recurse folders"
-' 2006-09-27    PV  2.3 Option "case significant"
-' 2012-02-25	PV  VS2010
-' 2021-09-20    PV  VS2022; Net6
+' 2006-07-26 	PV		Version 2.0 in VB.Net
+' 2006-07-28 	PV		2.1 Like filter, ^^ ^& ^l ^u in replacement expression, about box, columns sorting
+' 2006-09-27 	PV		2.2 Option "recurse folders"
+' 2006-09-27 	PV		2.3 Option "case significant"
+' 2012-02-25	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Option Compare Text

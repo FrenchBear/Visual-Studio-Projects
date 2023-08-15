@@ -1,6 +1,6 @@
 // Carre44.h: interface for the Carre44 class.
 //
-// 2017-06-05	PV	VS2017, simplification du code MSC/stdafx et version 4x4 pour The Talos Principle
+// 2017-06-05	PV		VS2017, simplification du code MSC/stdafx et version 4x4 pour The Talos Principle
 
 class Carre44
 {

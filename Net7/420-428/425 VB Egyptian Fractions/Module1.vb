@@ -1,7 +1,7 @@
 ﻿' 425 VB Egyptian Fractions
 ' Finds the decomposition of a fraction in Egyptian Fractions (numerator=1)
 '
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.Console

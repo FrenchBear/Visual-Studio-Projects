@@ -24,7 +24,8 @@ public class Model
     {
         // Initialization for multitasking (Max number of // tasks)
         MAX_PARALLISM = Environment.ProcessorCount > 4 ? Environment.ProcessorCount - 2 : Environment.ProcessorCount - 1;
-        if (MAX_PARALLISM < 1) MAX_PARALLISM = 1;
+        if (MAX_PARALLISM < 1)
+            MAX_PARALLISM = 1;
 
         // Folders just for testing
         SourceFolder = @"C:\Users\Pierre\Desktop\2013-06 Vacances AK et YT (Extrait) HR";
@@ -71,20 +72,21 @@ public class Model
         _ = Task.Run(/* async */ () =>
           {
               var n = 0;      // Number of active hashing tasks
-            var p = 0;      // Number of processed files
+              var p = 0;      // Number of processed files
 
-            // Hash MAX_PARALLISM files in parallel
-            foreach (var file in processedFilesList)
+              // Hash MAX_PARALLISM files in parallel
+              foreach (var file in processedFilesList)
               {
-                  if (cancelToken.IsCancellationRequested) goto ExitGenerate;
+                  if (cancelToken.IsCancellationRequested)
+                      goto ExitGenerate;
 
                   var s = file.Remove(0, SourceFolder.Length + (SourceFolder.EndsWith("\\") ? 0 : 1));    // Avoid problems with loop variables
-                lt.Add(Task.Run(() => ConvertImage(s)));
+                  lt.Add(Task.Run(() => ConvertImage(s)));
                   n++;
                   if (n == MAX_PARALLISM)
                   {
-                    //await Task.WhenAny(lt.ToArray());
-                    _ = Task.WaitAny(lt.ToArray());
+                      //await Task.WhenAny(lt.ToArray());
+                      _ = Task.WaitAny(lt.ToArray());
                       lock (lt)
                       {
                           var lf = new List<Task<string>>();
@@ -101,13 +103,14 @@ public class Model
                   }
               }
 
-            // Wail all tasks to terminate
-            while (n > 0)
+              // Wail all tasks to terminate
+              while (n > 0)
               {
-                  if (cancelToken.IsCancellationRequested) goto ExitGenerate;
+                  if (cancelToken.IsCancellationRequested)
+                      goto ExitGenerate;
 
-                //await Task.WhenAny(lt.ToArray());
-                _ = Task.WaitAny(lt.ToArray());
+                  //await Task.WhenAny(lt.ToArray());
+                  _ = Task.WaitAny(lt.ToArray());
                   lock (lt)
                   {
                       var lf = new List<Task<string>>();

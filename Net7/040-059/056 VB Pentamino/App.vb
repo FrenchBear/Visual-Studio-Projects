@@ -1,11 +1,11 @@
 ﻿' pentamino.cpp
 ' Résolution de problèmes de pentaminos (pavage)
 '
-' 1998-12-26    PV  Version originale en C++
-' 2001-08-11    PV  Réécriture en VB
-' 2006-10-01    PV  VS2005
-' 2012-02-25	PV  VS2010
-' 2021-09-18    PV  VS2022, Net6
+' 1998-12-26 	PV		Version originale en C++
+' 2001-08-11 	PV		Réécriture en VB
+' 2006-10-01 	PV		VS2005
+' 2012-02-25	PV		VS2010
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.Console

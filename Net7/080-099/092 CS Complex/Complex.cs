@@ -1,7 +1,7 @@
 ﻿// Classe Complex
 // 2004-01-25   PV
-// 2006-10-01   PV  VS2005
-// 2012-02-04   PV  VS2010
+// 2006-10-01	PV		VS2005
+// 2012-02-04	PV		VS2010
 // 2023-01-10	PV		Net7
 
 using System;
@@ -19,7 +19,8 @@ public readonly struct Complex
 
     public Complex(double r0, double i0)
     {
-        r = r0; i = i0;
+        r = r0;
+        i = i0;
     }
 
     public static implicit operator Complex(double d) => new(d);

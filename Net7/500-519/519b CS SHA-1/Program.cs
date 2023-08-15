@@ -76,8 +76,10 @@ internal class Program
         var lB = s.Length;      // Message length in Bytes (only process ascii here, one byte per character)
         var lb = 8 * lB;        // Message length in bits
         nb = lb / blocksize;    // Number of blocks of 512 bits
-        if (lb == 0 || lb % blocksize != 0) nb++;
-        if ((lb % blocksize) >= (blocksize - lengthsize)) nb++;
+        if (lb == 0 || lb % blocksize != 0)
+            nb++;
+        if ((lb % blocksize) >= (blocksize - lengthsize))
+            nb++;
 
         tb = new byte[nb * (blocksize / 8)];
         for (var i = 0; i < lB; i++)

@@ -1,11 +1,11 @@
 ﻿// pentamino.cpp
 // Résolution de problèmes de pentaminos (pavage)
 //
-// 1998-12-26   PV  Version originale en C++
-// 2001-08-11   PV  Réécriture en C#
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 1998-12-26	PV		Version originale en C++
+// 2001-08-11	PV		Réécriture en C#
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -117,7 +117,8 @@ internal class Pentamino
         int l, c = 0;
         var bTrouvé = false;
 
-        if (iNbSol > MAXSOLUTION) return;
+        if (iNbSol > MAXSOLUTION)
+            return;
 
         iNbAppelPavage++;
 
@@ -196,7 +197,8 @@ internal class Pentamino
 
                         for (l2 = 0; l2 < ca.lmax; l2++)
                             for (c2 = 0; c2 < ca.cmax; c2++)
-                                if (ca.tMotif[l2, c2]) jeu2[l + l2, c + c2 - ca.iOffsetCol] = (byte)(i + 1);
+                                if (ca.tMotif[l2, c2])
+                                    jeu2[l + l2, c + c2 - ca.iOffsetCol] = (byte)(i + 1);
 
                         // On continue avec les pièces qui restent
                         Pavage(l, c, jeu2, iMasquePieces & ~(1 << i));

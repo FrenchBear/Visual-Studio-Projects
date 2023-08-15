@@ -3,12 +3,14 @@
 // En fait en C# ça marche, mais le compilo génère bien une référence au champ statique de la classe de base...
 //
 // 2001-07-29   PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01   PV      VS2005
+// 2012-02-25   PV      VS2010
+// 2021-09-18   PV      VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using static System.Console;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 internal class Animal
 {
@@ -21,7 +23,7 @@ internal class Animal
     }
 };
 
-internal class Chien : Animal
+internal class Chien: Animal
 {
     public string sRace;
 

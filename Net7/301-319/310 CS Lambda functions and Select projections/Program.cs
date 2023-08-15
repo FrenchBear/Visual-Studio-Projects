@@ -1,11 +1,9 @@
 ﻿// 310 CS Lambda functions and Select projections
 //
 // 2012-03-04   PV
-// 2021-09-20   PV  VS2022; Net6
+// 2021-09-20	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
@@ -44,6 +42,6 @@ internal class Program
         WriteLine(output.ToString());
     }
 
-    private static int LengthOfString(string s) 
+    private static int LengthOfString(string s)
         => s.Length;
 }

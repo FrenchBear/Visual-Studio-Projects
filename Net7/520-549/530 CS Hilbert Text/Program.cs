@@ -51,20 +51,37 @@ internal class Program
         {
             switch (c)      // Only process drawing instructions - + and F
             {
-                case '-': a = (a + 1) % 4; break;   // Rotate 90° anti clockwise = increment a (modulo 4)
-                case '+': a = (a + 3) % 4; break;   // Rotate 90° clockwise = decrement a (modulo 4)
+                case '-':
+                    a = (a + 1) % 4;
+                    break;   // Rotate 90° anti clockwise = increment a (modulo 4)
+                case '+':
+                    a = (a + 3) % 4;
+                    break;   // Rotate 90° clockwise = decrement a (modulo 4)
                 case 'F':
                     // Compute next cell coordinates after drawing 1 unit in direction indicated by a
                     int nx = 0, ny = 0;
                     switch (a)
                     {
-                        case 0: nx = cx + 1; ny = cy; break;
-                        case 1: nx = cx; ny = cy - 1; break;
-                        case 2: nx = cx - 1; ny = cy; break;
-                        case 3: nx = cx; ny = cy + 1; break;
+                        case 0:
+                            nx = cx + 1;
+                            ny = cy;
+                            break;
+                        case 1:
+                            nx = cx;
+                            ny = cy - 1;
+                            break;
+                        case 2:
+                            nx = cx - 1;
+                            ny = cy;
+                            break;
+                        case 3:
+                            nx = cx;
+                            ny = cy + 1;
+                            break;
                     }
                     tc[cy, cx] = io[en, a];
-                    cx = nx; cy = ny;
+                    cx = nx;
+                    cy = ny;
                     en = a;
                     break;
             }

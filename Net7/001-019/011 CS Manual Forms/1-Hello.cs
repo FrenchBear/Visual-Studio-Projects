@@ -1,7 +1,7 @@
 ﻿// 2001 PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-17   PV  VS2022/Net6
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
 
 using System.Windows.Forms;
@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CS011a;
 
-public class Hello1 : Form
+public class Hello1: Form
 {
     internal void InitializeComponent()
     {

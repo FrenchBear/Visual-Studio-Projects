@@ -2,7 +2,7 @@
 // RelayCommand: Helper class for easy implementation of commands in VewModel through delegates
 // A simple bonus is the generic interface to support parameter types less abstract than 'object'
 //
-// 2012-04-28   PV  First version
+// 2012-04-28	PV		First version
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 
@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace CS523B;
 
-internal class RelayCommand<T> : ICommand
+internal class RelayCommand<T>: ICommand
 {
     private readonly Predicate<T> canExecute;
     private readonly Action<T> execute;

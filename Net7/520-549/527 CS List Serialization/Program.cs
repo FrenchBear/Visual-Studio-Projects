@@ -53,8 +53,11 @@ internal class Program
         do
             _ = reader.Read();
         while (reader.NodeType != XmlNodeType.Element);
-        if (reader.Name != "MicrobiologyLauncherMenus") Debugger.Break();
-        if (reader.GetAttribute("version") != "1") Debugger.Break(); ;
+        if (reader.Name != "MicrobiologyLauncherMenus")
+            Debugger.Break();
+        if (reader.GetAttribute("version") != "1")
+            Debugger.Break();
+        ;
         _ = reader.Read();
         configuration2 = (LauncherConfiguration)serializer.Deserialize(reader);
     }

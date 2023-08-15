@@ -1,7 +1,7 @@
 ﻿' Impression via ShellExecute en environnement .Net
 '
 ' 2006-04-13    FPVI
-' 2021-09-19    PV  VS2022; Net6
+' 2021-09-19 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.ComponentModel

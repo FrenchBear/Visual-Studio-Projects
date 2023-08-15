@@ -41,11 +41,16 @@ internal class Program
             {
                 split_result[0] = split_result[0].ToUpper();        // Make the first entry uppercase...
 
-                if (split_result[0] == "HKEY_CLASSES_ROOT") OurKey = Registry.ClassesRoot;
-                else if (split_result[0] == "HKEY_CURRENT_USER") OurKey = Registry.CurrentUser;
-                else if (split_result[0] == "HKEY_LOCAL_MACHINE") OurKey = Registry.LocalMachine;
-                else if (split_result[0] == "HKEY_USERS") OurKey = Registry.Users;
-                else if (split_result[0] == "HKEY_CURRENT_CONFIG") OurKey = Registry.CurrentConfig;
+                if (split_result[0] == "HKEY_CLASSES_ROOT")
+                    OurKey = Registry.ClassesRoot;
+                else if (split_result[0] == "HKEY_CURRENT_USER")
+                    OurKey = Registry.CurrentUser;
+                else if (split_result[0] == "HKEY_LOCAL_MACHINE")
+                    OurKey = Registry.LocalMachine;
+                else if (split_result[0] == "HKEY_USERS")
+                    OurKey = Registry.Users;
+                else if (split_result[0] == "HKEY_CURRENT_CONFIG")
+                    OurKey = Registry.CurrentConfig;
 
                 if (OurKey != null)
                 {

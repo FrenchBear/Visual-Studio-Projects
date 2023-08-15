@@ -2,11 +2,11 @@
 ' Résolution de problèmes de pentaminos (pavage)
 '
 ' 1998-12-26    PV
-' 2001-08-11    PV  Réécriture en C# et en VB
-' 2001-08-12    PV  Affichage graphique
-' 2006-10-01    PV  VS2005
-' 2010-07-19	PV  VS2010
-' 2021-09-18    PV  VS2022, Net6
+' 2001-08-11 	PV		Réécriture en C# et en VB
+' 2001-08-12 	PV		Affichage graphique
+' 2006-10-01 	PV		VS2005
+' 2010-07-19	PV		VS2010
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
 #Disable Warning IDE0052 ' Remove unread private members

@@ -2,9 +2,9 @@
 '
 ' 2001-08-11    PV
 ' 2001-08-15    PV Navigateur de solutions
-' 2006-10-01    PV  VS2005
-' 2010-07-19	PV  VS2010
-' 2021-09-18    PV  VS2022, Net6
+' 2006-10-01 	PV		VS2005
+' 2010-07-19	PV		VS2010
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.ComponentModel

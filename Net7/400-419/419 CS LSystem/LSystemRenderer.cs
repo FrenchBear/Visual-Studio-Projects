@@ -1,9 +1,9 @@
 ﻿// LSystemRendering class
 // Abstract implementation of a LSystem renderer, independent from rending technology (WPF, GDI, ...)
 //
-// 2012-02-05   PV  First version
-// 2021-09-23   PV  VS2022; Net6
-// 2021-12-07   PV  Centered rendering
+// 2012-02-05	PV		First version
+// 2021-09-23	PV		VS2022; Net6
+// 2021-12-07	PV		Centered rendering
 // 2023-01-10	PV		Net7
 
 using System;

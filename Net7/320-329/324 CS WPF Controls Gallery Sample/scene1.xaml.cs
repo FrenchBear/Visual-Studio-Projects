@@ -28,7 +28,8 @@ public partial class Scene1
 
     protected void HandleTextChanged(object sender, TextChangedEventArgs me)
     {
-        if (RealTimeUpdate) ParseCurrentBuffer();
+        if (RealTimeUpdate)
+            ParseCurrentBuffer();
     }
 
     private void ParseCurrentBuffer()

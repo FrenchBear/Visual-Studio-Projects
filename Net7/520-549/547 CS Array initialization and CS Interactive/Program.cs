@@ -43,7 +43,7 @@ internal interface I2
     void Method4();
 }
 
-public class MyClass : I1, I2
+public class MyClass: I1, I2
 {
     // Common for I1 and I2 interfaces, implicit implementation
     public void Method1() => throw new NotImplementedException();

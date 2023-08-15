@@ -2,8 +2,8 @@
 // Example of calculation of sqrt(2) using an arbitrary precision decimal class based on BigInteger
 //
 // 2011-07-04   PV
-// 2012-02-02   PV  Refactoring
-// 2021-09-23   PV  VS2022; Net6
+// 2012-02-02	PV		Refactoring
+// 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using static System.Console;

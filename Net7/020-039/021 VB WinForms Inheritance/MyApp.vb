@@ -2,8 +2,8 @@
 ' Essais d'héritage d'une feuille en VB
 '
 ' 2001-01-27    PV
-' 2012-02-25	PV  VS2010
-' 2021-09-18    PV  VS2022, Net6
+' 2012-02-25	PV		VS2010
+' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
 
 Class MyApp

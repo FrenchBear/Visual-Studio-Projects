@@ -1,7 +1,7 @@
 ﻿// 203 CS Inherited Events (Chien)
 //
-// 2012-02-04   PV  Translation of original VB code in C#
-// 2021-09-19   PV  VS2022; Net6
+// 2012-02-04	PV		Translation of original VB code in C#
+// 2021-09-19	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -108,7 +108,7 @@ public abstract class EtreVivant
     private void EtreVivant_Nait() => WriteLine("Un être vivant est né");
 }
 
-public class Animal : EtreVivant
+public class Animal: EtreVivant
 {
     public string Race;
 
@@ -140,7 +140,7 @@ public class Animal : EtreVivant
     private void Animal_Nait() => WriteLine("Un animal de race " + Race + " est né");
 }
 
-public class Chien : Animal
+public class Chien: Animal
 {
     public Chien(string sNom)
         : base("Canis")
@@ -175,7 +175,7 @@ public class Chien : Animal
     private void Chien_Nait() => WriteLine("Le chien " + Nom + " est né");
 }
 
-internal class Chiot : Chien
+internal class Chiot: Chien
 {
     public Chiot(string sNom)
         : base(sNom)
@@ -187,7 +187,7 @@ internal class Chiot : Chien
     public new void Jouer() => WriteLine("Le chiot " + Nom + " joue.");
 }
 
-internal class Loup : Animal
+internal class Loup: Animal
 {
     public Loup()
         : base("Lupus")

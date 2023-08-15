@@ -1,8 +1,9 @@
 ﻿// Essais sur les interfaces
+//
 // 2001-08-11   PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01   PV      VS2005
+// 2012-02-25   PV      VS2010
+// 2021-09-18   PV      VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using static System.Console;
@@ -10,6 +11,7 @@ using static System.Console;
 #pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CA1822 // Mark members as static
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 internal class MaClasse
 {

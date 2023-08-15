@@ -1,7 +1,7 @@
 ﻿// 2001 PV
-// 2006-10-01   PV  VS2005  Added class Startup with [STAThread] attribute on Main()
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		VS2005  Added class Startup with [STAThread] attribute on Main()
+// 2012-02-25	PV		VS2010
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using System;
@@ -16,7 +16,7 @@ public class StartUp
     private static void Main() => Application.Run(new MyForm());
 }
 
-public class MyForm : Form
+public class MyForm: Form
 {
     protected ToolStripMenuItem _itemNativeSize;
     protected ToolStripMenuItem _itemFitToWindow;

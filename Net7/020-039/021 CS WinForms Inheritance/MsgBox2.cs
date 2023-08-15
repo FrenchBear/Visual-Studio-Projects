@@ -2,13 +2,13 @@
 // Simple boîte de dialogue pour des essais d'héritage
 //
 // 2001-01-27   PV
-// 2021-09-18   PV  VS2022, Net6
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 #pragma warning disable IDE1006 // Naming Styles
 #pragma warning disable CA1050 // Declare types in namespaces
 
-public class MsgBox2 : System.Windows.Forms.Form
+public class MsgBox2: System.Windows.Forms.Form
 {
     private System.Windows.Forms.Button btnOk;
     private System.Windows.Forms.TextBox txtInfo;

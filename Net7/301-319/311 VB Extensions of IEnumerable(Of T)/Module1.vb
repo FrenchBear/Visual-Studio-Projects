@@ -1,9 +1,9 @@
 ﻿' Extensions of IEnumerable(Of T)
 '
 ' 2008-08-20    PV
-' 2008-12-03    PV  Compte (efficient implementation of count)
-' 2012-02-25    PV  VS2010
-' 2021-09-20    PV  VS2022; Net6; MsgBox -> Console.WriteLine
+' 2008-12-03 	PV		Compte (efficient implementation of count)
+' 2012-02-25 	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6; MsgBox -> Console.WriteLine
 ' 2023-01-10	PV		Net7
 
 Imports System.Runtime.CompilerServices

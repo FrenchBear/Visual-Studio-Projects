@@ -2,8 +2,8 @@
 ' Analyse les comptes utilisateur dans AD
 '
 ' 2004-02-12    PV
-' 2006-10-01    PV  VS 2005
-' 2021-09-19    PV  VS2022; Net6
+' 2006-10-01 	PV		VS 2005
+' 2021-09-19 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Imports System.ComponentModel

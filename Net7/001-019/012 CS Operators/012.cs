@@ -1,12 +1,15 @@
 ﻿// 012 CS Operators: Essais d'opérateurs et de finalizers
 // Ne fonctionne plus avec la Béta 2...
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-17   PV  VS2022/Net6
+//
+// 2006-10-01   PV      VS2005
+// 2012-02-25   PV      VS2010
+// 2021-09-17   PV      VS2022/Net6
 // 2023-01-10	PV		Net7
 
 using System;
 using static System.Console;
+
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 internal class Complexe
 {
@@ -31,13 +34,13 @@ internal class Complexe
         WriteLine("Destructeur {0}", this);
     }
 
-    public static implicit operator Complexe(double d) 
+    public static implicit operator Complexe(double d)
         => new(d);
 
-    override public string ToString() 
+    override public string ToString()
         => "(" + r + ";" + i + ")";
 
-    public static Complexe operator +(Complexe a, Complexe b) 
+    public static Complexe operator +(Complexe a, Complexe b)
         => new(a.r + b.r, a.i + b.i);
 };
 

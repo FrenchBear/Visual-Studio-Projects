@@ -2,10 +2,11 @@
 // New possibilities in .Net Framework 4 to intialize objects and collections
 //
 // 2010-02-24   PV
-// 2021-09-23   PV  VS2022; Net6
+// 2021-09-23   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 
 #pragma warning disable CA1050 // Declare types in namespaces
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 using System;
 using System.Collections;
@@ -105,7 +106,7 @@ public class Order
     }
 }
 
-public class OrderCollection : IEnumerable<Order>
+public class OrderCollection: IEnumerable<Order>
 {
     private readonly List<Order> items = new();
 

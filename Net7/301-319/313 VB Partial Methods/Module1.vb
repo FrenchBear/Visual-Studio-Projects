@@ -1,8 +1,8 @@
 ﻿' Partial Methods
 '
 ' 2008-08-21    PV
-' 2012-02-25    PV  VS2010
-' 2021-09-20    PV  VS2022; Net6; MsgBox -> Console.WriteLine
+' 2012-02-25 	PV		VS2010
+' 2021-09-20 	PV		VS2022; Net6; MsgBox -> Console.WriteLine
 ' 2023-01-10	PV		Net7
 
 #Disable Warning CA1822 ' Mark members as static

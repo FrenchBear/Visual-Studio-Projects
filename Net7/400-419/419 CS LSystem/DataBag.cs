@@ -1,9 +1,9 @@
 ﻿// 419 CS LSystem
 //
-// 2012-02-05   PV  First version
-// 2012-02-27   PV  Use clean data binding (DataBag class) and supports all .l files correctly
-// 2021-09-23   PV  VS2022; Net6; Move .l and links into subfolders
-// 2021-12-11   PV  (new) support for interactive edition of rules
+// 2012-02-05	PV		First version
+// 2012-02-27	PV		Use clean data binding (DataBag class) and supports all .l files correctly
+// 2021-09-23	PV		VS2022; Net6; Move .l and links into subfolders
+// 2021-12-11	PV		(new) support for interactive edition of rules
 // 2023-01-10	PV		Net7
 
 using System;

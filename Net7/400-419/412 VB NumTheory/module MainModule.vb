@@ -2,11 +2,11 @@
 ' Essais de code sur les nombres premiers
 '
 ' 2011-10-22    PV
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
-Imports System.Runtime.CompilerServices
 Imports System.Console
+Imports System.Runtime.CompilerServices
 
 #Disable Warning IDE0051 ' Remove unused private members
 

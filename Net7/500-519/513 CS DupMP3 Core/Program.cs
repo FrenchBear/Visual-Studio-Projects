@@ -58,7 +58,7 @@ internal class Program
             for (var j = i + 1; j < AStringsList.Count; j++)
             {
                 if (AStringsList[i].Name != AStringsList[j].Name && IsCloseEnough(AStringsList[i], AStringsList[j], dist))
-                WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
+                    WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
             }
         }
 
@@ -72,7 +72,8 @@ internal class Program
         var s2 = as2.Name;
 
         // Quick exit
-        if (Math.Abs(s1.Length - s2.Length) > dist) return false;
+        if (Math.Abs(s1.Length - s2.Length) > dist)
+            return false;
 
         // strings are equal?
         if (StringComparer.InvariantCultureIgnoreCase.Compare(s1, s2) == 0)

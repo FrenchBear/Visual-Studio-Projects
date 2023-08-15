@@ -75,7 +75,7 @@ public static class Extensionmethods
         foreach (var first in src)
         {
             foreach (var second in inputSelector(first))
-            yield return resultSelector(first, second);
+                yield return resultSelector(first, second);
         }
     }
 }

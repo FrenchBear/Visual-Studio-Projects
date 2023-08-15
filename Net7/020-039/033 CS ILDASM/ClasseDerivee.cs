@@ -6,7 +6,7 @@ using static System.Console;
 
 namespace MaBibliotheque;
 
-public class MaClasseDerivee : MaClasseDeBase, IMonInterface
+public class MaClasseDerivee: MaClasseDeBase, IMonInterface
 {
     private class MaSousClasse
     {

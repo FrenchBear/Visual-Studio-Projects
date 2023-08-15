@@ -2,7 +2,7 @@
 ' Tests on Covariance in VB
 '
 ' 2011-09-28 PV
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 #Disable Warning IDE0052 ' Remove unread private members

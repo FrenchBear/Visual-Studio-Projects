@@ -1,7 +1,7 @@
 ﻿// RI3 - Batch Pics Resize Tool v3
 // Version 3.1, uses GDI to resize bitmaps, and preserve EXIF info from original pic
 //
-// 2013-07-14   PV  First version 3, rewrite in C#, WPF and MVVM, Multitasking
+// 2013-07-14	PV		First version 3, rewrite in C#, WPF and MVVM, Multitasking
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
 
@@ -13,10 +13,7 @@ using System.Windows.Interop;
 
 namespace RI3;
 
-/// <summary>
-/// Interaction logic for MainWindow.xaml
-/// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow: Window
 {
     public MainWindow()
     {

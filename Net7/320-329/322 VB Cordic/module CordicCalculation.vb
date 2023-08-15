@@ -2,8 +2,8 @@
 ' Source: http://www.jacques-laporte.org/LeSecretDesAlgorithmes.htm
 '
 ' 2008-12-28    PV
-' 2012-02-25	PV  VS2010
-' 2021-09-22    PV  VS2022; Net6
+' 2012-02-25	PV		VS2010
+' 2021-09-22 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Module CordicCalculation

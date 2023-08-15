@@ -2,7 +2,7 @@
 ' Tests on covariance
 '
 ' 2011-07-12    PV
-' 2021-09-23    PV  VS2022; Net6
+' 2021-09-23 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
 
 Module Module1

@@ -1,4 +1,4 @@
-﻿' 2021-09-19    PV  VS2022, Net6
+﻿' 2021-09-19 	PV		VS2022, Net6
 
 Imports System.Resources
 

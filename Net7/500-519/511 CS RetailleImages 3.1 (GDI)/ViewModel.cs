@@ -16,7 +16,7 @@ using System.Windows.Threading;
 
 namespace RI3;
 
-public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
+public class ViewModel: INotifyPropertyChanged, IDataErrorInfo
 {
     // INotifyPropertyChanged interface
     public event PropertyChangedEventHandler PropertyChanged;
@@ -102,7 +102,8 @@ public class ViewModel : INotifyPropertyChanged, IDataErrorInfo
         foreach (var subnode in LogicalTreeHelper.GetChildren(node))
             if (subnode is DependencyObject obj)
                 // If a child dependency object is invalid, return false immediately, otherwise keep checking
-                if (!IsValid(obj)) return false;
+                if (!IsValid(obj))
+                    return false;
 
         // All dependency objects are valid
         return true;

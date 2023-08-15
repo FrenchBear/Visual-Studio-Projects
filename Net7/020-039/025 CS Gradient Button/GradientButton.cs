@@ -2,9 +2,9 @@
 // Essais de dérivation d'un contrôle système
 //
 // 2001-01-29   PV
-// 2006-10-01   PV  VS2005
-// 2012-02-25   PV  VS2010
-// 2021-09-18   PV  VS2022, Net6
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
+// 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 
 using System.Drawing;
@@ -14,7 +14,7 @@ using System.Windows.Forms;
 #pragma warning disable CA1050 // Declare types in namespaces
 #pragma warning disable CA1822 // Mark members as static
 
-public class GradientButton : Button
+public class GradientButton: Button
 {
     internal void InitializeComponent()
     {

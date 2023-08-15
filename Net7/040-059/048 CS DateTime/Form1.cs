@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace CS048;
 
-public class Form1 : Form
+public class Form1: Form
 {
     private System.ComponentModel.Container components;
     private ListBox listBox1;
