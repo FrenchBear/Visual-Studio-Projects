@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>VB071</RootNamespace>
+        <AssemblyName>VB071</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Copyright>Copyright ©2023 Pierre Violent</Copyright>
+        <UseWindowsForms>true</UseWindowsForms>
+        <StartupObject>VB071.Form1</StartupObject>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <COMReference Include="Scripting">
+        <WrapperTool>tlbimp</WrapperTool>
+        <VersionMinor>0</VersionMinor>
+        <VersionMajor>1</VersionMajor>
+        <Guid>420b2830-e718-11cf-893d-00a0c9054228</Guid>
+        <Lcid>0</Lcid>
+        <Isolated>false</Isolated>
+        <EmbedInteropTypes>true</EmbedInteropTypes>
+      </COMReference>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <Import Include="System.Data" />
+        <Import Include="System.Drawing" />
+        <Import Include="System.Windows.Forms" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="My Project\Application.Designer.vb">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Application.myapp</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="My Project\Application.myapp">
+            <Generator>MyApplicationCodeGenerator</Generator>
+            <LastGenOutput>Application.Designer.vb</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="My Project\" />
+    </ItemGroup>
+
+</Project>

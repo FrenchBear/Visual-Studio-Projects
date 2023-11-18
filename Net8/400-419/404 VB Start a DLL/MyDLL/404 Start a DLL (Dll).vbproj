@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <OutputType>Library</OutputType>
+        <RootNamespace>MyDLL</RootNamespace>
+        <AssemblyName>MyDLL</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>MyDLL</Title>
+        <Copyright>Copyright ©2011-2023 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

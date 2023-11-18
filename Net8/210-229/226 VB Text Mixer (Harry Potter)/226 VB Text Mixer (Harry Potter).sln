@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31710.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "226 VB Text Mixer (Harry Potter)", "226 VB Text Mixer (Harry Potter).vbproj", "{A28DFC3F-B82B-416C-AEBF-D08E04FC9410}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A28DFC3F-B82B-416C-AEBF-D08E04FC9410}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A28DFC3F-B82B-416C-AEBF-D08E04FC9410}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A28DFC3F-B82B-416C-AEBF-D08E04FC9410}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A28DFC3F-B82B-416C-AEBF-D08E04FC9410}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {578F08B4-8509-4207-8736-8643A20411E3}
+	EndGlobalSection
+EndGlobal

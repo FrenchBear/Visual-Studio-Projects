@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS609b</RootNamespace>
+        <AssemblyName>CS609b</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS609b Arith2</Title>
+        <Description>Generic arithmetic class doubling the capacity of a base class for Plus and Mult, C# version</Description>
+        <Copyright>Copyright ©2017-2023 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

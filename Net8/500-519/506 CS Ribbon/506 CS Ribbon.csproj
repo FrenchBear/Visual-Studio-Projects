@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>CS506</RootNamespace>
+		<AssemblyName>CS506</AssemblyName>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Title>CS506 Ribbon</Title>
+		<Copyright>Copyright ©2013-2023 Pierre Violent</Copyright>
+		<UseWPF>true</UseWPF>
+		<NeutralLanguage>en</NeutralLanguage>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="Images\LargeIcon.png" />
+		<None Remove="Images\SmallIcon.png" />
+	</ItemGroup>
+	<ItemGroup>
+		<Resource Include="Images\LargeIcon.png" />
+		<Resource Include="Images\SmallIcon.png" />
+	</ItemGroup>
+</Project>

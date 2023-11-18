@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>RetailleImages</RootNamespace>
+		<AssemblyName>RetailleImages</AssemblyName>
+		<Version>2.3.1</Version>
+		<Authors>Pierre Violent</Authors>
+		<Title>Retaille Images</Title>
+		<Description>Application de changement de taille d'images en mode batch</Description>
+		<Copyright>Copyright ©2006-2023 Pierre Violent</Copyright>
+		<ApplicationIcon>retaille.ico</ApplicationIcon>
+		<UseWindowsForms>true</UseWindowsForms>
+		<MyType>WindowsForms</MyType>
+		<StartupObject>RetailleImages.VignettesForm</StartupObject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Import Include="System.Data" />
+		<Import Include="System.Drawing" />
+		<Import Include="System.Windows.Forms" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="My Project\Application.Designer.vb">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Application.myapp</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="My Project\Application.myapp">
+			<Generator>MyApplicationCodeGenerator</Generator>
+			<LastGenOutput>Application.Designer.vb</LastGenOutput>
+		</None>
+	</ItemGroup>
+</Project>

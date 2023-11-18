@@ -1,0 +1,21 @@
+﻿<Window x:Class="CS419.WpfDrawing3Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WpfDrawing3Window (Using StreamGeometry)" Height="600" Width="600">
+    <Grid>
+        <Image Stretch="Uniform" Margin="10">
+            <Image.Source>
+                <DrawingImage>
+                    <DrawingImage.Drawing>
+                        <GeometryDrawing x:Name="myGeometryDrawing">
+                            <GeometryDrawing.Pen>
+                                <Pen Brush="Blue" Thickness="2" />
+                            </GeometryDrawing.Pen>
+                            <!-- GeometryDrawing.Geometry is provided by code -->
+                        </GeometryDrawing>
+                    </DrawingImage.Drawing>
+                </DrawingImage>
+            </Image.Source>
+        </Image>
+    </Grid>
+</Window>
