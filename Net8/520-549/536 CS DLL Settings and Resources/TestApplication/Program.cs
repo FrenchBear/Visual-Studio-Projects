@@ -22,7 +22,7 @@ internal class Program
         WriteLine("DLL applicationSetting:  " + a.GetApplicationSetting("MySettingString"));
         WriteLine("DLL Typed applicationSetting:  " + ArithmeticClass.GetTypedApplicationSetting("MySettingString"));
         WriteLine("DLL appSetting:  " + a.GetAppSetting("MyDLLAppSetting"));
-        WriteLine("DLL Resource String: " + a.GetStringResource("MyResourceString"));
+        WriteLine("DLL Resource String: " + ArithmeticClass.GetStringResource("MyResourceString"));
     }
 
     // Add System.Configuration .dll reference and namespace
