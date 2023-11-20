@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
-namespace SelectMany;
+namespace CS636;
 
 class Program
 {

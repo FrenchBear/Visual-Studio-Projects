@@ -10,7 +10,7 @@
 using System.Collections.Generic;
 using static System.Console;
 
-namespace EnumerateApp;
+namespace CS637;
 
 class Program
 {
