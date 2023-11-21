@@ -18,8 +18,6 @@ using System.IO;
 using System.Reflection;
 using static System.Console;
 
-#nullable enable
-
 namespace PDel;
 
 internal class Program

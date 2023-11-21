@@ -4,6 +4,7 @@
 // 2021-10-02   PV      Code skeleton
 // 2023-01-10	PV		Net7
 
+using System.Diagnostics;
 using System.Linq;
 using static CS640.Constellations;
 using static System.Console;
@@ -21,6 +22,7 @@ class Program
         var cons = GetConstellations();
 
         var k = cons.MaxBy(c => c.Constellation.Length);
+        Debug.Assert(k != null);
         WriteLine($"Constellation with longest name: {k.Constellation}, Fr={k.FrenchName}, En={k.EnglishName}");
     }
 }

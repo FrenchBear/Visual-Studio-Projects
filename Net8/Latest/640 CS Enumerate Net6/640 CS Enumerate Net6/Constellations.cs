@@ -6,8 +6,6 @@
 
 using System.Collections.Generic;
 
-#nullable enable
-
 namespace CS640;
 
 internal record ConstellationInfo
