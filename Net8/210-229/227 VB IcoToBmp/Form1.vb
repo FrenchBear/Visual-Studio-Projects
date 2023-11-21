@@ -3,6 +3,7 @@
 ' 2012-02-25	PV		VS2010 - Do not execute!
 ' 2021-09-19 	PV		VS2022; Net6. Added progressbar and create temp folder
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.Drawing.Imaging
 Imports System.IO

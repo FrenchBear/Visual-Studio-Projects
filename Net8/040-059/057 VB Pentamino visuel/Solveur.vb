@@ -8,6 +8,7 @@
 ' 2010-07-19	PV		VS2010
 ' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 #Disable Warning IDE0052 ' Remove unread private members
 #Disable Warning IDE0051 ' Remove unused private members

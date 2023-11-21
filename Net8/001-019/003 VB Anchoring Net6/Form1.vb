@@ -2,11 +2,13 @@
 ' Essais divers
 ' Trace complète des événements de fenêtre
 ' 2001          PV
+'
 ' 2003-05-13    PV      VS.net 2003
 ' 2006-10-01    PV      VS2005
 ' 2012-02-25    PV      VS2010
 ' 2021-09-16    PV      VS2021/Net6 - Complete rewrite, since original controls are not support anymore in .Net Core
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 Imports System.ComponentModel
 Imports System.IO
 

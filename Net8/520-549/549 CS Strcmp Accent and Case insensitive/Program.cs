@@ -6,6 +6,7 @@
 // 2018-09-01   PV      œ example
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Diagnostics;

@@ -1,5 +1,6 @@
 ﻿' 2021-09-19 	PV		VS2022; Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 #Disable Warning CA1822 ' Mark members as static
 #Disable Warning CA1859 ' Use concrete types when possible for improved performance

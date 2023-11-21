@@ -1,5 +1,6 @@
 ﻿' AfficheImage2
 ' Portage de AfficheImage dans Visual Studio .Net 2003
+'
 ' 2003-05-11    PV
 ' 2003-07-14 	PV		Pb plantage en icône réglé; Commande Copie Chemin
 ' 2004-11-24 	PV		Navigation F5/F6/F7
@@ -8,6 +9,7 @@
 ' 2012-12-31	PV		2.3: Suivant/Précédent navigue iRowSize^2 images
 ' 2021-09-19 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.ComponentModel
 Imports System.Drawing.Imaging

@@ -1,15 +1,17 @@
 ﻿// PDel
 // .Net version of old utility pdel that delele a file or a group of files to the trashcan
+//
+// Debug on long paths:
+// /s /p /f /v /n "\\TERAZ\BACKUP_SKULL\C\Eurofins\Eurofins\US\eLIMS-FGS-Trunk\Fitnesse\FitNesseRoot\FitNesse\SuiteAcceptanceTests\SuiteSlimTests\ScenarioLibraryTestSuite\ScenarioLibariesOrderTests\ScenarioLibraryOrderSuite\ScenarioLibraryOrderTestParent\ScenarioLibrary\thumbs.db"
+//
 // 2009-08-03   PV      First version 2.0 rewritten in C#
 // 2009-08-08   PV      Security adjusted for Windows 7
 // 2012-02-25   PV      VS2010
 // 2020-11-21   PV      CS2019; .Net 4.8; Options -v, -f and -r2.  Ignore SYSTEM+HIDDEN directories
 // 2020-11-24   PV      WidePath to support paths longer than 256 chars; Option -n
 // 2021-09-22   PV      VS2022; Net6
-//
-// Debug on long paths:
-// /s /p /f /v /n "\\TERAZ\BACKUP_SKULL\C\Eurofins\Eurofins\US\eLIMS-FGS-Trunk\Fitnesse\FitNesseRoot\FitNesse\SuiteAcceptanceTests\SuiteSlimTests\ScenarioLibraryTestSuite\ScenarioLibariesOrderTests\ScenarioLibraryOrderSuite\ScenarioLibraryOrderTestParent\ScenarioLibrary\thumbs.db"
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using Microsoft.VisualBasic.FileIO;
 using System;

@@ -1,12 +1,14 @@
 ﻿' VB601 VB Visual Studio 2017 New Features
 ' Trying to replicate new C# features in VB
+'
 ' 2017-01-17    PV      Not much is supported except ValueTuples (without deconstruction) and &B binary prefix
-'                       Digits separators _ are sometimes automatically removed in code (ex: AvogadroConstant)
-'                       Throw expressions are not supported
-'                       Functions retuning reference not supported, local refs neither
-'                       Pattern matching not supported
+' """"""""""            Digits separators _ are sometimes automatically removed in code (ex: AvogadroConstant)
+' """"""""""            Throw expressions are not supported
+' """"""""""            Functions retuning reference not supported, local refs neither
+' """"""""""            Pattern matching not supported
 ' 2021-09-26    PV      VS2022; Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.Console
 Imports System.Runtime.CompilerServices

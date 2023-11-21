@@ -1,8 +1,5 @@
 ﻿// 83 CS Format
 // Tests de String.Format
-// 2003-08-03   PV
-// 2006-10-01	PV		VS2005
-// 2012-02-25	PV		VS2010
 //
 // The format parameter is embedded with zero or more format items of the form, {index[,alignment][:formatString]}, where:
 //
@@ -35,7 +32,6 @@
 //   If formatString is not specified, the general ("G") format specifier is used.
 //   The colon is required if formatString is specified.
 //
-//
 // Processing Order
 //   If the value to be formatted is null (Nothing in Visual Basic), an empty string ("") is returned.
 //   If the type to be formatted implements the ICustomFormatter interface, the ICustomFormatter.Format method is called.
@@ -47,7 +43,12 @@
 //
 // The leading and trailing brace characters, '{' and '}', are required. To specify a single literal brace character
 // in format, specify two leading or trailing brace characters; that is, "{{" or "}}".
+//
+// 2003-08-03   PV
+// 2006-10-01	PV		VS2005
+// 2012-02-25	PV		VS2010
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Globalization;

@@ -1,5 +1,6 @@
 ﻿' 2012-02-25	PV		VS2010
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.Drawing.Imaging
 

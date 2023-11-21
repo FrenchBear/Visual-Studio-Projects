@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
+
+	<PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <RootNamespace>NewLaby</RootNamespace>
@@ -8,5 +9,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS611 NewLaby</Title>
         <Copyright>Copyright ©2017-2023 Pierre Violent</Copyright>
-    </PropertyGroup>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
 </Project>

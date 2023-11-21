@@ -1,14 +1,14 @@
 ﻿// 17 C# delegates
-// Essai pour voir si un delegate sur une méthode d'instance virtuelle
-// fonctionne correctement.
+// Essai pour voir si un delegate sur une méthode d'instance virtuelle fonctionne correctement.
 // Résultat Ok: le programme affiche MaDérivée.F(2)
+//
 // 2001-01-15   PV
-// 2001-01-28	PV		Zap() pour voir en MSIL la différence entre un delegate de méthode statique
-//                  et un delegate de méthode d'instance
+// 2001-01-28	PV		Zap() pour voir en MSIL la différence entre un delegate de méthode statique et un delegate de méthode d'instance
 // 2006-10-01	PV		VS2005
 // 2012-02-25	PV		VS2010
 // 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using static System.Console;
 

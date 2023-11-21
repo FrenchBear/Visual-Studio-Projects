@@ -3,6 +3,7 @@
 // 2012-02-04	PV		Translation of original VB code in C#
 // 2021-09-19	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using static System.Console;

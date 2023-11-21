@@ -7,7 +7,9 @@
 '     le code est régénéré.
 ' </auto-generated>
 '------------------------------------------------------------------------------
+'
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Option Strict Off
 Option Explicit On

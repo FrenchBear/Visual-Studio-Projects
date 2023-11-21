@@ -5,6 +5,7 @@
 // 2021-09-23	PV		VS2022; Net6; Move .l and links into subfolders
 // 2021-12-11	PV		(new) support for interactive edition of rules
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Collections.Generic;

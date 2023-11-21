@@ -1,5 +1,6 @@
 ﻿' 2021-09-19 	PV		VS2022, Net6.  Moved away from assemblyinfo.vb
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 Imports System.Reflection
 
 Public Module InfoVersion

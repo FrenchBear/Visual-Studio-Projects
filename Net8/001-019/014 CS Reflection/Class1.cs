@@ -4,11 +4,13 @@
 // Void ibar.c() Interface Method: Void c() Interface: ibar
 // Void ibar.b() Interface Method: Void b() Interface: ibar
 // Void ifoo.a() Interface Method: Void a() Interface: ifoo
+//
 // 2001-08-11	PV		Adapté Beta2
 // 2006-10-01	PV		VS2005
 // 2012-02-25	PV		VS2010
 // 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Reflection;

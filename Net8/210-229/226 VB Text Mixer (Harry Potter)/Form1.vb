@@ -3,13 +3,14 @@
 ' Tests to see how text lisibility is altered adding random characters
 ' but based on characters/pair frequency of apparition in a given text
 '
+' For awful (really) array.sort performances:
+' http://msdn.microsoft.com/newsgroups/default.aspx?dg=microsoft.public.dotnet.framework&mid=11166612-1b5a-4fc7-a40a-0f673b92beef
+'
 ' 2006-02-26    FPVI
 ' 2010-05-01    FPVI    VS2010 and code cleanup
 ' 2021-09-19 	PV		VS2022; Net6
-'
-' For awful (really) array.sort performances:
-' http://msdn.microsoft.com/newsgroups/default.aspx?dg=microsoft.public.dotnet.framework&mid=11166612-1b5a-4fc7-a40a-0f673b92beef
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.IO
 

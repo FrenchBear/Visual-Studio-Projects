@@ -4,6 +4,7 @@
 // 2012-02-28	PV		Clean databinding (DataBag), support for multiple .l files
 // 2021-09-23	PV		VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Collections.Generic;

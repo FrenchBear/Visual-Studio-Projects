@@ -1,10 +1,12 @@
 ﻿// 041 CS Enumerator
 // Construction de classes énumérables avec foreach en C#
+//
 // 2001-02-18   PV
 // 2006-10-01	PV		VS2005
 // 2012-02-25	PV		VS2010  Version 4 avec yield return
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System.Linq;
 using static System.Console;

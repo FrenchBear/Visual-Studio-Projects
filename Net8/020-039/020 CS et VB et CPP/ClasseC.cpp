@@ -3,6 +3,7 @@
 // 2017-04-30	PV		VS2017, Git
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 // This is the main DLL file.
 

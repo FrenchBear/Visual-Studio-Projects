@@ -5,6 +5,7 @@
 // 2006-10-01   PV      VS2005
 // 2011-12-30   PV      VS2010  Updated connection string
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Data;

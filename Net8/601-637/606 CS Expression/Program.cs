@@ -4,6 +4,7 @@
 // 2017-01-14   PV
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Collections.Generic;
@@ -108,7 +109,7 @@ public class MyVisitor: ExpressionVisitor
         return v;
     }
 
-    protected override LabelTarget VisitLabelTarget(LabelTarget node)
+    protected override LabelTarget? VisitLabelTarget(LabelTarget? node)
     {
         PrintLine($"LabelTarget {node}");
         s++;

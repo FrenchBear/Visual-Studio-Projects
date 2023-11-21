@@ -3,10 +3,12 @@
 // Structure de pile, delegates
 //
 // 2001 PV
+//
 // 2006-10-01	PV		VS2005
 // 2010-05-01	PV		VS2010
 // 2021-09-17	PV		VS2022/Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using static System.Console;

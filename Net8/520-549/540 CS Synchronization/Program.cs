@@ -1,8 +1,10 @@
 ﻿// 540 CS Synchronization
 // Various multithreaded synchronization code
 // From Improving .NET Performance, Intel Whitepaper - Hanchinmani
+//
 // 2016-07-31   PV
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 // Note: Try Parallel.Invoke(action, action, action)
 

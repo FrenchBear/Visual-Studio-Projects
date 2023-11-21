@@ -7,6 +7,7 @@
 // 2017-04-30   PV      Refactoring using Laby class
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using static System.Console;
@@ -125,7 +126,6 @@ public class Laby
 
     // Bitmask for walls in Cells
     private const int right = 1;
-
     private const int bottom = 2;
 
     private static readonly Random rnd = new();
@@ -136,28 +136,25 @@ public class Laby
         this.cols = cols;
         this.isDetailedBuild = isDetailedBuild;
 
-        for (var i = 0; i < 1; i++)
+        Cells = new int[rows + 1, cols + 1];
+
+        // Build bordering walls
+        for (var r = 1; r <= rows; r++)
         {
-            Cells = new int[rows + 1, cols + 1];
-
-            // Build bordering walls
-            for (var r = 1; r <= rows; r++)
-            {
-                Cells[r, 0] |= right;
-                Cells[r, cols] |= right;
-            }
-            for (var c = 1; c <= cols; c++)
-            {
-                Cells[0, c] |= bottom;
-                Cells[rows, c] |= bottom;
-            }
-
-            BuildWall(1, cols, 1, rows, true);
-
-            // Open 1 cell on the 1st and last rows
-            Cells[0, 1 + rnd.Next(cols)] &= ~bottom;
-            Cells[rows, 1 + rnd.Next(cols)] &= ~bottom;
+            Cells[r, 0] |= right;
+            Cells[r, cols] |= right;
         }
+        for (var c = 1; c <= cols; c++)
+        {
+            Cells[0, c] |= bottom;
+            Cells[rows, c] |= bottom;
+        }
+
+        BuildWall(1, cols, 1, rows, true);
+
+        // Open 1 cell on the 1st and last rows
+        Cells[0, 1 + rnd.Next(cols)] &= ~bottom;
+        Cells[rows, 1 + rnd.Next(cols)] &= ~bottom;
     }
 
     public void PrintLabyrinth()

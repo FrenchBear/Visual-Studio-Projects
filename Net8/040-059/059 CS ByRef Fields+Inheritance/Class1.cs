@@ -1,11 +1,11 @@
 ﻿// 059 CS ByRef Fields+Inheritance
 //
-// 2001-08-17	PV		Essai de transmission de champ et de propriété par référence (ne marche pas en VB6)
-//                  + essais méthodes/classes abstraites, scellées, virtuelles...
+// 2001-08-17	PV		Essai de transmission de champ et de propriété par référence (ne marche pas en VB6) + essais méthodes/classes abstraites, scellées, virtuelles...
 // 2006-10-01	PV		VS2005
 // 2012-02-25	PV		VS2010  sealed is an equivalent for methods to VB NotOverridable
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 #pragma warning disable CA1050 // Declare types in namespaces
 #pragma warning disable CA1822 // Mark members as static

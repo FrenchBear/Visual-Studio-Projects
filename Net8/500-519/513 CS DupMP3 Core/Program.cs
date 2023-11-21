@@ -6,6 +6,7 @@
 // 2021-04-10   PV      .Net 5 version, pour les Charlots (élimine le segment avant " - " dans le nom)
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Collections.Generic;

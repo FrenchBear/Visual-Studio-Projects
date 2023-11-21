@@ -3,6 +3,7 @@
 ' 2012-02-25	PV		VS2010  Galère again, rebuild OldDb connection string for SQL 2008 and Ok again (http://www.connectionstrings.com/sql-server-2008#p2)
 ' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.Data.OleDb
 

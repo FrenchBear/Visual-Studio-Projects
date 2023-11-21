@@ -2,7 +2,9 @@
 ' attributes that are applied to this project.
 ' Project-level suppressions either have no target or are given
 ' a specific target and scoped to a namespace, type, member, etc.
+'
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.Diagnostics.CodeAnalysis
 

@@ -9,10 +9,12 @@
 ' Dragon: Angle 8, Départ: F, règle: S=+S--~S+
 '
 ' 2003/11/11 	PV		Première version
+'
 ' 2006-10-01 	PV		VS 2005
 ' 2010-07-19 	PV		VS 2010
 ' 2012-02-05 	PV		Nettoyage
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 Imports System.ComponentModel
 Imports System.Drawing.Imaging
 Imports System.Text

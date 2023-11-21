@@ -1,6 +1,8 @@
 ﻿' DupFileSize
 ' Quick and dirty tool to find files with exactly the same size
+'
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 ' 2010-12-17    FPVI
 ' 2021-09-23 	PV		VS2022; Net6

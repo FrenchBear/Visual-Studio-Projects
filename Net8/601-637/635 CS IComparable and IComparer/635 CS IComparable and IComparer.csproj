@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
@@ -9,5 +10,7 @@
         <Title>CS635 IComparable and IComparer</Title>
         <Description>Learning code about comparison interfaces</Description>
         <Copyright>Copyright ©2017-2023 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
+
 </Project>

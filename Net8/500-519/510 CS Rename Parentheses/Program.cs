@@ -4,6 +4,7 @@
 // 2013-07-03   PV      Sophisticated algorithm to rename including a suffix a to z, aa to zz, aaa to zzz if new name already exists
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System.IO;
 using System.Text.RegularExpressions;

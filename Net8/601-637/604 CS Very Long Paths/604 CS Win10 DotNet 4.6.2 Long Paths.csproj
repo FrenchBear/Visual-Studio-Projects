@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
@@ -9,5 +10,7 @@
         <Title>CS604 Win10 DotNet 4.6.2 Long Paths</Title>
         <Description>Example of very long path using Windows 10, enabling long paths in local group policy and targeting .Net 4.6.2</Description>
         <Copyright>Copyright ©2016-2023 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
+
 </Project>

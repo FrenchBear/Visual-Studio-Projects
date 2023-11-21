@@ -1,8 +1,10 @@
 ﻿' Essais de scripting en .Net
+'
 ' 2004-01-05    PV
 ' 2006-10-01 	PV		VS2005
 ' 2012-02-25	PV		VS2010  + forçage en 32-bit
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Option Strict Off
 Option Explicit On

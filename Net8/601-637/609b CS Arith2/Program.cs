@@ -16,6 +16,7 @@
 // 2017-01-25   PV      Version b with MétaClasses
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Diagnostics;
@@ -107,7 +108,7 @@ public class MetaIntBase: IMetaSimpleArith<IntBase>
     }
 
     // Helper for testing, prints a pair of IntBase numbers as a singmle number
-    public string ToString2(IntBase a, IntBase b) => a.val > 0 ? ToString() + b.ToStringWithLeadingZeros() : b.ToString();
+    public string ToString2(IntBase a, IntBase b) => a.val > 0 ? a.ToString() + b.ToStringWithLeadingZeros() : b.ToString();
 }
 
 // Base arithmetic class providing 4 decimal digits precision using
@@ -166,8 +167,9 @@ public class MetaDA<T, MetaT>: IMetaSimpleArith<DA<T, MetaT>>
     public (DA<T, MetaT> high, DA<T, MetaT> low) Plus(params DA<T, MetaT>[] list)
     {
         var h = list.First().high;      // Not starting with 0 and adding 1st element is
-        var l = list.First().low;       // a huuuuuuuuuge performance improvement (both C# and C++)
+        var l = list.First().low;       // A huuuuuuuuuge performance improvement (both C# and C++)
         var ovl = new T();
+        //var ovh = list.Length == 1 ? new T() : throw new Exception("default value returned here");
         var ovh = list.Length == 1 ? new T() : default;
 
         foreach (var item in list.Skip(1))
@@ -178,7 +180,9 @@ public class MetaDA<T, MetaT>: IMetaSimpleArith<DA<T, MetaT>>
             (ovh, ovl) = m.Plus(ovl, ov2);
         }
 
+#pragma warning disable CS8604 // Possible null reference argument.
         return (new DA<T, MetaT>(ovh, ovl, true), new DA<T, MetaT>(h, l, true));
+#pragma warning restore CS8604 // Possible null reference argument.
     }
 
     public (DA<T, MetaT> high, DA<T, MetaT> low) Mult(DA<T, MetaT> a, DA<T, MetaT> b)

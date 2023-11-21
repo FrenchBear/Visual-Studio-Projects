@@ -2,6 +2,7 @@
 '
 ' 2021-09-26    PV      VS2022; Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Module Primes
     Public tPrimes() As Long    ' From index 0 to nPrimes-1

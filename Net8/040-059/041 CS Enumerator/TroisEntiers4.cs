@@ -5,6 +5,7 @@
 // 2012-03-03	PV		Finally found a way to implement IEnumerable<T> (which implements IEnumerable> with an iterator
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System.Collections;
 using System.Collections.Generic;

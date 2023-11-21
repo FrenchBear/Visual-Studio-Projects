@@ -4,6 +4,7 @@
 // 2017-01-05   PV
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using Microsoft.Win32;
 using System;
@@ -34,7 +35,7 @@ internal class Program
 
         try
         {
-            RegistryKey OurKey = null;
+            RegistryKey? OurKey = null;
             var split_result = RegistryPath.Split('\\');
 
             if (split_result.Length > 0)
@@ -64,7 +65,7 @@ internal class Program
                     {
                         //rtn = (string)Registry.GetValue(RegistryPath, "CurrentVersion", DefaultValue);
 
-                        OurKey = OurKey.OpenSubKey(newRegistryPath);
+                        OurKey = OurKey.OpenSubKey(newRegistryPath) ?? throw new Exception("Key not found: "+newRegistryPath);
                         rtn = (string)OurKey.GetValue(Field, DefaultValue);
                         OurKey.Close();
                     }

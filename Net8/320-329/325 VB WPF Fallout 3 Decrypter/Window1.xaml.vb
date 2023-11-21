@@ -3,6 +3,7 @@
 ' 2012-02-25	PV      VS2010
 ' 2021-09-22    PV      VS2022; Net6
 ' 2023-01-10	PV		Net7; Much better interface using a grid; Partial check
+' 2023-11-18	PV		Net8
 
 Option Explicit On
 Option Compare Text

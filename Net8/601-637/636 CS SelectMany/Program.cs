@@ -4,9 +4,10 @@
 // SelectMany: Projects each element of a sequence to an IEnumerable<T> and flattens the resulting sequences into one sequence.
 //
 // 2017-08-09   PV
-// 2021-14-13   PV      .Net FW 4.8
+// 2021-08-13   PV      .Net FW 4.8
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Collections.Generic;

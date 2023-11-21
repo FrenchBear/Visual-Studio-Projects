@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
@@ -9,5 +10,7 @@
         <Title>CS608 φ and ϕ</Title>
         <Description>Display φ and ϕ, shown as ϕ and φ in Consolas (and Calibri)</Description>
         <Copyright>Copyright ©2017-2023 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
+
 </Project>

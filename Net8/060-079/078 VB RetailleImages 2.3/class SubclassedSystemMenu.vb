@@ -5,6 +5,7 @@
 ' 2006-05-03    PV
 ' 2021-12-05    PV      AppendMenuW and parameter marshalling
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.Runtime.InteropServices
 ''' <summary>

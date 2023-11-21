@@ -19,6 +19,7 @@
 // 2017-01-17	PV		Extract from CS601, to show the problem
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System.Text;
 using static System.Console;

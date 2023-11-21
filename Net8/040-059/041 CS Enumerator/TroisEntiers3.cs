@@ -1,11 +1,13 @@
 ﻿// Construction d'une classe énumérable avec foreach en C#
 // ThreeIntegers3 implémente une interface IDictionary complète: nettement compliqué !!!
+//
 // 2001-02-21   PV
 // 2001-08-19   PV	Beta2
 // 2006-10-01	PV		VS2005
 // 2012-02-25	PV		VS2010
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Collections;

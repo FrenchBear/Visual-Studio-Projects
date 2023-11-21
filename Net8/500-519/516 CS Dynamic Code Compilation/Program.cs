@@ -2,9 +2,11 @@
 // Test of compilation and execution at run-time
 // http://stackoverflow.com/questions/3188882/compile-and-run-dynamic-code-without-generating-exe
 // http://stackoverflow.com/questions/826398/is-it-possible-to-dynamically-compile-and-execute-c-sharp-code-fragments
+//
 // 2013-09-15   PV
 // 2021-09-26   PV      CSharpCodeProvider is obsolete on .Net Core, should be raplaced by Roslyn (https://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp)
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using Microsoft.CSharp;
 using System;

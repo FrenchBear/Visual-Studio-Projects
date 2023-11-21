@@ -4,6 +4,7 @@
 // 2017-01-16   PV      Updated for Visual Studio 2017 RC
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.Collections;
@@ -69,7 +70,7 @@ internal class Program
         WriteLine();
 
         // Binary literals and digit separators
-        object[] numbers = [0b1,
+        object?[] numbers = [0b1,
             0b10,
             new object[] { 0b100, 0b1000 },     // binary literals
             "Tally_Test",
@@ -135,7 +136,7 @@ internal class Program
         }
     }
 
-    private static (int sum, int count) Tally(object[] values)      // tuple types
+    private static (int sum, int count) Tally(object?[] values)      // tuple types
     {
         var r = (s: 0, c: 0);                               // tuple literals
         void Add(int s, int c) => r = (r.s + s, r.c + c);   // local functions
@@ -157,8 +158,8 @@ internal class Program
                     break;
 
                 case null:                                  // A null value does not match a type expression, ex: null string
+                    //throw new ArgumentNullException();
                     break;
-                //throw new ArgumentNullException();
 
                 default:
                     //throw new InvalidOperationException("unknown item type");

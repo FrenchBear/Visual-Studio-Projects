@@ -2,10 +2,12 @@
 // This is the main project file for VC++ application project generated using an Application Wizard.
 //
 // 2001 PV
+//
 // 2006-10-01	PV		VS2005
 // 2012-02-25   PV		VS2010
 // 2017-04-30	PV		VS2017
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 #using <mscorlib.dll>
 

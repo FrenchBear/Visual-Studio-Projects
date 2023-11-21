@@ -3,22 +3,23 @@
 // http://www.theguardian.com/science/alexs-adventures-in-numberland/2015/may/20/can-you-do-the-maths-puzzle-for-vietnamese-eight-year-olds-that-has-stumped-parents-and-teachers
 // All you need to do is place the digits from 1 to 9 in the grid.
 //
+// Output (on THOR):
+// {1,2,6,4,7,8,3,5,9}
+// {1,2,6,4,7,8,5,3,9}
+// {1,3,2,4,5,8,7,9,6}
+// {1,3,2,4,5,8,9,7,6}
+// ...
+// {9,8,6,2,4,1,5,7,3}
+// {9,8,6,2,4,1,7,5,3}
+// 128  solution(s) found
+// 362880 permutations analyzed in 0,71s
+//
 // 2015-05-22   PV      C# version
-// 2615-06-27   PV      Added Test and ListOfPermut, slower than the two others...
+// 2015-06-27   PV      Added Test and ListOfPermut, slower than the two others...
 // 2021-09-26   PV      VS2022; Net6
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
-/* Output (on THOR):
-{1,2,6,4,7,8,3,5,9}
-{1,2,6,4,7,8,5,3,9}
-{1,3,2,4,5,8,7,9,6}
-{1,3,2,4,5,8,9,7,6}
-...
-{9,8,6,2,4,1,5,7,3}
-{9,8,6,2,4,1,7,5,3}
-128  solution(s) found
-362880 permutations analyzed in 0,71s
-*/
 
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<OutputType>Exe</OutputType>
@@ -9,9 +10,12 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>VB601 Sort On</Title>
 		<Copyright>Copyright ©2016-2023 Pierre Violent</Copyright>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 		<PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.0" />
 	</ItemGroup>
+
 </Project>

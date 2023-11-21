@@ -4,6 +4,7 @@
 ' 2006-10-01 	PV		VS 2005
 ' 2021-09-18 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.Windows.Forms
 

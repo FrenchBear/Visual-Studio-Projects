@@ -1,12 +1,14 @@
 ﻿' frmPicResize
 ' Pic resize utility in VB.Net
 ' PV July 2003
+'
 ' 2003-07-30 	PV		Quality Control
 ' 2005-12-04 	PV		English Version
 ' 2006-10-01 	PV		VS2005
 ' 2012-02-25	PV		VS2010; .Net Framework Client Profile 4.0
 ' 2021-09-19 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.ComponentModel
 Imports System.Drawing.Imaging

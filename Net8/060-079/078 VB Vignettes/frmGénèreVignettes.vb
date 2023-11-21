@@ -1,12 +1,14 @@
 ﻿' 078 VB Vignettes
 ' Retaillage d'image avec GDI+
 ' PV juillet 2003
+'
 ' 2003-07-16 	PV		Version simplifiée avec le constructeur de la classe Bitmap qui retaille
 ' 2003-07-30 	PV		Choix de la compression JPEG
 ' 2006-10-01 	PV		VS2005
 ' 2012-02-25	PV		VS2010
 ' 2021-09-19 	PV		VS2022, Net6
 ' 2023-01-10	PV		Net7
+' 2023-11-18	PV		Net8
 
 Imports System.ComponentModel
 Imports System.Drawing.Imaging

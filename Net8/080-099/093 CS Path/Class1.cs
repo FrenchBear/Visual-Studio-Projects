@@ -1,7 +1,9 @@
 ﻿// Essais de Path.ChangeExtension
+//
 // 2006-10-01	PV		VS2005
 // 2012-02-25	PV		VS2010
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 using System;
 using System.IO;

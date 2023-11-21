@@ -1,7 +1,9 @@
 ﻿// Boxes
 // Example of Unicode boxes characters (range 25)
 // http://www.alanflavell.org.uk/unicode/unidata25.html
+//
 // 2023-01-10	PV		Net7
+// 2023-11-18	PV		Net8 C#12
 
 // 2015-05-04   PV
 // 2021-09-26   PV      VS2022; Net6
