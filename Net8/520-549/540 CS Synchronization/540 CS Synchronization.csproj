@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
@@ -8,6 +9,8 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS540 Synchronization</Title>
         <Description>Various multithreaded synchronization code</Description>
-        <Copyright>Copyright ©2016 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2016-2023 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
+
 </Project>

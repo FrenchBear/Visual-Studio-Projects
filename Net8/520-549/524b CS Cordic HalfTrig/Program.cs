@@ -36,13 +36,9 @@ internal class Program
         CordicCompute(a0, out var sin, out var cos);
 
         WriteLine("a={0}", a0);
-        WriteLine("Math:   c={0}\t\t\ts={1}", Math.Cos(a0), Math.Sin(a0));
-        WriteLine("Cordic: c={0}\t\t\ts={1}", cos, sin);
+        WriteLine("Math:   c={0}\t\t\ts={1}\t\t\t(Math.cos and Math.sin)", Math.Cos(a0), Math.Sin(a0));
+        WriteLine("Cordic: c={0}\t\t\ts={1}\t\t\t(Cordic cos and sin)", cos, sin);
         WriteLine("Maple:  c=0.378740326955891541643393287014\ts=0.925502979323861698653734026619");
-
-        // Maple answer with 30 digits
-        // cos =
-        // sin =
     }
 
     private static double SinCordic(double angle)

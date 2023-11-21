@@ -17,10 +17,10 @@ namespace DupMP31;
 
 internal class AString
 {
-    public string FullPath;     // only for main objects
-    public string Name;
+    public string FullPath="";     // only for main objects
+    public string Name="";
 
-    private List<AString> reducedList;
+    private List<AString>? reducedList;
 
     public List<AString> ReducedList
     {
@@ -40,7 +40,7 @@ internal class AString
 
 internal class Program
 {
-    private const string folder = @"C:\MusicGD\MP3P\Divers\Noël";
+    private const string folder = @"C:\MusicOD\MP3P\Divers\Noël";
     private const int dist = 2;
 
     private static void Main(string[] args)

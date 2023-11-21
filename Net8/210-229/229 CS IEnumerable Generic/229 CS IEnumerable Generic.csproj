@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
@@ -8,6 +9,8 @@
         <Authors>Pierre Violent</Authors>
         <Title>101 CS IEnumerable Generic</Title>
         <Company>SGS</Company>
-        <Copyright>Copyright � SGS 2005</Copyright>
+        <Copyright>Copyright ©2005-2023 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
+
 </Project>

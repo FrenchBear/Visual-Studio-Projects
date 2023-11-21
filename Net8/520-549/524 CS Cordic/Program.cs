@@ -58,8 +58,8 @@ internal class Program
         }
 
         WriteLine("a={0}", a0);
-        WriteLine("c={0}\ts={1}", Math.Cos(a0), Math.Sin(a0));
-        WriteLine("x={0}\ty={1}\t", x, y);
+        WriteLine("c={0}\ts={1}\t(Math.cos and Math.sin)", Math.Cos(a0), Math.Sin(a0));
+        WriteLine("x={0}\ty={1}\t(Cordic cos and sin)", x, y);
 
         // Maple answer with 30 digits
         // cos = 0.378740326955891541643393287014

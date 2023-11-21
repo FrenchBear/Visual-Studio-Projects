@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
 	<PropertyGroup>
 		<TargetFramework>net8.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
@@ -7,8 +8,9 @@
 		<Version>1.1.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>TuneTown</Title>
-		<Description>Essais C#</Description>
-		<Copyright>MSDN F�vrier 2001/P.VIOLENT</Copyright>
+		<Description>Essais C#, MSDN Février 2001</Description>
+		<Copyright>Copyright ©2001-2023 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
+
 </Project>
