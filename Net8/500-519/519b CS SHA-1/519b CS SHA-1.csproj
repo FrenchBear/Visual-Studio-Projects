@@ -8,6 +8,6 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS519b SHA-1</Title>
         <Description>Example of implementation of SHA-1 hashing</Description>
-        <Copyright>Copyright ©2014-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2014-2024 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

@@ -8,6 +8,6 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS541 BitVector32</Title>
         <Description>Examples of use of BitVector32 Class</Description>
-        <Copyright>Copyright ©2016-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2016-2024 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

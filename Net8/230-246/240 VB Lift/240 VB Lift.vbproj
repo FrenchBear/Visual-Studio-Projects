@@ -7,7 +7,7 @@
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>Lift1</Title>
-		<Copyright>Copyright @2006-2023 Pierre Violent</Copyright>
+		<Copyright>Copyright @2006-2024 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
 		<NeutralLanguage>en</NeutralLanguage>

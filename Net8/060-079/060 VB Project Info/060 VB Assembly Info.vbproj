@@ -9,7 +9,7 @@
         <Title>Titre de l'assembly</Title>
         <Description>Description de l'assembly</Description>
         <Company>Bonne compagnie</Company>
-        <Copyright>Copyright ©2001-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2001-2024 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <StartupObject>VB060.InfosForm</StartupObject>
     </PropertyGroup>

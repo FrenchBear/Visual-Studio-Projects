@@ -8,7 +8,7 @@
 		<Version>1.1.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>Arithmetic</Title>
-		<Copyright>Copyright ©2015-2023 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2015-2024 Pierre Violent</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup>

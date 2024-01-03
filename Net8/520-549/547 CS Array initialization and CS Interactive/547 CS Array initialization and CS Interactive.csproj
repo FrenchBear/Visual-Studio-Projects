@@ -7,6 +7,6 @@
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
         <Title>CS547 Array initialization and CS Interactive</Title>
-        <Copyright>Copyright ©2016-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2016-2024 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

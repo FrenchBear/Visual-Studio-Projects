@@ -6,7 +6,7 @@
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>Hello1</RootNamespace>
 		<ApplicationVersion>1.0.0</ApplicationVersion>
-		<Authors>Copyright ©2010-2023 Pierre Violent</Authors>
+		<Authors>Copyright ©2010-2024 Pierre Violent</Authors>
 		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
 

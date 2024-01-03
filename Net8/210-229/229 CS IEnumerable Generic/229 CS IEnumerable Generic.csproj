@@ -9,7 +9,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>101 CS IEnumerable Generic</Title>
         <Company>SGS</Company>
-        <Copyright>Copyright ©2005-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2005-2024 Pierre Violent</Copyright>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 

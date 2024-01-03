@@ -9,7 +9,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS529 Boxes</Title>
         <Description>Example of boxes drawings</Description>
-        <Copyright>Copyright ©2015-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2015-2024 Pierre Violent</Copyright>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 

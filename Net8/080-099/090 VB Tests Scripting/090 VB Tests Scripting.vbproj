@@ -9,7 +9,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>Essais Scripting</Title>
         <Company>P.VIOLENT</Company>
-        <Copyright>Copyright ©2004-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2004-2024 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <StartupObject>VB090.frmTestScripting</StartupObject>
         <PlatformTarget>x86</PlatformTarget>

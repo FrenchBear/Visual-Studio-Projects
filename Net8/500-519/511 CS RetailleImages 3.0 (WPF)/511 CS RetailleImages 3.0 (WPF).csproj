@@ -9,7 +9,7 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>RetailleImages</Title>
 		<Description>Retaille batch d'un ensemble d'images</Description>
-		<Copyright>Copyright ©2013-2023 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2013-2024 Pierre Violent</Copyright>
 		<ApplicationIcon>retaille.ico</ApplicationIcon>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>

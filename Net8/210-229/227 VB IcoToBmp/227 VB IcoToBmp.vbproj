@@ -7,7 +7,7 @@
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
         <Title>IcoToBmp</Title>
-        <Copyright>Copyright @2005-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright @2005-2024 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <MyType>WindowsForms</MyType>
         <NeutralLanguage>en</NeutralLanguage>

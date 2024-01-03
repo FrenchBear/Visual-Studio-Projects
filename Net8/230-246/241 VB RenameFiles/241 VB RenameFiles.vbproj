@@ -8,7 +8,7 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>Quick rename file application</Title>
 		<Description>Dot Net version of VB6 RenameFiles</Description>
-		<Copyright>Copyright ©2006-2023 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2006-2024 Pierre Violent</Copyright>
 		<ApplicationIcon>RenameFiles.ico</ApplicationIcon>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>

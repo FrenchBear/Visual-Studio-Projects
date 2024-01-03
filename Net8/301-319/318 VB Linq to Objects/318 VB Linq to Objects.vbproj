@@ -7,7 +7,7 @@
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
         <Title>VB318 Linq to Objects</Title>
-        <Copyright>Copyright ©2008-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2008-2024 Pierre Violent</Copyright>
         <StartupObject>Sub Main</StartupObject>
     </PropertyGroup>
 </Project>

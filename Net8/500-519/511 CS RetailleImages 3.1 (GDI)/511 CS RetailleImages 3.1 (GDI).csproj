@@ -8,7 +8,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>RetailleImages</Title>
         <Description>Redimensionnement d'un ensemble d'images (GDI)</Description>
-        <Copyright>Copyright ©2006-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2006-2024 Pierre Violent</Copyright>
         <ApplicationIcon>Retaille.ico</ApplicationIcon>
         <UseWPF>true</UseWPF>
         <UseWindowsForms>true</UseWindowsForms>

@@ -7,7 +7,7 @@
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
         <Title>ShowTiff</Title>
-        <Copyright>Copyright ©2003-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2003-2024 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <StartupObject>VB080.Form1</StartupObject>
         <NeutralLanguage>en</NeutralLanguage>

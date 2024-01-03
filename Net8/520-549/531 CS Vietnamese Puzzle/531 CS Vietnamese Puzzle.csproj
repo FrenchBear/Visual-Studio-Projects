@@ -8,6 +8,6 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS531 Vietnamese puzzle</Title>
         <Description>Solver for a problem published in the Guardian</Description>
-        <Copyright>Copyright ©2015-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2015-2024 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

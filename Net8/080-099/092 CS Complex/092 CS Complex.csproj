@@ -9,7 +9,7 @@
         <Title>Classe Complex</Title>
         <Description>Impl�mentation d'une classe math�matique</Description>
         <Company>P.VIOLENT</Company>
-        <Copyright>2004-2023 PV</Copyright>
+        <Copyright>2004-2024 PV</Copyright>
         <ApplicationIcon>App.ico</ApplicationIcon>
     </PropertyGroup>
 </Project>

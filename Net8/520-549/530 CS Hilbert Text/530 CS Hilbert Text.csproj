@@ -8,6 +8,6 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS530 Hilbert Text</Title>
         <Description>C# with recursive iterator rendering of a Hilbert curve</Description>
-        <Copyright>Copyright ©2015-2023 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2015-2024 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

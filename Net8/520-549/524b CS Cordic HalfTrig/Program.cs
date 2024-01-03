@@ -24,7 +24,7 @@ internal class Program
         tsin = new double[n];
         tcos = new double[n];
 
-        for (var z = -10.0; z < 10.0; z += 0.25)
+        for (var z = -9.75; z < 10.0; z += 0.25)
         {
             var s = SinCordic(z);
             WriteLine("sin({0,4:F1}) = {1,6:F3} {2}*", z, s, new string(' ', (int)(20 * (1 + s))));
@@ -36,9 +36,13 @@ internal class Program
         CordicCompute(a0, out var sin, out var cos);
 
         WriteLine("a={0}", a0);
-        WriteLine("Math:   c={0}\t\t\ts={1}\t\t\t(Math.cos and Math.sin)", Math.Cos(a0), Math.Sin(a0));
-        WriteLine("Cordic: c={0}\t\t\ts={1}\t\t\t(Cordic cos and sin)", cos, sin);
-        WriteLine("Maple:  c=0.378740326955891541643393287014\ts=0.925502979323861698653734026619");
+        WriteLine("Math:   c={0}\t\t\ts={1}\t\t\t(Math.Cos and Math.Sin)", Math.Cos(a0), Math.Sin(a0));
+        WriteLine("Cordic: c={0}\t\t\ts={1}\t\t\t(Cordic Cos and Sin)", cos, sin);
+        WriteLine("Maple:  c=0.378740326955891541643393287014\ts=0.925502979323861698653734026619\n");
+
+        // Just checking I'm not working at HP, sin(π) is zero! :-)
+        sin = SinCordic(Math.PI);
+        WriteLine($"sin π:  {sin}");
     }
 
     private static double SinCordic(double angle)
@@ -62,7 +66,8 @@ internal class Program
 
         CordicCompute(angle, out var sin, out var cos);
 
-        return invertSign ? -sin : sin;
+        // && sin!=0 avoids returning -0 for sin(Math.Pi)!
+        return (invertSign && sin!=0) ? -sin : sin;
     }
 
 #pragma warning disable IDE0051 // Remove unused private members
@@ -71,12 +76,12 @@ internal class Program
 
     // Actual computing algorithm, sin and cos at the same time
     // Angle must be between 0 and π/2
-    // Note that angle is expressed in radians, but CORDIC algorithm do not care about it, just
-    // change initial variable a to 45 to work in degrees for instance
+    // Note that the table of decreasing sin/cos (π/2, π/4, π/8, ...) should be calculated only one time
+    // for efficiency, not recomputed each time as in this learning code
     private static void CordicCompute(double angle, out double sin, out double cos)
     {
-        sin = Math.Sin(angle);
-        cos = Math.Cos(angle);
+        // Note that angle is expressed in radians, but CORDIC algorithm does not care about it, just
+        // change initial variable a to 45 to work in degrees for instance
 
         // Start at π/4, with both sin and cos = (√2)/2
         var a = Math.PI / 4;             // Math.PI / 2;
@@ -86,6 +91,11 @@ internal class Program
         // Start with horizontal unitary vector for result
         cos = 1;
         sin = 0;
+
+        // Simple time-saver
+        if (angle == 0)
+            return;
+
         for (; ; )
         {
             // If angle remaining to rotate is more than currently computed angle/s/c, we do the rotation
@@ -107,6 +117,7 @@ internal class Program
             if (a < 1e-17)
                 break;
 
+            // Half-trig computation, sin(a/2) and cos(a/2)
             var c2 = c;
             c = Math.Sqrt((c + 1.0) / 2.0);
             s /= Math.Sqrt(2 * (1.0 + c2));
