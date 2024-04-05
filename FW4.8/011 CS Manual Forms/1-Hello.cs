@@ -22,6 +22,6 @@ public class Hello1 : Form
     {
         //    InitializeComponent();
 
-        this.Text = "Hello 1";
+        Text = "Hello 1";
     }
 }

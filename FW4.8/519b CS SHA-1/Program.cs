@@ -102,7 +102,7 @@ namespace SHA_1
             tb[j++] = (byte)(lb >> 24);
             tb[j++] = (byte)((lb & 0x00FF0000) >> 16);
             tb[j++] = (byte)((lb & 0x0000FF00) >> 8);
-            tb[j++] = (byte)((lb & 0x000000FF));
+            tb[j++] = (byte)(lb & 0x000000FF);
             Debug.Assert(j % (blocksize / 8) == 0);
             Debug.Assert(j == nb * (blocksize / 8));
         }
@@ -139,7 +139,7 @@ namespace SHA_1
 
                 // copy chunk into first 16 words w[0..15] of the message schedule array
                 for (int i = 0; i < 64; i += 4)
-                    w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)(tb[(br << 6) + i + 3]);
+                    w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)tb[(br << 6) + i + 3];
 
                 // Extend the first 16 words into the remaining 64 words w[16..79] of the message schedule array:
                 // for i from 16 to 79:

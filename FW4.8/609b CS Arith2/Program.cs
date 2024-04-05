@@ -253,7 +253,7 @@ namespace Arith2CS
         // Static constructor to initialize static variable returned by an instance property that can be included in interface...
         static DA()
         {
-            digits = 2 * (new T()).Digits;
+            digits = 2 * new T().Digits;
         }
 
         public DA()
@@ -301,7 +301,7 @@ namespace Arith2CS
             where T : ISimpleArith<T>, new()
             where MetaT : IMetaSimpleArith<T>, new()
         {
-            int d = (new T()).Digits;
+            int d = new T().Digits;
             var rnd = new Random();
 
             string GetRandomNumber()

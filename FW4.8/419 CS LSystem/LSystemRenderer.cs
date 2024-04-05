@@ -87,7 +87,7 @@ namespace CS419
 
                     if (escapeChar != '\0')
                     {
-                        if (c >= '0' && c <= '9' || c == '.')
+                        if ((c >= '0' && c <= '9') || c == '.')
                         {
                             argumentNum += c;
                             continue;
@@ -139,7 +139,7 @@ namespace CS419
                             if (_angle % 2 == 0)
                                 ap.Angle += Math.PI;
                             else
-                                ap.Angle += generalOrientation * ((int)(_angle / 2)) * angleIncrement;
+                                ap.Angle += generalOrientation * (int)(_angle / 2) * angleIncrement;
                             break;
 
                         case '!':

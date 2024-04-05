@@ -39,7 +39,7 @@ public class MyForm : Form
         item.MenuItems.Add("-");
         item.MenuItems.Add(new MenuItem("&Exit", new EventHandler(OnExit)));
 
-        this.Menu = menu;
+        Menu = menu;
     }
 
     private void OnPopupOptionsMenu(object sender, EventArgs e)

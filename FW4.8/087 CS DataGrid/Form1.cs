@@ -49,64 +49,64 @@ public class Form1 : System.Windows.Forms.Form
     /// </summary>
     private void InitializeComponent()
     {
-        this.dataGrid1 = new System.Windows.Forms.DataGrid();
-        this.dataGrid2 = new System.Windows.Forms.DataGrid();
-        this.label2 = new System.Windows.Forms.Label();
-        this.label1 = new System.Windows.Forms.Label();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid2)).BeginInit();
-        this.SuspendLayout();
+        dataGrid1 = new System.Windows.Forms.DataGrid();
+        dataGrid2 = new System.Windows.Forms.DataGrid();
+        label2 = new System.Windows.Forms.Label();
+        label1 = new System.Windows.Forms.Label();
+        ((System.ComponentModel.ISupportInitialize)dataGrid1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)dataGrid2).BeginInit();
+        SuspendLayout();
         //
         // dataGrid1
         //
-        this.dataGrid1.DataMember = "";
-        this.dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-        this.dataGrid1.Location = new System.Drawing.Point(8, 24);
-        this.dataGrid1.Name = "dataGrid1";
-        this.dataGrid1.Size = new System.Drawing.Size(448, 228);
-        this.dataGrid1.TabIndex = 0;
+        dataGrid1.DataMember = "";
+        dataGrid1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+        dataGrid1.Location = new System.Drawing.Point(8, 24);
+        dataGrid1.Name = "dataGrid1";
+        dataGrid1.Size = new System.Drawing.Size(448, 228);
+        dataGrid1.TabIndex = 0;
         //
         // dataGrid2
         //
-        this.dataGrid2.DataMember = "";
-        this.dataGrid2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-        this.dataGrid2.Location = new System.Drawing.Point(8, 284);
-        this.dataGrid2.Name = "dataGrid2";
-        this.dataGrid2.Size = new System.Drawing.Size(276, 228);
-        this.dataGrid2.TabIndex = 2;
+        dataGrid2.DataMember = "";
+        dataGrid2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
+        dataGrid2.Location = new System.Drawing.Point(8, 284);
+        dataGrid2.Name = "dataGrid2";
+        dataGrid2.Size = new System.Drawing.Size(276, 228);
+        dataGrid2.TabIndex = 2;
         //
         // label2
         //
-        this.label2.AutoSize = true;
-        this.label2.Location = new System.Drawing.Point(8, 264);
-        this.label2.Name = "label2";
-        this.label2.Size = new System.Drawing.Size(155, 16);
-        this.label2.TabIndex = 3;
-        this.label2.Text = "DataTable créée dans le code";
+        label2.AutoSize = true;
+        label2.Location = new System.Drawing.Point(8, 264);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(155, 16);
+        label2.TabIndex = 3;
+        label2.Text = "DataTable créée dans le code";
         //
         // label1
         //
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(8, 8);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(224, 16);
-        this.label1.TabIndex = 4;
-        this.label1.Text = "DataSet lu dans la base via un DataAdapter";
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(8, 8);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(224, 16);
+        label1.TabIndex = 4;
+        label1.Text = "DataSet lu dans la base via un DataAdapter";
         //
         // Form1
         //
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-        this.ClientSize = new System.Drawing.Size(744, 530);
-        this.Controls.Add(this.label1);
-        this.Controls.Add(this.label2);
-        this.Controls.Add(this.dataGrid2);
-        this.Controls.Add(this.dataGrid1);
-        this.Name = "Form1";
-        this.Text = "Form1";
-        this.Load += new System.EventHandler(this.Form1_Load);
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid1)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.dataGrid2)).EndInit();
-        this.ResumeLayout(false);
+        AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        ClientSize = new System.Drawing.Size(744, 530);
+        Controls.Add(label1);
+        Controls.Add(label2);
+        Controls.Add(dataGrid2);
+        Controls.Add(dataGrid1);
+        Name = "Form1";
+        Text = "Form1";
+        Load += new System.EventHandler(Form1_Load);
+        ((System.ComponentModel.ISupportInitialize)dataGrid1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)dataGrid2).EndInit();
+        ResumeLayout(false);
     }
 
     #endregion Code généré par le Concepteur Windows Form

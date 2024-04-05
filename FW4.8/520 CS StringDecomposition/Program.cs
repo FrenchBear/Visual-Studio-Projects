@@ -28,7 +28,7 @@ namespace StringDecomposition
             Console.Write(nf.ToString() + ": ");
             foreach (char c in sd)
             {
-                Console.Write("u+" + ((int)(c)).ToString("x4") + " ");
+                Console.Write("u+" + ((int)c).ToString("x4") + " ");
             }
             Console.WriteLine();
         }

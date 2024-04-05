@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace SelectMany
 {
     class Program
@@ -37,7 +36,7 @@ namespace SelectMany
             // 2 selectors, 1 intermediate type, no index
             // public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TCollection>> collectionSelector, Func<TSource, TCollection, TResult> resultSelector);
             var l3 = odds.SelectMany<int, (int, double), (int, int, double)>(
-                o => evens.Select(e => (e, ((double)o) / ((double)e))),
+                o => evens.Select(e => (e, (double)o / (double)e)),
                 (o, t) => (o, t.Item1, t.Item2));
             foreach (var item in l3)
                 Console.WriteLine(item);
@@ -58,7 +57,6 @@ namespace SelectMany
             foreach (var item in l5)
                 Console.WriteLine(item);
             Console.WriteLine();
-
 
             Console.WriteLine();
             Console.Write("(Pause)");

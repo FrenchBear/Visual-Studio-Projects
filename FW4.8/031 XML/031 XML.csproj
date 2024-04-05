@@ -48,7 +48,7 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <ProjectGuid>{64E0BF47-3EBF-4F2F-BFC7-0526DFEA8D92}</ProjectGuid>
     <TargetFrameworkProfile />

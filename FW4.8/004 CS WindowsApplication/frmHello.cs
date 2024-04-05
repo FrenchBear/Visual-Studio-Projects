@@ -33,8 +33,8 @@ namespace WindowsApplication2_CSharp
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.btnHello = new System.Windows.Forms.Button();
+            components = new System.ComponentModel.Container();
+            btnHello = new System.Windows.Forms.Button();
             //@this.TrayHeight = 0;
             //@this.TrayLargeIcon = false;
             //@this.TrayAutoArrange = true;
@@ -42,11 +42,11 @@ namespace WindowsApplication2_CSharp
             btnHello.Size = new System.Drawing.Size(75, 23);
             btnHello.TabIndex = 0;
             btnHello.Text = "&Hello";
-            btnHello.Click += new System.EventHandler(this.btnHello_Click);
-            btnHello.Click += new System.EventHandler(this.btnHello_Click_bis);
-            this.Text = "Essais C#";
-            this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-            this.Controls.Add(this.btnHello);
+            btnHello.Click += new System.EventHandler(btnHello_Click);
+            btnHello.Click += new System.EventHandler(btnHello_Click_bis);
+            Text = "Essais C#";
+            AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+            Controls.Add(btnHello);
         }
 
         /// <summary>

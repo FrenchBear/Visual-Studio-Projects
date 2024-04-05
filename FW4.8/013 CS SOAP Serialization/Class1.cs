@@ -33,7 +33,7 @@ internal class TestSer
         int objects = 1000;
 
         Console.WriteLine("Writing " + objects + " objects to a file stream");
-        Stream s = (File.Open("testser.xml", FileMode.Create));
+        Stream s = File.Open("testser.xml", FileMode.Create);
         //SoapFormatter f = new SoapFormatter();
         BinaryFormatter f = new BinaryFormatter();
         for (int i = 1; i <= objects; i++)

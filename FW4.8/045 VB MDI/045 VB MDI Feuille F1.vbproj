@@ -50,7 +50,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <ProjectGuid>{4400EB94-07AD-4617-91BF-5D9EE174EF2F}</ProjectGuid>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>

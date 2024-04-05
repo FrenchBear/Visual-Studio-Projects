@@ -24,7 +24,7 @@ namespace String_Distance
             fileList.AsParallel().ForAll(f =>
                 {
                     Increment(ref nb);
-                    Write("{0:P1}\r", ((double)nb) / fileList.Length);
+                    Write("{0:P1}\r", (double)nb / fileList.Length);
                     for (int i = Array.IndexOf(fileList, f) + 1; i < fileList.Length; i++)
                     {
                         if (f == fileList[i])

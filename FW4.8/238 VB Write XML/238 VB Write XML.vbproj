@@ -11,7 +11,7 @@
     <RootNamespace>Write_XML</RootNamespace>
     <AssemblyName>Write XML</AssemblyName>
     <MyType>Console</MyType>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

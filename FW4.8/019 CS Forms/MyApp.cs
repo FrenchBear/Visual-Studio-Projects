@@ -49,7 +49,7 @@ public class MyForm : Form
             TabIndex = 2,
             Text = "Bouton 2"
         };
-        this.Controls.Add(button2);
+        Controls.Add(button2);
         button2.Click += new System.EventHandler(OnClick);
     }
 

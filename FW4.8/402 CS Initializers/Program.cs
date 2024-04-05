@@ -87,9 +87,9 @@ public class Customer
 
     public Customer(int id, string name, OrderCollection orders)
     {
-        this.Id = id;
-        this.Name = name;
-        this.Orders = orders;
+        Id = id;
+        Name = name;
+        Orders = orders;
     }
 }
 
@@ -101,9 +101,9 @@ public class Order
 
     public Order(int id, int customerId, DateTime orderDate)
     {
-        this.Id = id;
-        this.CustomerId = customerId;
-        this.OrderDate = orderDate;
+        Id = id;
+        CustomerId = customerId;
+        OrderDate = orderDate;
     }
 }
 
@@ -129,7 +129,7 @@ public class OrderCollection : IEnumerable<Order>
 
     public IEnumerator GetEnumerator1()
     {
-        return this.GetEnumerator();
+        return GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()

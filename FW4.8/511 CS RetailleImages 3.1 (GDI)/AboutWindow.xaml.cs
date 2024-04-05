@@ -51,13 +51,13 @@ namespace RI3
         {
             get
             {
-                return this.source;
+                return source;
             }
 
             set
             {
                 // Have to make full pack URI from short form, so System.Uri can regognize it.
-                this.source = "pack://application:,,," + value;
+                source = "pack://application:,,," + value;
             }
         }
 
@@ -65,9 +65,9 @@ namespace RI3
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            var decoder = BitmapDecoder.Create(new Uri(this.Source), BitmapCreateOptions.DelayCreation, BitmapCacheOption.OnDemand);
+            var decoder = BitmapDecoder.Create(new Uri(Source), BitmapCreateOptions.DelayCreation, BitmapCacheOption.OnDemand);
 
-            var result = decoder.Frames.SingleOrDefault(f => f.Width == this.Size);
+            var result = decoder.Frames.SingleOrDefault(f => f.Width == Size);
             if (result == default(BitmapFrame))
                 result = decoder.Frames.OrderBy(f => f.Width).First();
             return result;
@@ -75,8 +75,8 @@ namespace RI3
 
         public IconExtension(string source, int size)
         {
-            this.Source = source;
-            this.Size = size;
+            Source = source;
+            Size = size;
         }
 
         public IconExtension()

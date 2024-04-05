@@ -50,8 +50,8 @@ namespace CS422
             // Methods
             public int GetDelegate__0(int x)
             {
-                this.sum += x;
-                return (this.sum + this.__this.offset);
+                sum += x;
+                return sum + __this.offset;
             }
         }
 

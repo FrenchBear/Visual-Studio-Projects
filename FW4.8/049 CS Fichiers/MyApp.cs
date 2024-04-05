@@ -9,7 +9,7 @@ internal class MyApp
 {
     public static void Main()
     {
-        DirectoryInfo[] td = (new DirectoryInfo(@"C:\Program files")).GetDirectories();
+        DirectoryInfo[] td = new DirectoryInfo(@"C:\Program files").GetDirectories();
         foreach (DirectoryInfo d in td)
         {
             Console.WriteLine("{0}  {1}", d.Name, d.FullName);

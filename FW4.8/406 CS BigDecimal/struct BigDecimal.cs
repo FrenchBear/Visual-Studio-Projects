@@ -67,7 +67,7 @@ namespace BigDecimalNS
         static public BigDecimal operator /(BigDecimal b1, BigDecimal b2)
         {
             BigDecimal d;
-            d.n = (ScaleFactor * b1.n) / b2.n;
+            d.n = ScaleFactor * b1.n / b2.n;
             return d;
         }
 

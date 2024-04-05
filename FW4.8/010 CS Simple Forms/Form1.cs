@@ -19,9 +19,9 @@ public class Form1 : System.Windows.Forms.Form
 
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.Text = "010 CS Simple Forms";
-        this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
+        components = new System.ComponentModel.Container();
+        Text = "010 CS Simple Forms";
+        AutoScaleBaseSize = new System.Drawing.Size(5, 13);
     }
 
     public static void Main(string[] args)

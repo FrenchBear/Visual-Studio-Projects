@@ -36,7 +36,7 @@ namespace CS426
             for (int i = 1; i <= 1000; i++)
                 for (int j = 1; j <= 1000; j++)
                 {
-                    f = ((double)i) / ((double)(j));
+                    f = (double)i / (double)j;
                     DoubleToFraction(f, out rNum, out rDen);
                     int pgdc = Gcd(i, j);
                     if (i != rNum * pgdc || j != rDen * pgdc)

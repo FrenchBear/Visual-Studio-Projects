@@ -32,7 +32,7 @@ namespace DoubleAlmostEqual
                     {
                         double d2 = values[j];
                         foreach (int s2 in new int[] { -1, 1 })
-                            T(d1 * s1, d2 * s2, ((s1 == s2 && classes[i] == classes[j])) || (d1 == 0.0 && d2 == 0.0));
+                            T(d1 * s1, d2 * s2, (s1 == s2 && classes[i] == classes[j]) || (d1 == 0.0 && d2 == 0.0));
                     }
             }
 

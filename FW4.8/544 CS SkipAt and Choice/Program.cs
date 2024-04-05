@@ -63,7 +63,7 @@ namespace CS544SkipAtChoice
 
             public SkipAtEnumerator(IEnumerable<T> original, int start, int count)
             {
-                this.originalEnumerator = original.GetEnumerator();
+                originalEnumerator = original.GetEnumerator();
                 this.start = start;
                 this.count = count;
                 pos = 0;
@@ -233,7 +233,7 @@ namespace CS544SkipAtChoice
 
             public GetRangeEnumerator(IEnumerable<T> original, int start, int count)
             {
-                this.originalEnumerator = original.GetEnumerator();
+                originalEnumerator = original.GetEnumerator();
                 this.start = start;
                 this.count = count;
                 pos = 0;

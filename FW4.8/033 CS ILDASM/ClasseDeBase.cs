@@ -27,13 +27,13 @@ namespace MaBibliotheque
         // Constructeur par défaut
         public MaClasseDeBase()
         {
-            this.iMembreDeBase = 0;
+            iMembreDeBase = 0;
         }
 
         // Constructeur copie
         public MaClasseDeBase(MaClasseDeBase b0)
         {
-            this.iMembreDeBase = b0.iMembreDeBase;
+            iMembreDeBase = b0.iMembreDeBase;
         }
 
         // Destructeur

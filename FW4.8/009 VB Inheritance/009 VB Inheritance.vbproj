@@ -31,7 +31,7 @@
     <MyType>Console</MyType>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <ProjectGuid>{D61B522C-B168-4E9C-921D-7C33E5E35264}</ProjectGuid>
     <PublishUrl>publish\</PublishUrl>

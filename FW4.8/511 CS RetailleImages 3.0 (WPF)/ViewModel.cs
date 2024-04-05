@@ -118,7 +118,7 @@ namespace RI3
 
         private void UpdateGenerateProgressValue(ProgressInfo t)
         {
-            GenerateProgressValue = (100.0 * t.Index) / t.Total;
+            GenerateProgressValue = 100.0 * t.Index / t.Total;
             GenerateProgressText = string.Format("{0} / {1}", t.Index, t.Total);
             if (t.FileName != null)
             {

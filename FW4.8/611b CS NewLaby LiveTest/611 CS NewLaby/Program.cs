@@ -14,8 +14,6 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
 
-
-
 namespace NewLaby
 {
     public class Program
@@ -46,7 +44,6 @@ namespace NewLaby
 
         private int rows, cols;
         private int[,] Cells;
-
 
         public Laby(int rows, int cols)
         {

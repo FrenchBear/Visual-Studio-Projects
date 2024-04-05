@@ -91,7 +91,7 @@ namespace Ed850
 
         private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e)

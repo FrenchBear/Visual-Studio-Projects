@@ -12,7 +12,7 @@
     <AssemblyName>VB202</AssemblyName>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>System iTools.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

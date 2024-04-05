@@ -26,7 +26,7 @@ namespace DupMP31
                 {
                     var l = new List<AString>();
                     for (int i = 0; i < Name.Length; i++)
-                        l.Add(new AString { Name = this.Name.Remove(i, 1) });
+                        l.Add(new AString { Name = Name.Remove(i, 1) });
                     reducedList = l;
                 }
                 return reducedList;
