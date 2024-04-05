@@ -48,7 +48,7 @@ Module Module1
         End If
 
         Dim d1 As Long = f.Denominator \ f.Numerator + 1
-        Dim f1 As Fraction = New Fraction(1, d1)
+        Dim f1 As New Fraction(1, d1)
         Dim f2 As Fraction = f - f1
         Dim l As List(Of Fraction) = Decompose(f2)
         l.Insert(0, f1)

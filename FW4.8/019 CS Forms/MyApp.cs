@@ -76,7 +76,7 @@ public class MyForm : Form
         // displayed as a modal dialog. Set the form's visible property to
         // false before calling showDialog.
 
-        MyForm f = new MyForm();
+        var f = new MyForm();
         f.Closed += new System.EventHandler(OnFormClosed);
         //f.ShowDialog();	  // Affichage modal
         f.Show();

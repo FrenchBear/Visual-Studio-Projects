@@ -29,7 +29,7 @@ namespace CS531
         private static void Main(string[] args)
         {
             // For Vietnamese puzzle we have to use the digits from 1 to 9
-            List<double> t = new List<double> { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
+            var t = new List<double> { 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 };
 
             Test(ListOfPermut, t);
             Test(GetStackPermutator, t);
@@ -41,16 +41,13 @@ namespace CS531
         }
 
         // Relay helper to transform object creation in a function call to be usable by Test
-        private static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l)
-        {
-            return new StackPermutator<T>(l);
-        }
+        private static IEnumerable<List<T>> GetStackPermutator<T>(List<T> l) => new StackPermutator<T>(l);
 
         private static void Test(Func<List<double>, IEnumerable<List<double>>> f, List<double> l)
         {
             int np = 0;                  // Number of permutations
             int ns = 0;                  // Number of solutions
-            Stopwatch sw = Stopwatch.StartNew();
+            var sw = Stopwatch.StartNew();
 
             foreach (var x in f(l))
             {
@@ -71,10 +68,7 @@ namespace CS531
         }
 
         // Quick and dirty factorial
-        private static long Fact(long n)
-        {
-            return n <= 2 ? n : n * Fact(n - 1);
-        }
+        private static long Fact(long n) => n <= 2 ? n : n * Fact(n - 1);
 
         // A recursive iterator to produce all possible permutations of a List<T>
         // Short and readable, but 3 times slower than the stack-based version...
@@ -130,20 +124,11 @@ namespace CS531
         // Just keep a copy of the list since enumerator is retrieved later
         private readonly List<T> list;
 
-        public StackPermutator(List<T> l)
-        {
-            list = l;
-        }
+        public StackPermutator(List<T> l) => list = l;
 
-        public virtual IEnumerator<List<T>> GetEnumerator()
-        {
-            return new MyEnumerator(list);
-        }
+        public virtual IEnumerator<List<T>> GetEnumerator() => new MyEnumerator(list);
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
         private class MyEnumerator : IEnumerator<List<T>>
         {
@@ -201,10 +186,7 @@ namespace CS531
                 return stack.Count > 0;
             }
 
-            object System.Collections.IEnumerator.Current
-            {
-                get { return Current; }
-            }
+            object System.Collections.IEnumerator.Current => Current;
 
             public void Dispose()
             {

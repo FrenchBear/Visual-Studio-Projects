@@ -179,7 +179,7 @@ namespace CS428
         // Traditional multiplication (school method), in t(n²)
         public static SlicedNumber MultSchool(SlicedNumber n1, SlicedNumber n2)
         {
-            SlicedNumber res = new SlicedNumber(n1.nslices + n2.nslices - 1);
+            var res = new SlicedNumber(n1.nslices + n2.nslices - 1);
             for (int i2 = 0; i2 < n2.nslices; i2++)
             {
                 for (int i1 = 0; i1 < n1.nslices; i1++)
@@ -212,7 +212,7 @@ namespace CS428
         // Addition of numbers
         public static SlicedNumber Add(SlicedNumber n1, SlicedNumber n2)
         {
-            SlicedNumber res = new SlicedNumber(Math.Max(n1.nslices, n2.nslices));
+            var res = new SlicedNumber(Math.Max(n1.nslices, n2.nslices));
             // When n1 and n2 have the same sign, it's easy
             if (n1.sign == n2.sign)
             {
@@ -287,18 +287,18 @@ namespace CS428
             SplitInTwo(n2, p, out SlicedNumber c, out SlicedNumber d);
 
             // Result
-            SlicedNumber r = new SlicedNumber(n1.nslices + n2.nslices - 1)
+            var r = new SlicedNumber(n1.nslices + n2.nslices - 1)
             {
                 sign = n1.sign * n2.sign
             };
 
             // 1st product: ac
-            SlicedNumber ac = SlicedNumber.FastMult(a, c);
+            var ac = SlicedNumber.FastMult(a, c);
             for (int i = 0; i < ac.nslices; i++)
                 r.slices[i] = ac.slices[i];
 
             // 2nd product: bd
-            SlicedNumber bd = SlicedNumber.FastMult(b, d);
+            var bd = SlicedNumber.FastMult(b, d);
             int nslices2 = bd.nslices + 2 * p;
             if (nslices2 > r.nslices)
                 r.Redim(nslices2);

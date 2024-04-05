@@ -23,20 +23,14 @@ internal class Pentamino
     {
         private readonly byte[,] grille;
 
-        public Jeu()
-        {
-            grille = new byte[MAXLIG, MAXCOL];
-        }
+        public Jeu() => grille = new byte[MAXLIG, MAXCOL];
 
-        public Jeu(Jeu j)
-        {
-            grille = (byte[,])j.grille.Clone();
-        }
+        public Jeu(Jeu j) => grille = (byte[,])j.grille.Clone();
 
         public byte this[int l, int c]
         {
-            get { return grille[l, c]; }
-            set { grille[l, c] = value; }
+            get => grille[l, c];
+            set => grille[l, c] = value;
         }
     }
 
@@ -46,18 +40,18 @@ internal class Pentamino
     private static void Main(string[] args)
     {
         // Préparation des pièces
-        Piece P1 = new Piece(1, 'I', 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Piece P2 = new Piece(2, 'L', 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0);
-        Piece P3 = new Piece(3, 'Y', 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0);
-        Piece P4 = new Piece(4, 'N', 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0);
-        Piece P5 = new Piece(5, 'V', 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0);
-        Piece P6 = new Piece(6, 'P', 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-        Piece P7 = new Piece(7, 'U', 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
-        Piece P8 = new Piece(8, 'Z', 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0);
-        Piece P9 = new Piece(9, 'F', 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0);
-        Piece P10 = new Piece(10, 'T', 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0);
-        Piece P11 = new Piece(11, 'W', 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0);
-        Piece P12 = new Piece(12, 'X', 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0);
+        var P1 = new Piece(1, 'I', 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        var P2 = new Piece(2, 'L', 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0);
+        var P3 = new Piece(3, 'Y', 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+        var P4 = new Piece(4, 'N', 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0);
+        var P5 = new Piece(5, 'V', 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0);
+        var P6 = new Piece(6, 'P', 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0);
+        var P7 = new Piece(7, 'U', 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
+        var P8 = new Piece(8, 'Z', 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0);
+        var P9 = new Piece(9, 'F', 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0);
+        var P10 = new Piece(10, 'T', 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0);
+        var P11 = new Piece(11, 'W', 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0);
+        var P12 = new Piece(12, 'X', 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0);
 
         /*
         P1.Dessin();
@@ -100,7 +94,7 @@ internal class Pentamino
         tP[11] = P12;
 
         // Plan à paver
-        Jeu j = new Jeu();
+        var j = new Jeu();
 
         // Pavage
         System.DateTime t0 = System.DateTime.Now;
@@ -195,7 +189,7 @@ internal class Pentamino
                     if (!bCollision)
                     {
                         // Pièce valable! On la place
-                        Jeu jeu2 = new Jeu(jeu);
+                        var jeu2 = new Jeu(jeu);
 
                         for (l2 = 0; l2 < ca.lmax; l2++)
                             for (c2 = 0; c2 < ca.cmax; c2++)

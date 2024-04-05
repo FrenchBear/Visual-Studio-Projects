@@ -78,6 +78,7 @@
     <Compile Include="Bestiaire.vb">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="My Project\MyApplication.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>MyApplication.myapp</DependentUpon>

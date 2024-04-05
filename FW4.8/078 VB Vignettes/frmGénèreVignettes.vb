@@ -28,9 +28,7 @@ Public Class Form1
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -153,7 +151,7 @@ Public Class Form1
     End Function
 
     Private Sub SaveJPGWithCompressionSetting(image As Image, szFileName As String, lCompression As Long)
-        Dim eps As EncoderParameters = New EncoderParameters(1)
+        Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, lCompression)
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
         image.Save(szFileName, ici, eps)

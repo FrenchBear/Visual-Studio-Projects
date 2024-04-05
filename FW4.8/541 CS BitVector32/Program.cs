@@ -12,7 +12,7 @@ namespace CS541_BitVector32
         private static void Main(string[] args)
         {
             // Creates and initializes a BitVector32 with all bit flags set to FALSE.
-            BitVector32 myBVb = new BitVector32(0);
+            var myBVb = new BitVector32(0);
 
             // Creates masks to isolate each of the first five bit flags.
             int myBit1 = BitVector32.CreateMask();
@@ -34,7 +34,7 @@ namespace CS541_BitVector32
             Console.WriteLine();
 
             // Creates and initializes a BitVector32.
-            BitVector32 myBVs = new BitVector32(0);
+            var myBVs = new BitVector32(0);
 
             // Creates four sections in the BitVector32 with maximum values 6, 3, 1, and 15.
             // mySect3, which uses exactly one bit, can also be used as a bit flag.

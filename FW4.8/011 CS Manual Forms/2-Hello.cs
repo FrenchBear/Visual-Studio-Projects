@@ -9,10 +9,10 @@ internal class Hello2
 {
     public static void Main()
     {
-        Form form1 = new Form();
+        var form1 = new Form();
 
-        Button button1 = new Button();
-        Button button2 = new Button();
+        var button1 = new Button();
+        var button2 = new Button();
 
         button1.Text = "OK";
         button1.Location = new Point(10, 10);

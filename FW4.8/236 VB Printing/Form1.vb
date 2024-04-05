@@ -37,7 +37,7 @@ Public Class Form1
         e.Graphics.DrawLine(p, 0, 0, rOut.Width, rOut.Height)
         e.Graphics.DrawLine(p, rOut.Width, 0, 0, rOut.Height)
 
-        Dim f As Font = New Font("Arial", 36, FontStyle.Bold)
+        Dim f As New Font("Arial", 36, FontStyle.Bold)
         e.Graphics.DrawString("Page " & iPrintedPage.ToString, f, Brushes.Black, 100, 100)
 
         e.HasMorePages = iPrintedPage <= 2

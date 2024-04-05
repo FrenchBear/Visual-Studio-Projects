@@ -33,8 +33,8 @@ namespace SdkXamlBrowser
         {
             try
             {
-                MemoryStream ms = new MemoryStream();
-                StreamWriter sw = new StreamWriter(ms);
+                var ms = new MemoryStream();
+                var sw = new StreamWriter(ms);
                 string str = TextBox1.Text;
                 sw.Write(str);
                 sw.Flush();
@@ -64,10 +64,7 @@ namespace SdkXamlBrowser
             }
         }
 
-        protected void onClickParseButton(object sender, RoutedEventArgs args)
-        {
-            ParseCurrentBuffer();
-        }
+        protected void onClickParseButton(object sender, RoutedEventArgs args) => ParseCurrentBuffer();
 
         protected void ShowPreview(object sender, RoutedEventArgs args)
         {

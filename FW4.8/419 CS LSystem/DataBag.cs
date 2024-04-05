@@ -29,11 +29,11 @@ namespace CS419
             // Temporary sorted storage
             // Allows multiple elements with the same "key", although there is no key element strictly speaking
             // but a comparer: elements that compare to 0 are Ok
-            SortedSet<SourceSystem> sl = new SortedSet<SourceSystem>(new SourceSystemComparer());
+            var sl = new SortedSet<SourceSystem>(new SourceSystemComparer());
 
             try
             {
-                using (StreamReader sr = new StreamReader(@"..\..\" + file))
+                using (var sr = new StreamReader(@"..\..\" + file))
                 {
                     string line;
                     SourceSystem ss = null;

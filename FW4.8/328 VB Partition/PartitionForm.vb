@@ -25,7 +25,7 @@ Public Class PartitionForm
     Private Sub StartButton_Click(sender As System.Object, e As EventArgs) Handles StartButton.Click
         Dim w As Integer = 2 * xOff + KeyWidth + 4 * MeasureWidth
         Dim h As Integer = 2 * yOff + 4 * RowHeight + KeyHeight + 50
-        Dim picBitmap As Bitmap = New Bitmap(w, h, PixelFormat.Format24bppRgb)
+        Dim picBitmap As New Bitmap(w, h, PixelFormat.Format24bppRgb)
         Dim g As Graphics = Graphics.FromImage(picBitmap)
         g.Clear(colBackground)
 

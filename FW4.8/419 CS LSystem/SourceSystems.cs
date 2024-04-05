@@ -14,17 +14,11 @@ namespace CS419
         public string Comments { get; set; }
         public string Rules { get; set; }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 
     internal class SourceSystemComparer : IComparer<SourceSystem>
     {
-        public int Compare(SourceSystem x, SourceSystem y)
-        {
-            return string.Compare(x.Name, y.Name, true, CultureInfo.InvariantCulture);
-        }
+        public int Compare(SourceSystem x, SourceSystem y) => string.Compare(x.Name, y.Name, true, CultureInfo.InvariantCulture);
     }
 }

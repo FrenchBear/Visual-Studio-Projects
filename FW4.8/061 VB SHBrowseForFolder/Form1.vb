@@ -29,9 +29,7 @@ Public Class frmTest
     'Form overrides dispose to clean up the component list.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub

@@ -43,8 +43,5 @@ internal class Piece
     }
 
     // Traces
-    public void Dessin()
-    {
-        Console.WriteLine("Pièce {0} {1} iNbt={2}", hNumPiece, cPiece, iNbt);
-    }
+    public void Dessin() => Console.WriteLine("Pièce {0} {1} iNbt={2}", hNumPiece, cPiece, iNbt);
 }

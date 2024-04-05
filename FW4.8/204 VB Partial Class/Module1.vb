@@ -6,7 +6,7 @@
 Module Module1
 
     Sub Main()
-        Dim t As Toto = New Toto
+        Dim t As New Toto
         t.zap()
     End Sub
 

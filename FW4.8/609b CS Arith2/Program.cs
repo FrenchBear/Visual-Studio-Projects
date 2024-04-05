@@ -84,10 +84,7 @@ namespace Arith2CS
         }
 
         // Factory from other (copy constructor)
-        public IntBase FromOther(IntBase other)
-        {
-            return new IntBase(other.val);
-        }
+        public IntBase FromOther(IntBase other) => new IntBase(other.val);
 
         // Addition of a paramarray of IntBase, high part contains the overflow carry
         public (IntBase high, IntBase low) Plus(params IntBase[] list)
@@ -133,10 +130,10 @@ namespace Arith2CS
         internal const int k = 10000;        // 10^digits
 
         // Instance property so that doubling class can retrieve it
-        public int Digits { get => digits; }
+        public int Digits => digits;
 
         // A public parameterless constructor is needed
-        public IntBase() { val = 0; }
+        public IntBase() => val = 0;
 
         // Not part of interface, called by MetaClass
         internal IntBase(int x)
@@ -146,15 +143,9 @@ namespace Arith2CS
         }
 
         // Convenient helper for output formatting
-        public bool IsZero()
-        {
-            return val == 0;
-        }
+        public bool IsZero() => val == 0;
 
-        public override string ToString()
-        {
-            return val.ToString();
-        }
+        public override string ToString() => val.ToString();
 
         // Output always formatted using 'digits' digits
         public string ToStringWithLeadingZeros() => (val + k).ToString().Substring(1);
@@ -180,10 +171,7 @@ namespace Arith2CS
                 return new DA<T, MetaT>(new T(), m.FromString(s), true);
         }
 
-        public DA<T, MetaT> FromOther(DA<T, MetaT> other)
-        {
-            return new DA<T, MetaT>(other.high, other.low, true);
-        }
+        public DA<T, MetaT> FromOther(DA<T, MetaT> other) => new DA<T, MetaT>(other.high, other.low, true);
 
         public (DA<T, MetaT> high, DA<T, MetaT> low) Plus(params DA<T, MetaT>[] list)
         {
@@ -248,13 +236,10 @@ namespace Arith2CS
         private static readonly MetaT m = new MetaT();
 
         internal static int digits;
-        public int Digits { get => digits; }
+        public int Digits => digits;
 
         // Static constructor to initialize static variable returned by an instance property that can be included in interface...
-        static DA()
-        {
-            digits = 2 * new T().Digits;
-        }
+        static DA() => digits = 2 * new T().Digits;
 
         public DA()
         {
@@ -279,10 +264,7 @@ namespace Arith2CS
             }
         }
 
-        public bool IsZero()
-        {
-            return high.IsZero() && low.IsZero();
-        }
+        public bool IsZero() => high.IsZero() && low.IsZero();
 
         public override string ToString()
         {
@@ -315,7 +297,7 @@ namespace Arith2CS
             WriteLine($"Test Int{d}d");
             string astr = GetRandomNumber();
             string bstr = GetRandomNumber();
-            Stopwatch sw = Stopwatch.StartNew();
+            var sw = Stopwatch.StartNew();
             T a, b;
             var m = new MetaT();
             a = m.FromString(astr);
@@ -331,7 +313,7 @@ namespace Arith2CS
             sw.Stop();
 
             // Check using BigInteger
-            Stopwatch swc = Stopwatch.StartNew();
+            var swc = Stopwatch.StartNew();
             var abi = BigInteger.Parse(astr);
             var bbi = BigInteger.Parse(bstr);
             var sumbi = abi + bbi;
@@ -346,7 +328,7 @@ namespace Arith2CS
         private static void Main(string[] args)
         {
             IntBase a, b;
-            MetaIntBase m = new MetaIntBase();
+            var m = new MetaIntBase();
 
             a = m.FromString("8000");
             b = m.FromString("7000");
@@ -359,7 +341,7 @@ namespace Arith2CS
             WriteLine();
 
             DA<IntBase, MetaIntBase> a8, b8;
-            MetaDA<IntBase, MetaIntBase> m8 = new MetaDA<IntBase, MetaIntBase>();
+            var m8 = new MetaDA<IntBase, MetaIntBase>();
             a8 = m8.FromString("12345678");
             b8 = m8.FromString("87654321");
             WriteLine($"a8: {a8}");

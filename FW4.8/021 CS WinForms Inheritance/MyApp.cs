@@ -8,10 +8,10 @@ internal class MyApp
 {
     public static void Main()
     {
-        MsgBox2 f = new MsgBox2();
+        var f = new MsgBox2();
         f.Info("Informations standard affichées avec MsgBox2");
 
-        MsgBox3 g = new MsgBox3();
+        var g = new MsgBox3();
         g.Info("Informations spécialisées affichées avec MsgBox3");
 
         f = g;

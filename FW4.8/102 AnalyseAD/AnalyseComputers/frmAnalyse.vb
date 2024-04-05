@@ -39,9 +39,7 @@ Public Class frmAnalyse
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -72,7 +70,7 @@ Public Class frmAnalyse
     Friend WithEvents chWhenChanged As ColumnHeader
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmAnalyse))
+        Dim resources As New ComponentModel.ComponentResourceManager(GetType(frmAnalyse))
         Me.btnAnalyse = New Button()
         Me.lblAnalyse = New Label()
         Me.txtSite = New TextBox()

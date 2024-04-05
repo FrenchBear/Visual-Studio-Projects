@@ -1,7 +1,7 @@
 ﻿Module Module1
 
     Sub Main()
-        Dim v As MaClasse = New MaClasse With {
+        Dim v As New MaClasse With {
             .x = 1,
             .y = 2
         }

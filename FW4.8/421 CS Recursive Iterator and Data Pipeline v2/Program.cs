@@ -42,10 +42,7 @@ namespace ConsoleApplication1
         }
 
         // Repack Sorted.Set returning a boolean into an Action
-        public static void Add<T>(this SortedSet<T> set, T item)
-        {
-            set.Add(item);
-        }
+        public static void Add<T>(this SortedSet<T> set, T item) => set.Add(item);
 
         public static IEnumerable<T> ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {

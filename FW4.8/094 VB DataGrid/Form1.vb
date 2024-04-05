@@ -24,9 +24,7 @@ Public Class frmDataGrid
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -58,7 +56,7 @@ Public Class frmDataGrid
     Friend WithEvents myDS_NorthWind As DS_NorthWind
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmDataGrid))
+        Dim resources As New ComponentModel.ComponentResourceManager(GetType(frmDataGrid))
         Me.SqlSelectCommand1 = New SqlClient.SqlCommand()
         Me.SqlConnection1 = New SqlClient.SqlConnection()
         Me.SqlInsertCommand1 = New SqlClient.SqlCommand()

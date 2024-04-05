@@ -23,10 +23,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        static public int GetBuildVersion()
-        {
-            return int.Parse(RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuildNumber", "0"));
-        }
+        static public int GetBuildVersion() => int.Parse(RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuildNumber", "0"));
 
         private static string RegistryRead(string RegistryPath, string Field, string DefaultValue)
         {

@@ -45,16 +45,13 @@ namespace CS549
 
         // StringContains both Accent Insensitive and Case Insensitive
         // Note that oe=œ because of InvariantCulture locale, not because of RemoveDiacritics
-        private static bool ContainsAICI(string searched, string value)
-        {
-            return RemoveDiacritics(searched).IndexOf(RemoveDiacritics(value), StringComparison.InvariantCultureIgnoreCase) >= 0;
-        }
+        private static bool ContainsAICI(string searched, string value) => RemoveDiacritics(searched).IndexOf(RemoveDiacritics(value), StringComparison.InvariantCultureIgnoreCase) >= 0;
 
         private delegate string StringToString(string s);
 
         private static void TimeExec(StringToString f)
         {
-            Stopwatch sw = Stopwatch.StartNew();
+            var sw = Stopwatch.StartNew();
             for (int i = 0; i < 100000; i++)
             {
                 string sSource = file;
@@ -65,20 +62,17 @@ namespace CS549
 
         private static string RemoveDiacritics(string text)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (char ch in text.Normalize(NormalizationForm.FormD))
                 if (CharUnicodeInfo.GetUnicodeCategory(ch) != UnicodeCategory.NonSpacingMark)
                     sb.Append(ch);
             return sb.ToString().Normalize(NormalizationForm.FormC);
         }
 
-        private static string RemoveDiacritics2(string text)
-        {
-            return string.Concat(
+        private static string RemoveDiacritics2(string text) => string.Concat(
                 text.Normalize(NormalizationForm.FormD)
                 .Where(ch => CharUnicodeInfo.GetUnicodeCategory(ch) !=
                                               UnicodeCategory.NonSpacingMark)
               ).Normalize(NormalizationForm.FormC);
-        }
     }
 }

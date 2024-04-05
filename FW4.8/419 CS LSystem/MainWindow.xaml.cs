@@ -67,7 +67,7 @@ namespace CS419
                 return false;
             }
 
-            Dictionary<char, string> rules = new Dictionary<char, string>();
+            var rules = new Dictionary<char, string>();
             foreach (string s in ss.Rules.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 char c = s.ToUpperInvariant().Split('=')[0][0];
@@ -81,7 +81,7 @@ namespace CS419
 
             // Show the 1st 1000 chars of out string
             int i = 0;
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             foreach (char c in drawString)
             {
                 sb.Append(c);
@@ -100,7 +100,7 @@ namespace CS419
         {
             if (OkGenerate())
             {
-                GdiDrawingForm f = new GdiDrawingForm();
+                var f = new GdiDrawingForm();
                 f.DrawString(title, ref drawString, angle);
             }
         }
@@ -109,7 +109,7 @@ namespace CS419
         {
             if (OkGenerate())
             {
-                WpfDrawing1Window w = new WpfDrawing1Window();
+                var w = new WpfDrawing1Window();
                 w.DrawString(title, ref drawString, angle);
             }
         }
@@ -118,7 +118,7 @@ namespace CS419
         {
             if (OkGenerate())
             {
-                WpfDrawing2Window w = new WpfDrawing2Window(title, drawString, angle);
+                var w = new WpfDrawing2Window(title, drawString, angle);
                 w.Show();
             }
         }
@@ -127,15 +127,12 @@ namespace CS419
         {
             if (OkGenerate())
             {
-                WpfDrawing3Window w = new WpfDrawing3Window(title, drawString, angle);
+                var w = new WpfDrawing3Window(title, drawString, angle);
                 w.Show();
             }
         }
 
-        private void ExitCommand_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void ExitCommand_Click(object sender, RoutedEventArgs e) => Close();
 
         private void SourceFileComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {

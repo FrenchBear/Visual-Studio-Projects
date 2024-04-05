@@ -79,10 +79,7 @@ namespace CS423
             tl.Add(absoluteTime, e);
         }
 
-        public void AddRelativeEvent(double relativeTime, TimelineEvent e)
-        {
-            AddAbsoluteEvent(relativeTime + nowTime, e);
-        }
+        public void AddRelativeEvent(double relativeTime, TimelineEvent e) => AddAbsoluteEvent(relativeTime + nowTime, e);
 
         public void StartSimulation()
         {
@@ -107,15 +104,9 @@ namespace CS423
             _action = action;
         }
 
-        public string Name
-        {
-            get { return _name; }
-        }
+        public string Name => _name;
 
-        public void ExecuteAction(double nowTime)
-        {
-            _action?.Invoke(nowTime, this);
-        }
+        public void ExecuteAction(double nowTime) => _action?.Invoke(nowTime, this);
     }
 
     internal class UserArrivedEvent : TimelineEvent
@@ -133,19 +124,10 @@ namespace CS423
             this.destinationLevel = destinationLevel;
         }
 
-        public int NumUser
-        {
-            get { return numUser; }
-        }
+        public int NumUser => numUser;
 
-        public int ArrivalLevel
-        {
-            get { return arrivalLevel; }
-        }
+        public int ArrivalLevel => arrivalLevel;
 
-        public int DestinationLevel
-        {
-            get { return destinationLevel; }
-        }
+        public int DestinationLevel => destinationLevel;
     }
 }

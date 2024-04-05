@@ -57,10 +57,10 @@ namespace SHA_1
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            using (SHA1Managed hashstring = new SHA1Managed())
+            using (var hashstring = new SHA1Managed())
             {
                 byte[] hash = hashstring.ComputeHash(bytes);
-                StringBuilder hsb = new StringBuilder();
+                var hsb = new StringBuilder();
                 foreach (byte b in hash)
                     hsb.Append(b.ToString("x2"));
                 Debug.Assert(hsb.ToString() == hashed);
@@ -225,9 +225,6 @@ namespace SHA_1
 
         // equivalent of C++ _rotl
         // 32-bit version
-        private static uint LeftRotate(uint original, int bits)
-        {
-            return (original << bits) | (original >> (32 - bits));
-        }
+        private static uint LeftRotate(uint original, int bits) => (original << bits) | (original >> (32 - bits));
     }
 }

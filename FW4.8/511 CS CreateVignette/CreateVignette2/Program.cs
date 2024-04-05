@@ -77,7 +77,7 @@ namespace CreateVignette
             //vignette.SetPropertyItem(image.PropertyItems[0]);
             //DumpPropItems(vignette);
 
-            EncoderParameters eps = new EncoderParameters(1);
+            var eps = new EncoderParameters(1);
             eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
             ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
 
@@ -129,7 +129,7 @@ namespace CreateVignette
 
         public static BitmapSource ResizeBitmap(BitmapSource source, int nWidth, int nHeight)
         {
-            TransformedBitmap tbBitmap = new TransformedBitmap(source,
+            var tbBitmap = new TransformedBitmap(source,
                                                       new ScaleTransform((double)nWidth / (double)source.PixelWidth,
                                                                          (double)nHeight / (double)source.PixelHeight,
                                                                          0, 0));

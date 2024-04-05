@@ -47,18 +47,18 @@ Module Pentamino
         Pow2 = New Integer() {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096}
 
         ' Préparation des pièces
-        Dim P1 As Piece = New Piece(1, "I"c, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-        Dim P2 As Piece = New Piece(2, "L"c, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0)
-        Dim P3 As Piece = New Piece(3, "Y"c, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)
-        Dim P4 As Piece = New Piece(4, "N"c, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0)
-        Dim P5 As Piece = New Piece(5, "V"c, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0)
-        Dim P6 As Piece = New Piece(6, "P"c, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0)
-        Dim P7 As Piece = New Piece(7, "U"c, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0)
-        Dim P8 As Piece = New Piece(8, "Z"c, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0)
-        Dim P9 As Piece = New Piece(9, "F"c, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0)
-        Dim P10 As Piece = New Piece(10, "T"c, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
-        Dim P11 As Piece = New Piece(11, "W"c, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0)
-        Dim P12 As Piece = New Piece(12, "X"c, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0)
+        Dim P1 As New Piece(1, "I"c, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        Dim P2 As New Piece(2, "L"c, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0)
+        Dim P3 As New Piece(3, "Y"c, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)
+        Dim P4 As New Piece(4, "N"c, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0)
+        Dim P5 As New Piece(5, "V"c, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0)
+        Dim P6 As New Piece(6, "P"c, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+        Dim P7 As New Piece(7, "U"c, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0)
+        Dim P8 As New Piece(8, "Z"c, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0)
+        Dim P9 As New Piece(9, "F"c, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0)
+        Dim P10 As New Piece(10, "T"c, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
+        Dim P11 As New Piece(11, "W"c, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0)
+        Dim P12 As New Piece(12, "X"c, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0)
 
         'P1.Dessin()
         'P2.Dessin()
@@ -96,7 +96,7 @@ Module Pentamino
         tP(11) = P12
 
         ' Plan à paver
-        Dim j As Jeu = New Jeu()
+        Dim j As New Jeu()
 
         ' Pavage
         Dim t0 As System.DateTime = System.DateTime.Now
@@ -182,7 +182,7 @@ Module Pentamino
 
                     If Not bCollision Then
                         ' Pièce valable! On la place
-                        Dim jeu2 As Jeu = New Jeu(jeu)
+                        Dim jeu2 As New Jeu(jeu)
 
                         For l2 = 0 To ca.lmax - 1
                             For c2 = 0 To ca.cmax - 1

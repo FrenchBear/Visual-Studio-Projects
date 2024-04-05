@@ -14,10 +14,7 @@ namespace CS419
         private IEnumerable<char> _s;
         private int _angle;
 
-        public GdiDrawingForm()
-        {
-            InitializeComponent();
-        }
+        public GdiDrawingForm() => InitializeComponent();
 
         public void DrawString(string title, ref IEnumerable<char> s, int angle)
         {
@@ -42,12 +39,12 @@ namespace CS419
         private void GdiDraw()
         {
             if (picOut.Size.Width <= 1 || picOut.Size.Height <= 1) return;  // Too small pic area
-            Bitmap bmpOut = new Bitmap(picOut.Size.Width, picOut.Size.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            Graphics graOut = Graphics.FromImage(bmpOut);
+            var bmpOut = new Bitmap(picOut.Size.Width, picOut.Size.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            var graOut = Graphics.FromImage(bmpOut);
             graOut.Clear(Color.White);
             picOut.Image = bmpOut;
 
-            GdiLSystemRenderer gr = new GdiLSystemRenderer(_s, _angle);
+            var gr = new GdiLSystemRenderer(_s, _angle);
             gr.Rend(ref graOut, picOut.Size.Width, picOut.Size.Height);
         }
 

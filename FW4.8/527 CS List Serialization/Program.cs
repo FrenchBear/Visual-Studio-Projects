@@ -25,20 +25,20 @@ namespace SerCol
                 new LauncherGroup { Name = "Group 3", SquaresList = new List<LauncherSquare> { new LauncherSquare { Name = "Square 3.1", Image = "Image 3.1" }, new LauncherSquare { Name = "Square 3.2", Image = "Image 3.2" }, new LauncherSquare { Name = "Square 3.3", Image = "Image 3.3" } } }
             };
 
-            LauncherConfiguration Configuration = new LauncherConfiguration { GoupsList = groupsList };
+            var Configuration = new LauncherConfiguration { GoupsList = groupsList };
 
             string MenuFile = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "LauncherMenus.xml");
-            XmlSerializer serializer = new XmlSerializer(typeof(LauncherConfiguration));
+            var serializer = new XmlSerializer(typeof(LauncherConfiguration));
             var ns = new XmlSerializerNamespaces();
             ns.Add("", "");
 
             // Write
-            XmlWriterSettings settings = new XmlWriterSettings
+            var settings = new XmlWriterSettings
             {
                 //settings.OmitXmlDeclaration = true;
                 Indent = true
             };
-            using (XmlWriter writer = XmlWriter.Create(MenuFile, settings))
+            using (var writer = XmlWriter.Create(MenuFile, settings))
             {
                 writer.WriteStartElement("MicrobiologyLauncherMenus");
                 writer.WriteAttributeString("version", "1");
@@ -48,7 +48,7 @@ namespace SerCol
 
             // Read
             LauncherConfiguration Configuration2;
-            using (XmlReader reader = XmlReader.Create(MenuFile))
+            using (var reader = XmlReader.Create(MenuFile))
             {
                 do
                     reader.Read();

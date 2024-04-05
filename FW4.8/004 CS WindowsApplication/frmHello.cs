@@ -19,13 +19,9 @@ namespace WindowsApplication2_CSharp
 
         private System.Windows.Forms.Button btnHello;
 
-        public frmHello()
-        {
+        public frmHello() =>
             // Required for Windows Form Designer support
-            InitializeComponent();
-
-            // TODO: Add any constructor code after InitializeComponent call
-        }
+            InitializeComponent();// TODO: Add any constructor code after InitializeComponent call
 
         /// <summary>
         ///    Required method for Designer support - do not modify
@@ -52,25 +48,16 @@ namespace WindowsApplication2_CSharp
         /// <summary>
         /// Une fonction événement qui affiche une boîte de message 'Hello'
         /// </summary>
-        protected void btnHello_Click(object sender, System.EventArgs e)
-        {
-            MessageBox.Show("Hello !", "titre");
-        }
+        protected void btnHello_Click(object sender, System.EventArgs e) => MessageBox.Show("Hello !", "titre");
 
         /// <summary>
         /// Une deuxième fonction événement pour l'événement click !
         /// </summary>
-        protected void btnHello_Click_bis(object sender, System.EventArgs e)
-        {
-            MessageBox.Show("Hello_bis !", "titre_bis");
-        }
+        protected void btnHello_Click_bis(object sender, System.EventArgs e) => MessageBox.Show("Hello_bis !", "titre_bis");
 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        public static void Main(string[] args)
-        {
-            Application.Run(new frmHello());
-        }
+        public static void Main(string[] args) => Application.Run(new frmHello());
     }
 }

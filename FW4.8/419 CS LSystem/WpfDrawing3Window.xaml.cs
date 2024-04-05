@@ -14,10 +14,7 @@ namespace CS419
     /// </summary>
     public partial class WpfDrawing3Window : Window
     {
-        public WpfDrawing3Window()
-        {
-            InitializeComponent();
-        }
+        public WpfDrawing3Window() => InitializeComponent();
 
         protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
         {
@@ -29,7 +26,7 @@ namespace CS419
             : this()
         {
             Title = title + " - WpfDrawing3Window (Using StreamGeometry)";
-            Wpf3LSystemRenderer wr = new Wpf3LSystemRenderer(s, angle);
+            var wr = new Wpf3LSystemRenderer(s, angle);
             wr.Rend(0, 0, out StreamGeometry g, out Rect r);
             double maxExtent = Math.Max(r.Width, r.Height);
             myGeometryDrawing.Pen = new Pen(Brushes.Black, Math.Sqrt(maxExtent) / 10.0);
@@ -57,10 +54,7 @@ namespace CS419
                 }
             }
 
-            protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroked)
-            {
-                _context.LineTo(new Point(x2, y2), isStroked, true);
-            }
+            protected override void RendLine(double x1, double y1, double x2, double y2, bool isStroked) => _context.LineTo(new Point(x2, y2), isStroked, true);
         }
     }
 }

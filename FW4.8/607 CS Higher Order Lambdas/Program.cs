@@ -13,7 +13,7 @@ namespace CS607
             // The following code declares a lambda expression that returns
             // another lambda expression that adds two numbers.
             //Func<int, Func<int, int>> addtwointegers = (x) => { return (y) => x + y; };
-            Func<int, int> addtwointegers(int x) { return (y) => x + y; }
+            Func<int, int> addtwointegers(int x) => (y) => x + y;
 
             // The following code declares a lambda expression that takes another
             // lambda expression as its argument.

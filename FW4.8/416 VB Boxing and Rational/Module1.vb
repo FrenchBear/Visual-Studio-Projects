@@ -15,7 +15,7 @@ Module Module1
         Dim r2 As New Rational(3, 2)
         Dim r3 As Rational = A(r1, r2)
 
-        Dim rns As Rational = New Rational(5, 10)
+        Dim rns As New Rational(5, 10)
         Dim rs1 As String = String.Format("{0}", rns)
         Dim rs2 As String = String.Format("{0:reduced}", rns)
 

@@ -52,7 +52,7 @@ using System;
 using System.Globalization;
 using System.Threading;
 
-internal struct Complex : IFormattable
+internal readonly struct Complex : IFormattable
 {
     private readonly double x, y;
 

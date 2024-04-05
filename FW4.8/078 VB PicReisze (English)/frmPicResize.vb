@@ -32,9 +32,7 @@ Public Class frmPicResize
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -64,7 +62,7 @@ Public Class frmPicResize
     Friend WithEvents tbQuality As TrackBar
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As Resources.ResourceManager = New Resources.ResourceManager(GetType(frmPicResize))
+        Dim resources As New Resources.ResourceManager(GetType(frmPicResize))
         Me.btnGo = New Button
         Me.lstTrace = New ListBox
         Me.lblSource = New Label
@@ -325,7 +323,7 @@ Public Class frmPicResize
         imgOutput = New Bitmap(imgSource, iNewWidth, iNewHeight)
 
         ' On contrôle la Quality
-        Dim eps As EncoderParameters = New EncoderParameters(1)
+        Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(txtQuality.Text))
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
 

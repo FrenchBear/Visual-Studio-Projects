@@ -25,7 +25,7 @@ internal class TestCollections
 
     public static void TestHashtable()
     {
-        Hashtable h = new Hashtable
+        var h = new Hashtable
         {
             { "G", "Grenoble" },
             { "R", "Fontaine" },
@@ -47,23 +47,17 @@ internal class TestCollections
 
     private class MyComparer : IEqualityComparer
     {
-        public new bool Equals(object x, object y)
-        {
-            return x.Equals(y);
-        }
+        public new bool Equals(object x, object y) => x.Equals(y);
 
-        public int GetHashCode(object obj)
-        {
-            return obj.ToString().ToLower().GetHashCode();
-        }
+        public int GetHashCode(object obj) => obj.ToString().ToLower().GetHashCode();
     }
 
     public static void TestCaseInsensitiveHashtable()
     {
-        Hashtable h = new Hashtable(new MyComparer());
+        var h = new Hashtable(new MyComparer());
 
         // With IEqualityComparer:
-        Hashtable h2 = new Hashtable(StringComparer.OrdinalIgnoreCase);
+        var h2 = new Hashtable(StringComparer.OrdinalIgnoreCase);
         // Seee http://msdn.microsoft.com/library/default.asp?url=/library/en-us/dndotnet/html/StringsinNET20.asp
 
         //IEqualityComparer comparer = new CaseInsensitiveComparer.Default();
@@ -89,7 +83,7 @@ internal class TestCollections
     // Une SortedList est triée en permanence
     public static void TestSortedList()
     {
-        SortedList s = new SortedList
+        var s = new SortedList
         {
             { "G", "Grenoble" },
             { "R", "Fontaine" },

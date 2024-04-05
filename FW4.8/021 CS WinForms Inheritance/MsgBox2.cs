@@ -10,10 +10,7 @@ public class MsgBox2 : System.Windows.Forms.Form
     private System.Windows.Forms.TextBox txtInfo;
     private System.Windows.Forms.Label lblInfo;
 
-    public MsgBox2()
-    {
-        InitializeComponent();
-    }
+    public MsgBox2() => InitializeComponent();
 
     private void InitializeComponent()
     {
@@ -69,10 +66,7 @@ public class MsgBox2 : System.Windows.Forms.Form
         ResumeLayout(false);
     }
 
-    protected void btnOk_Click(object sender, System.EventArgs e)
-    {
-        Close();
-    }
+    protected void btnOk_Click(object sender, System.EventArgs e) => Close();
 
     public virtual void Info(string sMsg)
     {

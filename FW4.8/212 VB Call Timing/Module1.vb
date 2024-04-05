@@ -85,7 +85,7 @@ Module Module1
         Loop Until bStop
         AddRes("Virtual function call", c)
 
-        Dim k5 As MaClasse3 = New MaClasse3
+        Dim k5 As New MaClasse3
         bStop = False : c = 0 : t.Enabled = True
         Do
             k5.Virtual()

@@ -12,20 +12,17 @@ namespace FPVI.MessageQueueTest
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            InitializeComponent();
-        }
+        public Form1() => InitializeComponent();
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            MessageQueue myQueue = new MessageQueue(@"c:\temp");
+            var myQueue = new MessageQueue(@"c:\temp");
             myQueue.Send("Hello, world", "message1");
         }
 
         private void btnReceive_Click(object sender, EventArgs e)
         {
-            MessageQueue myQueue = new MessageQueue(@"c:\temp");
+            var myQueue = new MessageQueue(@"c:\temp");
             object m;
             m = myQueue.Receive();
         }

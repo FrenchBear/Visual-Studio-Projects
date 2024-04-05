@@ -117,23 +117,19 @@ namespace SHA_2
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            using (SHA256Managed hashstring = new SHA256Managed())
+            using (var hashstring = new SHA256Managed())
             {
                 byte[] hash = hashstring.ComputeHash(bytes);
-                StringBuilder hsb = new StringBuilder();
+                var hsb = new StringBuilder();
                 foreach (byte b in hash)
                     hsb.Append(b.ToString("x2"));
                 Debug.Assert(hsb.ToString() == hashed);
             }
         }
 
-        private static void Test_sha_224(string s, string hashed)
-        {
+        private static void Test_sha_224(string s, string hashed) =>
             // Use local implementation
-            Debug.Assert(SHA_224(s) == hashed);
-
-            // .Net Framework does not provide a managed version
-        }
+            Debug.Assert(SHA_224(s) == hashed);// .Net Framework does not provide a managed version
 
         private static void Test_sha_512(string s, string hashed)
         {
@@ -142,10 +138,10 @@ namespace SHA_2
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            using (SHA512Managed hashstring = new SHA512Managed())
+            using (var hashstring = new SHA512Managed())
             {
                 byte[] hash = hashstring.ComputeHash(bytes);
-                StringBuilder hsb = new StringBuilder();
+                var hsb = new StringBuilder();
                 foreach (byte b in hash)
                     hsb.Append(b.ToString("x2"));
                 Debug.Assert(hsb.ToString() == hashed);
@@ -159,10 +155,10 @@ namespace SHA_2
 
             // Use .Net Framework version
             byte[] bytes = Encoding.UTF8.GetBytes(s);
-            using (SHA384Managed hashstring = new SHA384Managed())
+            using (var hashstring = new SHA384Managed())
             {
                 byte[] hash = hashstring.ComputeHash(bytes);
-                StringBuilder hsb = new StringBuilder();
+                var hsb = new StringBuilder();
                 foreach (byte b in hash)
                     hsb.Append(b.ToString("x2"));
                 Debug.Assert(hsb.ToString() == hashed);
@@ -503,16 +499,10 @@ namespace SHA_2
 
         // equivalent of C++ _rotr
         // 32-bit version
-        private static uint RightRotate(uint original, int bits)
-        {
-            return (original >> bits) | (original << (32 - bits));
-        }
+        private static uint RightRotate(uint original, int bits) => (original >> bits) | (original << (32 - bits));
 
         // 64-bit version
-        private static ulong RightRotate(ulong original, int bits)
-        {
-            return (original >> bits) | (original << (64 - bits));
-        }
+        private static ulong RightRotate(ulong original, int bits) => (original >> bits) | (original << (64 - bits));
 
         /*
         // equivalent of C++ _rotl

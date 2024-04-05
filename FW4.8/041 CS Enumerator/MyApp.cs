@@ -6,12 +6,13 @@
 
 using System;
 using System.Collections;
+using System.Linq;
 
 internal class MyApp
 {
     public static void Main()
     {
-        ThreeIntegers1 t1 = new ThreeIntegers1(11, 12, 13);
+        var t1 = new ThreeIntegers1(11, 12, 13);
 
         // Accès simple via foreach
         foreach (int i in t1)
@@ -23,7 +24,7 @@ internal class MyApp
             Console.WriteLine(e1.Current.ToString());
         Console.WriteLine();
 
-        ThreeIntegers2 t2 = new ThreeIntegers2(21, 22, 23);
+        var t2 = new ThreeIntegers2(21, 22, 23);
 
         // Accès simple via foreach
         foreach (int i in t2)
@@ -35,17 +36,17 @@ internal class MyApp
             Console.WriteLine(e2.Key.ToString() + " -> " + e2.Value);
         Console.WriteLine();
 
-        ThreeIntegers3 t3 = new ThreeIntegers3(31, 32, 33);
+        var t3 = new ThreeIntegers3(31, 32, 33);
 
         // Accès simple via foreach
         foreach (int i in t3)
             Console.WriteLine(i);
         Console.WriteLine();
 
-        ThreeIntegers4 t4 = new ThreeIntegers4(41, 42, 43);
+        var t4 = new ThreeIntegers4(41, 42, 43);
 
         // Accès simple via foreach
-        foreach (int i in t4)
+        foreach (int i in t4.Cast<int>())
             Console.WriteLine(i);
         Console.WriteLine();
 

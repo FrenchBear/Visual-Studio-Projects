@@ -34,7 +34,7 @@ namespace EssaisILDasm
             // Appel de méthodes virtuelles
             ActionBase(d, 2);
             d.MyBaseAction();
-            MaClasseDeBase b = new MaClasseDeBase(d);
+            var b = new MaClasseDeBase(d);
             b.Action();
             Console.WriteLine();
 
@@ -75,15 +75,12 @@ namespace EssaisILDasm
             b.Action();
         }
 
-        public static void ActionInterface(MonInterface IMI)
+        public static void ActionInterface(IMonInterface IMI)
         {
             IMI.MaMethodeBruyante1(1);
             IMI.MaMethodeBruyante2(1);
         }
 
-        private static void D_Bip(object e, string sMsg)
-        {
-            Console.WriteLine("D_Bip(): {0}", sMsg);
-        }
+        private static void D_Bip(object e, string sMsg) => Console.WriteLine("D_Bip(): {0}", sMsg);
     }
 }

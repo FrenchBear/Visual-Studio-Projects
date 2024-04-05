@@ -24,13 +24,7 @@ internal class ThreeIntegers4 : IEnumerable<int>
         yield return i3;
     }
 
-    public IEnumerator GetEnumerator()
-    {
-        return MyEnumerator();
-    }
+    public IEnumerator GetEnumerator() => MyEnumerator();
 
-    IEnumerator<int> IEnumerable<int>.GetEnumerator()
-    {
-        return MyEnumerator();
-    }
+    IEnumerator<int> IEnumerable<int>.GetEnumerator() => MyEnumerator();
 }

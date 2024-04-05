@@ -6,27 +6,21 @@ using System;
 
 namespace MaBibliotheque
 {
-    public class MaClasseDerivee : MaClasseDeBase, MonInterface
+    public class MaClasseDerivee : MaClasseDeBase, IMonInterface
     {
         private class MaSousClasse
         {
             private readonly int a;
 
-            public MaSousClasse(int a)
-            {
-                this.a = a;
-            }
+            public MaSousClasse(int a) => this.a = a;
 
             public int A
             {
-                get { return a; }
-                set { A = value; }
+                get => a;
+                set => A = value;
             }
 
-            public override string ToString()
-            {
-                return a.ToString();
-            }
+            public override string ToString() => a.ToString();
 
             [Obsolete("Ne plus utiliser !")]
             private void MethodeObsolete()
@@ -50,7 +44,7 @@ namespace MaBibliotheque
         /// Implémentation de MonInterface, membre explicite d'interface
         /// </summary>
         /// <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
-        void MonInterface.MaMethodeBruyante2(int iNbBip)
+        void IMonInterface.MaMethodeBruyante2(int iNbBip)
         {
             for (int i = 0; i < iNbBip; i++)
             {
@@ -62,37 +56,22 @@ namespace MaBibliotheque
         ///   Indexer de base: accès via un indice entier
         /// </summary>
         /// <param name="index">Rang de l'élément à récupérer</param>
-        public string this[int index]
-        {
-            get { return String.Format("this[{0}]", index); }
-        }
+        public string this[int index] => String.Format("this[{0}]", index);
 
-        public string this[string index]
-        {
-            get { return String.Format("this[\"{0}\"]", index); }
-        }
+        public string this[string index] => String.Format("this[\"{0}\"]", index);
 
-        public string this[char index]
-        {
-            get { return String.Format("this['{0}']", index); }
-        }
+        public string this[char index] => String.Format("this['{0}']", index);
 
-        public string this[int x, int y]
-        {
-            get { return String.Format("this[{0},{1}]", x, y); }
-        }
+        public string this[int x, int y] => String.Format("this[{0},{1}]", x, y);
 
-        public string this[int x, string y]
-        {
-            get { return String.Format("this[{0},\"{1}\"]", x, y); }
-        }
+        public string this[int x, string y] => String.Format("this[{0},\"{1}\"]", x, y);
 
         public event GestionnaireDeBip Bip;
 
-        int MonInterface.MaPropriete
+        int IMonInterface.MaPropriete
         {
-            get { return iProp; }
-            set { iProp = value; }
+            get => iProp;
+            set => iProp = value;
         }
 
         // Héritage de MaClasseDeBase
@@ -102,10 +81,7 @@ namespace MaBibliotheque
             base.Action();
         }
 
-        public void MyBaseAction()
-        {
-            base.Action();
-        }
+        public void MyBaseAction() => base.Action();
 
         // Eléments spécifiques à la classe
         private int iProp;
@@ -113,15 +89,9 @@ namespace MaBibliotheque
         protected int age;
         private readonly MaSousClasse sc;
 
-        public MaClasseDerivee()
-        {
-            sc = new MaSousClasse(45);
-        }
+        public MaClasseDerivee() => sc = new MaSousClasse(45);
 
-        static MaClasseDerivee()
-        {
-            Console.WriteLine("Constructeur statique de MaClasseDerivee");
-        }
+        static MaClasseDerivee() => Console.WriteLine("Constructeur statique de MaClasseDerivee");
 
         ~MaClasseDerivee()
         {
@@ -130,8 +100,8 @@ namespace MaBibliotheque
 
         public int Age
         {
-            get { return age; }
-            set { age = value; }
+            get => age;
+            set => age = value;
         }
 
         public void TrucDangereux(int q)
@@ -155,9 +125,6 @@ namespace MaBibliotheque
 
         private static int iCompteurGlobal;
 
-        public static void MaMethodeStatique()
-        {
-            iCompteurGlobal = 0;
-        }
+        public static void MaMethodeStatique() => iCompteurGlobal = 0;
     }
 }

@@ -10,7 +10,7 @@ internal class Program
     private static void Main(string[] args)
     {
         // petit est présent deux fois
-        SortedSet<string> myStringSet = new SortedSet<string>(new string[] { "Il", "était", "un", "petit", "petit", "navire" });
+        var myStringSet = new SortedSet<string>(new string[] { "Il", "était", "un", "petit", "petit", "navire" });
 
         foreach (string s in myStringSet)
         {

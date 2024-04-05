@@ -29,9 +29,7 @@ Public Class frmAfficheImage
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -96,7 +94,7 @@ Public Class frmAfficheImage
     Friend WithEvents miAperçuWindows As ToolStripMenuItem
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmAfficheImage))
+        Dim resources As New ComponentModel.ComponentResourceManager(GetType(frmAfficheImage))
         Me.FolderBrowserDialog1 = New FolderBrowserDialog()
         Me.msMain = New MenuStrip()
         Me.msNavigation = New ToolStripMenuItem()

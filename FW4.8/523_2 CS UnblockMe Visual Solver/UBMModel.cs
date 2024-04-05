@@ -176,7 +176,7 @@ namespace CS523B_UnblockMe_Solver_Visual
 
         public Config Clone()
         {
-            Config c2 = new Config
+            var c2 = new Config
             {
                 Length = Length,
                 Pos = (byte[])Pos.Clone()
@@ -185,10 +185,7 @@ namespace CS523B_UnblockMe_Solver_Visual
         }
 
         // Equivalent of Pos, but packed in a 32-bit integer
-        public int Signature()
-        {
-            return Pos[0] + (Pos[1] << 3) + (Pos[2] << 6) + (Pos[3] << 9) + (Pos[4] << 12) + (Pos[5] << 15) + (Pos[6] << 18) + (Pos[7] << 21) + (Pos[8] << 24); // +(Pos[9] << 27);
-        }
+        public int Signature() => Pos[0] + (Pos[1] << 3) + (Pos[2] << 6) + (Pos[3] << 9) + (Pos[4] << 12) + (Pos[5] << 15) + (Pos[6] << 18) + (Pos[7] << 21) + (Pos[8] << 24); // +(Pos[9] << 27);
 
         // Check the validity of a configuration
         public bool IsValid(Block[] Pieces)

@@ -12,18 +12,12 @@ using System;
 
 internal class MaClasse
 {
-    public virtual void F(int i)
-    {
-        Console.WriteLine("MaClasse.F({0})", i);
-    }
+    public virtual void F(int i) => Console.WriteLine("MaClasse.F({0})", i);
 }
 
 internal class MaDérivée : MaClasse
 {
-    public override void F(int i)
-    {
-        Console.WriteLine("MaDérivée.F({0})", i);
-    }
+    public override void F(int i) => Console.WriteLine("MaDérivée.F({0})", i);
 }
 
 internal delegate void MyDelegate(int x);
@@ -33,9 +27,9 @@ internal class Test
     public static void Main()
     {
         MaClasse o = new MaDérivée();
-        MyDelegate f = new MyDelegate(o.F);
+        var f = new MyDelegate(o.F);
 
-        MyDelegate g = new MyDelegate(Zap);
+        var g = new MyDelegate(Zap);
 
         f(132);
         g(133);
@@ -43,8 +37,5 @@ internal class Test
         Console.ReadLine();
     }
 
-    private static void Zap(int iValeur)
-    {
-        Console.WriteLine("Zap({0})", iValeur);
-    }
+    private static void Zap(int iValeur) => Console.WriteLine("Zap({0})", iValeur);
 }

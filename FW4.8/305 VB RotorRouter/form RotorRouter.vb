@@ -30,8 +30,8 @@ Public Class frmRotorRouter
     Private Sub btnStart_Click(sender As System.Object, e As EventArgs) Handles btnStart.Click
         btnStart.Enabled = False
 
-        Dim picBitmap As Bitmap = New Bitmap(2 * r + 1, 2 * r + 1, PixelFormat.Format24bppRgb)
-        Dim picRescaled As Bitmap = New Bitmap(picScale * (2 * r + 1), picScale * (2 * r + 1), PixelFormat.Format24bppRgb)
+        Dim picBitmap As New Bitmap(2 * r + 1, 2 * r + 1, PixelFormat.Format24bppRgb)
+        Dim picRescaled As New Bitmap(picScale * (2 * r + 1), picScale * (2 * r + 1), PixelFormat.Format24bppRgb)
         Graphics.FromImage(picBitmap).Clear(colBackground)
         pic.Width = picScale * (2 * r + 1)
         pic.Height = picScale * (2 * r + 1)

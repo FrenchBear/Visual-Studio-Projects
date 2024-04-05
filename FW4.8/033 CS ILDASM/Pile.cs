@@ -32,9 +32,6 @@ namespace MaBibliotheque
             }
         }
 
-        public void Empile(object o)
-        {
-            tete = new Noeud(o, tete);
-        }
+        public void Empile(object o) => tete = new Noeud(o, tete);
     }
 }

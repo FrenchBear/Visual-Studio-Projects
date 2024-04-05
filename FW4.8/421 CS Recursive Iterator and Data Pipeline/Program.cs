@@ -23,10 +23,7 @@ namespace CS421
     {
         private Node<T> m_Root;
 
-        public void Add(params T[] items)
-        {
-            Array.ForEach(items, Add);
-        }
+        public void Add(params T[] items) => Array.ForEach(items, Add);
 
         // Return the object itself for data pipelining
         public BinaryTree<T> Add(IEnumerable<T> items)
@@ -35,10 +32,7 @@ namespace CS421
             return this;
         }
 
-        public void Add(T item)
-        {
-            AddTree(ref m_Root, item);
-        }
+        public void Add(T item) => AddTree(ref m_Root, item);
 
         private void AddTree(ref Node<T> Node, T item)
         {
@@ -56,15 +50,9 @@ namespace CS421
                 AddTree(ref Node.LeftNode, item);
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return EnumerateInOrder(m_Root).GetEnumerator();
-        }
+        public IEnumerator<T> GetEnumerator() => EnumerateInOrder(m_Root).GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         private IEnumerable<T> EnumerateInOrder(Node<T> Node)
         {
@@ -85,7 +73,7 @@ namespace CS421
     {
         private static void Main()
         {
-            Random r = new Random();
+            var r = new Random();
             double Rnd() => r.NextDouble(); 
 
             // tests of Array global initialization

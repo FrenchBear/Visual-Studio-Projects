@@ -15,7 +15,7 @@ namespace ExpressionApp
         {
             //Expression<Func<int, int, int>> e2 = (x, y) => (x - y + (x > y ? 1 : -1)) / (x * x * x + 2 * -x * y);
             Expression<Func<int, int, int>> e2 = (x, y) => x + 2 * -y;
-            MyVisitor mv = new MyVisitor();
+            var mv = new MyVisitor();
 
             mv.VisiteExpression(e2);
 
@@ -71,10 +71,7 @@ namespace ExpressionApp
 
         private int s = 0;
 
-        private void PrintLine(string st)
-        {
-            Console.WriteLine(new string(' ', 4 * s) + st);
-        }
+        private void PrintLine(string st) => Console.WriteLine(new string(' ', 4 * s) + st);
 
         protected override MemberMemberBinding VisitMemberMemberBinding(MemberMemberBinding node)
         {

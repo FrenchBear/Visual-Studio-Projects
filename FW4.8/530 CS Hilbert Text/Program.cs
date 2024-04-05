@@ -26,7 +26,7 @@ namespace CS530
             // Row = cell entrance orientation, 0..3 and 4 when there is no actual entrance (1st cell)
             // Column = cell exit orientation, 0..3 and 4 for the last cell
             // In the table xx=invalid combination, otherwise represent a box character (see box dictionary)
-            Blocks[,] io = new Blocks[,] {
+            var io = new Blocks[,] {
                 {Blocks.hz, Blocks.ul, Blocks.xx, Blocks.dl, Blocks.hz},
                 {Blocks.dr, Blocks.vt, Blocks.dl, Blocks.xx, Blocks.vt},
                 {Blocks.xx, Blocks.ur, Blocks.hz, Blocks.dr, Blocks.hz},
@@ -35,7 +35,7 @@ namespace CS530
             };
 
             int side = (int)Math.Pow(2, depth);     // # side of output square grid
-            Blocks[,] tc = new Blocks[side, side];  // Table of cells for output
+            var tc = new Blocks[side, side];  // Table of cells for output
 
             int a = 0;          // Current angular orientation: 0=East, 1=North, 2=West, 3=South
             int en = 4;         // Previous cell entrance, 4=no entrance (1st cell)

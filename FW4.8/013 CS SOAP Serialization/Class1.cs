@@ -22,10 +22,7 @@ internal class TestSer
             this.s = s;
         }
 
-        public override String ToString()
-        {
-            return "i:" + i + ", s:" + s;
-        }
+        public override String ToString() => "i:" + i + ", s:" + s;
     }
 
     public static void Main(string[] args)
@@ -35,7 +32,7 @@ internal class TestSer
         Console.WriteLine("Writing " + objects + " objects to a file stream");
         Stream s = File.Open("testser.xml", FileMode.Create);
         //SoapFormatter f = new SoapFormatter();
-        BinaryFormatter f = new BinaryFormatter();
+        var f = new BinaryFormatter();
         for (int i = 1; i <= objects; i++)
         {
             f.Serialize(s, new MaClasse(i, "abcdddddddddddddddddddddddddddddddd"));

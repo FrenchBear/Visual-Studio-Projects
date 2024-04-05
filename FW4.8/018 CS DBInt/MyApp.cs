@@ -6,13 +6,13 @@
 
 using System;
 
-public struct DBInt
+public readonly struct DBInt
 {
     public static readonly DBInt Null = new DBInt();
     private readonly int value;
     private readonly bool defined;
 
-    public bool IsNull { get { return !defined; } }
+    public bool IsNull => !defined;
 
     // Pas de constructeur sans paramètre car c'est un type struct
     private DBInt(int x)
@@ -27,10 +27,7 @@ public struct DBInt
         return new DBInt(x.value + y.value);
     }
 
-    public static implicit operator DBInt(int x)
-    {
-        return new DBInt(x);
-    }
+    public static implicit operator DBInt(int x) => new DBInt(x);
 
     public static explicit operator int(DBInt x)
     {

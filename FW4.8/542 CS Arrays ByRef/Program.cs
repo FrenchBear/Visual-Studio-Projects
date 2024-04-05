@@ -20,10 +20,7 @@ namespace ConsoleApplication1
             Console.ReadLine();
         }
 
-        private static void Test(int[] a)
-        {
-            a[2] = 12;
-        }
+        private static void Test(int[] a) => a[2] = 12;
     }
 
     internal static class Extensions

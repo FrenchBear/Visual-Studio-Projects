@@ -7,11 +7,6 @@
 // 2017-03-02   PV  Restructure code in a class to test VS2017 live unit testing
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
 
 namespace NewLaby
@@ -40,10 +35,10 @@ namespace NewLaby
         const int right = 1;
         const int bottom = 2;
 
-        private Random rnd = new Random();
+        private readonly Random rnd = new Random();
 
-        private int rows, cols;
-        private int[,] Cells;
+        private readonly int rows, cols;
+        private readonly int[,] Cells;
 
         public Laby(int rows, int cols)
         {

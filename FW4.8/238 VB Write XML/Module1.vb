@@ -27,7 +27,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim xtw As XmlTextWriter = New XmlTextWriter("..\..\TestResults1.xml", System.Text.Encoding.UTF8)
+        Dim xtw As New XmlTextWriter("..\..\TestResults1.xml", System.Text.Encoding.UTF8)
         With xtw
             .Formatting = Formatting.Indented
             .WriteStartDocument()
@@ -39,7 +39,7 @@ Module Module1
             id = tokens(0)
             expected = tokens(6)
 
-            Dim h As Hand = New Hand(
+            Dim h As New Hand(
               New Die(Integer.Parse(tokens(1))),
               New Die(Integer.Parse(tokens(2))),
               New Die(Integer.Parse(tokens(3))),
@@ -64,7 +64,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim xd As XmlDocument = New XmlDocument
+        Dim xd As New XmlDocument
         Dim root As XmlElement = xd.DocumentElement
         Dim xdec As XmlDeclaration = xd.CreateXmlDeclaration("1.0", "utf-8", Nothing)
         xd.InsertBefore(xdec, root)
@@ -78,7 +78,7 @@ Module Module1
             id = tokens(0)
             expected = tokens(6)
 
-            Dim h As Hand = New Hand(
+            Dim h As New Hand(
               New Die(Integer.Parse(tokens(1))),
               New Die(Integer.Parse(tokens(2))),
               New Die(Integer.Parse(tokens(3))),
@@ -112,7 +112,7 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim xtw As XmlTextWriter = New XmlTextWriter("..\..\TestResults3_Intermediate.xml", System.Text.Encoding.UTF8)
+        Dim xtw As New XmlTextWriter("..\..\TestResults3_Intermediate.xml", System.Text.Encoding.UTF8)
         With xtw
             .Formatting = Formatting.Indented
             .WriteStartDocument()
@@ -124,7 +124,7 @@ Module Module1
             id = tokens(0)
             expected = tokens(6)
 
-            Dim h As Hand = New Hand(
+            Dim h As New Hand(
               New Die(Integer.Parse(tokens(1))),
               New Die(Integer.Parse(tokens(2))),
               New Die(Integer.Parse(tokens(3))),
@@ -146,13 +146,13 @@ Module Module1
         xtw.Close()
 
         ' Then transform this Xml file using an Xsl stylesteet
-        Dim xpd As XPath.XPathDocument = New XPath.XPathDocument("..\..\TestResults3_Intermediate.xml")
+        Dim xpd As New XPath.XPathDocument("..\..\TestResults3_Intermediate.xml")
         'Dim xslt As Xsl.XslTransform = New Xsl.XslTransform
         'xslt.Load("..\..\TransformSheet.xsl")
-        Dim xslt2 As Xsl.XslCompiledTransform = New Xsl.XslCompiledTransform()
+        Dim xslt2 As New Xsl.XslCompiledTransform()
         xslt2.Load("..\..\TransformSheet.xsl")
 
-        Dim xtw2 As XmlTextWriter = New XmlTextWriter("..\..\TestResults3.xml", System.Text.Encoding.UTF8) With {
+        Dim xtw2 As New XmlTextWriter("..\..\TestResults3.xml", System.Text.Encoding.UTF8) With {
             .Formatting = Formatting.Indented
         }
         xtw2.WriteStartDocument()
@@ -164,8 +164,8 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim ds As DataSet = New DataSet("TestResults")
-        Dim dt As DataTable = New DataTable("result")
+        Dim ds As New DataSet("TestResults")
+        Dim dt As New DataTable("result")
         With dt.Columns
             .Add("id")
             .Add("input")
@@ -180,7 +180,7 @@ Module Module1
             id = tokens(0)
             expected = tokens(6)
 
-            Dim h As Hand = New Hand(
+            Dim h As New Hand(
               New Die(Integer.Parse(tokens(1))),
               New Die(Integer.Parse(tokens(2))),
               New Die(Integer.Parse(tokens(3))),
@@ -203,26 +203,26 @@ Module Module1
         Dim line, id, expected As String
         Dim tokens() As String
 
-        Dim s As Serialization.XmlSerializer = New Serialization.XmlSerializer(GetType(TestResults))
-        Dim xtw As XmlTextWriter = New XmlTextWriter("..\..\TestResults5.xml", System.Text.Encoding.UTF8) With {
+        Dim s As New Serialization.XmlSerializer(GetType(TestResults))
+        Dim xtw As New XmlTextWriter("..\..\TestResults5.xml", System.Text.Encoding.UTF8) With {
             .Formatting = Formatting.Indented
         }
 
-        Dim testResults As TestResults = New TestResults
+        Dim testResults As New TestResults
 
         For Each line In tsHarness
             tokens = line.Split(":")
             id = tokens(0)
             expected = tokens(6)
 
-            Dim h As Hand = New Hand(
+            Dim h As New Hand(
               New Die(Integer.Parse(tokens(1))),
               New Die(Integer.Parse(tokens(2))),
               New Die(Integer.Parse(tokens(3))),
               New Die(Integer.Parse(tokens(4))),
               New Die(Integer.Parse(tokens(5))))
 
-            Dim r As Result = New Result With {
+            Dim r As New Result With {
                 .id = id,
                 .input = h.ToString,
                 .expected = expected,
@@ -253,7 +253,7 @@ End Class
 Public Class TestResults
 
     <Serialization.XmlElement(ElementName:="result", Type:=GetType(Result))>
-    Public Results As ArrayList = New ArrayList
+    Public Results As New ArrayList
 
 End Class
 
@@ -275,7 +275,7 @@ Class Hand
     End Sub
 
     Public Overrides Function ToString() As String
-        Dim s As Text.StringBuilder = New Text.StringBuilder
+        Dim s As New Text.StringBuilder
         For i As Integer = 0 To 4
             If i > 0 Then s.Append(" ")
             s.Append(tDice(i).ToString)

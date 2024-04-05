@@ -28,9 +28,7 @@ Public Class Form1
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -110,7 +108,7 @@ Public Class Form1
         If isFromFile Then
             ' Read words from c:\radoteur.txt
             tsWords = New List(Of String)()
-            Using sr As StreamReader = New StreamReader("..\..\prénoms_féminins.txt")
+            Using sr As New StreamReader("..\..\prénoms_féminins.txt")
                 Do Until sr.EndOfStream
                     Dim sLine As String = sr.ReadLine.ToLowerInvariant
                     For p As Integer = Len(sLine) - 1 To 0 Step -1

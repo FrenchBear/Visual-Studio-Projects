@@ -30,9 +30,7 @@ Friend Class frmAPropos
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(Disposing As Boolean)
         If Disposing Then
-            If components IsNot Nothing Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(Disposing)
     End Sub
@@ -53,7 +51,7 @@ Friend Class frmAPropos
     'Ne pas le modifier à l'aide de l'éditeur de code.
     <DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmAPropos))
+        Dim resources As New ComponentModel.ComponentResourceManager(GetType(frmAPropos))
         Me.ToolTip1 = New ToolTip(Me.components)
         Me.btnOK = New Button()
         Me.Image1 = New PictureBox()

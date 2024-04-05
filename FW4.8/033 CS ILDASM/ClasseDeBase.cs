@@ -13,28 +13,19 @@ namespace MaBibliotheque
     {
         private int iMembreDeBase;
 
-        public override void Action()
-        {
-            Console.WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", iMembreDeBase);
-        }
+        public override void Action() => Console.WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", iMembreDeBase);
 
         public int MembreDeBase
         {
-            get { return iMembreDeBase; }
-            set { iMembreDeBase = value; }
+            get => iMembreDeBase;
+            set => iMembreDeBase = value;
         }
 
         // Constructeur par défaut
-        public MaClasseDeBase()
-        {
-            iMembreDeBase = 0;
-        }
+        public MaClasseDeBase() => iMembreDeBase = 0;
 
         // Constructeur copie
-        public MaClasseDeBase(MaClasseDeBase b0)
-        {
-            iMembreDeBase = b0.iMembreDeBase;
-        }
+        public MaClasseDeBase(MaClasseDeBase b0) => iMembreDeBase = b0.iMembreDeBase;
 
         // Destructeur
         ~MaClasseDeBase()

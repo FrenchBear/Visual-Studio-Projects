@@ -49,7 +49,7 @@ namespace Ed850
             if (!z) return;
 
             // Configure open file dialog box
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
+            var dlg = new Microsoft.Win32.OpenFileDialog
             {
                 FileName = "", // Default file name
                 DefaultExt = ".bat", // Default file extension
@@ -64,7 +64,7 @@ namespace Ed850
             {
                 try
                 {
-                    using (StreamReader sr = new StreamReader(dlg.FileName, Encoding.GetEncoding(850)))
+                    using (var sr = new StreamReader(dlg.FileName, Encoding.GetEncoding(850)))
                     {
                         MyTextBox.Text = sr.ReadToEnd();
                         IsDirty = false;
@@ -84,20 +84,11 @@ namespace Ed850
             aw.ShowDialog();
         }
 
-        private void CloseCanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
+        private void CloseCanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = true;
 
-        private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            Close();
-        }
+        private void CloseExecuted(object sender, ExecutedRoutedEventArgs e) => Close();
 
-        private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            IsDirty = true;
-        }
+        private void AnyTextBox_TextChanged(object sender, TextChangedEventArgs e) => IsDirty = true;
 
         private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -107,7 +98,7 @@ namespace Ed850
             {
                 try
                 {
-                    using (StreamWriter sw = new StreamWriter(b.FileName, false, Encoding.GetEncoding(850)))
+                    using (var sw = new StreamWriter(b.FileName, false, Encoding.GetEncoding(850)))
                     {
                         sw.Write(MyTextBox.Text);
                         IsDirty = false;
@@ -123,7 +114,7 @@ namespace Ed850
         private void SaveAsExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             // Configure save file dialog box
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog
+            var dlg = new Microsoft.Win32.SaveFileDialog
             {
                 FileName = "", // Default file name
                 DefaultExt = ".bat", // Default file extension
@@ -166,16 +157,13 @@ namespace Ed850
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private void NotifyPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private string _FileName;
 
         public string FileName
         {
-            get { return _FileName; }
+            get => _FileName;
             set
             {
                 if (_FileName != value)

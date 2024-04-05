@@ -20,10 +20,7 @@ namespace RI3
         // INotifyPropertyChanged interface
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public void NotifyPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         // Commands public interface
         public ICommand GenerateCommand { get; private set; }
@@ -81,11 +78,8 @@ namespace RI3
             }
         }
 
-        private bool CanGenerate(object parameter)
-        {
-            return SourceFolder != null && SourceFolder != "" && TargetFolder != null && TargetFolder != "" &&
+        private bool CanGenerate(object parameter) => SourceFolder != null && SourceFolder != "" && TargetFolder != null && TargetFolder != "" &&
                    SourceFolder != TargetFolder && IsValid(window);
-        }
 
         // Validate all dependency objects in a window, from http://msdn.microsoft.com/en-us/library/aa969773.aspx
         private bool IsValid(DependencyObject node)
@@ -168,7 +162,7 @@ namespace RI3
 
         public string GenerateButtonCaption
         {
-            get { return generateButtonCaption; }
+            get => generateButtonCaption;
             set
             {
                 if (value != generateButtonCaption)
@@ -181,7 +175,7 @@ namespace RI3
 
         public string SourceFolder
         {
-            get { return model.SourceFolder; }
+            get => model.SourceFolder;
             set
             {
                 if (value != model.SourceFolder)
@@ -194,7 +188,7 @@ namespace RI3
 
         public string TargetFolder
         {
-            get { return model.TargetFolder; }
+            get => model.TargetFolder;
             set
             {
                 if (value != model.TargetFolder)
@@ -207,7 +201,7 @@ namespace RI3
 
         public int LargeSideSize
         {
-            get { return model.LargeSideSize; }
+            get => model.LargeSideSize;
             set
             {
                 if (value != model.LargeSideSize)
@@ -220,7 +214,7 @@ namespace RI3
 
         public int JpegQuality
         {
-            get { return model.JpegQuality; }
+            get => model.JpegQuality;
             set
             {
                 if (value != model.JpegQuality)
@@ -235,7 +229,7 @@ namespace RI3
 
         public double GenerateProgressValue
         {
-            get { return generateProgressValue; }
+            get => generateProgressValue;
             set
             {
                 if (value != generateProgressValue)
@@ -250,7 +244,7 @@ namespace RI3
 
         public string GenerateProgressText
         {
-            get { return generateProgressText; }
+            get => generateProgressText;
             set
             {
                 if (value != generateProgressText)
@@ -263,22 +257,13 @@ namespace RI3
 
         private readonly ObservableCollection<string> tracesList = new ObservableCollection<string>();
 
-        public ObservableCollection<string> TracesList
-        {
-            get
-            {
-                return tracesList;
-            }
-        }
+        public ObservableCollection<string> TracesList => tracesList;
 
         private int traceSelectedIndex;
 
         public int TraceSelectedIndex
         {
-            get
-            {
-                return traceSelectedIndex;
-            }
+            get => traceSelectedIndex;
             set
             {
                 if (value != traceSelectedIndex)
@@ -291,13 +276,7 @@ namespace RI3
 
         // IDataErrorInfo
         // Gets an error message indicating what is wrong with this object.
-        public string Error
-        {
-            get
-            {
-                return this["SourceFolder"] + this["TargetFolder"] + this["LargeSideSize"] + this["JpegQuality"];
-            }
-        }
+        public string Error => this["SourceFolder"] + this["TargetFolder"] + this["LargeSideSize"] + this["JpegQuality"];
 
         // Gets the error (if any) with the specified column name.
         public string this[string columnName]
@@ -336,12 +315,10 @@ namespace RI3
         private static readonly Action EmptyDelegate = delegate () { };
 
         // Extension method to force the refresh of a UIElement
-        public static void Refresh(this UIElement uiElement)
-        {
+        public static void Refresh(this UIElement uiElement) =>
             // By calling Dispatcher.Invoke, the code essentially asks the system to execute all operations that are Render or higher priority,
             // thus the control will then render itself (drawing the new content).  Afterwards, it will then execute the provided delegate,
             // which is our empty method.
             uiElement.Dispatcher.Invoke(DispatcherPriority.Render, EmptyDelegate);
-        }
     }
 }

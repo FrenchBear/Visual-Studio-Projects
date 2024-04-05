@@ -23,10 +23,7 @@ public class MyMath
         return v * (bsup - binf) / PAS;
     }
 
-    public static double Carré(double x)
-    {
-        return x * x;
-    }
+    public static double Carré(double x) => x * x;
 }
 
 public class MyApp
@@ -40,12 +37,7 @@ public class MyApp
         }
     }
 
-    private static void Swap(ref object x, ref object y)
-    {
-        object temp = x;
-        x = y;
-        y = temp;
-    }
+    private static void Swap(ref object x, ref object y) => (y, x) = (x, y);
 
     public static void Main()
     {
@@ -67,7 +59,7 @@ public class MyApp
 
         Console.WriteLine("a={0}, b={1}", a, b);
 
-        Pile p = new Pile();
+        var p = new Pile();
         p.Empile(1);
         p.Empile(2);
         p.Empile(3);

@@ -16,10 +16,7 @@ namespace NSFile
     /// </summary>
     internal class ClsFile
     {
-        private static bool IsAscii(byte c)
-        {
-            return c >= 1 && c < 127;
-        }
+        private static bool IsAscii(byte c) => c >= 1 && c < 127;
 
         /// <summary>
         /// The main entry point for the application.
@@ -39,8 +36,8 @@ namespace NSFile
                 sFilename = System.IO.Path.GetFileName(s);
                 bRename = false;
 
-                using (FileStream fs = new FileStream(s, FileMode.Open, FileAccess.Read))
-                using (BinaryReader br = new BinaryReader(fs))
+                using (var fs = new FileStream(s, FileMode.Open, FileAccess.Read))
+                using (var br = new BinaryReader(fs))
                 {
                     byte[] tbBuffer;
                     int l = (int)fs.Length;

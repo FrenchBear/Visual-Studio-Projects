@@ -1,6 +1,6 @@
 ' 2012-02-25	PV  VS2010
 
-Public Class frmTest
+Public Class FrmTest
 
     Private Sub frmTest_Load(sender As System.Object, e As EventArgs) Handles MyBase.Load
         lvNewDocuments.Items.Add(New ListViewItemDoc("C:\Pictures\Titus\Photo 039.jpg"))

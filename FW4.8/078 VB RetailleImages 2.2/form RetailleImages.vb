@@ -38,9 +38,7 @@ Public Class frmVignettes
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -70,7 +68,7 @@ Public Class frmVignettes
     Friend WithEvents Label2 As Label
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(frmVignettes))
+        Dim resources As New ComponentModel.ComponentResourceManager(GetType(frmVignettes))
         Me.btnGénère = New Button
         Me.lstTrace = New ListBox
         Me.lblSource = New Label
@@ -385,7 +383,7 @@ Public Class frmVignettes
         imgOutput = New Bitmap(imgSource, iNewWidth, iNewHeight)
 
         ' On contrôle la qualité
-        Dim eps As EncoderParameters = New EncoderParameters(1)
+        Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(txtQualité.Text))
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
 

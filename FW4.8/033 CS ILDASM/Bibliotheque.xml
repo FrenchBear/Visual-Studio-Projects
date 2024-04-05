@@ -10,7 +10,7 @@
             </summary>
             <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
         </member>
-        <member name="M:MaBibliotheque.MaClasseDerivee.MaBibliotheque#MonInterface#MaMethodeBruyante2(System.Int32)">
+        <member name="M:MaBibliotheque.MaClasseDerivee.MaBibliotheque#IMonInterface#MaMethodeBruyante2(System.Int32)">
             <summary>
             Implémentation de MonInterface, membre explicite d'interface
             </summary>

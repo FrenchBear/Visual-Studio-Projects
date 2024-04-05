@@ -24,10 +24,7 @@ namespace RI3
         }
 
         // Quick app exit, bypassing ViewModel
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        private void QuitButton_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
 
         // Make sure selected item is visible
         // Since it can be considered as a view-only issue, it's Ok to have code behind

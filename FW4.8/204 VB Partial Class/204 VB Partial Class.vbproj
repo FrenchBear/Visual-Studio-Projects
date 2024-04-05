@@ -92,6 +92,7 @@
     <Import Include="System.Diagnostics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="Module1.vb">
       <SubType>Code</SubType>
     </Compile>

@@ -1,7 +1,7 @@
 ' 240 VB Lift
 ' 2012-02-25	PV  VS2010
 
-Public Class ucCarButtons
+Public Class UCCarButtons
     Private ReadOnly m_iIndex As Integer
 
     Public ReadOnly Property iIndex() As Integer

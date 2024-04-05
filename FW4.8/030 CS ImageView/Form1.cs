@@ -9,10 +9,7 @@ using System.Windows.Forms;
 public class StartUp
 {
     [STAThread]
-    private static void Main()
-    {
-        Application.Run(new MyForm());
-    }
+    private static void Main() => Application.Run(new MyForm());
 }
 
 public class MyForm : Form
@@ -28,7 +25,7 @@ public class MyForm : Form
         Text = "Image Viewver";
         ClientSize = new Size(640, 480);
 
-        MainMenu menu = new MainMenu();
+        var menu = new MainMenu();
         MenuItem item = menu.MenuItems.Add("&Options");
 
         item.Popup += new EventHandler(OnPopupOptionsMenu);
@@ -50,7 +47,7 @@ public class MyForm : Form
 
     private void OnOpenImage(object sender, EventArgs e)
     {
-        OpenFileDialog ofd = new OpenFileDialog
+        var ofd = new OpenFileDialog
         {
             Filter = "Images Files (JPEG, GIF, BMP, etc.)|*.jpg;*.jpeg;*.gif;*.tif;*.tiff;*.png|" +
                      "JPEG Files (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
@@ -113,10 +110,7 @@ public class MyForm : Form
         }
     }
 
-    private void OnExit(object sender, EventArgs e)
-    {
-        Close();
-    }
+    private void OnExit(object sender, EventArgs e) => Close();
 
     protected override void OnPaint(PaintEventArgs e)
     {
@@ -130,8 +124,5 @@ public class MyForm : Form
         }
     }
 
-    public static void Main()
-    {
-        Application.Run(new MyForm());
-    }
+    public static void Main() => Application.Run(new MyForm());
 }

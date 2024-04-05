@@ -15,10 +15,7 @@ namespace WpfApplication3
     {
         private readonly Random rnd = new Random();
 
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() => InitializeComponent();
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {

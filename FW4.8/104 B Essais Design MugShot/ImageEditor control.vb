@@ -472,7 +472,7 @@ Public Class ImageEditor
 
     Private Sub tsbSave_Click(sender As System.Object, e As EventArgs) Handles tsbSave.Click
         ' Quqlity Control
-        Dim eps As EncoderParameters = New EncoderParameters(1)
+        Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(80))
         ' Beware: what if edited pic id png, tiff, or bmp ?
         ' ToDo: better handling of file format

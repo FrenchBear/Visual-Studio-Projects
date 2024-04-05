@@ -31,11 +31,8 @@ namespace ExtensionMethods
 {
     public static class MyExtensions
     {
-        public static int WordCount(this String str)
-        {
-            return str.Split(new char[] { ' ', '.', '?' },
+        public static int WordCount(this String str) => str.Split(new char[] { ' ', '.', '?' },
                              StringSplitOptions.RemoveEmptyEntries).Length;
-        }
 
         public static String Concat(this IEnumerable<char> ie)
         {

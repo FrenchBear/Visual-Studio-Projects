@@ -4,7 +4,7 @@
 Public Class Form1
 
     Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
-        Dim c As Chien = New Chien
+        Dim c As New Chien
 
         Dim a As Animal = c
         a.Action(a)

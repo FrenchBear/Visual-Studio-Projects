@@ -18,21 +18,13 @@ namespace CS500
 
         private readonly INavigationContext<UC1, NavigationResult> context;
 
-        public INavigationContext<UC1, NavigationResult> GetNavigationContext()
-        {
-            return context;
-        }
+        public INavigationContext<UC1, NavigationResult> GetNavigationContext() => context;
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+        private void Button_Click_1(object sender, RoutedEventArgs e) =>
             // "Frees" synchronization context in context which is a Task
             context.Continue(NavigationResult.GoForward);
-        }
 
         // Exit button
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            context.Continue(NavigationResult.GoBackward);
-        }
+        private void Button_Click_2(object sender, RoutedEventArgs e) => context.Continue(NavigationResult.GoBackward);
     }
 }

@@ -81,15 +81,9 @@ namespace CS544SkipAtChoice
                 }
             }
 
-            IEnumerator<T> IEnumerable<T>.GetEnumerator()
-            {
-                return MyEnumerator();
-            }
+            IEnumerator<T> IEnumerable<T>.GetEnumerator() => MyEnumerator();
 
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                return MyEnumerator();
-            }
+            IEnumerator IEnumerable.GetEnumerator() => MyEnumerator();
         }
 
         /// <summary>
@@ -100,10 +94,7 @@ namespace CS544SkipAtChoice
         /// <param name="start">Index of first element to skip, starting at 0</param>
         /// <param name="count">Number of elements to skip, default 1</param>
         /// <returns></returns>
-        public static IEnumerable<T> SkipAt<T>(this IEnumerable<T> e, int start, int count = 1)
-        {
-            return new SkipAtEnumerator<T>(e, start, count);
-        }
+        public static IEnumerable<T> SkipAt<T>(this IEnumerable<T> e, int start, int count = 1) => new SkipAtEnumerator<T>(e, start, count);
 
         private static readonly Random rnd = new Random();
 
@@ -113,11 +104,9 @@ namespace CS544SkipAtChoice
         /// <typeparam name="T"></typeparam>
         /// <param name="e">Original enumeration</param>
         /// <returns></returns>
-        public static T Choice1<T>(this IEnumerable<T> e)
-        {
+        public static T Choice1<T>(this IEnumerable<T> e) =>
             // Not efficient method, one pass to count, one pass to retrieve element
-            return e.ElementAt(rnd.Next(e.Count()));
-        }
+            e.ElementAt(rnd.Next(e.Count()));
 
         /// <summary>
         /// Returns a random element from the enumeration, version 2
@@ -153,7 +142,7 @@ namespace CS544SkipAtChoice
         {
             // Variant of Choice2 using Aggregate
             int count = 0;
-            return e.Aggregate((T aggregated, T item) => { return (rnd.NextDouble() < 1.0 / ++count) ? item : aggregated; });
+            return e.Aggregate((T aggregated, T item) => (rnd.NextDouble() < 1.0 / ++count) ? item : aggregated);
         }
 
         /// <summary>
@@ -161,10 +150,7 @@ namespace CS544SkipAtChoice
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="e">Original enumeration</param>
-        public static void WriteLine<T>(this IEnumerable<T> e)
-        {
-            Console.WriteLine(e.AsString());
-        }
+        public static void WriteLine<T>(this IEnumerable<T> e) => Console.WriteLine(e.AsString());
 
         /// <summary>
         /// Returns a string version of the enumeration
@@ -199,7 +185,7 @@ namespace CS544SkipAtChoice
         /// <returns>A shuffled version of source</returns>
         public static IEnumerable<T> Randomize<T>(this IEnumerable<T> source)
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             return source.OrderBy<T, int>((item) => rnd.Next());
         }
 
@@ -215,9 +201,7 @@ namespace CS544SkipAtChoice
             {
                 n--;
                 int k = ThreadSafeRandom.ThisThreadsRandom.Next(n + 1);
-                T value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                (list[n], list[k]) = (list[k], list[n]);
             }
         }
 
@@ -251,15 +235,9 @@ namespace CS544SkipAtChoice
                 }
             }
 
-            IEnumerator<T> IEnumerable<T>.GetEnumerator()
-            {
-                return MyEnumerator();
-            }
+            IEnumerator<T> IEnumerable<T>.GetEnumerator() => MyEnumerator();
 
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                return MyEnumerator();
-            }
+            IEnumerator IEnumerable.GetEnumerator() => MyEnumerator();
         }
 
         /// <summary>
@@ -270,10 +248,7 @@ namespace CS544SkipAtChoice
         /// <param name="start">Index of first element to return, starting at 0</param>
         /// <param name="count">Number of elements to return</param>
         /// <returns></returns>
-        public static IEnumerable<T> GetRange<T>(this IEnumerable<T> e, int start, int count)
-        {
-            return new GetRangeEnumerator<T>(e, start, count);
-        }
+        public static IEnumerable<T> GetRange<T>(this IEnumerable<T> e, int start, int count) => new GetRangeEnumerator<T>(e, start, count);
     }
 
     /// <summary>
@@ -285,9 +260,6 @@ namespace CS544SkipAtChoice
         [ThreadStatic]
         private static Random Local;
 
-        public static Random ThisThreadsRandom
-        {
-            get { return Local ?? (Local = new Random(unchecked(Environment.TickCount * 31 + Thread.CurrentThread.ManagedThreadId))); }
-        }
+        public static Random ThisThreadsRandom => Local ?? (Local = new Random(unchecked(Environment.TickCount * 31 + Thread.CurrentThread.ManagedThreadId)));
     }
 }

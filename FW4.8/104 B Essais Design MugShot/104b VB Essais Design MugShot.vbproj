@@ -101,6 +101,7 @@
     <Compile Include="GenericEditor class.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="ImageEditor control.Designer.vb">
       <DependentUpon>ImageEditor control.vb</DependentUpon>
     </Compile>

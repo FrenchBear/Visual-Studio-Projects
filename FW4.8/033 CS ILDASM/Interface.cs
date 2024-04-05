@@ -4,7 +4,7 @@ namespace MaBibliotheque
 {
     public delegate void GestionnaireDeBip(object sender, string sMsg);
 
-    public interface MonInterface
+    public interface IMonInterface
     {
         void MaMethodeBruyante1(int x);			// Méthode
 

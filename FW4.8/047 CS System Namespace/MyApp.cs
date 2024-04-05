@@ -70,7 +70,7 @@ internal class MyApp
         }
 
         writer.WriteLine("<HTML><TABLE BORDER=1 CELLSPACING=0 CELLPADDING=0><TR><TH></TH>");
-        SortedList slMain = new SortedList(dicMain);
+        var slMain = new SortedList(dicMain);
         IDictionaryEnumerator enuMain = slMain.GetEnumerator();
         while (enuMain.MoveNext())
             writer.Write("<TH>{0}</TH>", enuMain.Key.ToString());
@@ -85,7 +85,7 @@ internal class MyApp
             while (enuMain.MoveNext())
             {
                 writer.WriteLine("<TD>");
-                Hashtable d = (Hashtable)enuMain.Value;
+                var d = (Hashtable)enuMain.Value;
                 if (d.Contains(ns))
                 {
                     /*
@@ -113,7 +113,7 @@ internal class MyApp
         dic = new Hashtable();
         dicMain.Add(sNomAssembly, dic);
 
-        Assembly a = System.Reflection.Assembly.LoadFrom(@"C:\Windows\Microsoft.NET\Framework\v2.0.50727\" + sNomAssembly + ".dll");
+        var a = System.Reflection.Assembly.LoadFrom(@"C:\Windows\Microsoft.NET\Framework\v2.0.50727\" + sNomAssembly + ".dll");
 
         foreach (Module m in a.GetModules())
             AnalyseModule(m);

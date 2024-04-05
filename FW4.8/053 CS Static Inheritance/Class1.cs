@@ -24,10 +24,7 @@ internal class Chien : Animal
 {
     public string sRace;
 
-    public Chien(string s)
-    {
-        sRace = s;
-    }
+    public Chien(string s) => sRace = s;
 }
 
 internal class AppTest

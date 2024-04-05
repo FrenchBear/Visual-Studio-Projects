@@ -25,9 +25,7 @@ Public Class frmTest
     'Form overrides dispose to clean up the component list.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -103,7 +101,7 @@ Public Class frmTest
 
     Private Sub btnDelegate_Click(sender As System.Object, e As EventArgs) Handles btnDelegate.Click
         Dim p1 As Procédure = AddressOf Proc1
-        Dim p2 As Procédure = New Procédure(AddressOf Proc2)
+        Dim p2 As New Procédure(AddressOf Proc2)
 
         Trace("BeginInvoke Proc1")
         Dim ar1 As IAsyncResult = p1.BeginInvoke(Nothing, Nothing)

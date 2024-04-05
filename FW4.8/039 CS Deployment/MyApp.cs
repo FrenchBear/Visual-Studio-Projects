@@ -8,7 +8,7 @@ internal class MyApp
 {
     static public void Main()
     {
-        MyLib m = new MyLib();
+        var m = new MyLib();
         m.Test();
         Console.ReadLine();
     }

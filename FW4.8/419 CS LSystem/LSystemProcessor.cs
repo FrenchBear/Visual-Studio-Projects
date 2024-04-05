@@ -17,7 +17,7 @@ namespace CS419
             string s = axiom;
             for (int i = 0; i < depth; i++)
             {
-                StringBuilder s2 = new StringBuilder();
+                var s2 = new StringBuilder();
                 foreach (char c in s)
                     if (rules.ContainsKey(c))
                         s2.Append(rules[c]);

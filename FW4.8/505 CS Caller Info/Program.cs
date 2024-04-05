@@ -23,10 +23,7 @@ namespace _505_CS_Caller_Info
             Console.ReadLine();
         }
 
-        private static void InternalFunction()
-        {
-            TracedFunction(2);
-        }
+        private static void InternalFunction() => TracedFunction(2);
 
         public static void TracedFunction(int i,
                                           [CallerMemberName] string memberName = "",
@@ -48,7 +45,7 @@ namespace _505_CS_Caller_Info
 
         public string UserName
         {
-            get { return _userName; }
+            get => _userName;
             set
             {
                 _userName = value;
@@ -56,19 +53,13 @@ namespace _505_CS_Caller_Info
             }
         }
 
-        protected void RaisePropertyChanged([CallerMemberName] string member = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
-        }
+        protected void RaisePropertyChanged([CallerMemberName] string member = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(member));
 
         // ========================================
     }
 
     public class InternalObject
     {
-        public InternalObject()
-        {
-            Program.TracedFunction(3);
-        }
+        public InternalObject() => Program.TracedFunction(3);
     }
 }

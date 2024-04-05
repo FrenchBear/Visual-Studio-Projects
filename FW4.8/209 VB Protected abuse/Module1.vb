@@ -5,7 +5,7 @@
 Module Module1
 
     Sub Main()
-        Dim x As C1 = New C1
+        Dim x As New C1
         CType(x, C2).Pp = 3         ' Can't cast to a more derived type of course!
     End Sub
 

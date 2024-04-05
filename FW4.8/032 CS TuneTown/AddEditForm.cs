@@ -6,20 +6,20 @@ public class AddEditForm : System.Windows.Forms.Form
 {
     public string Title
     {
-        get { return TitleBox.Text; }
-        set { TitleBox.Text = value; }
+        get => TitleBox.Text;
+        set => TitleBox.Text = value;
     }
 
     public string Artist
     {
-        get { return ArtistBox.Text; }
-        set { ArtistBox.Text = value; }
+        get => ArtistBox.Text;
+        set => ArtistBox.Text = value;
     }
 
     public string Comment
     {
-        get { return CommentBox.Text; }
-        set { CommentBox.Text = value; }
+        get => CommentBox.Text;
+        set => CommentBox.Text = value;
     }
 
     private System.ComponentModel.Container components;
@@ -32,10 +32,7 @@ public class AddEditForm : System.Windows.Forms.Form
     private System.Windows.Forms.Label ArtistLabel;
     private System.Windows.Forms.Label TitleLabel;
 
-    public AddEditForm()
-    {
-        InitializeComponent();
-    }
+    public AddEditForm() => InitializeComponent();
 
     /// <summary>
     ///    Required method for Designer support - do not modify

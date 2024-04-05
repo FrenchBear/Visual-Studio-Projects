@@ -18,10 +18,6 @@ public class Hello1 : Form
     }
 
     /// Constructeur de la fenêtre
-    public Hello1()
-    {
-        //    InitializeComponent();
-
+    public Hello1() =>
         Text = "Hello 1";
-    }
 }

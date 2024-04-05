@@ -33,15 +33,9 @@ namespace BigDecimalNS
             return d;
         }
 
-        public BigDecimal(BigInteger bi)
-        {
-            n = bi * ScaleFactor;
-        }
+        public BigDecimal(BigInteger bi) => n = bi * ScaleFactor;
 
-        public BigDecimal(BigDecimal bn)
-        {
-            n = bn.n;
-        }
+        public BigDecimal(BigDecimal bn) => n = bn.n;
 
         static public BigDecimal operator +(BigDecimal b1, BigDecimal b2)
         {
@@ -71,35 +65,17 @@ namespace BigDecimalNS
             return d;
         }
 
-        static public bool operator ==(BigDecimal b1, BigDecimal b2)
-        {
-            return b1.n == b2.n;
-        }
+        static public bool operator ==(BigDecimal b1, BigDecimal b2) => b1.n == b2.n;
 
-        static public bool operator !=(BigDecimal b1, BigDecimal b2)
-        {
-            return b1.n != b2.n;
-        }
+        static public bool operator !=(BigDecimal b1, BigDecimal b2) => b1.n != b2.n;
 
-        static public bool operator >(BigDecimal b1, BigDecimal b2)
-        {
-            return b1.n > b2.n;
-        }
+        static public bool operator >(BigDecimal b1, BigDecimal b2) => b1.n > b2.n;
 
-        static public bool operator >=(BigDecimal b1, BigDecimal b2)
-        {
-            return b1.n >= b2.n;
-        }
+        static public bool operator >=(BigDecimal b1, BigDecimal b2) => b1.n >= b2.n;
 
-        static public bool operator <(BigDecimal b1, BigDecimal b2)
-        {
-            return b1.n < b2.n;
-        }
+        static public bool operator <(BigDecimal b1, BigDecimal b2) => b1.n < b2.n;
 
-        static public bool operator <=(BigDecimal b1, BigDecimal b2)
-        {
-            return b1.n <= b2.n;
-        }
+        static public bool operator <=(BigDecimal b1, BigDecimal b2) => b1.n <= b2.n;
 
         // Standard string representation
         public override string ToString()
@@ -110,7 +86,7 @@ namespace BigDecimalNS
                 sb.Append(BigInteger.Divide(BigInteger.Abs(n), ScaleFactor).ToString());
             else
                 sb.Append('0');
-            BigInteger d = BigInteger.Remainder(BigInteger.Abs(n), ScaleFactor);
+            var d = BigInteger.Remainder(BigInteger.Abs(n), ScaleFactor);
             if (d != 0)
             {
                 sb.Append('.');
@@ -127,16 +103,13 @@ namespace BigDecimalNS
             //Check for null and compare run-time types.
             if (obj == null || GetType() != obj.GetType()) return false;
 
-            BigDecimal bd = (BigDecimal)obj;
+            var bd = (BigDecimal)obj;
             return n == bd.n;
         }
 
         // For free!
         // But Resharper indicates a warning: Non-readonly field referenced...
-        public override int GetHashCode()
-        {
-            return n.GetHashCode();
-        }
+        public override int GetHashCode() => n.GetHashCode();
 
         // For IComparable interface
         public int CompareTo(object obj)
@@ -145,7 +118,7 @@ namespace BigDecimalNS
 
             try
             {
-                BigDecimal bd = (BigDecimal)obj;
+                var bd = (BigDecimal)obj;
                 return CompareTo(bd);
             }
             catch (Exception)
@@ -163,9 +136,6 @@ namespace BigDecimalNS
         */
 
         // implicit interface IComparable<BigDecimal> implementation
-        public int CompareTo(BigDecimal other)
-        {
-            return n.CompareTo(other.n);
-        }
+        public int CompareTo(BigDecimal other) => n.CompareTo(other.n);
     }
 }

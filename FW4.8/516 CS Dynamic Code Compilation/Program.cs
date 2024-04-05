@@ -4,7 +4,6 @@
 // http://stackoverflow.com/questions/826398/is-it-possible-to-dynamically-compile-and-execute-c-sharp-code-fragments
 // 2013-09-15   PV
 
-using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -17,7 +16,7 @@ internal class Program
     {
         // v4.0 actually means 4.5, see http://stackoverflow.com/questions/13253967/how-to-target-net-4-5-with-csharpcodeprovider
 
-        using (CSharpCodeProvider csc = new Microsoft.CSharp.CSharpCodeProvider(new Dictionary<string, string>() { { "CompilerVersion", "v4.0" } }))
+        using (var csc = new Microsoft.CSharp.CSharpCodeProvider(new Dictionary<string, string>() { { "CompilerVersion", "v4.0" } }))
         {
             string source = @"using System.Linq;
             public class Program {

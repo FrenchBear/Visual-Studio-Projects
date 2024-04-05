@@ -39,7 +39,7 @@ internal class MaClasse
 
     private static void TestInterface()
     {
-        Cla2 C2 = new Cla2();
+        var C2 = new Cla2();
         Cla1 C1 = C2;
         C1.H();
 
@@ -73,7 +73,7 @@ internal class MaClasse
 internal enum Couleur
 { bleu, blanc, rouge };
 
-internal struct Complex
+internal readonly struct Complex
 { private readonly double x, y; private Complex(double r)
     {
         x = r; y = r;
@@ -88,26 +88,14 @@ internal interface IDeriv : IInter
 
 internal class Cla1
 {
-    public virtual void H()
-    {
-        Console.WriteLine("cla1.H()");
-    }
+    public virtual void H() => Console.WriteLine("cla1.H()");
 }
 
 internal class Cla2 : Cla1, IInter
 {
-    public override void H()
-    {
-        Console.WriteLine("cla2.H()");
-    }
+    public override void H() => Console.WriteLine("cla2.H()");
 
-    public void F()
-    {
-        Console.WriteLine("cla2.F()");
-    }
+    public void F() => Console.WriteLine("cla2.F()");
 
-    void IInter.F()
-    {
-        Console.WriteLine("cla2.inter.F()");
-    }
+    void IInter.F() => Console.WriteLine("cla2.inter.F()");
 }

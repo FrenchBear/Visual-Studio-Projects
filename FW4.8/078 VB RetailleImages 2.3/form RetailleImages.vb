@@ -38,15 +38,13 @@ Public Class frmVignettes
     'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
 
     'Requis par le Concepteur Windows Form
-    Private components As System.ComponentModel.IContainer
+    Private ReadOnly components As System.ComponentModel.IContainer
 
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
@@ -68,7 +66,7 @@ Public Class frmVignettes
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVignettes))
+        Dim resources As New System.ComponentModel.ComponentResourceManager(GetType(frmVignettes))
         Me.btnGénère = New System.Windows.Forms.Button
         Me.lstTrace = New System.Windows.Forms.ListBox
         Me.lblSource = New System.Windows.Forms.Label
@@ -384,7 +382,7 @@ Public Class frmVignettes
         imgOutput = New Bitmap(imgSource, iNewWidth, iNewHeight)
 
         ' On contrôle la qualité
-        Dim eps As EncoderParameters = New EncoderParameters(1)
+        Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(txtQualité.Text))
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
 

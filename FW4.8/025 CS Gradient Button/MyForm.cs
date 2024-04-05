@@ -17,19 +17,13 @@ public class MyForm : System.Windows.Forms.Form
     private GradientButton button2;
     private readonly System.ComponentModel.Container components = null;
 
-    public MyForm()
-    {
-        InitializeComponent();
-    }
+    public MyForm() => InitializeComponent();
 
     protected override void Dispose(bool disposing)
     {
         if (disposing)
         {
-            if (components != null)
-            {
-                components.Dispose();
-            }
+            components?.Dispose();
         }
         base.Dispose(disposing);
     }
@@ -78,22 +72,13 @@ public class MyForm : System.Windows.Forms.Form
     #endregion Windows Form Designer generated code
 
     [STAThread]
-    private static void Main()
-    {
-        Application.Run(new MyForm());
-    }
+    private static void Main() => Application.Run(new MyForm());
 
     private void MyForm_Load(object sender, System.EventArgs e)
     {
     }
 
-    private void button1_Click_1(object sender, System.EventArgs e)
-    {
-        MessageBox.Show("Clic 1 !");
-    }
+    private void button1_Click_1(object sender, System.EventArgs e) => MessageBox.Show("Clic 1 !");
 
-    private void button2_Click(object sender, System.EventArgs e)
-    {
-        MessageBox.Show("Clic 2 !");
-    }
+    private void button2_Click(object sender, System.EventArgs e) => MessageBox.Show("Clic 2 !");
 }

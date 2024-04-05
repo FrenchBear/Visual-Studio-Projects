@@ -54,8 +54,8 @@ namespace ConsoleApplication2
             string txt = string.Empty;
             IntPtr henv = IntPtr.Zero;
             IntPtr hconn = IntPtr.Zero;
-            StringBuilder inString = new StringBuilder(SQL_DRIVER_STR);
-            StringBuilder outString = new StringBuilder(DEFAULT_RESULT_SIZE);
+            var inString = new StringBuilder(SQL_DRIVER_STR);
+            var outString = new StringBuilder(DEFAULT_RESULT_SIZE);
             short inStringLength = (short)inString.Length;
             short lenNeeded = 0;
 

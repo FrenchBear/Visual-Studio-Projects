@@ -14,14 +14,14 @@ internal static class Module1
     public static void Main()
     {
         // Object initializer (with)
-        Complexe z1 = new Complexe
+        var z1 = new Complexe
         {
             real = 2.3,
             imaginary = 3.5
         };
 
         // Collection initializer (from)
-        List<string> ls = new List<string> {
+        var ls = new List<string> {
             "Once",
             "upon",
             "a",
@@ -32,7 +32,7 @@ internal static class Module1
         };
 
         // Both collection initializer and object initializer
-        List<Complexe> lc = new List<Complexe> {
+        var lc = new List<Complexe> {
             new Complexe {
                 real = 0,
                 imaginary = 0
@@ -67,10 +67,7 @@ internal static class Module1
         Console.ReadLine();
     }
 
-    public static void Add(this List<Customer> genericList, int id, string name, OrderCollection orders)
-    {
-        genericList.Add(new Customer(id, name, orders));
-    }
+    public static void Add(this List<Customer> genericList, int id, string name, OrderCollection orders) => genericList.Add(new Customer(id, name, orders));
 }
 
 internal class Complexe
@@ -113,27 +110,15 @@ public class OrderCollection : IEnumerable<Order>
 
     public Order this[int index]
     {
-        get { return items[index]; }
-        set { items[index] = value; }
+        get => items[index];
+        set => items[index] = value;
     }
 
-    public void Add(int id, int customerID, DateTime orderDate)
-    {
-        items.Add(new Order(id, customerID, orderDate));
-    }
+    public void Add(int id, int customerID, DateTime orderDate) => items.Add(new Order(id, customerID, orderDate));
 
-    public IEnumerator<Order> GetEnumerator()
-    {
-        return items.GetEnumerator();
-    }
+    public IEnumerator<Order> GetEnumerator() => items.GetEnumerator();
 
-    public IEnumerator GetEnumerator1()
-    {
-        return GetEnumerator();
-    }
+    public IEnumerator GetEnumerator1() => GetEnumerator();
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator1();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator1();
 }

@@ -9,8 +9,8 @@ Imports System.Text.RegularExpressions
 Class MainWindow
 
     Private Sub OnLoad(sender As System.Object, e As RoutedEventArgs)
-        Dim reEpisodeNum1 As Regex = New Regex("^[0-9]+x[0-9]+$")
-        Dim reEpisodeNum2 As Regex = New Regex("^S([0-9]+)E([0-9]+)$")
+        Dim reEpisodeNum1 As New Regex("^[0-9]+x[0-9]+$")
+        Dim reEpisodeNum2 As New Regex("^S([0-9]+)E([0-9]+)$")
         For Each sFilename As String In System.IO.Directory.EnumerateFiles("C:\Users\Pierre\Downloads\eMule\Incoming")
             Dim sBase As String = System.IO.Path.GetFileNameWithoutExtension(sFilename)
 
@@ -24,7 +24,7 @@ Class MainWindow
             Dim ts() As String = sBase.Split("."c)
             If UBound(ts) <= 2 Then Continue For
 
-            Dim sRes As StringBuilder = New StringBuilder
+            Dim sRes As New StringBuilder
             For Each s In ts
                 If reEpisodeNum1.IsMatch(s) Then
                     s = "- " & s & " -"

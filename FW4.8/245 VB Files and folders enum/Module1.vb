@@ -28,7 +28,7 @@ Module Module1
     Private Sub AnalyzeFolder1(sSource As String)
         Dim t1 As DateTime = DateTime.Now
         Dim ts As TimeSpan
-        Dim dSource As DirectoryInfo = New DirectoryInfo(sSource)
+        Dim dSource As New DirectoryInfo(sSource)
         ts = DateTime.Now - t1
         Console.WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
 
@@ -69,7 +69,7 @@ NextSource:
     ' 1:15 = exactly sum of calling GetFiles and GetFolders
     ' ==> implementation of getFileSystemInfos is simply calling GetFiles and GetFolders, enumerating files twice
     Private Sub AnalyzeFolder2(sSource As String)
-        Dim dSource As DirectoryInfo = New DirectoryInfo(sSource)
+        Dim dSource As New DirectoryInfo(sSource)
         Dim t1 As DateTime = DateTime.Now
         Dim ts As TimeSpan
 

@@ -15,7 +15,7 @@ internal class MyApp
             Console.WriteLine("{0}  {1}", d.Name, d.FullName);
         }
 
-        DirectoryInfo d0 = new DirectoryInfo(@"C:\");
+        var d0 = new DirectoryInfo(@"C:\");
         DirectoryInfo d1 = d0.CreateSubdirectory("Essais de dossiers");
 
         FileStream f0 = File.Create(d1.FullName + @"\f0");

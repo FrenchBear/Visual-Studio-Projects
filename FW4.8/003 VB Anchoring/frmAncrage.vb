@@ -60,7 +60,7 @@ Public Class FormAncrage
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(FormAncrage))
+        Dim resources As New ComponentModel.ComponentResourceManager(GetType(FormAncrage))
         Me.ToolBar1 = New Windows.Forms.ToolBar()
         Me.ToolBarButton2 = New Windows.Forms.ToolBarButton()
         Me.ImageList1 = New Windows.Forms.ImageList(Me.components)

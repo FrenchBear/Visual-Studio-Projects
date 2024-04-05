@@ -42,7 +42,7 @@ Public Class Form1
     'It can be modified using the Windows Form Designer.
     'Do not modify it using the code editor.
     Private Sub InitializeComponent()
-        Dim resources As Resources.ResourceManager = New Resources.ResourceManager(GetType(Form1))
+        Dim resources As New Resources.ResourceManager(GetType(Form1))
         Me.NumericUpDown1 = New Windows.Forms.NumericUpDown()
         Me.btnAperçu = New Windows.Forms.Button()
         Me.PrintPreviewDialog1 = New Windows.Forms.PrintPreviewDialog()

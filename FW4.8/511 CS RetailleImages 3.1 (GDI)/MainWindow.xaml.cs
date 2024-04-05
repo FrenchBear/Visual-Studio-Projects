@@ -68,10 +68,7 @@ namespace RI3
         /// <summary>
         /// This is the Win32 Interop Handle for this Window
         /// </summary>
-        public IntPtr Handle
-        {
-            get { return new WindowInteropHelper(this).Handle; }
-        }
+        public IntPtr Handle => new WindowInteropHelper(this).Handle;
 
         private IntPtr WindowCommandHandler(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
@@ -88,10 +85,7 @@ namespace RI3
         }
 
         // Quick app exit, bypassing ViewModel
-        private void QuitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+        private void QuitButton_Click(object sender, RoutedEventArgs e) => Application.Current.Shutdown();
 
         // Make sure selected item is visible
         // Since it can be considered as a view-only issue, it's Ok to have code behind

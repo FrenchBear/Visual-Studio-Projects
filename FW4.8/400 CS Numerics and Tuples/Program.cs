@@ -5,9 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Numerics;
-using System.Text;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
@@ -19,7 +17,7 @@ internal class Program
         Console.WriteLine(number);
         Console.WriteLine();
 
-        Complex z1 = new Complex(2, 3);
+        var z1 = new Complex(2, 3);
         Console.WriteLine(Complex.Sqrt(z1));
         Console.WriteLine();
 
@@ -31,9 +29,9 @@ internal class Program
         Console.WriteLine();
 
         // Simple test on ReadOnlyCollection actually present since Framework 2.0...
-        List<int> l1 = new List<int> { 1, 2, 3, 4 };
-        ReadOnlyCollection<int> l2 = new ReadOnlyCollection<int>(l1);
-        IList<int> l3 = l2 as IList<int>;
+        var l1 = new List<int> { 1, 2, 3, 4 };
+        var l2 = new ReadOnlyCollection<int>(l1);
+        var l3 = l2 as IList<int>;
         // l3.Add(5);       // Throws a run-time exception "not supported exception": Collection is read-only.
 
         Console.WriteLine();

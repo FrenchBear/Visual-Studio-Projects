@@ -12,7 +12,7 @@ Module Module1
         Dim c1 As Long = QueryPerformanceCounter()
         Dim sOriginal As String = My.Computer.FileSystem.ReadAllText(sFile)
         sOriginal = "CREATE    FUNCTION    [dbo].[toto]()" & vbCrLf & "AS SELECT * FROM T1"
-        Dim sbMasked As Text.StringBuilder = New Text.StringBuilder(sOriginal)
+        Dim sbMasked As New Text.StringBuilder(sOriginal)
         Dim c2 As Long = QueryPerformanceCounter()
 
         ' Mask comments and sttrings
@@ -76,7 +76,7 @@ Module Module1
     End Sub
 
     Private Sub ProcessSQLBlock(sSource As String, sMasked As String)
-        Dim re As Regex = New Regex("(\s|^)CREATE\s+((?<1>P)ROC(EDURE)?|(?<1>F)UNCTION)\s+(\[?[A-Z_][A-Z0-9_\$#@]*\]?\.)?(\[?(?<2>[A-Z_][A-Z0-9_\$#@]*)\]?)(\s|\()", RegexOptions.ExplicitCapture Or RegexOptions.IgnoreCase)
+        Dim re As New Regex("(\s|^)CREATE\s+((?<1>P)ROC(EDURE)?|(?<1>F)UNCTION)\s+(\[?[A-Z_][A-Z0-9_\$#@]*\]?\.)?(\[?(?<2>[A-Z_][A-Z0-9_\$#@]*)\]?)(\s|\()", RegexOptions.ExplicitCapture Or RegexOptions.IgnoreCase)
         Dim m As Match = re.Match(sMasked)
         If m.Success Then
             MsgBox("SQL Block:" & vbCrLf & "<" & sSource & ">" & vbCrLf & "Type: " & m.Groups(1).Value & vbCrLf & "Name: <" & m.Groups(2).Value & ">")

@@ -76,7 +76,7 @@ Public Class GenericEditor
     End Sub
 
     Private Sub InitializeComponent()
-        Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(GenericEditor))
+        Dim resources As New ComponentModel.ComponentResourceManager(GetType(GenericEditor))
         Me.tsGeneric = New ToolStrip
         Me.tsbGenericSave = New ToolStripButton
         Me.tsbGenericRevertToSaved = New ToolStripButton

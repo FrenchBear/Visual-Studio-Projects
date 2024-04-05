@@ -98,6 +98,7 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="ImageTool form.vb">
       <SubType>Form</SubType>
     </Compile>

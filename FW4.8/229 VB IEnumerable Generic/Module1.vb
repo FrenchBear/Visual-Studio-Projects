@@ -4,7 +4,7 @@
 Module Module1
 
     Sub Main()
-        Dim cc As CityCollection = New CityCollection
+        Dim cc As New CityCollection
         For Each city As String In cc
             Console.WriteLine(city)
         Next

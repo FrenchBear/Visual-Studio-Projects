@@ -79,7 +79,7 @@ namespace CS502
         private Task GetTask1(int w)
         {
             // We create a Task<Task> here, that should be unwrapped so it can be awaited
-            Task<Task> t = new Task<Task>(/* async delegate */ async () =>
+            var t = new Task<Task>(/* async delegate */ async () =>
                 {
                     Debug.WriteLine("A task1 has started, waiting for {0}", w * 1000);
                     await Task.Delay(1000 * w);
@@ -105,16 +105,14 @@ namespace CS502
             return t.Unwrap();
         }
 
-        private Task GetTask3(int w)
-        {
+        private Task GetTask3(int w) =>
             // Task.Run is smart enough to unwrap
-            return Task.Run(async () =>
+            Task.Run(async () =>
             {
                 Debug.WriteLine("A task3 has started, waiting for {0}", w * 1000);
                 await Task.Delay(1000 * w);
                 Debug.WriteLine("A task3 has ended, waited for {0}", w * 1000);
             });
-        }
 
         // And letting the compiler do the job is even easier
         // Doesn't work!
@@ -143,7 +141,7 @@ namespace CS502
             listBox.Items.Clear();
             AddTrace("Start T0, T1 and T2");
 
-            Task[] T = new Task[3];
+            var T = new Task[3];
             T[0] = getTask(1);
             T[1] = getTask(3);
             T[2] = getTask(2);
@@ -200,9 +198,6 @@ namespace CS502
             return tres;
         }
 
-        private async void button5_Click(object sender, RoutedEventArgs e)
-        {
-            Array.ForEach((await ParallelCalcAsync()).ToArray(), d => AddTrace(d.ToString()));
-        }
+        private async void button5_Click(object sender, RoutedEventArgs e) => Array.ForEach((await ParallelCalcAsync()).ToArray(), d => AddTrace(d.ToString()));
     }
 }

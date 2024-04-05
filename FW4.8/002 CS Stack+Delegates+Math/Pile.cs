@@ -33,8 +33,5 @@ public class Pile
         }
     }
 
-    public void Empile(object o)
-    {
-        tête = new Noeud(o, tête);
-    }
+    public void Empile(object o) => tête = new Noeud(o, tête);
 }

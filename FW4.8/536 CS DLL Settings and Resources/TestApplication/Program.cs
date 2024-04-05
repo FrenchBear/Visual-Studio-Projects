@@ -13,7 +13,7 @@ namespace TestApplication
     {
         private static void Main(string[] args)
         {
-            ArithmeticClass a = new ArithmeticClass();
+            var a = new ArithmeticClass();
 
             WriteLine("App appSetting:  " + GetAppSetting("MyAppSetting"));
             WriteLine("App Typed applicationSetting: " + TestApplication.Properties.Settings.Default.MyApplicationSetting);
@@ -30,9 +30,6 @@ namespace TestApplication
         // Add System.Configuration .dll reference and namespace
         // AppSettings only works for simple appSettings element in App.Config, that
         // is much simpler than applicationSettings section
-        private static string GetAppSetting(string settingName)
-        {
-            return ConfigurationManager.AppSettings[settingName];
-        }
+        private static string GetAppSetting(string settingName) => ConfigurationManager.AppSettings[settingName];
     }
 }

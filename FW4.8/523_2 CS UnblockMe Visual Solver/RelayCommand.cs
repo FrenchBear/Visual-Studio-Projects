@@ -25,17 +25,11 @@ namespace CS523B_UnblockMe_Solver_Visual
 
         /* From ICommand */
 
-        public bool CanExecute(object parameter)
-        {
-            return canExecute == null || canExecute((T)parameter);
-        }
+        public bool CanExecute(object parameter) => canExecute == null || canExecute((T)parameter);
 
         /* From ICommand */
 
-        public void Execute(object parameter)
-        {
-            execute?.Invoke((T)parameter);
-        }
+        public void Execute(object parameter) => execute?.Invoke((T)parameter);
 
         // The 'black magic' part: according to help, CommandManager.RequerySuggested Event occurs when the
         // CommandManager """detects conditions that might change the ability of a command to execute"""...
@@ -51,8 +45,8 @@ namespace CS523B_UnblockMe_Solver_Visual
 
         public event EventHandler CanExecuteChanged
         {
-            add { CommandManager.RequerySuggested += value; }
-            remove { CommandManager.RequerySuggested -= value; }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
     }
 }

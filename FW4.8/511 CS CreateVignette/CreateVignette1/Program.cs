@@ -33,12 +33,12 @@ namespace CreateVignette
             string imagePath = Path.Combine(SourceFolder, fileName);
             string vignettePath = Path.Combine(TargetFolder, fileName);
 
-            BitmapImage bi = new BitmapImage(new Uri(imagePath));
+            var bi = new BitmapImage(new Uri(imagePath));
 
             /* Check MetaData, but unfortunately always null, whether it's EXIF
              * properties or Shell extended attributes
              */
-            JpegBitmapDecoder decoder = new JpegBitmapDecoder(new Uri(imagePath), BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
+            var decoder = new JpegBitmapDecoder(new Uri(imagePath), BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
             var v = decoder.Metadata;
             Debugger.Break();
 
@@ -73,12 +73,12 @@ namespace CreateVignette
             }
 
             BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder
+            var encoder = new JpegBitmapEncoder
             {
                 QualityLevel = JpegQuality
             };
             encoder.Frames.Add(BitmapFrame.Create(bi2));
-            using (FileStream output = new FileStream(vignettePath, FileMode.Create))
+            using (var output = new FileStream(vignettePath, FileMode.Create))
             {
                 encoder.Save(output);
             }
@@ -90,7 +90,7 @@ namespace CreateVignette
 
         public static BitmapSource ResizeBitmap(BitmapSource source, int nWidth, int nHeight)
         {
-            TransformedBitmap tbBitmap = new TransformedBitmap(source,
+            var tbBitmap = new TransformedBitmap(source,
                                                       new ScaleTransform((double)nWidth / (double)source.PixelWidth,
                                                                          (double)nHeight / (double)source.PixelHeight,
                                                                          0, 0));

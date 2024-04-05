@@ -15,7 +15,7 @@ namespace Crible
             const int n = 100_000_000;
             //2..100000000: 5761455 primes
             //Elapsed time: 00:00:01.8293659        Higgs (surface pro 3), Release
-            Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
             RunCrible(n);
             sw.Stop();
@@ -29,8 +29,8 @@ namespace Crible
         //    0 1 2 3 4  5  6
         private static void RunCrible(int n)
         {
-            BitArray tb = new BitArray(n / 2 + 1);
-            List<int> li = new List<int>
+            var tb = new BitArray(n / 2 + 1);
+            var li = new List<int>
             {
                 2
             };

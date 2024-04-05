@@ -21,23 +21,11 @@ public class MonAttribut : System.Attribute
 
     public string Info
     {
-        get
-        {
-            return sInfo;
-        }
-        set
-        {
-            sInfo = value;
-        }
+        get => sInfo;
+        set => sInfo = value;
     }
 
-    public int IFlags
-    {
-        get
-        {
-            return iPriv;
-        }
-    }
+    public int IFlags => iPriv;
 }
 
 [MonAttribut(1, Info = "Info de MaClasse1")]
@@ -54,8 +42,8 @@ internal class MyApp
 {
     public static void Main()
     {
-        MaClasse1 o1 = new MaClasse1();
-        MaClasse2 o2 = new MaClasse2();
+        var o1 = new MaClasse1();
+        var o2 = new MaClasse2();
 
         Zap(o1);
         Zap(o2);
@@ -68,7 +56,7 @@ internal class MyApp
         Type t = o.GetType();
         Console.WriteLine(t.Name);
 
-        MonAttribut m = (MonAttribut)t.GetCustomAttributes(typeof(MonAttribut), false)[0];
+        var m = (MonAttribut)t.GetCustomAttributes(typeof(MonAttribut), false)[0];
         Console.WriteLine("{0}, {1}", m.IFlags, m.Info);
     }
 }

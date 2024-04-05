@@ -18,8 +18,8 @@ namespace Mixte20
     {
         public static void Main()
         {
-            D1 d1 = new D1();
-            D2 d2 = new D2();
+            var d1 = new D1();
+            var d2 = new D2();
 
             Console.Write("(pause) ");
             Console.ReadLine();
@@ -28,17 +28,11 @@ namespace Mixte20
 
     internal class D1 : B
     {
-        public D1()
-        {
-            Console.WriteLine("D1.ctor");
-        }
+        public D1() => Console.WriteLine("D1.ctor");
     }
 
     internal class D2 : C
     {
-        public D2()
-        {
-            Console.WriteLine("D2.ctor");
-        }
+        public D2() => Console.WriteLine("D2.ctor");
     }
 }

@@ -14,10 +14,7 @@ namespace CS523B_UnblockMe_Solver_Visual
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void NotifyPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        protected void NotifyPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private readonly UBMModel m;
         private readonly UBMWindow w;
@@ -38,16 +35,11 @@ namespace CS523B_UnblockMe_Solver_Visual
         }
 
         // Solve: Automatic resolution of labyrinth
-        public void SolveExecute(object parameter)
-        {
+        public void SolveExecute(object parameter) =>
             // ToDo
             DrawSolution();
-        }
 
-        public bool CanSolve(object parameter)
-        {
-            return true;
-        }
+        public bool CanSolve(object parameter) => true;
 
         private readonly Brush[] PieceBrushes =
         {
@@ -69,7 +61,7 @@ namespace CS523B_UnblockMe_Solver_Visual
 
             for (int i = 0; i < m.Configuration.Length; i++)
             {
-                Rectangle r = new Rectangle();
+                var r = new Rectangle();
                 if (m.Pieces[i].IsHorizontal)
                 {
                     r.Width = 100 * m.Pieces[i].Length;

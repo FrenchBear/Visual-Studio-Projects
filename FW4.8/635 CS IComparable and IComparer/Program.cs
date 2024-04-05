@@ -15,18 +15,15 @@ namespace CS635
         private static void Main()
         {
             // IComparable interface, implemented by the class being sorted
-            List<Entier1> l1 = new List<Entier1>() { new Entier1(15), new Entier1(2), new Entier1(1), new Entier1(17), new Entier1(3) };
+            var l1 = new List<Entier1>() { new Entier1(15), new Entier1(2), new Entier1(1), new Entier1(17), new Entier1(3) };
             l1.Sort();      // Sort with no argument needs IComparable
             WriteLine("l1: " + l1.ToString<Entier1>());
 
             // Comparison<T> delegate
-            List<Entier> l2 = new List<Entier>() { new Entier(15), new Entier(2), new Entier(1), new Entier(17), new Entier(3) };
+            var l2 = new List<Entier>() { new Entier(15), new Entier(2), new Entier(1), new Entier(17), new Entier(3) };
             l2.Sort((it1, it2) => it1.Value - it2.Value);      // Sort using a Comparison<Entier> delegate provided by a lambda
             WriteLine("l2a: " + l2.ToString<Entier>());
-            int alphaSorting(Entier it1, Entier it2)
-            {
-                return string.Compare(it1.Value.ToString(), it2.Value.ToString(), StringComparison.Ordinal);
-            }
+            int alphaSorting(Entier it1, Entier it2) => string.Compare(it1.Value.ToString(), it2.Value.ToString(), StringComparison.Ordinal);
             Comparison<Entier> alphaSortingDeletage = alphaSorting;
             l2.Sort(alphaSortingDeletage);      // Sort using a traditional Comparison<Entier> delegate
             WriteLine("l2b: " + l2.ToString<Entier>());
@@ -40,7 +37,7 @@ namespace CS635
             // sort order comparer for the type specified by the generic argument.
             // Creates internally a comparer based on type T implementation of IComparable<T>,
             // then on IComparable
-            List<Entier3> l3 = new List<Entier3>() { new Entier3(15), new Entier3(2), new Entier3(1), new Entier3(17), new Entier3(3) };
+            var l3 = new List<Entier3>() { new Entier3(15), new Entier3(2), new Entier3(1), new Entier3(17), new Entier3(3) };
             l3 = l3.OrderBy(e => e).ToList();
             WriteLine("l3a: " + l3.ToString<Entier3>());
             // Now with a specific object implementing IComparer<TKey>to override default
@@ -74,7 +71,7 @@ namespace CS635
             int si1 = string.Compare("sun", "dry");
             // Trick: StringComparison is just an enum, not a static member returning a Comparison!!!
             int si2 = string.Compare("sun", "dry", StringComparison.InvariantCultureIgnoreCase);
-            SortedSet<string> sl1 = new SortedSet<string>(StringComparer.InvariantCultureIgnoreCase);
+            var sl1 = new SortedSet<string>(StringComparer.InvariantCultureIgnoreCase);
 
             Console.WriteLine();
             Console.Write("(Pause)");
@@ -87,17 +84,11 @@ namespace CS635
     {
         private readonly int n;
 
-        public Entier(int value)
-        {
-            n = value;
-        }
+        public Entier(int value) => n = value;
 
         public int Value => n;
 
-        public override string ToString()
-        {
-            return n.ToString();
-        }
+        public override string ToString() => n.ToString();
     }
 
     // IComparable, for old code
@@ -121,10 +112,7 @@ namespace CS635
     // IComparer<T>, to build objects that implements specific sorting
     internal class EntierComparer : IComparer<Entier>
     {
-        public int Compare(Entier x, Entier y)
-        {
-            return x.Value - y.Value;
-        }
+        public int Compare(Entier x, Entier y) => x.Value - y.Value;
     }
 
     // Implements operators >, >=, <, <=
@@ -155,27 +143,21 @@ namespace CS635
         {
         }
 
-        public int CompareTo(Entier3 other)
-        {
-            return Value - other.Value;
-        }
+        public int CompareTo(Entier3 other) => Value - other.Value;
     }
 
     // IComparer<T>, to build objects that implements specific sorting
     // Here Entier3 is sorted using alphabetical sorting
     internal class Entier3Comparer : IComparer<Entier3>
     {
-        public int Compare(Entier3 x, Entier3 y)
-        {
-            return string.Compare(x.Value.ToString(), y.Value.ToString(), StringComparison.Ordinal);
-        }
+        public int Compare(Entier3 x, Entier3 y) => string.Compare(x.Value.ToString(), y.Value.ToString(), StringComparison.Ordinal);
     }
 
     internal static class ExtensionMethods
     {
         public static string ToString<T>(this IEnumerable<T> collection)
         {
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             bool first = true;
             foreach (T item in collection)
                 if (first)

@@ -33,7 +33,7 @@ namespace CS310
             lengths = fruits.Select(selector);
 
             // Display the results.
-            System.Text.StringBuilder output = new System.Text.StringBuilder();
+            var output = new System.Text.StringBuilder();
             foreach (int length in lengths)
                 output.AppendLine(length.ToString());
 
@@ -41,9 +41,6 @@ namespace CS310
             Console.ReadLine();
         }
 
-        private static int LengthOfString(string s)
-        {
-            return s.Length;
-        }
+        private static int LengthOfString(string s) => s.Length;
     }
 }

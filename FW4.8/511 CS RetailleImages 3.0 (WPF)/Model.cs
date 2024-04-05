@@ -39,10 +39,7 @@ namespace RI3
         // ViewModel
         private ViewModel vm;
 
-        public void SetViewModel(ViewModel vm)
-        {
-            this.vm = vm;
-        }
+        public void SetViewModel(ViewModel vm) => this.vm = vm;
 
         // Variables exposed to ViewModel
         public string SourceFolder;
@@ -136,7 +133,7 @@ namespace RI3
             string imagePath = Path.Combine(SourceFolder, fileName);
             string vignettePath = Path.Combine(TargetFolder, fileName);
 
-            BitmapImage bi = new BitmapImage(new Uri(imagePath));
+            var bi = new BitmapImage(new Uri(imagePath));
 
             int newWidth, newHeight;
             if (bi.PixelWidth > bi.PixelHeight)
@@ -170,12 +167,12 @@ namespace RI3
 
             // WPF resizing and save
             BitmapSource bi2 = ResizeBitmap(bi, newWidth, newHeight);
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder
+            var encoder = new JpegBitmapEncoder
             {
                 QualityLevel = JpegQuality
             };
             encoder.Frames.Add(BitmapFrame.Create(bi2));
-            using (FileStream output = new FileStream(vignettePath, FileMode.Create))
+            using (var output = new FileStream(vignettePath, FileMode.Create))
             {
                 encoder.Save(output);
             }
@@ -185,7 +182,7 @@ namespace RI3
 
         public static BitmapSource ResizeBitmap(BitmapSource source, int nWidth, int nHeight)
         {
-            TransformedBitmap tbBitmap = new TransformedBitmap(source,
+            var tbBitmap = new TransformedBitmap(source,
                                                       new ScaleTransform((double)nWidth / (double)source.PixelWidth,
                                                                          (double)nHeight / (double)source.PixelHeight,
                                                                          0, 0));

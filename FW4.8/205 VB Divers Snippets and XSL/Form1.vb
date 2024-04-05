@@ -90,7 +90,7 @@ context As Runtime.Serialization.StreamingContext)
     End Class
 
     Sub toto()
-        Dim x As Class1 = New Class1
+        Dim x As New Class1
         x(1) = "toto"
     End Sub
 

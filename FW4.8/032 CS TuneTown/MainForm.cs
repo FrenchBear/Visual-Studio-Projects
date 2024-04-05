@@ -116,11 +116,11 @@ public class MainForm : System.Windows.Forms.Form
 
     private void OnAddButtonClicked(object sender, EventArgs e)
     {
-        AddEditForm dlg = new AddEditForm();
+        var dlg = new AddEditForm();
 
         if (dlg.ShowDialog() == DialogResult.OK)
         {
-            ListViewItem item = new ListViewItem(new string[] { dlg.Title, dlg.Artist, dlg.Comment });
+            var item = new ListViewItem(new string[] { dlg.Title, dlg.Artist, dlg.Comment });
             TuneView.Items.Add(item);
             item.Focused = true;
         }
@@ -133,7 +133,7 @@ public class MainForm : System.Windows.Forms.Form
             ListViewItem item = TuneView.FocusedItem;
             if (item != null)
             {
-                AddEditForm dlg = new AddEditForm
+                var dlg = new AddEditForm
                 {
                     Title = item.Text,
                     Artist = item.SubItems[1].Text,
@@ -155,15 +155,11 @@ public class MainForm : System.Windows.Forms.Form
         if (TuneView.Items.Count != 0)
         {
             ListViewItem item = TuneView.FocusedItem;
-            if (item != null)
-                item.Remove();
+            item?.Remove();
         }
     }
 
-    private void OnItemDoubleClicked(object sender, EventArgs e)
-    {
-        OnEditButtonClicked(sender, e);
-    }
+    private void OnItemDoubleClicked(object sender, EventArgs e) => OnEditButtonClicked(sender, e);
 
     protected override void OnClosing(CancelEventArgs e)
     {
@@ -215,7 +211,7 @@ public class MainForm : System.Windows.Forms.Form
                     {
                         string s2 = reader.ReadLine();
                         string s3 = reader.ReadLine();
-                        ListViewItem item = new ListViewItem(new String[] { s1, s2, s3 });
+                        var item = new ListViewItem(new String[] { s1, s2, s3 });
                         TuneView.Items.Add(item);
                         item.Focused = true;
                     }
@@ -236,8 +232,5 @@ public class MainForm : System.Windows.Forms.Form
         }
     }
 
-    public static void Main(string[] args)
-    {
-        Application.Run(new MainForm());
-    }
+    public static void Main(string[] args) => Application.Run(new MainForm());
 }

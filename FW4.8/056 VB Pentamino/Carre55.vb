@@ -114,7 +114,7 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
     ' 7: miroir Hz + 270° sens horaire
 
     Public Function Transformation(iT As Integer) As Carre55
-        Dim ct As Carre55 = New Carre55()
+        Dim ct As New Carre55()
         Dim l, c As Integer
 
         For l = 0 To lmax - 1

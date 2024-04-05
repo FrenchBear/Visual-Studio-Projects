@@ -49,12 +49,12 @@ namespace CS419
 
             for (; ; pass++)
             {
-                AngleAndPosition ap = new AngleAndPosition
+                var ap = new AngleAndPosition
                 {
                     SegmentLength = 10.0
                 };     // All fields start at 0.0
 
-                Stack<AngleAndPosition> apStack = new Stack<AngleAndPosition>();
+                var apStack = new Stack<AngleAndPosition>();
 
                 double nx;                          // New X position
                 double ny;                          // New Y position
@@ -76,7 +76,7 @@ namespace CS419
 
                 if (pass == 0) r = 0;
 
-                Stopwatch sw = Stopwatch.StartNew();
+                var sw = Stopwatch.StartNew();
 
                 // Step 1, calculate the extent (pass==0) or draw (pass==1)
                 foreach (char c in _s)

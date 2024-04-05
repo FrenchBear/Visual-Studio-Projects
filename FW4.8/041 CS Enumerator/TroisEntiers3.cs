@@ -20,30 +20,24 @@ internal class ThreeIntegers3 : IDictionary
     }
 
     // Interface IEnumerable (IDictionary implémente cette interface)
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return (IEnumerator)new MonEnumerateur(this);
-    }
+    IEnumerator IEnumerable.GetEnumerator() => (IEnumerator)new MonEnumerateur(this);
 
     //Interface ICollection (IDictionary implémente cette interface)
-    int ICollection.Count { get { return 3; } }
+    int ICollection.Count => 3;
 
-    bool ICollection.IsSynchronized { get { return true; } }
-    object ICollection.SyncRoot { get { return null; } }
+    bool ICollection.IsSynchronized => true;
+    object ICollection.SyncRoot => null;
 
     void ICollection.CopyTo(Array array, int index)
     {
     }
 
     // Interface IDictionary
-    IDictionaryEnumerator IDictionary.GetEnumerator()
-    {
-        return new MonEnumerateur(this);
-    }
+    IDictionaryEnumerator IDictionary.GetEnumerator() => new MonEnumerateur(this);
 
-    object IDictionary.this[object key] { get { return null; } set { } }
-    ICollection IDictionary.Keys { get { return null; } }
-    ICollection IDictionary.Values { get { return null; } }
+    object IDictionary.this[object key] { get => null; set { } }
+    ICollection IDictionary.Keys => null;
+    ICollection IDictionary.Values => null;
 
     void IDictionary.Add(object key, object value)
     {
@@ -53,17 +47,14 @@ internal class ThreeIntegers3 : IDictionary
     {
     }
 
-    bool IDictionary.Contains(object key)
-    {
-        return false;
-    }
+    bool IDictionary.Contains(object key) => false;
 
     void IDictionary.Remove(object key)
     {
     }
 
-    bool IDictionary.IsFixedSize { get { return true; } }
-    bool IDictionary.IsReadOnly { get { return true; } }
+    bool IDictionary.IsFixedSize => true;
+    bool IDictionary.IsReadOnly => true;
 
     // Trucs internes à la classe (énumérateur)
     private class MonEnumerateur : IDictionaryEnumerator
@@ -102,13 +93,7 @@ internal class ThreeIntegers3 : IDictionary
             }
         }
 
-        public object Current
-        {
-            get
-            {
-                return Value;
-            }
-        }
+        public object Current => Value;
 
         public object Key
         {
@@ -124,17 +109,8 @@ internal class ThreeIntegers3 : IDictionary
             }
         }
 
-        public DictionaryEntry Entry
-        {
-            get
-            {
-                return new DictionaryEntry(Key, Value);
-            }
-        }
+        public DictionaryEntry Entry => new DictionaryEntry(Key, Value);
 
-        public void Reset()
-        {
-            pos = -1;
-        }
+        public void Reset() => pos = -1;
     }
 }

@@ -30,9 +30,9 @@ Public Class SubclassedSystemMenu
 #End Region
 
 #Region "Member Variables"
-    Private mintSystemMenu As Int32 = 0                 ' Parent system menu handle
-    Private mintHandle As Int32 = 0                     ' Local parent window handle
-    Private mstrMenuItemText As String = String.Empty   ' New menu item text
+    Private ReadOnly mintSystemMenu As Int32 = 0                 ' Parent system menu handle
+    Private ReadOnly mintHandle As Int32 = 0                     ' Local parent window handle
+    Private ReadOnly mstrMenuItemText As String = String.Empty   ' New menu item text
 #End Region
 
 #Region "Events"

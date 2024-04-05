@@ -7,7 +7,7 @@ Module Module1
 
     Sub Main()
         Const sConnectionString As String = "Data Source=LU01ZEPHYR\SQL2008;Initial Catalog=Eurodat506_EUMEDM_Dev;User ID=EurodatOnLine;Password=madeinchina;Persist Security Info=True"
-        Using conSQL As SqlConnection = New SqlConnection(sConnectionString)
+        Using conSQL As New SqlConnection(sConnectionString)
             conSQL.Open()
             Dim sSQL As String = "SELECT * FROM PriorityLevels"
             Dim cmd As SqlCommand

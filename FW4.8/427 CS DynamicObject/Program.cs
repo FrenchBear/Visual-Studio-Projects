@@ -47,13 +47,7 @@ namespace CS427
         // This property returns the number of elements
         // in the inner dictionary.
 
-        public int Count
-        {
-            get
-            {
-                return dictionary.Count;
-            }
-        }
+        public int Count => dictionary.Count;
 
         // If you try to get a value of a property
         // not defined in the class, this method is called.

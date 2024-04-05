@@ -110,6 +110,7 @@
       <DependentUpon>Form Scheduler.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="Module Global.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

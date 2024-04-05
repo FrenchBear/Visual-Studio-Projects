@@ -429,7 +429,7 @@ Public Module ModMain
             Dim obj As New BaseObj("WeakRef")
 
             ' Create a WeakReference object that refers to the new object
-            Dim wr As WeakReference = New WeakReference(obj, trackResurrection)
+            Dim wr As New WeakReference(obj, trackResurrection)
 
             ' The object is still reachable, so it is not finalized.
             Collect()

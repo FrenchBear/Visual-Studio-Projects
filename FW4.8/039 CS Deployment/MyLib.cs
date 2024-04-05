@@ -7,15 +7,9 @@ using System.Reflection;
 
 public class MaClasse
 {
-    public MaClasse()
-    {
-        Console.WriteLine("MaClasse.ctor()");
-    }
+    public MaClasse() => Console.WriteLine("MaClasse.ctor()");
 
-    public void MyMeth()
-    {
-        Console.WriteLine("MaClasse.MyMeth()");
-    }
+    public void MyMeth() => Console.WriteLine("MaClasse.MyMeth()");
 }
 
 public class MyLib
@@ -28,7 +22,7 @@ public class MyLib
 
     public void Test()
     {
-        Assembly a = Assembly.GetExecutingAssembly();
+        var a = Assembly.GetExecutingAssembly();
 
         Console.WriteLine("Assembly:");
         Console.WriteLine("  CodeBase:       " + a.CodeBase);
@@ -64,9 +58,9 @@ public class MyLib
         Console.WriteLine();
 
         // Accès direct
-        AssemblyCompanyAttribute z1 = (AssemblyCompanyAttribute)a.GetCustomAttributes(typeof(AssemblyCompanyAttribute), true)[0];
+        var z1 = (AssemblyCompanyAttribute)a.GetCustomAttributes(typeof(AssemblyCompanyAttribute), true)[0];
         Console.WriteLine(z1.Company);
-        AssemblyCopyrightAttribute z2 = (AssemblyCopyrightAttribute)a.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), true)[0];
+        var z2 = (AssemblyCopyrightAttribute)a.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), true)[0];
         Console.WriteLine(z2.Copyright);
     }
 }

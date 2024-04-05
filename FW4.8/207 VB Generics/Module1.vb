@@ -75,8 +75,8 @@ Module Module1
         mi = Min(Of Integer)(aa, bb)
         ma = Max(Of Integer)(aa, bb)
 
-        Dim dMin As MinOuMax(Of Date) = New MinOuMax(Of Date)(AddressOf Min)
-        Dim dMax As MinOuMax(Of Date) = New MinOuMax(Of Date)(AddressOf Max)
+        Dim dMin As New MinOuMax(Of Date)(AddressOf Min)
+        Dim dMax As New MinOuMax(Of Date)(AddressOf Max)
         Dim d1, d2, dinf, dsup As Date
         d1 = #2/26/1965#
         d2 = #1/1/2004#

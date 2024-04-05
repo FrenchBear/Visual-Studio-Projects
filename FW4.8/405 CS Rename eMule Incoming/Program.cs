@@ -12,7 +12,7 @@ namespace Rename_eMule_Incoming
         private static void Main(string[] args)
         {
             var d = new DirectoryInfo(@"F:\eMule\Incoming");
-            Regex r = new Regex(@"^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+            var r = new Regex(@"^(?<p>[^0-9]*)(?<e>[0-9]{1,2}x[0-9]{1,2})(?<s>.*)$", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
 
             foreach (FileInfo f in d.EnumerateFiles())
                 if (string.Compare(f.Extension, ".avi", true) == 0 || string.Compare(f.Extension, ".mkv", true) == 0)
@@ -32,11 +32,7 @@ namespace Rename_eMule_Incoming
             Console.ReadLine();
         }
 
-        private static string Clean(string s)
-        {
-            return s.Replace('.', ' ').Trim(new char[] { ' ', '-' });
-
-            /*
+        private static string Clean(string s) => s.Replace('.', ' ').Trim(new char[] { ' ', '-' });/*
             s = s.Replace('.', ' ');
             while(s.StartsWith(" ") || s.StartsWith("-"))
                 s = s.Remove(0,1);
@@ -44,6 +40,5 @@ namespace Rename_eMule_Incoming
                 s = s.Remove(s.Length-1);
             return s;
             */
-        }
     }
 }

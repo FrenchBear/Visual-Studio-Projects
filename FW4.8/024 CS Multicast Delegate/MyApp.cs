@@ -25,13 +25,7 @@ internal class MyApp
         Console.ReadLine();
     }
 
-    private static void Sub1(string s)
-    {
-        Console.WriteLine("Sub1: " + s);
-    }
+    private static void Sub1(string s) => Console.WriteLine("Sub1: " + s);
 
-    private static void Sub2(string s)
-    {
-        Console.WriteLine("Sub2: " + s);
-    }
+    private static void Sub2(string s) => Console.WriteLine("Sub2: " + s);
 }

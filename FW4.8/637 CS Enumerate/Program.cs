@@ -14,7 +14,7 @@ namespace EnumerateApp
     {
         static void Main()
         {
-            List<string> flavors = new List<string> { "Chocolat", "Vanille", "Fraise", "Citron" };
+            var flavors = new List<string> { "Chocolat", "Vanille", "Fraise", "Citron" };
             foreach (var (index, flavor) in flavors.Enumerate(1))
             {
                 Console.WriteLine($"{index}: {flavor}");

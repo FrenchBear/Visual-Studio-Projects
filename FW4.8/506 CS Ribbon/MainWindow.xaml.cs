@@ -7,9 +7,6 @@ namespace CS506
     /// </summary>
     public partial class MainWindow : RibbonWindow
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        public MainWindow() => InitializeComponent();
     }
 }

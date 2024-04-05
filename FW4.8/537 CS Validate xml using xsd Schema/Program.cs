@@ -9,12 +9,12 @@ namespace ValidateSchema
     {
         private static void Main()
         {
-            XmlReaderSettings roundingInfosSettings = new XmlReaderSettings();
+            var roundingInfosSettings = new XmlReaderSettings();
             roundingInfosSettings.Schemas.Add("http://tempuri.org/RoundingInfos.xsd", "roundingInfos.xsd");
             roundingInfosSettings.ValidationType = ValidationType.Schema;
             roundingInfosSettings.ValidationEventHandler += new ValidationEventHandler(RoundingInfosSettingsValidationEventHandler);
 
-            XmlReader roundingInfos = XmlReader.Create("RoundingInfos-1.e5r", roundingInfosSettings);
+            var roundingInfos = XmlReader.Create("RoundingInfos-1.e5r", roundingInfosSettings);
 
             while (roundingInfos.Read())
             {

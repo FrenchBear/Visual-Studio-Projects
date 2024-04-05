@@ -10,8 +10,8 @@ namespace CS203
     {
         private static void Main(string[] args)
         {
-            Car c1 = new Car("Car 1");
-            Car c2 = new Car("Car 2");
+            var c1 = new Car("Car 1");
+            var c2 = new Car("Car 2");
 
             c1.EngineStartedEvent += Car_EngineStartedEvent;
             c1.EngineStoppedEvent += Car_EngineStoppedEvent;
@@ -34,28 +34,16 @@ namespace CS203
             Console.ReadLine();
         }
 
-        private static void Car_EngineStartedEvent(object sender, EngineStateChangedEventArgs e)
-        {
-            Console.WriteLine("{0} engine started on {1}", (sender as Car).Name, e.StateChangedOn);
-        }
+        private static void Car_EngineStartedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine started on {1}", (sender as Car).Name, e.StateChangedOn);
 
-        private static void Car_EngineStoppedEvent(object sender, EngineStateChangedEventArgs e)
-        {
-            Console.WriteLine("{0} engine stopped on {1}", (sender as Car).Name, e.StateChangedOn);
-        }
+        private static void Car_EngineStoppedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine stopped on {1}", (sender as Car).Name, e.StateChangedOn);
 
-        private static void Car_EngineStateChangedEvent(object sender, EngineStateChangedEventArgs e)
-        {
-            Console.WriteLine("{0} engine state changed on {1}, IsEngineOn={2}", (sender as Car).Name, e.StateChangedOn, (sender as Car).IsEngineOn);
-        }
+        private static void Car_EngineStateChangedEvent(object sender, EngineStateChangedEventArgs e) => Console.WriteLine("{0} engine state changed on {1}, IsEngineOn={2}", (sender as Car).Name, e.StateChangedOn, (sender as Car).IsEngineOn);
     }
 
     public class EngineStateChangedEventArgs : EventArgs
     {
-        public EngineStateChangedEventArgs(DateTime stateChangedOn)
-        {
-            StateChangedOn = stateChangedOn;
-        }
+        public EngineStateChangedEventArgs(DateTime stateChangedOn) => StateChangedOn = stateChangedOn;
 
         public DateTime StateChangedOn { get; private set; }
     }
@@ -65,10 +53,7 @@ namespace CS203
         // --------------------------------------------
         // Construction
 
-        public Car(string name)
-        {
-            Name = name;
-        }
+        public Car(string name) => Name = name;
 
         // --------------------------------------------
         // Event support
@@ -104,7 +89,7 @@ namespace CS203
 
         public bool IsEngineOn
         {
-            get { return isEngineOn; }
+            get => isEngineOn;
             set
             {
                 if (isEngineOn != value)
@@ -118,14 +103,8 @@ namespace CS203
         // --------------------------------------------
         // Some methods
 
-        public void Start()
-        {
-            IsEngineOn = true;
-        }
+        public void Start() => IsEngineOn = true;
 
-        public void Stop()
-        {
-            IsEngineOn = false;
-        }
+        public void Stop() => IsEngineOn = false;
     }
 }

@@ -32,7 +32,7 @@ Public Class Couleur : Inherits Zap
 
     ' Si la variable n'est pas shared, ça provoque un débordement de pile
     ' Non détecté par le compilo VB !
-    Protected Shared Bleu As Couleur = New Couleur(0, 0, 255)
+    Protected Shared Bleu As New Couleur(0, 0, 255)
 
     Public R, G, B As Integer
     Private m_A As Integer

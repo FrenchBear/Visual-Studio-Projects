@@ -11,6 +11,7 @@
 // 2021-09-18   PV      VS2022, Net6
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
+// 2024-04-05   PV      Restart project from scratch to make it work with current Visual Studio and tools
 
 using System;
 
@@ -27,12 +28,12 @@ internal class MyApp
     }
 }
 
-internal class D1 : B
+internal class D1: B
 {
     public D1() => Console.WriteLine("D1.ctor");
 }
 
-internal class D2 : C
+internal class D2: C
 {
     public D2() => Console.WriteLine("D2.ctor");
 }

@@ -12,7 +12,7 @@ namespace RenameParen
     {
         private static void Main(string[] args)
         {
-            Regex r = new Regex(@"( *\([0-9]+\))\.");         // number between parentheses at the end of filename
+            var r = new Regex(@"( *\([0-9]+\))\.");         // number between parentheses at the end of filename
             //Regex r = new Regex(@" *~[0-9]+");                // ~#
             //Regex r = new Regex(@"( *\[[0-9]+\])");
             //Regex r = new Regex(@"{");

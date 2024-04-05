@@ -4,7 +4,7 @@
 
 using System;
 
-internal struct Complexe : IFormattable
+internal readonly struct Complexe : IFormattable
 {
     private readonly double r, i;
 
@@ -14,10 +14,7 @@ internal struct Complexe : IFormattable
         this.i = i;
     }
 
-    public override string ToString()
-    {
-        return String.Format("({0},{1})", r, i);
-    }
+    public override string ToString() => String.Format("({0},{1})", r, i);
 
     public String ToString(String sFormat, IFormatProvider fp)
     {
@@ -39,7 +36,7 @@ internal class MyApp
         Console.WriteLine("{0:N0}", Int32.MaxValue);
         Console.WriteLine("{0:N0}", Int64.MaxValue);
 
-        Complexe c = new Complexe(1, 1);
+        var c = new Complexe(1, 1);
         Console.WriteLine("{0}", c.ToString());
         Console.WriteLine("{0}", c);
         Console.WriteLine("{0:P}", c);

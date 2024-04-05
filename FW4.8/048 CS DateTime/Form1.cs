@@ -47,21 +47,12 @@ public class Form1 : Form
         Trace();
     }
 
-    public void TestSortedList()
-    {
-        TestInterne(s);
-    }
+    public void TestSortedList() => TestInterne(s);
 
-    public void TestHashtable()
-    {
-        TestInterne(h);
-    }
+    public void TestHashtable() => TestInterne(h);
 
     // Trie en une fois ha Hashtable
-    public void TriHashtable()
-    {
-        sh = new SortedList(h);
-    }
+    public void TriHashtable() => sh = new SortedList(h);
 
     private void TestInterne(IDictionary d)
     {
@@ -71,15 +62,9 @@ public class Form1 : Form
         }
     }
 
-    public void Trace(string sMsg)
-    {
-        listBox1.Items.Add(sMsg);
-    }
+    public void Trace(string sMsg) => listBox1.Items.Add(sMsg);
 
-    public void Trace()
-    {
-        Trace("");
-    }
+    public void Trace() => Trace("");
 
     private void InitializeComponent()
     {
@@ -95,8 +80,5 @@ public class Form1 : Form
         Controls.Add(listBox1);
     }
 
-    public static void Main(string[] args)
-    {
-        Application.Run(new Form1());
-    }
+    public static void Main(string[] args) => Application.Run(new Form1());
 }

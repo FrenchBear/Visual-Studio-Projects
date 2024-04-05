@@ -13,12 +13,12 @@ namespace CS515
     {
         private static void Main(string[] args)
         {
-            RE_ExtraData e1 = new RE_ExtraData { BaseData = 3.14 };
-            RE_ExtraData e2 = new RE_ExtraData { BaseData = 3.14 };
+            var e1 = new RE_ExtraData { BaseData = 3.14 };
+            var e2 = new RE_ExtraData { BaseData = 3.14 };
             Debug.Assert(e1.Equals(e2));
 
-            RE_ExtraDataChemistry c1 = new RE_ExtraDataChemistry { BaseData = 3.14, Uncertainty = 1.23 };
-            RE_ExtraDataChemistry c2 = new RE_ExtraDataChemistry { BaseData = 3.14, Uncertainty = 4.56 };
+            var c1 = new RE_ExtraDataChemistry { BaseData = 3.14, Uncertainty = 1.23 };
+            var c2 = new RE_ExtraDataChemistry { BaseData = 3.14, Uncertainty = 4.56 };
             Debug.Assert(!c1.Equals(c2));
 
             e1 = c1;
@@ -42,10 +42,7 @@ namespace CS515
             return BaseData == other.BaseData;
         }
 
-        public override int GetHashCode()
-        {
-            return BaseData.GetHashCode();
-        }
+        public override int GetHashCode() => BaseData.GetHashCode();
     }
 
     // Specialized version for chemistry
@@ -61,9 +58,6 @@ namespace CS515
             return Uncertainty == other.Uncertainty;
         }
 
-        public override int GetHashCode()
-        {
-            return base.GetHashCode() ^ Uncertainty.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode() ^ Uncertainty.GetHashCode();
     }
 }

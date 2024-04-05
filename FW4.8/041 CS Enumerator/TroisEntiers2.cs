@@ -19,15 +19,9 @@ internal class ThreeIntegers2 : IEnumerable
         this.i3 = i3;
     }
 
-    public virtual IEnumerator GetEnumerator()
-    {
-        return new MonEnumerateur(this);
-    }
+    public virtual IEnumerator GetEnumerator() => new MonEnumerateur(this);
 
-    public virtual IDictionaryEnumerator GetDictionaryEnumerator()
-    {
-        return new MonEnumerateur(this);
-    }
+    public virtual IDictionaryEnumerator GetDictionaryEnumerator() => new MonEnumerateur(this);
 
     private class MonEnumerateur : IDictionaryEnumerator
     {
@@ -65,13 +59,7 @@ internal class ThreeIntegers2 : IEnumerable
             }
         }
 
-        public object Current
-        {
-            get
-            {
-                return Value;
-            }
-        }
+        public object Current => Value;
 
         public object Key
         {
@@ -87,17 +75,8 @@ internal class ThreeIntegers2 : IEnumerable
             }
         }
 
-        public DictionaryEntry Entry
-        {
-            get
-            {
-                return new DictionaryEntry(Key, Value);
-            }
-        }
+        public DictionaryEntry Entry => new DictionaryEntry(Key, Value);
 
-        public void Reset()
-        {
-            pos = -1;
-        }
+        public void Reset() => pos = -1;
     }
 }

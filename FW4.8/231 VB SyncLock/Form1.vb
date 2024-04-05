@@ -3,8 +3,6 @@
 
 Option Compare Text
 
-#Disable Warning IDE1006 ' Naming Styles
-
 Public Class frmVB231
 
     Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click

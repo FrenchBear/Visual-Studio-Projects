@@ -96,6 +96,7 @@
     <Compile Include="GenericClass.vb" />
     <Compile Include="GenericDelegateEtFunction.vb" />
     <Compile Include="GenericStructure.vb" />
+    <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="Module1.vb">
       <SubType>Code</SubType>
     </Compile>

@@ -34,7 +34,7 @@ Namespace EssaisILDasm
             ' Appel de méthodes virtuelles
             ActionBase(d, 2)
             d.MyBaseAction()
-            Dim b As MaClasseDeBase = New MaClasseDeBase(d)
+            Dim b As New MaClasseDeBase(d)
             b.Action()
             Console.WriteLine()
 
@@ -75,7 +75,7 @@ Namespace EssaisILDasm
             b.Action()
         End Sub
 
-        Public Shared Sub ActionInterface(IMI As MonInterface)
+        Public Shared Sub ActionInterface(IMI As IMonInterface)
             IMI.MaMethodeBruyante1(1)
             IMI.MaMethodeBruyante2(1)
         End Sub

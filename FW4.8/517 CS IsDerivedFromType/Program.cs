@@ -60,9 +60,6 @@ namespace CS517
     public static partial class ExtensionMethods
     {
         // Returns true if current type inherits from t2
-        public static bool IsDerivedFromType(this Type t1, Type t2)
-        {
-            return t1 == t2 || t1.IsSubclassOf(t2);
-        }
+        public static bool IsDerivedFromType(this Type t1, Type t2) => t1 == t2 || t1.IsSubclassOf(t2);
     }
 }

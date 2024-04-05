@@ -13,7 +13,7 @@ internal class MyApp
 
     public static void Main()
     {
-        System.Text.StringBuilder strb = new System.Text.StringBuilder(500);
+        var strb = new System.Text.StringBuilder(500);
         GSD(strb, strb.Capacity);
 
         Console.WriteLine("SystemDirectory: <{0}>", strb);

@@ -12,6 +12,8 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
+#pragma warning disable IDE0052 // Remove unread private members
+
 namespace RI3
 {
     public class Model
@@ -40,10 +42,7 @@ namespace RI3
         // ViewModel
         private ViewModel vm;
 
-        public void SetViewModel(ViewModel vm)
-        {
-            this.vm = vm;
-        }
+        public void SetViewModel(ViewModel vm) => this.vm = vm;
 
         // Variables exposed to ViewModel
         public string SourceFolder;
@@ -188,7 +187,7 @@ namespace RI3
             foreach (PropertyItem propItem in image.PropertyItems)
                 vignette.SetPropertyItem(propItem);
 
-            EncoderParameters eps = new EncoderParameters(1);
+            var eps = new EncoderParameters(1);
             eps.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, JpegQuality);
             ImageCodecInfo ici = GetEncoderInfo("image/jpeg");
 

@@ -89,7 +89,6 @@ Module modMainAnaPCL
         End If
     End Sub
 
-    <CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")>
     Function Analyse(sNomFic As String) As Boolean
         Dim fs As FileStream
         Dim b As Byte

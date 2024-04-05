@@ -28,9 +28,7 @@ Public Class frmPaint
     'Form overrides dispose to clean up the component list.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
-            If Not (components Is Nothing) Then
-                components.Dispose()
-            End If
+            components?.Dispose()
         End If
         MyBase.Dispose(disposing)
     End Sub
@@ -107,7 +105,7 @@ Public Class frmPaint
     End Sub
 
     Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
-        Dim newBitmap As Bitmap = New Bitmap(300, 300, PixelFormat.Format32bppArgb)
+        Dim newBitmap As New Bitmap(300, 300, PixelFormat.Format32bppArgb)
         Dim g As Graphics = Graphics.FromImage(newBitmap)
         g.Clear(Color.Aquamarine)
         'g.FillRectangle(New SolidBrush(Color.Red), 40, 40, 140, 140)

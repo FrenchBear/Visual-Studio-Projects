@@ -72,10 +72,7 @@ namespace CordicHalfTrig
 
 #pragma warning disable IDE0051 // Remove unused private members
 
-        private static double CosCordic(double angle)
-        {
-            return SinCordic(angle + Math.PI / 2);
-        }
+        private static double CosCordic(double angle) => SinCordic(angle + Math.PI / 2);
 
         // Actual computing algorithm, sin and cos at the same time
         // Angle must be between 0 and π/2

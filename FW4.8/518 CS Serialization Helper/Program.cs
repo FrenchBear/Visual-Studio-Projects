@@ -18,7 +18,7 @@ namespace CS518
     {
         private static void Main(string[] args)
         {
-            Ba x = new Ba
+            var x = new Ba
             {
                 Val = 25
             };
@@ -33,18 +33,18 @@ namespace CS518
             if (value == null)
                 return null;
 
-            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(typeof(T));
 
-            XmlWriterSettings settings = new XmlWriterSettings
+            var settings = new XmlWriterSettings
             {
                 Encoding = new UnicodeEncoding(false, false), // no BOM in a .NET string
                 Indent = true,
                 OmitXmlDeclaration = false
             };
 
-            using (StringWriter textWriter = new StringWriter())
+            using (var textWriter = new StringWriter())
             {
-                using (XmlWriter xmlWriter = XmlWriter.Create(textWriter, settings))
+                using (var xmlWriter = XmlWriter.Create(textWriter, settings))
                 {
                     serializer.Serialize(xmlWriter, value);
                 }
@@ -57,14 +57,14 @@ namespace CS518
             if (string.IsNullOrEmpty(xml))
                 return default;
 
-            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(typeof(T));
 
-            XmlReaderSettings settings = new XmlReaderSettings();
+            var settings = new XmlReaderSettings();
             // No settings need modifying here
 
-            using (StringReader textReader = new StringReader(xml))
+            using (var textReader = new StringReader(xml))
             {
-                using (XmlReader xmlReader = XmlReader.Create(textReader, settings))
+                using (var xmlReader = XmlReader.Create(textReader, settings))
                 {
                     return (T)serializer.Deserialize(xmlReader);
                 }
@@ -84,15 +84,9 @@ namespace CS518
             }
         }
 
-        public static void ToXml<T>(this T objectToSerialize, Stream stream)
-        {
-            new XmlSerializer(typeof(T)).Serialize(stream, objectToSerialize);
-        }
+        public static void ToXml<T>(this T objectToSerialize, Stream stream) => new XmlSerializer(typeof(T)).Serialize(stream, objectToSerialize);
 
-        public static void ToXml<T>(this T objectToSerialize, StringWriter writer)
-        {
-            new XmlSerializer(typeof(T)).Serialize(writer, objectToSerialize);
-        }
+        public static void ToXml<T>(this T objectToSerialize, StringWriter writer) => new XmlSerializer(typeof(T)).Serialize(writer, objectToSerialize);
     }
 
     public class Ba
@@ -102,8 +96,8 @@ namespace CS518
         [DefaultValue(42)]      // Avoid serialization of default value
         public int Val
         {
-            get { return _val; }
-            set { _val = value; }
+            get => _val;
+            set => _val = value;
         }
     }
 }

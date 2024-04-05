@@ -32,10 +32,7 @@ internal class GlobalClass
     {
     }
 
-    static GlobalClass()
-    {
-        Console.WriteLine("Constructeur statique de GlobalClass");
-    }
+    static GlobalClass() => Console.WriteLine("Constructeur statique de GlobalClass");
 
     public static void Main(string[] arg)
     {
@@ -45,8 +42,5 @@ internal class GlobalClass
     {
     }
 
-    private static void MySub(out int i)
-    {
-        i = 0;
-    }
+    private static void MySub(out int i) => i = 0;
 }

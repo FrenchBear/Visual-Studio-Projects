@@ -41,7 +41,7 @@ namespace DupMP31
 
         private static void Main(string[] args)
         {
-            List<AString> AStringsList = new List<AString>();
+            var AStringsList = new List<AString>();
 
             // Retrieve list of files first and build ListAFiles
             foreach (string item in Directory.GetFiles(folder, "*.mp3", SearchOption.AllDirectories))
@@ -88,11 +88,7 @@ namespace DupMP31
 
             // s1 is always the longest chain
             if (s2.Length > s1.Length)
-            {
-                AString t = as1;
-                as1 = as2;
-                as2 = t;
-            }
+                (as2, as1) = (as1, as2);
 
             // dist>1: remove 1 char from s1 and do it recursively with dist-1
             for (int i = 0; i < s1.Length; i++)

@@ -13,7 +13,7 @@ namespace _101_CS_IEnumerable_Generic
     {
         private static void Main(string[] args)
         {
-            CityCollection cities = new CityCollection();
+            var cities = new CityCollection();
             foreach (string city in cities.Reverse())
                 Trace.WriteLine(city);
 
@@ -39,10 +39,7 @@ public class CityCollection : IEnumerable<string>
             yield return m_Cities[i];
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return ((IEnumerable<string>)this).GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => ((IEnumerable<string>)this).GetEnumerator();
 }
 
 public interface IMachin
@@ -52,10 +49,7 @@ public interface IMachin
 
 public class Toto
 {
-    private IMachin MaFonction(int a, int b)
-    {
-        return new Internal(a, b);
-    }
+    private IMachin MaFonction(int a, int b) => new Internal(a, b);
 
     public class Internal : IMachin
     {
@@ -67,16 +61,10 @@ public class Toto
             m_b = b;
         }
 
-        int IMachin.Bidule(int i)
-        {
-            return m_a * i + m_b;
-        }
+        int IMachin.Bidule(int i) => m_a * i + m_b;
     }
 
-    public int Zap(int i)
-    {
-        return MaFonction(2, 3).Bidule(i);
-    }
+    public int Zap(int i) => MaFonction(2, 3).Bidule(i);
 }
 
 public class C2 : IMachin

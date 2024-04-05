@@ -227,7 +227,7 @@ namespace PDel
                     foreach (string directoryName in folders)
                     {
                         // Ignore SYSTEM+HIDDEN folders
-                        DirectoryInfo di = new DirectoryInfo(directoryName);
+                        var di = new DirectoryInfo(directoryName);
                         if ((di.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden && (di.Attributes & FileAttributes.System) == FileAttributes.System)
                             continue;
                         // Also ignore reparse points unless we use /r2 option
@@ -293,7 +293,7 @@ namespace PDel
         private static string HelpHeader(bool includeExtendedHelp)
         {
             // Get information for this assembly
-            Assembly asm = Assembly.GetExecutingAssembly();
+            var asm = Assembly.GetExecutingAssembly();
             AssemblyName asmName = asm.GetName();
             Version v = asmName.Version;
             string asmTitle = ((AssemblyTitleAttribute)asm.GetCustomAttributes(
@@ -313,9 +313,7 @@ namespace PDel
             return s;
         }
 
-        private static string Usage()
-        {
-            return "Usage: PDel [-?] [-??] [-p] [-s] [-v] [-f] [path\\]pattern [path\\]pattern]...\n"
+        private static string Usage() => "Usage: PDel [-?] [-??] [-p] [-s] [-v] [-f] [path\\]pattern [path\\]pattern]...\n"
                  + "-?     Shows version and usage\n"
                  + "-??    Shows extended information\n"
                  + "-p     Adds a final pause\n"
@@ -324,6 +322,5 @@ namespace PDel
                  + "-f     Forced/final delete, does not send the file to trash can\n"
                  + "-r2    Follow reparse points (by default, they're skipped)\n"
                  ;
-        }
     }
 }

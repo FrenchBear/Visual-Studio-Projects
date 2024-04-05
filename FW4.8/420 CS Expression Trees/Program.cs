@@ -15,10 +15,10 @@ namespace CS420
             Expression<Func<int, int>> Signe = x => x == 0 ? 0 : x > 0 ? 1 : -1;
 
             // Decompose the expression tree.
-            ParameterExpression param = (ParameterExpression)Signe.Parameters[0];
-            ConditionalExpression operation = (ConditionalExpression)Signe.Body;
-            BinaryExpression test = (BinaryExpression)operation.Test;
-            ConstantExpression ifTrue = (ConstantExpression)operation.IfTrue;
+            var param = (ParameterExpression)Signe.Parameters[0];
+            var operation = (ConditionalExpression)Signe.Body;
+            var test = (BinaryExpression)operation.Test;
+            var ifTrue = (ConstantExpression)operation.IfTrue;
             Expression ifFalse = operation.IfFalse;
             /*
             ParameterExpression left = (ParameterExpression)operation.;

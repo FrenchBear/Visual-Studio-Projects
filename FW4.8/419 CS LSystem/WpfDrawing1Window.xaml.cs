@@ -20,10 +20,7 @@ namespace CS419
         private IEnumerable<char> _s;
         private int _angle;
 
-        public WpfDrawing1Window()
-        {
-            InitializeComponent();
-        }
+        public WpfDrawing1Window() => InitializeComponent();
 
         public void DrawString(string title, ref IEnumerable<char> s, int angle)
         {
@@ -33,10 +30,7 @@ namespace CS419
             Show();
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            myDrawingVisual.AddDrawing(myGrid.ActualWidth, myGrid.ActualHeight, _s, _angle);
-        }
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e) => myDrawingVisual.AddDrawing(myGrid.ActualWidth, myGrid.ActualHeight, _s, _angle);
 
         protected override void OnKeyDown(System.Windows.Input.KeyEventArgs e)
         {
@@ -49,10 +43,7 @@ namespace CS419
     {
         private readonly VisualCollection _children;
 
-        public MyVisualHost()
-        {
-            _children = new VisualCollection(this);
-        }
+        public MyVisualHost() => _children = new VisualCollection(this);
 
         public void AddDrawing(double aw, double ah, IEnumerable<char> s, int angle)
         {
@@ -60,21 +51,18 @@ namespace CS419
             // In case area is too small
             if (aw <= 1 || ah <= 1) return;
 
-            DrawingVisual drawingVisual = new DrawingVisual();
+            var drawingVisual = new DrawingVisual();
             // Retrieve the DrawingContext in order to create new drawing content.
             using (DrawingContext dc = drawingVisual.RenderOpen())
             {
-                Wpf1LSystemRenderer wr = new Wpf1LSystemRenderer(s, angle);
+                var wr = new Wpf1LSystemRenderer(s, angle);
                 wr.Rend(dc, aw, ah);
             }
             _children.Add(drawingVisual);
         }
 
         // Provide a required override for the VisualChildrenCount property.
-        protected override int VisualChildrenCount
-        {
-            get { return _children.Count; }
-        }
+        protected override int VisualChildrenCount => _children.Count;
 
         // Provide a required override for the GetVisualChild method.
         protected override Visual GetVisualChild(int index)

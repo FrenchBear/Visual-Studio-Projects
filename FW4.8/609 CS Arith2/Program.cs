@@ -60,10 +60,10 @@ namespace Arith2CS
         private const int digits = 4;
 
         private const int k = 10000;        // 10^digits
-        public int Digits { get => digits; }
+        public int Digits => digits;
 
         // A public parameterless constructor is needed
-        public Int4d() { val = 0; }
+        public Int4d() => val = 0;
 
         // Not part of interface, just for base class
         private Int4d(int x)
@@ -79,10 +79,7 @@ namespace Arith2CS
         }
 
         // Same here, actually copy constructor
-        public void FromOther(Int4d other)
-        {
-            val = other.val;
-        }
+        public void FromOther(Int4d other) => val = other.val;
 
         // Addition 4d+4d -> (4d carry, 4d result)
         public (Int4d high, Int4d low) Plus(params Int4d[] list)
@@ -107,15 +104,9 @@ namespace Arith2CS
         }
 
         // Convenient helper for output formatting
-        public bool IsZero()
-        {
-            return val == 0;
-        }
+        public bool IsZero() => val == 0;
 
-        public override string ToString()
-        {
-            return val.ToString();
-        }
+        public override string ToString() => val.ToString();
 
         // Output always formatted using 'digits' digits
         public string ToStringWithLeadingZeros() => (val + k).ToString().Substring(1);
@@ -140,13 +131,10 @@ namespace Arith2CS
         protected T low;
 
         private static readonly int digits;
-        public int Digits { get => digits; }
+        public int Digits => digits;
 
         // Static constructore to initialize static variable returned by an instance property that can be included in interface...
-        static DA()
-        {
-            digits = 2 * new T().Digits;
-        }
+        static DA() => digits = 2 * new T().Digits;
 
         public DA()
         {
@@ -226,10 +214,7 @@ namespace Arith2CS
             return (new DA<T>(highH, highL), new DA<T>(lowH, lowL));
         }
 
-        public bool IsZero()
-        {
-            return high.IsZero() && low.IsZero();
-        }
+        public bool IsZero() => high.IsZero() && low.IsZero();
 
         public override string ToString()
         {
@@ -268,7 +253,7 @@ namespace Arith2CS
             WriteLine($"Test Int{d}d");
             string astr = GetRandomNumber();
             string bstr = GetRandomNumber();
-            Stopwatch sw = Stopwatch.StartNew();
+            var sw = Stopwatch.StartNew();
             T a, b;
             (a = new T()).FromString(astr);
             (b = new T()).FromString(bstr);
@@ -283,7 +268,7 @@ namespace Arith2CS
             sw.Stop();
 
             // Check using BigInteger
-            Stopwatch swc = Stopwatch.StartNew();
+            var swc = Stopwatch.StartNew();
             var abi = BigInteger.Parse(astr);
             var bbi = BigInteger.Parse(bstr);
             var sumbi = abi + bbi;

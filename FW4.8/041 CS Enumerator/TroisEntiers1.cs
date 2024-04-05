@@ -18,10 +18,7 @@ internal class ThreeIntegers1 : IEnumerable
         this.i3 = i3;
     }
 
-    public virtual IEnumerator GetEnumerator()
-    {
-        return new MonEnumerateur(this);
-    }
+    public virtual IEnumerator GetEnumerator() => new MonEnumerateur(this);
 
     private class MonEnumerateur : IEnumerator
     {
@@ -59,9 +56,6 @@ internal class ThreeIntegers1 : IEnumerable
             }
         }
 
-        public void Reset()
-        {
-            pos = -1;
-        }
+        public void Reset() => pos = -1;
     }
 }

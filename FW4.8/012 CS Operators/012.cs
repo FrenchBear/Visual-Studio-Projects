@@ -30,20 +30,11 @@ internal class Complexe
         Console.WriteLine("Destructeur {0}", this);
     }
 
-    public static implicit operator Complexe(double d)
-    {
-        return new Complexe(d);
-    }
+    public static implicit operator Complexe(double d) => new Complexe(d);
 
-    override public string ToString()
-    {
-        return "(" + r.ToString() + ";" + i.ToString() + ")";
-    }
+    override public string ToString() => "(" + r.ToString() + ";" + i.ToString() + ")";
 
-    public static Complexe operator +(Complexe a, Complexe b)
-    {
-        return new Complexe(a.r + b.r, a.i + b.i);
-    }
+    public static Complexe operator +(Complexe a, Complexe b) => new Complexe(a.r + b.r, a.i + b.i);
 };
 
 internal class MyApp
@@ -62,9 +53,9 @@ internal class MyApp
     private static void TestsComplexes()
     {
         Console.WriteLine("TestsComplexes.1 Mem: {0}", System.GC.GetTotalMemory(false));
-        Complexe a = new Complexe(1, 2);
+        var a = new Complexe(1, 2);
         Console.WriteLine("TestsComplexes.2 Mem: {0}", System.GC.GetTotalMemory(false));
-        Complexe b = new Complexe(1);
+        var b = new Complexe(1);
         Console.WriteLine("TestsComplexes.3 Mem: {0}", System.GC.GetTotalMemory(false));
         Complexe c = a + b;
 
