@@ -29,7 +29,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        IEnumerable<int> e = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        IEnumerable<int> e = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         WriteLine($"e: {e.AsString()}");
         WriteLine($"e.SkipAt(3, 2): {e.SkipAt(3, 2).AsString()}");
         WriteLine($"e.GetRange(3, 2): {e.GetRange(3, 2).AsString()}");

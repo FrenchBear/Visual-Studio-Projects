@@ -7,6 +7,7 @@
 // 2023-01-10	PV		Net7
 
 #pragma warning disable CA1050 // Declare types in namespaces
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 using System;
 using System.Collections;

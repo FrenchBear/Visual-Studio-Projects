@@ -61,7 +61,7 @@ internal class Program
         // Creating a method body.
         var block = Expression.Block(
             // Adding a local variable.
-            new[] { result },
+            [result],
             // Assigning a constant to a local variable: result = 1
             Expression.Assign(result, Expression.Constant(1)),
             // Adding a loop.

@@ -1,17 +1,21 @@
 ﻿// 516 CS Dynamic Code Compilation
 // Test of compilation and execution at run-time
 // http://stackoverflow.com/questions/3188882/compile-and-run-dynamic-code-without-generating-exe
-// http://stackoverflow.com/questions/826398/is-it-possible-to-dynamically-compile-and-execute-c-sharp-code-fragments
+// https://stackoverflow.com/questions/826398/is-it-possible-to-dynamically-compile-and-execute-c-sharp-code-fragments
 //
 // 2013-09-15   PV
 // 2021-09-26   PV      CSharpCodeProvider is obsolete on .Net Core, should be raplaced by Roslyn (https://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp)
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
+// 2024-04-05   PV      Using Roselyn, old code using System.CodeDom.Compiler is definitely obsolete (source: 2nd http reference)
 
-using Microsoft.CSharp;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Emit;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 
@@ -19,11 +23,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        // v4.0 actually means 4.5, see http://stackoverflow.com/questions/13253967/how-to-target-net-4-5-with-csharpcodeprovider
-
-        using (CSharpCodeProvider csc = new Microsoft.CSharp.CSharpCodeProvider(new Dictionary<string, string>() { { "CompilerVersion", "v4.0" } }))
-        {
-            string source = @"using System.Linq;
+        SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(@"using System.Linq;
+            namespace DynamicCodeTest;
             public class Program {
               public double Moyenne(double[] args) {
                 double s=0.0;
@@ -35,31 +36,55 @@ internal class Program
                 }
                 return s/n;
               }
-            }";
+            }");
 
-            var parameters = new CompilerParameters(new[] { "mscorlib.dll", "System.Core.dll" }, @"c:\temp\foo.dll", false);
-            //parameters.GenerateInMemory = true;
-            var res = csc.CompileAssemblyFromSource(parameters, source);
+        // define other necessary objects for compilation
+        string assemblyName = Path.GetRandomFileName();
+        MetadataReference[] references =
+        [
+                MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location)
+        ];
 
-            Console.WriteLine(res.PathToAssembly);
-            Console.WriteLine();
+        // analyse and generate IL code from syntax tree
+        var compilation = CSharpCompilation.Create(
+            assemblyName,
+            syntaxTrees: [syntaxTree],
+            references: references,
+            options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
 
-            res.Errors.Cast<CompilerError>().ToList().ForEach(error => Console.WriteLine(error.ErrorText));
+        using var ms = new MemoryStream();
 
-            Type type = res.CompiledAssembly.GetType("Program");
-            var obj = Activator.CreateInstance(type);
-            MethodInfo methodInfo = type.GetMethod("Moyenne");
-            object[] parametersArray = new object[]
+        // write IL code into memory
+        EmitResult result = compilation.Emit(ms);
+
+        if (!result.Success)
+        {
+            // handle exceptions
+            IEnumerable<Diagnostic> failures = result.Diagnostics.Where(diagnostic =>
+                diagnostic.IsWarningAsError ||
+                diagnostic.Severity == DiagnosticSeverity.Error);
+
+            foreach (Diagnostic diagnostic in failures)
             {
-                new double[] { 2,3,5,7,11}
-            };
-            var output = methodInfo.Invoke(obj, parametersArray);
-
-            Console.WriteLine("r={0}", output);
+                Console.Error.WriteLine("{0}: {1}", diagnostic.Id, diagnostic.GetMessage());
+            }
         }
+        else
+        {
+            // load this 'virtual' DLL so that we can use
+            ms.Seek(0, SeekOrigin.Begin);
+            var assembly = Assembly.Load(ms.ToArray());
 
-        Console.WriteLine();
-        Console.Write("(Pause)");
-        Console.ReadLine();
+            // create instance of the desired class and call the desired function
+            Type type = assembly.GetType("DynamicCodeTest.Program");
+            object obj = Activator.CreateInstance(type);
+            var res = type.InvokeMember("Moyenne",
+                BindingFlags.Default | BindingFlags.InvokeMethod,
+                null,
+                obj,
+                [new Double[] { 5, 12 }]);
+            Console.WriteLine($"Moyenne(5,12) = {res}");
+        }
     }
 }

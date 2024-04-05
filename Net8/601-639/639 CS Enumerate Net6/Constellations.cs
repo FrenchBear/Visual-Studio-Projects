@@ -34,8 +34,8 @@ internal record ConstellationInfo
 static internal class Constellations
 {
     static internal IEnumerable<ConstellationInfo> GetConstellations()
-        => new List<ConstellationInfo>
-        {
+        =>
+        [
             new("And","Andromeda","Andromedae","Andromède","Andromeda","N","Alpheratz"),
             new("Ant","Antlia Pneumatica","Antliae Pneumaticae","La Machine Pneumatique","Air Pump","S",""),
             new("Aps","Apus","Apodis","L'Oiseau du Paradis","Bird of Paradise","S",""),
@@ -124,6 +124,6 @@ static internal class Constellations
             new("Vir","Virgo","Virginis","La Vierge","Virgin","N-S","Spica"),
             new("Vol","Volans","Volantis","Le Poisson Volant","Flying Fish","S",""),
             new("Vul","Vulpecula","Vulpeculae","Le Petit Renard","Fox","N",""),
-        };
+        ];
 }
 

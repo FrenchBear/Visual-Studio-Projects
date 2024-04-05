@@ -15,6 +15,8 @@ using System.Windows.Forms;
 
 namespace CS048;
 
+#pragma warning disable IDE0052 // Remove unread private members
+
 public class Form1: Form
 {
     private System.ComponentModel.Container components;

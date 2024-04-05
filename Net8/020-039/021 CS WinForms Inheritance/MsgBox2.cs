@@ -60,10 +60,10 @@ public class MsgBox2: System.Windows.Forms.Form
         //
         AutoScaleBaseSize = new System.Drawing.Size(5, 13);
         ClientSize = new System.Drawing.Size(328, 125);
-        Controls.AddRange(new System.Windows.Forms.Control[] {
+        Controls.AddRange([
                                                                 btnOk,
                                                                 txtInfo,
-                                                                lblInfo});
+                                                                lblInfo]);
         MaximizeBox = false;
         MinimizeBox = false;
         Name = "MsgBox2";

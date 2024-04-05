@@ -16,16 +16,10 @@ using System.Windows;
 
 namespace CS419;
 
-public abstract class LSystemRenderer
+public abstract class LSystemRenderer(IEnumerable<char> s, int angle)
 {
-    private readonly IEnumerable<char> _s;
-    private readonly int _angle;
-
-    protected LSystemRenderer(IEnumerable<char> s, int angle)
-    {
-        _s = s;
-        _angle = angle;
-    }
+    private readonly IEnumerable<char> _s = s;
+    private readonly int _angle = angle;
 
     private struct AngleAndPosition
     {

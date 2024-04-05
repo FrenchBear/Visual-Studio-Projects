@@ -12,6 +12,8 @@ using static System.Console;
 
 namespace CS523B;
 
+#pragma warning disable IDE0052 // Remove unread private members
+
 public class UBMModel
 {
     // Describes the blocks of a specific game

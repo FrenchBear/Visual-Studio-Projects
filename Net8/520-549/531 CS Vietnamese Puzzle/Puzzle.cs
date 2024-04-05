@@ -100,11 +100,11 @@ internal class Program
     private static IEnumerable<List<T>> ListOfPermut<T>(List<T> l)
     {
         if (l.Count == 1)
-            return new List<List<T>> { l };
+            return [l];
 
         // Small optimization
         if (l.Count == 2)
-            return new List<List<T>> { l, new() { l[1], l[0] } };
+            return [l, new() { l[1], l[0] }];
 
         var r = new List<List<T>>();
         for (var i = 0; i < l.Count; i++)

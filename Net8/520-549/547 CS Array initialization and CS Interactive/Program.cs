@@ -5,7 +5,8 @@
 using System;
 using System.Collections.Generic;
 
-#pragma warning disable CS0219 // Variable is assigned but its value is never used
+#pragma warning disable CS0219  // Variable is assigned but its value is never used
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
 
 namespace CS547;
 

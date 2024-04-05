@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
 		<OutputType>Exe</OutputType>
@@ -9,19 +10,23 @@
 		<Copyright>Copyright ©2001-2023 Pierre Violent</Copyright>
 		<Platforms>x86</Platforms>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<Compile Remove="My Project\**" />
 		<EmbeddedResource Remove="My Project\**" />
 		<None Remove="My Project\**" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<None Remove="020 CPP.vcxproj.filters" />
 		<None Remove="ClasseB.vb" />
 		<None Remove="ClasseC.cpp" />
 		<None Remove="ClasseC.h" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="020 CPP.vcxproj" />
 		<ProjectReference Include="020 VB.vbproj" />
 	</ItemGroup>
+
 </Project>

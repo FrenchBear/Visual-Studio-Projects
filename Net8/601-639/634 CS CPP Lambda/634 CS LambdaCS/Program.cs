@@ -49,7 +49,7 @@ internal class Program
         AddDivisorFilter(5);
         AddDivisorFilter(11);
 
-        IEnumerable<int> vi = new List<int> { 1, 2, 3, 5, 7, 11, 13, 17, 19 };
+        IEnumerable<int> vi = [1, 2, 3, 5, 7, 11, 13, 17, 19];
         WriteLine(vi);
 
         foreach (var item in filters)

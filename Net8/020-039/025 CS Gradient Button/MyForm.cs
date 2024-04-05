@@ -63,9 +63,9 @@ public class MyForm: Form
         //
         AutoScaleBaseSize = new Size(5, 13);
         ClientSize = new Size(292, 273);
-        Controls.AddRange(new Control[] {
+        Controls.AddRange([
                                                                 button2,
-                                                                button1});
+                                                                button1]);
         Name = "MyForm";
         Text = "Form";
         Load += new EventHandler(MyForm_Load);

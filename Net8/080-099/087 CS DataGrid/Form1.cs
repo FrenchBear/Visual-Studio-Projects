@@ -150,8 +150,8 @@ public class Form1: Form
         col1.ReadOnly = true;
         var col2 = myTable.Columns.Add("Tel", Type.GetType("System.Int32"));
 
-        _ = myTable.Rows.Add(new object[] { "Pierre", 8873 });
-        _ = myTable.Rows.Add(new object[] { "Xavier", 8317 });
+        _ = myTable.Rows.Add(["Pierre", 8873]);
+        _ = myTable.Rows.Add(["Xavier", 8317]);
 
         DataView myDataView = new(myTable);
         dataGrid2.DataSource = myDataView;

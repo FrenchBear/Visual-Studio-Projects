@@ -61,10 +61,10 @@ public class MainForm: Form
         TuneView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom
                                  | AnchorStyles.Left
                                 | AnchorStyles.Right;
-        TuneView.Columns.AddRange(new ColumnHeader[] {
+        TuneView.Columns.AddRange([
             TitleHeader,
             ArtistHeader,
-            CommentHeader});
+            CommentHeader]);
         TuneView.ForeColor = System.Drawing.SystemColors.WindowText;
         TuneView.FullRowSelect = true;
         TuneView.GridLines = true;
@@ -110,11 +110,11 @@ public class MainForm: Form
         //
         AutoScaleBaseSize = new System.Drawing.Size(5, 13);
         ClientSize = new System.Drawing.Size(512, 261);
-        Controls.AddRange(new Control[] {
+        Controls.AddRange([
             RemoveButton,
             EditButton,
             AddButton,
-            TuneView});
+            TuneView]);
         Name = "MainForm";
         Text = "TuneTown";
         ResumeLayout(false);

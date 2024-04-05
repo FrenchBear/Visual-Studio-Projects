@@ -12,6 +12,8 @@ using System.Collections.ObjectModel;
 using System.Numerics;
 using static System.Console;
 
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
+
 internal class Program
 {
     private static void Main(string[] args)
