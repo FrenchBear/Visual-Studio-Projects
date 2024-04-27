@@ -56,6 +56,7 @@ Public Class Fraction : Implements IFormattable, IEquatable(Of Fraction)
                 Dim f As Double = CDbl(n) / CDbl(d)
                 Return f.ToString(fmt, provider)
             Case "G"
+                If d = 1 Then Return n.ToString
                 Return n.ToString & "/" & d.ToString
         End Select
         Return ""
