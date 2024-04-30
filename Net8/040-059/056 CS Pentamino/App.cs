@@ -18,7 +18,7 @@ internal class Pentamino
     private const int MAXCOL = 5;
     private const int MAXPIECE = 12;
 
-    private const int MAXSOLUTION = 1000;
+    private const int MAXSOLUTION = 5000;
 
     private static int iNbSol = 0;
     private static int iNbAppelPavage = 0;

@@ -8,7 +8,7 @@
 // 2017-06-05	PV		VS2017, simplification du code MSC/stdafx et version 4x4 pour The Talos Principle
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
-// 2023-11-18	PV		Net8 C#12
+// 2023-11-18	PV		Net8
 
 
 #include <stdio.h>
@@ -168,6 +168,7 @@ int main(int argc, char* argv[])
 	P9.Dessin();
 	P10.Dessin();
 
+	printf("(pause)");
 	(void)getchar();
 
 	if (MAXLIG*MAXCOL != Carre44::size * MAXPIECE)

@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>056b CPP Pentamino Talos</ProjectName>
+    <ProjectName>056b CPP Pentamino 4x4 Talos</ProjectName>
     <ProjectGuid>{3CDD08F2-45EB-4B46-A300-4EC2C5D4C058}</ProjectGuid>
     <RootNamespace>56 CPP Pentamino</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
@@ -121,7 +121,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Carre44.cpp" />
-    <ClCompile Include="Pentamino.cpp" />
+    <ClCompile Include="Pentamino_Talos.cpp" />
     <ClCompile Include="Piece.cpp" />
   </ItemGroup>
   <ItemGroup>
