@@ -14,8 +14,6 @@ using System;
 using System.Diagnostics;
 using static System.Console;
 
-#pragma warning disable CA2014 // Do not use stackalloc in loops: max depth=12, and alloc of 60 bytes per level: It's Ok!
-
 internal class Pentamino
 {
     private const int MAXLIG = 12;
@@ -124,6 +122,11 @@ internal class Pentamino
         if (l == MAXLIG && c == MAXCOL)
             Debugger.Break();
 
+        // Allocate one jeu buffer for recursive call outside the loop, otherwise it will
+        // allocate tons of memory, only released when the function exits.
+        // It may do useless allocations if current call is a dead end, but it's supposed to be lightweight
+        Span<byte> jeu2 = stackalloc byte[MAXLIG * MAXCOL];
+
         // On cherche parmi toutes les pieces qui restent une pièce pour couvrir la case vide
         int i, j;
         for (i = 0; i < MAXPIECE; i++)
@@ -157,7 +160,6 @@ internal class Pentamino
                     if (!bCollision)
                     {
                         // Pièce valable! On la place
-                        Span<byte> jeu2 = stackalloc byte[MAXLIG * MAXCOL];
                         jeu.CopyTo(jeu2);
 
                         for (l2 = 0; l2 < ca.lmax; l2++)
