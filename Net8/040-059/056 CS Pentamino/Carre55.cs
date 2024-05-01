@@ -1,8 +1,11 @@
-﻿// 01/10/2006	PV		VS 2005
+﻿// Carre55.cs
+// Represent a transformation (rotation, symmetry) of a pentamino over a 5x5 grid
 //
+// 2006-10-01   PV		VS 2005
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
+// 2024-04-30   PV      Code minor cleanup
 
 using System;
 using static System.Console;
@@ -49,16 +52,16 @@ internal class Carre55
         tMotif[2, 2] = B(i22);
         tMotif[2, 3] = B(i23);
         tMotif[2, 4] = B(i24);
-        tMotif[3, 0] = B(0);
-        tMotif[3, 1] = B(0);
-        tMotif[3, 2] = B(0);
-        tMotif[3, 3] = B(0);
-        tMotif[3, 4] = B(0);
-        tMotif[4, 0] = B(0);
-        tMotif[4, 1] = B(0);
-        tMotif[4, 2] = B(0);
-        tMotif[4, 3] = B(0);
-        tMotif[4, 4] = B(0);
+        tMotif[3, 0] = false;
+        tMotif[3, 1] = false;
+        tMotif[3, 2] = false;
+        tMotif[3, 3] = false;
+        tMotif[3, 4] = false;
+        tMotif[4, 0] = false;
+        tMotif[4, 1] = false;
+        tMotif[4, 2] = false;
+        tMotif[4, 3] = false;
+        tMotif[4, 4] = false;
 
         lmax = 3;
         if (i20 + i21 + i22 + i23 + i24 == 0)
@@ -85,6 +88,7 @@ internal class Carre55
         => iOffsetCol = tMotif[0, 0] ? 0 : tMotif[0, 1] ? 1 : tMotif[0, 2] ? 2 : tMotif[0, 3] ? 3 : 4;
 
     // Opérateur de comparaison
+    // Simple static method is easier than operator == that requires operator != and override GetHashCode and override Equals(object), none of this needed here
     public static bool Egalite(Carre55 l, Carre55 k)
         => l.lmax == k.lmax && l.cmax == k.cmax &&
             l.tMotif[0, 0] == k.tMotif[0, 0] && l.tMotif[0, 1] == k.tMotif[0, 1] && l.tMotif[0, 2] == k.tMotif[0, 2] && l.tMotif[0, 3] == k.tMotif[0, 3] && l.tMotif[0, 4] == k.tMotif[0, 4] &&
@@ -143,21 +147,16 @@ internal class Carre55
                 ct.tMotif[TL(iT, l, c), TC(iT, l, c)] = tMotif[l, c];
 
         if ((iT & 1) != 0)
-        {
-            ct.lmax = cmax;
-            ct.cmax = lmax;
-        }
+            (ct.lmax, ct.cmax) = (cmax, lmax);
         else
-        {
-            ct.lmax = lmax;
-            ct.cmax = cmax;
-        }
+            (ct.lmax, ct.cmax) = (lmax, cmax);
 
         ct.MkOffset();
 
         return ct;
     }
 
+    // For dev/debug traces
     public void Dessin()
     {
         int l, c;

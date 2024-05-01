@@ -1,4 +1,4 @@
-﻿// pentamino.cpp
+﻿// Pentamino.cs
 // Résolution de problèmes de pentaminos (pavage)
 //
 // 1998-12-26	PV		Version originale en C++
@@ -8,9 +8,13 @@
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
+// 2024-05-01   PV      Use Span<byte> and stackalloc instead of class Jeu for better perf (1.29s Span, 1.84s class, 1.70s array)
 
 using System;
+using System.Diagnostics;
 using static System.Console;
+
+#pragma warning disable CA2014 // Do not use stackalloc in loops: max depth=12, and alloc of 60 bytes per level: It's Ok!
 
 internal class Pentamino
 {
@@ -22,22 +26,6 @@ internal class Pentamino
 
     private static int iNbSol = 0;
     private static int iNbAppelPavage = 0;
-
-    // Plan de jeu
-    private class Jeu
-    {
-        private readonly byte[,] grille;
-
-        public Jeu() => grille = new byte[MAXLIG, MAXCOL];
-
-        public Jeu(Jeu j) => grille = (byte[,])j.grille.Clone();
-
-        public byte this[int l, int c]
-        {
-            get => grille[l, c];
-            set => grille[l, c] = value;
-        }
-    }
 
     // Tableau des pentaminos à utiliser pour le problème
     private static Piece[] tP;
@@ -71,15 +59,6 @@ internal class Pentamino
         P10.Dessin();
         P11.Dessin();
         P12.Dessin();
-        _ = Console.ReadLine();
-        */
-
-        /*
-            if (MAXLIG*MAXCOL!=5*MAXPIECE)
-            {
-              WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !");
-              return;
-            }
         */
 
         // Pieces a utiliser
@@ -99,21 +78,18 @@ internal class Pentamino
         tP[11] = P12;
 
         // Plan à paver
-        Jeu j = new();
+        Span<byte> j = stackalloc byte[MAXLIG * MAXCOL];
 
         // Pavage
-        var t0 = DateTime.Now;
+        var sw = Stopwatch.StartNew();
         Pavage(0, 0, j, (1 << MAXPIECE) - 1);
-        var t1 = DateTime.Now;
-        var t = t1.Subtract(t0);
 
-        WriteLine("{0} pour {1} solutions\n", t, iNbSol);
-        WriteLine("{0} appels à Pavage\n", iNbAppelPavage);
-
-        //Console.ReadLine();
+        WriteLine($"Duration {sw.ElapsedMilliseconds / 1000.0:f3}s");
+        WriteLine($"{iNbSol} solutions");
+        WriteLine($"{iNbAppelPavage} calls to Pavage()");
     }
 
-    private static void Pavage(int lstart, int cstart, Jeu jeu, int iMasquePieces)
+    private static void Pavage(int lstart, int cstart, Span<byte> jeu, int iMasquePieces)
     {
         int l, c = 0;
         var bTrouvé = false;
@@ -134,7 +110,7 @@ internal class Pentamino
                     c = cstart;
                 }
 
-                if (jeu[l, c] == 0)
+                if (jeu[l * MAXCOL + c] == 0)
                 {
                     bTrouvé = true;
                     break;
@@ -144,25 +120,9 @@ internal class Pentamino
                 break;
         }
 
-        // Si on n'en a pas trouvé, c'est que le pavage est terminé !
+        // On n'est pas censé ne pas en trouver...
         if (l == MAXLIG && c == MAXCOL)
-        {
-            iNbSol++;
-
-            /*
-            WriteLine("Solution {0} trouvée", iNbSol);
-            for (l=0 ; l<MAXLIG; l++)
-            {
-              for (c=0 ; c<MAXCOL ; c++)
-                Write("{0:D2} ", tP[jeu[l, c]-1].hNumPiece);
-              WriteLine();
-            }
-            WriteLine();
-            _ = Console.ReadLine();
-            */
-
-            return;
-        }
+            Debugger.Break();
 
         // On cherche parmi toutes les pieces qui restent une pièce pour couvrir la case vide
         int i, j;
@@ -174,15 +134,15 @@ internal class Pentamino
                     int l2, c2;
                     var bCollision = false;
 
-                    if (c + ca.cmax - ca.iOffsetCol > MAXCOL ||	  // Trop large
-                        l + ca.lmax > MAXLIG ||				  // Trop haut
-                        c < ca.iOffsetCol)					  // Doit être décalée trop à gauche
+                    if (c + ca.cmax - ca.iOffsetCol > MAXCOL ||	// Trop large
+                        l + ca.lmax > MAXLIG ||				    // Trop haut
+                        c < ca.iOffsetCol)					    // Doit être décalée trop à gauche
                         continue;
 
                     for (l2 = 0; l2 < ca.lmax; l2++)
                     {
                         for (c2 = 0; c2 < ca.cmax; c2++)
-                            if (ca.tMotif[l2, c2] && jeu[l + l2, c + c2 - ca.iOffsetCol] != 0)  // Case déjà occupée
+                            if (ca.tMotif[l2, c2] && jeu[(l + l2) * MAXCOL + c + c2 - ca.iOffsetCol] != 0)  // Case déjà occupée
                             {
                                 bCollision = true;
                                 break;
@@ -191,18 +151,30 @@ internal class Pentamino
                             break;
                     }
 
+                    // If there is a collision for current piece current transformation, no need to proceed in depth calling Pavage again
+                    // Just continue to next piece/transformation, that's it
+
                     if (!bCollision)
                     {
                         // Pièce valable! On la place
-                        Jeu jeu2 = new(jeu);
+                        Span<byte> jeu2 = stackalloc byte[MAXLIG * MAXCOL];
+                        jeu.CopyTo(jeu2);
 
                         for (l2 = 0; l2 < ca.lmax; l2++)
                             for (c2 = 0; c2 < ca.cmax; c2++)
                                 if (ca.tMotif[l2, c2])
-                                    jeu2[l + l2, c + c2 - ca.iOffsetCol] = (byte)(i + 1);
+                                    jeu2[(l + l2) * MAXCOL + c + c2 - ca.iOffsetCol] = (byte)(i + 1);
+
+                        // S'il ne reste plus de pièces, on a trouvé une solution!
+                        var nextMask = iMasquePieces & ~(1 << i);
+                        if (nextMask == 0)
+                        {
+                            iNbSol++;
+                            return;
+                        }
 
                         // On continue avec les pièces qui restent
-                        Pavage(l, c, jeu2, iMasquePieces & ~(1 << i));
+                        Pavage(l, c, jeu2, nextMask);
                     }
                 }
     }
