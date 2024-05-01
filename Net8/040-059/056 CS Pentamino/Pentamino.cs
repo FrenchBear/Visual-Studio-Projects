@@ -1,14 +1,14 @@
 ﻿// Pentamino.cs
-// Résolution de problèmes de pentaminos (pavage)
+// Solver for paving a rectangle with pentaminos
 //
-// 1998-12-26	PV		Version originale en C++
-// 2001-08-11	PV		Réécriture en C#
+// 1998-12-26	PV		Original C++ version
+// 2001-08-11	PV		C# rewrite
 // 2006-10-01	PV		VS2005
 // 2012-02-25	PV		VS2010
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
-// 2024-05-01   PV      Use Span<byte> and stackalloc instead of class Jeu for better perf (1.29s Span, 1.84s class, 1.70s array)
+// 2024-05-01   PV      Use Span<byte> and stackalloc instead of class Jeu for better perf (Release: 1.29s Span, 1.84s class, 1.70s array)
 
 using System;
 using System.Diagnostics;
@@ -16,167 +16,150 @@ using static System.Console;
 
 internal class Pentamino
 {
-    private const int MAXLIG = 12;
-    private const int MAXCOL = 5;
-    private const int MAXPIECE = 12;
+    private const int LINES = 12;               // Number of lines of the surface to pave
+    private const int COLS = 5;                 // Number of columns of the surface to pave
+    private const int PIECES = 12;
 
-    private const int MAXSOLUTION = 5000;
+    private const int MAXSOLUTION = 5000;       // Limit search time if needed
 
-    private static int iNbSol = 0;
-    private static int iNbAppelPavage = 0;
+    private static int nbSolutions = 0;
+    private static int nbPavingCalls = 0;
 
-    // Tableau des pentaminos à utiliser pour le problème
-    private static Piece[] tP;
+    // Table of pentaminos to use for the problem
+    private static Piece[] lp;
 
     private static void Main(string[] args)
     {
-        // Préparation des pièces
-        Piece P1 = new(1, 'I', 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        Piece P2 = new(2, 'L', 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0);
-        Piece P3 = new(3, 'Y', 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0);
-        Piece P4 = new(4, 'N', 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0);
-        Piece P5 = new(5, 'V', 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0);
-        Piece P6 = new(6, 'P', 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0);
-        Piece P7 = new(7, 'U', 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0);
-        Piece P8 = new(8, 'Z', 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0);
-        Piece P9 = new(9, 'F', 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0);
-        Piece P10 = new(10, 'T', 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0);
-        Piece P11 = new(11, 'W', 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0);
-        Piece P12 = new(12, 'X', 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0);
+        const bool X = true;
+        const bool o = false;
 
-        /*
-        P1.Dessin();
-        P2.Dessin();
-        P3.Dessin();
-        P4.Dessin();
-        P5.Dessin();
-        P6.Dessin();
-        P7.Dessin();
-        P8.Dessin();
-        P9.Dessin();
-        P10.Dessin();
-        P11.Dessin();
-        P12.Dessin();
-        */
+        // Prepare pieces
+        Piece P1 = new(1, 'I', X, X, X, X, X, o, o, o, o, o, o, o, o, o, o, 2);
+        Piece P2 = new(2, 'L', X, X, X, X, o, o, o, o, X, o, o, o, o, o, o, 8);
+        Piece P3 = new(3, 'Y', X, X, X, X, o, o, o, X, o, o, o, o, o, o, o, 8);
+        Piece P4 = new(4, 'N', X, X, X, o, o, o, o, X, X, o, o, o, o, o, o, 8);
+        Piece P5 = new(5, 'V', X, X, X, o, o, X, o, o, o, o, X, o, o, o, o, 4);
+        Piece P6 = new(6, 'P', X, X, X, o, o, X, X, o, o, o, o, o, o, o, o, 8);
+        Piece P7 = new(7, 'U', X, X, X, o, o, X, o, X, o, o, o, o, o, o, o, 4);
+        Piece P8 = new(8, 'Z', X, X, o, o, o, o, X, o, o, o, o, X, X, o, o, 4);
+        Piece P9 = new(9, 'F', X, X, o, o, o, o, X, X, o, o, o, X, o, o, o, 8);
+        Piece P10 = new(10, 'T', X, X, X, o, o, o, X, o, o, o, o, X, o, o, o, 4);
+        Piece P11 = new(11, 'W', X, X, o, o, o, o, X, X, o, o, o, o, X, o, o, 4);
+        Piece P12 = new(12, 'X', o, X, o, o, o, X, X, X, o, o, o, X, o, o, o, 1);
 
-        // Pieces a utiliser
-        tP = new Piece[12];
+        //P1.Trace();
+        //P2.Trace();
+        //P3.Trace();
+        //P4.Trace();
+        //P5.Trace();
+        //P6.Trace();
+        //P7.Trace();
+        //P8.Trace();
+        //P9.Trace();
+        //P10.Trace();
+        //P11.Trace();
+        //P12.Trace();
 
-        tP[0] = P2;
-        tP[1] = P3;
-        tP[2] = P6;
-        tP[3] = P11;
-        tP[4] = P8;
-        tP[5] = P4;
-        tP[6] = P5;
-        tP[7] = P10;
-        tP[8] = P9;
-        tP[9] = P1;
-        tP[10] = P7;
-        tP[11] = P12;
+        // Pieces to use, allowing easi indexed access (order is not meaningful)
+        lp = [ P2, P3, P6, P11, P8, P4, P5, P10, P9, P1, P7, P12 ];
 
-        // Plan à paver
-        Span<byte> j = stackalloc byte[MAXLIG * MAXCOL];
+        // Rectangle for paving, zero-initialized by default (https://stackoverflow.com/questions/8679052/initialization-of-memory-allocated-with-stackalloc)
+        Span<byte> rect = stackalloc byte[LINES * COLS];
 
-        // Pavage
+        // Paving
         var sw = Stopwatch.StartNew();
-        Pavage(0, 0, j, (1 << MAXPIECE) - 1);
+        Paving(0, 0, rect, (1 << PIECES) - 1);
 
         WriteLine($"Duration {sw.ElapsedMilliseconds / 1000.0:f3}s");
-        WriteLine($"{iNbSol} solutions");
-        WriteLine($"{iNbAppelPavage} calls to Pavage()");
+        WriteLine($"{nbSolutions} solutions");
+        WriteLine($"{nbPavingCalls} calls to Paving()");
     }
 
-    private static void Pavage(int lstart, int cstart, Span<byte> jeu, int iMasquePieces)
+    private static void Paving(int lstart, int cstart, Span<byte> rect, int piecesMask)
     {
-        int l, c = 0;
-        var bTrouvé = false;
-
-        if (iNbSol > MAXSOLUTION)
+        if (nbSolutions > MAXSOLUTION)
             return;
 
-        iNbAppelPavage++;
+        nbPavingCalls++;
 
-        // On cherche une case vide à couvrir, de gauche à droite, de haut en bas
-        for (l = 0; l < MAXLIG; l++)
+        // We are looking for an empty square to cover, from left to right, from top to bottom
+        int l, c = 0;
+        var found = false;
+        for (l = 0; l < LINES; l++)
         {
-            for (c = 0; c < MAXCOL; c++)
+            for (c = 0; c < COLS; c++)
             {
-                if (l == 0 && c == 0)	  // Accélération, on part de la dernière case vide trouvée
+                if (l == 0 && c == 0)	  // Optimization, slart from last empty square found
                 {
                     l = lstart;
                     c = cstart;
                 }
 
-                if (jeu[l * MAXCOL + c] == 0)
+                if (rect[l * COLS + c] == 0)
                 {
-                    bTrouvé = true;
+                    found = true;
                     break;
                 }
             }
-            if (bTrouvé)
+            if (found)
                 break;
         }
 
-        // On n'est pas censé ne pas en trouver...
-        if (l == MAXLIG && c == MAXCOL)
+        // Not supposed to happen...
+        if (!found)
             Debugger.Break();
 
-        // Allocate one jeu buffer for recursive call outside the loop, otherwise it will
+        // Allocate one rect buffer for recursive call outside the loop, otherwise it will
         // allocate tons of memory, only released when the function exits.
         // It may do useless allocations if current call is a dead end, but it's supposed to be lightweight
-        Span<byte> jeu2 = stackalloc byte[MAXLIG * MAXCOL];
+        Span<byte> nextRect = stackalloc byte[LINES * COLS];
 
-        // On cherche parmi toutes les pieces qui restent une pièce pour couvrir la case vide
-        int i, j;
-        for (i = 0; i < MAXPIECE; i++)
-            if ((iMasquePieces & (1 << i)) != 0)
-                for (j = 0; j < tP[i].iNbt; j++)	// Pour chacune des transformations
+        // We search among all the pieces that remain for a piece to cover the empty square
+        for (int i = 0; i < PIECES; i++)
+            if ((piecesMask & (1 << i)) != 0)
+                foreach (var ca in lp[i].Transformations)
                 {
-                    var ca = tP[i].c[j];
-                    int l2, c2;
-                    var bCollision = false;
-
-                    if (c + ca.cmax - ca.iOffsetCol > MAXCOL ||	// Trop large
-                        l + ca.lmax > MAXLIG ||				    // Trop haut
-                        c < ca.iOffsetCol)					    // Doit être décalée trop à gauche
+                    if (c + ca.Cmax - ca.OffsetCol > COLS ||	// Too wide
+                        l + ca.Lmax > LINES ||				    // Too high
+                        c < ca.OffsetCol)					    // Must be shifted too much on the lest
                         continue;
 
-                    for (l2 = 0; l2 < ca.lmax; l2++)
+                    int l2, c2;
+                    var collision = false;
+                    for (l2 = 0; l2 < ca.Lmax; l2++)
                     {
-                        for (c2 = 0; c2 < ca.cmax; c2++)
-                            if (ca.tMotif[l2, c2] && jeu[(l + l2) * MAXCOL + c + c2 - ca.iOffsetCol] != 0)  // Case déjà occupée
+                        for (c2 = 0; c2 < ca.Cmax; c2++)
+                            if (ca.Motif[l2, c2] && rect[(l + l2) * COLS + c + c2 - ca.OffsetCol] != 0)  // Square already occupied
                             {
-                                bCollision = true;
+                                collision = true;
                                 break;
                             }
-                        if (bCollision)
+                        if (collision)
                             break;
                     }
 
                     // If there is a collision for current piece current transformation, no need to proceed in depth calling Pavage again
                     // Just continue to next piece/transformation, that's it
-
-                    if (!bCollision)
+                    if (!collision)
                     {
-                        // Pièce valable! On la place
-                        jeu.CopyTo(jeu2);
+                        // Piece is Ok! Let's place it
+                        rect.CopyTo(nextRect);
 
-                        for (l2 = 0; l2 < ca.lmax; l2++)
-                            for (c2 = 0; c2 < ca.cmax; c2++)
-                                if (ca.tMotif[l2, c2])
-                                    jeu2[(l + l2) * MAXCOL + c + c2 - ca.iOffsetCol] = (byte)(i + 1);
+                        for (l2 = 0; l2 < ca.Lmax; l2++)
+                            for (c2 = 0; c2 < ca.Cmax; c2++)
+                                if (ca.Motif[l2, c2])
+                                    nextRect[(l + l2) * COLS + c + c2 - ca.OffsetCol] = (byte)(i + 1);
 
-                        // S'il ne reste plus de pièces, on a trouvé une solution!
-                        var nextMask = iMasquePieces & ~(1 << i);
+                        // If there are no more pieces left, we found a solution!
+                        var nextMask = piecesMask & ~(1 << i);
                         if (nextMask == 0)
                         {
-                            iNbSol++;
+                            nbSolutions++;
                             return;
                         }
 
-                        // On continue avec les pièces qui restent
-                        Pavage(l, c, jeu2, nextMask);
+                        // Continue recursively with remaining pieces up to a solution or a dead end
+                        Paving(l, c, nextRect, nextMask);
                     }
                 }
     }

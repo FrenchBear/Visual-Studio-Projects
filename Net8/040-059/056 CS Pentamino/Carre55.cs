@@ -5,151 +5,149 @@
 // 2021-09-18	PV		VS2022, Net6
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
-// 2024-04-30   PV      Code minor cleanup
+// 2024-04-30   PV      Use bools instead of ints; Simplified TL and TC (no need for ?:, result is valid in all cases)
 
 using System;
 using static System.Console;
 
-#pragma warning disable CA1822 // Mark members as static
-
 internal class Carre55
 {
-    public bool[,] tMotif;
-    public int lmax, cmax;		// Encombrement de la pièce
-    public int iOffsetCol;		// Décalage de colonne pour occuper la cellule [0, 0]
-
-    private bool B(int x)
-        => x != 0;
+    public bool[,] Motif;
+    public int Lmax, Cmax;		// Piece bounding dimensions (rows/columns count), each 1..5
+    public int OffsetCol;		// Décalage de colonne pour occuper la cellule [0, 0]
 
     private Carre55()
     {
-        tMotif = new bool[5, 5];
+        Motif = new bool[5, 5];
         for (var l = 0; l < 5; l++)
             for (var c = 0; c < 5; c++)
-                tMotif[l, c] = false;
-        lmax = cmax = 0;
-        iOffsetCol = 0;
+                Motif[l, c] = false;
+        Lmax = Cmax = 0;
+        OffsetCol = 0;
     }
 
-    public Carre55(int i00, int i01, int i02, int i03, int i04,
-            int i10, int i11, int i12, int i13, int i14,
-            int i20, int i21, int i22, int i23, int i24)
+    public Carre55(bool b00, bool b01, bool b02, bool b03, bool b04,
+                   bool b10, bool b11, bool b12, bool b13, bool b14,
+                   bool b20, bool b21, bool b22, bool b23, bool b24)
     {
-        tMotif = new bool[5, 5];
+        Motif = new bool[5, 5];
 
-        tMotif[0, 0] = B(i00);
-        tMotif[0, 1] = B(i01);
-        tMotif[0, 2] = B(i02);
-        tMotif[0, 3] = B(i03);
-        tMotif[0, 4] = B(i04);
-        tMotif[1, 0] = B(i10);
-        tMotif[1, 1] = B(i11);
-        tMotif[1, 2] = B(i12);
-        tMotif[1, 3] = B(i13);
-        tMotif[1, 4] = B(i14);
-        tMotif[2, 0] = B(i20);
-        tMotif[2, 1] = B(i21);
-        tMotif[2, 2] = B(i22);
-        tMotif[2, 3] = B(i23);
-        tMotif[2, 4] = B(i24);
-        tMotif[3, 0] = false;
-        tMotif[3, 1] = false;
-        tMotif[3, 2] = false;
-        tMotif[3, 3] = false;
-        tMotif[3, 4] = false;
-        tMotif[4, 0] = false;
-        tMotif[4, 1] = false;
-        tMotif[4, 2] = false;
-        tMotif[4, 3] = false;
-        tMotif[4, 4] = false;
+        Motif[0, 0] = b00;
+        Motif[0, 1] = b01;
+        Motif[0, 2] = b02;
+        Motif[0, 3] = b03;
+        Motif[0, 4] = b04;
+        Motif[1, 0] = b10;
+        Motif[1, 1] = b11;
+        Motif[1, 2] = b12;
+        Motif[1, 3] = b13;
+        Motif[1, 4] = b14;
+        Motif[2, 0] = b20;
+        Motif[2, 1] = b21;
+        Motif[2, 2] = b22;
+        Motif[2, 3] = b23;
+        Motif[2, 4] = b24;
+        Motif[3, 0] = false;
+        Motif[3, 1] = false;
+        Motif[3, 2] = false;
+        Motif[3, 3] = false;
+        Motif[3, 4] = false;
+        Motif[4, 0] = false;
+        Motif[4, 1] = false;
+        Motif[4, 2] = false;
+        Motif[4, 3] = false;
+        Motif[4, 4] = false;
 
-        lmax = 3;
-        if (i20 + i21 + i22 + i23 + i24 == 0)
-            lmax = 2;
-        if (i10 + i11 + i12 + i13 + i14 == 0)
-            lmax = 1;
+        if (!(b10 || b11 || b12 || b13 || b14))
+            Lmax = 1;
+        else if (!(b20 || b21 || b22 || b23 || b24))
+            Lmax = 2;
+        else
+            Lmax = 3;
 
-        cmax = 5;
-        if (i04 + i14 + i24 == 0)
-            cmax = 4;
-        if (i03 + i13 + i23 == 0)
-            cmax = 3;
-        if (i02 + i12 + i22 == 0)
-            cmax = 2;
-        if (i01 + i11 + i21 == 0)
-            cmax = 1;
+        if (!(b01 || b11 || b21))
+            Cmax = 1;
+        else if (!(b02 || b12 || b22))
+            Cmax = 2;
+        else if (!(b03 || b13 || b23))
+            Cmax = 3;
+        else if (!(b04 || b14 || b24))
+            Cmax = 4;
+        else
+            Cmax = 5;
 
         MkOffset();
     }
 
-    // Détermine la propriété iOffsetCol, c'est à dire le nombre de colonnes qu'il
-    // faut translater le dessin à gauche pour occuper la cellule [0, 0]
+    // Determine the iOffsetCol property, i.e. the number of columns it
+    // must translate the drawing to the left to occupy the cell [0, 0]
     private void MkOffset()
-        => iOffsetCol = tMotif[0, 0] ? 0 : tMotif[0, 1] ? 1 : tMotif[0, 2] ? 2 : tMotif[0, 3] ? 3 : 4;
+        => OffsetCol = Motif[0, 0] ? 0 : Motif[0, 1] ? 1 : Motif[0, 2] ? 2 : Motif[0, 3] ? 3 : 4;
 
-    // Opérateur de comparaison
-    // Simple static method is easier than operator == that requires operator != and override GetHashCode and override Equals(object), none of this needed here
-    public static bool Egalite(Carre55 l, Carre55 k)
-        => l.lmax == k.lmax && l.cmax == k.cmax &&
-            l.tMotif[0, 0] == k.tMotif[0, 0] && l.tMotif[0, 1] == k.tMotif[0, 1] && l.tMotif[0, 2] == k.tMotif[0, 2] && l.tMotif[0, 3] == k.tMotif[0, 3] && l.tMotif[0, 4] == k.tMotif[0, 4] &&
-            l.tMotif[1, 0] == k.tMotif[1, 0] && l.tMotif[1, 1] == k.tMotif[1, 1] && l.tMotif[1, 2] == k.tMotif[1, 2] && l.tMotif[1, 3] == k.tMotif[1, 3] && l.tMotif[1, 4] == k.tMotif[1, 4] &&
-            l.tMotif[2, 0] == k.tMotif[2, 0] && l.tMotif[2, 1] == k.tMotif[2, 1] && l.tMotif[2, 2] == k.tMotif[2, 2] && l.tMotif[2, 3] == k.tMotif[2, 3] && l.tMotif[2, 4] == k.tMotif[2, 4] &&
-            l.tMotif[3, 0] == k.tMotif[3, 0] && l.tMotif[3, 1] == k.tMotif[3, 1] && l.tMotif[3, 2] == k.tMotif[3, 2] && l.tMotif[3, 3] == k.tMotif[3, 3] && l.tMotif[3, 4] == k.tMotif[3, 4] &&
-            l.tMotif[4, 0] == k.tMotif[4, 0] && l.tMotif[4, 1] == k.tMotif[4, 1] && l.tMotif[4, 2] == k.tMotif[4, 2] && l.tMotif[4, 3] == k.tMotif[4, 3] && l.tMotif[4, 4] == k.tMotif[4, 4];
+    // Comparison operator
+    // Simple static method is easier than operator == that requires operator != and override GetHashCode
+    // and override Equals(object), none of this needed here
+    public static bool SameAs(Carre55 l, Carre55 r)
+        => l.Lmax == r.Lmax && l.Cmax == r.Cmax &&
+            l.Motif[0, 0] == r.Motif[0, 0] && l.Motif[0, 1] == r.Motif[0, 1] && l.Motif[0, 2] == r.Motif[0, 2] && l.Motif[0, 3] == r.Motif[0, 3] && l.Motif[0, 4] == r.Motif[0, 4] &&
+            l.Motif[1, 0] == r.Motif[1, 0] && l.Motif[1, 1] == r.Motif[1, 1] && l.Motif[1, 2] == r.Motif[1, 2] && l.Motif[1, 3] == r.Motif[1, 3] && l.Motif[1, 4] == r.Motif[1, 4] &&
+            l.Motif[2, 0] == r.Motif[2, 0] && l.Motif[2, 1] == r.Motif[2, 1] && l.Motif[2, 2] == r.Motif[2, 2] && l.Motif[2, 3] == r.Motif[2, 3] && l.Motif[2, 4] == r.Motif[2, 4] &&
+            l.Motif[3, 0] == r.Motif[3, 0] && l.Motif[3, 1] == r.Motif[3, 1] && l.Motif[3, 2] == r.Motif[3, 2] && l.Motif[3, 3] == r.Motif[3, 3] && l.Motif[3, 4] == r.Motif[3, 4] &&
+            l.Motif[4, 0] == r.Motif[4, 0] && l.Motif[4, 1] == r.Motif[4, 1] && l.Motif[4, 2] == r.Motif[4, 2] && l.Motif[4, 3] == r.Motif[4, 3] && l.Motif[4, 4] == r.Motif[4, 4];
 
     // Transformations
 
-    // Transformation de ligne
-    private int TL(int iT, int l, int c)
-        => iT switch
+    // Line transform
+    private int TL(int tr, int l, int c)
+        => tr switch
         {
             1 => c,
-            2 => l < lmax ? lmax - 1 - l : l,
-            3 => c < cmax ? cmax - 1 - c : c,
+            2 => Lmax - 1 - l,
+            3 => Cmax - 1 - c,
             4 => l,
-            5 => c < cmax ? cmax - 1 - c : c,
-            6 => l < lmax ? lmax - 1 - l : c,
+            5 => Cmax - 1 - c,
+            6 => Lmax - 1 - l,
             7 => c,
             _ => l,// cas 0
         };
 
-    // Transformation de colonne
-    private int TC(int iT, int l, int c)
-        => iT switch
+    // Column transform
+    private int TC(int tr, int l, int c)
+        => tr switch
         {
-            1 => l < lmax ? lmax - 1 - l : l,
-            2 => c < cmax ? cmax - 1 - c : c,
+            1 => Lmax - 1 - l,
+            2 => Cmax - 1 - c,
             3 => l,
-            4 => c < cmax ? cmax - 1 - c : c,
-            5 => l < lmax ? lmax - 1 - l : l,
+            4 => Cmax - 1 - c,
+            5 => Lmax - 1 - l,
             6 => c,
             7 => l,
             _ => c,// cas 0
         };
 
     // Transformations
-    // 0: Identité
-    // 1: 90°  sens horaire
+    // 0: Identity
+    // 1: 90°  clockwise
     // 2: 180°
-    // 3: 270° sens horaire
-    // 4: miroir Hz
-    // 5: miroir Hz + 90°  sens horaire
-    // 6: miroir Hz + 180°
-    // 7: miroir Hz + 270° sens horaire
+    // 3: 270° clockwise
+    // 4: mirror Hz
+    // 5: mirror Hz + 90°  clockwise
+    // 6: mirror Hz + 180°
+    // 7: mirror Hz + 270° clockwise
 
-    public Carre55 Transformation(int iT)
+    public Carre55 Transformation(int tr)
     {
         Carre55 ct = new();
         int l, c;
 
-        for (l = 0; l < lmax; l++)
-            for (c = 0; c < cmax; c++)
-                ct.tMotif[TL(iT, l, c), TC(iT, l, c)] = tMotif[l, c];
+        for (l = 0; l < Lmax; l++)
+            for (c = 0; c < Cmax; c++)
+                ct.Motif[TL(tr, l, c), TC(tr, l, c)] = Motif[l, c];
 
-        if ((iT & 1) != 0)
-            (ct.lmax, ct.cmax) = (cmax, lmax);
+        if ((tr & 1) != 0)
+            (ct.Lmax, ct.Cmax) = (Cmax, Lmax);
         else
-            (ct.lmax, ct.cmax) = (lmax, cmax);
+            (ct.Lmax, ct.Cmax) = (Lmax, Cmax);
 
         ct.MkOffset();
 
@@ -157,16 +155,19 @@ internal class Carre55
     }
 
     // For dev/debug traces
-    public void Dessin()
+    public void Trace(char lp, int tr)
     {
+        WriteLine("-------------------------");
+        WriteLine($"Piece {lp}, transformation {tr}");
+
         int l, c;
 
         for (l = 0; l < 5; l++)
         {
             for (c = 0; c < 5; c++)
-                Console.Write(tMotif[l, c] ? "\xdb\xdb" : "\xfa\xfa");
+                Console.Write(Motif[l, c] ? "##" : ". ");
             WriteLine();
         }
-        WriteLine("Offset: {0}", iOffsetCol);
+        WriteLine($"Lmax={Lmax} Cmax={Cmax} Offset={OffsetCol}");
     }
 }
