@@ -50,7 +50,15 @@ internal class Program
 
         // Just checking I'm not working at HP, sin(π) is zero :-)
         sin = SinCordic(Math.PI);
-        WriteLine($"sin π:  {sin}");
+        WriteLine($"sin π:       {sin}");
+        sin = SinCordic(1e-12);
+        WriteLine($"sin 1e-12:   {sin}");
+
+        // This is wrong at the 5th decimal, this is normal because sin(π-1e12) is computed as sin((π-1e12)-π),
+        // and because of float rounding value, the result of (π-1e12)-π is 1.000088900582341e-12 and not 1e-12
+        // so the result is 1.000088900582341e-12...
+        sin = SinCordic(Math.PI-1e-12);
+        WriteLine($"sin π-1e-12: {sin}");
     }
 
     private static double SinCordic(double angle)
@@ -67,7 +75,7 @@ internal class Program
         if (angle >= Math.PI)
         {
             angle -= Math.PI;
-            invertSign ^= true;
+            invertSign = !invertSign;
         }
         if (angle > Math.PI / 2)
             angle = Math.PI - angle;
