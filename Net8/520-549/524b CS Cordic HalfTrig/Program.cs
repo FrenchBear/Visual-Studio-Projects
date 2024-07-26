@@ -8,8 +8,10 @@
 // 2023-11-18	PV		Net8 C#12
 // 2024-05-07	PV		Code clean-up
 // 2024-07-06   PV      ComputeHalfTrigTable()
+// 2024-07-26   PV      Added kernel_sin/cos from https://github.com/freemint/fdlibm/blob/master/k_sin.c
 
 using System;
+using System.Diagnostics;
 using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
@@ -29,6 +31,13 @@ internal class Program
         for (var z = -9.75; z < 10.0; z += 0.25)
         {
             var s = SinCordic(z);
+
+            // Trust, but verify :-)
+            var s2 = KSin(z);
+            var s3 = Math.Sin(z);
+            Debug.Assert(Math.Abs(s2 - s) < 1e-7);
+            Debug.Assert(Math.Abs(s3 - s) < 1e-7);
+
             WriteLine("sin({0,4:F1}) = {1,6:F3} {2}*", z, s, new string(' ', (int)(20 * (1 + s))));
         }
         WriteLine();
@@ -36,9 +45,12 @@ internal class Program
         // Take a random angle (0..Pi/2)
         var a0 = 1.1823614786;
         CordicCompute(a0, out var sin, out var cos);
+        double kcos = KernelCos(a0);
+        double ksin = KernelSin(a0);
         WriteLine("a={0}", a0);
         WriteLine("Math:   c={0}\t\t\ts={1}\t\t\t(Math.Cos and Math.Sin)", Math.Cos(a0), Math.Sin(a0));
         WriteLine("Cordic: c={0}\t\t\ts={1}\t\t\t(Cordic Cos and Sin)", cos, sin);
+        WriteLine("Kernel: c={0}\t\t\ts={1}\t\t\t(Sun Microsystems Cos and Sin)", kcos, ksin);
         WriteLine("Maple:  c=0.378740326955891541643393287014\ts=0.925502979323861698653734026619\n");
 
         // Testing with a very small angle
@@ -57,7 +69,7 @@ internal class Program
         // This is wrong at the 5th decimal, this is normal because sin(π-1e12) is computed as sin((π-1e12)-π),
         // and because of float rounding value, the result of (π-1e12)-π is 1.000088900582341e-12 and not 1e-12
         // so the result is 1.000088900582341e-12...
-        sin = SinCordic(Math.PI-1e-12);
+        sin = SinCordic(Math.PI - 1e-12);
         WriteLine($"sin π-1e-12: {sin}");
     }
 
@@ -80,8 +92,11 @@ internal class Program
         if (angle > Math.PI / 2)
             angle = Math.PI - angle;
 
-        //CordicCompute(angle, out var sin, out var cos);
-        CordicComputePrecalc(angle, out var sin, out var cos);
+        double sin;
+        if (UsePrecalc)
+            CordicComputePrecalc(angle, out sin, out _);
+        else
+            CordicCompute(angle, out sin, out _);
 
         // No flipsign function in C#
         // && sin!=0 avoids returning -0 for sin(Math.Pi)!
@@ -215,7 +230,7 @@ internal class Program
         var a = tASC[ASCCount - 1].Angle;
         var Sine = tASC[ASCCount - 1].Sine;
         var Cosine = tASC[ASCCount - 1].Cosine;
-        while (angle>1e-17)
+        while (angle > 1e-17)
         {
             a /= 2;
             if (angle >= a)
@@ -226,4 +241,93 @@ internal class Program
         }
 
     }
+
+    // ---------------------------------------------------------------------
+    // Version from https://github.com/freemint/fdlibm/blob/master/k_sin.c
+
+    static double KernelSin(double x)
+    {
+        double z, r, v;
+
+        const double S1 = -1.66666666666666324348e-01;   /* 0xBFC55555, 0x55555549 */
+        const double S2 = 8.33333333332248946124e-03;    /* 0x3F811111, 0x1110F8A6 */
+        const double S3 = -1.98412698298579493134e-04;   /* 0xBF2A01A0, 0x19C161D5 */
+        const double S4 = 2.75573137070700676789e-06;    /* 0x3EC71DE3, 0x57B1FE7D */
+        const double S5 = -2.50507602534068634195e-08;   /* 0xBE5AE5E6, 0x8A2B9CEB */
+        const double S6 = 1.58969099521155010221e-10;    /* 0x3DE5D93A, 0x5ACFD57C */
+
+        const double epsilon = 7.450580596923828125e-9;  // 2^-27
+
+        if (x < epsilon)                /* |x| < 2**-27 */
+            return x;
+
+        z = x * x;
+        v = z * x;
+        r = S2 + z * (S3 + z * (S4 + z * (S5 + z * S6)));
+        return x + v * (S1 + z * r);
+    }
+
+    static double KernelCos(double x)
+    {
+        double a, hz, z, r, qx;
+
+        const double one = 1.00000000000000000000e+00;   /* 0x3FF00000, 0x00000000 */
+        const double C1 = 4.16666666666666019037e-02;    /* 0x3FA55555, 0x5555554C */
+        const double C2 = -1.38888888888741095749e-03;   /* 0xBF56C16C, 0x16C15177 */
+        const double C3 = 2.48015872894767294178e-05;    /* 0x3EFA01A0, 0x19CB1590 */
+        const double C4 = -2.75573143513906633035e-07;   /* 0xBE927E4F, 0x809C52AD */
+        const double C5 = 2.08757232129817482790e-09;    /* 0x3E21EE9E, 0xBDB4B1C4 */
+        const double C6 = -1.13596475577881948265e-11;   /* 0xBDA8FAE9, 0xBE8838D4 */
+
+        const double epsilon = 7.450580596923828125e-9;  // 2^-27
+
+        if (x < epsilon)
+            return one;
+
+        z = x * x;
+        r = z * (C1 + z * (C2 + z * (C3 + z * (C4 + z * (C5 + z * C6)))));
+        if (x < 0.3)
+            return one - (0.5 * z - z * r);
+
+        //if (ix > IC(0x3fe90000))
+        //{                               /* x > 0.78125 */
+        //    qx = 0.28125;
+        //}
+        //else
+        //{
+        //    INSERT_WORDS(qx, ix - IC(0x00200000), 0);   /* x/4 */
+        //}
+
+        qx = x / 4.0;
+        hz = 0.5 * z - qx;
+        a = one - qx;
+        return a - (hz - z * r);
+    }
+
+    private static double KSin(double angle)
+    {
+        var invertSign = false;
+
+        if (angle < 0)
+        {
+            angle = -angle;
+            invertSign = true;
+        }
+        if (angle >= Math.PI * 2)
+            angle %= 2 * Math.PI;
+        if (angle >= Math.PI)
+        {
+            angle -= Math.PI;
+            invertSign = !invertSign;
+        }
+        if (angle > Math.PI / 2)
+            angle = Math.PI - angle;
+
+        double sin = KernelSin(angle);
+
+        // No flipsign function in C#
+        // && sin!=0 avoids returning -0 for sin(Math.Pi)!
+        return (invertSign && sin != 0) ? -sin : sin;
+    }
+
 }
