@@ -17,6 +17,8 @@ using System.Threading.Tasks;
 
 namespace RI3;
 
+#pragma warning disable IDE0305 // Simplify collection initialization
+
 public class Model
 {
     // Initialization

@@ -126,7 +126,7 @@ public class MainForm: Form
 
         if (dlg.ShowDialog() == DialogResult.OK)
         {
-            ListViewItem item = new(new string[] { dlg.Title, dlg.Artist, dlg.Comment });
+            ListViewItem item = new([dlg.Title, dlg.Artist, dlg.Comment]);
             _ = TuneView.Items.Add(item);
             item.Focused = true;
         }
@@ -217,7 +217,7 @@ public class MainForm: Form
                     {
                         var s2 = reader.ReadLine();
                         var s3 = reader.ReadLine();
-                        ListViewItem item = new(new string[] { s1, s2, s3 });
+                        ListViewItem item = new([s1, s2, s3]);
                         _ = TuneView.Items.Add(item);
                         item.Focused = true;
                     }
