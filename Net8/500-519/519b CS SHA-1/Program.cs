@@ -16,7 +16,7 @@ using System.Security.Cryptography;
 using System.Text;
 using static System.Console;
 
-namespace SHA_1;
+namespace CS519b;
 
 internal class Program
 {
@@ -79,24 +79,20 @@ internal class Program
         nb = lb / blocksize;    // Number of blocks of 512 bits
         if (lb == 0 || lb % blocksize != 0)
             nb++;
-        if ((lb % blocksize) >= (blocksize - lengthsize))
+        if (lb % blocksize >= blocksize - lengthsize)
             nb++;
 
         tb = new byte[nb * (blocksize / 8)];
         for (var i = 0; i < lB; i++)
-        {
             tb[i] = (byte)s[i];
-        }
         var j = lB;
         tb[j++] = 0x80;
-        while ((j % (blocksize / 8)) != (blocksize - lengthsize) / 8)
+        while (j % (blocksize / 8) != (blocksize - lengthsize) / 8)
             tb[j++] = 0;
         // Length is always 32-bit in this implementation
         if (lengthsize == 128)
-        {
             for (var i = 0; i < 8; i++)
                 tb[j++] = 0;
-        }
 
         tb[j++] = 0;
         tb[j++] = 0;
@@ -142,15 +138,13 @@ internal class Program
 
             // copy chunk into first 16 words w[0..15] of the message schedule array
             for (var i = 0; i < 64; i += 4)
-                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)tb[(br << 6) + i + 3];
+                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + tb[(br << 6) + i + 3];
 
             // Extend the first 16 words into the remaining 64 words w[16..79] of the message schedule array:
             // for i from 16 to 79:
             //     w[i] = (w[i - 3] xor w[i - 8] xor w[i - 14] xor w[i - 16]) leftrotate 1
             for (var i = 16; i < 80; i++)
-            {
                 w[i] = LeftRotate(w[i - 3] ^ w[i - 8] ^ w[i - 14] ^ w[i - 16], 1);
-            }
 
             // Initialize working variables to current hash value:
             var a = h[0];
@@ -186,7 +180,7 @@ internal class Program
                 uint f, k;
                 if (i <= 19)
                 {
-                    f = (b & c) | ((~b) & d);
+                    f = b & c | ~b & d;
                     k = 0x5A827999;
                 }
                 else if (i <= 39)
@@ -196,7 +190,7 @@ internal class Program
                 }
                 else if (i <= 59)
                 {
-                    f = (b & c) | (b & d) | (c & d);
+                    f = b & c | b & d | c & d;
                     k = 0x8F1BBCDC;
                 }
                 else
@@ -228,5 +222,5 @@ internal class Program
 
     // equivalent of C++ _rotl
     // 32-bit version
-    private static uint LeftRotate(uint original, int bits) => (original << bits) | (original >> (32 - bits));
+    private static uint LeftRotate(uint original, int bits) => original << bits | original >> 32 - bits;
 }

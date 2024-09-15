@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using static System.Console;
 
-namespace Crible;
+namespace CS317;
 
 internal class Program
 {

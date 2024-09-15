@@ -8,7 +8,7 @@
 
 using System.Windows.Forms;
 
-namespace WindowsApplication2_CSharp;
+namespace CS004;
 
 #pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable IDE1006 // Naming Styles

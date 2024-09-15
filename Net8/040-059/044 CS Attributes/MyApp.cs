@@ -12,7 +12,7 @@
 using System;
 using static System.Console;
 
-namespace CS44;
+namespace CS044;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class MonAttribut(int iVal): Attribute

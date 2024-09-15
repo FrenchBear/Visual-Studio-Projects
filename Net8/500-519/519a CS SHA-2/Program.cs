@@ -19,7 +19,7 @@ using System.Security.Cryptography;
 using System.Text;
 using static System.Console;
 
-namespace SHA_2;
+namespace CS519a;
 
 internal class Program
 {
@@ -187,24 +187,20 @@ internal class Program
         nb = lb / blocksize;    // Number of blocks of 512 bits
         if (lb == 0 || lb % blocksize != 0)
             nb++;
-        if ((lb % blocksize) >= (blocksize - lengthsize))
+        if (lb % blocksize >= blocksize - lengthsize)
             nb++;
 
         tb = new byte[nb * (blocksize / 8)];
         for (var i = 0; i < lB; i++)
-        {
             tb[i] = (byte)s[i];
-        }
         var j = lB;
         tb[j++] = 0x80;
-        while ((j % (blocksize / 8)) != (blocksize - lengthsize) / 8)
+        while (j % (blocksize / 8) != (blocksize - lengthsize) / 8)
             tb[j++] = 0;
         // Length is always 32-bit in this implementation
         if (lengthsize == 128)
-        {
             for (var i = 0; i < 8; i++)
                 tb[j++] = 0;
-        }
 
         tb[j++] = 0;
         tb[j++] = 0;
@@ -350,7 +346,7 @@ internal class Program
 
             // copy chunk into first 16 words w[0..15] of the message schedule array
             for (var i = 0; i < 64; i += 4)
-                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + (uint)tb[(br << 6) + i + 3];
+                w[i >> 2] = (uint)(tb[(br << 6) + i] << 24) + (uint)(tb[(br << 6) + i + 1] << 16) + (uint)(tb[(br << 6) + i + 2] << 8) + tb[(br << 6) + i + 3];
 
             // Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
             // for i from 16 to 63
@@ -359,8 +355,8 @@ internal class Program
             //      w[i] := w[i-16] + s0 + w[i-7] + s1
             for (var i = 16; i < 64; i++)
             {
-                var s0 = RightRotate(w[i - 15], 7) ^ RightRotate(w[i - 15], 18) ^ (w[i - 15] >> 3);
-                var s1 = RightRotate(w[i - 2], 17) ^ RightRotate(w[i - 2], 19) ^ (w[i - 2] >> 10);
+                var s0 = RightRotate(w[i - 15], 7) ^ RightRotate(w[i - 15], 18) ^ w[i - 15] >> 3;
+                var s1 = RightRotate(w[i - 2], 17) ^ RightRotate(w[i - 2], 19) ^ w[i - 2] >> 10;
                 w[i] = w[i - 16] + s0 + w[i - 7] + s1;
             }
 
@@ -386,10 +382,10 @@ internal class Program
                 // temp2 := S0 + maj
 
                 var S1 = RightRotate(e, 6) ^ RightRotate(e, 11) ^ RightRotate(e, 25);
-                var ch = (e & f) ^ ((~e) & g);
+                var ch = e & f ^ ~e & g;
                 var temp1 = hh + S1 + ch + k[i] + w[i];
                 var S0 = RightRotate(a, 2) ^ RightRotate(a, 13) ^ RightRotate(a, 22);
-                var maj = (a & b) ^ (a & c) ^ (b & c);
+                var maj = a & b ^ a & c ^ b & c;
                 var temp2 = S0 + maj;
 
                 hh = g;
@@ -561,10 +557,8 @@ internal class Program
 
             // copy chunk into first 16 long words w[0..15] of the message schedule array
             for (var i = 0; i < 128; i += 8)
-            {
                 w[i >> 3] = ((ulong)tb[(br << 7) + i + 0] << 56) + ((ulong)tb[(br << 7) + i + 1] << 48) + ((ulong)tb[(br << 7) + i + 2] << 40) + ((ulong)tb[(br << 7) + i + 3] << 32) +
-                            ((ulong)tb[(br << 7) + i + 4] << 24) + ((ulong)tb[(br << 7) + i + 5] << 16) + ((ulong)tb[(br << 7) + i + 6] << 8) + (ulong)tb[(br << 7) + i + 7];
-            }
+                            ((ulong)tb[(br << 7) + i + 4] << 24) + ((ulong)tb[(br << 7) + i + 5] << 16) + ((ulong)tb[(br << 7) + i + 6] << 8) + tb[(br << 7) + i + 7];
 
             // Extend the first 16 words into the remaining 48 words w[16..63] of the message schedule array:
             // for i from 16 to 79
@@ -573,8 +567,8 @@ internal class Program
             //      w[i] := w[i-16] + s0 + w[i-7] + s1
             for (var i = 16; i < 80; i++)
             {
-                var s0 = RightRotate(w[i - 15], 1) ^ RightRotate(w[i - 15], 8) ^ (w[i - 15] >> 7);
-                var s1 = RightRotate(w[i - 2], 19) ^ RightRotate(w[i - 2], 61) ^ (w[i - 2] >> 6);
+                var s0 = RightRotate(w[i - 15], 1) ^ RightRotate(w[i - 15], 8) ^ w[i - 15] >> 7;
+                var s1 = RightRotate(w[i - 2], 19) ^ RightRotate(w[i - 2], 61) ^ w[i - 2] >> 6;
                 w[i] = w[i - 16] + s0 + w[i - 7] + s1;
             }
 
@@ -600,10 +594,10 @@ internal class Program
                 // temp2 := S0 + maj
 
                 var S1 = RightRotate(e, 14) ^ RightRotate(e, 18) ^ RightRotate(e, 41);
-                var ch = (e & f) ^ ((~e) & g);
+                var ch = e & f ^ ~e & g;
                 var temp1 = hh + S1 + ch + k[i] + w[i];
                 var S0 = RightRotate(a, 28) ^ RightRotate(a, 34) ^ RightRotate(a, 39);
-                var maj = (a & b) ^ (a & c) ^ (b & c);
+                var maj = a & b ^ a & c ^ b & c;
                 var temp2 = S0 + maj;
 
                 hh = g;
@@ -634,10 +628,10 @@ internal class Program
 
     // equivalent of C++ _rotr
     // 32-bit version
-    private static uint RightRotate(uint original, int bits) => (original >> bits) | (original << (32 - bits));
+    private static uint RightRotate(uint original, int bits) => original >> bits | original << 32 - bits;
 
     // 64-bit version
-    private static ulong RightRotate(ulong original, int bits) => (original >> bits) | (original << (64 - bits));
+    private static ulong RightRotate(ulong original, int bits) => original >> bits | original << 64 - bits;
 
     /*
     // equivalent of C++ _rotl

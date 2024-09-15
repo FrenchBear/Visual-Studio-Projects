@@ -5,7 +5,7 @@
 using CS428;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestProject;
+namespace CS428_Tests;
 
 /// <summary>
 ///This is a test class for SlicedNumberTest and is intended

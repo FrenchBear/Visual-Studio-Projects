@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using static System.Console;
 
-namespace CS_Path;
+namespace CS093;
 
 /// <summary>
 /// Description résumée de Class1.

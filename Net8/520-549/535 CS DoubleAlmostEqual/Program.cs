@@ -12,7 +12,7 @@
 using System;
 using static System.Console;
 
-namespace DoubleAlmostEqual;
+namespace CS535;
 
 internal class Program
 {
@@ -32,14 +32,12 @@ internal class Program
         {
             var d1 = values[i];
             foreach (var s1 in new int[] { -1, 1 })
-            {
                 for (var j = 0; j < values.Length; j++)
                 {
                     var d2 = values[j];
                     foreach (var s2 in new int[] { -1, 1 })
                         T(d1 * s1, d2 * s2, (s1 == s2 && classes[i] == classes[j]) || (d1 == 0.0 && d2 == 0.0));
                 }
-            }
         }
     }
 

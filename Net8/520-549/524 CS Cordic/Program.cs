@@ -9,7 +9,7 @@
 using System;
 using static System.Console;
 
-namespace Cordic;
+namespace CS524;
 
 internal class Program
 {
@@ -41,7 +41,6 @@ internal class Program
         var y = 0.0;
         // Do incremental rotation of 1, 0.1, 0.01.. to rotate the value of a
         for (var i = 0; i < n; i++)
-        {
             while (a >= ta[i])
             {
                 // Coordinates before rotation
@@ -55,7 +54,6 @@ internal class Program
                 x = x0 * tcos[i] - y0 * tsin[i];
                 y = x0 * tsin[i] + y0 * tcos[i];
             }
-        }
 
         WriteLine("a={0}", a0);
         WriteLine("c={0}\ts={1}\t(Math.cos and Math.sin)", Math.Cos(a0), Math.Sin(a0));

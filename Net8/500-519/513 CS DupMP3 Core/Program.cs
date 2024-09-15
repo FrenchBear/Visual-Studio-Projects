@@ -14,7 +14,7 @@ using System.Diagnostics;
 using System.IO;
 using static System.Console;
 
-namespace DupMP31;
+namespace CS513;
 
 internal class AString
 {
@@ -55,13 +55,9 @@ internal class Program
         var sw = Stopwatch.StartNew();
 
         for (var i = 0; i < AStringsList.Count; i++)
-        {
             for (var j = i + 1; j < AStringsList.Count; j++)
-            {
                 if (AStringsList[i].Name != AStringsList[j].Name && IsCloseEnough(AStringsList[i], AStringsList[j], dist))
                     WriteLine("{0}\r\n{1}\r\n", AStringsList[i].FullPath, AStringsList[j].FullPath);
-            }
-        }
 
         sw.Stop();
         WriteLine("time={0}", sw.Elapsed);
@@ -86,26 +82,18 @@ internal class Program
 
         // One character is different?
         if (dist == 1 && s1.Length == s2.Length)
-        {
             for (var i = 0; i < s1.Length - 1; i++)
-            {
                 if (as1.ReducedList[i].Name == as2.ReducedList[i].Name)
                     return true;
-            }
-        }
 
         // s1 is always the longest chain
         if (s2.Length > s1.Length)
-        {
             (as1, as2) = (as2, as1);
-        }
 
         // dist>1: remove 1 char from s1 and do it recursively with dist-1
         for (var i = 0; i < s1.Length; i++)
-        {
             if (IsCloseEnough(as1.ReducedList[i], as2, dist - 1))
                 return true;
-        }
 
         // Ok, strings are definitely different
         return false;

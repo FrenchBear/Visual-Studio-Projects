@@ -2,9 +2,10 @@
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
 
+using CS619;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CS_Populate_Array.Unit_Tests;
+namespace CS619UT;
 
 [TestClass()]
 public class ArrayExtensionsUnitTests

@@ -5,6 +5,7 @@
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
 
+using RI3;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace RI3;
+namespace CS511;
 
 public class ViewModel: INotifyPropertyChanged, IDataErrorInfo
 {
@@ -94,13 +95,11 @@ public class ViewModel: INotifyPropertyChanged, IDataErrorInfo
             // NOTE: Validation.GetHasError works for controls that have validation rules attached
             var isValid = !Validation.GetHasError(node);
             if (!isValid)
-            {
                 // If the dependency object is invalid, and it can receive the focus,
                 // set the focus
                 // No: prevent moving to another field!!
                 //if (node is IInputElement) Keyboard.Focus((IInputElement)node);
                 return false;
-            }
         }
 
         // If this dependency object is valid, check all child dependency objects
@@ -119,9 +118,7 @@ public class ViewModel: INotifyPropertyChanged, IDataErrorInfo
         GenerateProgressValue = 100.0 * t.Index / t.Total;
         GenerateProgressText = $"{t.Index} / {t.Total}";
         if (t.FileName != null)
-        {
             AddTrace(t.FileName);
-        }
 
         if (t.Index == t.Total && GenerateButtonCaption != GenerateActionCaption)
         {

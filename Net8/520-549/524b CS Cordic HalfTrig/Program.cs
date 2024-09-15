@@ -18,7 +18,7 @@ using static System.Console;
 #pragma warning disable IDE0051 // Remove unused private members
 #pragma warning disable CS0162 // Unreachable code detected
 
-namespace CordicHalfTrig;
+namespace CS524b_CordicHalfTrig;
 
 internal class Program
 {
@@ -100,7 +100,7 @@ internal class Program
 
         // No flipsign function in C#
         // && sin!=0 avoids returning -0 for sin(Math.Pi)!
-        return (invertSign && sin != 0) ? -sin : sin;
+        return invertSign && sin != 0 ? -sin : sin;
     }
 
     private static double CosCordic(double angle) => SinCordic(angle + Math.PI / 2);
@@ -218,13 +218,11 @@ internal class Program
         // Do rotations for "large angles"
         (sin, cos) = (0, 1);    // Start with horizontal unitary vector for result
         for (int i = 0; i < ASCCount; i++)
-        {
             if (angle >= tASC[i].Angle)
             {
                 angle -= tASC[i].Angle;
                 (sin, cos) = (cos * tASC[i].Sine + sin * tASC[i].Cosine, cos * tASC[i].Cosine - sin * tASC[i].Sine);
             }
-        }
 
         // Do rotations for "small angles", 
         var a = tASC[ASCCount - 1].Angle;
@@ -327,7 +325,7 @@ internal class Program
 
         // No flipsign function in C#
         // && sin!=0 avoids returning -0 for sin(Math.Pi)!
-        return (invertSign && sin != 0) ? -sin : sin;
+        return invertSign && sin != 0 ? -sin : sin;
     }
 
 }

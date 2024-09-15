@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using static System.Console;
 
-namespace ExpressionApp;
+namespace CS606;
 
 internal class Program
 {

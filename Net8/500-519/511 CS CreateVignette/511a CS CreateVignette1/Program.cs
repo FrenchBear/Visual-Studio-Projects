@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-namespace CreateVignette;
+namespace CS511a;
 
 internal class Program
 {
@@ -44,7 +44,6 @@ internal class Test
 
         int newWidth, newHeight;
         if (bi.PixelWidth > bi.PixelHeight)
-        {
             if (bi.PixelWidth < LargeSideSize)
             {
                 // smaller images keep their size
@@ -54,22 +53,19 @@ internal class Test
             else
             {
                 newWidth = LargeSideSize;
-                newHeight = (int)((double)LargeSideSize / (double)bi.PixelWidth * (double)bi.PixelHeight);
+                newHeight = (int)(LargeSideSize / (double)bi.PixelWidth * bi.PixelHeight);
             }
+        else
+            if (bi.PixelHeight < LargeSideSize)
+        {
+            // smaller images keep their size
+            newWidth = bi.PixelWidth;
+            newHeight = bi.PixelHeight;
         }
         else
         {
-            if (bi.PixelHeight < LargeSideSize)
-            {
-                // smaller images keep their size
-                newWidth = bi.PixelWidth;
-                newHeight = bi.PixelHeight;
-            }
-            else
-            {
-                newHeight = LargeSideSize;
-                newWidth = (int)((double)LargeSideSize / (double)bi.PixelHeight * (double)bi.PixelWidth);
-            }
+            newHeight = LargeSideSize;
+            newWidth = (int)(LargeSideSize / (double)bi.PixelHeight * bi.PixelWidth);
         }
 
         var bi2 = ResizeBitmap(bi, newWidth, newHeight);
@@ -89,8 +85,8 @@ internal class Test
     public static BitmapSource ResizeBitmap(BitmapSource source, int nWidth, int nHeight)
     {
         TransformedBitmap tbBitmap = new(source,
-            new ScaleTransform((double)nWidth / (double)source.PixelWidth,
-                (double)nHeight / (double)source.PixelHeight,
+            new ScaleTransform(nWidth / (double)source.PixelWidth,
+                nHeight / (double)source.PixelHeight,
                 0, 0));
         return tbBitmap;
     }

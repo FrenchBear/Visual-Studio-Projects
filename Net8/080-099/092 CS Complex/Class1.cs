@@ -10,7 +10,7 @@
 using System;
 using static System.Console;
 
-namespace CS92;
+namespace CS092;
 
 internal class Class1
 {

@@ -10,16 +10,16 @@
 using System;
 using static System.Console;
 
-namespace CS_529;
+namespace CS529;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        OutputEncoding = System.Text.Encoding.UTF8;
 
         for (var i = 0x2574; i < 0x257c; i++)
-            Console.Write((char)i);
+            Write((char)i);
         WriteLine();
         WriteLine();
 

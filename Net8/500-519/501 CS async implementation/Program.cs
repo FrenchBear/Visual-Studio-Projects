@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 #pragma warning disable CA1822 // Mark members as static
 
-namespace ConsoleApplication2;
+namespace CS501;
 
 internal class Program
 {

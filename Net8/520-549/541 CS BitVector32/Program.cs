@@ -9,7 +9,7 @@
 using System.Collections.Specialized;
 using static System.Console;
 
-namespace CS541_BitVector32;
+namespace CS541;
 
 internal class Program
 {

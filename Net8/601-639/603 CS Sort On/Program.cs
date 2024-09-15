@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
-namespace Sort_On;
+namespace CS603;
 
 internal class Program
 {
@@ -74,9 +74,7 @@ internal static class Extensions
                 first = false;
             }
             else
-            {
                 Write(", ");
-            }
 
             Write(item);
         }

@@ -9,7 +9,7 @@
 using System;
 using System.Windows.Input;
 
-namespace RI3;
+namespace CS511;
 
 internal class RelayCommand<T>(Action<T> execute, Predicate<T> canExecute): ICommand
 {

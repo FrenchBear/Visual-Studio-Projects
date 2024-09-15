@@ -10,7 +10,7 @@ using ArithmeticNamespace;
 using System.Configuration;
 using static System.Console;
 
-namespace TestApplication;
+namespace CS536D;
 
 internal class Program
 {

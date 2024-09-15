@@ -15,7 +15,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using static System.Console;
 
-namespace CS_Populate_Array;
+namespace CS619;
 
 internal class Program
 {
@@ -54,9 +54,7 @@ internal class Program
 
         var step = array.Length / cores;
         for (var i = 0; i < cores; i++)
-        {
             segments[i] = new ArraySegment<T>(array, i * step, step);
-        }
         var remaining = array.Length % cores;
         if (remaining != 0)
         {
@@ -72,9 +70,7 @@ internal class Program
             {
                 var s = segments[index];
                 for (var j = 0; j < s.Count; j++)
-                {
                     array[j + s.Offset] = value;
-                }
             });
             initializers[i] = t;
             t.Start();
@@ -96,7 +92,7 @@ internal class Program
             tasks[i] = new Task(() =>
             {
                 var low = step * index;
-                var high = (index == cores - 1) ? al - 1 : low + step - 1;
+                var high = index == cores - 1 ? al - 1 : low + step - 1;
                 for (var j = low; j <= high; j++)
                     array[j] = value;
             });
@@ -131,7 +127,7 @@ public static class ArrayExtensions
             tasks[i] = new Task(() =>
             {
                 var low = index * step;
-                var high = (index == cores - 1) ? al - 1 : low + step - 1;
+                var high = index == cores - 1 ? al - 1 : low + step - 1;
                 for (var j = low; j <= high; j++)
                     array[j] = value;
             });

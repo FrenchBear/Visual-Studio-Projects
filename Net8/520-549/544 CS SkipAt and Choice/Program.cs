@@ -23,7 +23,7 @@ using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-namespace CS544SkipAtChoice;
+namespace CS544;
 
 internal class Program
 {
@@ -132,7 +132,7 @@ public static class Extensions
     {
         // Variant of Choice2 using Aggregate
         var count = 0;
-        return e.Aggregate((T aggregated, T item) => (rnd.NextDouble() < 1.0 / ++count) ? item : aggregated);
+        return e.Aggregate((aggregated, item) => rnd.NextDouble() < 1.0 / ++count ? item : aggregated);
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public static class Extensions
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="e">Original enumeration</param>
-    public static void WriteLine<T>(this IEnumerable<T> e) => WriteLine(e.AsString());
+    public static void WriteLine<T>(this IEnumerable<T> e) => e.AsString().WriteLine();
 
     /// <summary>
     /// Returns a string version of the enumeration
@@ -160,9 +160,7 @@ public static class Extensions
                 bFirst = false;
             }
             else
-            {
                 _ = sb.Append(", ");
-            }
 
             _ = sb.Append(item);
         }

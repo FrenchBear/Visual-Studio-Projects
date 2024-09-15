@@ -8,7 +8,7 @@
 
 using static System.Console;
 
-namespace ConsoleApplication3;
+namespace CS543;
 
 internal class CSArrays
 {
@@ -34,9 +34,7 @@ internal class CSArrays
 
         Write($"jag2: {jag2.Length}: ");
         for (var i = 0; i < jag2.Length; i++)
-        {
             Write($"[{i}] = {jag2[i].Length}  ");
-        }
         WriteLine();
     }
 }

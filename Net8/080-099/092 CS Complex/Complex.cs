@@ -9,7 +9,7 @@
 using System;
 using System.Globalization;
 
-namespace CS92;
+namespace CS092;
 
 public readonly struct Complex
 {

@@ -7,7 +7,7 @@
 
 using System.Diagnostics;
 using System.Linq;
-using static CS640.Constellations;
+using static CS639.Constellations;
 using static System.Console;
 
 namespace CS639;

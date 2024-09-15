@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 #pragma warning disable CA1822 // Mark members as static
 
-namespace CS011a;
+namespace Hello1;
 
 public class Hello1: Form
 {

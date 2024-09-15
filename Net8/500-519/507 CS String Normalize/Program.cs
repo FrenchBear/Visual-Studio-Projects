@@ -8,7 +8,7 @@
 
 using System.Diagnostics;
 
-namespace CS;
+namespace CS507;
 
 internal class Program
 {

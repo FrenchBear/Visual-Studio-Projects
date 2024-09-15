@@ -9,7 +9,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace RI3;
+namespace CS511;
 
 public partial class MainWindow: Window
 {

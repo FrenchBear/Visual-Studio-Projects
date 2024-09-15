@@ -8,6 +8,6 @@
 		<Authors>Pierre Violent</Authors>
 		<Copyright>Copyright ©2001-2024 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
-		<StartupObject>WindowsApplication2_CSharp.frmHello</StartupObject>
+		<StartupObject>CS004.frmHello</StartupObject>
 	</PropertyGroup>
 </Project>

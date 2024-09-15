@@ -9,7 +9,7 @@ using static System.Console;
 using static System.Math;
 using static System.Threading.Interlocked;
 
-namespace String_Distance;
+namespace StringDistance;
 
 internal class Program
 {
@@ -51,34 +51,28 @@ internal class Program
 
         // delete 1 char from s1
         if (s1.Length > s2.Length)
-        {
             for (var i = 0; i < s1.Length; i++)
             {
                 var s1b = s1.Remove(i, 1);
                 if (StringDistance(s1b, s2, distance - 1))
                     return true;
             }
-        }
         // delete 1 char from s2
         if (s2.Length > s1.Length)
-        {
             for (var i = 0; i < s2.Length; i++)
             {
                 var s2b = s2.Remove(i, 1);
                 if (StringDistance(s1, s2b, distance - 1))
                     return true;
             }
-        }
         // replace 1 char
         if (s1.Length == s2.Length)
-        {
             for (var i = 0; i < s1.Length; i++)
             {
                 var s1b = s1[..i] + s2[i] + s1[(i + 1)..];
                 if (StringDistance(s1b, s2, distance - 1))
                     return true;
             }
-        }
 
         return false;
     }

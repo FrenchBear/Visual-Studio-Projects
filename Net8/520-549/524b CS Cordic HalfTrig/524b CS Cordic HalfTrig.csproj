@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <OutputType>Exe</OutputType>
-        <RootNamespace>CS524b</RootNamespace>
+        <RootNamespace>CS524b_CordicHalfTrig</RootNamespace>
         <AssemblyName>CS524b</AssemblyName>
         <Version>1.1.0</Version>
         <Authors>Pierre Violent</Authors>

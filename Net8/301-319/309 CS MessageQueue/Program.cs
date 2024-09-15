@@ -5,10 +5,11 @@
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
 
+using FPVI.MessageQueueTest;
 using System;
 using System.Windows.Forms;
 
-namespace FPVI.MessageQueueTest;
+namespace MessageQueueTest;
 
 internal static class Program
 {

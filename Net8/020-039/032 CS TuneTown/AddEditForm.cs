@@ -6,7 +6,7 @@
 
 #pragma warning disable IDE0052 // Remove unread private members
 
-namespace TuneTownNS;
+namespace CS032;
 
 public class AddEditForm: System.Windows.Forms.Form
 {

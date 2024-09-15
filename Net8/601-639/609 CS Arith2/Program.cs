@@ -18,7 +18,7 @@ using System.Numerics;
 using System.Text;
 using static System.Console;
 
-namespace Arith2CS;
+namespace CS609;
 
 using Int1024d = DA<DA<DA<DA<DA<DA<DA<DA<Int4d>>>>>>>>;
 using Int128d = DA<DA<DA<DA<DA<Int4d>>>>>;

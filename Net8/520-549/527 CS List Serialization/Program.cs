@@ -13,7 +13,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace SerCol;
+namespace CS527;
 
 internal class Program
 {

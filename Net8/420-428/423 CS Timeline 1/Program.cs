@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using static System.Console;
 
-namespace CS423;
+namespace _423_CS_Timeline_1;
 
 internal class Program
 {
@@ -46,9 +46,7 @@ internal class Program
     {
         WriteLine("TimedEvent t={0}, e={1}", absoluteTime, e.Name);
         if (e is UserArrivedEvent uae)
-        {
             WriteLine("User {0} arrived on level {1}, going to level {2}", uae.NumUser, uae.ArrivalLevel, uae.DestinationLevel);
-        }
     }
 }
 

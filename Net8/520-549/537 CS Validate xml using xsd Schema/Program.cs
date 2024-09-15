@@ -8,7 +8,7 @@ using System.Xml;
 using System.Xml.Schema;
 using static System.Console;
 
-namespace ValidateSchema;
+namespace CS537;
 
 internal class Program
 {
@@ -23,9 +23,9 @@ internal class Program
 
         while (roundingInfos.Read())
         {
-            Console.Write(roundingInfos.NodeType + " ");
+            Write(roundingInfos.NodeType + " ");
             if (roundingInfos.NodeType == XmlNodeType.Element || roundingInfos.NodeType == XmlNodeType.EndElement)
-                Console.Write(roundingInfos.Name);
+                Write(roundingInfos.Name);
             WriteLine();
         }
     }
@@ -34,12 +34,12 @@ internal class Program
     {
         if (e.Severity == XmlSeverityType.Warning)
         {
-            Console.Write("WARNING: ");
+            Write("WARNING: ");
             WriteLine(e.Message);
         }
         else if (e.Severity == XmlSeverityType.Error)
         {
-            Console.Write("ERROR: ");
+            Write("ERROR: ");
             WriteLine(e.Message);
         }
         Debugger.Break();

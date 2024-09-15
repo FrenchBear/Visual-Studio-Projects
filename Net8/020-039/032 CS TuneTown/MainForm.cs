@@ -14,7 +14,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
-namespace TuneTownNS;
+namespace CS032;
 
 public class MainForm: Form
 {

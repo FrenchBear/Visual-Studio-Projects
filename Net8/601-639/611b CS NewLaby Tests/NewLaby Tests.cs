@@ -3,8 +3,9 @@
 // 2023-11-18	PV		Net8 C#12
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NewLaby;
 
-namespace NewLaby.Tests;
+namespace CS611LT;
 
 [TestClass()]
 public class LabyTests

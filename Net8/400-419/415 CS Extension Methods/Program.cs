@@ -4,44 +4,38 @@
 // 2023-01-10	PV		Net7
 // 2023-11-18	PV		Net8 C#12
 
-using ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using static System.Console;
 
-namespace CS415_Extension_Methods
+namespace CS415_Extension_Methods;
+internal class Program
 {
-    internal class Program
+    private static void Main(string[] args)
     {
-        private static void Main(string[] args)
-        {
-            var s = "hello world";
-            string t = s.Reverse().Concat();
-            int n = s.WordCount();
+        var s = "hello world";
+        string t = s.Reverse().Concat();
+        int n = s.WordCount();
 
-            WriteLine(t);
-            WriteLine(n);
-        }
+        WriteLine(t);
+        WriteLine(n);
     }
 }
 
-namespace ExtensionMethods
+public static class MyExtensions
 {
-    public static class MyExtensions
+    private static readonly char[] separator = [' ', '.', '?'];
+
+    public static int WordCount(this string str)
+        => str.Split(separator, StringSplitOptions.RemoveEmptyEntries).Length;
+
+    public static string Concat(this IEnumerable<char> ie)
     {
-        private static readonly char[] separator = [' ', '.', '?'];
-
-        public static int WordCount(this string str)
-            => str.Split(separator, StringSplitOptions.RemoveEmptyEntries).Length;
-
-        public static string Concat(this IEnumerable<char> ie)
-        {
-            var sb = new StringBuilder();
-            foreach (var c in ie)
-                _ = sb.Append(c);
-            return sb.ToString();
-        }
+        var sb = new StringBuilder();
+        foreach (var c in ie)
+            _ = sb.Append(c);
+        return sb.ToString();
     }
 }

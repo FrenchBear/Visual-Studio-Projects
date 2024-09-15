@@ -13,7 +13,7 @@
 using System;
 using static System.Console;
 
-namespace CS002;
+namespace NS002;
 
 public static class MyMath
 {
@@ -39,9 +39,7 @@ public class MyApp
     {
         WriteLine("# of arguments: {0}", targ.Length);
         for (var i = 0; i < targ.Length; i++)
-        {
             WriteLine("\tArg[{0}] = {1}", i, targ[i]);
-        }
     }
 
     private static void Swap(ref object x, ref object y) => (x, y) = (y, x);

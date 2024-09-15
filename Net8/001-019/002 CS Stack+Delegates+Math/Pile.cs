@@ -10,7 +10,7 @@
 
 using System;
 
-namespace CS002;
+namespace NS002;
 
 public class Pile
 {
@@ -25,9 +25,7 @@ public class Pile
     public object Dépile()
     {
         if (tête == null)
-        {
             throw new Exception("Dépile sur pile vide");
-        }
         else
         {
             var temp = tête;

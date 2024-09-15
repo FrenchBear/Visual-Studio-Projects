@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Console;
 
-namespace CreateVignette;
+namespace CS511b;
 
 internal class Program
 {
@@ -41,7 +41,6 @@ internal class Test
         var originalHeight = image.Height;
         int newWidth, newHeight;
         if (originalWidth > originalHeight)
-        {
             if (originalWidth < LargeSideSize)
             {
                 // smaller images keep their size
@@ -51,22 +50,19 @@ internal class Test
             else
             {
                 newWidth = LargeSideSize;
-                newHeight = (int)((double)LargeSideSize / (double)originalWidth * (double)originalHeight);
+                newHeight = (int)(LargeSideSize / (double)originalWidth * originalHeight);
             }
+        else
+            if (originalHeight < LargeSideSize)
+        {
+            // smaller images keep their size
+            newWidth = originalWidth;
+            newHeight = originalHeight;
         }
         else
         {
-            if (originalHeight < LargeSideSize)
-            {
-                // smaller images keep their size
-                newWidth = originalWidth;
-                newHeight = originalHeight;
-            }
-            else
-            {
-                newHeight = LargeSideSize;
-                newWidth = (int)((double)LargeSideSize / (double)originalHeight * (double)originalWidth);
-            }
+            newHeight = LargeSideSize;
+            newWidth = (int)(LargeSideSize / (double)originalHeight * originalWidth);
         }
 
         // GDI
@@ -106,11 +102,11 @@ internal class Test
         var count = 0;
         foreach (var propItem in propItems)
         {
-            Console.Write("Property {0}, Id {1:X}, Type {2}, Len {3}, ", count, propItem.Id, propItem.Type.ToString(), propItem.Len.ToString());
+            Write("Property {0}, Id {1:X}, Type {2}, Len {3}, ", count, propItem.Id, propItem.Type.ToString(), propItem.Len.ToString());
             for (var j = 0; j < propItem.Len; j++)
             {
                 var b = propItem.Value[j];
-                Console.Write(b is >= 32 and <= 127 ? (char)b : '?');
+                Write(b is >= 32 and <= 127 ? (char)b : '?');
             }
             WriteLine();
             count++;
@@ -122,10 +118,8 @@ internal class Test
         int j;
         var encoders = ImageCodecInfo.GetImageEncoders();
         for (j = 0; j <= encoders.Length; j++)
-        {
             if (encoders[j].MimeType == mimeType)
                 return encoders[j];
-        }
 
         return null;
     }
@@ -133,8 +127,8 @@ internal class Test
     public static BitmapSource ResizeBitmap(BitmapSource source, int nWidth, int nHeight)
     {
         TransformedBitmap tbBitmap = new(source,
-            new ScaleTransform((double)nWidth / (double)source.PixelWidth,
-                (double)nHeight / (double)source.PixelHeight,
+            new ScaleTransform(nWidth / (double)source.PixelWidth,
+                nHeight / (double)source.PixelHeight,
                 0, 0));
         return tbBitmap;
     }

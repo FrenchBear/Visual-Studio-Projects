@@ -10,7 +10,7 @@ using System;
 using System.Collections.Generic;
 using static System.Console;
 
-namespace UnblockMeSolver;
+namespace CS523a;
 
 internal class Program
 {
@@ -120,25 +120,19 @@ internal class Program
             {
                 byte i;
                 for (i = 0; i < config.Length; i++)
-                {
                     if (Pieces[i].IsHorizontal)
-                    {
                         if (Pieces[i].RowCol == r && c >= config.Pos[i] && c <= config.Pos[i] + Pieces[i].Length - 1)
                             break;
-                    }
                     else
-                    {
                         if (Pieces[i].RowCol == c && r >= config.Pos[i] && r <= config.Pos[i] + Pieces[i].Length - 1)
-                            break;
-                    }
-                }
+                        break;
 
-                Console.BackgroundColor = i == config.Length ? ConsoleColor.Black : i == redPiece ? ConsoleColor.Red : Colors[i];
+                BackgroundColor = i == config.Length ? ConsoleColor.Black : i == redPiece ? ConsoleColor.Red : Colors[i];
                 var ch = (char)183;     // centered dot
-                Console.Write(ch);
-                Console.Write(ch);
+                Write(ch);
+                Write(ch);
             }
-            Console.BackgroundColor = ConsoleColor.Black;
+            BackgroundColor = ConsoleColor.Black;
             WriteLine();
         }
     }
@@ -181,35 +175,21 @@ internal struct Config
 
             // Check that it doesn't cover another piece
             for (var j = 0; j < Length; j++)
-            {
                 if (j != i)
-                {
                     // Same orientation?
                     if (Pieces[i].IsHorizontal == Pieces[j].IsHorizontal)
-                    {
                         // Only check for overlap if they are in the same row/col
                         if (Pieces[i].RowCol == Pieces[j].RowCol)
-                        {
                             if (Pos[i] < Pos[j])
-                            {
                                 if (Pos[i] + Pieces[i].Length - 1 >= Pos[j])
                                     return false;
                                 else if (Pos[j] + Pieces[j].Length - 1 >= Pos[i])
                                     return false;
-                            }
-                        }
-                    }
                     else
-                    {
                         // Check for intersection: piece j rowcol is in the rowcol range of piece i, and piece i rowcol is in the range of piece j
                         if (Pieces[j].RowCol >= Pos[i] && Pieces[j].RowCol <= Pos[i] + Pieces[i].Length - 1)
-                        {
-                            if (Pieces[i].RowCol >= Pos[j] && Pieces[i].RowCol <= Pos[j] + Pieces[j].Length - 1)
-                                return false;
-                        }
-                    }
-                }
-            }
+                        if (Pieces[i].RowCol >= Pos[j] && Pieces[i].RowCol <= Pos[j] + Pieces[j].Length - 1)
+                            return false;
         }
         return true;
     }

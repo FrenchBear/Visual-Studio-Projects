@@ -103,17 +103,17 @@ Public Class Form1
 
     End Class
 
-    Private Shared Sub ParseAnEmailAddress(email As String, ByRef user As String, ByRef provider As String)
-        Try
-            Dim parts() As String = email.Split("@".ToCharArray, 2)
-            user = parts(0)
-            provider = parts(1)
-        Catch
-            user = Nothing
-            provider = Nothing
-            Throw New Exception("Email address is not valid. The expected format is user@provider.")
-        End Try
-    End Sub
+    'Private Shared Sub ParseAnEmailAddress(email As String, ByRef user As String, ByRef provider As String)
+    '    Try
+    '        Dim parts() As String = email.Split("@".ToCharArray, 2)
+    '        user = parts(0)
+    '        provider = parts(1)
+    '    Catch
+    '        user = Nothing
+    '        provider = Nothing
+    '        Throw New Exception("Email address is not valid. The expected format is user@provider.")
+    '    End Try
+    'End Sub
 
     Shared Sub CopyToClipboard()
         Dim c As New Customer With {

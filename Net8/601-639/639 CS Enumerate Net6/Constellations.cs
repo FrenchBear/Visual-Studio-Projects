@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace CS640;
+namespace CS639;
 
 internal record ConstellationInfo
 {

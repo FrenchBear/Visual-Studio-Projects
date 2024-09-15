@@ -7,7 +7,7 @@ using System.IO;
 using System.Text;
 using static System.Console;
 
-namespace Normalized_Filesystem;
+namespace CS534;
 
 internal class Program
 {
@@ -25,9 +25,7 @@ internal class Program
         }
 
         if (File.Exists(Path.Combine(@"c:\temp", denormalizedName)))
-        {
             WriteLine("Denormalized exists");
-        }
         else
         {
             WriteLine("Denormalized does not exist");

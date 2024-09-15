@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ExtensionMethods;
+namespace CS311;
 
 public static class ExtensionMethodsClasses
 {
