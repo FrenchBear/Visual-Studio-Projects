@@ -157,4 +157,3 @@ public partial class GdiDrawingForm: Form
     }
 
 }   // class GdiDrawingForm
-

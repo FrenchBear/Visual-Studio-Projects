@@ -51,4 +51,3 @@ internal class Program
         return a;
     }
 }
-

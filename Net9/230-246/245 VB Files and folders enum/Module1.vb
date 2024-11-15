@@ -31,15 +31,15 @@ Friend Module Module1
         Dim ts As TimeSpan
         Dim dSource As New DirectoryInfo(sSource)
         ts = Date.Now - t1
-        WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine($"$1: {Int(ts.TotalMinutes) }:{ts.Seconds:D2}.{ts.Milliseconds:D3}s")
 
         Dim tFilesSource As FileInfo() = dSource.GetFiles
         ts = Date.Now - t1
-        WriteLine(String.Format("$2: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine($"$2: {Int(ts.TotalMinutes) }:{ts.Seconds:D2}.{ts.Milliseconds:D3}s")
 
         Dim tSubdirectoriesSource As DirectoryInfo() = dSource.GetDirectories
         ts = Date.Now - t1
-        WriteLine(String.Format("$3: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine($"$3: {Int(ts.TotalMinutes) }:{ts.Seconds:D2}.{ts.Milliseconds:D3}s")
 
         ' Build dictionaries with files/subdirectories infos
         Dim dicFilesSource As New Dictionary(Of String, FileInfo)(tFilesSource.Length, StringComparer.OrdinalIgnoreCase)
@@ -49,7 +49,7 @@ Friend Module Module1
             dicFilesSource.Add(fiSource.Name, fiSource)
         Next
         ts = Date.Now - t1
-        WriteLine(String.Format("$4: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine($"$4: {Int(ts.TotalMinutes) }:{ts.Seconds:D2}.{ts.Milliseconds:D3}s")
 
         For Each diSource As DirectoryInfo In tSubdirectoriesSource
             ' Ignore SYSTEM+HIDDEN directories on source
@@ -61,7 +61,7 @@ Friend Module Module1
 NextSource:
         Next
         ts = Date.Now - t1
-        WriteLine(String.Format("$5: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine($"$5: {Int(ts.TotalMinutes) }:{ts.Seconds:D2}.{ts.Milliseconds:D3}s")
     End Sub
 
     ' 2nd method: using DirectoryInfo.getFileSystemInfos
@@ -87,10 +87,10 @@ NextSource:
         Next
 
         ts = Date.Now - t1
-        WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine($"$1: {Int(ts.TotalMinutes) }:{ts.Seconds:D2}.{ts.Milliseconds:D3}s")
         Dim fsi1 As FileSystemInfo = tfsiElements(4)
 
-        WriteLine(String.Format("{0} files(s), {1} folder(s)", nFiles, nFolders))
+        WriteLine($"{nFiles } files(s), {nFolders } folder(s)")
     End Sub
 
     ' 3rd method, using Win32 system calls
@@ -132,9 +132,9 @@ NextSource:
         retval = FindClose(hsearch)
 
         ts = Date.Now - t1
-        WriteLine(String.Format("$1: {0}:{1:D2}.{2:D3}s", Int(ts.TotalMinutes), ts.Seconds, ts.Milliseconds))
+        WriteLine($"$1: {Int(ts.TotalMinutes) }:{ts.Seconds:D2}.{ts.Milliseconds:D3}s")
 
-        WriteLine(String.Format("{0} files(s), {1} folder(s)", colFiles.Count, colFolders.Count))
+        WriteLine($"{colFiles.Count } files(s), {colFolders.Count } folder(s)")
     End Sub
 
     ' -----------------------------------------------------------------

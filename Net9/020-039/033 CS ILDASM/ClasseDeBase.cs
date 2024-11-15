@@ -1,5 +1,7 @@
 using static System.Console;
 
+#pragma warning disable IDE0130 // Namespace doesn't match folder structure
+
 namespace MaBibliotheque;
 
 public abstract class MonOrigine
@@ -9,21 +11,15 @@ public abstract class MonOrigine
 
 public class MaClasseDeBase: MonOrigine
 {
-    private int iMembreDeBase;
+    public override void Action() => WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", MembreDeBase);
 
-    public override void Action() => WriteLine("MaClasseDeBase.Action(): iMembreDebase={0}", iMembreDeBase);
-
-    public int MembreDeBase
-    {
-        get => iMembreDeBase;
-        set => iMembreDeBase = value;
-    }
+    public int MembreDeBase { get; set; }
 
     // Constructeur par d�faut
-    public MaClasseDeBase() => iMembreDeBase = 0;
+    public MaClasseDeBase() => MembreDeBase = 0;
 
     // Constructeur copie
-    public MaClasseDeBase(MaClasseDeBase b0) => iMembreDeBase = b0.iMembreDeBase;
+    public MaClasseDeBase(MaClasseDeBase b0) => MembreDeBase = b0.MembreDeBase;
 
     // Destructeur
 #pragma warning disable CA1821 // Remove empty Finalizers

@@ -90,6 +90,7 @@ Public Class Form1
             AddHandler serializer.UnknownAttribute, AddressOf serializer_UnknownAttribute
 
             Dim fs As New FileStream(sConfigPath, FileMode.Open)
+#Disable Warning CA5369 ' Use XmlReader for 'XmlSerializer.Deserialize()'
             all = CType(serializer.Deserialize(fs), CheckSPConfigurations)
         End If
 

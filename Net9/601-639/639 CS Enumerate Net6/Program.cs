@@ -28,4 +28,3 @@ class Program
         WriteLine($"Constellation with longest name: {k.Constellation}, Fr={k.FrenchName}, En={k.EnglishName}");
     }
 }
-

@@ -22,8 +22,8 @@ Friend Module Module1
         Dim r3 As Rational = A(r1, r2)
 
         Dim rns As New Rational(5, 10)
-        Dim rs1 As String = String.Format("{0}", rns)
-        Dim rs2 As String = String.Format("{0:reduced}", rns)
+        Dim rs1 As String = $"{rns }"
+        Dim rs2 As String = $"{rns:reduced}"
 
         Stop
     End Sub
@@ -51,28 +51,17 @@ End Class
 Friend Structure Rational
     Implements IFormattable
 
-    Private ReadOnly _numerator As Integer
-    Private ReadOnly _denominator As Integer
-
     Public Sub New(n As Integer, d As Integer)
-        _numerator = n
-        _denominator = d
+        Numerator = n
+        Denominator = d
     End Sub
 
     Public ReadOnly Property Numerator As Integer
-        Get
-            Return _numerator
-        End Get
-    End Property
 
     Public ReadOnly Property Denominator As Integer
-        Get
-            Return _denominator
-        End Get
-    End Property
 
     Public Overrides Function ToString() As String
-        Return _numerator.ToString & "/" & _denominator.ToString
+        Return Numerator.ToString & "/" & Denominator.ToString
     End Function
 
     Public Shared Widening Operator CType(i As Integer) As Rational
@@ -82,20 +71,20 @@ Friend Structure Rational
     ' Narrowing = explicit in C#
     ' Possible loss of precision and can throw exceptions
     Public Shared Narrowing Operator CType(r As Rational) As Double
-        Return r._numerator / r._denominator
+        Return r.Numerator / r.Denominator
     End Operator
 
     Public Shared Operator +(lhs As Rational, rhs As Rational) As Rational
-        Dim g As Integer = Gcd(lhs._denominator, rhs._denominator)
-        Dim d2 As Integer = lhs._denominator * rhs._denominator / g
-        Dim n2 As Integer = (lhs._numerator * g / lhs._denominator) + (rhs._numerator * g / rhs._denominator)
+        Dim g As Integer = Gcd(lhs.Denominator, rhs.Denominator)
+        Dim d2 As Integer = lhs.Denominator * rhs.Denominator / g
+        Dim n2 As Integer = (lhs.Numerator * g / lhs.Denominator) + (rhs.Numerator * g / rhs.Denominator)
         g = Gcd(n2, d2)
         Return New Rational(n2 / g, d2 / g)
     End Operator
 
     Public Function Reduce() As Rational
-        Dim g As Integer = Gcd(_numerator, _denominator)
-        Return If(g = 1, g, New Rational(_numerator / g, _denominator / g))
+        Dim g As Integer = Gcd(Numerator, Denominator)
+        Return If(g = 1, g, New Rational(Numerator / g, Denominator / g))
     End Function
 
     ''' <summary>
@@ -113,7 +102,7 @@ Friend Structure Rational
     Public Shared Operator =(lhs As Rational, rhs As Rational) As Boolean
         Dim r1 As Rational = lhs.Reduce
         Dim r2 As Rational = rhs.Reduce
-        Return r1._numerator = r2._numerator AndAlso r1._denominator = r2._denominator
+        Return r1.Numerator = r2.Numerator AndAlso r1.Denominator = r2.Denominator
     End Operator
 
     Public Shared Operator <>(lhs As Rational, rhs As Rational) As Boolean
@@ -121,7 +110,7 @@ Friend Structure Rational
     End Operator
 
     Public Function ToString1(format As String, formatProvider As IFormatProvider) As String Implements IFormattable.ToString
-        Return If(format = "reduced", Reduce.ToString, ToString)
+        Return If(format = "reduced", Reduce.ToString, ToString())
     End Function
 
     Public Overrides Function Equals(<NotNullWhen(True)> obj As Object) As Boolean
@@ -131,7 +120,7 @@ Friend Structure Rational
     End Function
 
     Public Overrides Function GetHashCode() As Integer
-        Return _numerator.GetHashCode() Xor _denominator.GetHashCode()
+        Return Numerator.GetHashCode() Xor Denominator.GetHashCode()
     End Function
 
 End Structure

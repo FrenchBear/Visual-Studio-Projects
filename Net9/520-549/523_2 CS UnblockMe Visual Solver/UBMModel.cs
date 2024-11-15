@@ -36,26 +36,9 @@ public class UBMModel
 
     private readonly SortedSet<int> History = [];
 
-    /*
-private void UBModel()
-{
-    ShowConfig(Configuration);
-
-    if (Configuration.IsValid(Pieces))
-        WriteLine("Config Ok");
-    else
-        WriteLine("Invalid config!");
-
-    History.Add(Configuration.Signature());
-    Move(1, Configuration);
-
-    WriteLine("{0} configurations analyzed, {1} moves for solution", nbConfig, solutionMoves);
-}
-     */
-
-    private bool foundSolution = false;
-    private int nbConfig = 0;
-    private int solutionMoves = 0;
+    private bool foundSolution; //= false;
+    private int nbConfig; //= 0;
+    private int solutionMoves; //= 0;
 
     private bool Move(int depth, Config config)
     {

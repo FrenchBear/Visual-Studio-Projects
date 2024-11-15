@@ -825,7 +825,7 @@ Public Class frmAnalyse
 
     Public Function sColorWeb(i As Integer) As String
         i = i Mod tColor.Length
-        Return "#" & String.Format("{0:X02}{1:X02}{2:X02}", tColor(i).R, tColor(i).G, tColor(i).B)
+        Return "#" & $"{tColor(i).R:X02}{tColor(i).G:X02}{tColor(i).B:X02}"
     End Function
 
     Public Sub AfficheUnSite(s As SiteAD)
@@ -843,10 +843,10 @@ Public Class frmAnalyse
         End While
         sHTML.Append("</tr></table><br>" & vbCrLf)
 
-        If Not s.slComp00 Is Nothing Then AfficheMachines(s.slOU, s.slComp00, s.sSite, False)
-        If Not s.slComp95 Is Nothing Then AfficheMachines(s.slOU, s.slComp95, s.sSite, False)
-        If Not s.slComp98 Is Nothing Then AfficheMachines(s.slOU, s.slComp98, s.sSite, False)
-        If Not s.slCompXX Is Nothing Then AfficheMachines(s.slOU, s.slCompXX, s.sSite, True)
+        If s.slComp00 IsNot Nothing Then AfficheMachines(s.slOU, s.slComp00, s.sSite, False)
+        If s.slComp95 IsNot Nothing Then AfficheMachines(s.slOU, s.slComp95, s.sSite, False)
+        If s.slComp98 IsNot Nothing Then AfficheMachines(s.slOU, s.slComp98, s.sSite, False)
+        If s.slCompXX IsNot Nothing Then AfficheMachines(s.slOU, s.slCompXX, s.sSite, True)
 
         sHTML.Append("<BR><BR>" & vbCrLf)
     End Sub
@@ -933,7 +933,7 @@ Public Class frmAnalyse
                     If tComp(j - iMin0) IsNot Nothing Then
                         sHTML.Append(tComp(j - iMin0).sComputer)
                     Else
-                        sHTML.Append("fr" & LCase(sSite) & String.Format("{0:D04}", j))
+                        sHTML.Append("fr" & LCase(sSite) & $"{j:D04}")
                     End If
                 Else
                     sHTML.Append("&nbsp;")
@@ -1072,7 +1072,7 @@ Friend Class ListViewItemComparer
 
     Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
         Return If(col < 4,
-            sens * String.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text),
+            sens * String.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text, StringComparison.Ordinal),
             sens * Date.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text))
     End Function
 

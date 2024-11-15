@@ -54,7 +54,7 @@ public partial class MainWindow: Window
 
     [LibraryImport("user32.dll", StringMarshalling = StringMarshalling.Utf16, EntryPoint = "InsertMenuW")]
     [return: MarshalAs(UnmanagedType.Bool)]
-    public static partial bool InsertMenu(IntPtr hMenu, Int32 wPosition, Int32 wFlags, IntPtr wIdNewItem, string lpNewItem);
+    public static partial bool InsertMenu(IntPtr hMenu, int wPosition, int wFlags, IntPtr wIdNewItem, string lpNewItem);
 
     /// Define our Constants we will use
     private const int WmSyscommand = 0x112;

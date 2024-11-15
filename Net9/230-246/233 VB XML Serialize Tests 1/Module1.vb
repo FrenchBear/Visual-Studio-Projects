@@ -198,6 +198,7 @@ Public Class Test
         ' Declare an object variable of the type to be deserialized.
 
         Dim apo As AllPurchaseOrders
+#Disable Warning CA5369 ' Use XmlReader for 'XmlSerializer.Deserialize()'
         apo = CType(serializer.Deserialize(fs), AllPurchaseOrders)
 
         Dim po As PurchaseOrder

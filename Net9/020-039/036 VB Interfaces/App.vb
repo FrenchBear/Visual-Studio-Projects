@@ -28,6 +28,7 @@ End Class
 
 Public Delegate Sub GestionnaireDeBip(sender As Object, sMsg As String)
 
+#Disable Warning CA1708 ' Identifiers should differ by more than case
 Public Interface IMonInterface
 
     Sub MaMethodeBruyante1(x As Integer)  ' Méthode
@@ -49,7 +50,7 @@ Public Class MaClasse
 
     ' Implémentation privée de MaMethodeBruyante1
     Public Sub MaMethodeBruyante1(x As Integer)
-        WriteLine("Implémentation privée de MaMethodeBruyante1")
+        WriteLine($"Implémentation privée de MaMethodeBruyante1, x={x}")
     End Sub
 
     Public Property MonInterface_MaPropriete As Integer Implements IMonInterface.MaPropriete

@@ -117,6 +117,8 @@ Friend Module AnalyseTexte
                             Abort()
                         End If
 
+                    Case Else
+                        Exit Select
                 End Select
             Loop
         Catch

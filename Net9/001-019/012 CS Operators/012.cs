@@ -39,7 +39,7 @@ internal class Complexe
     public static implicit operator Complexe(double d)
         => new(d);
 
-    override public string ToString()
+    public override string ToString()
         => "(" + r + ";" + i + ")";
 
     public static Complexe operator +(Complexe a, Complexe b)

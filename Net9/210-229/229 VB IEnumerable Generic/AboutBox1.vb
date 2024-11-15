@@ -11,12 +11,12 @@ Public Class AboutBox1
         Dim ApplicationTitle = If(My.Application.Info.Title <> "",
             My.Application.Info.Title,
             Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName))
-        Text = String.Format("About {0}", ApplicationTitle)
+        Text = $"About {ApplicationTitle }"
         ' Initialize all of the text displayed on the About Box.
         ' TODO: Customize the application's assembly information in the "Application" pane of the project
         '    properties dialog (under the "Project" menu).
         LabelProductName.Text = My.Application.Info.ProductName
-        LabelVersion.Text = String.Format("Version {0}", My.Application.Info.Version.ToString)
+        LabelVersion.Text = $"Version {My.Application.Info.Version }"
         LabelCopyright.Text = My.Application.Info.Copyright
         LabelCompanyName.Text = My.Application.Info.CompanyName
         TextBoxDescription.Text = My.Application.Info.Description

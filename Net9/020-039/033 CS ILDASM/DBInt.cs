@@ -1,10 +1,12 @@
 using System;
 
+#pragma warning disable IDE0130 // Namespace doesn't match folder structure
+
 namespace MaBibliotheque;
 
 public readonly struct DBInt
 {
-    public static readonly DBInt Null = new();
+    public static readonly DBInt Null; //= new();
     private readonly int Value;
     private readonly bool Defined;
 

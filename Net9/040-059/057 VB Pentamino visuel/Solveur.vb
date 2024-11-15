@@ -47,11 +47,11 @@ Friend Class PentaminoSolveur
     Public Event Solution(iNumSol As Integer, jeu As Jeu, ByRef bStop As Boolean)
     Private Const MAXSOLUTION As Integer = 10000
 
-    Private Shared iNbSol As Integer = 0
-    Private Shared iNbAppelPavage As Integer = 0
+    Private Shared iNbSol As Integer '= 0
+    Private Shared iNbAppelPavage As Integer '= 0
     Private Shared Pow2() As Integer
 
-    Private Shared ReadOnly PS As PentaminoSolveur = Nothing
+    Private Shared ReadOnly PS As PentaminoSolveur '= Nothing
 
     ' Tableau des pentaminos à utiliser pour le problème
     Private Shared tP() As Piece

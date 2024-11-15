@@ -53,9 +53,9 @@ internal class Program
         WriteLine("{0} configurations analyzed, {1} moves for solution", nbConfig, solutionMoves);
     }
 
-    private static bool foundSolution = false;
-    private static int nbConfig = 0;
-    private static int solutionMoves = 0;
+    private static bool foundSolution; // = false;
+    private static int nbConfig; //= 0;
+    private static int solutionMoves; //= 0;
 
     private static bool Move(int depth, Config config)
     {

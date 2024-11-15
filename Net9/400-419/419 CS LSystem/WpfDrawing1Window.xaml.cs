@@ -71,7 +71,7 @@ public class MyVisualHost: FrameworkElement
     protected override Visual GetVisualChild(int index) => index < 0 || index >= _children.Count ? throw new ArgumentOutOfRangeException(nameof(index)) : _children[index];
 
     // Implementation of renderer for WFP1
-    private class Wpf1LSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
+    private sealed class Wpf1LSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
     {
         private DrawingContext _dc;
         private readonly Pen blackPen = new(Brushes.Black, 2);

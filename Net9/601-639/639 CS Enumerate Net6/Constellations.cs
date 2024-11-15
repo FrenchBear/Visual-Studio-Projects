@@ -32,9 +32,9 @@ internal record ConstellationInfo
     }
 }
 
-static internal class Constellations
+internal static class Constellations
 {
-    static internal IEnumerable<ConstellationInfo> GetConstellations()
+    internal static IEnumerable<ConstellationInfo> GetConstellations()
         =>
         [
             new("And","Andromeda","Andromedae","Andromède","Andromeda","N","Alpheratz"),
@@ -127,4 +127,3 @@ static internal class Constellations
             new("Vul","Vulpecula","Vulpeculae","Le Petit Renard","Fox","N",""),
         ];
 }
-

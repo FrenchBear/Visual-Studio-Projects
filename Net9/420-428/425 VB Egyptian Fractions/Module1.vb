@@ -88,19 +88,19 @@ Friend Module Module1
         Next
 
         ' Print table
-        Console.Write("         ")
+        Write("         ")
         For c = 2 To max
-            Console.Write(" | ")
-            Console.Write(Center($".../{c}", width(c)))
+            Write(" | ")
+            Write(Center($".../{c}", width(c)))
         Next
-        Console.WriteLine(" |")
+        WriteLine(" |")
         For r = 2 To max
-            Console.Write($"{r}/...".PadLeft(9))
+            Write($"{r}/...".PadLeft(9))
             For c = 2 To max
-                Console.Write(" | ")
-                Console.Write(t(r, c).PadLeft(width(c)))
+                Write(" | ")
+                Write(t(r, c).PadLeft(width(c)))
             Next
-            Console.WriteLine(" |")
+            WriteLine(" |")
         Next
     End Sub
 

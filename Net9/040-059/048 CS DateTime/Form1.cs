@@ -27,7 +27,7 @@ public class Form1: Form
     private SortedList sh;
     private readonly Hashtable h;
 
-    public delegate void Sub();
+    public delegate void MySub();
 
     public Form1()
     {
@@ -36,12 +36,12 @@ public class Form1: Form
         s = [];
         h = [];
 
-        Chrono(new Sub(TestSortedList));
-        Chrono(new Sub(TestHashtable));
-        Chrono(new Sub(TriHashtable));
+        Chrono(new MySub(TestSortedList));
+        Chrono(new MySub(TestHashtable));
+        Chrono(new MySub(TriHashtable));
     }
 
-    public void Chrono(Sub s)
+    public void Chrono(MySub s)
     {
         var sNomFonction = s.GetInvocationList()[0].Method.Name;
         Trace("Debut " + sNomFonction);
@@ -76,11 +76,13 @@ public class Form1: Form
     private void InitializeComponent()
     {
         components = new System.ComponentModel.Container();
-        listBox1 = new ListBox();
-        listBox1.Location = new System.Drawing.Point(4, 4);
-        listBox1.Size = new System.Drawing.Size(360, 329);
-        listBox1.TabIndex = 0;
-        listBox1.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;
+        listBox1 = new ListBox
+        {
+            Location = new System.Drawing.Point(4, 4),
+            Size = new System.Drawing.Size(360, 329),
+            TabIndex = 0,
+            Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom
+        };
         Text = "Tests de performances";
         AutoScaleBaseSize = new System.Drawing.Size(5, 13);
         ClientSize = new System.Drawing.Size(368, 337);

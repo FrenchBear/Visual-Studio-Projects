@@ -78,9 +78,9 @@ public class Int4d: ISimpleArith<Int4d>
     }
 
     // Actually this should be a constructor, but constructors can't be included in interfaces
-    public void FromString(string x)
+    public void FromString(string s)
     {
-        if (string.IsNullOrEmpty(x) || x.Length > digits || !int.TryParse(x, out val))
+        if (string.IsNullOrEmpty(s) || s.Length > digits || !int.TryParse(s, out val))
             throw new ArgumentException("Invalid constructor call");
     }
 
@@ -152,19 +152,19 @@ public class DA<T>: ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
 
     // Since parameterized constructors can't be put in an interface, this
     // function is a replacement for public DA(string x).  Note it makes the class mutable...
-    public void FromString(string x)
+    public void FromString(string s)
     {
-        if (string.IsNullOrEmpty(x) || x.Length > digits)
+        if (string.IsNullOrEmpty(s) || s.Length > digits)
             throw new ArgumentException("Invalid constructor call");
-        if (x.Length > digits / 2)
+        if (s.Length > digits / 2)
         {
-            (high = new T()).FromString(x[..^(digits / 2)]);
-            (low = new T()).FromString(x[^(digits / 2)..]);
+            (high = new T()).FromString(s[..^(digits / 2)]);
+            (low = new T()).FromString(s[^(digits / 2)..]);
         }
         else
         {
             high = new T();     //(high = new T()).FromString("0");
-            (low = new T()).FromString(x);
+            (low = new T()).FromString(s);
         }
     }
 

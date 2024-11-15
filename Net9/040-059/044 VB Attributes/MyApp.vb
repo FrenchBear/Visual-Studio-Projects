@@ -10,7 +10,7 @@
 ' 2023-11-18	PV		Net8
 ' 2024-11-15	PV		Net9
 
-<AttributeUsage(AttributeTargets.Class)> Public Class MonAttribut
+<AttributeUsage(AttributeTargets.Class)> Public Class MyAttribute
     Inherits Attribute
 
     Public Sub New(iVal As Integer)
@@ -23,12 +23,12 @@
     Public ReadOnly Property Flags As Integer
 End Class
 
-<MonAttribut(1, Info:="Info de MaClasse1")>
+<My(1, Info:="Info de MaClasse1")>
 Friend Class MaClasse1
 
 End Class
 
-<MonAttribut(7)>
+<My(7)>
 Friend Class MaClasse2
 
 End Class
@@ -51,10 +51,10 @@ Friend Class MyApp
         WriteLine(tob.Name)
 
         Dim tat As Type     ' Type de l'attribut
-        tat = GetType(MonAttribut)
+        tat = GetType(MyAttribute)
 
-        Dim m As MonAttribut
-        m = CType(tob.GetCustomAttributes(tat, False)(0), MonAttribut)
+        Dim m As MyAttribute
+        m = CType(tob.GetCustomAttributes(tat, False)(0), MyAttribute)
         WriteLine("{0}, {1}", m.Flags, m.Info)
     End Sub
 

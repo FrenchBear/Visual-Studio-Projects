@@ -13,7 +13,7 @@ Imports System.Console
 Imports System.IO
 
 Friend Module modMainAnaPCL
-    Private nbCar As Integer = 0
+    Private nbCar As Integer '= 0
 
     Public Function GetPosition() As Integer
         Return nbCar

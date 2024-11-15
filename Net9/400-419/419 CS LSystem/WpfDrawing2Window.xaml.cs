@@ -38,7 +38,7 @@ public partial class WpfDrawing2Window: Window
     }
 
     // Implementation of renderer for WFP2
-    private class Wpf2LSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
+    private sealed class Wpf2LSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
     {
         private PathFigure _pf;
 

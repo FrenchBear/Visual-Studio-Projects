@@ -83,7 +83,7 @@ internal class Program
                 BindingFlags.Default | BindingFlags.InvokeMethod,
                 null,
                 obj,
-                [new Double[] { 5, 12 }]);
+                [new double[] { 5, 12 }]);
             Console.WriteLine($"Moyenne(5,12) = {res}");
         }
     }

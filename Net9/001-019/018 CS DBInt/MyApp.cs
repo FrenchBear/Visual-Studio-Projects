@@ -16,7 +16,7 @@ namespace CS018;
 
 public readonly struct DBInt
 {
-    public static readonly DBInt Null = new();
+    public static readonly DBInt Null; //= new();
     private readonly int value;
     private readonly bool defined;
 

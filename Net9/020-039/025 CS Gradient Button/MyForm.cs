@@ -21,16 +21,10 @@ public class MyForm: Form
 {
     private Button button1;
     private GradientButton button2;
-    private readonly System.ComponentModel.Container components; //= null;
 
     public MyForm() => InitializeComponent();
 
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-            components?.Dispose();
-        base.Dispose(disposing);
-    }
+    protected override void Dispose(bool disposing) => base.Dispose(disposing);
 
     #region Windows Form Designer generated code
 

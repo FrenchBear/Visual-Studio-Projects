@@ -173,7 +173,7 @@ internal class Program
     // function returning a reference
     public static ref TValue Choose<TValue>(bool condition, ref TValue left, ref TValue right) => ref condition ? ref left : ref right;
 
-    static public void TestPatternMatching()
+    public static void TestPatternMatching()
     {
         // Type pattern: no promotion, no conversion...
         int? i1 = 100, i2 = null;

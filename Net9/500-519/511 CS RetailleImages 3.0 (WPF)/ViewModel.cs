@@ -19,7 +19,7 @@ using System.Windows.Threading;
 
 namespace CS511;
 
-public class ViewModel: INotifyPropertyChanged, IDataErrorInfo
+public class ViewModel: INotifyPropertyChanged, IDataErrorInfo, IDisposable
 {
     // INotifyPropertyChanged interface
     public event PropertyChangedEventHandler PropertyChanged;
@@ -148,11 +148,20 @@ public class ViewModel: INotifyPropertyChanged, IDataErrorInfo
 
     private void SelectTargetFolderExecute(object parameter)
     {
-        var dialog = new System.Windows.Forms.FolderBrowserDialog();
-        dialog.SelectedPath = TargetFolder != null && TargetFolder != "" && Directory.Exists(TargetFolder) ? TargetFolder : SourceFolder;
+        var dialog = new System.Windows.Forms.FolderBrowserDialog
+        {
+            SelectedPath = TargetFolder != null && TargetFolder != "" && Directory.Exists(TargetFolder) ? TargetFolder : SourceFolder
+        };
         var result = dialog.ShowDialog();
         if (result == System.Windows.Forms.DialogResult.OK)
             TargetFolder = dialog.SelectedPath;
+    }
+
+    // IDispose
+    public void Dispose()
+    {
+        ((IDisposable)cts).Dispose();
+        GC.SuppressFinalize(this);
     }
 
     // Properties for view binding
@@ -253,9 +262,7 @@ public class ViewModel: INotifyPropertyChanged, IDataErrorInfo
         }
     }
 
-    private readonly ObservableCollection<string> tracesList = [];
-
-    public ObservableCollection<string> TracesList => tracesList;
+    public ObservableCollection<string> TracesList { get; } = [];
 
     private int traceSelectedIndex;
 

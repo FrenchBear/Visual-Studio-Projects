@@ -88,12 +88,6 @@ public static class XmlTools
 
 public class Ba
 {
-    private int _val = 42;
-
     [DefaultValue(42)]      // Avoid serialization of default value
-    public int Val
-    {
-        get => _val;
-        set => _val = value;
-    }
+    public int Val { get; set; } = 42;
 }

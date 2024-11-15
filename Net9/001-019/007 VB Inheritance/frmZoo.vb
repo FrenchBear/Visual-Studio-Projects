@@ -89,8 +89,8 @@ Public Class frmZoo
         '
         'TextBox1
         '
-        TextBox1.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left _
-                    Or System.Windows.Forms.AnchorStyles.Right
+        TextBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Left _
+                    Or AnchorStyles.Right
         TextBox1.Location = New Drawing.Point(8, 20)
         TextBox1.Name = "TextBox1"
         TextBox1.Size = New Drawing.Size(152, 20)
@@ -99,7 +99,7 @@ Public Class frmZoo
         '
         'btnTypeName
         '
-        BtnTypeName.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right
+        BtnTypeName.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         BtnTypeName.Location = New Drawing.Point(168, 16)
         BtnTypeName.Name = "btnTypeName"
         BtnTypeName.Size = New Drawing.Size(92, 24)
@@ -117,9 +117,9 @@ Public Class frmZoo
         '
         'TabControl1
         '
-        TabControl1.Anchor = System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom _
-                    Or System.Windows.Forms.AnchorStyles.Left _
-                    Or System.Windows.Forms.AnchorStyles.Right
+        TabControl1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom _
+                    Or AnchorStyles.Left _
+                    Or AnchorStyles.Right
         TabControl1.Controls.AddRange(New Control() {TabPage1, TabPage2})
         TabControl1.Location = New Drawing.Point(4, 120)
         TabControl1.Name = "TabControl1"

@@ -20,7 +20,7 @@ using System.Windows;
 
 namespace CS502;
 
-public partial class MainWindow: Window
+public partial class MainWindow: Window, IDisposable
 {
     public MainWindow()
     {
@@ -48,6 +48,13 @@ public partial class MainWindow: Window
     }
 
     private CancellationTokenSource cts;
+
+    // IDispose
+    public void Dispose()
+    {
+        ((IDisposable)cts).Dispose();
+        GC.SuppressFinalize(this);
+    }
 
     private void button1_Click(object sender, RoutedEventArgs e)
     {

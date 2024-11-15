@@ -18,7 +18,7 @@ Imports System.Reflection
 Public Class InfosForm
     Inherits Form
 
-    Private _iRang As Integer = 0
+    Private _iRang As Integer '= 0
     Private ReadOnly _iInitialWidth As Integer
 
 #Region " Windows Form Designer generated code "

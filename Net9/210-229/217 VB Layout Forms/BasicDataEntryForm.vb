@@ -19,10 +19,10 @@ Friend Class BasicDataEntryForm
         InitializeComponent()
     End Sub
 
-    Private ReadOnly components As IContainer = Nothing
+    Private ReadOnly components As IContainer '= Nothing
 
     Protected Overrides Sub Dispose(disposing As Boolean)
-        If disposing AndAlso Not components Is Nothing Then
+        If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
         End If
         MyBase.Dispose(disposing)

@@ -123,7 +123,7 @@ internal class Program
 internal static class MyExtensions
 {
     // Iterate an action on an IEnumerable
-    static public void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+    public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
     {
         foreach (var item in collection)
             action(item);

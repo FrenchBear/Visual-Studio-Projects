@@ -20,7 +20,7 @@ internal partial class Program
         Regex r = MyRegex();
 
         foreach (var f in d.EnumerateFiles())
-            if (string.Compare(f.Extension, ".avi", true) == 0 || string.Compare(f.Extension, ".mkv", true) == 0)
+            if (string.Equals(f.Extension, ".avi", System.StringComparison.CurrentCultureIgnoreCase) || string.Equals(f.Extension, ".mkv", System.StringComparison.CurrentCultureIgnoreCase))
             {
                 WriteLine(f.Name);
                 var m = r.Match(Path.GetFileNameWithoutExtension(f.Name));

@@ -12,6 +12,7 @@ using System.Windows.Markup;
 #pragma warning disable IDE1006 // Naming Styles
 
 namespace SdkXamlBrowser;
+
 public partial class Scene1
 {
     public bool RealTimeUpdate = true;

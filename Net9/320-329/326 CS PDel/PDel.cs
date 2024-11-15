@@ -26,10 +26,10 @@ namespace PDel;
 internal class Program
 {
     private static bool isRecurseMode;          // True when option -s is used, delete files in subfolders too
-    private static bool isVerbose = false;      // Option -v
-    private static bool isNoAction = false;     // Option -n
-    private static bool isFinal = false;        // Option -f
-    private static bool isReparsePointsFollowed = false;
+    private static bool isVerbose; //= false;      // Option -v
+    private static bool isNoAction; //= false;     // Option -n
+    private static bool isFinal; //= false;        // Option -f
+    private static bool isReparsePointsFollowed; //= false;
     private static readonly TextWriter errorWriter = Error;  // stderr
 
     // A private structure to store an input path and pattern

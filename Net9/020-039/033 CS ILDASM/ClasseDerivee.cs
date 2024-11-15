@@ -2,7 +2,9 @@ using System;
 using static System.Console;
 
 #pragma warning disable IDE0052 // Remove unread private members
+#pragma warning disable CA1708 // Identifiers should differ by more than case
 #pragma warning disable IDE0051 // Remove unused private members
+#pragma warning disable IDE0130 // Namespace doesn't match folder structure
 
 namespace MaBibliotheque;
 
@@ -10,15 +12,9 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
 {
     private class MaSousClasse(int a)
     {
-        private int a = a;
+        public int A { get; set; } = a;
 
-        public int A
-        {
-            get => a;
-            set => a = value;
-        }
-
-        public override string ToString() => a.ToString();
+        public override string ToString() => A.ToString();
 
         [Obsolete("Ne plus utiliser !")]
         private void MethodeObsolete()
@@ -29,10 +25,10 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
     /// <summary>
     /// Impl�mentation de MonInterface, membre ordinaire
     /// </summary>
-    /// <param name="iNbBip">Nombre d'�v�nements Bip � d�clencher</param>
-    public void MaMethodeBruyante1(int iNbBip)
+    /// <param name="x">Nombre d'�v�nements Bip � d�clencher</param>
+    public void MaMethodeBruyante1(int x)
     {
-        for (var i = 0; i < iNbBip; i++)
+        for (var i = 0; i < x; i++)
         {
             Bip(this, "MaMethodeBruyante1");
         }

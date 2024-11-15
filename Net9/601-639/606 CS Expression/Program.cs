@@ -70,7 +70,7 @@ public class MyVisitor: ExpressionVisitor
         return Visit(expression);
     }
 
-    private int s = 0;
+    private int s; //= 0;
 
     private void PrintLine(string st) => WriteLine(new string(' ', 4 * s) + st);
 

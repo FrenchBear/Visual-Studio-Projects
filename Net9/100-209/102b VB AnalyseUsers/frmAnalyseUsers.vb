@@ -590,7 +590,7 @@ Friend Class ListViewItemComparer
 
     Public Function Compare(x As Object, y As Object) As Integer Implements IComparer.Compare
         Return If(col < 4,
-            sens * String.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text),
+            sens * String.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text, StringComparison.Ordinal),
             sens * Date.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text))
     End Function
 

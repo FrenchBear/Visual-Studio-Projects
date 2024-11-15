@@ -83,11 +83,9 @@ internal class Program
 // base class
 internal class Entier(int value)
 {
-    private readonly int n = value;
+    public int Value { get; } = value;
 
-    public int Value => n;
-
-    public override string ToString() => n.ToString();
+    public override string ToString() => Value.ToString();
 }
 
 // IComparable, for old code

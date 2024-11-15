@@ -86,18 +86,18 @@ Public Class Form1
         x(1) = "toto"
     End Sub
 
-    Private ReadOnly d As New Djctionary(Of String, Integer)
-    Private ReadOnly e As New Djctionary(Of Integer, String)
+    'Private ReadOnly d As New Djctionary(Of String, Integer)
+    'Private ReadOnly e As New Djctionary(Of Integer, String)
 
-    Public Class Djctionary(Of entryType, keyType As IComparable)
+    Public Class Djctionary(Of TEntry, TKey As IComparable)
 
-        Public Sub Add(e As entryType, k As keyType)
+        Public Sub Add(e As TEntry, k As TKey)
             ' Add code here to store the entryType instance, e,
             ' in a collection created and maintained by the
             ' class.
         End Sub
 
-        Public Function Find(k As keyType) As entryType
+        Public Function Find(k As TKey) As TEntry
             ' Add code here to find the entryType instance
             ' associated with the key, k.
         End Function

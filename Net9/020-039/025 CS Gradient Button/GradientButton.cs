@@ -60,11 +60,11 @@ public class GradientButton: Button
         }
     }
 
-    protected override void OnPaint(PaintEventArgs pe)
+    protected override void OnPaint(PaintEventArgs pevent)
     {
-        base.OnPaint(pe);
+        base.OnPaint(pevent);
 
-        var g = pe.Graphics;
+        var g = pevent.Graphics;
         var clientRect = ClientRectangle;
 
         // On n'écrase pas les bords

@@ -19,8 +19,8 @@ public partial class UC1: UserControl, INavigationContextProvider<UC1, Navigatio
 
     private void Button_Click_1(object sender, RoutedEventArgs e) =>
         // "Frees" synchronization context in context which is a Task
-        context.Continue(NavigationResult.GoForward);
+        context.Continuer(NavigationResult.GoForward);
 
     // Exit button
-    private void Button_Click_2(object sender, RoutedEventArgs e) => context.Continue(NavigationResult.GoBackward);
+    private void Button_Click_2(object sender, RoutedEventArgs e) => context.Continuer(NavigationResult.GoBackward);
 }

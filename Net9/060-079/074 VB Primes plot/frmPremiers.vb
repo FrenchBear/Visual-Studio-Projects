@@ -113,7 +113,7 @@ Public Class frmPremiers
     Private Const n As Integer = 1585 * 1006      ' 1184 * 892
     Private ReadOnly t As New BitArray(n + 1)
 
-    Private bResizeEnCours As Boolean = False
+    Private bResizeEnCours As Boolean '= False
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCrible.Click
         t.SetAll(1)

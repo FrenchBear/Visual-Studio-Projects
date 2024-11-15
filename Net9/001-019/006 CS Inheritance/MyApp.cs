@@ -40,7 +40,7 @@ internal class D: B
     {
     }
 
-    protected new static void NonVirtualMethod()
+    protected static new void NonVirtualMethod()
     {
     }
 }

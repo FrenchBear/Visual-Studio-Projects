@@ -15,8 +15,8 @@ Friend Module TestsSurString
 
         s = "  espaces autour  "
         t = s.Trim()
-        u = "où ça ?".ToUpper()
-        v = "SILLIKER".ToLower()
+        u = "où ça ?".ToUpper(Globalization.CultureInfo.CurrentCulture)
+        v = "SILLIKER".ToLower(Globalization.CultureInfo.CurrentCulture)
         w = "Bonjour".PadRight(30, "*")
         x = String.Concat("Il ", "était ", "une ", "fois...")
 

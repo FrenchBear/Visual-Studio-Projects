@@ -34,14 +34,16 @@ public class frmHello: Form
     private void InitializeComponent()
     {
         components = new System.ComponentModel.Container();
-        btnHello = new Button();
-        //@this.TrayHeight = 0;
-        //@this.TrayLargeIcon = false;
-        //@this.TrayAutoArrange = true;
-        btnHello.Location = new System.Drawing.Point(88, 56);
-        btnHello.Size = new System.Drawing.Size(75, 23);
-        btnHello.TabIndex = 0;
-        btnHello.Text = "&Hello";
+        btnHello = new Button
+        {
+            //TrayHeight = 0;
+            //TrayLargeIcon = false;
+            //TrayAutoArrange = true;
+            Location = new System.Drawing.Point(88, 56),
+            Size = new System.Drawing.Size(75, 23),
+            TabIndex = 0,
+            Text = "&Hello"
+        };
         btnHello.Click += new System.EventHandler(btnHello_Click);
         btnHello.Click += new System.EventHandler(btnHello_Click_bis);
         Text = "Essais C#";

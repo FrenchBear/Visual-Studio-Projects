@@ -39,7 +39,7 @@ Public Class MyMsgBox3
 
     Private WithEvents btnAide As Button
 
-    Public WithEvents Form1 As MyMsgBox2
+    Public Shadows WithEvents Form1 As MyMsgBox2
 
     'NOTE: The following procedure is required by the WinForm Designer
     'It can be modified using the WinForm Designer.

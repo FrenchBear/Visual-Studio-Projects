@@ -20,7 +20,7 @@ internal struct BigDecimal: IComparable<BigDecimal>, IComparable
     // Definition of precision
     public const int Digits = 750;                   // Number of decimals
 
-    static private readonly BigInteger ScaleFactor = BigInteger.Pow(10, Digits);    // Scale factor for storage in a BigInteger
+    private static readonly BigInteger ScaleFactor = BigInteger.Pow(10, Digits);    // Scale factor for storage in a BigInteger
 
     private BigInteger n;                              // Value and sign * scale factor
 
@@ -42,45 +42,45 @@ internal struct BigDecimal: IComparable<BigDecimal>, IComparable
 
     public BigDecimal(BigDecimal bn) => n = bn.n;
 
-    static public BigDecimal operator +(BigDecimal b1, BigDecimal b2)
+    public static BigDecimal operator +(BigDecimal b1, BigDecimal b2)
     {
         BigDecimal d;
         d.n = b1.n + b2.n;
         return d;
     }
 
-    static public BigDecimal operator -(BigDecimal b1, BigDecimal b2)
+    public static BigDecimal operator -(BigDecimal b1, BigDecimal b2)
     {
         BigDecimal d;
         d.n = b1.n - b2.n;
         return d;
     }
 
-    static public BigDecimal operator *(BigDecimal b1, BigDecimal b2)
+    public static BigDecimal operator *(BigDecimal b1, BigDecimal b2)
     {
         BigDecimal d;
         d.n = b1.n * b2.n / ScaleFactor;
         return d;
     }
 
-    static public BigDecimal operator /(BigDecimal b1, BigDecimal b2)
+    public static BigDecimal operator /(BigDecimal b1, BigDecimal b2)
     {
         BigDecimal d;
         d.n = ScaleFactor * b1.n / b2.n;
         return d;
     }
 
-    static public bool operator ==(BigDecimal b1, BigDecimal b2) => b1.n == b2.n;
+    public static bool operator ==(BigDecimal b1, BigDecimal b2) => b1.n == b2.n;
 
-    static public bool operator !=(BigDecimal b1, BigDecimal b2) => b1.n != b2.n;
+    public static bool operator !=(BigDecimal b1, BigDecimal b2) => b1.n != b2.n;
 
-    static public bool operator >(BigDecimal b1, BigDecimal b2) => b1.n > b2.n;
+    public static bool operator >(BigDecimal b1, BigDecimal b2) => b1.n > b2.n;
 
-    static public bool operator >=(BigDecimal b1, BigDecimal b2) => b1.n >= b2.n;
+    public static bool operator >=(BigDecimal b1, BigDecimal b2) => b1.n >= b2.n;
 
-    static public bool operator <(BigDecimal b1, BigDecimal b2) => b1.n < b2.n;
+    public static bool operator <(BigDecimal b1, BigDecimal b2) => b1.n < b2.n;
 
-    static public bool operator <=(BigDecimal b1, BigDecimal b2) => b1.n <= b2.n;
+    public static bool operator <=(BigDecimal b1, BigDecimal b2) => b1.n <= b2.n;
 
     // Standard string representation
     public override readonly string ToString()

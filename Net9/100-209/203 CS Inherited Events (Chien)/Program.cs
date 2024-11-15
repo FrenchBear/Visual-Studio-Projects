@@ -165,7 +165,7 @@ public class Chien: Animal
 
     public override void Crier() => WriteLine(Nom + ": Wouaf !");
 
-    public override sealed void Lécher() => WriteLine("Le chien " + Nom + " lèche");
+    public sealed override void Lécher() => WriteLine("Le chien " + Nom + " lèche");
 
     public new void Jouer() => WriteLine("Le chien " + Nom + " joue.");
 

@@ -59,6 +59,7 @@ internal class Program
 
         // Use .Net Framework version
         var bytes = Encoding.UTF8.GetBytes(s);
+#pragma warning disable CA5350 // Do Not Use Weak Cryptographic Algorithms
         var hash = SHA1.HashData(bytes);
         StringBuilder hsb = new();
         foreach (var b in hash)

@@ -19,8 +19,8 @@ Friend Module Pentamino
 
     Private Const MAXSOLUTION As Integer = 1000
 
-    Private iNbSol As Integer = 0
-    Private iNbAppelPavage As Integer = 0
+    Private iNbSol As Integer '= 0
+    Private iNbAppelPavage As Integer '= 0
 
     Private Pow2() As Integer
 

@@ -575,7 +575,7 @@ Public Class frmAfficheImage
     Private tImage() As PictureBox
 
     Private tImage2() As Image
-    Private iRowSize As Integer = 0         ' 0 indique que les tableaux ne sont pas initialisés
+    Private iRowSize As Integer '= 0         ' 0 indique que les tableaux ne sont pas initialisés
     Private ReadOnly iMargin As Integer = 8          ' Espace entre images pour l'affichage multiple
 
     ' Historique

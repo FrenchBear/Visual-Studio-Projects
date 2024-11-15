@@ -58,7 +58,7 @@ public static class Extensions
     {
         private readonly IEnumerator<T> originalEnumerator = original.GetEnumerator();
         private readonly int start = start, count = count;
-        private int pos = 0;
+        private int pos; //= 0;
 
         private IEnumerator<T> MyEnumerator()
         {
@@ -205,7 +205,7 @@ public static class Extensions
     {
         private readonly IEnumerator<T> originalEnumerator = original.GetEnumerator();
         private readonly int start = start, count = count;
-        private int pos = 0;
+        private int pos; //= 0;
 
         private IEnumerator<T> MyEnumerator()
         {

@@ -66,7 +66,7 @@ internal class SortedQueue<TKey, TValue>: SortedList<TKey, TValue>
 internal class Timeline
 {
     private readonly SortedQueue<double, TimelineEvent> tl = [];
-    private double nowTime = 0.0;
+    private double nowTime; //= 0.0;
 
     public delegate void TimedEventHandler(double absoluteTime, TimelineEvent e);
 
@@ -95,10 +95,9 @@ internal class Timeline
 
 internal class TimelineEvent(string name, Action<double, TimelineEvent> action)
 {
-    private readonly string _name = name;
     private readonly Action<double, TimelineEvent> _action = action;
 
-    public string Name => _name;
+    public string Name { get; } = name;
 
     public void ExecuteAction(double nowTime) => _action?.Invoke(nowTime, this);
 }
@@ -107,13 +106,9 @@ internal class UserArrivedEvent(int arrivalLevel, int destinationLevel, string n
 {
     private static int numUserSource;
 
-    private readonly int numUser = ++numUserSource;
-    private readonly int arrivalLevel = arrivalLevel;
-    private readonly int destinationLevel = destinationLevel;
+    public int NumUser { get; } = ++numUserSource;
 
-    public int NumUser => numUser;
+    public int ArrivalLevel { get; } = arrivalLevel;
 
-    public int ArrivalLevel => arrivalLevel;
-
-    public int DestinationLevel => destinationLevel;
+    public int DestinationLevel { get; } = destinationLevel;
 }

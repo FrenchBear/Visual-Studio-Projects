@@ -125,7 +125,7 @@ Friend Module modPCL
     End Sub
 
     Public Sub AnaPCLEscape(b As Byte)
-        If b >= Asc("0") And b <= Asc("9") Or b = Asc(".") Or b = Asc("+") Or b = Asc("-") Then
+        If (b >= Asc("0") And b <= Asc("9")) Or b = Asc(".") Or b = Asc("+") Or b = Asc("-") Then
             sFactor &= Chr(b)
             Exit Sub
         End If
@@ -190,11 +190,11 @@ Friend Module modPCL
         TraceWriteLine()
 
         'cas des séquences suivies d'un flot d'octets
-        If epclEtat = EtatPCL.epclEscapeEt And cMainFunction = "p" And cFunction = "X" Or
-           epclEtat = EtatPCL.epclEscapeParOuvr And cMainFunction = "s" And cFunction = "W" Or
-           epclEtat = EtatPCL.epclEscapeEtoile And cMainFunction = "g" And cFunction = "W" Or
-           epclEtat = EtatPCL.epclEscapeEtoile And cMainFunction = "b" And cFunction = "W" Or
-           epclEtat = EtatPCL.epclEscapeEtoile And cMainFunction = "b" And cFunction = "V" _
+        If (epclEtat = EtatPCL.epclEscapeEt And cMainFunction = "p" And cFunction = "X") Or
+           (epclEtat = EtatPCL.epclEscapeParOuvr And cMainFunction = "s" And cFunction = "W") Or
+           (epclEtat = EtatPCL.epclEscapeEtoile And cMainFunction = "g" And cFunction = "W") Or
+           (epclEtat = EtatPCL.epclEscapeEtoile And cMainFunction = "b" And cFunction = "W") Or
+           (epclEtat = EtatPCL.epclEscapeEtoile And cMainFunction = "b" And cFunction = "V") _
            Then
             iDataCount = Val(sFactor)
 

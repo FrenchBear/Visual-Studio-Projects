@@ -82,7 +82,7 @@ public class Car(string name)
 
     public string Name { get; private set; } = name;
 
-    private bool isEngineOn = false;
+    private bool isEngineOn; //= false;
 
     public bool IsEngineOn
     {

@@ -18,16 +18,9 @@ namespace CS044;
 [AttributeUsage(AttributeTargets.Class)]
 public class MonAttribut(int iVal): Attribute
 {
-    private readonly int iPriv = iVal;
-    private string sInfo = "";
+    public string Info { get; set; } = "";
 
-    public string Info
-    {
-        get => sInfo;
-        set => sInfo = value;
-    }
-
-    public int IFlags => iPriv;
+    public int IFlags { get; } = iVal;
 }
 
 [MonAttribut(1, Info = "Info de MaClasse1")]

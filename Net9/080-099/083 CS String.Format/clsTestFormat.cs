@@ -86,6 +86,7 @@ internal class TestFormat
     [STAThread]
     private static void Main(string[] args)
     {
+#pragma warning disable JSON002 // Probable JSON string detected
         DoOutput("Formats généraux d'entiers", 0xcafe, ["{0:G}", "{0:00000000}", "{0:########}", "{0,10}", "{0:d8}", "{0:x}", "{0:x8}", "{0:X}", "{0:n}", "{0:n0}"]);
         DoOutput("Format spécifiques d'entiers", 1234567, ["{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}", "{0:[##-##-##]}"]);
         DoOutput("Formats de décimaux", 3141.5926, ["{0:G}", "{0,12}", "{0:e}", "{0:f3}", "{0:C}", "{0:n1}", "{0:p}", "{0:p1}", "{0:r}"]);

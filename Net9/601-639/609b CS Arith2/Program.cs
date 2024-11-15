@@ -28,6 +28,8 @@ using static System.Console;
 
 namespace CS609b;
 
+#pragma warning disable CA1708 // Identifiers should differ by more than case
+
 using Int1024d = DA<DA<DA<DA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>, MetaDA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>>, MetaDA<DA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>, MetaDA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>>>, MetaDA<DA<DA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>, MetaDA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>>, MetaDA<DA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>, MetaDA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>>>>;
 using Int128d = DA<DA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>, MetaDA<DA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>, MetaDA<DA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>, MetaDA<DA<IntBase, MetaIntBase>, MetaDA<IntBase, MetaIntBase>>>>>;
 
@@ -148,24 +150,24 @@ public class IntBase: ISimpleArith<IntBase>
 }
 
 // Associated MetaClass of DA<T, MetaT>
-public class MetaDA<T, MetaT>: IMetaSimpleArith<DA<T, MetaT>>
+public class MetaDA<T, TMeta>: IMetaSimpleArith<DA<T, TMeta>>
     where T : ISimpleArith<T>, new()
-    where MetaT : IMetaSimpleArith<T>, new()
+    where TMeta : IMetaSimpleArith<T>, new()
 {
     // Metaclass is a singleton
-    private static readonly MetaT m = new();
+    private static readonly TMeta m = new();
 
-    public DA<T, MetaT> FromString(string s)
-        => string.IsNullOrEmpty(s) || s.Length > DA<T, MetaT>.digits
+    public DA<T, TMeta> FromString(string s)
+        => string.IsNullOrEmpty(s) || s.Length > DA<T, TMeta>.digits
             ? throw new ArgumentException("Invalid constructor call")
-            : s.Length > DA<T, MetaT>.digits / 2
-            ? new DA<T, MetaT>(m.FromString(s[..^(DA<T, MetaT>.digits / 2)]),
-                m.FromString(s[^(DA<T, MetaT>.digits / 2)..]), true)
-            : new DA<T, MetaT>(new T(), m.FromString(s), true);
+            : s.Length > DA<T, TMeta>.digits / 2
+            ? new DA<T, TMeta>(m.FromString(s[..^(DA<T, TMeta>.digits / 2)]),
+                m.FromString(s[^(DA<T, TMeta>.digits / 2)..]), true)
+            : new DA<T, TMeta>(new T(), m.FromString(s), true);
 
-    public DA<T, MetaT> FromOther(DA<T, MetaT> other) => new(other.high, other.low, true);
+    public DA<T, TMeta> FromOther(DA<T, TMeta> other) => new(other.high, other.low, true);
 
-    public (DA<T, MetaT> high, DA<T, MetaT> low) Plus(params DA<T, MetaT>[] list)
+    public (DA<T, TMeta> high, DA<T, TMeta> low) Plus(params DA<T, TMeta>[] list)
     {
         var h = list.First().high;      // Not starting with 0 and adding 1st element is
         var l = list.First().low;       // A huuuuuuuuuge performance improvement (both C# and C++)
@@ -182,11 +184,11 @@ public class MetaDA<T, MetaT>: IMetaSimpleArith<DA<T, MetaT>>
         }
 
 #pragma warning disable CS8604 // Possible null reference argument.
-        return (new DA<T, MetaT>(ovh, ovl, true), new DA<T, MetaT>(h, l, true));
+        return (new DA<T, TMeta>(ovh, ovl, true), new DA<T, TMeta>(h, l, true));
 #pragma warning restore CS8604 // Possible null reference argument.
     }
 
-    public (DA<T, MetaT> high, DA<T, MetaT> low) Mult(DA<T, MetaT> a, DA<T, MetaT> b)
+    public (DA<T, TMeta> high, DA<T, TMeta> low) Mult(DA<T, TMeta> a, DA<T, TMeta> b)
     {
         T lowH, lowL;
         T highH, highL;
@@ -201,24 +203,24 @@ public class MetaDA<T, MetaT>: IMetaSimpleArith<DA<T, MetaT>>
         (ov2, highL) = m.Plus(highL, t1h, t2h, ov1);
         (_, highH) = m.Plus(highH, ov2);
 
-        return (new DA<T, MetaT>(highH, highL, true), new DA<T, MetaT>(lowH, lowL, true));
+        return (new DA<T, TMeta>(highH, highL, true), new DA<T, TMeta>(lowH, lowL, true));
     }
 
-    public string ToString2(DA<T, MetaT> a, DA<T, MetaT> b) => a.IsZero() ? b.ToString() : a + b.ToStringWithLeadingZeros();
+    public string ToString2(DA<T, TMeta> a, DA<T, TMeta> b) => a.IsZero() ? b.ToString() : a + b.ToStringWithLeadingZeros();
 }
 
 // Double Arithmetic: provides twice the capacity of type T that implements ISimpleArith
 // and this class in turn also implements ISimpleArith
 // so it's Ok to instantiate DA<Int4d>, DA<DA<Int4d>>, DA<DA<DA<Int4d>>>...
-public class DA<T, MetaT>: ISimpleArith<DA<T, MetaT>>
+public class DA<T, TMeta>: ISimpleArith<DA<T, TMeta>>
     where T : ISimpleArith<T>, new()
-    where MetaT : IMetaSimpleArith<T>, new()
+    where TMeta : IMetaSimpleArith<T>, new()
 {
     internal T high;
     internal T low;
 
     // Metaclass is a singleton
-    private static readonly MetaT m = new();
+    private static readonly TMeta m = new();
 
     internal static int digits;
     public int Digits => digits;

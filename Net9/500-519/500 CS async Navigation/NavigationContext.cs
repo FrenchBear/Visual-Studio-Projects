@@ -14,14 +14,13 @@ public interface INavigationContext<T, TResult> where T : UIElement
 
     T UIelement { get; }
 
-    void Continue(TResult returnValue);
+    void Continuer(TResult returnValue);
 }
 
 // NavigationContext is implemented only one time, and a provider will give easy access
 // (similar to the relation between IEnumerator and IEnumerable)
 public class NavigationContext<T, TResult>(T element): INavigationContext<T, TResult> where T : UIElement
 {
-    private readonly T element = element;
 
     // object behind "awaited tasks", maintains thread status for awaited tasks
     private TaskCompletionSource<TResult> cts;
@@ -33,9 +32,9 @@ public class NavigationContext<T, TResult>(T element): INavigationContext<T, TRe
         return cts.Task;
     }
 
-    public T UIelement => element;
+    public T UIelement { get; } = element;
 
-    public void Continue(TResult returnValue) =>
+    public void Continuer(TResult returnValue) =>
         // terminates the task and return a result, freeing waiting contexts
         cts.SetResult(returnValue);
 }

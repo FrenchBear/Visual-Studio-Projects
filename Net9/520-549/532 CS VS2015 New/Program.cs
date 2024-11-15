@@ -29,6 +29,7 @@ internal class Program
         // Null-conditional operators ?[ and ?. (note that ?[ is useless on a dictionary since it'll raise an exception if the index does not exist...)
         var i = directory?["Pierre"].Company?.Length;
 
+#pragma warning disable JSON002 // Probable JSON string detected
         var jsonText = @"{
                 'ForegroundColor': {
                     'Error': 'Red',

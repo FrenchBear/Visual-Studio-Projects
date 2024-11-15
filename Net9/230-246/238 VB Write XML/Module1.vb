@@ -151,6 +151,7 @@ Friend Module Module1
         xtw.Close()
 
         ' Then transform this Xml file using an Xsl stylesteet
+#Disable Warning CA5372 ' Use XmlReader for XPathDocument constructor
         Dim xpd As New XPathDocument("..\..\TestResults3_Intermediate.xml")
         'Dim xslt As Xsl.XslTransform = New Xsl.XslTransform
         'xslt.Load("..\..\TransformSheet.xsl")

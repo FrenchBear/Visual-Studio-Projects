@@ -45,7 +45,6 @@ Public Class Couleur : Inherits Zap
     Protected Shared Bleu As New Couleur(0, 0, 255)
 
     Public R, G, B As Integer
-    Private m_A As Integer
 
     Public Sub New()
         Me.New(0, 0, 0)
@@ -57,21 +56,14 @@ Public Class Couleur : Inherits Zap
         R = rr
         G = gg
         B = bb
-        m_A = 0
+        A = 0
     End Sub
 
     Public Overrides Function ToString() As String
-        Return "{" & m_A.ToString & ", " & R.ToString & ", " & G.ToString & ", " & B.ToString & "}"
+        Return "{" & A.ToString & ", " & R.ToString & ", " & G.ToString & ", " & B.ToString & "}"
     End Function
 
     Public Property A() As Integer
-        Get
-            Return m_A
-        End Get
-        Set(Value As Integer)
-            m_A = Value
-        End Set
-    End Property
 
     Public Overridable Sub S1()
         WriteLine("Couleur.S1()")

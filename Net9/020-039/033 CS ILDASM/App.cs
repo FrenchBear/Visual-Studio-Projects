@@ -13,6 +13,8 @@ using MaBibliotheque;
 using System;
 using static System.Console;
 
+#pragma warning disable IDE0130 // Namespace doesn't match folder structure
+
 namespace EssaisILDasm;
 
 internal class MyApp

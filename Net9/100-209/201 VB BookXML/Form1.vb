@@ -74,6 +74,7 @@ Public Class Form1
         Dim reader As New XmlSerializer(GetType(Book))
         Dim file As New StreamReader(AppPath() & "\IntroToVB.xml")
         Dim introToVB As Book
+#Disable Warning CA5369 ' Use XmlReader for 'XmlSerializer.Deserialize()'
         introToVB = CType(reader.Deserialize(file), Book)
 
         MsgBox("read: " & introToVB.ToString)

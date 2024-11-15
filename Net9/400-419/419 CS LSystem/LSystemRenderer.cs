@@ -97,7 +97,7 @@ public abstract class LSystemRenderer(IEnumerable<char> s, int angle)
 
                 if (escapeChar != '\0')
                 {
-                    if (c is >= '0' and <= '9' or '.')
+                    if (c is (>= '0' and <= '9') or '.')
                     {
                         argumentNum += c;
                         continue;

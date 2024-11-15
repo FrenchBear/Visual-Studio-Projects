@@ -1,4 +1,6 @@
 
+#pragma warning disable IDE0130 // Namespace doesn't match folder structure
+
 namespace MaBibliotheque;
 
 public enum Jour

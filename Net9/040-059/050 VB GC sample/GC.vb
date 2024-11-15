@@ -214,7 +214,7 @@ Public Module ModMain
 
     ' This class represents the application itself
     Public Class Application
-        Private Shared indent As Integer = 0
+        Private Shared indent As Integer '= 0
 
         Public Overloads Shared Sub Display(s As String)
             Dim x As Integer

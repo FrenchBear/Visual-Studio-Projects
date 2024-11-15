@@ -11,7 +11,7 @@ using System;
 
 internal static class MyApp
 {
-    static public void Main()
+    public static void Main()
     {
         CS039Lib.MyLib m = new();
         m.Test();

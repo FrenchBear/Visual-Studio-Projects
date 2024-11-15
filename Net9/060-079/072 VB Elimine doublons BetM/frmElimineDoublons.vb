@@ -108,7 +108,7 @@ Public Class frmElimineDoublons
         Catch ex As Exception
             Dim f2 As File
             f2 = fldDest.Files(f1.Name)
-            Debug.Assert(Not f2 Is Nothing)
+            Debug.Assert(f2 IsNot Nothing)
             If f1.Size > f2.Size Then
                 Kill(sDest & "\" & f1.Name)
                 Trace("Kill Sauve\" & f1.Name)

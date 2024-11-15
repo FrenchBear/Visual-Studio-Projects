@@ -28,8 +28,8 @@ Public Class frmRenameFiles
     ''' <summary>About command in System menu</summary>
     Private WithEvents mobjSubclassedSystemMenu As SubclassedSystemMenu
 
-    Private nbFile As Integer = 0
-    Private nbRename As Integer = 0
+    Private nbFile As Integer '= 0
+    Private nbRename As Integer '= 0
 
     ''' <summary>
     ''' Form initialization
@@ -318,7 +318,7 @@ Friend Class ListViewItemComparer
 
     Public Function Compare(x As Object, y As Object) As Integer _
        Implements IComparer.Compare
-        Return String.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text) * ord
+        Return String.Compare(CType(x, ListViewItem).SubItems(col).Text, CType(y, ListViewItem).SubItems(col).Text, StringComparison.Ordinal) * ord
     End Function
 
 End Class

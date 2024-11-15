@@ -31,8 +31,8 @@ Public Class SubclassedSystemMenu
 #End Region
 
 #Region "Member Variables"
-    Private ReadOnly mintSystemMenu As Integer = 0                 ' Parent system menu handle
-    Private ReadOnly mintHandle As Integer = 0                     ' Local parent window handle
+    Private ReadOnly mintSystemMenu As Integer '= 0                 ' Parent system menu handle
+    Private ReadOnly mintHandle As Integer '= 0                     ' Local parent window handle
     Private ReadOnly mstrMenuItemText As String = String.Empty   ' New menu item text
 #End Region
 

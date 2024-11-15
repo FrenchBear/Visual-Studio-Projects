@@ -26,7 +26,7 @@ internal class Program
         WriteLine("Build Version: {0}", BuildVersion);
     }
 
-    static public int GetBuildVersion() => int.Parse(RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuildNumber", "0"));
+    public static int GetBuildVersion() => int.Parse(RegistryRead(@"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion", "CurrentBuildNumber", "0"));
 
     private static string RegistryRead(string RegistryPath, string Field, string DefaultValue)
     {

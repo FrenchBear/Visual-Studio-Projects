@@ -8,6 +8,8 @@
 ' 2023-11-18	PV		Net8
 ' 2024-11-15	PV		Net9
 
+#Disable Warning CA1710 ' Identifiers should have correct suffix
+#Disable Warning CA1010 ' Generic interface should also be implemented
 Public Class TroisEntiers
     Implements IEnumerable
 

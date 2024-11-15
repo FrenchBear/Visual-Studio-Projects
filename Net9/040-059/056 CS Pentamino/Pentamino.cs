@@ -23,8 +23,8 @@ internal class Pentamino
 
     private const int MAXSOLUTION = 5000;       // Limit search time if needed
 
-    private static int nbSolutions = 0;
-    private static int nbPavingCalls = 0;
+    private static int nbSolutions; //= 0;
+    private static int nbPavingCalls; //= 0;
 
     // Table of pentaminos to use for the problem
     private static Piece[] lp;

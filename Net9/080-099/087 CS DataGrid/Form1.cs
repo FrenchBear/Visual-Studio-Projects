@@ -23,19 +23,9 @@ public class Form1: Form
     private Label label2;
     private Label label1;
 
-    /// <summary>
-    /// Variable nécessaire au concepteur.
-    /// </summary>
-    private readonly System.ComponentModel.Container components; //= null;
-
     public Form1() => InitializeComponent();
 
-    protected override void Dispose(bool disposing)
-    {
-        if (disposing)
-            components?.Dispose();
-        base.Dispose(disposing);
-    }
+    protected override void Dispose(bool disposing) => base.Dispose(disposing);
 
     #region Code généré par le Concepteur Windows Form
 

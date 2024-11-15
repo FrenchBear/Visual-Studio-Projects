@@ -142,7 +142,7 @@ Public Class Chien : Inherits Animal
         WriteLine("Le chien " & Nom & " lèche")
     End Sub
 
-    Public Sub Jouer()
+    Public Overloads Sub Jouer()
         WriteLine("Le chien " & Nom & " joue.")
     End Sub
 
@@ -178,7 +178,7 @@ Friend Class Chiot : Inherits Chien
     '    WriteLine("Le chiot " & nom & " lèche")
     'End Sub
 
-    Public Sub Jouer()
+    Public Overloads Sub Jouer()
         WriteLine("Le chiot " & Nom & " joue.")
     End Sub
 

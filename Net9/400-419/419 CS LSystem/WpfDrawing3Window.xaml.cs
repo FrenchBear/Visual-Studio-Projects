@@ -37,7 +37,7 @@ public partial class WpfDrawing3Window: Window
     }
 
     // Implementation of renderer for WFP3
-    private class Wpf3LSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
+    private sealed class Wpf3LSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
     {
         private StreamGeometryContext _context;
 

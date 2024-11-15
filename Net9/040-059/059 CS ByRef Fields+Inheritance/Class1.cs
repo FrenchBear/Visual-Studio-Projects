@@ -37,7 +37,6 @@ public class Couleur: Zap
     protected static Couleur Bleu = new(0, 0, 255);
 
     public int R, G, B;
-    private int m_A;
 
     public Couleur()
         : this(0, 0, 0) => WriteLine("Couleur.New()");
@@ -48,16 +47,12 @@ public class Couleur: Zap
         R = rr;
         G = gg;
         B = bb;
-        m_A = 0;
+        A = 0;
     }
 
-    public override string ToString() => "{" + m_A + ", " + R + ", " + G + ", " + B + "}";
+    public override string ToString() => "{" + A + ", " + R + ", " + G + ", " + B + "}";
 
-    public int A
-    {
-        get => m_A;
-        set => m_A = value;
-    }
+    public int A { get; set; }
 
     // New slot
     public virtual void S1() => WriteLine("Couleur.S1()");
