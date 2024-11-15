@@ -1,0 +1,113 @@
+﻿<Window x:Class="CS419.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fractint Help on L-Systems" Height="516" Width="672">
+    <FlowDocument FontSize="12">
+        <Paragraph FontWeight="Bold">L-Systems (type=lsystem)</Paragraph>
+        <Paragraph>These fractals are constructed from line segments using rules specified in drawing commands.  Starting with an initial string, the axiom, transformation rules are applied a specified number of times, to produce the final command string which is used to draw the image.</Paragraph>
+        <Paragraph>Like the type=formula fractals, this type requires a separate data file.  A sample file, FRACTINT.L, is included with this distribution.  When you select type lsystem, the current lsystem file is read and you are asked for the lsystem name you wish to run. Press
+        F6 at this point if you wish to use a different lsystem file. After selecting an lsystem, you are asked for one parameter - the "order", or number of times to execute all the transformation rules.  It is wise to start with small orders, because the size of the substituted command string grows exponentially and it is very easy to exceed your resolution.  (Higher orders take longer to generate too.)  The command line options "lname=" and "lfile=" can be used to over-ride the default file name and lsystem name.</Paragraph>
+        <Paragraph>Each L-System entry in the file contains a specification of the angle, the axiom, and the transformation rules.  Each item must appear on its own line and each line must be less than 160 characters long.</Paragraph>
+        <Paragraph>The statement "angle n" sets the angle to 360/n degrees; n must be an integer greater than two and less than fifty.</Paragraph>
+        <Paragraph>"Axiom string" defines the axiom.</Paragraph>
+        <Paragraph>Transformation rules are specified as "a=string" and convert the single character 'a' into "string."  If more than one rule is specified for a single character all of the strings will be added together.  This allows specifying transformations longer than the 160 character limit.  Transformation rules may operate on any characters except space, tab or '}'.</Paragraph>
+        <Paragraph>Any information after a ; (semi-colon) on a line is treated as a comment.</Paragraph>
+        <Paragraph>Here is a sample lsystem:</Paragraph>
+        <Table>
+            <Table.Columns>
+                <TableColumn Width="75" />
+                <TableColumn />
+            </Table.Columns>
+            <TableRowGroup>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph Margin="0">Dragon {</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph Margin="0">; Name of lsystem, { indicates start</Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph Margin="0">Angle 8</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph Margin="0">; Specify the angle increment to 45°</Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph Margin="0">Axiom FX</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph Margin="0">; Starting character string</Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph Margin="0">F=</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph Margin="0">; First rule:  Delete 'F'</Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph Margin="0">Y=+FX--FY+</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph Margin="0">; Change 'Y' into  "+FX--FY+"</Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph Margin="0">X=-FX++FY-</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph Margin="0">; Similar transformation on 'X'</Paragraph>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableCell>
+                        <Paragraph Margin="0">}</Paragraph>
+                    </TableCell>
+                    <TableCell>
+                        <Paragraph Margin="0">; final } indicates end</Paragraph>
+                    </TableCell>
+                </TableRow>
+            </TableRowGroup>
+        </Table>
+
+        <Paragraph>The standard drawing commands are:</Paragraph>
+        <Paragraph Margin="0">F Draw forward</Paragraph>
+        <Paragraph Margin="0">G Move forward (without drawing)</Paragraph>
+        <Paragraph Margin="0">+ Increase angle</Paragraph>
+        <Paragraph Margin="0">- Decrease angle</Paragraph>
+        <Paragraph Margin="0">| Try to turn 180 degrees. (If angle is odd, the turn will be the largest possible turn less than 180 degrees.)</Paragraph>
+        <Paragraph>These commands increment angle by the user specified angle value. They should be used when possible because they are fast. If greater flexibility is needed, use the following commands which keep a completely separate angle pointer which is specified in degrees.</Paragraph>
+        <Paragraph Margin="0">D Draw forward</Paragraph>
+        <Paragraph Margin="0">M Move forward</Paragraph>
+        <Paragraph Margin="0">\nn Increase angle nn degrees</Paragraph>
+        <Paragraph Margin="0">/nn Decrease angle nn degrees</Paragraph>
+
+        <Paragraph>Color control:</Paragraph>
+        <Paragraph Margin="0">Cnn Select color nn</Paragraph>
+        <Paragraph Margin="0">&lt;nn Increment color by nn</Paragraph>
+        <Paragraph Margin="0">>nn decrement color by nn</Paragraph>
+        <Paragraph>Advanced commands:</Paragraph>
+        <Paragraph Margin="0">! Reverse directions (Switch meanings of +, - and , /)</Paragraph>
+        <Paragraph Margin="0">@nnn  Multiply line segment size by nnn</Paragraph>
+        <Paragraph Margin="0">nnn may be a plain number, or may be preceded by I for inverse, or Q for square root.
+(e.g.  @IQ2 divides size by the square root of 2)</Paragraph>
+        <Paragraph Margin="0">[ Push.  Stores current angle and position on a stack</Paragraph>
+        <Paragraph Margin="0">] Pop.  Return to location of last push</Paragraph>
+
+        <Paragraph>Other characters are perfectly legal in command strings.  They are ignored for drawing purposes, but can be used to achieve complex translations.</Paragraph>
+
+        <Paragraph>The characters '+', '-', '&lt;'
+                '>', '[', ']', '|', '!', '@', '/', '\', and 'c' are reserved symbols and cannot be redefined.  For example, c=f+f and
+                    &lt;= , are syntax errors.</Paragraph>
+
+        <Paragraph>The integer code produces incorrect results in five known instances, Peano2 with order >= 7, SnowFlake1 with order >=6, and SnowFlake2, SnowFlake3, and SnowflakeColor with order >= 5.  If you see strange results, switch to the floating point code.</Paragraph>
+    </FlowDocument>
+</Window>

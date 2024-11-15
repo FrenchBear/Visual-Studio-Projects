@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>Enumerable_Class</RootNamespace>
+        <AssemblyName>Enumerable_Class</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>VB315 Enumerable Class</Title>
+        <Copyright>Copyright ©2008-2024 Pierre Violent</Copyright>
+        <StartupObject>Sub Main</StartupObject>
+    </PropertyGroup>
+	
+    <ItemGroup>
+      <Folder Include="My Project\" />
+    </ItemGroup>
+</Project>

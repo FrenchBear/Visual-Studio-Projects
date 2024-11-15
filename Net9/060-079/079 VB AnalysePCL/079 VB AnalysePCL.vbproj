@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>VB079</RootNamespace>
+        <AssemblyName>VB079</AssemblyName>
+        <Version>1.1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>AnalysePCL</Title>
+        <Description>D�codage de PCL et g�n�ration de TIFF</Description>
+        <Copyright>Copyright © 2003-2024 Pierre Violent</Copyright>
+        <UseWindowsForms>true</UseWindowsForms>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Remove="My Project\**" />
+      <EmbeddedResource Remove="My Project\**" />
+      <None Remove="My Project\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Import Include="System.Data" />
+        <Import Include="System.Drawing" />
+        <Import Include="System.Windows.Forms" />
+    </ItemGroup>
+
+</Project>

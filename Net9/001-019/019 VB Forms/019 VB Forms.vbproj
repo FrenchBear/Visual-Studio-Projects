@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>CS019</RootNamespace>
+		<AssemblyName>CS019</AssemblyName>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Copyright>Copyright ©2001-2024 Pierre Violent</Copyright>
+		<UseWindowsForms>true</UseWindowsForms>
+	</PropertyGroup>
+</Project>

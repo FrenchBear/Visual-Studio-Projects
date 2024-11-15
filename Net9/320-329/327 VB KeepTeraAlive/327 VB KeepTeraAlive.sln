@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "327 VB KeepTeraAlive", "327 VB KeepTeraAlive.vbproj", "{FD6C0D25-DF8A-425D-90B2-A192916577AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD6C0D25-DF8A-425D-90B2-A192916577AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6C0D25-DF8A-425D-90B2-A192916577AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6C0D25-DF8A-425D-90B2-A192916577AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6C0D25-DF8A-425D-90B2-A192916577AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F3B5F5C-6924-42E3-9693-D9496342D025}
+	EndGlobalSection
+EndGlobal

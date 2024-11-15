@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Using XmlDocument-->
+<TestsResults>
+  <result id="0001">
+    <input>[3] [3] [3] [3] [3]</input>
+    <expected>Boatzee</expected>
+    <passfail>Pass</passfail>
+  </result>
+  <result id="0002">
+    <input>[5] [5] [2] [2] [2]</input>
+    <expected>FullHouse</expected>
+    <passfail>Pass</passfail>
+  </result>
+  <result id="0003">
+    <input>[6] [5] [4] [3] [1]</input>
+    <expected>SmallStraight</expected>
+    <passfail>Pass</passfail>
+  </result>
+</TestsResults>

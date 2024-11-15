@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>VB509</RootNamespace>
+        <AssemblyName>VB509</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>VB509 Goldbach</Title>
+        <Copyright>Copyright ©2013-2024 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS544</RootNamespace>
+        <AssemblyName>CS544</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS544 SkipAt Choice GetRange Shuffle</Title>
+        <Description>Implement extensions of IEnumerable&lt;T&gt;: SkipAt Choice GetRange Shuffle</Description>
+        <Copyright>Copyright ©2016-2024 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

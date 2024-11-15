@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31710.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "046 VB Dim New", "046 VB Dim New.vbproj", "{F53CC78F-7930-4ADF-982B-539A53028057}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F53CC78F-7930-4ADF-982B-539A53028057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53CC78F-7930-4ADF-982B-539A53028057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53CC78F-7930-4ADF-982B-539A53028057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53CC78F-7930-4ADF-982B-539A53028057}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8DB2DBD-89C8-47B0-88BA-D5C14AA7A265}
+	EndGlobalSection
+EndGlobal

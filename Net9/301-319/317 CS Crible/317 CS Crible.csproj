@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS317</RootNamespace>
+        <AssemblyName>CS317</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS317 Crible</Title>
+        <Copyright>Copyright ©2008-2024 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

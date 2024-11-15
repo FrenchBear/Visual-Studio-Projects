@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>SdkXamlBrowser</RootNamespace>
+        <AssemblyName>CS324</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>324 CS WPF Controls Gallery Sample</Title>
+        <Copyright>Copyright ©2012-2024 Pierre Violent</Copyright>
+        <UseWPF>true</UseWPF>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+</Project>

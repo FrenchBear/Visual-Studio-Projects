@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS529</RootNamespace>
+        <AssemblyName>CS529</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS529 Boxes</Title>
+        <Description>Example of boxes drawings</Description>
+        <Copyright>Copyright ©2015-2024 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+</Project>

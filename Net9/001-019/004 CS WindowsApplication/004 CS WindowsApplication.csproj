@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<AssemblyName>CS004</AssemblyName>
+		<RootNamespace>CS004</RootNamespace>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Copyright>Copyright ©2001-2024 Pierre Violent</Copyright>
+		<UseWindowsForms>true</UseWindowsForms>
+		<StartupObject>CS004.frmHello</StartupObject>
+	</PropertyGroup>
+</Project>

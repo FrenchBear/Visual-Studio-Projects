@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>CS087</RootNamespace>
+		<AssemblyName>CS087</AssemblyName>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Copyright>Copyright ©2023-2024 Pierre Violent</Copyright>
+		<ApplicationIcon>App.ico</ApplicationIcon>
+		<UseWindowsForms>true</UseWindowsForms>
+		<NoWarn>CS0618</NoWarn>
+	</PropertyGroup>
+	
+	<ItemGroup>
+	  <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+	</ItemGroup>
+
+</Project>

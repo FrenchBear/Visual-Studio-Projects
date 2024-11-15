@@ -1,0 +1,103 @@
+﻿<Window x:Class="RI3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:RI3"
+        Title="RetailleImages 3.1" Height="450" Width="650"
+        Name="RI3Window" Icon="retaille.ico"
+        FocusManager.FocusedElement="{Binding ElementName=SourceFolderTextBox}">
+
+    <Window.Resources>
+        <BitmapImage x:Key="ErrorImage" UriSource="00463.TraceError.16x16.png" />
+
+        <Style x:Key="textBoxStyle" TargetType="TextBox">
+
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Control">
+                        <Grid ClipToBounds="False">
+                            <Border BorderBrush="Red" BorderThickness="1" Margin="-1">
+                                <AdornedElementPlaceholder Name="adornedElement" />
+                            </Border>
+                            <Image HorizontalAlignment="Right" VerticalAlignment="Top"
+                               Width="16" Height="16" Margin="0,-8,-8,0"
+                               Source="{StaticResource ErrorImage}"
+                               ToolTip="{Binding ErrorContent}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip"
+                        Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                    Path=(Validation.Errors)[0].ErrorContent}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,6,6,6" IsSharedSizeScope="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="myLabels" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Répertoire _source" Target="{Binding ElementName=SourceFolderTextBox}" />
+            <TextBox Grid.Column="1" Name="SourceFolderTextBox" VerticalContentAlignment="Center" Style="{StaticResource textBoxStyle}"
+                     Text="{Binding SourceFolder, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" />
+            <Button Grid.Column="2" Content="..." Command="{Binding SelectSourceFolderCommand}" Width="25" Margin="5,0,0,0" />
+            <Button Grid.Column="3" Content="{Binding GenerateButtonCaption, FallbackValue=Générer}" Command="{Binding GenerateCommand}" Width="75" Margin="35,0,0,0" />
+
+            <CheckBox Grid.Row="1" Grid.Column="1" Content="Inclure les sous-dossiers" IsChecked="{Binding IncludeSubFolders}" Margin="0,5,0,10" />
+            <Button Grid.Row="1" Grid.Column="3" Content="_Quitter" Width="75" Margin="35,5,0,0" Click="QuitButton_Click" />
+
+            <Label Grid.Row="2" Content="Répertoire _destination" Target="{Binding ElementName=TargetFolderTextBox}" />
+            <TextBox Grid.Row="2"  Grid.Column="1" Name="TargetFolderTextBox" VerticalContentAlignment="Center" Style="{StaticResource textBoxStyle}"
+                     Text="{Binding TargetFolder, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" />
+            <Button Grid.Row="2"  Grid.Column="2" Content="..." Command="{Binding SelectTargetFolderCommand}" Width="25" Margin="5,0,0,0" />
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" SharedSizeGroup="myLabels" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="_Taille grand coté (pixels)" Target="{Binding ElementName=LargeSideSizeTextBox}" />
+            <TextBox Grid.Column="1" Name="LargeSideSizeTextBox"  Width="75" VerticalContentAlignment="Center"  Style="{StaticResource textBoxStyle}"
+                     Text="{Binding LargeSideSize, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" />
+            <Label Grid.Column="2" Content="Faible" />
+            <Label Grid.Column="2" Content="Sans compression" HorizontalAlignment="Right" />
+            <Label Grid.Row="1" Content="Qualité _JPEG (0-100)" Target="{Binding ElementName=JpegQualityTextBox}" Margin="0,5,0,0" />
+            <TextBox Grid.Row="1" Grid.Column="1" Name="JpegQualityTextBox" Width="75" Margin="0,5,0,0" VerticalContentAlignment="Center" Style="{StaticResource textBoxStyle}"
+                     Text="{Binding JpegQuality, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" />
+            <Slider Grid.Row="1" Grid.Column="2" Value="{Binding JpegQuality}" Margin="5,5,0,0" VerticalAlignment="Center" Maximum="100" LargeChange="10" AutoToolTipPlacement="TopLeft" TickFrequency="10" TickPlacement="BottomRight" />
+        </Grid>
+
+        <ProgressBar Grid.Row="2" Minimum="0" Maximum="100" Value="{Binding GenerateProgressValue, Mode=OneWay}" Margin="6,5,0,0" />
+        <TextBlock Padding="3" Grid.Row="2" Text="{Binding GenerateProgressText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5,0,0" />
+
+        <ListBox Name="TracesListBox" Grid.Row="3" Margin="6,5,0,0" ItemsSource="{Binding TracesList}" SelectedIndex="{Binding TraceSelectedIndex}" SelectionChanged="ListBox_SelectionChanged" />
+    </Grid>
+</Window>

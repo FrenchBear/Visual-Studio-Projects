@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <OutputType>Library</OutputType>
+        <RootNamespace>DotNetClass1</RootNamespace>
+        <AssemblyName>DotNetClass1</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Copyright>Copyright ©2023-2024 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

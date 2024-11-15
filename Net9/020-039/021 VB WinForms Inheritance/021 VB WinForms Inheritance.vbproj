@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<AssemblyName>VB021</AssemblyName>
+		<RootNamespace>VB021</RootNamespace>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Copyright>Copyright ©2001-2024 Pierre Violent</Copyright>
+		<UseWindowsForms>true</UseWindowsForms>
+		<GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
+	</PropertyGroup>
+	
+</Project>
