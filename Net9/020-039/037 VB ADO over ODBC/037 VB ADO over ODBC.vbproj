@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<AssemblyName>VB037</AssemblyName>
 		<RootNamespace>VB037</RootNamespace>
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
-		<Copyright>Copyright ©2001-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2001-2025 Pierre Violent</Copyright>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="System.Data.Odbc" Version="9.0.0" />

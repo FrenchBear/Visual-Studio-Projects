@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0-windows</TargetFramework>
+        <TargetFramework>net9.0-windows</TargetFramework>
         <OutputType>Exe</OutputType>
         <RootNamespace>VB407</RootNamespace>
         <AssemblyName>VB407</AssemblyName>
@@ -8,6 +8,6 @@
         <Authors>Pierre Violent</Authors>
         <Title>VB407 Covariant Interface</Title>
         <Company>Microsoft</Company>
-        <Copyright>Copyright ©2011-2024 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2011-2025 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

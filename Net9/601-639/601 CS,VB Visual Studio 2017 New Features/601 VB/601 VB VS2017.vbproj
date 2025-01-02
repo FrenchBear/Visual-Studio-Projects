@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<StartupObject>VB601.VB601</StartupObject>
 		<RootNamespace>VB601</RootNamespace>
@@ -9,7 +9,7 @@
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>VB601 Sort On</Title>
-		<Copyright>Copyright ©2016-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2016-2025 Pierre Violent</Copyright>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 

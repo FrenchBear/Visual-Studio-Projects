@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>CS601</RootNamespace>
 		<AssemblyName>CS601</AssemblyName>
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>CS601 Sort On</Title>
-		<Copyright>Copyright ©2016-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2016-2025 Pierre Violent</Copyright>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 

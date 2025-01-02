@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<AssemblyName>CS032</AssemblyName>
 		<RootNamespace>CS032</RootNamespace>
@@ -9,7 +9,7 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>TuneTown</Title>
 		<Description>Essais C#, MSDN Février 2001</Description>
-		<Copyright>Copyright ©2001-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2001-2025 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
 

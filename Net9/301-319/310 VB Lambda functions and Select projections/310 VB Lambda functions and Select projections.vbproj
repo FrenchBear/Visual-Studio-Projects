@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <RootNamespace>VB310</RootNamespace>
         <AssemblyName>VB310</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
         <Title>VB310 Lambda functions and Select projections</Title>
-        <Copyright>Copyright ©2008-2024 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2008-2025 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

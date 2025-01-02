@@ -3,9 +3,9 @@
 	<PropertyGroup>
 		<RootNamespace>CS619UT</RootNamespace>
 		<AssemblyName>CS619UT</AssemblyName>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<Authors>Pierre Violent</Authors>
-		<Copyright>Copyright ©2017-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2017-2025 Pierre Violent</Copyright>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 

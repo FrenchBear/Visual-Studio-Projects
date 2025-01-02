@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0-windows</TargetFramework>
+        <TargetFramework>net9.0-windows</TargetFramework>
         <OutputType>WinExe</OutputType>
         <RootNamespace>Ed850</RootNamespace>
         <AssemblyName>Ed850</AssemblyName>
@@ -8,7 +8,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>ED850</Title>
         <Description>Éditeur de texte simplifié pour les fichiers de commandes de Windows utilisant l'encodage des caractères accentués OEM850</Description>
-        <Copyright>Copyright ©2014-2024 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2014-2025 Pierre Violent</Copyright>
         <ApplicationIcon>Resources\Ed850.ico</ApplicationIcon>
         <UseWPF>true</UseWPF>
         <NeutralLanguage>en</NeutralLanguage>

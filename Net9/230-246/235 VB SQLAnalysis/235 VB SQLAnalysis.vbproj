@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>SQLAnalysis</RootNamespace>
 		<AssemblyName>SQLAnalysis</AssemblyName>
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>SQLAnalysis</Title>
-		<Copyright>Copyright @2006-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright @2006-2025 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
 		<NeutralLanguage>en</NeutralLanguage>

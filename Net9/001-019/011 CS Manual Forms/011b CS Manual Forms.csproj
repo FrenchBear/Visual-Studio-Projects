@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<AssemblyName>CS011b</AssemblyName>
 		<RootNamespace>CS011b</RootNamespace>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>Hello1</RootNamespace>
 		<ApplicationVersion>1.0.0</ApplicationVersion>
-		<Authors>Copyright ©2010-2024 Pierre Violent</Authors>
+		<Authors>Copyright ©2010-2025 Pierre Violent</Authors>
 		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
 

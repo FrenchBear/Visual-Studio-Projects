@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>CS511</RootNamespace>
 		<AssemblyName>CS511</AssemblyName>
@@ -9,7 +9,7 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>RetailleImages</Title>
 		<Description>Retaille batch d'un ensemble d'images</Description>
-		<Copyright>Copyright ©2013-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2013-2025 Pierre Violent</Copyright>
 		<ApplicationIcon>retaille.ico</ApplicationIcon>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>

@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0-windows</TargetFramework>
+        <TargetFramework>net9.0-windows</TargetFramework>
         <OutputType>WinExe</OutputType>
         <RootNamespace>VB066</RootNamespace>
         <AssemblyName>VB066</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
-        <Copyright>Copyright ©2023-2024 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2023-2025 Pierre Violent</Copyright>
         <UseWindowsForms>true</UseWindowsForms>
         <StartupObject>VB066.Form1</StartupObject>
     </PropertyGroup>

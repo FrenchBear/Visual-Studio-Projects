@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>CS609</RootNamespace>
 		<AssemblyName>CS609</AssemblyName>
@@ -9,7 +9,7 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>CS609 Arith2</Title>
 		<Description>Generic arithmetic class doubling the capacity of a base class for Plus and Mult, C# version</Description>
-		<Copyright>Copyright ©2017-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2017-2025 Pierre Violent</Copyright>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 

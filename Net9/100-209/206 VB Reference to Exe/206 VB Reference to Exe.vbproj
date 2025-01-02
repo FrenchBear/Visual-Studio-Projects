@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>VB206</RootNamespace>
 		<AssemblyName>reference_to_Exe</AssemblyName>
@@ -8,7 +8,7 @@
 		<Authors>Pierre Violent</Authors>
 		<Title>VB206</Title>
 		<Company>ES</Company>
-		<Copyright>Copyright @2004-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright @2004-2025 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
 		<NeutralLanguage>en</NeutralLanguage>

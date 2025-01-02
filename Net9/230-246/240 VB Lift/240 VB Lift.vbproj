@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>Lift1</RootNamespace>
 		<AssemblyName>Lift1</AssemblyName>
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>Lift1</Title>
-		<Copyright>Copyright @2006-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright @2006-2025 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
 		<NeutralLanguage>en</NeutralLanguage>

@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>PicResize</RootNamespace>
 		<AssemblyName>PicResize</AssemblyName>
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>Simplified Batch Picture Resize Utility</Title>
-		<Copyright>Copyright ©2003-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2003-2025 Pierre Violent</Copyright>
 		<ApplicationIcon>Resize.ico</ApplicationIcon>
 		<UseWindowsForms>true</UseWindowsForms>
 		<StartupObject>PicResize.frmPicResize</StartupObject>

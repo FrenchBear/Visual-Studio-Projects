@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <RootNamespace>CS203</RootNamespace>
         <AssemblyName>CS203</AssemblyName>
@@ -9,7 +9,7 @@
         <Authors>Pierre Violent</Authors>
         <Title>203 CS Simple Event</Title>
         <Description>Simple example of class providing an event</Description>
-        <Copyright>Copyright ©2013-2024 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2013-2025 Pierre Violent</Copyright>
     </PropertyGroup>
 
 </Project>

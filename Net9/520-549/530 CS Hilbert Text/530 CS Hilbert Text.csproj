@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <RootNamespace>CS530</RootNamespace>
         <AssemblyName>CS530</AssemblyName>
@@ -8,6 +8,6 @@
         <Authors>Pierre Violent</Authors>
         <Title>CS530 Hilbert Text</Title>
         <Description>C# with recursive iterator rendering of a Hilbert curve</Description>
-        <Copyright>Copyright ©2015-2024 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2015-2025 Pierre Violent</Copyright>
     </PropertyGroup>
 </Project>

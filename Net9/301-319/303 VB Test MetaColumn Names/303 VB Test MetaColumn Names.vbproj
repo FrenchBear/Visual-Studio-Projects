@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-        <TargetFramework>net8.0-windows</TargetFramework>
+        <TargetFramework>net9.0-windows</TargetFramework>
         <OutputType>Exe</OutputType>
         <RootNamespace>VB303</RootNamespace>
         <AssemblyName>VB303</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>Pierre Violent</Authors>
         <Title>VB303 Test MetaColumn Names</Title>
-        <Copyright>Copyright ©2007-2024 Pierre Violent</Copyright>
+        <Copyright>Copyright ©2007-2025 Pierre Violent</Copyright>
     </PropertyGroup>
 
 	<ItemGroup>

@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>VB307</RootNamespace>
 		<AssemblyName>VB307</AssemblyName>
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>VB307 ComboDoubleClic</Title>
-		<Copyright>Copyright ©2008-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright ©2008-2025 Pierre Violent</Copyright>
 		<UseWindowsForms>true</UseWindowsForms>
 		<MyType>WindowsForms</MyType>
 		<NeutralLanguage>en</NeutralLanguage>

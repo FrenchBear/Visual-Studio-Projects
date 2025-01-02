@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net8.0-windows</TargetFramework>
+		<TargetFramework>net9.0-windows</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>Fallout_3_Decrypter</RootNamespace>
 		<AssemblyName>325_WPF_Fallout_3_Decrypter</AssemblyName>
 		<Version>1.0.0</Version>
 		<Authors>Pierre Violent</Authors>
 		<Title>Fallout Decrypter</Title>
-		<Copyright>Copyright @2009-2024 Pierre Violent</Copyright>
+		<Copyright>Copyright @2009-2025 Pierre Violent</Copyright>
 		<ApplicationIcon>Fallout.ico</ApplicationIcon>
 		<UseWPF>true</UseWPF>
 		<MyType>Custom</MyType>
