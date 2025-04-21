@@ -4,7 +4,7 @@
 // All you need to do is place the digits from 1 to 9 in the grid.
 //
 // 2015-05-22   PV      C# version
-// 2615-06-27   PV      Added Test and ListOfPermut, slower than the two others...
+// 2015-06-27   PV      Added Test and ListOfPermut, slower than the two others...
 // 2021-09-26   PV      VS2022; Net6
 
 /* Output (on THOR):

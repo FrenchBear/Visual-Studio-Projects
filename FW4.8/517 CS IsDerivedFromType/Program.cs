@@ -1,6 +1,7 @@
 ﻿// 517 CS IsDerivedFromType
 // Implementation of a clean IsDerivedFromType extension method
-// 201-09-05    PV
+//
+// 2017-09-05    PV
 
 using System;
 using System.Reflection;
