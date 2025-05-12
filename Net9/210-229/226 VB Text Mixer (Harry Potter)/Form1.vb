@@ -100,7 +100,7 @@ Public Class Form1
     End Sub
 
     Public Sub Analyze()
-        Const sSourceFilename As String = "Harry Potter and the Prisoner of Azkaban.txt"
+        Const sSourceFilename As String = "C:\Development\TestFiles\Text\Harry Potter and the Prisoner of Azkaban.txt"
         Dim srSource As StreamReader
         srSource = New StreamReader(sSourceFilename)
 

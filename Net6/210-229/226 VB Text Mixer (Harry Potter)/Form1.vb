@@ -13,7 +13,6 @@
 Imports System.IO
 
 #Disable Warning IDE0059 ' Unnecessary assignment of a value
-#Disable Warning IDE0060 ' Remove unused parameter
 
 Public Class Form1
     Friend Declare Sub QueryPerformanceCounter Lib "Kernel32.dll" (ByRef perfcount As Long)
@@ -104,7 +103,7 @@ Public Class Form1
     End Sub
 
     Sub Analyze()
-        Const sSourceFilename As String = "Harry Potter and the Prisoner of Azkaban.txt"
+        Const sSourceFilename As String = "C:\Development\TestFiles\Text\Harry Potter and the Prisoner of Azkaban.txt"
         Dim srSource As StreamReader
         srSource = New StreamReader(sSourceFilename)
 
