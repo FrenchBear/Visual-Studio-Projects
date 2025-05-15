@@ -1,10 +1,10 @@
 // 17 C# delegates
-// Essai pour voir si un delegate sur une mÈthode d'instance virtuelle
+// Essai pour voir si un delegate sur une m√©thode d'instance virtuelle
 // fonctionne correctement.
-// RÈsultat Ok: le programme affiche MaDÈrivÈe.F(2)
+// R√©sultat Ok: le programme affiche MaD√©riv√©e.F(2)
 // 2001-01-15   PV
-// 2001-01-28   PV  Zap() pour voir en MSIL la diffÈrence entre un delegate de mÈthode statique
-//                  et un delegate de mÈthode d'instance
+// 2001-01-28   PV  Zap() pour voir en MSIL la diff√©rence entre un delegate de m√©thode statique
+//                  et un delegate de m√©thode d'instance
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 // 2021-09-17   PV  VS2022/Net6
@@ -16,9 +16,9 @@ internal class MaClasse
     public virtual void F(int i) => WriteLine("MaClasse.F({0})", i);
 }
 
-internal class MaDÈrivÈe : MaClasse
+internal class MaD√©riv√©e : MaClasse
 {
-    public override void F(int i) => WriteLine("MaDÈrivÈe.F({0})", i);
+    public override void F(int i) => WriteLine("MaD√©riv√©e.F({0})", i);
 }
 
 internal delegate void MyDelegate(int x);
@@ -27,7 +27,7 @@ internal class Test
 {
     public static void Main()
     {
-        MaClasse o = new MaDÈrivÈe();
+        MaClasse o = new MaD√©riv√©e();
         MyDelegate f = new(o.F);
 
         MyDelegate g = new(Zap);

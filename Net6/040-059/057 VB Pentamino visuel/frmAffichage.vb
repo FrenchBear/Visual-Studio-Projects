@@ -28,7 +28,7 @@ Public Class frmAffichage
     ReadOnly g As Graphics
     ReadOnly kEch As Integer
 
-    ' Collection des solutions trouvées
+    ' Collection des solutions trouvÃ©es
     ReadOnly alSolutions As New ArrayList()
 
     Friend WithEvents btnPause As Button
@@ -47,7 +47,7 @@ Public Class frmAffichage
 
         'Add any initialization after the InitializeComponent() call
 
-        ' On redimensionne pour un facteur d'échelle de 1
+        ' On redimensionne pour un facteur d'Ã©chelle de 1
         Dim kx, ky As Integer
         kx = pic.Size.Width \ MAXCOL
         ky = pic.Size.Height \ MAXLIG
@@ -185,7 +185,7 @@ Public Class frmAffichage
         Beep()
     End Sub
 
-    Private Sub SolutionTrouvée(iNumSol As Integer, jeu As Jeu, ByRef bStopMoteur As Boolean) Handles app.Solution
+    Private Sub SolutionTrouvÃ©e(iNumSol As Integer, jeu As Jeu, ByRef bStopMoteur As Boolean) Handles app.Solution
         alSolutions.Add(jeu)
         DessineUneSolution(iNumSol, jeu)
         Application.DoEvents()
@@ -246,7 +246,7 @@ Public Class frmAffichage
         MsgBox("Min: " & vsSol.Minimum & vbCrLf & "Max: " & vsSol.Maximum & vbCrLf & "Val: " & vsSol.Value)
     End Sub
 
-    ' Au cas où on ferme la feuille en mode pause
+    ' Au cas oÃ¹ on ferme la feuille en mode pause
     Private Sub OnFormClose(sender As Object, e As CancelEventArgs) Handles MyBase.Closing
         bStop = True
     End Sub

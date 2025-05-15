@@ -1,5 +1,5 @@
-// Construction d'une classe énumérable avec foreach en C#
-// ThreeIntegers3 implémente une interface IDictionary complète: nettement compliqué !!!
+// Construction d'une classe Ã©numÃ©rable avec foreach en C#
+// ThreeIntegers3 implÃ©mente une interface IDictionary complÃ¨te: nettement compliquÃ© !!!
 // 2001-02-21   PV
 // 2001-08-19   PV	Beta2
 // 2006-10-01   PV  VS2005
@@ -19,10 +19,10 @@ internal class ThreeIntegers3 : IDictionary
         this.i3 = i3;
     }
 
-    // Interface IEnumerable (IDictionary implémente cette interface)
+    // Interface IEnumerable (IDictionary implÃ©mente cette interface)
     IEnumerator IEnumerable.GetEnumerator() => (IEnumerator)new MonEnumerateur(this);
 
-    //Interface ICollection (IDictionary implémente cette interface)
+    //Interface ICollection (IDictionary implÃ©mente cette interface)
     int ICollection.Count => 3;
 
     bool ICollection.IsSynchronized => true;
@@ -56,7 +56,7 @@ internal class ThreeIntegers3 : IDictionary
     bool IDictionary.IsFixedSize => true;
     bool IDictionary.IsReadOnly => true;
 
-    // Trucs internes à la classe (énumérateur)
+    // Trucs internes Ã  la classe (Ã©numÃ©rateur)
     private class MonEnumerateur : IDictionaryEnumerator
     {
         private int pos;

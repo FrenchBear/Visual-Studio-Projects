@@ -215,7 +215,7 @@ Class NumTheory
     End Function
 
     ''' <summary>
-    ''' Miller–Rabin probabilistic primality test
+    ''' Millerâ€“Rabin probabilistic primality test
     ''' </summary>
     ''' <returns>false if n is composite, true if n is probably prime</returns>
     ''' <remarks>http://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test</remarks>

@@ -1,6 +1,6 @@
 // 19 C# Forms
-// Création "manuelle" d'une feuille en dérivant MyForm de la classe Form
-// Plus quelques handlers d'événements
+// CrÃ©ation "manuelle" d'une feuille en dÃ©rivant MyForm de la classe Form
+// Plus quelques handlers d'Ã©vÃ©nements
 // 2001-01-27   PV
 // 2001-08-15   PV  Beta2
 // 2006-10-01   PV  VS2005
@@ -18,7 +18,7 @@ public class MyForm : Form
 
     public MyForm()
     {
-        Text = "Titre de la fenêtre";
+        Text = "Titre de la fenÃªtre";
         AutoScaleBaseSize = new Size(5, 13);
         ClientSize = new Size(400, 150);
 
@@ -53,7 +53,7 @@ public class MyForm : Form
         button2.Click += new System.EventHandler(OnClick);
     }
 
-    // Handler commun à button1 et button2
+    // Handler commun Ã  button1 et button2
     private void OnClick(object sender, EventArgs evArgs)
     {
         if (sender == button1)

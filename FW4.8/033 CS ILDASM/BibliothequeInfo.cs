@@ -4,7 +4,7 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("Bibliothèque de classes")]
+[assembly: AssemblyTitle("BibliothÃ¨que de classes")]
 [assembly: AssemblyDescription("Essais de programmation")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SILLIKER")]

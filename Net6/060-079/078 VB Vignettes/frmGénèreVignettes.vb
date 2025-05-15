@@ -1,7 +1,7 @@
 ' 078 VB Vignettes
 ' Retaillage d'image avec GDI+
 ' PV juillet 2003
-' 2003-07-16    PV  Version simplifiée avec le constructeur de la classe Bitmap qui retaille
+' 2003-07-16    PV  Version simplifiÃ©e avec le constructeur de la classe Bitmap qui retaille
 ' 2003-07-30    PV  Choix de la compression JPEG
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -15,7 +15,7 @@ Imports System.Drawing.Imaging
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gÃ©nÃ©rÃ© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -23,11 +23,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprÃ¨s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mÃ©thode substituÃ©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -40,26 +40,26 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents BtnGénère As Button
+    'REMARQUEÂ : la procÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut Ãªtre modifiÃ©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'Ã©diteur de code.
+    Friend WithEvents BtnGÃ©nÃ¨re As Button
 
     Friend WithEvents LstTrace As ListBox
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.BtnGénère = New Button
+        Me.BtnGÃ©nÃ¨re = New Button
         Me.LstTrace = New ListBox
         Me.SuspendLayout()
         '
-        'btnGénère
+        'btnGÃ©nÃ¨re
         '
-        Me.BtnGénère.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
-        Me.BtnGénère.Location = New Point(328, 8)
-        Me.BtnGénère.Name = "btnGénère"
-        Me.BtnGénère.Size = New Size(104, 32)
-        Me.BtnGénère.TabIndex = 0
-        Me.BtnGénère.Text = "Génère"
+        Me.BtnGÃ©nÃ¨re.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        Me.BtnGÃ©nÃ¨re.Location = New Point(328, 8)
+        Me.BtnGÃ©nÃ¨re.Name = "btnGÃ©nÃ¨re"
+        Me.BtnGÃ©nÃ¨re.Size = New Size(104, 32)
+        Me.BtnGÃ©nÃ¨re.TabIndex = 0
+        Me.BtnGÃ©nÃ¨re.Text = "GÃ©nÃ¨re"
         '
         'lstTrace
         '
@@ -76,31 +76,31 @@ Public Class Form1
         Me.AutoScaleBaseSize = New Size(5, 13)
         Me.ClientSize = New Size(440, 414)
         Me.Controls.Add(Me.LstTrace)
-        Me.Controls.Add(Me.BtnGénère)
+        Me.Controls.Add(Me.BtnGÃ©nÃ¨re)
         Me.Name = "Form1"
-        Me.Text = "Générateur de vignettes"
+        Me.Text = "GÃ©nÃ©rateur de vignettes"
         Me.ResumeLayout(False)
 
     End Sub
 
 #End Region
 
-    Private Sub BtnGénère_Click(sender As Object, e As EventArgs) Handles BtnGénère.Click
-        BtnGénère.Enabled = False
-        Trace("Début de la génération")
+    Private Sub BtnGÃ©nÃ¨re_Click(sender As Object, e As EventArgs) Handles BtnGÃ©nÃ¨re.Click
+        BtnGÃ©nÃ¨re.Enabled = False
+        Trace("DÃ©but de la gÃ©nÃ©ration")
 
         Try
             For i As Integer = 31 To 42
-                GénèreVignette(i)
+                GÃ©nÃ¨reVignette(i)
             Next
         Catch ex As Exception
         Finally
-            Trace("Fin de la génération")
-            BtnGénère.Enabled = True
+            Trace("Fin de la gÃ©nÃ©ration")
+            BtnGÃ©nÃ¨re.Enabled = True
         End Try
     End Sub
 
-    Sub GénèreVignette(ByRef i As Integer)
+    Sub GÃ©nÃ¨reVignette(ByRef i As Integer)
         Dim sImg As String
         Dim sPathImg As String
         Dim sPathVignette As String
@@ -127,7 +127,7 @@ Public Class Form1
         img2 = New Bitmap(img, iNewWidth, iNewHeight)
         img2.Save(sPathVignette, ImageFormat.Jpeg)
 
-        ' Version plus complexe où l'image est dessinnée avec DrawImage
+        ' Version plus complexe oÃ¹ l'image est dessinnÃ©e avec DrawImage
         'Dim imgOutput As Bitmap
         'imgOutput = New Bitmap(iNewWidth, iNewHeight, System.Drawing.Imaging.PixelFormat.Format32bppRgb)
         'Dim h As Graphics = Graphics.FromImage(imgOutput)

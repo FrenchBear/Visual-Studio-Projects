@@ -1,4 +1,4 @@
-' Implémentation d'un énumérateur en VB
+' ImplÃ©mentation d'un Ã©numÃ©rateur en VB
 ' 2001-02-18    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -16,10 +16,10 @@ Public Class TroisEntiers
     End Sub
 
     Public Function GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
-        Return New MonEnumérateur(Me)
+        Return New MonEnumÃ©rateur(Me)
     End Function
 
-    Private Class MonEnumérateur
+    Private Class MonEnumÃ©rateur
         Implements IEnumerator
 
         Private ReadOnly t As TroisEntiers

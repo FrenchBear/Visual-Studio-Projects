@@ -1,7 +1,7 @@
 // Essais des collections de System.Collections
 // Je fais pas encore bien la difference entre HashTable et Dictionary...
 // 2001-02-21   PV  (ajout de SortedList)
-// 2001-08-15   PV  Beta2; fin de Dictionnary: règle le problème !!!!!!!
+// 2001-08-15   PV  Beta2; fin de Dictionnary: rÃ¨gle le problÃ¨me !!!!!!!
 // 2006-10-01   PV  VS2005: Found a substitute for Hashtable(hcp, comparer) which is now obsolete...
 // 2012-02-25   PV  VS2010
 // 2021-09-17   PV  VS2022/Net6
@@ -35,13 +35,13 @@ internal class TestCollections
         try
         { h.Add("G", "Grenoble"); }
         catch
-        { WriteLine("Échec à l'ajout d'une clé en double dans une Hashtable"); }
+        { WriteLine("Ã‰chec Ã  l'ajout d'une clÃ© en double dans une Hashtable"); }
         try
         { h.Add("g", "grenoble"); }
         catch
-        { WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une Hashtable"); }
+        { WriteLine("Ã‰chec Ã  l'ajout d'une mÃªme clÃ© MAJ/min dans une Hashtable"); }
 
-        WriteLine("HashTable: {0} élément(s)", h.Count);
+        WriteLine("HashTable: {0} Ã©lÃ©ment(s)", h.Count);
         PrintKeysAndValues(h);
     }
 
@@ -70,17 +70,17 @@ internal class TestCollections
         try
         { h.Add("G", "Grenoble"); }
         catch
-        { WriteLine("Échec à l'ajout d'une clé en double dans une CaseInsensitiveHashtable"); }
+        { WriteLine("Ã‰chec Ã  l'ajout d'une clÃ© en double dans une CaseInsensitiveHashtable"); }
         try
         { h.Add("g", "grenoble"); }
         catch
-        { WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une CaseInsensitiveHashtable"); }
+        { WriteLine("Ã‰chec Ã  l'ajout d'une mÃªme clÃ© MAJ/min dans une CaseInsensitiveHashtable"); }
 
-        WriteLine("CaseInsensitiveHashtable: {0} élément(s)", h.Count);
+        WriteLine("CaseInsensitiveHashtable: {0} Ã©lÃ©ment(s)", h.Count);
         PrintKeysAndValues(h);
     }
 
-    // Une SortedList est triée en permanence
+    // Une SortedList est triÃ©e en permanence
     public static void TestSortedList()
     {
         SortedList s = new()
@@ -93,16 +93,16 @@ internal class TestCollections
         try
         { s.Add("G", "Grenoble"); }
         catch
-        { WriteLine("Échec à l'ajout d'une clé en double dans une SortedList"); }
+        { WriteLine("Ã‰chec Ã  l'ajout d'une clÃ© en double dans une SortedList"); }
         try
         { s.Add("g", "Grenoble"); }
         catch
-        { WriteLine("Échec à l'ajout d'une même clé MAJ/min dans une SortedList"); }
+        { WriteLine("Ã‰chec Ã  l'ajout d'une mÃªme clÃ© MAJ/min dans une SortedList"); }
 
-        WriteLine("SortedList: {0} élément(s)", s.Count);
+        WriteLine("SortedList: {0} Ã©lÃ©ment(s)", s.Count);
         PrintKeysAndValues(s);
 
-        WriteLine("Clés triées par indice:");
+        WriteLine("ClÃ©s triÃ©es par indice:");
         for (var i = 0; i < s.Count; i++)
             WriteLine("{0}: {1} {2}", i, s.GetKey(i), s.GetByIndex(i));
     }

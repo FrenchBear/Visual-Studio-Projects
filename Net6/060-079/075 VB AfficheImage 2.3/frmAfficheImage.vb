@@ -1,11 +1,11 @@
 ' AfficheImage2
 ' Portage de AfficheImage dans Visual Studio .Net 2003
 ' 2003-05-11    PV
-' 2003-07-14    PV  Pb plantage en icÙne rÈglÈ; Commande Copie Chemin
+' 2003-07-14    PV  Pb plantage en ic√¥ne r√©gl√©; Commande Copie Chemin
 ' 2004-11-24    PV  Navigation F5/F6/F7
 ' 2005-11-12    PV  Visual STudio 2005; Efface dans la corbeille; MenuStrips
 ' 2012-02-25	PV  VS2010 (version 2.2, .Net Framework 4)
-' 2012-12-31	PV  2.3: Suivant/PrÈcÈdent navigue iRowSize^2 images
+' 2012-12-31	PV  2.3: Suivant/Pr√©c√©dent navigue iRowSize^2 images
 ' 2021-09-19    PV  VS2022, Net6
 
 Imports System.ComponentModel
@@ -21,7 +21,7 @@ Imports Microsoft.VisualBasic.FileIO
 Public Class frmAfficheImage
     Inherits Form
 
-#Region " Code gÈnÈrÈ par le Concepteur Windows Form "
+#Region " Code g√©n√©r√© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -29,11 +29,11 @@ Public Class frmAfficheImage
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque aprËs l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque apr√®s l'appel InitializeComponent()
 
     End Sub
 
-    'La mÈthode substituÈe Dispose du formulaire pour nettoyer la liste des composants.
+    'La m√©thode substitu√©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -46,9 +46,9 @@ Public Class frmAfficheImage
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE†: la procÈdure suivante est requise par le Concepteur Windows Form
-    'Elle peut Ítre modifiÈe en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'Èditeur de code.
+    'REMARQUE¬†: la proc√©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut √™tre modifi√©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'√©diteur de code.
     Friend WithEvents FolderBrowserDialog1 As FolderBrowserDialog
 
     Friend WithEvents msMain As MenuStrip
@@ -56,12 +56,12 @@ Public Class frmAfficheImage
     Friend WithEvents miOuvrir As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents miPremier As ToolStripMenuItem
-    Friend WithEvents miPrÈcÈdent As ToolStripMenuItem
+    Friend WithEvents miPr√©c√©dent As ToolStripMenuItem
     Friend WithEvents miSuivant As ToolStripMenuItem
     Friend WithEvents miDernier As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents miAuHasard As ToolStripMenuItem
-    Friend WithEvents miRetourArriËre As ToolStripMenuItem
+    Friend WithEvents miRetourArri√®re As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents miQuitter As ToolStripMenuItem
     Friend WithEvents msEdition As ToolStripMenuItem
@@ -71,14 +71,14 @@ Public Class frmAfficheImage
     Friend WithEvents ms4Images As ToolStripMenuItem
     Friend WithEvents ms9Images As ToolStripMenuItem
     Friend WithEvents ms16Images As ToolStripMenuItem
-    Friend WithEvents mi¿ProposDe As ToolStripMenuItem
+    Friend WithEvents mi√ÄProposDe As ToolStripMenuItem
     Friend WithEvents miCopierCheminImage As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents tsMain As ToolStrip
     Friend WithEvents tsbOuvrir As ToolStripButton
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents tsbPremier As ToolStripButton
-    Friend WithEvents tsbPrÈcÈdent As ToolStripButton
+    Friend WithEvents tsbPr√©c√©dent As ToolStripButton
     Friend WithEvents tsbSuivant As ToolStripButton
     Friend WithEvents tsbDernier As ToolStripButton
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
@@ -99,7 +99,7 @@ Public Class frmAfficheImage
     Friend WithEvents Resolution As ToolStripStatusLabel
     Friend WithEvents Taille As ToolStripStatusLabel
     Friend WithEvents Echelle As ToolStripStatusLabel
-    Friend WithEvents miAperÁuWindows As ToolStripMenuItem
+    Friend WithEvents miAper√ßuWindows As ToolStripMenuItem
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources = New ComponentResourceManager(GetType(frmAfficheImage))
@@ -109,19 +109,19 @@ Public Class frmAfficheImage
         Me.miOuvrir = New ToolStripMenuItem()
         Me.ToolStripSeparator1 = New ToolStripSeparator()
         Me.miPremier = New ToolStripMenuItem()
-        Me.miPrÈcÈdent = New ToolStripMenuItem()
+        Me.miPr√©c√©dent = New ToolStripMenuItem()
         Me.miSuivant = New ToolStripMenuItem()
         Me.miDernier = New ToolStripMenuItem()
         Me.ToolStripSeparator2 = New ToolStripSeparator()
         Me.miAuHasard = New ToolStripMenuItem()
-        Me.miRetourArriËre = New ToolStripMenuItem()
+        Me.miRetourArri√®re = New ToolStripMenuItem()
         Me.ToolStripSeparator4 = New ToolStripSeparator()
         Me.miQuitter = New ToolStripMenuItem()
         Me.msEdition = New ToolStripMenuItem()
         Me.miSupprimer = New ToolStripMenuItem()
         Me.ToolStripSeparator5 = New ToolStripSeparator()
         Me.miCopierCheminImage = New ToolStripMenuItem()
-        Me.miAperÁuWindows = New ToolStripMenuItem()
+        Me.miAper√ßuWindows = New ToolStripMenuItem()
         Me.msAffichage = New ToolStripMenuItem()
         Me.ms1Image = New ToolStripMenuItem()
         Me.ms4Images = New ToolStripMenuItem()
@@ -131,12 +131,12 @@ Public Class frmAfficheImage
         Me.miToolbar = New ToolStripMenuItem()
         Me.miStatusbar = New ToolStripMenuItem()
         Me.msHelp = New ToolStripMenuItem()
-        Me.mi¿ProposDe = New ToolStripMenuItem()
+        Me.mi√ÄProposDe = New ToolStripMenuItem()
         Me.tsMain = New ToolStrip()
         Me.tsbOuvrir = New ToolStripButton()
         Me.ToolStripSeparator6 = New ToolStripSeparator()
         Me.tsbPremier = New ToolStripButton()
-        Me.tsbPrÈcÈdent = New ToolStripButton()
+        Me.tsbPr√©c√©dent = New ToolStripButton()
         Me.tsbSuivant = New ToolStripButton()
         Me.tsbDernier = New ToolStripButton()
         Me.ToolStripSeparator7 = New ToolStripSeparator()
@@ -163,7 +163,7 @@ Public Class frmAfficheImage
         '
         'FolderBrowserDialog1
         '
-        Me.FolderBrowserDialog1.Description = "SÈlectionnez le dossier contenant les images ‡ afficher"
+        Me.FolderBrowserDialog1.Description = "S√©lectionnez le dossier contenant les images √† afficher"
         Me.FolderBrowserDialog1.ShowNewFolderButton = False
         '
         'msMain
@@ -179,7 +179,7 @@ Public Class frmAfficheImage
         '
         'msNavigation
         '
-        Me.msNavigation.DropDownItems.AddRange(New ToolStripItem() {Me.miOuvrir, Me.ToolStripSeparator1, Me.miPremier, Me.miPrÈcÈdent, Me.miSuivant, Me.miDernier, Me.ToolStripSeparator2, Me.miAuHasard, Me.miRetourArriËre, Me.ToolStripSeparator4, Me.miQuitter})
+        Me.msNavigation.DropDownItems.AddRange(New ToolStripItem() {Me.miOuvrir, Me.ToolStripSeparator1, Me.miPremier, Me.miPr√©c√©dent, Me.miSuivant, Me.miDernier, Me.ToolStripSeparator2, Me.miAuHasard, Me.miRetourArri√®re, Me.ToolStripSeparator4, Me.miQuitter})
         Me.msNavigation.Name = "msNavigation"
         Me.msNavigation.Size = New Size(114, 29)
         Me.msNavigation.Text = "&Navigation"
@@ -205,13 +205,13 @@ Public Class frmAfficheImage
         Me.miPremier.Size = New Size(330, 42)
         Me.miPremier.Text = "Premier"
         '
-        'miPrÈcÈdent
+        'miPr√©c√©dent
         '
-        Me.miPrÈcÈdent.Image = CType(resources.GetObject("miPrÈcÈdent.Image"), Image)
-        Me.miPrÈcÈdent.Name = "miPrÈcÈdent"
-        Me.miPrÈcÈdent.ShortcutKeyDisplayString = "-"
-        Me.miPrÈcÈdent.Size = New Size(330, 42)
-        Me.miPrÈcÈdent.Text = "PrÈcÈdent"
+        Me.miPr√©c√©dent.Image = CType(resources.GetObject("miPr√©c√©dent.Image"), Image)
+        Me.miPr√©c√©dent.Name = "miPr√©c√©dent"
+        Me.miPr√©c√©dent.ShortcutKeyDisplayString = "-"
+        Me.miPr√©c√©dent.Size = New Size(330, 42)
+        Me.miPr√©c√©dent.Text = "Pr√©c√©dent"
         '
         'miSuivant
         '
@@ -242,13 +242,13 @@ Public Class frmAfficheImage
         Me.miAuHasard.Size = New Size(330, 42)
         Me.miAuHasard.Text = "Au hasard"
         '
-        'miRetourArriËre
+        'miRetourArri√®re
         '
-        Me.miRetourArriËre.Image = CType(resources.GetObject("miRetourArriËre.Image"), Image)
-        Me.miRetourArriËre.Name = "miRetourArriËre"
-        Me.miRetourArriËre.ShortcutKeyDisplayString = "Backaspace"
-        Me.miRetourArriËre.Size = New Size(330, 42)
-        Me.miRetourArriËre.Text = "Retour arriËre"
+        Me.miRetourArri√®re.Image = CType(resources.GetObject("miRetourArri√®re.Image"), Image)
+        Me.miRetourArri√®re.Name = "miRetourArri√®re"
+        Me.miRetourArri√®re.ShortcutKeyDisplayString = "Backaspace"
+        Me.miRetourArri√®re.Size = New Size(330, 42)
+        Me.miRetourArri√®re.Text = "Retour arri√®re"
         '
         'ToolStripSeparator4
         '
@@ -264,7 +264,7 @@ Public Class frmAfficheImage
         '
         'msEdition
         '
-        Me.msEdition.DropDownItems.AddRange(New ToolStripItem() {Me.miSupprimer, Me.ToolStripSeparator5, Me.miCopierCheminImage, Me.miAperÁuWindows})
+        Me.msEdition.DropDownItems.AddRange(New ToolStripItem() {Me.miSupprimer, Me.ToolStripSeparator5, Me.miCopierCheminImage, Me.miAper√ßuWindows})
         Me.msEdition.Name = "msEdition"
         Me.msEdition.Size = New Size(83, 29)
         Me.msEdition.Text = "&Edition"
@@ -288,11 +288,11 @@ Public Class frmAfficheImage
         Me.miCopierCheminImage.Size = New Size(333, 34)
         Me.miCopierCheminImage.Text = "&Copier le chemin de l'image"
         '
-        'miAperÁuWindows
+        'miAper√ßuWindows
         '
-        Me.miAperÁuWindows.Name = "miAperÁuWindows"
-        Me.miAperÁuWindows.Size = New Size(333, 34)
-        Me.miAperÁuWindows.Text = "&AperÁu Windows"
+        Me.miAper√ßuWindows.Name = "miAper√ßuWindows"
+        Me.miAper√ßuWindows.Size = New Size(333, 34)
+        Me.miAper√ßuWindows.Text = "&Aper√ßu Windows"
         '
         'msAffichage
         '
@@ -349,24 +349,24 @@ Public Class frmAfficheImage
         '
         'msHelp
         '
-        Me.msHelp.DropDownItems.AddRange(New ToolStripItem() {Me.mi¿ProposDe})
+        Me.msHelp.DropDownItems.AddRange(New ToolStripItem() {Me.mi√ÄProposDe})
         Me.msHelp.Name = "msHelp"
         Me.msHelp.Size = New Size(36, 29)
         Me.msHelp.Text = "&?"
         '
-        'mi¿ProposDe
+        'mi√ÄProposDe
         '
-        Me.mi¿ProposDe.Image = CType(resources.GetObject("mi¿ProposDe.Image"), Image)
-        Me.mi¿ProposDe.Name = "mi¿ProposDe"
-        Me.mi¿ProposDe.Size = New Size(231, 34)
-        Me.mi¿ProposDe.Text = "&¿ propos de ..."
+        Me.mi√ÄProposDe.Image = CType(resources.GetObject("mi√ÄProposDe.Image"), Image)
+        Me.mi√ÄProposDe.Name = "mi√ÄProposDe"
+        Me.mi√ÄProposDe.Size = New Size(231, 34)
+        Me.mi√ÄProposDe.Text = "&√Ä propos de ..."
         '
         'tsMain
         '
         Me.tsMain.AllowItemReorder = True
         Me.tsMain.Dock = DockStyle.None
         Me.tsMain.ImageScalingSize = New Size(32, 32)
-        Me.tsMain.Items.AddRange(New ToolStripItem() {Me.tsbOuvrir, Me.ToolStripSeparator6, Me.tsbPremier, Me.tsbPrÈcÈdent, Me.tsbSuivant, Me.tsbDernier, Me.ToolStripSeparator7, Me.tsbRetour, Me.tsbAuHasard, Me.ToolStripSeparator8, Me.tsbSupprimer, Me.ToolStripSeparator3, Me.lblPos, Me.cboFichiers})
+        Me.tsMain.Items.AddRange(New ToolStripItem() {Me.tsbOuvrir, Me.ToolStripSeparator6, Me.tsbPremier, Me.tsbPr√©c√©dent, Me.tsbSuivant, Me.tsbDernier, Me.ToolStripSeparator7, Me.tsbRetour, Me.tsbAuHasard, Me.ToolStripSeparator8, Me.tsbSupprimer, Me.ToolStripSeparator3, Me.lblPos, Me.cboFichiers})
         Me.tsMain.Location = New Point(4, 33)
         Me.tsMain.Name = "tsMain"
         Me.tsMain.Size = New Size(652, 41)
@@ -396,14 +396,14 @@ Public Class frmAfficheImage
         Me.tsbPremier.Size = New Size(36, 36)
         Me.tsbPremier.Text = "Premier"
         '
-        'tsbPrÈcÈdent
+        'tsbPr√©c√©dent
         '
-        Me.tsbPrÈcÈdent.DisplayStyle = ToolStripItemDisplayStyle.Image
-        Me.tsbPrÈcÈdent.Image = CType(resources.GetObject("tsbPrÈcÈdent.Image"), Image)
-        Me.tsbPrÈcÈdent.ImageTransparentColor = Color.Magenta
-        Me.tsbPrÈcÈdent.Name = "tsbPrÈcÈdent"
-        Me.tsbPrÈcÈdent.Size = New Size(36, 36)
-        Me.tsbPrÈcÈdent.Text = "PrÈcÈdent"
+        Me.tsbPr√©c√©dent.DisplayStyle = ToolStripItemDisplayStyle.Image
+        Me.tsbPr√©c√©dent.Image = CType(resources.GetObject("tsbPr√©c√©dent.Image"), Image)
+        Me.tsbPr√©c√©dent.ImageTransparentColor = Color.Magenta
+        Me.tsbPr√©c√©dent.Name = "tsbPr√©c√©dent"
+        Me.tsbPr√©c√©dent.Size = New Size(36, 36)
+        Me.tsbPr√©c√©dent.Text = "Pr√©c√©dent"
         '
         'tsbSuivant
         '
@@ -561,7 +561,7 @@ Public Class frmAfficheImage
 
 #End Region
 
-    ' AccËs au FileSystem
+    ' Acc√®s au FileSystem
     Dim sRep As String
 
     ' Navigation
@@ -574,7 +574,7 @@ Public Class frmAfficheImage
     Dim tImage() As PictureBox
 
     Dim tImage2() As Image
-    Dim iRowSize As Integer = 0         ' 0 indique que les tableaux ne sont pas initialisÈs
+    Dim iRowSize As Integer = 0         ' 0 indique que les tableaux ne sont pas initialis√©s
     ReadOnly iMargin As Integer = 8          ' Espace entre images pour l'affichage multiple
 
     ' Historique
@@ -601,7 +601,7 @@ Public Class frmAfficheImage
     Sub UpdateToolbar()
         tsMain.Visible = miToolbar.Checked
         sbStatus.Visible = miStatusbar.Checked
-        DÈfinitModeAffichage(iRowSize)
+        D√©finitModeAffichage(iRowSize)
         DoAffichage()
     End Sub
 
@@ -620,7 +620,7 @@ Public Class frmAfficheImage
         cboFichiers.Items.Clear()
         PileImages = New Stack
         Analyse1Rep("")
-        Fichier.Text = "Chargement terminÈ."
+        Fichier.Text = "Chargement termin√©."
         iPos = 0
         iPosPrev = 0
         AfficheImage()
@@ -629,8 +629,8 @@ Public Class frmAfficheImage
     Private Sub Analyse1Rep(ByRef sRel As String)
         Dim sFic As String
 
-        ' D'abord les fichiers du rÈpertoire
-        ' L'accËs avec l'objet FileSystem est beaucoup trop lent...
+        ' D'abord les fichiers du r√©pertoire
+        ' L'acc√®s avec l'objet FileSystem est beaucoup trop lent...
         sFic = Dir(sRep & sRel & "*", FileAttribute.Normal Or FileAttribute.ReadOnly Or FileAttribute.Archive)
         While sFic <> ""
             sFic = LCase(sFic)
@@ -648,7 +648,7 @@ Public Class frmAfficheImage
             sFic = Dir()
         End While
 
-        ' Puis on analyse les sous-rÈpertoires
+        ' Puis on analyse les sous-r√©pertoires
         Dim sSubDir As String
         Dim MyComputer = New Computer
         For Each sSubDir In MyComputer.FileSystem.GetDirectories(sRep & sRel)
@@ -658,7 +658,7 @@ Public Class frmAfficheImage
     End Sub
 
     Sub AfficheImage()
-        ' Cas o˘ il n'y a rien de chargÈ
+        ' Cas o√π il n'y a rien de charg√©
         If cboFichiers.Items.Count = 0 Then Exit Sub
 
         cboFichiers.SelectedIndex = iPos
@@ -719,10 +719,10 @@ Public Class frmAfficheImage
     End Sub
 
     Private Sub frmAfficheImage_Resize(sender As Object, e As EventArgs) Handles MyBase.Resize
-        ' On Èvite les problËmes en icÙne ou en fenÍtre trËs rÈduite
+        ' On √©vite les probl√®mes en ic√¥ne ou en fen√™tre tr√®s r√©duite
         If tscMain.ContentPanel.Width <= 0 Or tscMain.ContentPanel.Height <= 0 Then Exit Sub
 
-        DÈfinitModeAffichage(iRowSize)
+        D√©finitModeAffichage(iRowSize)
         DoAffichage()
     End Sub
 
@@ -733,7 +733,7 @@ Public Class frmAfficheImage
         Dim c As Char = e.KeyChar
         Dim n As Integer = Asc(e.KeyChar)
         Select Case cPrefix
-            Case Keys.F5    ' MÈmorise une position
+            Case Keys.F5    ' M√©morise une position
                 If n < 0 Or n > 255 Then
                     Beep()
                 Else
@@ -758,7 +758,7 @@ Public Class frmAfficheImage
 
         If c = " "c Then c = chLastKey
         Select Case c
-            Case "-"c : NaviguePrÈcÈdent()
+            Case "-"c : NaviguePr√©c√©dent()
             Case "+"c, Chr(13) : NavigueSuivant()
             Case "*"c : NavigueAuHasard()
             Case "?"c : Ouvrir()
@@ -768,11 +768,11 @@ Public Class frmAfficheImage
     Private Sub frmAfficheImage_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         Select Case e.KeyCode
             Case Keys.Delete : Supprimer()
-            Case Keys.Back : RetourArriËre()
+            Case Keys.Back : RetourArri√®re()
             Case Keys.Home : NaviguePremier()
             Case Keys.End : NavigueDernier()
             Case Keys.F5, Keys.F6 : cPrefix = e.KeyCode
-            Case Keys.F7    ' Echange la position actuelle et prÈcÈdente
+            Case Keys.F7    ' Echange la position actuelle et pr√©c√©dente
                 Dim iPosTemp As Integer
                 iPosTemp = iPos
                 iPos = iPosPrev
@@ -795,7 +795,7 @@ Public Class frmAfficheImage
         AfficheImage()
     End Sub
 
-    Private Sub NaviguePrÈcÈdent()
+    Private Sub NaviguePr√©c√©dent()
         chLastKey = "-"c
         If iPos > iRowSize * iRowSize - 1 Then
             iPosPrev = iPos
@@ -848,7 +848,7 @@ Public Class frmAfficheImage
 
     End Sub
 
-    Sub RetourArriËre()
+    Sub RetourArri√®re()
         If PileImages Is Nothing Then Exit Sub
         If PileImages.Count <= 1 Then Exit Sub
         PileImages.Pop()
@@ -868,8 +868,8 @@ Public Class frmAfficheImage
         NaviguePremier()
     End Sub
 
-    Private Sub miPrÈcÈdent_Click(sender As Object, e As EventArgs) Handles miPrÈcÈdent.Click
-        NaviguePrÈcÈdent()
+    Private Sub miPr√©c√©dent_Click(sender As Object, e As EventArgs) Handles miPr√©c√©dent.Click
+        NaviguePr√©c√©dent()
     End Sub
 
     Private Sub miSuivant_Click(sender As Object, e As EventArgs) Handles miSuivant.Click
@@ -884,8 +884,8 @@ Public Class frmAfficheImage
         NavigueAuHasard()
     End Sub
 
-    Private Sub miRetourArriËre_Click(sender As Object, e As EventArgs) Handles miRetourArriËre.Click
-        RetourArriËre()
+    Private Sub miRetourArri√®re_Click(sender As Object, e As EventArgs) Handles miRetourArri√®re.Click
+        RetourArri√®re()
     End Sub
 
     Private Sub miQuitter_Click(sender As Object, e As EventArgs) Handles miQuitter.Click
@@ -900,27 +900,27 @@ Public Class frmAfficheImage
         DoCopieCheminImage()
     End Sub
 
-    Private Sub miAperÁuWindows_Click(sender As Object, e As EventArgs) Handles miAperÁuWindows.Click
-        DoAperÁuWindows()
+    Private Sub miAper√ßuWindows_Click(sender As Object, e As EventArgs) Handles miAper√ßuWindows.Click
+        DoAper√ßuWindows()
     End Sub
 
     Private Sub ms1Image_Click(sender As Object, e As EventArgs) Handles ms1Image.Click
-        DÈfinitModeAffichage(1)
+        D√©finitModeAffichage(1)
         AfficheImage()
     End Sub
 
     Private Sub ms4Images_Click(sender As Object, e As EventArgs) Handles ms4Images.Click
-        DÈfinitModeAffichage(2)
+        D√©finitModeAffichage(2)
         AfficheImage()
     End Sub
 
     Private Sub ms9Images_Click(sender As Object, e As EventArgs) Handles ms9Images.Click
-        DÈfinitModeAffichage(3)
+        D√©finitModeAffichage(3)
         AfficheImage()
     End Sub
 
     Private Sub ms16Images_Click(sender As Object, e As EventArgs) Handles ms16Images.Click
-        DÈfinitModeAffichage(4)
+        D√©finitModeAffichage(4)
         AfficheImage()
     End Sub
 
@@ -936,7 +936,7 @@ Public Class frmAfficheImage
         UpdateToolbar()
     End Sub
 
-    Private Sub mi¿ProposDe_Click(sender As Object, e As EventArgs) Handles mi¿ProposDe.Click
+    Private Sub mi√ÄProposDe_Click(sender As Object, e As EventArgs) Handles mi√ÄProposDe.Click
         FrmAPropos.DefInstance.ShowDialog()
     End Sub
 
@@ -951,8 +951,8 @@ Public Class frmAfficheImage
         NaviguePremier()
     End Sub
 
-    Private Sub PrÈcÈdent_Click(sender As Object, e As EventArgs) Handles tsbPrÈcÈdent.Click
-        NaviguePrÈcÈdent()
+    Private Sub Pr√©c√©dent_Click(sender As Object, e As EventArgs) Handles tsbPr√©c√©dent.Click
+        NaviguePr√©c√©dent()
     End Sub
 
     Private Sub tsbSuivant_Click(sender As Object, e As EventArgs) Handles tsbSuivant.Click
@@ -964,7 +964,7 @@ Public Class frmAfficheImage
     End Sub
 
     Private Sub tsbRetour_Click(sender As Object, e As EventArgs) Handles tsbRetour.Click
-        RetourArriËre()
+        RetourArri√®re()
     End Sub
 
     Private Sub tsbAuHasard_Click(sender As Object, e As EventArgs) Handles tsbAuHasard.Click
@@ -977,7 +977,7 @@ Public Class frmAfficheImage
 
     '=============================================================================
 
-    Sub DÈfinitModeAffichage(iNewRowSize As Integer)
+    Sub D√©finitModeAffichage(iNewRowSize As Integer)
         Dim i As Integer
 
         If iNewRowSize = 0 Then iNewRowSize = 1
@@ -1036,7 +1036,7 @@ Public Class frmAfficheImage
         Clipboard.SetDataObject(sRep & cboFichiers.Items(iPos))
     End Sub
 
-    Sub DoAperÁuWindows()
+    Sub DoAper√ßuWindows()
         If cboFichiers.Items.Count = 0 Then Exit Sub
 
         Dim sFile As String
@@ -1052,7 +1052,7 @@ Public Class frmAfficheImage
     End Sub
 
     Private Sub tscMain_Paint(sender As Object, e As PaintEventArgs) Handles tscMain.Paint
-        DÈfinitModeAffichage(iRowSize)
+        D√©finitModeAffichage(iRowSize)
         DoAffichage()
 
         'If tscMain.BottomToolStripPanel.Contains(tsMain) Then

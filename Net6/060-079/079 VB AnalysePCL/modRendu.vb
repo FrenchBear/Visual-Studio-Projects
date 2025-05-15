@@ -20,7 +20,7 @@ Module modRenduGraphique
     Private graCurrentPage As Graphics                ' Page courante, System.Drawing.Graphics
     Private ReadOnly colPages As New Queue  ' Collection des pages sous forme System.Drawing.Bitmap
 
-    Private Const iDPI As Integer = 200                                           ' Résolution X et Y du rendu
+    Private Const iDPI As Integer = 200                                           ' RÃ©solution X et Y du rendu
 
     '  Private Const iOutWidth As Integer = 1554, iOutHeight As Integer = 2386    ' A4 exact
     '  Private Const iOutWidth As Integer = 1550, iOutHeight As Integer = 2150    ' Image originale
@@ -58,7 +58,7 @@ Module modRenduGraphique
         imgCurrentPage = Nothing
     End Sub
 
-    ' Génère le fichier tiff
+    ' GÃ©nÃ¨re le fichier tiff
     Sub RGOutput()
         If colPages.Count = 0 Then
             Try
@@ -246,7 +246,7 @@ Module modRenduGraphique
         'graCurrentPage.DrawRectangle(New Pen(Color.Red, 1), Rectangle.Round(measureRect1))
         l = Int(measureRect1.Width / iDPI * 720 + 0.5)
 
-        ' Ancien calcul de la taille, mais MeasureString déborde...
+        ' Ancien calcul de la taille, mais MeasureString dÃ©borde...
         'Dim s As SizeF = graCurrentPage.MeasureString(sText, f)
         'l = Int(s.Width / iDPI * 720 + 0.5)
 
@@ -321,7 +321,7 @@ Module modRenduGraphique
         Try
             bmpImage2 = Image.FromFile(sNomfic)
         Catch ex As Exception
-            WriteLine("Échec à la lecture de {0}: {1}", sNomfic, ex.ToString)
+            WriteLine("Ã‰chec Ã  la lecture de {0}: {1}", sNomfic, ex.ToString)
             Exit Sub
         End Try
         Dim k As Single = 850 / bmpImage2.Height
@@ -335,10 +335,10 @@ Module modRenduPCL
     Private sPCLText As New StringBuilder
 
     Class PCLState
-        Public posX, posY As Integer              ' Coordonnées en decipoints
+        Public posX, posY As Integer              ' CoordonnÃ©es en decipoints
         Public VMI As Integer                     ' Hauteur d'une ligne en decipoints
-        Public HMI As Integer                     ' Largeur d'un caractère en décipoints
-        Public iLeftOffset, iTopOffset As Integer ' Décalage de l'origine en décipoints
+        Public HMI As Integer                     ' Largeur d'un caractÃ¨re en dÃ©cipoints
+        Public iLeftOffset, iTopOffset As Integer ' DÃ©calage de l'origine en dÃ©cipoints
         Public sFont As String
         Public fFontSize As Single                ' Taille de la police en points
         Public bFontBold As Boolean
@@ -362,8 +362,8 @@ Module modRenduPCL
             .posX = .iLeftMargin
             .posY = .iTopMargin
             .iLeftOffset = .iTopOffset = 0
-            .VMI = 720 / 6  ' 6LPI par défaut
-            .HMI = 720 / 10 ' 10 CPI par défaut
+            .VMI = 720 / 6  ' 6LPI par dÃ©faut
+            .HMI = 720 / 10 ' 10 CPI par dÃ©faut
             .sFont = "Courier New"
             .fFontSize = 10
             .bFontBold = False
@@ -380,8 +380,8 @@ Module modRenduPCL
 
     ReadOnly d850 As Decoder = Encoding.GetEncoding(850).GetDecoder
 
-    ' Imprime un caractère imprimable
-    ' En pratique, bufférise le caractère
+    ' Imprime un caractÃ¨re imprimable
+    ' En pratique, buffÃ©rise le caractÃ¨re
     Sub PCLPrint(b As Byte)
         Select Case b
             Case 12
@@ -390,14 +390,14 @@ Module modRenduPCL
                 PCLFlushPage()
 
             Case 9
-                ' Tabs à étendre - pour l'instant, on simplifie
+                ' Tabs Ã  Ã©tendre - pour l'instant, on simplifie
                 PCLFlushText()
                 staState.posX = RGNextTab(staState.posX)
 
             Case 13
                 ' CR
                 PCLFlushText()
-                ' Retour du curseur à la marge texte de gauche
+                ' Retour du curseur Ã  la marge texte de gauche
                 staState.posX = staState.iLeftMargin
 
             Case 10
@@ -420,7 +420,7 @@ Module modRenduPCL
 
     End Sub
 
-    ' "Imprime" le texte bufférisé par PCLPrint
+    ' "Imprime" le texte buffÃ©risÃ© par PCLPrint
     Sub PCLFlushText()
         If sPCLText.Length = 0 Then Exit Sub
 
@@ -433,7 +433,7 @@ Module modRenduPCL
         sPCLText = New StringBuilder
     End Sub
 
-    ' "Ejecte" la page PCL = ferme la page du rendu graphique, et met à jour l'état PCL
+    ' "Ejecte" la page PCL = ferme la page du rendu graphique, et met Ã  jour l'Ã©tat PCL
     Sub PCLFlushPage()
         TraceWriteLine("==Saut de page=============================================")
         RGFlushPage()
@@ -464,7 +464,7 @@ Module modRenduPCL
     End Sub
 
     Sub PCL38aL(iMarge As Integer)
-        TraceWrite("[Marge gauche texte = {0} caractères]", iMarge)
+        TraceWrite("[Marge gauche texte = {0} caractÃ¨res]", iMarge)
     End Sub
 
     ' <Esc>&l
@@ -523,7 +523,7 @@ Module modRenduPCL
                 staState.bFontUnderline = True
 
             Case Else
-                PCLError("Séquence <Esc>&d" & iTypeSoul & "D inconnue")
+                PCLError("SÃ©quence <Esc>&d" & iTypeSoul & "D inconnue")
         End Select
     End Sub
 
@@ -534,12 +534,12 @@ Module modRenduPCL
 
     ' <Esc>(#U
     Sub PCL40U(iJeuCar As Integer)
-        TraceWrite("[Jeu de caractères {0}]", iJeuCar)
+        TraceWrite("[Jeu de caractÃ¨res {0}]", iJeuCar)
         Select Case iJeuCar
             Case 10
                 ' PC-8
             Case Else
-                PCLError("Jeu de caractères <Esc>(" & iJeuCar & "U non pris en charge")
+                PCLError("Jeu de caractÃ¨res <Esc>(" & iJeuCar & "U non pris en charge")
         End Select
     End Sub
 
@@ -552,25 +552,25 @@ Module modRenduPCL
     Sub PCL40sP(iType As Integer)
         Select Case iType
             Case 0
-                TraceWrite("[Sélection police fixe]")
+                TraceWrite("[SÃ©lection police fixe]")
                 staState.sFont = "Courier New"
             Case 1
-                TraceWrite("[Sélection police proportionnelle]")
+                TraceWrite("[SÃ©lection police proportionnelle]")
                 staState.sFont = "Arial"
             Case Else
-                PCLError("Séquence <Esc>(s" & iType & "P inconnue")
+                PCLError("SÃ©quence <Esc>(s" & iType & "P inconnue")
         End Select
     End Sub
 
     ' <Esc>(s#H
     Sub PCL40sH(fPitch As Single)
-        TraceWrite("[Sélection pas horizontal police {0} points/pouce]", fPitch)
+        TraceWrite("[SÃ©lection pas horizontal police {0} points/pouce]", fPitch)
         staState.fFontSize = 120 / fPitch
     End Sub
 
     ' <Esc>(s#V
     Sub PCL40sV(fHauteur As Single)
-        TraceWrite("[Sélection hauteur police {0} points]", fHauteur)
+        TraceWrite("[SÃ©lection hauteur police {0} points]", fHauteur)
         staState.fFontSize = fHauteur
     End Sub
 
@@ -578,17 +578,17 @@ Module modRenduPCL
     Sub PCL40sS(iItalique As Single)
         Select Case iItalique
             Case 0
-                TraceWrite("[Sélection police normale (pas italique)]")
+                TraceWrite("[SÃ©lection police normale (pas italique)]")
                 staState.bFontItalic = False
                 staState.bFontNarrow = False
             Case 1
-                TraceWrite("[Sélection police italique]")
+                TraceWrite("[SÃ©lection police italique]")
                 staState.bFontItalic = True
             Case 4
-                TraceWrite("[Sélection police narrow]")
+                TraceWrite("[SÃ©lection police narrow]")
                 staState.bFontNarrow = True
             Case Else
-                PCLError("Séquence <Esc>(s" & iItalique & "S inconnue")
+                PCLError("SÃ©quence <Esc>(s" & iItalique & "S inconnue")
         End Select
     End Sub
 
@@ -596,22 +596,22 @@ Module modRenduPCL
     Sub PCL40sB(iGraise As Integer)
         Select Case iGraise
             Case 0
-                TraceWrite("[Sélection police normale (non grasse)]")
+                TraceWrite("[SÃ©lection police normale (non grasse)]")
                 staState.bFontBold = False
 
             Case 3
-                TraceWrite("[Sélection police grasse")
+                TraceWrite("[SÃ©lection police grasse")
                 staState.bFontBold = True
 
             Case Else
                 TraceWrite("[Selection police graisse {0}]", iGraise)
-                PCLError("Séquence <Esc>(s" & iGraise & "B non prise en charge")
+                PCLError("SÃ©quence <Esc>(s" & iGraise & "B non prise en charge")
         End Select
     End Sub
 
     ' <Esc>(s#T
     Sub PCL40sT(iFont As Integer)
-        TraceWrite("[Sélection police n° {0}]", iFont)
+        TraceWrite("[SÃ©lection police nÂ° {0}]", iFont)
         ' On ignore pour l'instant
         ' Police fixe: courier new, Police proportionnelle: arial
     End Sub
@@ -675,7 +675,7 @@ Module modRenduPCL
         TraceWrite("[Info: <Esc>*t]")
     End Sub
 
-    ' dot = 1/300è de pouce
+    ' dot = 1/300Ã¨ de pouce
     Sub PCL42pX(sPosition As String)
         TraceWrite("[Cursor Horizontal Position {0} dots]", sPosition)
         If Left(sPosition, 1) = "+" Or Left(sPosition, 1) = "-" Then
@@ -704,7 +704,7 @@ Module modRenduPCL
             Case 0 : TraceWrite("[Start Raster Graphics: Left Raster Graphics Margin]")
             Case 1 : TraceWrite("[Start Raster Graphics: Current Cursor]")
             Case Else
-                PCLError("Séquence <Esc>*r" & iLeftPos & "A inconnue")
+                PCLError("SÃ©quence <Esc>*r" & iLeftPos & "A inconnue")
                 Exit Sub
         End Select
 
@@ -757,7 +757,7 @@ Module modRenduPCL
     End Sub
 
     Sub PCL42bW(iBytes As Integer)
-        TraceWrite("[Séquence graphique {0} octets]", iBytes)
+        TraceWrite("[SÃ©quence graphique {0} octets]", iBytes)
     End Sub
 
     Sub PCL42bWData(ByRef tbData() As Byte)
@@ -770,14 +770,14 @@ Module modRenduPCL
         rasRaster.tabLignes.Add(tbData)
     End Sub
 
-    Sub PCLTildaInsèrePhoto(sNomfic As String)
+    Sub PCLTildaInsÃ¨rePhoto(sNomfic As String)
         RGPaintBitmap(staState.posX, staState.posY, sNomfic)
     End Sub
 
 End Module
 
 ' Conversion 'bestiale' d'image 24 bits en 1 bit
-' On travaille sur les séquences d'octets, c'est ce qu'il y a de plus rapide
+' On travaille sur les sÃ©quences d'octets, c'est ce qu'il y a de plus rapide
 ' la fonction bmp.GetPixel(x,y) est d'une lenteur effroyable...
 
 Module modConversionImage1Bit
@@ -808,7 +808,7 @@ Module modConversionImage1Bit
                 tbRow1(i) = 255
             Next
 
-            ' On récupère une ligne de l'image couleur
+            ' On rÃ©cupÃ¨re une ligne de l'image couleur
             Marshal.Copy(pData24, tbRow24, 0, b24d.Stride)
 
             For x As Integer = 0 To b1.Width - 1

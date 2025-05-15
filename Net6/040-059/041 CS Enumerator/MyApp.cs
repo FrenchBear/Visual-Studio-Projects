@@ -1,5 +1,5 @@
 // 041 CS Enumerator
-// Construction de classes énumérables avec foreach en C#
+// Construction de classes Ã©numÃ©rables avec foreach en C#
 // 2001-02-18   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010  Version 4 avec yield return
@@ -14,7 +14,7 @@ internal static class MyApp
     {
         ThreeIntegers1 t1 = new(11, 12, 13);
 
-        // Accès simple via foreach
+        // AccÃ¨s simple via foreach
         foreach (int i in t1)
             WriteLine(i);
         WriteLine();
@@ -26,7 +26,7 @@ internal static class MyApp
 
         ThreeIntegers2 t2 = new(21, 22, 23);
 
-        // Accès simple via foreach
+        // AccÃ¨s simple via foreach
         foreach (int i in t2)
             WriteLine(i);
         WriteLine();
@@ -38,14 +38,14 @@ internal static class MyApp
 
         ThreeIntegers3 t3 = new(31, 32, 33);
 
-        // Accès simple via foreach
+        // AccÃ¨s simple via foreach
         foreach (int i in t3)
             WriteLine(i);
         WriteLine();
 
         ThreeIntegers4 t4 = new(41, 42, 43);
 
-        // Accès simple via foreach
+        // AccÃ¨s simple via foreach
         foreach (int i in t4)
             WriteLine(i);
         WriteLine();

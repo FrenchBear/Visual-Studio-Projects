@@ -32,7 +32,7 @@ Public Class Form1
     'Required by the Windows Form Designer
     Private ReadOnly components As System.ComponentModel.Container
 
-    Private WithEvents btnAperçu As Windows.Forms.Button
+    Private WithEvents btnAperÃ§u As Windows.Forms.Button
 
     Private WithEvents PrintPreviewDialog1 As Windows.Forms.PrintPreviewDialog
 
@@ -46,7 +46,7 @@ Public Class Form1
     Private Sub InitializeComponent()
         Dim resources As New Resources.ResourceManager(GetType(Form1))
         Me.NumericUpDown1 = New Windows.Forms.NumericUpDown()
-        Me.btnAperçu = New Windows.Forms.Button()
+        Me.btnAperÃ§u = New Windows.Forms.Button()
         Me.PrintPreviewDialog1 = New Windows.Forms.PrintPreviewDialog()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -57,12 +57,12 @@ Public Class Form1
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.TabIndex = 0
         '
-        'btnAperçu
+        'btnAperÃ§u
         '
-        Me.btnAperçu.Location = New Drawing.Point(36, 52)
-        Me.btnAperçu.Name = "btnAperçu"
-        Me.btnAperçu.TabIndex = 2
-        Me.btnAperçu.Text = "Aperçu"
+        Me.btnAperÃ§u.Location = New Drawing.Point(36, 52)
+        Me.btnAperÃ§u.Name = "btnAperÃ§u"
+        Me.btnAperÃ§u.TabIndex = 2
+        Me.btnAperÃ§u.Text = "AperÃ§u"
         '
         'PrintPreviewDialog1
         '
@@ -83,7 +83,7 @@ Public Class Form1
         '
         Me.AutoScaleBaseSize = New Drawing.Size(5, 13)
         Me.ClientSize = New Drawing.Size(292, 273)
-        Me.Controls.AddRange(New Windows.Forms.Control() {Me.btnAperçu, Me.NumericUpDown1})
+        Me.Controls.AddRange(New Windows.Forms.Control() {Me.btnAperÃ§u, Me.NumericUpDown1})
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -93,7 +93,7 @@ Public Class Form1
 
 #End Region
 
-    Private Sub btnAperçu_Click(sender As Object, e As EventArgs) Handles btnAperçu.Click
+    Private Sub btnAperÃ§u_Click(sender As Object, e As EventArgs) Handles btnAperÃ§u.Click
         PrintPreviewDialog1.ShowDialog()
     End Sub
 

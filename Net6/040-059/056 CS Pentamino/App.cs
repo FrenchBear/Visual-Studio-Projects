@@ -1,8 +1,8 @@
 // pentamino.cpp
-// Résolution de problèmes de pentaminos (pavage)
+// RÃ©solution de problÃ¨mes de pentaminos (pavage)
 //
 // 1998-12-26   PV  Version originale en C++
-// 2001-08-11   PV  Réécriture en C#
+// 2001-08-11   PV  RÃ©Ã©criture en C#
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 // 2021-09-18   PV  VS2022, Net6
@@ -37,12 +37,12 @@ internal class Pentamino
         }
     }
 
-    // Tableau des pentaminos à utiliser pour le problème
+    // Tableau des pentaminos Ã  utiliser pour le problÃ¨me
     private static Piece[] tP;
 
     private static void Main(string[] args)
     {
-        // Préparation des pièces
+        // PrÃ©paration des piÃ¨ces
         Piece P1 = new(1, 'I', 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Piece P2 = new(2, 'L', 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0);
         Piece P3 = new(3, 'Y', 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0);
@@ -75,7 +75,7 @@ internal class Pentamino
         /*
             if (MAXLIG*MAXCOL!=5*MAXPIECE)
             {
-              WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !");
+              WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohÃ©rentes !");
               return;
             }
         */
@@ -96,7 +96,7 @@ internal class Pentamino
         tP[10] = P7;
         tP[11] = P12;
 
-        // Plan à paver
+        // Plan Ã  paver
         Jeu j = new();
 
         // Pavage
@@ -106,7 +106,7 @@ internal class Pentamino
         var t = t1.Subtract(t0);
 
         WriteLine("{0} pour {1} solutions\n", t, iNbSol);
-        WriteLine("{0} appels à Pavage\n", iNbAppelPavage);
+        WriteLine("{0} appels Ã  Pavage\n", iNbAppelPavage);
 
         //Console.ReadLine();
     }
@@ -114,18 +114,18 @@ internal class Pentamino
     private static void Pavage(int lstart, int cstart, Jeu jeu, int iMasquePieces)
     {
         int l, c = 0;
-        var bTrouvé = false;
+        var bTrouvÃ© = false;
 
         if (iNbSol > MAXSOLUTION) return;
 
         iNbAppelPavage++;
 
-        // On cherche une case vide à couvrir, de gauche à droite, de haut en bas
+        // On cherche une case vide Ã  couvrir, de gauche Ã  droite, de haut en bas
         for (l = 0; l < MAXLIG; l++)
         {
             for (c = 0; c < MAXCOL; c++)
             {
-                if (l == 0 && c == 0)	  // Accélération, on part de la dernière case vide trouvée
+                if (l == 0 && c == 0)	  // AccÃ©lÃ©ration, on part de la derniÃ¨re case vide trouvÃ©e
                 {
                     l = lstart;
                     c = cstart;
@@ -133,21 +133,21 @@ internal class Pentamino
 
                 if (jeu[l, c] == 0)
                 {
-                    bTrouvé = true;
+                    bTrouvÃ© = true;
                     break;
                 }
             }
-            if (bTrouvé)
+            if (bTrouvÃ©)
                 break;
         }
 
-        // Si on n'en a pas trouvé, c'est que le pavage est terminé !
+        // Si on n'en a pas trouvÃ©, c'est que le pavage est terminÃ© !
         if (l == MAXLIG && c == MAXCOL)
         {
             iNbSol++;
 
             /*
-            WriteLine("Solution {0} trouvée", iNbSol);
+            WriteLine("Solution {0} trouvÃ©e", iNbSol);
             for (l=0 ; l<MAXLIG; l++)
             {
               for (c=0 ; c<MAXCOL ; c++)
@@ -161,7 +161,7 @@ internal class Pentamino
             return;
         }
 
-        // On cherche parmi toutes les pieces qui restent une pièce pour couvrir la case vide
+        // On cherche parmi toutes les pieces qui restent une piÃ¨ce pour couvrir la case vide
         int i, j;
         for (i = 0; i < MAXPIECE; i++)
             if ((iMasquePieces & (1 << i)) != 0)
@@ -173,13 +173,13 @@ internal class Pentamino
 
                     if (c + ca.cmax - ca.iOffsetCol > MAXCOL ||	  // Trop large
                         l + ca.lmax > MAXLIG ||				  // Trop haut
-                        c < ca.iOffsetCol)					  // Doit être décalée trop à gauche
+                        c < ca.iOffsetCol)					  // Doit Ãªtre dÃ©calÃ©e trop Ã  gauche
                         continue;
 
                     for (l2 = 0; l2 < ca.lmax; l2++)
                     {
                         for (c2 = 0; c2 < ca.cmax; c2++)
-                            if (ca.tMotif[l2, c2] && jeu[l + l2, c + c2 - ca.iOffsetCol] != 0)  // Case déjà occupée
+                            if (ca.tMotif[l2, c2] && jeu[l + l2, c + c2 - ca.iOffsetCol] != 0)  // Case dÃ©jÃ  occupÃ©e
                             {
                                 bCollision = true;
                                 break;
@@ -190,14 +190,14 @@ internal class Pentamino
 
                     if (!bCollision)
                     {
-                        // Pièce valable! On la place
+                        // PiÃ¨ce valable! On la place
                         Jeu jeu2 = new(jeu);
 
                         for (l2 = 0; l2 < ca.lmax; l2++)
                             for (c2 = 0; c2 < ca.cmax; c2++)
                                 if (ca.tMotif[l2, c2]) jeu2[l + l2, c + c2 - ca.iOffsetCol] = (byte)(i + 1);
 
-                        // On continue avec les pièces qui restent
+                        // On continue avec les piÃ¨ces qui restent
                         Pavage(l, c, jeu2, iMasquePieces & ~(1 << i));
                     }
                 }

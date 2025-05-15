@@ -1,8 +1,8 @@
 ' 19 VB Forms
-' Essai de création manuel d'une feuille par création de MyForm qui hérite de Form
+' Essai de crÃ©ation manuel d'une feuille par crÃ©ation de MyForm qui hÃ©rite de Form
 ' 2001-01-18    PV
-' 2001-01-27    PV  Evénements, trois manières d'enregistrer
-' 2001-08-15    PV  Beta2, fin de la prise en charge d'élénements automatique sur le nom (ex: button1_click)
+' 2001-01-27    PV  EvÃ©nements, trois maniÃ¨res d'enregistrer
+' 2001-08-15    PV  Beta2, fin de la prise en charge d'Ã©lÃ©nements automatique sur le nom (ex: button1_click)
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 
@@ -21,7 +21,7 @@ Public Class MyForm
     Public Sub New()
         MyBase.New()
 
-        Me.Text = "Titre de la fenêtre"
+        Me.Text = "Titre de la fenÃªtre"
         Me.AutoScaleBaseSize = New Size(5, 13)
         Me.ClientSize = New Size(400, 150)
 
@@ -69,7 +69,7 @@ Public Class MyForm
         MessageBox.Show("Hello de Bouton 3")
     End Sub
 
-    ' Point d'entrée de l'appli
+    ' Point d'entrÃ©e de l'appli
     Shared Sub Main()
         Windows.Forms.Application.Run(New MyForm())
     End Sub

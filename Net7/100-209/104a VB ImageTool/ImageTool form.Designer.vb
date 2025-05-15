@@ -171,7 +171,7 @@ Partial Class frmImageTool
         Me.tsbRotate90Left.Name = "tsbRotate90Left"
         Me.tsbRotate90Left.Size = New Size(46, 44)
         Me.tsbRotate90Left.Text = "ToolStripButton1"
-        Me.tsbRotate90Left.ToolTipText = "Rotate image 90° Left (counterclockwise)"
+        Me.tsbRotate90Left.ToolTipText = "Rotate image 90Â° Left (counterclockwise)"
         '
         'tsbRotate90Right
         '
@@ -181,7 +181,7 @@ Partial Class frmImageTool
         Me.tsbRotate90Right.Name = "tsbRotate90Right"
         Me.tsbRotate90Right.Size = New Size(46, 44)
         Me.tsbRotate90Right.Text = "ToolStripButton1"
-        Me.tsbRotate90Right.ToolTipText = "Rotate image 90° Right (clockwise)"
+        Me.tsbRotate90Right.ToolTipText = "Rotate image 90Â° Right (clockwise)"
         '
         'paPicPanel
         '

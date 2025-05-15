@@ -61,7 +61,7 @@ public class MyLib
             WriteLine("  " + an.FullName);
         WriteLine();
 
-        // Accès direct
+        // AccÃ¨s direct
         var z1 = (AssemblyCompanyAttribute)a.GetCustomAttributes(typeof(AssemblyCompanyAttribute), true)[0];
         WriteLine(z1.Company);
         var z2 = (AssemblyCopyrightAttribute)a.GetCustomAttributes(typeof(AssemblyCopyrightAttribute), true)[0];

@@ -1,5 +1,5 @@
 ' Classe MyMsgBox3
-' Dérive de MsgBox2
+' DÃ©rive de MsgBox2
 ' 2001-01-27    PV
 
 Imports System.Windows.Forms

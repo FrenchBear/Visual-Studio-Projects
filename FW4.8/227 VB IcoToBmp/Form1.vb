@@ -3,8 +3,8 @@
 
 Public Class Form1
 
-    'Const sSource As String = "D:\Développement\Visual Studio Projects\075 VB AfficheImage2\Icônes 2.1"
-    'Const sDest As String = "D:\Développement\Visual Studio Projects\075 VB AfficheImage2\Icônes 2.1\bmp"
+    'Const sSource As String = "D:\DÃ©veloppement\Visual Studio Projects\075 VB AfficheImage2\IcÃ´nes 2.1"
+    'Const sDest As String = "D:\DÃ©veloppement\Visual Studio Projects\075 VB AfficheImage2\IcÃ´nes 2.1\bmp"
     Const sSource As String = "ZZC:\Development\Icons\Office 2003 Icons\Office 2003 Alpha Icons (ico 8bit)"
 
     Const sDest As String = "ZZC:\C:\Development\Icons\Office 2003 Icons\Office 2003 Alpha Icons (png 8bit)"

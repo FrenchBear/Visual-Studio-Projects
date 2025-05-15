@@ -11,7 +11,7 @@
 ' 2013-02-28    FPVI    3.8.0: /xf to ignore a file (can be repeated)
 ' 2013-03-20    FPVI    3.9.0: /i to ignore datetime differences in comparisons
 ' 2013-12-30    FPVI    3.9.1: Bug option /x fixed
-' 2014-05-02    FPVI    3.10.0: Bug grosse=groﬂe for VB Collection but not for filesystem.  Use class Kollection instead
+' 2014-05-02    FPVI    3.10.0: Bug grosse=gro√üe for VB Collection but not for filesystem.  Use class Kollection instead
 ' 2014-05-05    FPVI    3.11.0: Align filename case
 
 

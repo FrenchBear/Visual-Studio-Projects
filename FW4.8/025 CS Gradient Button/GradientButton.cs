@@ -1,5 +1,5 @@
 // Classe GradientButton
-// Essais de dérivation d'un contrôle système
+// Essais de dÃ©rivation d'un contrÃ´le systÃ¨me
 // 2001-01-29   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
@@ -59,7 +59,7 @@ public class GradientButton : Button
         Graphics g = pe.Graphics;
         Rectangle clientRect = ClientRectangle;
 
-        // On n'écrase pas les bords
+        // On n'Ã©crase pas les bords
         clientRect.Inflate(-1, -1);
 
         Brush backgroundBrush = new LinearGradientBrush(

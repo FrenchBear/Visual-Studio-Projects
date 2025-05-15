@@ -30,17 +30,17 @@ internal class MyApp
         try
         { MaClasseDerivee.TrucDangereux(0); }
         catch (Exception e)
-        { WriteLine("Échec à l'appel de d.TrucDangereux(0): {0}", e.Message); }
+        { WriteLine("Ã‰chec Ã  l'appel de d.TrucDangereux(0): {0}", e.Message); }
         WriteLine();
 
-        // Appel de méthodes virtuelles
+        // Appel de mÃ©thodes virtuelles
         ActionBase(d, 2);
         d.MyBaseAction();
         MaClasseDeBase b = new(d);
         b.Action();
         WriteLine();
 
-        // Evénements
+        // EvÃ©nements
         d.MaMethodeBruyante1(3);
         ActionInterface(d);
         WriteLine();

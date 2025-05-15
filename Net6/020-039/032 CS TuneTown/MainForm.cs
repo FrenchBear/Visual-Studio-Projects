@@ -1,5 +1,5 @@
 // Application TuneTown
-// D'après MSDN Février 2001
+// D'aprÃ¨s MSDN FÃ©vrier 2001
 //
 // 2001-02-03   PV
 // 2001-08-19   PV	Beta2

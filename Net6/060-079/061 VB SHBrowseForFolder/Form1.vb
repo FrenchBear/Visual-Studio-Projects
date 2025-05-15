@@ -1,7 +1,7 @@
 ' 61 VB SHBrowseForFolder
 ' Essais pour retouver la fonction en environnement .NET
-' Complètement empirique...
-' Et incomplet, on ne sait pas préciser le dossier de départ
+' ComplÃ¨tement empirique...
+' Et incomplet, on ne sait pas prÃ©ciser le dossier de dÃ©part
 ' See: http://www.vbaccelerator.com/home/net/code/libraries/Shell_Projects/Folder_Browser/article.asp
 ' 2001-08-19    PV
 ' 2006-10-01    PV  VS2005
@@ -94,7 +94,7 @@ Class MyBrowser
     Shared Function Browse() As String
         'b.StartLocation = FolderNameEditor.FolderBrowserFolder.Desktop
         Dim b As New FolderBrowser With {
-            .Description = "Sélectionnez le répertoire",
+            .Description = "SÃ©lectionnez le rÃ©pertoire",
             .Style = FolderBrowserStyles.RestrictToFilesystem,
             .StartLocation = FolderBrowserFolder.MyComputer
         }

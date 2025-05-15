@@ -1,5 +1,5 @@
 ' Classe MyMsgBox3
-' Dérive de MsgBox2
+' DÃ©rive de MsgBox2
 '
 ' 2001-01-27    PV
 ' 2021-09-18    PV  VS2022, Net6

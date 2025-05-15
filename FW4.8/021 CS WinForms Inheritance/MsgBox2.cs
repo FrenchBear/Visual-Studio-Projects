@@ -1,5 +1,5 @@
 // Classe MsgBox2
-// Simple boîte de dialogue pour des essais d'héritage
+// Simple boÃ®te de dialogue pour des essais d'hÃ©ritage
 // 2001-01-27   PV
 
 #pragma warning disable IDE1006 // Naming Styles

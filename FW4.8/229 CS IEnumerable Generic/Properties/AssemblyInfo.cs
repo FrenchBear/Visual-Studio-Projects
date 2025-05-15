@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SGS")]
 [assembly: AssemblyProduct("101 CS IEnumerable Generic")]
-[assembly: AssemblyCopyright("Copyright © SGS 2005")]
+[assembly: AssemblyCopyright("Copyright Â© SGS 2005")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

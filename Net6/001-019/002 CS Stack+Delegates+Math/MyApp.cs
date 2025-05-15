@@ -14,9 +14,9 @@ namespace CS002;
 
 public static class MyMath
 {
-    public delegate double FRéelle(double arg);
+    public delegate double FRÃ©elle(double arg);
 
-    public static double Intégrale(double binf, double bsup, FRéelle f)
+    public static double IntÃ©grale(double binf, double bsup, FRÃ©elle f)
     {
         int i;
         double v = 0;
@@ -27,7 +27,7 @@ public static class MyMath
         return v * (bsup - binf) / pas;
     }
 
-    public static double Carré(double x) => x * x;
+    public static double CarrÃ©(double x) => x * x;
 }
 
 public class MyApp
@@ -68,24 +68,24 @@ public class MyApp
         p.Empile(2);
         p.Empile(3);
 
-        WriteLine("Dépile: {0}", p.Dépile());
-        WriteLine("Dépile: {0}", p.Dépile());
+        WriteLine("DÃ©pile: {0}", p.DÃ©pile());
+        WriteLine("DÃ©pile: {0}", p.DÃ©pile());
 
         try
         {
-            WriteLine("Dépile: {0}", p.Dépile());
+            WriteLine("DÃ©pile: {0}", p.DÃ©pile());
         }
         catch (Exception e)
         {
-            WriteLine("Échec au dépile: {0}", e.Message);
+            WriteLine("Ã‰chec au dÃ©pile: {0}", e.Message);
         }
         finally
         {
             WriteLine("Bloc finally");
         }
 
-        WriteLine("12.3² = {0}", MyMath.Carré(12.3));
-        WriteLine("Intégrale x²|0,1: {0}", MyMath.Intégrale(0.0, 1.0, new MyMath.FRéelle(MyMath.Carré)));
-        WriteLine("Intégrale sin(x)|0,pi: {0}", MyMath.Intégrale(0.0, Math.PI, new MyMath.FRéelle(Math.Sin)));
+        WriteLine("12.3Â² = {0}", MyMath.CarrÃ©(12.3));
+        WriteLine("IntÃ©grale xÂ²|0,1: {0}", MyMath.IntÃ©grale(0.0, 1.0, new MyMath.FRÃ©elle(MyMath.CarrÃ©)));
+        WriteLine("IntÃ©grale sin(x)|0,pi: {0}", MyMath.IntÃ©grale(0.0, Math.PI, new MyMath.FRÃ©elle(Math.Sin)));
     }
 }

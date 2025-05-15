@@ -1,6 +1,6 @@
-' Analyseur de séquences PCL
+' Analyseur de sÃ©quences PCL
 ' 2003-07-16    PV
-' 2003-08-07    PV  Fichier généré en paramètre; séquences tilda
+' 2003-08-07    PV  Fichier gÃ©nÃ©rÃ© en paramÃ¨tre; sÃ©quences tilda
 ' 2012-02-25	PV  VS2010
 ' 2017-05-02    PV  GitHub et VS2017
 ' 2021-09-19    PV  VS2022, Net6
@@ -19,17 +19,17 @@ Module modMainAnaPCL
         WriteLine("AnalysePCL 1.1")
 
         If InStr(Command(), "-?") <> 0 Then
-            WriteLine("Décodage de PCL et génération de TIFF")
-            WriteLine("P.VIOLENT Juillet-Août 2003")
+            WriteLine("DÃ©codage de PCL et gÃ©nÃ©ration de TIFF")
+            WriteLine("P.VIOLENT Juillet-AoÃ»t 2003")
             WriteLine()
             WriteLine("Usage : APCL [-?] [-dp][-dm][-dt] [-v] [-c] fichier.pcl")
-            WriteLine("Génère le fichier image.tiff")
+            WriteLine("GÃ©nÃ¨re le fichier image.tiff")
             WriteLine()
             WriteLine("Options :")
             WriteLine("-?   affiche ce texte")
             WriteLine("-dp  debug PCL, -dm  debug macros, -dp  debug chrono, -dt  debug Tilda")
             WriteLine("-v   verbose")
-            WriteLine("-c   couleur: désactive l'option réduction N&B")
+            WriteLine("-c   couleur: dÃ©sactive l'option rÃ©duction N&B")
 
             Exit Sub
         End If
@@ -57,7 +57,7 @@ Module modMainAnaPCL
         Next
 
         If sNomficPCL = "" Then
-            WriteLine("Nom du fichier PCL non précisé.")
+            WriteLine("Nom du fichier PCL non prÃ©cisÃ©.")
             Exit Sub
         End If
 
@@ -78,15 +78,15 @@ Module modMainAnaPCL
         If Not Analyse(sNomficPCL) Then Exit Sub
         PCLFlushText()
         PCLFlushPage()
-        WriteLine("Écriture du fichier {0}", sNomficImage)
+        WriteLine("Ã‰criture du fichier {0}", sNomficImage)
         RGOutput()
         t = DateAndTime.Timer - t
 
         If bDebugMacros Then TraceMacros()
-        If bVerbose Then WriteLine("Fin, Nb Car: {0}, Durée analyse: {1:f1}s", nbCar, t)
+        If bVerbose Then WriteLine("Fin, Nb Car: {0}, DurÃ©e analyse: {1:f1}s", nbCar, t)
 
         If bDebugMacros Or bDebugPCL Or bVerbose Or bDebugTilda Then
-            WriteLine("[Entrée] pour continuer...")
+            WriteLine("[EntrÃ©e] pour continuer...")
             ReadLine()
         End If
     End Sub
@@ -98,7 +98,7 @@ Module modMainAnaPCL
         Try
             fs = New FileStream(sNomFic, FileMode.Open, FileAccess.Read)
         Catch ex As Exception
-            WriteLine("Echec à l'ouverture de {0}: {1}", sNomFic, ex.Message)
+            WriteLine("Echec Ã  l'ouverture de {0}: {1}", sNomFic, ex.Message)
             Return False
         End Try
 

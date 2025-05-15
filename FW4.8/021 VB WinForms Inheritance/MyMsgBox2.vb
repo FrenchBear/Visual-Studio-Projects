@@ -1,5 +1,5 @@
 ' Classe MyMsgBox2
-' Classe de base pour un héritage visuel (simple boîte d'info)
+' Classe de base pour un hÃ©ritage visuel (simple boÃ®te d'info)
 ' 2001-01-27    PV
 
 #Disable Warning IDE1006 ' Naming Styles

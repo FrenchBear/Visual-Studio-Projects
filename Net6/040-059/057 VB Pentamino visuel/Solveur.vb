@@ -1,8 +1,8 @@
 ' pentamino.cpp
-' Résolution de problèmes de pentaminos (pavage)
+' RÃ©solution de problÃ¨mes de pentaminos (pavage)
 '
 ' 1998-12-26    PV
-' 2001-08-11    PV  Réécriture en C# et en VB
+' 2001-08-11    PV  RÃ©Ã©criture en C# et en VB
 ' 2001-08-12    PV  Affichage graphique
 ' 2006-10-01    PV  VS2005
 ' 2010-07-19	PV  VS2010
@@ -51,16 +51,16 @@ Class PentaminoSolveur
 
     Shared ReadOnly PS As PentaminoSolveur = Nothing
 
-    ' Tableau des pentaminos à utiliser pour le problème
+    ' Tableau des pentaminos Ã  utiliser pour le problÃ¨me
     Shared tP() As Piece
 
-    ' Contrôle d'arrêt
+    ' ContrÃ´le d'arrÃªt
     Shared bStop As Boolean
 
     Public Sub Analyse()
         Pow2 = New Integer() {1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096}
 
-        ' Préparation des pièces
+        ' PrÃ©paration des piÃ¨ces
         Dim P1 As New Piece(1, "I"c, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         Dim P2 As New Piece(2, "L"c, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0)
         Dim P3 As New Piece(3, "Y"c, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)
@@ -89,7 +89,7 @@ Class PentaminoSolveur
         'Console.ReadLine()
 
         If (MAXLIG * MAXCOL <> 5 * MAXPIECE) Then
-            WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohérentes !")
+            WriteLine("Constantes MAXLIG/MAXCOL/MAXPIECE incohÃ©rentes !")
             Exit Sub
         End If
 
@@ -109,10 +109,10 @@ Class PentaminoSolveur
         tP(10) = P7
         tP(11) = P12
 
-        ' Plan à paver
+        ' Plan Ã  paver
         Dim j As New Jeu()
 
-        ' Pavage à proprement parler
+        ' Pavage Ã  proprement parler
         bStop = False
         iNbSol = 0
         Pavage(0, 0, j, Pow2(MAXPIECE) - 1)
@@ -120,37 +120,37 @@ Class PentaminoSolveur
 
     Sub Pavage(lstart As Integer, cstart As Integer, jeu As Jeu, iMasquePieces As Integer)
         Dim l, c As Integer
-        Dim bTrouvé As Boolean = False
+        Dim bTrouvÃ© As Boolean = False
 
         If bStop Or (iNbSol > MAXSOLUTION) Then Return
 
         iNbAppelPavage += 1
 
-        ' On cherche une case vide à couvrir, de gauche à droite, de haut en bas
+        ' On cherche une case vide Ã  couvrir, de gauche Ã  droite, de haut en bas
         For l = 0 To MAXLIG - 1
             For c = 0 To MAXCOL - 1
-                If (l = 0 And c = 0) Then ' Accélération, on part de la dernière case vide trouvée
+                If (l = 0 And c = 0) Then ' AccÃ©lÃ©ration, on part de la derniÃ¨re case vide trouvÃ©e
                     l = lstart
                     c = cstart
                 End If
 
                 If (jeu(l, c) = 0) Then
-                    bTrouvé = True
+                    bTrouvÃ© = True
                     Exit For
                 End If
             Next
-            If (bTrouvé) Then
+            If (bTrouvÃ©) Then
                 Exit For
             End If
         Next
 
-        ' Si on n'en a pas trouvé, c'est que le pavage est terminé !
+        ' Si on n'en a pas trouvÃ©, c'est que le pavage est terminÃ© !
         If (l = MAXLIG And c = MAXCOL) Then
             iNbSol += 1
             RaiseEvent Solution(iNbSol, jeu, bStop)
 
 #If TraceSolution Then
-      WriteLine("Solution {0} trouvée", iNbSol)
+      WriteLine("Solution {0} trouvÃ©e", iNbSol)
       For l = 0 To MAXLIG - 1
         For c = 0 To MAXCOL - 1
           Console.Write("{0:D2} ", tP(jeu(l, c) - 1).hNumPiece)
@@ -164,7 +164,7 @@ Class PentaminoSolveur
             Exit Sub
         End If
 
-        ' On cherche parmi toutes les pieces qui restent une pièce pour couvrir la case vide
+        ' On cherche parmi toutes les pieces qui restent une piÃ¨ce pour couvrir la case vide
         Dim i, j As Integer
         For i = 0 To MAXPIECE - 1
             If ((iMasquePieces And Pow2(i)) <> 0) Then
@@ -173,7 +173,7 @@ Class PentaminoSolveur
                     Dim l2, c2 As Integer
                     Dim bCollision As Boolean
 
-                    ' Trop large,  Trop haut, Doit être décalée trop à gauche: on continue
+                    ' Trop large,  Trop haut, Doit Ãªtre dÃ©calÃ©e trop Ã  gauche: on continue
                     If c + ca.cmax - ca.iOffsetCol > MAXCOL Or l + ca.lmax > MAXLIG Or c < ca.iOffsetCol Then
                         GoTo Cont
                     End If
@@ -181,7 +181,7 @@ Class PentaminoSolveur
                     bCollision = False
                     For l2 = 0 To ca.lmax - 1
                         For c2 = 0 To ca.cmax - 1
-                            If ca.tMotif(l2, c2) And jeu(l + l2, c + c2 - ca.iOffsetCol) <> 0 Then ' Case déjà occupée
+                            If ca.tMotif(l2, c2) And jeu(l + l2, c + c2 - ca.iOffsetCol) <> 0 Then ' Case dÃ©jÃ  occupÃ©e
                                 bCollision = True
                                 Exit For
                             End If
@@ -190,7 +190,7 @@ Class PentaminoSolveur
                     Next
 
                     If Not bCollision Then
-                        ' Pièce valable! On la place
+                        ' PiÃ¨ce valable! On la place
                         Dim jeu2 As New Jeu(jeu)
 
                         For l2 = 0 To ca.lmax - 1
@@ -199,7 +199,7 @@ Class PentaminoSolveur
                             Next
                         Next
 
-                        ' On continue avec les pièces qui restent
+                        ' On continue avec les piÃ¨ces qui restent
                         Pavage(l, c, jeu2, iMasquePieces And Not Pow2(i))
                     End If
 

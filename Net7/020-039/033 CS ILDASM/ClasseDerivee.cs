@@ -29,9 +29,9 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
     }
 
     /// <summary>
-    /// Implémentation de MonInterface, membre ordinaire
+    /// ImplÃ©mentation de MonInterface, membre ordinaire
     /// </summary>
-    /// <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
+    /// <param name="iNbBip">Nombre d'Ã©vÃ©nements Bip Ã  dÃ©clencher</param>
     public void MaMethodeBruyante1(int iNbBip)
     {
         for (var i = 0; i < iNbBip; i++)
@@ -41,9 +41,9 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
     }
 
     /// <summary>
-    /// Implémentation de MonInterface, membre explicite d'interface
+    /// ImplÃ©mentation de MonInterface, membre explicite d'interface
     /// </summary>
-    /// <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
+    /// <param name="iNbBip">Nombre d'Ã©vÃ©nements Bip Ã  dÃ©clencher</param>
     void IMonInterface.MaMethodeBruyante2(int iNbBip)
     {
         for (var i = 0; i < iNbBip; i++)
@@ -53,9 +53,9 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
     }
 
     /// <summary>
-    ///   Indexer de base: accès via un indice entier
+    ///   Indexer de base: accÃ¨s via un indice entier
     /// </summary>
-    /// <param name="index">Rang de l'élément à récupérer</param>
+    /// <param name="index">Rang de l'Ã©lÃ©ment Ã  rÃ©cupÃ©rer</param>
     public string this[int index] => $"this[{index}]";
 
     public string this[string index] => $"this[\"{index}\"]";
@@ -74,7 +74,7 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
         set => iProp = value;
     }
 
-    // Héritage de MaClasseDeBase
+    // HÃ©ritage de MaClasseDeBase
     public override void Action()
     {
         WriteLine("MaClasseDerivee.Action()");
@@ -83,7 +83,7 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
 
     public void MyBaseAction() => base.Action();
 
-    // Eléments spécifiques à la classe
+    // ElÃ©ments spÃ©cifiques Ã  la classe
     private int iProp;
 
     protected int age;
@@ -113,7 +113,7 @@ public class MaClasseDerivee: MaClasseDeBase, IMonInterface
         }
         catch (Exception e)
         {
-            WriteLine("Problème dans TrucDangereux{0}: {1} --> On remonte l'erreur", q, e.Message);
+            WriteLine("ProblÃ¨me dans TrucDangereux{0}: {1} --> On remonte l'erreur", q, e.Message);
             throw;
         }
         finally

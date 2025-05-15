@@ -2,10 +2,10 @@
 ' Application de redimensionnement d'images en VB.Net
 '
 ' 2003-07       PV
-' 2003-07-30    PV  ContrÙle de la qualitÈ
+' 2003-07-30    PV  Contr√¥le de la qualit√©
 ' 2006-10-01    PV  VS 2005
 ' 2007-05/18    PV  About... in system menu
-' 2007-05-21    PV  Les images plus petites gardent leur taille; option rÈcursive
+' 2007-05-21    PV  Les images plus petites gardent leur taille; option r√©cursive
 ' 2009-10-15    PV  VS 2008 et ajout suffixe R automatiquement
 ' 2012-02-25	PV  VS2010; .Net Framework Client Profile 4.0
 ' 2021-09-19    PV  VS2022, Net6
@@ -22,12 +22,12 @@ Public Class VignettesForm
     Inherits Form
 
     Dim m_iGrandCote As Integer
-    Friend WithEvents RÈcursifCheckBox As CheckBox
+    Friend WithEvents R√©cursifCheckBox As CheckBox
 
     ''' <summary>About command in System menu</summary>
     Private WithEvents SubclassedSystemMenu As SubclassedSystemMenu
 
-#Region " Code gÈnÈrÈ par le Concepteur Windows Form "
+#Region " Code g√©n√©r√© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -35,11 +35,11 @@ Public Class VignettesForm
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque aprËs l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque apr√®s l'appel InitializeComponent()
 
     End Sub
 
-    'La mÈthode substituÈe Dispose du formulaire pour nettoyer la liste des composants.
+    'La m√©thode substitu√©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -52,10 +52,10 @@ Public Class VignettesForm
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE†: la procÈdure suivante est requise par le Concepteur Windows Form
-    'Elle peut Ítre modifiÈe en utilisant le Concepteur Windows Form.  
-    'Ne la modifiez pas en utilisant l'Èditeur de code.
-    Friend WithEvents GÈnËreButton As Button
+    'REMARQUE¬†: la proc√©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut √™tre modifi√©e en utilisant le Concepteur Windows Form.  
+    'Ne la modifiez pas en utilisant l'√©diteur de code.
+    Friend WithEvents G√©n√®reButton As Button
     Friend WithEvents TraceList As ListBox
     Friend WithEvents SourceLabel As Label
     Friend WithEvents SourceText As TextBox
@@ -66,14 +66,14 @@ Public Class VignettesForm
     Friend WithEvents LookupSourceButton As Button
     Friend WithEvents LookupDestinationButton As Button
     Friend WithEvents FolderBrowser As FolderBrowserDialog
-    Friend WithEvents QualitÈText As TextBox
-    Friend WithEvents QualitÈLabel As Label
-    Friend WithEvents QualitÈTrackBar As TrackBar
+    Friend WithEvents Qualit√©Text As TextBox
+    Friend WithEvents Qualit√©Label As Label
+    Friend WithEvents Qualit√©TrackBar As TrackBar
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     <DebuggerStepThrough()> Private Sub InitializeComponent()
         Dim resources = New ComponentResourceManager(GetType(VignettesForm))
-        Me.GÈnËreButton = New Button()
+        Me.G√©n√®reButton = New Button()
         Me.TraceList = New ListBox()
         Me.SourceLabel = New Label()
         Me.SourceText = New TextBox()
@@ -84,23 +84,23 @@ Public Class VignettesForm
         Me.LookupSourceButton = New Button()
         Me.LookupDestinationButton = New Button()
         Me.FolderBrowser = New FolderBrowserDialog()
-        Me.QualitÈText = New TextBox()
-        Me.QualitÈLabel = New Label()
-        Me.QualitÈTrackBar = New TrackBar()
+        Me.Qualit√©Text = New TextBox()
+        Me.Qualit√©Label = New Label()
+        Me.Qualit√©TrackBar = New TrackBar()
         Me.Label1 = New Label()
         Me.Label2 = New Label()
-        Me.RÈcursifCheckBox = New CheckBox()
-        CType(Me.QualitÈTrackBar, ISupportInitialize).BeginInit()
+        Me.R√©cursifCheckBox = New CheckBox()
+        CType(Me.Qualit√©TrackBar, ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GÈnËreButton
+        'G√©n√®reButton
         '
-        Me.GÈnËreButton.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
-        Me.GÈnËreButton.Location = New Point(754, 15)
-        Me.GÈnËreButton.Name = "GÈnËreButton"
-        Me.GÈnËreButton.Size = New Size(187, 59)
-        Me.GÈnËreButton.TabIndex = 15
-        Me.GÈnËreButton.Text = "&GÈnËre"
+        Me.G√©n√®reButton.Anchor = CType((AnchorStyles.Top Or AnchorStyles.Right), AnchorStyles)
+        Me.G√©n√®reButton.Location = New Point(754, 15)
+        Me.G√©n√®reButton.Name = "G√©n√®reButton"
+        Me.G√©n√®reButton.Size = New Size(187, 59)
+        Me.G√©n√®reButton.TabIndex = 15
+        Me.G√©n√®reButton.Text = "&G√©n√®re"
         '
         'TraceList
         '
@@ -119,7 +119,7 @@ Public Class VignettesForm
         Me.SourceLabel.Name = "SourceLabel"
         Me.SourceLabel.Size = New Size(180, 29)
         Me.SourceLabel.TabIndex = 0
-        Me.SourceLabel.Text = "RÈpertoire &source :"
+        Me.SourceLabel.Text = "R√©pertoire &source :"
         '
         'SourceText
         '
@@ -145,7 +145,7 @@ Public Class VignettesForm
         Me.DestinationLabel.Name = "DestinationLabel"
         Me.DestinationLabel.Size = New Size(231, 30)
         Me.DestinationLabel.TabIndex = 4
-        Me.DestinationLabel.Text = "RÈpertoire &destination :"
+        Me.DestinationLabel.Text = "R√©pertoire &destination :"
         '
         'TailleLabel
         '
@@ -153,7 +153,7 @@ Public Class VignettesForm
         Me.TailleLabel.Name = "TailleLabel"
         Me.TailleLabel.Size = New Size(245, 29)
         Me.TailleLabel.TabIndex = 7
-        Me.TailleLabel.Text = "&Taille grand cotÈ (pixels) :"
+        Me.TailleLabel.Text = "&Taille grand cot√© (pixels) :"
         '
         'TailleText
         '
@@ -181,33 +181,33 @@ Public Class VignettesForm
         Me.LookupDestinationButton.TabIndex = 6
         Me.LookupDestinationButton.Text = "..."
         '
-        'QualitÈText
+        'Qualit√©Text
         '
-        Me.QualitÈText.Location = New Point(266, 284)
-        Me.QualitÈText.Name = "QualitÈText"
-        Me.QualitÈText.Size = New Size(101, 31)
-        Me.QualitÈText.TabIndex = 10
+        Me.Qualit√©Text.Location = New Point(266, 284)
+        Me.Qualit√©Text.Name = "Qualit√©Text"
+        Me.Qualit√©Text.Size = New Size(101, 31)
+        Me.Qualit√©Text.TabIndex = 10
         '
-        'QualitÈLabel
+        'Qualit√©Label
         '
-        Me.QualitÈLabel.AutoSize = True
-        Me.QualitÈLabel.Location = New Point(14, 292)
-        Me.QualitÈLabel.Name = "QualitÈLabel"
-        Me.QualitÈLabel.Size = New Size(181, 25)
-        Me.QualitÈLabel.TabIndex = 9
-        Me.QualitÈLabel.Text = "&QualitÈ JPEG (0-100) :"
+        Me.Qualit√©Label.AutoSize = True
+        Me.Qualit√©Label.Location = New Point(14, 292)
+        Me.Qualit√©Label.Name = "Qualit√©Label"
+        Me.Qualit√©Label.Size = New Size(181, 25)
+        Me.Qualit√©Label.TabIndex = 9
+        Me.Qualit√©Label.Text = "&Qualit√© JPEG (0-100) :"
         '
-        'QualitÈTrackBar
+        'Qualit√©TrackBar
         '
-        Me.QualitÈTrackBar.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Left) _
+        Me.Qualit√©TrackBar.Anchor = CType(((AnchorStyles.Top Or AnchorStyles.Left) _
             Or AnchorStyles.Right), AnchorStyles)
-        Me.QualitÈTrackBar.Location = New Point(389, 270)
-        Me.QualitÈTrackBar.Maximum = 100
-        Me.QualitÈTrackBar.Name = "QualitÈTrackBar"
-        Me.QualitÈTrackBar.Size = New Size(561, 69)
-        Me.QualitÈTrackBar.TabIndex = 11
-        Me.QualitÈTrackBar.TickFrequency = 5
-        Me.QualitÈTrackBar.TickStyle = TickStyle.TopLeft
+        Me.Qualit√©TrackBar.Location = New Point(389, 270)
+        Me.Qualit√©TrackBar.Maximum = 100
+        Me.Qualit√©TrackBar.Name = "Qualit√©TrackBar"
+        Me.Qualit√©TrackBar.Size = New Size(561, 69)
+        Me.Qualit√©TrackBar.TabIndex = 11
+        Me.Qualit√©TrackBar.TickFrequency = 5
+        Me.Qualit√©TrackBar.TickStyle = TickStyle.TopLeft
         '
         'Label1
         '
@@ -228,27 +228,27 @@ Public Class VignettesForm
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "Sans compression"
         '
-        'RÈcursifCheckBox
+        'R√©cursifCheckBox
         '
-        Me.RÈcursifCheckBox.AutoSize = True
-        Me.RÈcursifCheckBox.Location = New Point(20, 85)
-        Me.RÈcursifCheckBox.Name = "RÈcursifCheckBox"
-        Me.RÈcursifCheckBox.Size = New Size(230, 29)
-        Me.RÈcursifCheckBox.TabIndex = 3
-        Me.RÈcursifCheckBox.Text = "Inclu&re les sous-dossiers"
-        Me.RÈcursifCheckBox.UseVisualStyleBackColor = True
+        Me.R√©cursifCheckBox.AutoSize = True
+        Me.R√©cursifCheckBox.Location = New Point(20, 85)
+        Me.R√©cursifCheckBox.Name = "R√©cursifCheckBox"
+        Me.R√©cursifCheckBox.Size = New Size(230, 29)
+        Me.R√©cursifCheckBox.TabIndex = 3
+        Me.R√©cursifCheckBox.Text = "Inclu&re les sous-dossiers"
+        Me.R√©cursifCheckBox.UseVisualStyleBackColor = True
         '
         'VignettesForm
         '
-        Me.AcceptButton = Me.GÈnËreButton
+        Me.AcceptButton = Me.G√©n√®reButton
         Me.AutoScaleBaseSize = New Size(9, 24)
         Me.ClientSize = New Size(956, 706)
-        Me.Controls.Add(Me.RÈcursifCheckBox)
+        Me.Controls.Add(Me.R√©cursifCheckBox)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.QualitÈTrackBar)
-        Me.Controls.Add(Me.QualitÈText)
-        Me.Controls.Add(Me.QualitÈLabel)
+        Me.Controls.Add(Me.Qualit√©TrackBar)
+        Me.Controls.Add(Me.Qualit√©Text)
+        Me.Controls.Add(Me.Qualit√©Label)
         Me.Controls.Add(Me.LookupDestinationButton)
         Me.Controls.Add(Me.LookupSourceButton)
         Me.Controls.Add(Me.TailleText)
@@ -258,11 +258,11 @@ Public Class VignettesForm
         Me.Controls.Add(Me.SourceText)
         Me.Controls.Add(Me.SourceLabel)
         Me.Controls.Add(Me.TraceList)
-        Me.Controls.Add(Me.GÈnËreButton)
+        Me.Controls.Add(Me.G√©n√®reButton)
         Me.Icon = CType(resources.GetObject("$this.Icon"), Icon)
         Me.Name = "VignettesForm"
-        Me.Text = "Retaille d'images / GÈnÈration de vignettes"
-        CType(Me.QualitÈTrackBar, ISupportInitialize).EndInit()
+        Me.Text = "Retaille d'images / G√©n√©ration de vignettes"
+        CType(Me.Qualit√©TrackBar, ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -270,25 +270,25 @@ Public Class VignettesForm
 
 #End Region
 
-    Private Sub GÈnËreButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles GÈnËreButton.Click
+    Private Sub G√©n√®reButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles G√©n√®reButton.Click
         Dim m_sSourcePath As String
         Dim m_sDestinationPath As String
 
         If Not Directory.Exists(SourceText.Text) Then
-            MsgBox("RÈpertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
+            MsgBox("R√©pertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             SourceText.Focus()
             Exit Sub
         End If
 
         'If Not System.IO.Directory.Exists(txtDestination.Text) Then
-        '    MsgBox("RÈpertoire destination inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
+        '    MsgBox("R√©pertoire destination inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
         '    txtDestination.Focus()
         '    Exit Sub
         'End If
 
         m_iGrandCote = Val(TailleText.Text)
         If m_iGrandCote < 50 Or m_iGrandCote > 3000 Then
-            MsgBox("Taille du grand cotÈ invalide (doit Ítre comprise entre 50 et 3000)", MsgBoxStyle.Exclamation)
+            MsgBox("Taille du grand cot√© invalide (doit √™tre comprise entre 50 et 3000)", MsgBoxStyle.Exclamation)
             TailleText.Focus()
             Exit Sub
         End If
@@ -299,25 +299,25 @@ Public Class VignettesForm
         'If Microsoft.VisualBasic.Right(m_sDestinationPath, 1) <> "\" Then m_sDestinationPath = m_sDestinationPath & "\"
 
         If StrComp(m_sSourcePath, m_sDestinationPath, CompareMethod.Text) = 0 Then
-            MsgBox("Les deux rÈpertoires ne peuvent Ítre identiques.", MsgBoxStyle.Exclamation)
+            MsgBox("Les deux r√©pertoires ne peuvent √™tre identiques.", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
-        GÈnËreButton.Enabled = False
-        GÈnÈration(m_sSourcePath, m_sDestinationPath)
-        Trace("Fin de la gÈnÈration")
-        GÈnËreButton.Enabled = True
+        G√©n√®reButton.Enabled = False
+        G√©n√©ration(m_sSourcePath, m_sDestinationPath)
+        Trace("Fin de la g√©n√©ration")
+        G√©n√®reButton.Enabled = True
     End Sub
 
-    Sub GÈnÈration(ByVal sSourcePath As String, ByVal sDestinationPath As String)
-        Trace("GÈnÈration " & sSourcePath & " --> " & sDestinationPath)
+    Sub G√©n√©ration(ByVal sSourcePath As String, ByVal sDestinationPath As String)
+        Trace("G√©n√©ration " & sSourcePath & " --> " & sDestinationPath)
 
         If Not My.Computer.FileSystem.DirectoryExists(sDestinationPath) Then
             Try
-                Trace("CrÈation du dossier " & sDestinationPath)
+                Trace("Cr√©ation du dossier " & sDestinationPath)
                 My.Computer.FileSystem.CreateDirectory(sDestinationPath)
             Catch ex As Exception
-                Trace("Erreur durant la crÈation: " & ex.Message)
+                Trace("Erreur durant la cr√©ation: " & ex.Message)
                 Exit Sub
             End Try
         End If
@@ -328,7 +328,7 @@ Public Class VignettesForm
 
         For Each fic In dir.GetFiles("*.jpg")
             Try
-                GÈnËreVignette(sSourcePath, sDestinationPath, fic.Name)
+                G√©n√®reVignette(sSourcePath, sDestinationPath, fic.Name)
                 GC.Collect()
                 GC.WaitForPendingFinalizers()
                 Thread.Sleep(0)
@@ -336,18 +336,18 @@ Public Class VignettesForm
             End Try
         Next
 
-        If RÈcursifCheckBox.Checked Then
+        If R√©cursifCheckBox.Checked Then
             Dim subdir As DirectoryInfo
             For Each subdir In dir.GetDirectories
                 If subdir.FullName <> sDestinationPath Then
-                    GÈnÈration(sSourcePath & "\" & subdir.Name, sDestinationPath & "\" & subdir.Name)
+                    G√©n√©ration(sSourcePath & "\" & subdir.Name, sDestinationPath & "\" & subdir.Name)
                 End If
             Next
         End If
     End Sub
 
 
-    Sub GÈnËreVignette(ByVal sSourcePath As String, ByVal sDestinationPath As String, ByVal sNomfic As String)
+    Sub G√©n√®reVignette(ByVal sSourcePath As String, ByVal sDestinationPath As String, ByVal sNomfic As String)
         'Dim sImg As String
         Dim sPathImg As String
         Dim sPathVignette As String
@@ -380,17 +380,17 @@ Public Class VignettesForm
 
         Dim imgOutput As Bitmap
 
-        ' Version compliquÈe avec DrawImage
+        ' Version compliqu√©e avec DrawImage
         'imgOutput = New Bitmap(iNewWidth, iNewHeight, System.Drawing.Imaging.PixelFormat.Format32bppRgb)
         'Dim h As Graphics = Graphics.FromImage(imgOutput)
         'h.DrawImage(img, 0, 0, iNewWidth, iNewHeight)
 
-        ' Version simplifiÈe avec le constructeur de Bitmap qui remet ‡ l'Èchelle
+        ' Version simplifi√©e avec le constructeur de Bitmap qui remet √† l'√©chelle
         imgOutput = New Bitmap(imgSource, iNewWidth, iNewHeight)
 
-        ' On contrÙle la qualitÈ
+        ' On contr√¥le la qualit√©
         Dim eps As New EncoderParameters(1)
-        eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(QualitÈText.Text))
+        eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(Qualit√©Text.Text))
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
 
         ' Et on enregistre
@@ -409,7 +409,7 @@ Public Class VignettesForm
     Private Sub LookupSourceButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LookupSourceButton.Click
         FolderBrowser.SelectedPath = SourceText.Text
         FolderBrowser.ShowNewFolderButton = False
-        FolderBrowser.Description = "SÈlectionnez le dossier contenant les images source :"
+        FolderBrowser.Description = "S√©lectionnez le dossier contenant les images source :"
         If FolderBrowser.ShowDialog(Me) = DialogResult.OK Then
             SourceText.Text = FolderBrowser.SelectedPath
             SourceText.SelectionStart = 0
@@ -420,7 +420,7 @@ Public Class VignettesForm
     Private Sub LookupDestinationButton_Click(ByVal sender As Object, ByVal e As EventArgs) Handles LookupDestinationButton.Click
         FolderBrowser.SelectedPath = DestinationText.Text
         FolderBrowser.ShowNewFolderButton = True
-        FolderBrowser.Description = "SÈlectionnez le dossier de destination pour les vignettes :"
+        FolderBrowser.Description = "S√©lectionnez le dossier de destination pour les vignettes :"
         If FolderBrowser.ShowDialog(Me) = DialogResult.OK Then
             DestinationText.Text = FolderBrowser.SelectedPath
             DestinationText.SelectionStart = 0
@@ -440,18 +440,18 @@ Public Class VignettesForm
         Return Nothing
     End Function
 
-    Private Sub QualitÈText_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles QualitÈText.TextChanged
-        QualitÈTrackBar.Value = Val(QualitÈText.Text)
+    Private Sub Qualit√©Text_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles Qualit√©Text.TextChanged
+        Qualit√©TrackBar.Value = Val(Qualit√©Text.Text)
     End Sub
 
-    Private Sub QualitÈText_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles QualitÈTrackBar.Scroll
-        QualitÈText.Text = Format(QualitÈTrackBar.Value)
+    Private Sub Qualit√©Text_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles Qualit√©TrackBar.Scroll
+        Qualit√©Text.Text = Format(Qualit√©TrackBar.Value)
     End Sub
 
     Private Sub VignettesForm_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        QualitÈText.Text = "90"
+        Qualit√©Text.Text = "90"
         ' About command in System menu
-        SubclassedSystemMenu = New SubclassedSystemMenu(Me.Handle.ToInt32, "&¿ propos de...")
+        SubclassedSystemMenu = New SubclassedSystemMenu(Me.Handle.ToInt32, "&√Ä propos de...")
     End Sub
 
     Private Sub SourceText_GotFocus(ByVal sender As Object, ByVal e As EventArgs) Handles SourceText.GotFocus

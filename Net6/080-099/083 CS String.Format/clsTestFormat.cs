@@ -84,16 +84,16 @@ internal struct Complex : IFormattable
 internal class TestFormat
 {
     /// <summary>
-    /// Point d'entrée principal de l'application.
+    /// Point d'entrÃ©e principal de l'application.
     /// </summary>
     [STAThread]
     private static void Main(string[] args)
     {
-        DoOutput("Formats généraux d'entiers", 0xcafe, new string[] { "{0:G}", "{0:00000000}", "{0:########}", "{0,10}", "{0:d8}", "{0:x}", "{0:x8}", "{0:X}", "{0:n}", "{0:n0}" });
-        DoOutput("Format spécifiques d'entiers", 1234567, new string[] { "{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}", "{0:[##-##-##]}" });
-        DoOutput("Formats de décimaux", 3141.5926, new string[] { "{0:G}", "{0,12}", "{0:e}", "{0:f3}", "{0:C}", "{0:n1}", "{0:p}", "{0:p1}", "{0:r}" });
+        DoOutput("Formats gÃ©nÃ©raux d'entiers", 0xcafe, new string[] { "{0:G}", "{0:00000000}", "{0:########}", "{0,10}", "{0:d8}", "{0:x}", "{0:x8}", "{0:X}", "{0:n}", "{0:n0}" });
+        DoOutput("Format spÃ©cifiques d'entiers", 1234567, new string[] { "{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}", "{0:[##-##-##]}" });
+        DoOutput("Formats de dÃ©cimaux", 3141.5926, new string[] { "{0:G}", "{0,12}", "{0:e}", "{0:f3}", "{0:C}", "{0:n1}", "{0:p}", "{0:p1}", "{0:r}" });
         DoOutput("Formats de dates", DateTime.Now, new string[] { "{0:dddd dd MMMM yyyy}", "{0:dd/MM/yy}", "{0:hh:mm:ss}" });
-        DoOutput("Formats de types spécifiques", new Complex(1, 2), new string[] { "{0}", "{0:P}", "{0:R}" });
+        DoOutput("Formats de types spÃ©cifiques", new Complex(1, 2), new string[] { "{0}", "{0:P}", "{0:R}" });
 
         WriteLine("Plusieurs sections: format 0.00;(0.00);Zero");
         WriteLine("{0,-20}|{1}|", "1.234", $"{1.234:0.00;(0.00);Zero}");
@@ -101,11 +101,11 @@ internal class TestFormat
         WriteLine("{0,-20}|{1}|", "0", $"{0:0.00;(0.00);Zero}");
         WriteLine();
 
-        DoOutput("Format spécifiques d'entiers", 1234567, new string[] { "{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}" });
+        DoOutput("Format spÃ©cifiques d'entiers", 1234567, new string[] { "{0:#,##0}", "{0:0,}", "{0:#,##0,}", "{0:0.00%}" });
 
         WriteLine("Passage en culture US");
         Thread.CurrentThread.CurrentCulture = new CultureInfo("en-us");
-        DoOutput("Formats de décimaux", 3141.5926, new string[] { "{0:G}", "{0:C}" });
+        DoOutput("Formats de dÃ©cimaux", 3141.5926, new string[] { "{0:G}", "{0:C}" });
         DoOutput("Formats de dates", DateTime.Now, new string[] { "{0:dddd dd MMMM yyyy}" });
 
         //Console.ReadLine();

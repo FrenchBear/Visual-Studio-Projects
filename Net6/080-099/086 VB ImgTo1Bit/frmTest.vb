@@ -1,5 +1,5 @@
 ' imgTo1Bit
-' Réductions d'images...
+' RÃ©ductions d'images...
 ' 2003-08-07    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -13,7 +13,7 @@ Imports System.Runtime.InteropServices
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gÃ©nÃ©rÃ© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -21,11 +21,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprÃ¨s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mÃ©thode substituÃ©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -38,9 +38,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEÂ : la procÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut Ãªtre modifiÃ©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'Ã©diteur de code.
     Friend WithEvents PictureBox1 As PictureBox
 
     Friend WithEvents PictureBox2 As PictureBox

@@ -6,8 +6,8 @@ Imports System.Console
 
 Public Class Carre55
     Public tMotif(,) As Boolean
-    Public lmax, cmax As Integer  ' Encombrement de la pièce
-    Public iOffsetCol As Integer  ' Décalage de colonne pour occuper la cellule (0, 0)
+    Public lmax, cmax As Integer  ' Encombrement de la piÃ¨ce
+    Public iOffsetCol As Integer  ' DÃ©calage de colonne pour occuper la cellule (0, 0)
 
     Function B(x As Integer) As Boolean
         Return x <> 0
@@ -51,8 +51,8 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
         MkOffset()
     End Sub
 
-    ' Détermine la propriété iOffsetCol, c'est à dire le nombre de colonnes qu'il
-    ' faut translater le dessin à gauche pour occuper la cellule (0, 0)
+    ' DÃ©termine la propriÃ©tÃ© iOffsetCol, c'est Ã  dire le nombre de colonnes qu'il
+    ' faut translater le dessin Ã  gauche pour occuper la cellule (0, 0)
     Sub MkOffset()
         If tMotif(0, 0) Then
             iOffsetCol = 0
@@ -67,7 +67,7 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
         End If
     End Sub
 
-    ' Opérateur de comparaison
+    ' OpÃ©rateur de comparaison
     Public Shared Function Egalite(l As Carre55, k As Carre55) As Boolean
         Return l.lmax = k.lmax And l.cmax = k.cmax And
         l.tMotif(0, 0) = k.tMotif(0, 0) And l.tMotif(0, 1) = k.tMotif(0, 1) And l.tMotif(0, 2) = k.tMotif(0, 2) And l.tMotif(0, 3) = k.tMotif(0, 3) And l.tMotif(0, 4) = k.tMotif(0, 4) And
@@ -108,14 +108,14 @@ i20 As Integer, i21 As Integer, i22 As Integer, i23 As Integer, i24 As Integer)
     End Function
 
     ' Transformations
-    ' 0: Identité
-    ' 1: 90°  sens horaire
-    ' 2: 180°
-    ' 3: 270° sens horaire
+    ' 0: IdentitÃ©
+    ' 1: 90Â°  sens horaire
+    ' 2: 180Â°
+    ' 3: 270Â° sens horaire
     ' 4: miroir Hz
-    ' 5: miroir Hz + 90°  sens horaire
-    ' 6: miroir Hz + 180°
-    ' 7: miroir Hz + 270° sens horaire
+    ' 5: miroir Hz + 90Â°  sens horaire
+    ' 6: miroir Hz + 180Â°
+    ' 7: miroir Hz + 270Â° sens horaire
 
     Public Function Transformation(iT As Integer) As Carre55
         Dim ct As New Carre55()

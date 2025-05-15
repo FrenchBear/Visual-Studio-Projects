@@ -46,12 +46,12 @@ namespace WindowsApplication2_CSharp
         }
 
         /// <summary>
-        /// Une fonction événement qui affiche une boîte de message 'Hello'
+        /// Une fonction Ã©vÃ©nement qui affiche une boÃ®te de message 'Hello'
         /// </summary>
         protected void btnHello_Click(object sender, System.EventArgs e) => MessageBox.Show("Hello !", "titre");
 
         /// <summary>
-        /// Une deuxième fonction événement pour l'événement click !
+        /// Une deuxiÃ¨me fonction Ã©vÃ©nement pour l'Ã©vÃ©nement click !
         /// </summary>
         protected void btnHello_Click_bis(object sender, System.EventArgs e) => MessageBox.Show("Hello_bis !", "titre_bis");
 

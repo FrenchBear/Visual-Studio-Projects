@@ -1,7 +1,7 @@
 ' VB Project Info
 ' Analyse des infos de la classe System.Diagnostics.FileVersionInfo
-' Création dynamique de composants
-' Atrribut privé d'assembly
+' CrÃ©ation dynamique de composants
+' Atrribut privÃ© d'assembly
 ' 2001-08-18    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -101,7 +101,7 @@ Public Class frmInfos
         Info("ProductVersion", vi.ProductVersion)
         Info("SpecialBuild", vi.SpecialBuild)
 
-        ' Attribut privé
+        ' Attribut privÃ©
         Dim a As Reflection.Assembly
         a = System.Reflection.Assembly.GetExecutingAssembly
         Dim tPV As Object()
@@ -115,7 +115,7 @@ Public Class frmInfos
             Info("PV.Info", PV.Info)
         End If
 
-        ' On recalibre les txtInfo après l'apparition de la ScrollBar
+        ' On recalibre les txtInfo aprÃ¨s l'apparition de la ScrollBar
         Dim c As Control
         For Each c In Me.Controls
             If TypeOf c Is TextBox Then

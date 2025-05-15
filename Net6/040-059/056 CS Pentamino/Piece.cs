@@ -5,7 +5,7 @@ using static System.Console;
 
 internal class Piece
 {
-    public short hNumPiece;		// N° dans le jeu Katamino
+    public short hNumPiece;		// NÂ° dans le jeu Katamino
     public char cPiece;			// Lettre
     public Carre55[] c;			// 8 transformations maxi
     public int iNbt;			// Nb de transformations
@@ -25,7 +25,7 @@ internal class Piece
         c[0] = new Carre55(i00, i01, i02, i03, i04, i10, i11, i12, i13, i14, i20, i21, i22, i23, i24);
         iNbt = 1;
         if (i00 + i01 + i02 + i03 + i04 + i10 + i11 + i12 + i13 + i14 + i20 + i21 + i22 + i23 + i24 != 5)
-            WriteLine("Définition de la pièce {0} incorrecte", hNP);
+            WriteLine("DÃ©finition de la piÃ¨ce {0} incorrecte", hNP);
 
         for (var i = 1; i < 8; i++)
         {
@@ -44,5 +44,5 @@ internal class Piece
     }
 
     // Traces
-    public void Dessin() => WriteLine("Pièce {0} {1} iNbt={2}", hNumPiece, cPiece, iNbt);
+    public void Dessin() => WriteLine("PiÃ¨ce {0} {1} iNbt={2}", hNumPiece, cPiece, iNbt);
 }

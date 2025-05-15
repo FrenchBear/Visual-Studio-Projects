@@ -1,5 +1,5 @@
-// Essais d'un contrôle GradientButton
-// Dérivation d'un contrôle système
+// Essais d'un contrÃ´le GradientButton
+// DÃ©rivation d'un contrÃ´le systÃ¨me
 // 2001-01-29   PV
 // 2001-08-15   PV	Beta2: le miracle ne marche plus !!!
 // 2006-10-01   PV  VS2005

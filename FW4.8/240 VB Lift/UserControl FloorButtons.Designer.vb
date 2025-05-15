@@ -42,7 +42,7 @@ Partial Class ucFloorButtons
         Me.btnUp.Name = "btnUp"
         Me.btnUp.Size = New System.Drawing.Size(35, 33)
         Me.btnUp.TabIndex = 1
-        Me.btnUp.Text = "é"
+        Me.btnUp.Text = "Ã©"
         Me.btnUp.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btnUp.UseVisualStyleBackColor = False
         '
@@ -54,7 +54,7 @@ Partial Class ucFloorButtons
         Me.btnDown.Name = "btnDown"
         Me.btnDown.Size = New System.Drawing.Size(35, 33)
         Me.btnDown.TabIndex = 2
-        Me.btnDown.Text = "ê"
+        Me.btnDown.Text = "Ãª"
         Me.btnDown.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnDown.UseVisualStyleBackColor = False
         '

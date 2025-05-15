@@ -143,10 +143,10 @@ Public Class Form1
         Next
         Panel1.Refresh()
 
-        Dim colCouleursTriée As New SortedList(colCouleurs)
+        Dim colCouleursTriÃ©e As New SortedList(colCouleurs)
         Dim de As DictionaryEntry
         i = 0
-        For Each de In colCouleursTriée
+        For Each de In colCouleursTriÃ©e
             Dim sVal, sKey As String
             sKey = CType(de.Key, String)
             sVal = CType(de.Value, String)

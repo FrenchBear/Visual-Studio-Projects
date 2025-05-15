@@ -1,6 +1,6 @@
-// Construction d'une classe énumérable avec foreach en C#
-// ThreeIntegers2 implémente une fonction GetDictionaryEnumerator retournant un
-// énumérateur de type IDictionaryEnumerator (key+value)
+// Construction d'une classe Ã©numÃ©rable avec foreach en C#
+// ThreeIntegers2 implÃ©mente une fonction GetDictionaryEnumerator retournant un
+// Ã©numÃ©rateur de type IDictionaryEnumerator (key+value)
 // 2001-02-18   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010

@@ -14,7 +14,7 @@ Imports System.IO
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gÃ©nÃ©rÃ© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -22,11 +22,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprÃ¨s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mÃ©thode substituÃ©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -39,9 +39,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEÂ : la procÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut Ãªtre modifiÃ©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'Ã©diteur de code.
     Friend WithEvents lstPropositions As ListBox
 
     Friend WithEvents lstWords As ListBox
@@ -111,7 +111,7 @@ Public Class Form1
         If isFromFile Then
             ' Read words from c:\radoteur.txt
             tsWords = New List(Of String)()
-            Using sr As New StreamReader("..\..\..\Listes\prénoms_féminins.txt")
+            Using sr As New StreamReader("..\..\..\Listes\prÃ©noms_fÃ©minins.txt")
                 Do Until sr.EndOfStream
                     Dim sLine As String = sr.ReadLine.ToLowerInvariant
                     For p As Integer = Len(sLine) - 1 To 0 Step -1

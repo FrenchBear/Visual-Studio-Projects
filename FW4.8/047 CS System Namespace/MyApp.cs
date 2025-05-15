@@ -104,7 +104,7 @@ internal class MyApp
 
         writer.Close();
 
-        Console.Write(@"Fichier c:\analyse.htm généré, entrée pour continuer...");
+        Console.Write(@"Fichier c:\analyse.htm gÃ©nÃ©rÃ©, entrÃ©e pour continuer...");
         Console.ReadLine();
     }
 

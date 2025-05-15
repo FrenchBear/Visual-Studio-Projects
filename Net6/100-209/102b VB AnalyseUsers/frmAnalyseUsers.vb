@@ -14,7 +14,7 @@ Imports VB = Microsoft.VisualBasic
 Public Class frmAnalyseUsers
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gÃ©nÃ©rÃ© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -24,11 +24,11 @@ Public Class frmAnalyseUsers
 
         Visible = True
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprÃ¨s l'appel InitializeComponent()
         Me.AcceptButton = btnAnalyse
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mÃ©thode substituÃ©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -40,14 +40,14 @@ Public Class frmAnalyseUsers
 
     Private components As IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEÂ : la procÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut Ãªtre modifiÃ©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'Ã©diteur de code.
     Friend WithEvents lblAnalyse As Label
 
     Friend WithEvents btnAnalyse As Button
     Friend WithEvents txtSite As TextBox
-    Friend WithEvents lblLégende As Label
+    Friend WithEvents lblLÃ©gende As Label
     Friend WithEvents lvUsers As ListView
     Friend WithEvents chCN As ColumnHeader
     Friend WithEvents chAccount As ColumnHeader
@@ -55,13 +55,13 @@ Public Class frmAnalyseUsers
     Friend WithEvents chRemarques As ColumnHeader
     Friend WithEvents gbTester As GroupBox
     Friend WithEvents chkScriptOuverture As CheckBox
-    Friend WithEvents chkCompteDésactivé As CheckBox
+    Friend WithEvents chkCompteDÃ©sactivÃ© As CheckBox
     Friend WithEvents chkChangeMDPInterdit As CheckBox
-    Friend WithEvents chkMdPExpiré As CheckBox
+    Friend WithEvents chkMdPExpirÃ© As CheckBox
     Friend WithEvents chkGrpfr_allusers_g As CheckBox
     Friend WithEvents chkGrpSite As CheckBox
     Friend WithEvents chkGrpBusiness As CheckBox
-    Friend WithEvents chkCompteVerrouillé As CheckBox
+    Friend WithEvents chkCompteVerrouillÃ© As CheckBox
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents sbStatus As ToolStripStatusLabel
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
@@ -74,7 +74,7 @@ Public Class frmAnalyseUsers
         Me.btnAnalyse = New Button()
         Me.lblAnalyse = New Label()
         Me.txtSite = New TextBox()
-        Me.lblLégende = New Label()
+        Me.lblLÃ©gende = New Label()
         Me.lvUsers = New ListView()
         Me.chCN = CType(New ColumnHeader(), ColumnHeader)
         Me.chOU = CType(New ColumnHeader(), ColumnHeader)
@@ -82,13 +82,13 @@ Public Class frmAnalyseUsers
         Me.chRemarques = CType(New ColumnHeader(), ColumnHeader)
         Me.gbTester = New GroupBox()
         Me.chkMdpPeutExpirer = New CheckBox()
-        Me.chkCompteVerrouillé = New CheckBox()
+        Me.chkCompteVerrouillÃ© = New CheckBox()
         Me.chkGrpBusiness = New CheckBox()
         Me.chkGrpSite = New CheckBox()
         Me.chkGrpfr_allusers_g = New CheckBox()
-        Me.chkMdPExpiré = New CheckBox()
+        Me.chkMdPExpirÃ© = New CheckBox()
         Me.chkChangeMDPInterdit = New CheckBox()
-        Me.chkCompteDésactivé = New CheckBox()
+        Me.chkCompteDÃ©sactivÃ© = New CheckBox()
         Me.chkScriptOuverture = New CheckBox()
         Me.StatusStrip1 = New StatusStrip()
         Me.sbStatus = New ToolStripStatusLabel()
@@ -114,7 +114,7 @@ Public Class frmAnalyseUsers
         Me.lblAnalyse.Name = "lblAnalyse"
         Me.lblAnalyse.Size = New Size(239, 25)
         Me.lblAnalyse.TabIndex = 0
-        Me.lblAnalyse.Text = "Site à analyser dans fr :"
+        Me.lblAnalyse.Text = "Site Ã  analyser dans fr :"
         '
         'txtSite
         '
@@ -123,14 +123,14 @@ Public Class frmAnalyseUsers
         Me.txtSite.Size = New Size(272, 31)
         Me.txtSite.TabIndex = 1
         '
-        'lblLégende
+        'lblLÃ©gende
         '
-        Me.lblLégende.AutoSize = True
-        Me.lblLégende.Location = New Point(8, 59)
-        Me.lblLégende.Name = "lblLégende"
-        Me.lblLégende.Size = New Size(61, 25)
-        Me.lblLégende.TabIndex = 3
-        Me.lblLégende.Text = "ou=fr"
+        Me.lblLÃ©gende.AutoSize = True
+        Me.lblLÃ©gende.Location = New Point(8, 59)
+        Me.lblLÃ©gende.Name = "lblLÃ©gende"
+        Me.lblLÃ©gende.Size = New Size(61, 25)
+        Me.lblLÃ©gende.TabIndex = 3
+        Me.lblLÃ©gende.Text = "ou=fr"
         '
         'lvUsers
         '
@@ -169,13 +169,13 @@ Public Class frmAnalyseUsers
         'gbTester
         '
         Me.gbTester.Controls.Add(Me.chkMdpPeutExpirer)
-        Me.gbTester.Controls.Add(Me.chkCompteVerrouillé)
+        Me.gbTester.Controls.Add(Me.chkCompteVerrouillÃ©)
         Me.gbTester.Controls.Add(Me.chkGrpBusiness)
         Me.gbTester.Controls.Add(Me.chkGrpSite)
         Me.gbTester.Controls.Add(Me.chkGrpfr_allusers_g)
-        Me.gbTester.Controls.Add(Me.chkMdPExpiré)
+        Me.gbTester.Controls.Add(Me.chkMdPExpirÃ©)
         Me.gbTester.Controls.Add(Me.chkChangeMDPInterdit)
-        Me.gbTester.Controls.Add(Me.chkCompteDésactivé)
+        Me.gbTester.Controls.Add(Me.chkCompteDÃ©sactivÃ©)
         Me.gbTester.Controls.Add(Me.chkScriptOuverture)
         Me.gbTester.Location = New Point(712, 7)
         Me.gbTester.Name = "gbTester"
@@ -192,15 +192,15 @@ Public Class frmAnalyseUsers
         Me.chkMdpPeutExpirer.TabIndex = 8
         Me.chkMdpPeutExpirer.Text = "MdP peut expirer"
         '
-        'chkCompteVerrouillé
+        'chkCompteVerrouillÃ©
         '
-        Me.chkCompteVerrouillé.Checked = True
-        Me.chkCompteVerrouillé.CheckState = CheckState.Checked
-        Me.chkCompteVerrouillé.Location = New Point(344, 30)
-        Me.chkCompteVerrouillé.Name = "chkCompteVerrouillé"
-        Me.chkCompteVerrouillé.Size = New Size(312, 29)
-        Me.chkCompteVerrouillé.TabIndex = 7
-        Me.chkCompteVerrouillé.Text = "Compte verrouillé"
+        Me.chkCompteVerrouillÃ©.Checked = True
+        Me.chkCompteVerrouillÃ©.CheckState = CheckState.Checked
+        Me.chkCompteVerrouillÃ©.Location = New Point(344, 30)
+        Me.chkCompteVerrouillÃ©.Name = "chkCompteVerrouillÃ©"
+        Me.chkCompteVerrouillÃ©.Size = New Size(312, 29)
+        Me.chkCompteVerrouillÃ©.TabIndex = 7
+        Me.chkCompteVerrouillÃ©.Text = "Compte verrouillÃ©"
         '
         'chkGrpBusiness
         '
@@ -210,7 +210,7 @@ Public Class frmAnalyseUsers
         Me.chkGrpBusiness.Name = "chkGrpBusiness"
         Me.chkGrpBusiness.Size = New Size(384, 30)
         Me.chkGrpBusiness.TabIndex = 6
-        Me.chkGrpBusiness.Text = "Attaché à 1 groupe business"
+        Me.chkGrpBusiness.Text = "AttachÃ© Ã  1 groupe business"
         '
         'chkGrpSite
         '
@@ -220,7 +220,7 @@ Public Class frmAnalyseUsers
         Me.chkGrpSite.Name = "chkGrpSite"
         Me.chkGrpSite.Size = New Size(384, 29)
         Me.chkGrpSite.TabIndex = 5
-        Me.chkGrpSite.Text = "Attaché à 1 groupe site"
+        Me.chkGrpSite.Text = "AttachÃ© Ã  1 groupe site"
         '
         'chkGrpfr_allusers_g
         '
@@ -230,17 +230,17 @@ Public Class frmAnalyseUsers
         Me.chkGrpfr_allusers_g.Name = "chkGrpfr_allusers_g"
         Me.chkGrpfr_allusers_g.Size = New Size(384, 30)
         Me.chkGrpfr_allusers_g.TabIndex = 4
-        Me.chkGrpfr_allusers_g.Text = "Attaché au groupe fr_allusers_g"
+        Me.chkGrpfr_allusers_g.Text = "AttachÃ© au groupe fr_allusers_g"
         '
-        'chkMdPExpiré
+        'chkMdPExpirÃ©
         '
-        Me.chkMdPExpiré.Checked = True
-        Me.chkMdPExpiré.CheckState = CheckState.Checked
-        Me.chkMdPExpiré.Location = New Point(8, 118)
-        Me.chkMdPExpiré.Name = "chkMdPExpiré"
-        Me.chkMdPExpiré.Size = New Size(312, 30)
-        Me.chkMdPExpiré.TabIndex = 3
-        Me.chkMdPExpiré.Text = "MdP expiré"
+        Me.chkMdPExpirÃ©.Checked = True
+        Me.chkMdPExpirÃ©.CheckState = CheckState.Checked
+        Me.chkMdPExpirÃ©.Location = New Point(8, 118)
+        Me.chkMdPExpirÃ©.Name = "chkMdPExpirÃ©"
+        Me.chkMdPExpirÃ©.Size = New Size(312, 30)
+        Me.chkMdPExpirÃ©.TabIndex = 3
+        Me.chkMdPExpirÃ©.Text = "MdP expirÃ©"
         '
         'chkChangeMDPInterdit
         '
@@ -252,15 +252,15 @@ Public Class frmAnalyseUsers
         Me.chkChangeMDPInterdit.TabIndex = 2
         Me.chkChangeMDPInterdit.Text = "Changement MdP interdit"
         '
-        'chkCompteDésactivé
+        'chkCompteDÃ©sactivÃ©
         '
-        Me.chkCompteDésactivé.Checked = True
-        Me.chkCompteDésactivé.CheckState = CheckState.Checked
-        Me.chkCompteDésactivé.Location = New Point(8, 59)
-        Me.chkCompteDésactivé.Name = "chkCompteDésactivé"
-        Me.chkCompteDésactivé.Size = New Size(248, 30)
-        Me.chkCompteDésactivé.TabIndex = 1
-        Me.chkCompteDésactivé.Text = "Compte désactivé"
+        Me.chkCompteDÃ©sactivÃ©.Checked = True
+        Me.chkCompteDÃ©sactivÃ©.CheckState = CheckState.Checked
+        Me.chkCompteDÃ©sactivÃ©.Location = New Point(8, 59)
+        Me.chkCompteDÃ©sactivÃ©.Name = "chkCompteDÃ©sactivÃ©"
+        Me.chkCompteDÃ©sactivÃ©.Size = New Size(248, 30)
+        Me.chkCompteDÃ©sactivÃ©.TabIndex = 1
+        Me.chkCompteDÃ©sactivÃ©.Text = "Compte dÃ©sactivÃ©"
         '
         'chkScriptOuverture
         '
@@ -299,7 +299,7 @@ Public Class frmAnalyseUsers
         '
         Me.cmdCopie.Name = "cmdCopie"
         Me.cmdCopie.Size = New Size(300, 38)
-        Me.cmdCopie.Text = "Copie liste entière"
+        Me.cmdCopie.Text = "Copie liste entiÃ¨re"
         '
         'frmAnalyseUsers
         '
@@ -308,7 +308,7 @@ Public Class frmAnalyseUsers
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.gbTester)
         Me.Controls.Add(Me.lvUsers)
-        Me.Controls.Add(Me.lblLégende)
+        Me.Controls.Add(Me.lblLÃ©gende)
         Me.Controls.Add(Me.txtSite)
         Me.Controls.Add(Me.lblAnalyse)
         Me.Controls.Add(Me.btnAnalyse)
@@ -326,16 +326,16 @@ Public Class frmAnalyseUsers
 
 #End Region
 
-    ' Point de départ de l'analyse
+    ' Point de dÃ©part de l'analyse
     Const sStartOU As String = "ou=fr,dc=eame,dc=global,dc=sgs,dc=com"
 
-    ' Liste des code-sites définis dans Workstations & Printers
+    ' Liste des code-sites dÃ©finis dans Workstations & Printers
     Dim slSites As SortedList
 
     ' Liste des groupes business
     ReadOnly tsBusiness As String() = New String() {"agr", "aud", "fin", "hr", "ind", "it", "lab", "lgl", "lif", "mgt", "min", "ogc", "ssc cts", "tas"}
 
-    ' Attributs de comptes. Piqué sur http://msdn.microsoft.com/library/default.asp?url=/library/en-us/adsi/adsi/ads_user_flag_enum.asp
+    ' Attributs de comptes. PiquÃ© sur http://msdn.microsoft.com/library/default.asp?url=/library/en-us/adsi/adsi/ads_user_flag_enum.asp
     Enum ADS_USER_FLAG_ENUM
         ADS_UF_SCRIPT = &H1
         ADS_UF_ACCOUNTDISABLE = &H2
@@ -367,22 +367,22 @@ Public Class frmAnalyseUsers
 
         Dim sPos As String = sStartOU
         If txtSite.Text <> "" Then sPos = "ou=" & txtSite.Text & "," & sPos
-        lblLégende.Text = "Analyse de: " & Replace(sPos, "&", "&&") & " :"
-        lblLégende.Refresh()
+        lblLÃ©gende.Text = "Analyse de: " & Replace(sPos, "&", "&&") & " :"
+        lblLÃ©gende.Refresh()
 
-        ' On commence par récupérer la liste des sites
-        RécupListeSites()
+        ' On commence par rÃ©cupÃ©rer la liste des sites
+        RÃ©cupListeSites()
 
         AnalyseOU(txtSite.Text, sPos)
         btnAnalyse.Enabled = True
     End Sub
 
-    Sub RécupListeSites()
+    Sub RÃ©cupListeSites()
         Dim objOU As Object
         Try
             objOU = GetObject("LDAP://ou=Workstations & Printers," & sStartOU)
         Catch e As Exception
-            MsgBox("Échec lors de l'accès à l'objet Active Directory LDAP://ou=Workstations & Printers," & sStartOU & vbCrLf & vbCrLf & e.Source & ": " & e.Message)
+            MsgBox("Ã‰chec lors de l'accÃ¨s Ã  l'objet Active Directory LDAP://ou=Workstations & Printers," & sStartOU & vbCrLf & vbCrLf & e.Source & ": " & e.Message)
             Exit Sub
         End Try
 
@@ -395,14 +395,14 @@ Public Class frmAnalyseUsers
         Next
     End Sub
 
-    ' Parcours récursif de AD
-    ' Retour false en cas de pb lors de l'accès
+    ' Parcours rÃ©cursif de AD
+    ' Retour false en cas de pb lors de l'accÃ¨s
     Sub AnalyseOU(sPos As String, sStart As String)
         Dim objOU As Object
         Try
             objOU = GetObject("LDAP://" & sStart)
         Catch e As Exception
-            MsgBox("Échec lors de l'accès à l'objet Active Directory LDAP://" & sStart & vbCrLf & vbCrLf & e.Source & ": " & e.Message)
+            MsgBox("Ã‰chec lors de l'accÃ¨s Ã  l'objet Active Directory LDAP://" & sStart & vbCrLf & vbCrLf & e.Source & ": " & e.Message)
             Exit Sub
         End Try
 
@@ -442,22 +442,22 @@ Public Class frmAnalyseUsers
             End If
         End If
 
-        ' Compte verrouillé
-        If chkCompteVerrouillé.Checked Then
+        ' Compte verrouillÃ©
+        If chkCompteVerrouillÃ©.Checked Then
             If u.IsAccountLocked Then
-                sAnalyse += ", Compte verrouillé"
+                sAnalyse += ", Compte verrouillÃ©"
             End If
         End If
 
         ' Bits particuliers...
         Dim iUserAccountControl As Integer
         iUserAccountControl = u.Get("userAccountControl")
-        'If u.cn = "Jean-Raoul DUGÂTEAU" Then Stop
-        If chkCompteDésactivé.Checked And (iUserAccountControl And ADS_USER_FLAG_ENUM.ADS_UF_ACCOUNTDISABLE) Then sAnalyse += ", Compte désactivé"
-        If chkMdPExpiré.Checked And (iUserAccountControl And ADS_USER_FLAG_ENUM.ADS_UF_PASSWORD_EXPIRED) Then sAnalyse += ", Le mot de passe a expiré"
+        'If u.cn = "Jean-Raoul DUGÃ‚TEAU" Then Stop
+        If chkCompteDÃ©sactivÃ©.Checked And (iUserAccountControl And ADS_USER_FLAG_ENUM.ADS_UF_ACCOUNTDISABLE) Then sAnalyse += ", Compte dÃ©sactivÃ©"
+        If chkMdPExpirÃ©.Checked And (iUserAccountControl And ADS_USER_FLAG_ENUM.ADS_UF_PASSWORD_EXPIRED) Then sAnalyse += ", Le mot de passe a expirÃ©"
         If chkMdpPeutExpirer.Checked And (iUserAccountControl And ADS_USER_FLAG_ENUM.ADS_UF_DONT_EXPIRE_PASSWD) = 0 Then sAnalyse += ", Le mot de passe peut expirer"
 
-        ' L'utilisateur ne peut pas changer le mot de passe (le bit ADS_USER_FLAG_ENUM.ADS_UF_PASSWD_CANT_CHANGE est toujours à 0...)
+        ' L'utilisateur ne peut pas changer le mot de passe (le bit ADS_USER_FLAG_ENUM.ADS_UF_PASSWD_CANT_CHANGE est toujours Ã  0...)
         If chkChangeMDPInterdit.Checked Then
             Dim oUser As Object
             oUser = GetObject("WinNT://EAME/" + u.sAMAccountName)
@@ -466,7 +466,7 @@ Public Class frmAnalyseUsers
             End If
         End If
 
-        ' Récupération de la liste des groupes
+        ' RÃ©cupÃ©ration de la liste des groupes
         Dim tMemberOf As Object
         Try
             tMemberOf = u.GetEx("memberOf")
@@ -477,20 +477,20 @@ Public Class frmAnalyseUsers
         ' Test du rattachement au groupe fr_allusers_g
         Dim sGroupe As String
         If chkGrpfr_allusers_g.Checked Then
-            Dim bTrouvé As Boolean
-            bTrouvé = False
+            Dim bTrouvÃ© As Boolean
+            bTrouvÃ© = False
             For Each sGroupe In tMemberOf
                 If InStr(sGroupe, "=fr_allusers_g", CompareMethod.Text) <> 0 Then
-                    bTrouvé = True
+                    bTrouvÃ© = True
                     Exit For
                 End If
             Next
-            If Not bTrouvé Then
+            If Not bTrouvÃ© Then
                 sAnalyse += ", Pas membre de fr_allusers_g"
             End If
         End If
 
-        ' Test du rattachement à un groupe site
+        ' Test du rattachement Ã  un groupe site
         If chkGrpSite.Checked Then
             Dim iNbSites As Integer
             Dim sSites As String
@@ -504,11 +504,11 @@ Public Class frmAnalyseUsers
                     End If
                 Next
             Next
-            If iNbSites = 0 Then sAnalyse += ", Rattaché à aucun groupe-site"
-            If iNbSites > 1 Then sAnalyse += ", Rattaché à " & iNbSites & " groupe-sites: " & Mid(sSites, 3)
+            If iNbSites = 0 Then sAnalyse += ", RattachÃ© Ã  aucun groupe-site"
+            If iNbSites > 1 Then sAnalyse += ", RattachÃ© Ã  " & iNbSites & " groupe-sites: " & Mid(sSites, 3)
         End If
 
-        ' Test du rattachement à un groupe business
+        ' Test du rattachement Ã  un groupe business
         If chkGrpBusiness.Checked Then
             Dim iNbBusiness As Integer
             iNbBusiness = 0
@@ -519,10 +519,10 @@ Public Class frmAnalyseUsers
                     End If
                 Next
             Next
-            If iNbBusiness = 0 Then sAnalyse += ", Rattaché à aucun groupe-business"
+            If iNbBusiness = 0 Then sAnalyse += ", RattachÃ© Ã  aucun groupe-business"
         End If
 
-        ' Intégration de l'analyse dans la liste
+        ' IntÃ©gration de l'analyse dans la liste
         Dim x As ListViewItem.ListViewSubItem
         If Len(sAnalyse) > 0 Then
             x = lvi.SubItems.Add(Mid(sAnalyse, 3))
@@ -565,7 +565,7 @@ Public Class frmAnalyseUsers
 
 End Class
 
-' Implémentation du tri de la liste par n'importe quelle colonne
+' ImplÃ©mentation du tri de la liste par n'importe quelle colonne
 Class ListViewItemComparer
     Implements IComparer
 

@@ -22,7 +22,7 @@ Public Class frmPicResize
     Dim m_sSourcePath As String
     Dim m_sDestinationPath As String
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gÃ©nÃ©rÃ© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -30,11 +30,11 @@ Public Class frmPicResize
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprÃ¨s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mÃ©thode substituÃ©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -47,9 +47,9 @@ Public Class frmPicResize
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEÂ : la procÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut Ãªtre modifiÃ©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'Ã©diteur de code.
     Friend WithEvents lstTrace As ListBox
 
     Friend WithEvents lblSource As Label
@@ -252,20 +252,20 @@ Public Class frmPicResize
     Private Sub btnGo_Click(sender As Object, e As EventArgs) Handles btnGo.Click
 
         If Not Directory.Exists(txtSource.Text) Then
-            MsgBox("Répertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
+            MsgBox("RÃ©pertoire source inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             txtSource.Focus()
             Exit Sub
         End If
 
         If Not Directory.Exists(txtDestination.Text) Then
-            MsgBox("Répertoire destination inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
+            MsgBox("RÃ©pertoire destination inexistant ou inaccessible.", MsgBoxStyle.Exclamation)
             txtDestination.Focus()
             Exit Sub
         End If
 
         m_iGrandCote = Val(txtSize.Text)
         If m_iGrandCote < 50 Or m_iGrandCote > 2500 Then
-            MsgBox("Taille du grand coté invalide (doit être comprise entre 50 et 2500)", MsgBoxStyle.Exclamation)
+            MsgBox("Taille du grand cotÃ© invalide (doit Ãªtre comprise entre 50 et 2500)", MsgBoxStyle.Exclamation)
             txtSize.Focus()
             Exit Sub
         End If
@@ -276,12 +276,12 @@ Public Class frmPicResize
         If Microsoft.VisualBasic.Right(m_sDestinationPath, 1) <> "\" Then m_sDestinationPath &= "\"
 
         If StrComp(m_sSourcePath, m_sDestinationPath, CompareMethod.Text) = 0 Then
-            MsgBox("Les deux répertoires ne peuvent être identiques.", MsgBoxStyle.Exclamation)
+            MsgBox("Les deux rÃ©pertoires ne peuvent Ãªtre identiques.", MsgBoxStyle.Exclamation)
             Exit Sub
         End If
 
         btnGo.Enabled = False
-        Trace("Début de la génération")
+        Trace("DÃ©but de la gÃ©nÃ©ration")
 
         Dim dir As DirectoryInfo
         dir = New DirectoryInfo(txtSource.Text)
@@ -289,18 +289,18 @@ Public Class frmPicResize
 
         For Each fic In dir.GetFiles("*.jpg")
             Try
-                GénèreVignette(fic.Name)
+                GÃ©nÃ¨reVignette(fic.Name)
                 GC.Collect()
                 Thread.Sleep(0)
             Catch
             End Try
         Next
 
-        Trace("Fin de la génération")
+        Trace("Fin de la gÃ©nÃ©ration")
         btnGo.Enabled = True
     End Sub
 
-    Sub GénèreVignette(sNomfic As String)
+    Sub GÃ©nÃ¨reVignette(sNomfic As String)
         Dim sPathImg As String
         Dim sPathVignette As String
 
@@ -321,15 +321,15 @@ Public Class frmPicResize
 
         Dim imgOutput As Bitmap
 
-        ' Version compliquée avec DrawImage
+        ' Version compliquÃ©e avec DrawImage
         'imgOutput = New Bitmap(iNewWidth, iNewHeight, System.Drawing.Imaging.PixelFormat.Format32bppRgb)
         'Dim h As Graphics = Graphics.FromImage(imgOutput)
         'h.DrawImage(img, 0, 0, iNewWidth, iNewHeight)
 
-        ' Version simplifiée avec le constructeur de Bitmap qui remet à l'échelle
+        ' Version simplifiÃ©e avec le constructeur de Bitmap qui remet Ã  l'Ã©chelle
         imgOutput = New Bitmap(imgSource, iNewWidth, iNewHeight)
 
-        ' On contrôle la Quality
+        ' On contrÃ´le la Quality
         Dim eps As New EncoderParameters(1)
         eps.Param(0) = New EncoderParameter(Encoder.Quality, CLng(txtQuality.Text))
         Dim ici As ImageCodecInfo = GetEncoderInfo("image/jpeg")
@@ -349,7 +349,7 @@ Public Class frmPicResize
     Private Sub btnLookupSource_Click(sender As Object, e As EventArgs) Handles btnLookupSource.Click
         FolderBrowser.SelectedPath = txtSource.Text
         FolderBrowser.ShowNewFolderButton = False
-        FolderBrowser.Description = "Sélectionnez le dossier contenant les images source :"
+        FolderBrowser.Description = "SÃ©lectionnez le dossier contenant les images source :"
         If FolderBrowser.ShowDialog(Me) = DialogResult.OK Then
             txtSource.Text = FolderBrowser.SelectedPath
             txtSource.SelectionStart = 0
@@ -360,7 +360,7 @@ Public Class frmPicResize
     Private Sub btnLookupDestination_Click(sender As Object, e As EventArgs) Handles btnLookupDestination.Click
         FolderBrowser.SelectedPath = txtDestination.Text
         FolderBrowser.ShowNewFolderButton = True
-        FolderBrowser.Description = "Sélectionnez le dossier de destination pour les vignettes :"
+        FolderBrowser.Description = "SÃ©lectionnez le dossier de destination pour les vignettes :"
         If FolderBrowser.ShowDialog(Me) = DialogResult.OK Then
             txtDestination.Text = FolderBrowser.SelectedPath
             txtDestination.SelectionStart = 0

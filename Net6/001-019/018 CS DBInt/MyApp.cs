@@ -1,4 +1,4 @@
-// Essais d'implmétation d'une classe d'entiers gérant NULL
+// Essais d'implmÃ©tation d'une classe d'entiers gÃ©rant NULL
 // 2001-01-15   PV
 // 2001-08-15   PV	Beta2, ToString
 // 2006-10-01   PV  VS2005  Note that Framework 2 has a generic class Nullable(of T) that is a solution to this problem
@@ -18,7 +18,7 @@ public readonly struct DBInt
 
     public bool IsNull => !defined;
 
-    // Pas de constructeur sans paramètre car c'est un type struct
+    // Pas de constructeur sans paramÃ¨tre car c'est un type struct
     private DBInt(int x)
     {
         value = x;

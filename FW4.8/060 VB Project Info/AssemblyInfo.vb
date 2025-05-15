@@ -17,7 +17,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyInformationalVersion("1.2.3.4")>
 '<Assembly: AssemblyFlags(0)>
 
-' Attributs privés
+' Attributs privÃ©s
 <Assembly: AssemblyPV(47, Info:="Attribut PV")>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM

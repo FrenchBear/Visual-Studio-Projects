@@ -1,5 +1,5 @@
 ' Sort Comics
-' Manipulation d'expressions régilières et du filesystem
+' Manipulation d'expressions rÃ©giliÃ¨res et du filesystem
 ' 2004-07-14    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -11,7 +11,7 @@ Imports System.Text.RegularExpressions
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gÃ©nÃ©rÃ© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -19,11 +19,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprÃ¨s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mÃ©thode substituÃ©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -36,9 +36,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEÂ : la procÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut Ãªtre modifiÃ©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'Ã©diteur de code.
     Friend WithEvents Button1 As Button
 
     Friend WithEvents Button2 As Button
@@ -102,7 +102,7 @@ Public Class Form1
                 nbMove += 1
             End If
         Next
-        MsgBox(nbFic & " fichiers traités" & vbCrLf & nbMatch & " images" & vbCrLf & nbMove & " déplacments" & vbCrLf & nbDir & " répertoires créés")
+        MsgBox(nbFic & " fichiers traitÃ©s" & vbCrLf & nbMatch & " images" & vbCrLf & nbMove & " dÃ©placments" & vbCrLf & nbDir & " rÃ©pertoires crÃ©Ã©s")
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -122,7 +122,7 @@ Public Class Form1
                 'Debug.WriteLine(String.Format("{0}: {1}", nbDir, sd.Name))
             End If
         Next
-        MsgBox(nbDir & " répertoires")
+        MsgBox(nbDir & " rÃ©pertoires")
     End Sub
 
 End Class

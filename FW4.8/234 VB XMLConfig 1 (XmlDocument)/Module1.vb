@@ -38,7 +38,7 @@ Module Module1
         If sVal = vbNullString Then Exit Sub
         Dim PropElement As XmlElement
         PropElement = Doc.CreateElement(sName)
-        PropElement.InnerText = Replace(sVal, vbCrLf, "¶")
+        PropElement.InnerText = Replace(sVal, vbCrLf, "Â¶")
         BaseNode.AppendChild(PropElement)
     End Sub
 

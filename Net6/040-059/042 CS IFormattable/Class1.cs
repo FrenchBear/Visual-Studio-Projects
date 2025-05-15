@@ -26,7 +26,7 @@ internal struct Complexe : IFormattable
             switch (sFormat.ToLower())
             {
                 case "p":
-                    //return "<Nombre " + ToString() + " en coordonnées pôlaires>";
+                    //return "<Nombre " + ToString() + " en coordonnÃ©es pÃ´laires>";
                     return "[" + Math.Sqrt(i * i + r * r) + ";" + Math.Atan2(i, r) / Math.PI * 180 + "]";
             }
         return ToString();

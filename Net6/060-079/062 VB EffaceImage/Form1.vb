@@ -1,4 +1,4 @@
-' Essais d'effacement d'image pendant qu'elle est affichée
+' Essais d'effacement d'image pendant qu'elle est affichÃ©e
 ' 2001-08-19    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010  Updated paths
@@ -116,7 +116,7 @@ Public Class Form1
         Try
             FileCopy(sSoucePath, sCopyPath)
         Catch er As Exception
-            MsgBox("Échec au FileCopy: " & er.Message & vbCrLf & er.StackTrace)
+            MsgBox("Ã‰chec au FileCopy: " & er.Message & vbCrLf & er.StackTrace)
             Exit Sub
         End Try
 
@@ -135,7 +135,7 @@ Public Class Form1
         Try
             Kill(sCopyPath)
         Catch er As Exception
-            MsgBox("Échec au Kill: " & er.Message & vbCrLf & er.StackTrace)
+            MsgBox("Ã‰chec au Kill: " & er.Message & vbCrLf & er.StackTrace)
             Exit Sub
         End Try
     End Sub

@@ -45,7 +45,7 @@ Partial Class FloorButtonsUserControl
         Me.UpButton.Name = "btnUp"
         Me.UpButton.Size = New Size(35, 33)
         Me.UpButton.TabIndex = 1
-        Me.UpButton.Text = "é"
+        Me.UpButton.Text = "Ã©"
         Me.UpButton.TextAlign = ContentAlignment.TopCenter
         Me.UpButton.UseVisualStyleBackColor = False
         '
@@ -57,7 +57,7 @@ Partial Class FloorButtonsUserControl
         Me.DownButton.Name = "btnDown"
         Me.DownButton.Size = New Size(35, 33)
         Me.DownButton.TabIndex = 2
-        Me.DownButton.Text = "ê"
+        Me.DownButton.Text = "Ãª"
         Me.DownButton.TextAlign = ContentAlignment.BottomCenter
         Me.DownButton.UseVisualStyleBackColor = False
         '

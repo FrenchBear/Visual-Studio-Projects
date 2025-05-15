@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("SGS")>
 <Assembly: AssemblyProduct("101 IEnumerable Generic")>
-<Assembly: AssemblyCopyright("Copyright © SGS 2005")>
+<Assembly: AssemblyCopyright("Copyright Â© SGS 2005")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: CLSCompliant(True)>

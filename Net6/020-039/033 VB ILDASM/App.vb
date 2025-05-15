@@ -1,5 +1,5 @@
 ' App.vb
-' Essais de la bibliothèque C# en VB
+' Essais de la bibliothÃ¨que C# en VB
 '
 ' 2001-02-03    PV
 ' 2012-02-25	PV  VS2010
@@ -30,18 +30,18 @@ Namespace EssaisILDasm
             Try
                 MaClasseDerivee.TrucDangereux(0)
             Catch e As Exception
-                WriteLine("Échec à l'appel de d.TrucDangereux(0): {0}", e.Message)
+                WriteLine("Ã‰chec Ã  l'appel de d.TrucDangereux(0): {0}", e.Message)
             End Try
             WriteLine()
 
-            ' Appel de méthodes virtuelles
+            ' Appel de mÃ©thodes virtuelles
             ActionBase(d, 2)
             d.MyBaseAction()
             Dim b As New MaClasseDeBase(d)
             b.Action()
             WriteLine()
 
-            ' Evénements
+            ' EvÃ©nements
             d.MaMethodeBruyante1(3)
             ActionInterface(d)
             WriteLine()

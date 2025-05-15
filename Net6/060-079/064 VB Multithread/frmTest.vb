@@ -82,9 +82,9 @@ Public Class frmTest
     Shared ReadOnly m As New Mutex()
 
     Shared Sub Proc1()
-        Trace("Début Proc1")
+        Trace("DÃ©but Proc1")
         SyncLock m
-            Trace("Début section critique Proc1")
+            Trace("DÃ©but section critique Proc1")
             Thread.Sleep(4000)
             Trace("Fin section critique Proc1")
         End SyncLock
@@ -92,20 +92,20 @@ Public Class frmTest
     End Sub
 
     Shared Sub Proc2()
-        Trace("Début Proc2")
+        Trace("DÃ©but Proc2")
         SyncLock m
-            Trace("Début section critique Proc2")
+            Trace("DÃ©but section critique Proc2")
             Thread.Sleep(4000)
             Trace("Fin section critique Proc2")
         End SyncLock
         Trace("Fin Proc2")
     End Sub
 
-    Delegate Sub Procédure()
+    Delegate Sub ProcÃ©dure()
 
     Private Sub btnDelegate_Click(sender As Object, e As EventArgs) Handles btnDelegate.Click
-        Dim p1 As Procédure = AddressOf Proc1
-        Dim p2 As New Procédure(AddressOf Proc2)
+        Dim p1 As ProcÃ©dure = AddressOf Proc1
+        Dim p2 As New ProcÃ©dure(AddressOf Proc2)
 
         Trace("BeginInvoke Proc1")
         Dim ar1 As IAsyncResult = p1.BeginInvoke(Nothing, Nothing)
@@ -115,11 +115,11 @@ Public Class frmTest
         Thread.Sleep(1000)
         Trace("avant EndInvoke Proc1")
         p1.EndInvoke(ar1)
-        Trace("après EndInvoke Proc1")
+        Trace("aprÃ¨s EndInvoke Proc1")
         Trace("avant EndInvoke Proc2")
         p2.EndInvoke(ar2)
-        Trace("après EndInvoke Proc2")
-        Trace("Terminé")
+        Trace("aprÃ¨s EndInvoke Proc2")
+        Trace("TerminÃ©")
     End Sub
 
     Private Sub btnThread_Click(sender As Object, e As EventArgs) Handles btnThread.Click
@@ -138,15 +138,15 @@ Public Class frmTest
         While t1.IsAlive
             Thread.Sleep(100)
         End While
-        Trace("Proc1 terminé")
+        Trace("Proc1 terminÃ©")
 
         Trace("attente fin Proc2")
         While t2.IsAlive
             Thread.Sleep(100)
         End While
-        Trace("Proc2 terminé")
+        Trace("Proc2 terminÃ©")
 
-        Trace("Terminé")
+        Trace("TerminÃ©")
     End Sub
 
 End Class

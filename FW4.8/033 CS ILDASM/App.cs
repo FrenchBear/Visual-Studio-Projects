@@ -28,17 +28,17 @@ namespace EssaisILDasm
             try
             { d.TrucDangereux(0); }
             catch (Exception e)
-            { Console.WriteLine("Échec à l'appel de d.TrucDangereux(0): {0}", e.Message); }
+            { Console.WriteLine("Ã‰chec Ã  l'appel de d.TrucDangereux(0): {0}", e.Message); }
             Console.WriteLine();
 
-            // Appel de méthodes virtuelles
+            // Appel de mÃ©thodes virtuelles
             ActionBase(d, 2);
             d.MyBaseAction();
             var b = new MaClasseDeBase(d);
             b.Action();
             Console.WriteLine();
 
-            // Evénements
+            // EvÃ©nements
             d.MaMethodeBruyante1(3);
             ActionInterface(d);
             Console.WriteLine();

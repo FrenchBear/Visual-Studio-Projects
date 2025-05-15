@@ -88,7 +88,7 @@ Public Class frmTest
         If bCtrlFournisseurRE(TextBox1.Text) Then
             MsgBox("Ok")
         Else
-            MsgBox("Problème")
+            MsgBox("ProblÃ¨me")
         End If
     End Sub
 
@@ -96,7 +96,7 @@ Public Class frmTest
         If bCtrlFournisseurA(TextBox1.Text) Then
             MsgBox("Ok")
         Else
-            MsgBox("Problème")
+            MsgBox("ProblÃ¨me")
         End If
     End Sub
 

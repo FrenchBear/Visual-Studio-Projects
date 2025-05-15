@@ -105,7 +105,7 @@ internal static class MyApp
 
         writer.Close();
 
-        WriteLine(@"Fichier c:\analyse.htm généré");    //, entrée pour continuer...");
+        WriteLine(@"Fichier c:\analyse.htm gÃ©nÃ©rÃ©");    //, entrÃ©e pour continuer...");
         //Console.ReadLine();
     }
 

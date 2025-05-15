@@ -1,5 +1,5 @@
-// 012 CS Operators: Essais d'opÈrateurs et de finalizers
-// Ne fonctionne plus avec la BÈta 2...
+// 012 CS Operators: Essais d'op√©rateurs et de finalizers
+// Ne fonctionne plus avec la B√©ta 2...
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 // 2021-09-17   PV  VS2022/Net6
@@ -11,8 +11,8 @@ internal class Complexe
 {
     protected double r, i;
 
-    /// <summary>Constructeur de Complexe ‡ partir d'une paire de rÈels</summary>
-    /// <param name="r">Partie rÈelle</param>
+    /// <summary>Constructeur de Complexe √† partir d'une paire de r√©els</summary>
+    /// <param name="r">Partie r√©elle</param>
     /// <param name="i">Partie imaginaire</param>
     public Complexe(double r, double i)
     {
@@ -62,7 +62,7 @@ internal static class MyApp
         WriteLine("TestsComplexes.3 Mem: {0}", GC.GetTotalMemory(false));
         var c = a + b;
 
-        // Gr‚ce ‡ l'opÈrateur Complexe(double d)
+        // Gr√¢ce √† l'op√©rateur Complexe(double d)
         Complexe d = 2;
         var e = a + 1;
         Complexe f = (byte)2;

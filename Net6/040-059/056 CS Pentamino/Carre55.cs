@@ -9,8 +9,8 @@ using static System.Console;
 internal class Carre55
 {
     public bool[,] tMotif;
-    public int lmax, cmax;		// Encombrement de la pièce
-    public int iOffsetCol;		// Décalage de colonne pour occuper la cellule [0, 0]
+    public int lmax, cmax;		// Encombrement de la piÃ¨ce
+    public int iOffsetCol;		// DÃ©calage de colonne pour occuper la cellule [0, 0]
 
     private bool B(int x) 
         => x != 0;
@@ -50,12 +50,12 @@ internal class Carre55
         MkOffset();
     }
 
-    // Détermine la propriété iOffsetCol, c'est à dire le nombre de colonnes qu'il
-    // faut translater le dessin à gauche pour occuper la cellule [0, 0]
+    // DÃ©termine la propriÃ©tÃ© iOffsetCol, c'est Ã  dire le nombre de colonnes qu'il
+    // faut translater le dessin Ã  gauche pour occuper la cellule [0, 0]
     private void MkOffset() 
         => iOffsetCol = tMotif[0, 0] ? 0 : tMotif[0, 1] ? 1 : tMotif[0, 2] ? 2 : tMotif[0, 3] ? 3 : 4;
 
-    // Opérateur de comparaison
+    // OpÃ©rateur de comparaison
     public static bool Egalite(Carre55 l, Carre55 k) 
         => l.lmax == k.lmax && l.cmax == k.cmax &&
             l.tMotif[0, 0] == k.tMotif[0, 0] && l.tMotif[0, 1] == k.tMotif[0, 1] && l.tMotif[0, 2] == k.tMotif[0, 2] && l.tMotif[0, 3] == k.tMotif[0, 3] && l.tMotif[0, 4] == k.tMotif[0, 4] &&
@@ -95,14 +95,14 @@ internal class Carre55
         };
 
     // Transformations
-    // 0: Identité
-    // 1: 90°  sens horaire
-    // 2: 180°
-    // 3: 270° sens horaire
+    // 0: IdentitÃ©
+    // 1: 90Â°  sens horaire
+    // 2: 180Â°
+    // 3: 270Â° sens horaire
     // 4: miroir Hz
-    // 5: miroir Hz + 90°  sens horaire
-    // 6: miroir Hz + 180°
-    // 7: miroir Hz + 270° sens horaire
+    // 5: miroir Hz + 90Â°  sens horaire
+    // 6: miroir Hz + 180Â°
+    // 7: miroir Hz + 270Â° sens horaire
 
     public Carre55 Transformation(int iT)
     {

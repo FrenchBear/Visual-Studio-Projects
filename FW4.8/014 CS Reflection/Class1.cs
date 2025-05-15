@@ -1,10 +1,10 @@
 // Essais de l'interface Reflection
-// D'après mail de Jayanth Rajan@MICROSOFT.COM du 9/1/2001
-// Résultat du programe:
+// D'aprÃ¨s mail de Jayanth Rajan@MICROSOFT.COM du 9/1/2001
+// RÃ©sultat du programe:
 // Void ibar.c() Interface Method: Void c() Interface: ibar
 // Void ibar.b() Interface Method: Void b() Interface: ibar
 // Void ifoo.a() Interface Method: Void a() Interface: ifoo
-// 2001-08-11   PV  Adapté Beta2
+// 2001-08-11   PV  AdaptÃ© Beta2
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
 

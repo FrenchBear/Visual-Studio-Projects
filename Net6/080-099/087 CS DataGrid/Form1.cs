@@ -20,7 +20,7 @@ public class Form1 : Form
     private Label label1;
 
     /// <summary>
-    /// Variable nécessaire au concepteur.
+    /// Variable nÃ©cessaire au concepteur.
     /// </summary>
     private readonly System.ComponentModel.Container components = null;
 
@@ -38,11 +38,11 @@ public class Form1 : Form
         base.Dispose(disposing);
     }
 
-    #region Code généré par le Concepteur Windows Form
+    #region Code gÃ©nÃ©rÃ© par le Concepteur Windows Form
 
     /// <summary>
-    /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-    /// le contenu de cette méthode avec l'éditeur de code.
+    /// MÃ©thode requise pour la prise en charge du concepteur - ne modifiez pas
+    /// le contenu de cette mÃ©thode avec l'Ã©diteur de code.
     /// </summary>
     private void InitializeComponent()
     {
@@ -79,7 +79,7 @@ public class Form1 : Form
         label2.Name = "label2";
         label2.Size = new System.Drawing.Size(155, 16);
         label2.TabIndex = 3;
-        label2.Text = "DataTable créée dans le code";
+        label2.Text = "DataTable crÃ©Ã©e dans le code";
         //
         // label1
         //
@@ -106,9 +106,9 @@ public class Form1 : Form
         ResumeLayout(false);
     }
 
-    #endregion Code généré par le Concepteur Windows Form
+    #endregion Code gÃ©nÃ©rÃ© par le Concepteur Windows Form
 
-    /// Point d'entrée principal de l'application.
+    /// Point d'entrÃ©e principal de l'application.
     [STAThread]
     private static void Main() => Application.Run(new Form1());
 
@@ -139,11 +139,11 @@ public class Form1 : Form
         dataGrid1.DataSource = myDataSet;
         dataGrid1.DataMember = "Customers";
 
-        // On crée un dataview
+        // On crÃ©e un dataview
         //DataView myDataView = new DataView(myDataSet.Tables["Suppliers"], "Country = 'UK'", "CompanyName", DataViewRowState.CurrentRows);
     }
 
-    // DataTable créée dans le code
+    // DataTable crÃ©Ã©e dans le code
     private void Remplit2()
     {
         DataTable myTable = new("Suppliers");

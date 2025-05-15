@@ -19,11 +19,11 @@ public class Form1 : System.Windows.Forms.Form
     private System.Windows.Forms.Label label1;
 
     /// <summary>
-    /// Variable nÈcessaire au concepteur.
+    /// Variable n√©cessaire au concepteur.
     /// </summary>
     private readonly System.ComponentModel.Container components = null;
 
-    public Form1() => InitializeComponent();// TODO : ajoutez le code du constructeur aprËs l'appel ‡ InitializeComponent
+    public Form1() => InitializeComponent();// TODO : ajoutez le code du constructeur apr√®s l'appel √† InitializeComponent
 
     protected override void Dispose(bool disposing)
     {
@@ -34,11 +34,11 @@ public class Form1 : System.Windows.Forms.Form
         base.Dispose(disposing);
     }
 
-    #region Code gÈnÈrÈ par le Concepteur Windows Form
+    #region Code g√©n√©r√© par le Concepteur Windows Form
 
     /// <summary>
-    /// MÈthode requise pour la prise en charge du concepteur - ne modifiez pas
-    /// le contenu de cette mÈthode avec l'Èditeur de code.
+    /// M√©thode requise pour la prise en charge du concepteur - ne modifiez pas
+    /// le contenu de cette m√©thode avec l'√©diteur de code.
     /// </summary>
     private void InitializeComponent()
     {
@@ -75,7 +75,7 @@ public class Form1 : System.Windows.Forms.Form
         label2.Name = "label2";
         label2.Size = new System.Drawing.Size(155, 16);
         label2.TabIndex = 3;
-        label2.Text = "DataTable crÈÈe dans le code";
+        label2.Text = "DataTable cr√©√©e dans le code";
         //
         // label1
         //
@@ -102,9 +102,9 @@ public class Form1 : System.Windows.Forms.Form
         ResumeLayout(false);
     }
 
-    #endregion Code gÈnÈrÈ par le Concepteur Windows Form
+    #endregion Code g√©n√©r√© par le Concepteur Windows Form
 
-    /// Point d'entrÈe principal de l'application.
+    /// Point d'entr√©e principal de l'application.
     [STAThread]
     private static void Main() => Application.Run(new Form1());
 
@@ -135,11 +135,11 @@ public class Form1 : System.Windows.Forms.Form
         dataGrid1.DataSource = myDataSet;
         dataGrid1.DataMember = "Customers";
 
-        // On crÈe un dataview
+        // On cr√©e un dataview
         //DataView myDataView = new DataView(myDataSet.Tables["Suppliers"], "Country = 'UK'", "CompanyName", DataViewRowState.CurrentRows);
     }
 
-    // DataTable crÈÈe dans le code
+    // DataTable cr√©√©e dans le code
     private void Remplit2()
     {
         var myTable = new DataTable("Suppliers");

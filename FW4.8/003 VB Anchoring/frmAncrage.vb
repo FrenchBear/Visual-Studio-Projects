@@ -1,6 +1,6 @@
 ' 003 VB Anchoring
 ' Essais divers
-' Trace complète des événements de fenêtre
+' Trace complÃ¨te des Ã©vÃ©nements de fenÃªtre
 ' 2001       PV
 ' 2003-05-13 PV VS.net 2003
 ' 2006-10-01 PV VS2005
@@ -235,7 +235,7 @@ Public Class FormAncrage
         Me.Menu = Me.MainMenu1
         Me.Name = "FormAncrage"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
-        Me.Text = "Essais d'ancrages - Trace des événements"
+        Me.Text = "Essais d'ancrages - Trace des Ã©vÃ©nements"
         CType(Me.FileSystemWatcher1, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

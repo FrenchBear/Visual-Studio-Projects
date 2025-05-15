@@ -6,7 +6,7 @@ Imports System.Drawing.Imaging
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gÃ©nÃ©rÃ© par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -14,11 +14,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprÃ¨s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mÃ©thode substituÃ©e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -31,9 +31,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEÂ : la procÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut Ãªtre modifiÃ©e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'Ã©diteur de code.
     Friend WithEvents Button1 As Button
 
     Friend WithEvents ListCodecsButton As Button
@@ -49,7 +49,7 @@ Public Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New Size(120, 23)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Génère"
+        Me.Button1.Text = "GÃ©nÃ¨re"
         '
         'btnListCodecs
         '
@@ -141,7 +141,7 @@ Public Class Form1
         myEncoderParameters.Param(0) = myEncoderParameter
         multi.SaveAdd(myEncoderParameters)
 
-        MsgBox("Enregistré --> C:\Multiframe.tiff")
+        MsgBox("EnregistrÃ© --> C:\Multiframe.tiff")
     End Sub
 
     Public Shared Function GetEncoderInfo(mimeType As String) As ImageCodecInfo

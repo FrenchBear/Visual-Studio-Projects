@@ -1,7 +1,7 @@
 ' 059 VB ByRef Fields+Inheritance
 '
-' 2001-08-17    PV  Essai de transmission de champ et de propriété par référence (ne marche pas en VB6)
-'               + essais méthodes/classes abstraites, scellées, virtuelles...
+' 2001-08-17    PV  Essai de transmission de champ et de propriÃ©tÃ© par rÃ©fÃ©rence (ne marche pas en VB6)
+'               + essais mÃ©thodes/classes abstraites, scellÃ©es, virtuelles...
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
 ' 2021-09-18    PV  VS2022, Net6
@@ -38,8 +38,8 @@ End Class
 
 Public Class Couleur : Inherits Zap
 
-    ' Si la variable n'est pas shared, ça provoque un débordement de pile
-    ' Non détecté par le compilo VB !
+    ' Si la variable n'est pas shared, Ã§a provoque un dÃ©bordement de pile
+    ' Non dÃ©tectÃ© par le compilo VB !
     Protected Shared Bleu As New Couleur(0, 0, 255)
 
     Public R, G, B As Integer
@@ -116,9 +116,9 @@ Public Module Module1
 
         Dim c As New Couleur(128, 80, 200)
         WriteLine("c = {0}", c)
-        Complément255(c.G)
+        ComplÃ©ment255(c.G)
         WriteLine("c = {0}", c)
-        Complément255(c.A)
+        ComplÃ©ment255(c.A)
         WriteLine("c = {0}", c)
         WriteLine()
 
@@ -164,7 +164,7 @@ Public Module Module1
         'Console.ReadLine()
     End Sub
 
-    Sub Complément255(ByRef x As Integer)
+    Sub ComplÃ©ment255(ByRef x As Integer)
         x = 255 - x
     End Sub
 

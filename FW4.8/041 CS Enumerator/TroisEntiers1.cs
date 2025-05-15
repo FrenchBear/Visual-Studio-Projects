@@ -1,5 +1,5 @@
-// Construction d'une classe énumérable avec foreach en C#
-// ThreeIntegers1 implémente une interface de type IEnumerator simple
+// Construction d'une classe Ã©numÃ©rable avec foreach en C#
+// ThreeIntegers1 implÃ©mente une interface de type IEnumerator simple
 // 2001-02-18   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010

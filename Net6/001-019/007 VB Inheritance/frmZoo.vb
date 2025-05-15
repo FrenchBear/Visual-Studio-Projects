@@ -145,7 +145,7 @@ Public Class frmZoo
         Me.TxtChat.Location = New Drawing.Point(88, 48)
         Me.TxtChat.Name = "txtChat"
         Me.TxtChat.TabIndex = 2
-        Me.TxtChat.Text = "Félix"
+        Me.TxtChat.Text = "FÃ©lix"
         '
         'Button1
         '
@@ -185,18 +185,18 @@ Public Class frmZoo
     Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
         Dim Rex As New Chien(CStr(TxtChien.Text))
         Dim Fluffy As New Chiot("Fluffy")
-        Dim Félix As New Chat(CStr(TxtChat.Text))
+        Dim FÃ©lix As New Chat(CStr(TxtChat.Text))
         Dim Pollux As Chien = Nothing
 
         TestClasse(Rex)
         TestClasse(Fluffy)
-        TestClasse(Félix)
+        TestClasse(FÃ©lix)
         TestClasse(Pollux)
     End Sub
 
     Private Shared Sub TestClasse(a As Animal)
         If IsNothing(a) Then
-            MsgBox("TestClasse: pas une référence valide !")
+            MsgBox("TestClasse: pas une rÃ©fÃ©rence valide !")
         Else
             a.Cri()
         End If
