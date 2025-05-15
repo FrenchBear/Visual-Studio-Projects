@@ -10,14 +10,14 @@ public class Hello1 : Form
     {
     }
 
-    /// Point d'entrée du programme
+    /// Point d'entrÃ©e du programme
     public static int Main(string[] args)
     {
         Application.Run(new Hello1());
         return 0;
     }
 
-    /// Constructeur de la fenêtre
+    /// Constructeur de la fenÃªtre
     public Hello1() =>
         Text = "Hello 1";
 }

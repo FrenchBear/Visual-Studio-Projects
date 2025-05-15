@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validate xml using xsd Schema", "Validate xml using xsd Schema.csproj", "{F8054EAD-963B-40FD-BF14-F992CDC41739}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validate xml using xsd Schema", "537 CS Validate xml using xsd Schema.csproj", "{F8054EAD-963B-40FD-BF14-F992CDC41739}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

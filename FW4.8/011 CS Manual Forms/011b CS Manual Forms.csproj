@@ -29,7 +29,7 @@
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
-    <ProjectGuid>{5617DB61-899C-4704-84C2-3BFA0FDEABF7}</ProjectGuid>
+    <ProjectGuid>{920F3E09-4FBF-48E4-9885-E5FDE6DEF3DE}</ProjectGuid>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>

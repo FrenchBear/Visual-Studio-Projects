@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BookXML", "BookXML.vbproj", "{826C6D47-B764-4FD6-A535-E09A33838449}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BookXML", "201 VB BookXM.vbproj", "{826C6D47-B764-4FD6-A535-E09A33838449}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

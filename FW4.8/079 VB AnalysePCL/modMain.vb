@@ -1,6 +1,6 @@
-' Analyseur de séquences PCL
+' Analyseur de sï¿½quences PCL
 ' 2003-07-16    PV
-' 2003-08-07    PV  Fichier généré en paramètre; séquences tilda
+' 2003-08-07    PV  Fichier gï¿½nï¿½rï¿½ en paramï¿½tre; sï¿½quences tilda
 ' 2012-02-25	PV  VS2010
 ' 2017-05-02    PV  GitHub et VS2017
 
@@ -17,17 +17,17 @@ Module modMainAnaPCL
         Console.WriteLine("AnalysePCL 1.1")
 
         If InStr(Microsoft.VisualBasic.Command(), "-?") <> 0 Then
-            Console.WriteLine("Décodage de PCL et génération de TIFF")
-            Console.WriteLine("P.VIOLENT Juillet-Août 2003")
+            Console.WriteLine("Dï¿½codage de PCL et GÃ©nÃ©ration de TIFF")
+            Console.WriteLine("P.VIOLENT Juillet-Aoï¿½t 2003")
             Console.WriteLine()
             Console.WriteLine("Usage : APCL [-?] [-dp][-dm][-dt] [-v] [-c] fichier.pcl")
-            Console.WriteLine("Génère le fichier image.tiff")
+            Console.WriteLine("GÃ©nÃ¨re le fichier image.tiff")
             Console.WriteLine()
             Console.WriteLine("Options :")
             Console.WriteLine("-?   affiche ce texte")
             Console.WriteLine("-dp  debug PCL, -dm  debug macros, -dp  debug chrono, -dt  debug Tilda")
             Console.WriteLine("-v   verbose")
-            Console.WriteLine("-c   couleur: désactive l'option réduction N&B")
+            Console.WriteLine("-c   couleur: dï¿½sactive l'option rï¿½duction N&B")
 
             Exit Sub
         End If
@@ -55,7 +55,7 @@ Module modMainAnaPCL
         Next
 
         If sNomficPCL = "" Then
-            Console.WriteLine("Nom du fichier PCL non précisé.")
+            Console.WriteLine("Nom du fichier PCL non prï¿½cisï¿½.")
             Exit Sub
         End If
 
@@ -76,15 +76,15 @@ Module modMainAnaPCL
         If Not Analyse(sNomficPCL) Then Exit Sub
         PCLFlushText()
         PCLFlushPage()
-        Console.WriteLine("Écriture du fichier {0}", sNomficImage)
+        Console.WriteLine("ï¿½criture du fichier {0}", sNomficImage)
         RGOutput()
         t = Microsoft.VisualBasic.DateAndTime.Timer - t
 
         If bDebugMacros Then TraceMacros()
-        If bVerbose Then Console.WriteLine("Fin, Nb Car: {0}, Durée analyse: {1:f1}s", nbCar, t)
+        If bVerbose Then Console.WriteLine("Fin, Nb Car: {0}, DurÃ©e analyse: {1:f1}s", nbCar, t)
 
         If bDebugMacros Or bDebugPCL Or bVerbose Or bDebugTilda Then
-            Console.WriteLine("[Entrée] pour continuer...")
+            Console.WriteLine("[Entrï¿½e] pour continuer...")
             Console.ReadLine()
         End If
     End Sub
@@ -96,7 +96,7 @@ Module modMainAnaPCL
         Try
             fs = New FileStream(sNomFic, FileMode.Open, FileAccess.Read)
         Catch ex As Exception
-            Console.WriteLine("Echec à l'ouverture de {0}: {1}", sNomFic, ex.Message)
+            Console.WriteLine("Echec ï¿½ l'ouverture de {0}: {1}", sNomFic, ex.Message)
             Return False
         End Try
 

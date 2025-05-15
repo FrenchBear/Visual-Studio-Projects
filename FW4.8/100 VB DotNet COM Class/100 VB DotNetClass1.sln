@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DotNetClass1", "DotNetClass1.vbproj", "{0E3780DF-9807-4253-A931-EFCF066A57E0}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "DotNetClass1", "100 VB DotNet COM Class.vbproj", "{0E3780DF-9807-4253-A931-EFCF066A57E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

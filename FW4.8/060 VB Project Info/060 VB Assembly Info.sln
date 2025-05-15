@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "60 VB Assembly Info", "60 VB Assembly Info.vbproj", "{958040A7-594D-42AC-B276-BEAC5DF9BF17}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "60 VB Assembly Info", "060 VB Assembly Info.vbproj", "{958040A7-594D-42AC-B276-BEAC5DF9BF17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

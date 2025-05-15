@@ -113,7 +113,7 @@ Module Pentamino
 
     Sub Pavage(lstart As Integer, cstart As Integer, jeu As Jeu, iMasquePieces As Integer)
         Dim l, c As Integer
-        Dim bTrouv� As Boolean = False
+        Dim bTrouvé As Boolean = False
 
         If (iNbSol > MAXSOLUTION) Then Return
 
@@ -122,27 +122,27 @@ Module Pentamino
         ' On cherche une case vide � couvrir, de gauche � droite, de haut en bas
         For l = 0 To MAXLIG - 1
             For c = 0 To MAXCOL - 1
-                If (l = 0 And c = 0) Then ' Acc�l�ration, on part de la derni�re case vide trouv�e
+                If (l = 0 And c = 0) Then ' Acc�l�ration, on part de la derni�re case vide Trouvée
                     l = lstart
                     c = cstart
                 End If
 
                 If (jeu(l, c) = 0) Then
-                    bTrouv� = True
+                    bTrouvé = True
                     Exit For
                 End If
             Next
-            If (bTrouv�) Then
+            If (bTrouvé) Then
                 Exit For
             End If
         Next
 
-        ' Si on n'en a pas trouv�, c'est que le pavage est termin� !
+        ' Si on n'en a pas trouv�, c'est que le pavage est Terminé !
         If (l = MAXLIG And c = MAXCOL) Then
             iNbSol += 1
 
 #If TraceSolution Then
-      Console.WriteLine("Solution {0} trouv�e", iNbSol)
+      Console.WriteLine("Solution {0} Trouvée", iNbSol)
       For l = 0 To MAXLIG - 1
         For c = 0 To MAXCOL - 1
           Console.Write("{0:D2} ", tP(jeu(l, c) - 1).hNumPiece)

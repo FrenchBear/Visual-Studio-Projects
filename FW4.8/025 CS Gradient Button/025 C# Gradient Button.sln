@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "25 C# Gradient Button", "25 C# Gradient Button.csproj", "{ADD11E88-A579-45C2-A343-284C76073ADD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "25 C# Gradient Button", "025 CS Gradient Button.csproj", "{ADD11E88-A579-45C2-A343-284C76073ADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

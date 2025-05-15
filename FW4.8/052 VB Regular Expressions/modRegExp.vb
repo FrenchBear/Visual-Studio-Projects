@@ -1,4 +1,4 @@
-' Essai d'utilisation d'expression régulière
+' Essai d'utilisation d'expression rï¿½guliï¿½re
 ' 2001-06-26    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -18,11 +18,11 @@ Module modRegExp
 End Module
 
 Module AnalyseTexte
-    Private sText As String     ' Texte à analyser
+    Private sText As String     ' Texte ï¿½ analyser
     Private iPos As Integer     ' Position courante
 
-    Private Function Terminé() As Boolean
-        Terminé = iPos > Len(sText)
+    Private Function TerminÃ©() As Boolean
+        TerminÃ© = iPos > Len(sText)
     End Function
 
     Private Sub Abort()
@@ -75,14 +75,14 @@ Module AnalyseTexte
 
             Do
                 Select Case iEtat
-                    Case 1          ' Début du texte
+                    Case 1          ' Dï¿½but du texte
                         Avance("F.")
                         AvanceChiffre()
                         AvanceChiffreouAouB()
                         Avance(".")
                         iEtat = 2
 
-                    Case 2          ' Immédiatement après un point
+                    Case 2          ' Immï¿½diatement aprï¿½s un point
                         If SuivantChiffre() Then
                             AvanceChiffre()
                             iEtat = 3
@@ -93,7 +93,7 @@ Module AnalyseTexte
                             Abort()
                         End If
 
-                    Case 3          ' Après un chiffre
+                    Case 3          ' Aprï¿½s un chiffre
                         If SuivantChiffre() Then
                             AvanceChiffre()
                         ElseIf Suivant(".") Then
@@ -103,10 +103,10 @@ Module AnalyseTexte
                             iEtat = 4
                         End If
 
-                    Case 4          ' Fin de séquence
+                    Case 4          ' Fin de sï¿½quence
                         If Suivant("-") Then
                             Success()
-                        ElseIf Terminé() Then
+                        ElseIf TerminÃ©() Then
                             Success()
                         Else
                             Abort()

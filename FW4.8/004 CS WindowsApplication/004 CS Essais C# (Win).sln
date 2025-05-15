@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApplication2 C#", "WindowsApplication2 C#.csproj", "{DB1255E6-8D7F-4C38-A0E0-E48EEB905D05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsApplication2 C#", "004 CS WindowsApplication.csproj", "{DB1255E6-8D7F-4C38-A0E0-E48EEB905D05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Test Form Inheritance", "Test Form Inheritance.vbproj", "{1246CE92-E7E4-456F-A04D-AC26E6A4E1E0}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Test Form Inheritance", "104c VB Test Form Inheritance.vbproj", "{1246CE92-E7E4-456F-A04D-AC26E6A4E1E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

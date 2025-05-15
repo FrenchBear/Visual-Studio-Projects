@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18 C# DBInt", "18 C# DBInt.csproj", "{8A14B895-4FC4-4DEA-9B00-93ACC585B049}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18 C# DBInt", "018 CS DBInt.csproj", "{8A14B895-4FC4-4DEA-9B00-93ACC585B049}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "58 CS Interfaces", "58 CS Interfaces.csproj", "{81C0B9F2-0A92-4AFF-BE86-2DCFA9BF7137}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "58 CS Interfaces", "058 CS Interfaces.csproj", "{81C0B9F2-0A92-4AFF-BE86-2DCFA9BF7137}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

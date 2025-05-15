@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ShowTiff", "ShowTiff.vbproj", "{0150C5AB-2F7B-4132-A427-E27D18797964}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ShowTiff", "080 VB ShowTiff Multipage.vbproj", "{0150C5AB-2F7B-4132-A427-E27D18797964}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

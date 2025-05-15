@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "reference to Exe", "reference to Exe.vbproj", "{23589874-3BBA-4585-A48C-83A45ADD6FC2}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "reference to Exe", "206 VB Reference to Exe.vbproj", "{23589874-3BBA-4585-A48C-83A45ADD6FC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

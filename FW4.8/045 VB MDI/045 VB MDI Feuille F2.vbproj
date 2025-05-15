@@ -50,7 +50,7 @@
     <MyType>Windows</MyType>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <ProjectGuid>{6C739A21-5A59-4815-A113-A4AC48ACEF59}</ProjectGuid>
+    <ProjectGuid>{3650C8FC-7CA0-4CF8-B900-C79B1FC3D2CD}</ProjectGuid>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
@@ -177,7 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="045 VB MDI.vbproj">
-      <Project>{51f47a1c-8539-423c-a60e-e62cb1c0911b}</Project>
+      <Project>{49c1d58b-a101-4aff-8d21-44aefe34a98d}</Project>
       <Name>045 VB MDI</Name>
     </ProjectReference>
   </ItemGroup>

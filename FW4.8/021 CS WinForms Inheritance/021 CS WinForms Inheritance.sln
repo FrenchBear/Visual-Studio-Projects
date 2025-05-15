@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21 CS WinForms Inheritance", "21 CS WinForms Inheritance.csproj", "{53749E82-7854-4A3C-9208-E4FB51C546FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "21 CS WinForms Inheritance", "021 CS WinForms Inheritance.csproj", "{53749E82-7854-4A3C-9208-E4FB51C546FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

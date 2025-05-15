@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "47 C# System Namespace", "47 C# System Namespace.csproj", "{1D178B0F-07E3-4E30-A495-94AC2930476A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "47 C# System Namespace", "047 CS System Namespace.csproj", "{1D178B0F-07E3-4E30-A495-94AC2930476A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

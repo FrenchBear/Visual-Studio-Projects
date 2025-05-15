@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17 C# delegates", "17 C# delegates.csproj", "{C3902D6B-6456-4729-8AE0-48B7B653EA8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "17 C# delegates", "017 CS Delegates.csproj", "{C3902D6B-6456-4729-8AE0-48B7B653EA8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

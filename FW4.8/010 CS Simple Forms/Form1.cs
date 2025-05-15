@@ -1,5 +1,5 @@
 // 010 CS Simple Forms
-// Essais élémentaires du designer en C#
+// Essais Ã©lÃ©mentaires du designer en C#
 // PV janvier 2001
 // 2006-10-01   PV  V2005
 // 2012-02-25   PV  VS2010

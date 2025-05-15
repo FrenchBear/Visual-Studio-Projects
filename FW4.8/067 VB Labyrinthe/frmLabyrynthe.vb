@@ -17,7 +17,7 @@ Public Class frmLabyrinthe
     Private iReste As Integer
     Shared tCell(,) As Cellule
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -25,11 +25,11 @@ Public Class frmLabyrinthe
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -40,28 +40,28 @@ Public Class frmLabyrinthe
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents btnGénère As Button
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
+    Friend WithEvents btnGÃ©nÃ¨re As Button
 
     Friend WithEvents pic As PictureBox
     Friend WithEvents lblDimensions As Label
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnGénère = New Button()
+        Me.btnGÃ©nÃ¨re = New Button()
         Me.pic = New PictureBox()
         Me.lblDimensions = New Label()
         CType(Me.pic, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnGénère
+        'btnGÃ©nÃ¨re
         '
-        Me.btnGénère.Location = New Point(16, 15)
-        Me.btnGénère.Name = "btnGénère"
-        Me.btnGénère.Size = New Size(150, 42)
-        Me.btnGénère.TabIndex = 0
-        Me.btnGénère.Text = "Génère"
+        Me.btnGÃ©nÃ¨re.Location = New Point(16, 15)
+        Me.btnGÃ©nÃ¨re.Name = "btnGÃ©nÃ¨re"
+        Me.btnGÃ©nÃ¨re.Size = New Size(150, 42)
+        Me.btnGÃ©nÃ¨re.TabIndex = 0
+        Me.btnGÃ©nÃ¨re.Text = "GÃ©nÃ¨re"
         '
         'pic
         '
@@ -88,7 +88,7 @@ Public Class frmLabyrinthe
         Me.ClientSize = New Size(528, 358)
         Me.Controls.Add(Me.lblDimensions)
         Me.Controls.Add(Me.pic)
-        Me.Controls.Add(Me.btnGénère)
+        Me.Controls.Add(Me.btnGÃ©nÃ¨re)
         Me.Name = "frmLabyrinthe"
         Me.Text = "Labyrinthe"
         CType(Me.pic, ComponentModel.ISupportInitialize).EndInit()
@@ -106,7 +106,7 @@ Public Class frmLabyrinthe
     End Enum
 
     Public Class Cellule
-        Private m_bVisité As Boolean
+        Private m_bVisitÃ© As Boolean
         Private ReadOnly m_tbMur(3) As Boolean
         Private ReadOnly m_l As Integer
         Private ReadOnly m_c As Integer
@@ -114,7 +114,7 @@ Public Class frmLabyrinthe
         Public Sub New(l As Integer, c As Integer)
             m_l = l
             m_c = c
-            m_bVisité = False
+            m_bVisitÃ© = False
             m_tbMur(0) = True
             m_tbMur(1) = True
             m_tbMur(2) = True
@@ -123,7 +123,7 @@ Public Class frmLabyrinthe
         End Sub
 
         Public Sub Dessine()
-            g.FillRectangle(IIf(m_bVisité, Brushes.White, Brushes.Yellow), 1 + m_c * kSize, 1 + m_l * kSize, kSize, kSize)
+            g.FillRectangle(IIf(m_bVisitÃ©, Brushes.White, Brushes.Yellow), 1 + m_c * kSize, 1 + m_l * kSize, kSize, kSize)
 
             If m_tbMur(ConstMur.kmHaut) Then
                 g.DrawLine(Pens.Black, 1 + m_c * kSize, 1 + m_l * kSize, 1 + m_c * kSize + kSize - 1, 1 + m_l * kSize)
@@ -150,12 +150,12 @@ Public Class frmLabyrinthe
             End If
         End Sub
 
-        Public Property bVisité() As Boolean
+        Public Property bVisitÃ©() As Boolean
             Get
-                Return m_bVisité
+                Return m_bVisitÃ©
             End Get
             Set(Value As Boolean)
-                m_bVisité = Value
+                m_bVisitÃ© = Value
                 Dessine()
             End Set
         End Property
@@ -176,7 +176,7 @@ Public Class frmLabyrinthe
 
     End Class
 
-    Private Sub btnGénère_Click(sender As System.Object, e As EventArgs) Handles btnGénère.Click
+    Private Sub btnGÃ©nÃ¨re_Click(sender As System.Object, e As EventArgs) Handles btnGÃ©nÃ¨re.Click
         Dim l, c As Integer
         For l = 0 To Hauteur - 1
             For c = 0 To Largeur - 1
@@ -195,15 +195,15 @@ Public Class frmLabyrinthe
             Do
                 i = Int(Hauteur * Rnd())
                 j = Int(Largeur * Rnd())
-            Loop While tCell(i, j).bVisité = False
+            Loop While tCell(i, j).bVisitÃ© = False
             If iCreuse(i, j) > 0 Then pic.Refresh()
         Loop
 
-        ' On efface l'entrée et la sortie
+        ' On efface l'entrï¿½e et la sortie
         'Cells(2, Int(2 + Largeur * Rnd())).Borders(xlEdgeTop).LineStyle = xlNone
         'Cells(1 + Hauteur, Int(2 + Largeur * Rnd())).Borders(xlEdgeBottom).LineStyle = xlNone
 
-        MsgBox("Terminé")
+        MsgBox("TerminÃ©")
 
     End Sub
 
@@ -219,18 +219,18 @@ Public Class frmLabyrinthe
         ' 3 = Bas/Sud (xlEdgeBottom)
 
         Do
-            ' On marque la cellule visitée et le compte de cellules restantes si nécessaire
-            ' La première cellule d'une galerie est déjà visitée, sauf pour la 1ère galerie
-            If tCell(il, ic).bVisité = False Then
-                tCell(il, ic).bVisité = True
+            ' On marque la cellule visitï¿½e et le compte de cellules restantes si nï¿½cessaire
+            ' La premiï¿½re cellule d'une galerie est dï¿½jï¿½ visitï¿½e, sauf pour la 1ï¿½re galerie
+            If tCell(il, ic).bVisitÃ© = False Then
+                tCell(il, ic).bVisitÃ© = True
                 iReste -= 1
                 iRet += 1
             End If
 
-            ' 1ère direction au hasard
+            ' 1ï¿½re direction au hasard
             iDir = Int(4 * Rnd())
 
-            Dim ilt As Integer, ict As Integer    ' Cellule voisine à tester
+            Dim ilt As Integer, ict As Integer    ' Cellule voisine ï¿½ tester
             Dim iNbTest As Integer
             Dim b As ConstMur
 
@@ -259,7 +259,7 @@ Public Class frmLabyrinthe
                 End Select
 
                 If ilt >= 0 And ilt <= Hauteur - 1 And ict >= 0 And ict <= Largeur - 1 Then
-                    If tCell(ilt, ict).bVisité = False Then
+                    If tCell(ilt, ict).bVisitÃ© = False Then
                         ' L'ouverture convient
                         Exit Do
                     End If
@@ -269,7 +269,7 @@ Public Class frmLabyrinthe
                 iDir = (iDir + 1) Mod 4
                 iNbTest += 1
                 If iNbTest = 5 Then
-                    ' Toutes les directions sont bloquées: la galerie est terminée
+                    ' Toutes les directions sont bloquï¿½es: la galerie est TerminÃ©e
                     'DoEvents()
                     Return iRet
                 End If
@@ -278,7 +278,7 @@ Public Class frmLabyrinthe
             ' On efface le bord
             tCell(il, ic).bMur(b) = False
 
-            ' On passe à la nouvelle cellule
+            ' On passe ï¿½ la nouvelle cellule
             il = ilt
             ic = ict
         Loop

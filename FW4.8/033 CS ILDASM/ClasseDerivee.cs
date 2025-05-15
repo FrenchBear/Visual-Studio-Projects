@@ -29,9 +29,9 @@ namespace MaBibliotheque
         }
 
         /// <summary>
-        /// Implémentation de MonInterface, membre ordinaire
+        /// Implï¿½mentation de MonInterface, membre ordinaire
         /// </summary>
-        /// <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
+        /// <param name="iNbBip">Nombre d'ï¿½vï¿½nements Bip ï¿½ dï¿½clencher</param>
         public void MaMethodeBruyante1(int iNbBip)
         {
             for (int i = 0; i < iNbBip; i++)
@@ -41,9 +41,9 @@ namespace MaBibliotheque
         }
 
         /// <summary>
-        /// Implémentation de MonInterface, membre explicite d'interface
+        /// Implï¿½mentation de MonInterface, membre explicite d'interface
         /// </summary>
-        /// <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
+        /// <param name="iNbBip">Nombre d'ï¿½vï¿½nements Bip ï¿½ dï¿½clencher</param>
         void IMonInterface.MaMethodeBruyante2(int iNbBip)
         {
             for (int i = 0; i < iNbBip; i++)
@@ -53,9 +53,9 @@ namespace MaBibliotheque
         }
 
         /// <summary>
-        ///   Indexer de base: accès via un indice entier
+        ///   Indexer de base: accï¿½s via un indice entier
         /// </summary>
-        /// <param name="index">Rang de l'élément à récupérer</param>
+        /// <param name="index">Rang de l'Ã©lÃ©ment ï¿½ RÃ©cupï¿½rer</param>
         public string this[int index] => String.Format("this[{0}]", index);
 
         public string this[string index] => String.Format("this[\"{0}\"]", index);
@@ -74,7 +74,7 @@ namespace MaBibliotheque
             set => iProp = value;
         }
 
-        // Héritage de MaClasseDeBase
+        // Hï¿½ritage de MaClasseDeBase
         public override void Action()
         {
             Console.WriteLine("MaClasseDerivee.Action()");
@@ -83,7 +83,7 @@ namespace MaBibliotheque
 
         public void MyBaseAction() => base.Action();
 
-        // Eléments spécifiques à la classe
+        // Elï¿½ments spï¿½cifiques ï¿½ la classe
         private int iProp;
 
         protected int age;
@@ -113,7 +113,7 @@ namespace MaBibliotheque
             }
             catch (Exception e)
             {
-                Console.WriteLine("Problème dans TrucDangereux{0}: {1} --> On remonte l'erreur", q, e.Message);
+                Console.WriteLine("ProblÃ¨me dans TrucDangereux{0}: {1} --> On remonte l'erreur", q, e.Message);
                 throw e;
             }
             finally

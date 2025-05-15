@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "21 VB WinForms Inheritance", "21 VB WinForms Inheritance.vbproj", "{35E77B1A-C534-4B17-BECA-513A62DB0DC7}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "21 VB WinForms Inheritance", "021 VB WinForms Inheritance.vbproj", "{35E77B1A-C534-4B17-BECA-513A62DB0DC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

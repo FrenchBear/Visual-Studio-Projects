@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CDemoLib", "CDemoLib.vbproj", "{D9C814C3-9EC6-494E-B4CE-FB8176EF3244}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CDemoLib", "410 VB Component Walkthrough.vbproj", "{D9C814C3-9EC6-494E-B4CE-FB8176EF3244}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CDemoTest", "..\CDemoTest\CDemoTest.vbproj", "{BF875166-0FE2-4B95-8A12-15CB1741F94E}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CDemoTest", "..\CDemoTest\410 Component Walkthrough CDemoTest.vbproj", "{BF875166-0FE2-4B95-8A12-15CB1741F94E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "48 C# DateTime", "48 C# DateTime.csproj", "{72C50790-62E7-4504-9285-E06BD787E2E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "48 C# DateTime", "048 CS DateTime.csproj", "{72C50790-62E7-4504-9285-E06BD787E2E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Divers Snippets and XSL", "Divers Snippets and XSL.vbproj", "{50009B45-EDCC-496E-A3F7-0A6F3D02BF34}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Divers Snippets and XSL", "205 VB Divers Snippets and XSL.vbproj", "{50009B45-EDCC-496E-A3F7-0A6F3D02BF34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,21 +6,21 @@
     <members>
         <member name="M:MaBibliotheque.MaClasseDerivee.MaMethodeBruyante1(System.Int32)">
             <summary>
-            Implémentation de MonInterface, membre ordinaire
+            Impl�mentation de MonInterface, membre ordinaire
             </summary>
-            <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
+            <param name="iNbBip">Nombre d'�v�nements Bip � d�clencher</param>
         </member>
         <member name="M:MaBibliotheque.MaClasseDerivee.MaBibliotheque#IMonInterface#MaMethodeBruyante2(System.Int32)">
             <summary>
-            Implémentation de MonInterface, membre explicite d'interface
+            Impl�mentation de MonInterface, membre explicite d'interface
             </summary>
-            <param name="iNbBip">Nombre d'événements Bip à déclencher</param>
+            <param name="iNbBip">Nombre d'�v�nements Bip � d�clencher</param>
         </member>
         <member name="P:MaBibliotheque.MaClasseDerivee.Item(System.Int32)">
             <summary>
-              Indexer de base: accès via un indice entier
+              Indexer de base: acc�s via un indice entier
             </summary>
-            <param name="index">Rang de l'élément à récupérer</param>
+            <param name="index">Rang de l'�l�ment � r�cup�rer</param>
         </member>
     </members>
 </doc>

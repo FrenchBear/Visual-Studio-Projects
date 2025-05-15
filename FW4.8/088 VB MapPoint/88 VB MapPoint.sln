@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "88 VB MapPoint", "88 VB MapPoint.vbproj", "{51DED747-EE2C-455D-A4DA-71A3B0F95A81}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "88 VB MapPoint", "088 VB MapPoint.vbproj", "{51DED747-EE2C-455D-A4DA-71A3B0F95A81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

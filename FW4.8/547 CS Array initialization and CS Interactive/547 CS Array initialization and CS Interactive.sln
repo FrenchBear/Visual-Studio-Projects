@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS547 Array initialization and CS Interactive", "CS547 Array initialization and CS Interactive.csproj", "{D6AE45C8-D575-40E1-BDD0-812CFF4889E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS547 Array initialization and CS Interactive", "547 CS Array initialization and CS Interactive.csproj", "{D6AE45C8-D575-40E1-BDD0-812CFF4889E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

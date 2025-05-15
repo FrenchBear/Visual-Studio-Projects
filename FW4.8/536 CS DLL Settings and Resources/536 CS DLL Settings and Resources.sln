@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticLibrary", "Arithmetic\ArithmeticLibrary.csproj", "{AFDE0D3A-5522-4563-A851-660E71C06880}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArithmeticLibrary", "Arithmetic\536 CS DLL Settings and Resources.csproj", "{AFDE0D3A-5522-4563-A851-660E71C06880}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{518FD2F0-3AFF-4C7E-8662-E4414B19BFFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\536 CS DLL Settings and Resources Test.csproj", "{518FD2F0-3AFF-4C7E-8662-E4414B19BFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

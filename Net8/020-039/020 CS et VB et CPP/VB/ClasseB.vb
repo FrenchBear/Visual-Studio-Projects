@@ -1,7 +1,7 @@
 ' VB20
 ' Projet mixte C#+VB
-' La classe de base B est définie en VB
-' La classe dérivée D est définie en C#
+' La classe de base B est DÃ©finie en VB
+' La classe DÃ©rivÃ©e D est DÃ©finie en C#
 '
 ' 2001-01-27    PV
 ' 2006-10-01 	PV		VS2005

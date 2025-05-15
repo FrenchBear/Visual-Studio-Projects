@@ -1,7 +1,7 @@
 ' AnalyseAD
 ' 10/02/2004 PV
-' Analyse et représente visuellement les objets AD computer et les OUs dans lesquels ils sont stockés
-' 11/02/04 1.1  Présentation en tableau
+' Analyse et reprï¿½sente visuellement les objets AD computer et les OUs dans lesquels ils sont stockï¿½s
+' 11/02/04 1.1  Prï¿½sentation en tableau
 ' 01/10/2006 PV VS 2005
 
 Imports System.Text.RegularExpressions
@@ -12,7 +12,7 @@ Imports VB = Microsoft.VisualBasic
 Public Class frmAnalyse
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -22,7 +22,7 @@ Public Class frmAnalyse
 
         Visible = True
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
         IEDoc.Navigate("about:blank")
         RefreshIE()
         Me.AcceptButton = btnAnalyse
@@ -36,7 +36,7 @@ Public Class frmAnalyse
         'Affiche()
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -47,14 +47,14 @@ Public Class frmAnalyse
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents lblAnalyse As Label
 
     Friend WithEvents btnAnalyse As Button
     Friend WithEvents txtSite As TextBox
-    Friend WithEvents lblLégende As Label
+    Friend WithEvents lblLÃ©gende As Label
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents tabHTML As TabPage
     Friend WithEvents tabListe As TabPage
@@ -74,7 +74,7 @@ Public Class frmAnalyse
         Me.btnAnalyse = New Button()
         Me.lblAnalyse = New Label()
         Me.txtSite = New TextBox()
-        Me.lblLégende = New Label()
+        Me.lblLÃ©gende = New Label()
         Me.TabControl1 = New TabControl()
         Me.tabHTML = New TabPage()
         Me.IEDoc = New AxSHDocVw.AxWebBrowser()
@@ -109,7 +109,7 @@ Public Class frmAnalyse
         Me.lblAnalyse.Name = "lblAnalyse"
         Me.lblAnalyse.Size = New Size(297, 17)
         Me.lblAnalyse.TabIndex = 0
-        Me.lblAnalyse.Text = "Site à analyser dans Workstations && Printers :"
+        Me.lblAnalyse.Text = "Site ï¿½ analyser dans Workstations && Printers :"
         '
         'txtSite
         '
@@ -118,14 +118,14 @@ Public Class frmAnalyse
         Me.txtSite.Size = New Size(163, 22)
         Me.txtSite.TabIndex = 1
         '
-        'lblLégende
+        'lblLÃ©gende
         '
-        Me.lblLégende.AutoSize = True
-        Me.lblLégende.Location = New Point(5, 37)
-        Me.lblLégende.Name = "lblLégende"
-        Me.lblLégende.Size = New Size(446, 17)
-        Me.lblLégende.TabIndex = 3
-        Me.lblLégende.Text = "ou=Workstations && Printers,ou=fr,dc=eame,dc=global,dc=sgs,dc=com"
+        Me.lblLÃ©gende.AutoSize = True
+        Me.lblLÃ©gende.Location = New Point(5, 37)
+        Me.lblLÃ©gende.Name = "lblLÃ©gende"
+        Me.lblLÃ©gende.Size = New Size(446, 17)
+        Me.lblLÃ©gende.TabIndex = 3
+        Me.lblLÃ©gende.Text = "ou=Workstations && Printers,ou=fr,dc=eame,dc=global,dc=sgs,dc=com"
         '
         'TabControl1
         '
@@ -147,7 +147,7 @@ Public Class frmAnalyse
         Me.tabHTML.Name = "tabHTML"
         Me.tabHTML.Size = New Size(718, 384)
         Me.tabHTML.TabIndex = 0
-        Me.tabHTML.Text = "Synthèse en couleurs"
+        Me.tabHTML.Text = "Synthï¿½se en couleurs"
         '
         'IEDoc
         '
@@ -222,14 +222,14 @@ Public Class frmAnalyse
         'cmdCopie
         '
         Me.cmdCopie.Index = 0
-        Me.cmdCopie.Text = "&Copie la liste entière"
+        Me.cmdCopie.Text = "&Copie la liste entiï¿½re"
         '
         'frmAnalyse
         '
         Me.AutoScaleBaseSize = New Size(6, 15)
         Me.ClientSize = New Size(736, 470)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.lblLégende)
+        Me.Controls.Add(Me.lblLÃ©gende)
         Me.Controls.Add(Me.txtSite)
         Me.Controls.Add(Me.lblAnalyse)
         Me.Controls.Add(Me.btnAnalyse)
@@ -247,13 +247,13 @@ Public Class frmAnalyse
 
 #End Region
 
-    ' Point de départ de l'analyse
+    ' Point de DÃ©part de l'analyse
     Const sStartSite As String = "ou=Workstations & Printers,ou=fr,dc=eame,dc=global,dc=sgs,dc=com"
 
-    ' Expressions régulières pour séparer les machines en listes séparées
+    ' Expressions rï¿½guliï¿½res pour sï¿½parer les machines en listes sï¿½parï¿½es
     ReadOnly r00, r95, r98 As Regex
 
-    ReadOnly rNum As Regex                   ' Pour extraire le n°
+    ReadOnly rNum As Regex                   ' Pour extraire le nï¿½
 
     ' Un site
     Class SiteAD
@@ -266,21 +266,21 @@ Public Class frmAnalyse
         Public slCompXX As SortedList     ' et celle des machines invalides
     End Class
 
-    ' La liste des sites, lisée par site. clé=code site en minuscules, ex: cch
+    ' La liste des sites, lisï¿½e par site. ClÃ©=code site en minuscules, ex: cch
     ReadOnly slSitesAD As New SortedList
 
     ' Un ordinateur, dans les listes slComp
     Class Computer
-        Public iRang As Integer         ' Partie numérique du nom
+        Public iRang As Integer         ' Partie numï¿½rique du nom
         Public sComputer As String      ' Nom de l'ordinateur (CN)
         Public sPos As String           ' Position dans l'arbre AD
         Public sDescription As String   ' Commentaire AD de l'objet
     End Class
 
-    ' La chaîne finale
+    ' La ChaÃ®ne finale
     Dim sHTML As System.Text.StringBuilder
 
-    ' Les couleurs utilisées pour les sous-OU
+    ' Les couleurs utilisï¿½es pour les sous-OU
     ReadOnly tColor As Color() = {Color.Pink, Color.Gold, Color.Chartreuse, Color.Aqua, Color.Violet, Color.LightCoral, Color.CornflowerBlue, Color.Wheat, Color.LightGray, Color.OrangeRed, Color.MediumOrchid, Color.LightGray}
 
     ' Lancement de l'analyse
@@ -288,14 +288,14 @@ Public Class frmAnalyse
         IEDoc.Document.body.innerHTML = "Analyse en cours..."
         RefreshIE()
 
-        ' On réinitialise la liste
+        ' On rï¿½initialise la liste
         lvListe.Items.Clear()
         iColTri = -1
 
         Dim sPos As String = sStartSite
         If txtSite.Text <> "" Then sPos = "ou=" & txtSite.Text & "," & sPos
-        lblLégende.Text = "Analyse de: " & Replace(sPos, "&", "&&") & " :"
-        lblLégende.Refresh()
+        lblLÃ©gende.Text = "Analyse de: " & Replace(sPos, "&", "&&") & " :"
+        lblLÃ©gende.Refresh()
 
 #Const ModeTEST = False
 
@@ -303,21 +303,21 @@ Public Class frmAnalyse
     Test()
 #Else
         If Not ListeOU(txtSite.Text, sPos) Then Exit Sub
-        RécupCommentOU()
+        RÃ©cupCommentOU()
 #End If
 
         Affiche()
     End Sub
 
-    ' Parcours récursif de AD
-    ' Retour false en cas de pb lors de l'accès
+    ' Parcours RÃ©cursif de AD
+    ' Retour false en cas de pb lors de l'accï¿½s
     Function ListeOU(sOU As String, sStart As String) As Boolean
         Dim objOU As Object
         Try
             objOU = GetObject("LDAP://" & sStart)
         Catch e As Exception
-            MsgBox("Échec lors de l'accès à l'objet Active Directory" & vbCrLf & "LDAP://" & sStart & vbCrLf & vbCrLf & e.Source & ": " & e.Message, MsgBoxStyle.Exclamation)
-            IEDoc.Document.body.innerHTML = "Échec lors de l'accès à l'objet Active Directory"
+            MsgBox("ï¿½chec lors de l'accï¿½s ï¿½ l'objet Active Directory" & vbCrLf & "LDAP://" & sStart & vbCrLf & vbCrLf & e.Source & ": " & e.Message, MsgBoxStyle.Exclamation)
+            IEDoc.Document.body.innerHTML = "ï¿½chec lors de l'accï¿½s ï¿½ l'objet Active Directory"
             Return False
         End Try
 
@@ -337,7 +337,7 @@ Public Class frmAnalyse
         Return True
     End Function
 
-    Sub RécupCommentOU()
+    Sub RÃ©cupCommentOU()
         Dim objOU As Object
         objOU = GetObject("LDAP://" & sStartSite)
 
@@ -356,7 +356,7 @@ Public Class frmAnalyse
 
     Sub Test()
         aj("\bas", "FRBAS0001", "HP Omnibook Xe3, Pascal Carreno", "", "")
-        aj("\bas", "FRBAS0002", "IBM M42, Serge Rébillou", "", "")
+        aj("\bas", "FRBAS0002", "IBM M42, Serge Rï¿½billou", "", "")
         aj("\bas", "FRBAS0003", "HP VL6, IT", "", "")
         aj("\bas", "FRBAS0004", "HP VL400, Patrick Jolit", "", "")
         aj("\bas", "FRBAS0005", "IBM M42, Gilles Pensec", "", "")
@@ -368,21 +368,21 @@ Public Class frmAnalyse
         aj("\bas", "FRBAS0011", "Toshiba T8000, Inspecteurs OGC", "", "")
         aj("\bas", "FRBAS0012", "Toshiba SP3000, Isabelle Foucart", "", "")
         aj("\bas", "FRBAS0013", "IBM M42, Dominique Leviol", "", "")
-        aj("\bas", "FRBAS0014", "HP VL400, Céline Schlur", "", "")
+        aj("\bas", "FRBAS0014", "HP VL400, Cï¿½line Schlur", "", "")
         aj("\bas", "FRBAS0015", "HP VL400, Chimistes Crepin", "", "")
-        aj("\bas", "FRBAS0016", "HP VL400, Contrôleurs Usine Saipol", "", "")
-        aj("\bas", "FRBAS0017", "IBM T40, Serge Rébillou", "", "")
+        aj("\bas", "FRBAS0016", "HP VL400, Contrï¿½leurs Usine Saipol", "", "")
+        aj("\bas", "FRBAS0017", "IBM T40, Serge Rï¿½billou", "", "")
         aj("\bay", "FRBAY0001", "HP , Carole Foury tba", "", "")
-        aj("\bay", "FRBAY0002", "HP , Contrôleurs AGR", "", "")
+        aj("\bay", "FRBAY0002", "HP , Contrï¿½leurs AGR", "", "")
         aj("\bay", "FRBAY0003", "T8000 , Gilles Pensec", "", "")
         aj("\bay", "FRBAY0004", "IBM M42, Nathalie Berque", "", "")
         aj("\bea", "FRBEA0001", "IBM M42, Laurent MICHELET", "", "")
         aj("\bea", "FRBEA0002", "IBM M42, Aurelie AUCLAIR", "", "")
         aj("\bea", "FRBEA0003", "IBM M42, Florence FAUVERNIER", "", "")
-        aj("\bor", "FRBOR0001", "IBM T40, Serge REBILLOU (Prêt,"","")", "", "")
-        aj("\bro", "FRBRO0001", "Taïwanais, Christophe BALIGAN", "", "")
+        aj("\bor", "FRBOR0001", "IBM T40, Serge REBILLOU (Prï¿½t,"","")", "", "")
+        aj("\bro", "FRBRO0001", "Taï¿½wanais, Christophe BALIGAN", "", "")
         aj("\bro", "FRBRO0004", "IBM M42, Fabien TOLLET", "", "")
-        aj("\bro", "FRBRO0005", "IBM M42, Loïc THOMAS", "", "")
+        aj("\bro", "FRBRO0005", "IBM M42, Loï¿½c THOMAS", "", "")
         aj("\bro", "FRBRO0006", "IBM T30, Thierry PARZYS", "", "")
         aj("\bro", "FRBRO0007", "IBM T30, Sandrine JUMEAU", "", "")
         aj("\bro", "FRBRO9801", "HP Vectra XE310MT, Isabelle PUGET", "", "")
@@ -402,7 +402,7 @@ Public Class frmAnalyse
         aj("\cch", "FRCCH0120", "IBM M42, Test basculement EAME Evry", "", "")
         aj("\cch", "FRCCH0124", "IBM M42 C voirin", "", "")
         aj("\cch", "FRCCH0132", "IBM T30, Libre RETAIL STORE CHECK", "", "")
-        aj("\cch", "FRCCH0138", "IBMT40, Prêt du service Informatique", "", "")
+        aj("\cch", "FRCCH0138", "IBMT40, Prï¿½t du service Informatique", "", "")
         aj("\cch", "FRCCH0156", "HP Vectra, Rachel_Blandin", "", "")
         aj("\cch", "FRCCH0157", "HP Vectra, A.S.BOIXIERE", "", "")
         aj("\cch", "FRCCH0161", "HP VECTRA VL400, Self Service Scanner", "", "")
@@ -419,16 +419,16 @@ Public Class frmAnalyse
         aj("\cch\aud", "FRCCH9503", "Portable toshiba, S. CHEMIN", "", "")
         aj("\cch\cts", "FRCCH0116", "IBM M42, M Serie", "", "")
         aj("\cch\fin", "FRCCH0017", "IBM M42, Eric Sarfati", "", "")
-        aj("\cch\fin", "FRCCH0021", "IBM M42, Françoise Heurtier (NT4,"","")", "", "")
+        aj("\cch\fin", "FRCCH0021", "IBM M42, Franï¿½oise Heurtier (NT4,"","")", "", "")
         aj("\cch\fin", "FRCCH0024", "IBM M42, Claire DUBOIS", "", "")
-        aj("\cch\fin", "FRCCH0025", "IBM M42, Cédric Limbertie", "", "")
+        aj("\cch\fin", "FRCCH0025", "IBM M42, Cï¿½dric Limbertie", "", "")
         aj("\cch\fin", "FRCCH0026", "HP Vectra, Laurence Boulanger", "", "")
-        aj("\cch\fin", "FRCCH0027", "IBM T30, Jérome RAVET", "", "")
+        aj("\cch\fin", "FRCCH0027", "IBM T30, Jï¿½rome RAVET", "", "")
         aj("\cch\fin", "FRCCH0044", "IBM M42, Anne PATINO", "", "")
         aj("\cch\fin", "FRCCH0055", "IBM M42, Thomas ROLLIN", "", "")
         aj("\cch\fin", "FRCCH0056", "IBM M42, Monique BOUBLI", "", "")
         aj("\cch\fin", "FRCCH0057", "IBM M42, Anne PATINO", "", "")
-        aj("\cch\fin", "FRCCH0058", "IBM M42, Béatrice LANGLET", "", "")
+        aj("\cch\fin", "FRCCH0058", "IBM M42, Bï¿½atrice LANGLET", "", "")
         aj("\cch\fin", "FRCCH0059", "IBM M42, Virgine FORTES", "", "")
         aj("\cch\fin", "FRCCH0060", "IBM M42, Elise TARDIVEL", "", "")
         aj("\cch\fin", "FRCCH0061", "IBM M42, Christelle NEGRE", "", "")
@@ -450,8 +450,8 @@ Public Class frmAnalyse
         aj("\cch\fin", "FRCCH0230", "IBM M42, C Brossard", "", "")
         aj("\cch\fin", "FRCCH0231", "IBM M42, P Duquesnoy", "", "")
         aj("\cch\fin", "FRCCH0232", "IBM M42, C Boulanger", "", "")
-        aj("\cch\fin", "FRCCH9803", "HP Vectra, Cécile BRETON", "", "")
-        aj("\cch\hr", "FRCCH0009", "HP Omnibook XE3, Véronique COTELLE", "", "")
+        aj("\cch\fin", "FRCCH9803", "HP Vectra, Cï¿½cile BRETON", "", "")
+        aj("\cch\hr", "FRCCH0009", "HP Omnibook XE3, Vï¿½ronique COTELLE", "", "")
         aj("\cch\hr", "FRCCH0023", "IBM T30, Francis BERGERON", "", "")
         aj("\cch\hr", "FRCCH0029", "IBM M42, Catherine Bainvelzweig", "", "")
         aj("\cch\hr", "FRCCH0053", "IBM T40, JL Bouteloup", "", "")
@@ -462,7 +462,7 @@ Public Class frmAnalyse
         aj("\cch\it", "FRCCH0006", "HP Vectra,  Jean Cacan", "", "")
         aj("\cch\it", "FRCCH0007", "HP Vectra, Gilles Schwoebel", "", "")
         aj("\cch\it", "FRCCH0008", "Ordinateur de Sonia Likibi", "", "")
-        aj("\cch\it", "FRCCH0010", "HP, Fayçal Bengatta", "", "")
+        aj("\cch\it", "FRCCH0010", "HP, Fayï¿½al Bengatta", "", "")
         aj("\cch\it", "FRCCH0011", "Ordinateur de Thierry Mackel", "", "")
         aj("\cch\it", "FRCCH0012", "IBM M42, Pierre VIOLENT", "", "")
         aj("\cch\it", "FRCCH0013", "IBM M42, Help Desk 01", "", "")
@@ -472,7 +472,7 @@ Public Class frmAnalyse
         aj("\cch\it", "FRCCH0018", "IBM T30, Michel Magnier", "", "")
         aj("\cch\it", "FRCCH0028", "IBM M42, Radhia Ben Younes", "", "")
         aj("\cch\it", "FRCCH0035", "Machine NT4 au Help Desk", "", "")
-        aj("\cch\it", "FRCCH0036", "HP VECTRA, Salle Préparation (GOST,"","")", "", "")
+        aj("\cch\it", "FRCCH0036", "HP VECTRA, Salle Prï¿½paration (GOST,"","")", "", "")
         aj("\cch\it", "FRCCH0037", "IBM M42, Rodrigue Coffi", "", "")
         aj("\cch\it", "FRCCH9805", "Libre Service HelpDesk", "", "")
         aj("\cch\it", "FRCCH9999", "Essais Olivier Jourdan", "", "")
@@ -485,7 +485,7 @@ Public Class frmAnalyse
         aj("\cch\mgt", "FRCCH0139", "HP VECTRA, Pascal DELATER", "", "")
         aj("\cch\mgt", "FRCCH9501", "HP Vectra VE Myette Rapina", "", "")
         aj("\cch\mgt", "FRCCH9804", "HP Vectra, Julio MARTINEZ", "", "")
-        aj("\cch\ogc", "FRCCH0030", "HP VECTRA, Naïma GRONDIN", "", "")
+        aj("\cch\ogc", "FRCCH0030", "HP VECTRA, Naï¿½ma GRONDIN", "", "")
         aj("\cch\ogc", "FRCCH0054", "HP OMNIBOOK Eric hauss", "", "")
         aj("\cch\ssc", "FRCCH0019", "IBM T30, Fabrice Egloff", "", "")
         aj("\cch\ssc", "FRCCH0020", "IBM T30, Arnaud LOPEZ", "", "")
@@ -494,11 +494,11 @@ Public Class frmAnalyse
         aj("\cch\ssc", "FRCCH0034", "IBM M42 Catherine Lemarie ICS", "", "")
         aj("\cch\ssc", "FRCCH0038", "IBM M42, Nicolas POISSON", "", "")
         aj("\cch\ssc", "FRCCH0039", "IBM T40, Lysiane HUSER", "", "")
-        aj("\cch\ssc", "FRCCH0041", "IBM T30 François SECCHI", "", "")
-        aj("\cch\ssc", "FRCCH0042", "IBM T40, Véronique LOMBREY", "", "")
+        aj("\cch\ssc", "FRCCH0041", "IBM T30 Franï¿½ois SECCHI", "", "")
+        aj("\cch\ssc", "FRCCH0042", "IBM T40, Vï¿½ronique LOMBREY", "", "")
         aj("\cch\ssc", "FRCCH0043", "HP Vectra 420TD, Phillipe FUSILLER", "", "")
         aj("\cch\ssc", "FRCCH0046", "IBM T40, Mickael GENDROT", "", "")
-        aj("\cch\ssc", "FRCCH0050", "IBM M42, Véronique MADRANGE", "", "")
+        aj("\cch\ssc", "FRCCH0050", "IBM M42, Vï¿½ronique MADRANGE", "", "")
         aj("\cch\ssc", "FRCCH0051", "IBM T40, Philippe FUSILLER", "", "")
         aj("\cch\ssc", "FRCCH0063", "IBM M42, Samia GARECHE", "", "")
         aj("\cch\ssc", "FRCCH0065", "IBM T40, Laurent DROUHARD", "", "")
@@ -520,7 +520,7 @@ Public Class frmAnalyse
         aj("\cch\ssc", "FRCCH0097", "IBM T40, C Gatty", "", "")
         aj("\cch\ssc", "FRCCH0098", "HP Omnibook, L Montariol", "", "")
         aj("\cch\ssc", "FRCCH0099", "HP portable, T de Parceveaux", "", "")
-        aj("\cch\ssc", "FRCCH0100", "Tecra portable, S Dalboussière", "", "")
+        aj("\cch\ssc", "FRCCH0100", "Tecra portable, S Dalboussiï¿½re", "", "")
         aj("\cch\ssc", "FRCCH0101", "HP Vectra, Nathalie MATHA", "", "")
         aj("\cch\ssc", "FRCCH0102", "HP Omnibook, Antoine SAILLY", "", "")
         aj("\cch\ssc", "FRCCH0103", "Toshiba Tecra 8100, Alain SOUBRIER", "", "")
@@ -545,21 +545,21 @@ Public Class frmAnalyse
         aj("\cch\ssc", "FRCCH0130", "IBM M42, Catherine CHEBERT", "", "")
         aj("\cch\ssc", "FRCCH0131", "Compaq Armada E500, Valerie FRAYSSE", "", "")
         aj("\cch\ssc", "FRCCH0133", "IBM M42, Luis DA SILVA E SERA", "", "")
-        aj("\cch\ssc", "FRCCH0134", "IBM M42,Cécile DA ROSA FERREIRA", "", "")
+        aj("\cch\ssc", "FRCCH0134", "IBM M42,Cï¿½cile DA ROSA FERREIRA", "", "")
         aj("\cch\ssc", "FRCCH0135", "HP Vectra, Valerie JOLIBOIS", "", "")
         aj("\cch\ssc", "FRCCH0136", "IBM M42,  Alexandre MUGNIER", "", "")
         aj("\cch\ssc", "FRCCH0137", "IBM T40, Gilles CAYZAC", "", "")
         aj("\cch\ssc", "FRCCH0140", "HP Omnibook, Sandrine LUCBERNET", "", "")
         aj("\cch\ssc", "FRCCH0142", "IBM T30, Christophe PLICHARD", "", "")
         aj("\cch\ssc", "FRCCH0144", "IBM M42, Ali  AHMED", "", "")
-        aj("\cch\ssc", "FRCCH0145", "IBM M42, Intérimaire 1 ICS", "", "")
+        aj("\cch\ssc", "FRCCH0145", "IBM M42, Intï¿½rimaire 1 ICS", "", "")
         aj("\cch\ssc", "FRCCH0162", "IBMT30, Etienne NOUAT", "", "")
         aj("\cch\ssc", "FRCCH0163", "TOSHIBA TECRA 8100, Jean SABLON", "", "")
-        aj("\cch\ssc", "FRCCH0170", "IBM T30, Céline RAFFARD", "", "")
-        aj("\cch\ssc", "FRCCH0171", "IBM M42, Valérie JOLIBOIS", "", "")
+        aj("\cch\ssc", "FRCCH0170", "IBM T30, Cï¿½line RAFFARD", "", "")
+        aj("\cch\ssc", "FRCCH0171", "IBM M42, Valï¿½rie JOLIBOIS", "", "")
         aj("\cch\ssc", "FRCCH0192", "IBM T30, Flore LAPORTE FAURET", "", "")
         aj("\cch\ssc", "FRCCH0193", "TOSHIBA, Jean-Michel DELINDE", "", "")
-        aj("\cch\ssc", "FRCCH0194", "HP OMNIBOOK XE3, Géraldine ROFFIDAL", "", "")
+        aj("\cch\ssc", "FRCCH0194", "HP OMNIBOOK XE3, Gï¿½raldine ROFFIDAL", "", "")
         aj("\cch\ssc", "FRCCH0213", "IBM T40, Luis Da Silva E Serra", "", "")
         aj("\cch\ssc", "FRCCH0218", "HP Ominbook, S Bonzom", "", "")
         aj("\cch\ssc", "FRCCH0221", "HP, interimaire02_ics", "", "")
@@ -569,7 +569,7 @@ Public Class frmAnalyse
         aj("\cch\ssc", "FRCCH0227", "IBM T30, Vanessa DESROCHES", "", "")
         aj("\cch\ssc", "FRCCH0228", "IBM T30, Emmanuelle DARPEIX", "", "")
         aj("\cch\ssc", "FRCCH0229", "IBM T30, Pascal DERMINOT", "", "")
-        aj("\cch\ssc", "FRCCH9504", "COMPAQ ARMADA E500, Marlène DUDZIK", "", "")
+        aj("\cch\ssc", "FRCCH9504", "COMPAQ ARMADA E500, Marlï¿½ne DUDZIK", "", "")
         aj("\cch\ssc", "FRCCH9505", "HP VECTRA, Clara RANDRIAMAHOLY", "", "")
         aj("\cch\ssc", "FRCCH9801", "Toshiba tecra 8110 Mireille BARBE", "", "")
         aj("\cch\tas", "FRCCH0040", "HP Vectra VL 420 MT, Jocelyne CONNAN", "", "")
@@ -640,14 +640,14 @@ Public Class frmAnalyse
         aj("\cli", "FRCLI0003", "micro W98 P. imbault", "", "")
         aj("\cli", "FRCLI0007", "Micro de Super Kamal", "", "")
         aj("\cli", "FRCLI0008", "Micro de M. Munoz", "", "")
-        aj("\cli", "FRCLI0009", "Saisie CPG N°2", "", "")
+        aj("\cli", "FRCLI0009", "Saisie CPG Nï¿½2", "", "")
         aj("\cli", "FRCLI0010", "", "", "")
         aj("\cli", "FRCLI0011", "HP Vectra, Saisie CPG 1", "", "")
         aj("\cli", "FRCLI0012", "HP Vectra, david_vilbert", "", "")
         aj("\cli", "FRCLI0013", "PC Portable Toshiba, karine_vrigneau", "", "")
         aj("\cli", "FRCLI0014", "HP Vectra, catherine_mathieu", "", "")
         aj("\cli", "FRCLI0015", "IBM , sandrine_duchesne", "", "")
-        aj("\cli", "FRCLI0016", "PC Taïwannais P III 600, fabienne_blin", "", "")
+        aj("\cli", "FRCLI0016", "PC Taï¿½wannais P III 600, fabienne_blin", "", "")
         aj("\cli", "FRCLI0017", "IBM, diem_pham", "", "")
         aj("\cli", "FRCLI0018", "IBM, caroline_doucet", "", "")
         aj("\cli", "FRCLI0019", "HP , SAISIE MICROBIO", "", "")
@@ -662,18 +662,18 @@ Public Class frmAnalyse
         aj("\cli", "FRCLI0028", "Portable IBM R30, marie-rose_munoz", "", "")
         aj("\cli", "FRCLI0029", "HP, juliette_darosa", "", "")
         aj("\cli", "FRCLI0030", "IBM M40, beatrice_miguel", "", "")
-        aj("\cli", "FRCLI0031", "HP, saisie 3ème Etage", "", "")
+        aj("\cli", "FRCLI0031", "HP, saisie 3ï¿½me Etage", "", "")
         aj("\cli", "FRCLI0032", "HP, evelyne_mence", "", "")
-        aj("\cli", "FRCLI0033", "HP, Saisie 3ème", "", "")
+        aj("\cli", "FRCLI0033", "HP, Saisie 3ï¿½me", "", "")
         aj("\cli", "FRCLI0034", "IBM M40, Labo Poste Correcteur", "", "")
         aj("\cli", "FRCLI0035", "HP IPC, rozenne_boheas", "", "")
         aj("\cli", "FRCLI0036", "HP, sylvie_meurillon", "", "")
-        aj("\cli", "FRCLI0037", "HP Vectra, Saisie 2ème", "", "")
+        aj("\cli", "FRCLI0037", "HP Vectra, Saisie 2ï¿½me", "", "")
         aj("\cli", "FRCLI0038", "HP IPC, odile_simonnet", "", "")
         aj("\cli", "FRCLI0039", "IBM M40, olivier_juif", "", "")
         aj("\cli", "FRCLI0040", "IBM M40, delphine_demay", "", "")
-        aj("\cli", "FRCLI0041", "à rechercher!!!!RDC", "", "")
-        aj("\cli", "FRCLI0042", "à rechercher!!!!RDC", "", "")
+        aj("\cli", "FRCLI0041", "ï¿½ rechercher!!!!RDC", "", "")
+        aj("\cli", "FRCLI0042", "ï¿½ rechercher!!!!RDC", "", "")
         aj("\cli", "FRCLI0043", "IBM T30, patrick_reboul", "", "")
         aj("\cli", "FRCLI0044", "IBM T30, bernard_vivancos", "", "")
         aj("\cli", "FRCLI0045", "HP Vectra, chantal_lebeau", "", "")
@@ -699,23 +699,23 @@ Public Class frmAnalyse
         aj("\evr", "frevr0001", "IBM T30, Christian DEMANZE", "", "")
         aj("\evr", "frevr0002", "ZETAFAX", "", "")
         aj("\evr", "FREVR0003", "IBMT40, Arnaud MARGUERITTE", "", "")
-        aj("\evr", "FREVR0004", "IBM T40, José CORREIA", "", "")
-        aj("\evr", "FREVR0005", "IBM M42, Chimie élémentaire 1", "", "")
-        aj("\evr", "FREVR0006", "IBM M42, Chimie élémentaire 2", "", "")
+        aj("\evr", "FREVR0004", "IBM T40, Josï¿½ CORREIA", "", "")
+        aj("\evr", "FREVR0005", "IBM M42, Chimie Ã©lÃ©mentaire 1", "", "")
+        aj("\evr", "FREVR0006", "IBM M42, Chimie Ã©lÃ©mentaire 2", "", "")
         aj("\evr", "FREVR0007", "IBM M42, Tania Di GIOIA", "", "")
-        aj("\evr", "FREVR0008", "IBM M42, Stéphanie LAUQUIN", "", "")
-        aj("\evr", "FREVR0009", "IBM M42, Chimie élémentaire", "", "")
-        aj("\evr", "FREVR0010", "IBM M42, Chimie élémentaire", "", "")
-        aj("\evr", "FREVR0011", "IBM M42, Stéphanie LAUQUIN", "", "")
+        aj("\evr", "FREVR0008", "IBM M42, Stï¿½phanie LAUQUIN", "", "")
+        aj("\evr", "FREVR0009", "IBM M42, Chimie Ã©lÃ©mentaire", "", "")
+        aj("\evr", "FREVR0010", "IBM M42, Chimie Ã©lÃ©mentaire", "", "")
+        aj("\evr", "FREVR0011", "IBM M42, Stï¿½phanie LAUQUIN", "", "")
         aj("\evr", "FREVR0012", "IBM M42, PC SKALAR BD05", "", "")
         aj("\evr", "FREVR0013", "IBM M42, PC HTC GESTION LWE", "", "")
         aj("\evr", "FREVR0014", "IBM M42, PC COT Eaux Naturelles", "", "")
         aj("\evr", "FREVR0015", "IBM M42, PC Eaux Naturelles", "", "")
-        aj("\leh", "FRLEH0001", "IBM M42, Secrétariat Industrie HARFLEUR", "", "")
-        aj("\lro", "FRLRO0001", "Toshiba SP4200, Contrôleur AGR", "", "")
+        aj("\leh", "FRLEH0001", "IBM M42, Secrï¿½tariat Industrie HARFLEUR", "", "")
+        aj("\lro", "FRLRO0001", "Toshiba SP4200, Contrï¿½leur AGR", "", "")
         aj("\mtz", "FRMTZ0001", "IBM M42, Franck ROTELLA", "", "")
         aj("\osy", "FROSY0001", "IBM T30, En attente Nom Utilisateur (Alphatest,"","")", "", "")
-        aj("\osy", "FROSY0002", "IBM M42, Frédéric LAUTI (Alphatest,"","")", "", "")
+        aj("\osy", "FROSY0002", "IBM M42, Frï¿½dï¿½ric LAUTI (Alphatest,"","")", "", "")
         aj("\osy", "FROSY0003", "IBM T30,  Jean-Paul Berteaux (Alphatest,"","")", "", "")
         aj("\osy", "FROSY0004", "IBM T30, Attente non Utilisateur (Alphatest,"","")", "", "")
         aj("\osy", "FROSY0005", "IBM M42, Christophe POISSON", "", "")
@@ -723,10 +723,10 @@ Public Class frmAnalyse
         aj("\pdb", "FRPDB0002", "Type inconnu, Yves Jacolin", "", "")
         aj("\pdb", "FRPDB0003", "HP Vectra XE310, Laurent MACARIO", "", "")
         aj("\qxb", "FRQXB0001", "IBM T30, Jean-Louis BENEDETTI", "", "")
-        aj("\qxb", "FRQXB0002", "IBM M42, Céline MICHEL", "", "")
+        aj("\qxb", "FRQXB0002", "IBM M42, Cï¿½line MICHEL", "", "")
         aj("\qxb", "FRQXB0003", "IBM M42, Celine Michel", "", "")
         aj("\qxb", "FRQXB0004", "IBM M42, Fabrice Antiquario", "", "")
-        aj("\qxb", "FRQXB0005", "IBM T40, Jérome VANNESSON", "", "")
+        aj("\qxb", "FRQXB0005", "IBM T40, Jï¿½rome VANNESSON", "", "")
         aj("\qxb", "FRQXB0006", "IBM M42, Jocelyne LEFEVRE", "", "")
         aj("\qxb", "FRQXB0007", "IBM M42, Luc VAUFREYDAZ", "", "")
         aj("\qxb", "FRQXB0008", "IBM M42, Sylvie MONSERRAT", "", "")
@@ -735,8 +735,8 @@ Public Class frmAnalyse
         aj("\qxb", "FRQXB0011", "HP VECTRA, Pc_Labo Peinture", "", "")
         aj("\qxb", "FRQXB0012", "HP Vectra VL, Josiane PASQUET", "", "")
         aj("\qxb", "FRQXB0013", "IBM T30, Marc BLUMET", "", "")
-        aj("\qxb", "FRQXB0014", "IBM M42, Michèle GEORGES", "", "")
-        aj("\qxb", "FRQXB0015", "IBM T30, Valérie MIDENA", "", "")
+        aj("\qxb", "FRQXB0014", "IBM M42, Michï¿½le GEORGES", "", "")
+        aj("\qxb", "FRQXB0015", "IBM T30, Valï¿½rie MIDENA", "", "")
         aj("\qxb", "FRQXB0016", "HP Vectra, Josiane JONCQUER", "", "")
         aj("\qxb", "FRQXB0017", "IBM T30, Frederique LORMER", "", "")
         aj("\qxb", "FRQXB0018", "IBM T30, Magali BEDOC", "", "")
@@ -744,9 +744,9 @@ Public Class frmAnalyse
         aj("\qxb", "FRQXB9502", "HP Vectra VL, Laboratoire Golf", "", "")
         aj("\qxb", "FRQXB9503", "Hp Vectra, Labo test saisie", "", "")
         aj("\qxb", "FRQXB9801", "HP Vectra VL 420 FT, Ancien poste Jocelyne LEFEVRE", "", "")
-        aj("\qxb", "FRQXB9802", "Portable, Magali COUZON, accès RS-6000", "", "")
-        aj("\rou", "FRCCH0031", "IBM T30, Cédric ADAM (Rouen,"","")", "", "")
-        aj("\rou", "FRROU0001", "IBM T40, Stépane Joly", "", "")
+        aj("\qxb", "FRQXB9802", "Portable, Magali COUZON, accï¿½s RS-6000", "", "")
+        aj("\rou", "FRCCH0031", "IBM T30, Cï¿½dric ADAM (Rouen,"","")", "", "")
+        aj("\rou", "FRROU0001", "IBM T40, Stï¿½pane Joly", "", "")
         aj("\rou", "FRROU0002", "IBM M42 , Claudine Corbou", "", "")
         aj("\rou", "FRROU0003", "IBM M42, Isabelle Celdran", "", "")
         aj("\rou", "FRROU0004", "HP, Marc Iacono", "", "")
@@ -794,10 +794,10 @@ Public Class frmAnalyse
           "A:link    {color: #0000FF; font: 10pt Tahoma, Arial; font-weight:bold}" &
           "A:visited {color: #FF00FF; font: 10pt Tahoma, Arial; font-weight:bold}"
         d.body.Style.marginTop = "4pt"
-        d.body.innerHTML = "Selectionnez le site à analyser (exemple: cch) et cliquez sur le bouton Analyser."
+        d.body.innerHTML = "Selectionnez le site ï¿½ analyser (exemple: cch) et cliquez sur le bouton Analyser."
     End Sub
 
-    ' Utilitaire: rafaîchit la fenêtre IE
+    ' Utilitaire: rafaï¿½chit la fenï¿½tre IE
     Sub RefreshIE()
         Do
             System.Windows.Forms.Application.DoEvents()
@@ -844,14 +844,14 @@ Public Class frmAnalyse
     End Sub
 
     Sub AfficheMachines(slOU As SortedList, slComputers As SortedList, sSite As String, bListeXX As Boolean)
-        ' Si la liste est vide, on dégage sans traitement
+        ' Si la liste est vide, on dï¿½gage sans traitement
         If slComputers.Count = 0 Then Exit Sub
 
         If bListeXX Then sHTML.Append("<BR>" & vbCrLf)
 
         sHTML.Append("<table border=""1"" cellspacing=""0"" style=""border-collapse: collapse; margin-top:5"" bordercolor=""#000000"">" & vbCrLf)
 
-        ' On détermine le mini et le maxi de la collection à afficher
+        ' On dï¿½termine le mini et le maxi de la collection ï¿½ afficher
         Dim iMin, iMax As Integer
         Dim m As Match
         iMin = 9999
@@ -863,19 +863,19 @@ Public Class frmAnalyse
                 iComp += 1
             Else
                 m = rNum.Match(CType(enumComp.Key, String))
-                iComp = CInt(m.Groups(1).Value)  ' L'indice 0 est le match de la chaîne complète
+                iComp = CInt(m.Groups(1).Value)  ' L'indice 0 est le match de la ChaÃ®ne complï¿½te
             End If
             iMin = System.Math.Min(iMin, iComp)
             iMax = System.Math.Max(iMax, iComp)
         End While
 
-        ' iMin0 = début d'affichage. L'affichage commence aux valeurs 1,11,21,31...
+        ' iMin0 = dï¿½but d'affichage. L'affichage commence aux valeurs 1,11,21,31...
         Dim iMin0 As Integer
         iMin0 = iMin - (iMin - 1) Mod 10
 
         ' On remplit le tableau de compupters.
-        ' iRang-1 donne le rang de l'OU dans slOU de façon
-        ' à afficher avec la bonne couleur, ou 0 s'il n'y a pas d'ordinateur, ou -1 si inconnu
+        ' iRang-1 donne le rang de l'OU dans slOU de faï¿½on
+        ' ï¿½ afficher avec la bonne couleur, ou 0 s'il n'y a pas d'ordinateur, ou -1 si inconnu
         Dim tComp(iMax - iMin0 + 11) As Computer
         iComp = 0
         enumComp = slComputers.GetEnumerator()
@@ -884,7 +884,7 @@ Public Class frmAnalyse
                 iComp += 1
             Else
                 m = rNum.Match(CType(enumComp.Key, String))
-                iComp = CInt(m.Groups(1).Value)  ' L'indice 0 est le match de la chaîne complète
+                iComp = CInt(m.Groups(1).Value)  ' L'indice 0 est le match de la ChaÃ®ne complï¿½te
             End If
             Dim theComputer As Computer
             theComputer = CType(enumComp.Value, Computer)
@@ -946,14 +946,14 @@ Public Class frmAnalyse
         sPos = LCase(sPos)
         If VB.Left(sPos, 1) = "\" Then sPos = Mid(sPos, 2)
 
-        ' On détermine la clé du site, la partie avant le premier \
+        ' On dï¿½termine la ClÃ© du site, la partie avant le premier \
         Dim sKey As String
         Dim pBS As Integer
         pBS = sPos.IndexOf("\"c)
         If pBS < 0 Then pBS = Len(sPos)
         sKey = VB.Left(sPos, pBS)
 
-        ' Ajout à la liste
+        ' Ajout ï¿½ la liste
         Dim lvi As ListViewItem
         lvi = lvListe.Items.Add(sComputer)
         lvi.SubItems.Add(UCase(sKey))
@@ -962,7 +962,7 @@ Public Class frmAnalyse
         lvi.SubItems.Add(sWhenCreated)
         lvi.SubItems.Add(sWhenChanged)
 
-        ' On recherche le site dans slSitesAD en le créant si besoin est
+        ' On recherche le site dans slSitesAD en le crï¿½ant si besoin est
         Dim sad As SiteAD
         If slSitesAD.ContainsKey(sKey) Then
             sad = slSitesAD(sKey)
@@ -978,10 +978,10 @@ Public Class frmAnalyse
             slSitesAD.Add(sKey, sad)
         End If
 
-        ' Mise à jour de la liste des sous-OUs du site
+        ' Mise ï¿½ jour de la liste des sous-OUs du site
         If Not sad.slOU.Contains(sPos) Then sad.slOU.Add(sPos, Nothing)
 
-        ' Analyse du nom de machine de façon à l'ajouter dans la bonne liste
+        ' Analyse du nom de machine de faï¿½on ï¿½ l'ajouter dans la bonne liste
         sComputer = UCase(sComputer)
 
         Dim theComputer As Computer
@@ -1039,7 +1039,7 @@ Public Class frmAnalyse
 
 End Class
 
-' Implémentation du tri de la liste par n'importe quelle colonne
+' Implï¿½mentation du tri de la liste par n'importe quelle colonne
 Class ListViewItemComparer
     Implements IComparer
 

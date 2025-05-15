@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "216 Launchpad 2005", "216 Launchpad 2005.vbproj", "{AF066758-7D6F-4ACB-A500-C447EF95EAE1}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "216 Launchpad 2005", "216 VB Launchpad 2005.vbproj", "{AF066758-7D6F-4ACB-A500-C447EF95EAE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

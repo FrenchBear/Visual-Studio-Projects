@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "30 C# ImageView", "30 C# ImageView.csproj", "{39B06BE2-E5D2-4941-874A-32465E6B50BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "30 C# ImageView", "030 CS ImageView.csproj", "{39B06BE2-E5D2-4941-874A-32465E6B50BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

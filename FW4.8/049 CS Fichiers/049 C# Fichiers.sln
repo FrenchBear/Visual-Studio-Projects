@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "49 C# Fichiers", "49 C# Fichiers.csproj", "{38B81605-CE79-412E-8F90-4455935174D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "49 C# Fichiers", "049 CS Fichiers.csproj", "{38B81605-CE79-412E-8F90-4455935174D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

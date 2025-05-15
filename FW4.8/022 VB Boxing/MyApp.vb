@@ -22,9 +22,9 @@ Module Module1
         p.Empile(2)
         p.Empile(3)
 
-        i = p.Dépile()
-        i = p.Dépile()
-        i = p.Dépile()
+        i = p.DÃ©pile()
+        i = p.DÃ©pile()
+        i = p.DÃ©pile()
 
         Console.ReadLine()
     End Sub
@@ -37,7 +37,7 @@ Class PileEntier : Inherits Stack
         MyBase.Push(i)
     End Sub
 
-    Public Function Dépile() As Integer
+    Public Function DÃ©pile() As Integer
         Return CInt(MyBase.Pop())
     End Function
 

@@ -4,11 +4,11 @@ Imports System.Runtime.InteropServices
 
 #Disable Warning IDE1006 ' Naming Styles
 
-' Les informations générales relatives à un assembly dépendent de l'ensemble
-' d'attributs suivant. Pour modifier les informations associées à un assembly,
+' Les informations gï¿½nï¿½rales relatives ï¿½ un assembly dï¿½pendent de l'ensemble
+' d'attributs suivant. Pour modifier les informations associï¿½es ï¿½ un assembly,
 'changez les valeurs de ces attributs.
 
-' Vérifiez les valeurs des attributs de l'assembly
+' VÃ©rifiez les valeurs des attributs de l'assembly
 
 <Assembly: AssemblyTitle("AfficheImage")>
 <Assembly: AssemblyDescription("Affichage d'images simple")>
@@ -18,18 +18,18 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTrademark("")>
 <Assembly: CLSCompliant(True)>
 
-'Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
+'Le GUID suivant est pour l'ID de la typelib si ce projet est exposï¿½ ï¿½ COM
 <Assembly: Guid("A117CD04-A389-4586-AA79-9A24B9B69058")>
 
-' Les informations de version pour un assembly se composent des quatre valeurs suivantes :
+' Les informations de version pour un assembly se composent des quatre valeurs suivantesï¿½:
 '
 '      Version principale
 '      Version secondaire
-'      Numéro de build
-'      Révision
+'      Numï¿½ro de build
+'      Rï¿½vision
 '
-' Vous pouvez spécifier toutes les valeurs ou indiquer les numéros de build et de révision par défaut
-' en utilisant '*', comme indiqué ci-dessous :
+' Vous pouvez spï¿½cifier toutes les valeurs ou indiquer les numï¿½ros de build et de rï¿½vision par dï¿½faut
+' en utilisant '*', comme indiquï¿½ ci-dessousï¿½:
 
 <Assembly: AssemblyVersion("2.1.*")>
 <Assembly: ComVisible(False)>

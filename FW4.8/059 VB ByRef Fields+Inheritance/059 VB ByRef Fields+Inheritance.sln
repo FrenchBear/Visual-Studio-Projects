@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "059 VB ByRef Fields+Inheritance", "059 VB ByRef Fields+Inheritance.vbproj", "{1A357877-2B53-407C-ACBB-4FC6F7F42AB3}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "059 VB ByRef Fields+Inheritance", "059 VB ByRef Fields and Inheritance.vbproj", "{1A357877-2B53-407C-ACBB-4FC6F7F42AB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

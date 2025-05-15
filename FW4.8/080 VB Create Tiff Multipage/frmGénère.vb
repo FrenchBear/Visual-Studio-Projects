@@ -5,7 +5,7 @@ Imports System.Drawing.Imaging
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -13,11 +13,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -28,9 +28,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents Button1 As Button
 
     Friend WithEvents btnListCodecs As Button
@@ -46,7 +46,7 @@ Public Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New Size(120, 23)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Génère"
+        Me.Button1.Text = "GÃ©nÃ¨re"
         '
         'btnListCodecs
         '
@@ -138,7 +138,7 @@ Public Class Form1
         myEncoderParameters.Param(0) = myEncoderParameter
         multi.SaveAdd(myEncoderParameters)
 
-        MsgBox("Enregistré --> C:\Multiframe.tiff")
+        MsgBox("Enregistrï¿½ --> C:\Multiframe.tiff")
     End Sub
 
     Function GetEncoderInfo(mimeType As String) As ImageCodecInfo

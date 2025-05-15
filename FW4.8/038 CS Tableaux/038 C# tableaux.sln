@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "38 C# tableaux", "38 C# tableaux.csproj", "{3CFA3627-C1FD-49BF-A083-8232004283D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "38 C# tableaux", "038 CS Tableaux.csproj", "{3CFA3627-C1FD-49BF-A083-8232004283D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

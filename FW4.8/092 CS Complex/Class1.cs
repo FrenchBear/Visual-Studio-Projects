@@ -1,5 +1,5 @@
 // Exemple d'utilisation de la classe complexe
-// Résolution d'une équation du 3è degré
+// RÃ©solution d'une ï¿½quation du 3ï¿½ degrï¿½
 // 2004-01-25   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-04   PV  VS2010
@@ -14,7 +14,7 @@ namespace CS92
         private static void Main(string[] args)
         {
             P3(1.0, -6.0, 11.0, -6.0, out Complex r1, out Complex r2, out Complex r3);
-            // 3 solutions réelles, 1, 2 et 3
+            // 3 solutions rï¿½elles, 1, 2 et 3
             Console.WriteLine("x1={0}\nx2={1}\nx3={2}", r1, r2, r3);
             Console.ReadLine();
         }

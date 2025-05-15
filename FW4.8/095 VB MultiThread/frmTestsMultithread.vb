@@ -9,7 +9,7 @@
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -17,11 +17,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -32,9 +32,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents Button1 As Button
 
     Friend WithEvents Button2 As Button
@@ -60,7 +60,7 @@ Public Class Form1
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New Size(184, 23)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Thread.Start + classe spécifique"
+        Me.Button1.Text = "Thread.Start + classe spï¿½cifique"
         '
         'Button2
         '
@@ -86,7 +86,7 @@ Public Class Form1
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New Size(114, 16)
         Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Création de threads :"
+        Me.Label1.Text = "Crï¿½ation de threads :"
         '
         'Button4
         '
@@ -94,7 +94,7 @@ Public Class Form1
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New Size(184, 23)
         Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Queue synchronisée"
+        Me.Button4.Text = "Queue synchronisï¿½e"
         '
         'Label2
         '
@@ -133,15 +133,15 @@ Public Class Form1
 
 #End Region
 
-    ' 1. Utilisation d'une classe spécifique et de Thread.Start
+    ' 1. Utilisation d'une classe spï¿½cifique et de Thread.Start
     Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
-        Dim tskTâche As New clsTâches
-        Dim Thread1 As New Threading.Thread(AddressOf tskTâche.UneTâche)
+        Dim tskTÃ¢che As New clsTÃ¢ches
+        Dim Thread1 As New Threading.Thread(AddressOf tskTÃ¢che.UneTÃ¢che)
 
-        tskTâche.sTexte = "Toto"
+        tskTÃ¢che.sTexte = "Toto"
         Thread1.Start()
         Thread1.Join()
-        MsgBox("Thread1 a retourné " & tskTâche.bValRet)
+        MsgBox("Thread1 a retournï¿½ " & tskTÃ¢che.bValRet)
     End Sub
 
     ' 2. Thread pooling
@@ -150,40 +150,40 @@ Public Class Form1
         Dim stObj2 As New StateObjet
         stObj1.iArg = 10 : stObj1.sArg = "toto"
         stObj2.iArg = 33 : stObj2.sArg = "titi"
-        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTâche1), stObj1)
-        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTâche2), stObj2)
+        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTÃ¢che1), stObj1)
+        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf MaTÃ¢che2), stObj2)
         System.Threading.Thread.Sleep(1000)
 
     End Sub
 
-    Sub MaTâche1(StateObjet As Object)
+    Sub MaTÃ¢che1(StateObjet As Object)
         Dim stObj As StateObjet
         stObj = CType(StateObjet, StateObjet)
         MsgBox("sArg: " & stObj.sArg)
         MsgBox("iArg: " & stObj.iArg)
-        stObj.sValRet = "Retour de MaTâche1"
+        stObj.sValRet = "Retour de MaTÃ¢che1"
     End Sub
 
-    Sub MaTâche2(StateObjet As Object)
+    Sub MaTÃ¢che2(StateObjet As Object)
         Dim stObj As StateObjet
         stObj = CType(StateObjet, StateObjet)
         MsgBox("sArg: " & stObj.sArg)
         MsgBox("iArg: " & stObj.iArg)
-        stObj.sValRet = "Retour de MaTâche2"
+        stObj.sValRet = "Retour de MaTÃ¢che2"
     End Sub
 
     ' 3. Utilisation de delegates
     Private Sub Button3_Click(sender As System.Object, e As EventArgs) Handles Button3.Click
         Dim cb As New AsyncCallback(AddressOf Me.OnComplete)
-        Dim del As New DelegateMaTâche(AddressOf MaTâche)
+        Dim del As New DelegateMaTÃ¢che(AddressOf MaTÃ¢che)
         del.BeginInvoke(cb, del)
     End Sub
 
-    Sub MaTâche()
-        MsgBox("MaTâche")
+    Sub MaTÃ¢che()
+        MsgBox("MaTÃ¢che")
     End Sub
 
-    Delegate Sub DelegateMaTâche()
+    Delegate Sub DelegateMaTÃ¢che()
 
     Sub OnComplete(ar As IAsyncResult)
         '...
@@ -192,7 +192,7 @@ Public Class Form1
     ' 4. Synchronisation
     Private Sub Button4_Click(sender As System.Object, e As EventArgs) Handles Button4.Click
         Dim maQ As New Queue
-        maQ.Enqueue("Il était")
+        maQ.Enqueue("Il ï¿½tait")
         maQ.Enqueue("un petit")
         maQ.Enqueue("navire.")
 
@@ -213,12 +213,12 @@ Public Class Form1
 
 End Class
 
-' 1. Utilisation d'une classe spécifique et de Thread.Start
-Class clsTâches
+' 1. Utilisation d'une classe spï¿½cifique et de Thread.Start
+Class clsTÃ¢ches
     Friend sTexte As String
     Friend bValRet As Boolean
 
-    Sub UneTâche()
+    Sub UneTÃ¢che()
         MsgBox("sTexte: " & sTexte)
         bValRet = True
     End Sub
@@ -238,13 +238,13 @@ Class AsyncTest
 
     Sub StartTask()
         Dim arg As String = "toto"
-        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf Tâche), arg)
+        Threading.ThreadPool.QueueUserWorkItem(New Threading.WaitCallback(AddressOf TÃ¢che), arg)
         AsyncOpOk.WaitOne()
         MsgBox("Fin du thread.")
     End Sub
 
-    Sub Tâche(arg As Object)
-        MsgBox("Début du thread")
+    Sub TÃ¢che(arg As Object)
+        MsgBox("Dï¿½but du thread")
         System.Threading.Thread.Sleep(4000)
         MsgBox("Argument: " & CStr(arg))
         AsyncOpOk.Set()

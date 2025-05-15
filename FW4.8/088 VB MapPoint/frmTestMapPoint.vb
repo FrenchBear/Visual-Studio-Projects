@@ -1,5 +1,5 @@
 ' MapPoint
-' Essais de génération de route et optimisation en VB avec MapPoint
+' Essais de GÃ©nÃ©ration de route et optimisation en VB avec MapPoint
 ' 2003-10-26    PV
 ' 2012-02-25	PV  VS2010  For now, MapPoint is not installed...
 
@@ -7,7 +7,7 @@
 Public Class Form1
     Inherits System.Windows.Forms.Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -15,11 +15,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing Then
             If Not (components Is Nothing) Then
@@ -32,9 +32,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.  
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.  
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents lstTrace As System.Windows.Forms.ListBox
     Friend WithEvents btnGrenoble As System.Windows.Forms.Button
     Friend WithEvents btnRoute As System.Windows.Forms.Button
@@ -123,7 +123,7 @@ Public Class Form1
         Trace("AddPushpin")
         'oMap.AddPushpin(oMap.FindResults("GRenoble, 38000")(1))
         oMap.AddPushpin(oMap.FindResults("Des Moines,IA")(1))
-        Trace("Après AddPushPin")
+        Trace("Aprï¿½s AddPushPin")
     End Sub
 
     Private Sub btnRoute_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRoute.Click
@@ -135,7 +135,7 @@ Public Class Form1
 
         'AjouteWayPoint(objMap, objRoute, "Grenoble, 38000")
         'AjouteWayPoint(objMap, objRoute, "Bourg-en-Bresse, 01000")
-        'AjouteWayPoint(objMap, objRoute, "Chambéry, 73000")
+        'AjouteWayPoint(objMap, objRoute, "Chambï¿½ry, 73000")
         'AjouteWayPoint(objMap, objRoute, "Lyon, 69000")
         'AjouteWayPoint(objMap, objRoute, "Annecy, 74000")
         'AjouteWayPoint(objMap, objRoute, "Grenoble, 38000")
@@ -147,8 +147,8 @@ Public Class Form1
         objRoute.Waypoints.Optimize()
         Trace("Appel objRoute.Calculate")
         objRoute.Calculate()
-        Trace("Calcul terminé, distance = " & objRoute.Distance)
-        Trace("Durée conduite = " & objRoute.DrivingTime)
+        Trace("Calcul TerminÃ©, distance = " & objRoute.Distance)
+        Trace("DurÃ©e conduite = " & objRoute.DrivingTime)
     End Sub
 
     Sub AjouteWayPoint(ByRef objMap As MapPoint.Map, ByRef objRoute As MapPoint.Route, ByRef sAdresse As String)

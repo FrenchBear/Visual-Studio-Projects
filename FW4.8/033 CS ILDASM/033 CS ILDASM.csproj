@@ -29,7 +29,7 @@
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
-    <ProjectGuid>{D2FF24C5-79EF-426A-8C4F-472B9A41E875}</ProjectGuid>
+    <ProjectGuid>{922C1025-8BA3-49DB-BAC8-E73556AE6D5D}</ProjectGuid>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -119,11 +119,6 @@
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
-    <ProjectReference Include="033b CS ILDASM.csproj">
-      <Name>033b CS ILDASM</Name>
-      <Project>{BFC9A59E-F232-42D3-BDF0-93D1404A6DF0}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs">
@@ -149,6 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="033b CS ILDASM.csproj">
+      <Project>{eb2e05ba-c4ba-466b-a097-f68756c110d1}</Project>
+      <Name>033b CS ILDASM</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

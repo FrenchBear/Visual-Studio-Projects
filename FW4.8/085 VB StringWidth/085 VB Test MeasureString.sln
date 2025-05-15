@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "StringWidth", "StringWidth.vbproj", "{EAC99AF3-8DEF-471D-99D3-F061B710083B}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "StringWidth", "085 VB StringWidth.vbproj", "{EAC99AF3-8DEF-471D-99D3-F061B710083B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

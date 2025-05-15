@@ -1,5 +1,5 @@
 ' frmElimineDoublons
-' Elimination des doublons des .mp3 de Bide-et-musique générés par streamripper
+' Elimination des doublons des .mp3 de Bide-et-musique gï¿½nï¿½rï¿½s par streamripper
 ' 2003-05-08    PV  Liste de trace
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -11,7 +11,7 @@ Option Explicit On
 Public Class frmElimineDoublons
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -19,11 +19,11 @@ Public Class frmElimineDoublons
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -34,9 +34,9 @@ Public Class frmElimineDoublons
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents btnEliminer As Button
 
     Friend WithEvents lstTrace As ListBox
@@ -73,7 +73,7 @@ Public Class frmElimineDoublons
         Me.Controls.Add(Me.lstTrace)
         Me.Controls.Add(Me.btnEliminer)
         Me.Name = "frmElimineDoublons"
-        Me.Text = "Élimine doublons B&M"
+        Me.Text = "ï¿½limine doublons B&M"
         Me.ResumeLayout(False)
 
     End Sub
@@ -85,15 +85,15 @@ Public Class frmElimineDoublons
     Const sDirOld As String = "D:\StreamRipper\Old"
 
     <CLSCompliant(False)>
-    Function sNomRéduit(f As Scripting.File) As String
-        Dim sClé As String
-        sClé = f.Name
+    Function sNomRÃ©duit(f As Scripting.File) As String
+        Dim sClÃ© As String
+        sClÃ© = f.Name
         Dim p As Integer
-        p = sClé.LastIndexOf("("c)
+        p = sClÃ©.LastIndexOf("("c)
         If p >= 0 Then
-            Return RTrim(Microsoft.VisualBasic.Left(sClé, p))
+            Return RTrim(Microsoft.VisualBasic.Left(sClÃ©, p))
         Else
-            Return Microsoft.VisualBasic.Left(sClé, sClé.Length - 4)
+            Return Microsoft.VisualBasic.Left(sClÃ©, sClÃ©.Length - 4)
         End If
     End Function
 
@@ -129,7 +129,7 @@ Public Class frmElimineDoublons
 
         btnEliminer.Enabled = False
 
-        ' Partie 1: on déplace les fichiers de temp --> save
+        ' Partie 1: on DÃ©place les fichiers de temp --> save
         ' En cas de conflit on garde le plus gros
         For Each f As Scripting.File In fldTemp.Files
             If StrComp(Microsoft.VisualBasic.Right(f.Name, 4), ".mp3", CompareMethod.Text) = 0 Then
@@ -137,18 +137,18 @@ Public Class frmElimineDoublons
             End If
         Next
 
-        ' 2ème partie, élimination des doublons
-        Dim sClé As String
+        ' 2ï¿½me partie, ï¿½limination des doublons
+        Dim sClÃ© As String
         For Each f As Scripting.File In fldSave.Files
             If StrComp(Microsoft.VisualBasic.Right(f.Name, 4), ".mp3", CompareMethod.Text) <> 0 Then GoTo [continue]
-            sClé = sNomRéduit(f)
+            sClÃ© = sNomRÃ©duit(f)
 
             Try
-                dicFic.Add(sClé, f)
+                dicFic.Add(sClÃ©, f)
             Catch
                 Dim f2 As Scripting.File
-                f2 = dicFic(sClé)
-                Trace("Doublon possible: " & f2.Name & " (" & f2.Size & ") - " & f.Name & " (" & f.Size & ") - " & sClé)
+                f2 = dicFic(sClÃ©)
+                Trace("Doublon possible: " & f2.Name & " (" & f2.Size & ") - " & f.Name & " (" & f.Size & ") - " & sClÃ©)
                 nbDoub += 1
 
                 If f2.Size > f.Size Then
@@ -171,15 +171,15 @@ Public Class frmElimineDoublons
                         f2.Move(sDirOld & "\" & f2.Name)
                         Trace(f2.Name & " -> old")
                     End Try
-                    dicFic.Remove(sClé)
-                    dicFic.Add(sClé, f)
+                    dicFic.Remove(sClÃ©)
+                    dicFic.Add(sClÃ©, f)
                 End If
             End Try
 
 [continue]:
         Next
         Trace("")
-        Trace(dicFic.Count & " fichiers trouvés, " & nbDoub & " doublons")
+        Trace(dicFic.Count & " fichiers trouvï¿½s, " & nbDoub & " doublons")
         btnEliminer.Enabled = True
     End Sub
 

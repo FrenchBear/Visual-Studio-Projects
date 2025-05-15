@@ -1,5 +1,5 @@
 ' frmLogoEtiq
-' Décodage/Encodage de logos pour imprimante Facit
+' Dï¿½codage/Encodage de logos pour imprimante Facit
 ' 2003-08-05    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -9,7 +9,7 @@
 Public Class frmAnalyse
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -17,11 +17,11 @@ Public Class frmAnalyse
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -32,9 +32,9 @@ Public Class frmAnalyse
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents btnAnalyse As Button
 
     Friend WithEvents PictureBox1 As PictureBox
@@ -43,7 +43,7 @@ Public Class frmAnalyse
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents btnVérifie As Button
+    Friend WithEvents btnVÃ©rifie As Button
     Friend WithEvents PictureBox3 As PictureBox
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
@@ -54,7 +54,7 @@ Public Class frmAnalyse
         Me.Label1 = New Label
         Me.Label2 = New Label
         Me.Label3 = New Label
-        Me.btnVérifie = New Button
+        Me.btnVÃ©rifie = New Button
         Me.PictureBox3 = New PictureBox
         Me.SuspendLayout()
         '
@@ -98,7 +98,7 @@ Public Class frmAnalyse
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New Size(131, 16)
         Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Décodage logo original"
+        Me.Label1.Text = "Dï¿½codage logo original"
         '
         'Label2
         '
@@ -118,14 +118,14 @@ Public Class frmAnalyse
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New Size(195, 16)
         Me.Label3.TabIndex = 8
-        Me.Label3.Text = "Décodage du nouveau logo généré"
+        Me.Label3.Text = "Dï¿½codage du nouveau logo gï¿½nï¿½rï¿½"
         '
-        'btnVérifie
+        'btnVÃ©rifie
         '
-        Me.btnVérifie.Location = New Point(336, 168)
-        Me.btnVérifie.Name = "btnVérifie"
-        Me.btnVérifie.TabIndex = 7
-        Me.btnVérifie.Text = "Vérifie"
+        Me.btnVÃ©rifie.Location = New Point(336, 168)
+        Me.btnVÃ©rifie.Name = "btnVÃ©rifie"
+        Me.btnVÃ©rifie.TabIndex = 7
+        Me.btnVÃ©rifie.Text = "VÃ©rifie"
         '
         'PictureBox3
         '
@@ -141,7 +141,7 @@ Public Class frmAnalyse
         Me.AutoScaleBaseSize = New Size(5, 13)
         Me.ClientSize = New Size(416, 286)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.btnVérifie)
+        Me.Controls.Add(Me.btnVÃ©rifie)
         Me.Controls.Add(Me.PictureBox3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -157,7 +157,7 @@ Public Class frmAnalyse
 
 #End Region
 
-#Region " Définition tsBmp "
+#Region " DÃ©finition tsBmp "
 
     ReadOnly tsBmp() As String = {
   "800EFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
@@ -436,7 +436,7 @@ Public Class frmAnalyse
         PictureBox2.Image = Image.FromFile(sPath & "\LogoSGS.bmp")
     End Sub
 
-    Private Sub btnVérifie_Click(sender As System.Object, e As EventArgs) Handles btnVérifie.Click
+    Private Sub btnVÃ©rifie_Click(sender As System.Object, e As EventArgs) Handles btnVÃ©rifie.Click
         Dim bmp As New Bitmap(112, 112, Imaging.PixelFormat.Format24bppRgb)
 
         Dim l, c, c2, col As Integer

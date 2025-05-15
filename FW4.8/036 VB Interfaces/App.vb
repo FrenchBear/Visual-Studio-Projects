@@ -1,5 +1,5 @@
 ' 36 VB Interfaces
-' Essai de définition et d'implémentation d'interface en VB
+' Essai de DÃ©finition et d'implï¿½mentation d'interface en VB
 ' 2001-02-05    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -21,11 +21,11 @@ Public Delegate Sub GestionnaireDeBip(sender As Object, sMsg As String)
 
 Public Interface IMonInterface
 
-    Sub MaMethodeBruyante1(x As Integer)  ' Méthode
+    Sub MaMethodeBruyante1(x As Integer)  ' Mï¿½thode
 
-    Property MaPropriete() As Integer           ' Propriété
+    Property MaPropriete() As Integer           ' Propriï¿½tï¿½
 
-    Event Bip As GestionnaireDeBip              ' Evénement
+    Event Bip As GestionnaireDeBip              ' Evï¿½nement
 
     ReadOnly Property Item(index As Integer) As String  ' Indexer
     ReadOnly Property Item(index As String) As String
@@ -37,12 +37,12 @@ Public Class MaClasse
     Private iMembre As Integer
 
     Private Sub MonInterface_MaMethodeBruyante1(x As Integer) Implements IMonInterface.MaMethodeBruyante1
-        Console.WriteLine("Implémentation de MonInterface.MaMethodeBruyante1")
+        Console.WriteLine("Implï¿½mentation de MonInterface.MaMethodeBruyante1")
     End Sub
 
-    ' Implémentation privée de MaMethodeBruyante1
+    ' Implï¿½mentation privï¿½e de MaMethodeBruyante1
     Sub MaMethodeBruyante1(x As Integer)
-        Console.WriteLine("Implémentation privée de MaMethodeBruyante1")
+        Console.WriteLine("Implï¿½mentation privï¿½e de MaMethodeBruyante1")
     End Sub
 
     Property MonInterface_MaPropriete() As Integer Implements IMonInterface.MaPropriete

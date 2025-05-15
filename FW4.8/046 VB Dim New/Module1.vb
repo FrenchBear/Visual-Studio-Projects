@@ -1,6 +1,6 @@
-' Essais pour regarder quel code génère un dim xxx as new
-' Conclusion: contrairement au VB6, un dim new instancie immédiatement
-' et l'instanciation n'est pas recréée automatiquement à chaque utilisation
+' Essais pour regarder quel code GÃ©nÃ¨re un dim xxx as new
+' Conclusion: contrairement au VB6, un dim new instancie immï¿½diatement
+' et l'instanciation n'est pas recrï¿½ï¿½e automatiquement ï¿½ chaque utilisation
 ' 2001-02-21    PV
 ' 2006-10-01    PV  VS2005
 ' 2012-02-25	PV  VS2010
@@ -8,7 +8,7 @@
 Module Module1
 
     Sub Main()
-        Console.WriteLine("Début")
+        Console.WriteLine("Dï¿½but")
 
         Dim s As New Stack()
 

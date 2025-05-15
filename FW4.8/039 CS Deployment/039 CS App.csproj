@@ -50,7 +50,7 @@
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <ProjectGuid>{883567B4-C1B7-487A-99FE-92DAD41253D0}</ProjectGuid>
+    <ProjectGuid>{5F844D0E-E6E6-4F29-8DE7-16D1705054CE}</ProjectGuid>
     <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
@@ -155,12 +155,6 @@
     <Compile Include="MyAppAssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="039 CS Lib.csproj">
-      <Project>{FAADE683-DCA3-46DE-8A78-136EF8AF0D19}</Project>
-      <Name>039 CS Lib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -179,6 +173,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="039 CS Lib.csproj">
+      <Project>{0ff8d880-d4ef-477d-a332-318256d32b18}</Project>
+      <Name>039 CS Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

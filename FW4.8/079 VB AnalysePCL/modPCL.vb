@@ -1,6 +1,6 @@
 ' modPCL - Analyseur PCL du convertisseur PCL -> TIF
 ' 2003-07-17    PV
-' 2003-08-07    PV  Gestion des séquences ~()
+' 2003-08-07    PV  Gestion des sï¿½quences ~()
 ' 2012-02-25	PV  VS2010
 ' 2017-05-02    PV  GitHub et VS2017
 
@@ -24,10 +24,10 @@ Module modPCL
     Dim epclEtat As EtatPCL                 ' Etat courant de l'automate
 
     Dim epclNextEtat As EtatPCL
-    Dim iDataCount As Integer               ' Nb d'octets de séquences de données
-    Dim sFactor As String                   ' Facteur de répétition des commandes PCL
-    Dim bMainFunction As Byte               ' Fonction qui suit immédiatement Esc */&/(
-    Private tbData() As Byte                ' Flot de données transparentes
+    Dim iDataCount As Integer               ' Nb d'octets de sï¿½quences de donnï¿½es
+    Dim sFactor As String                   ' Facteur de rï¿½pï¿½tition des commandes PCL
+    Dim bMainFunction As Byte               ' Fonction qui suit immï¿½diatement Esc */&/(
+    Private tbData() As Byte                ' Flot de donnï¿½es transparentes
 
     Sub InitEtatPCL()
         epclEtat = EtatPCL.epclPrint
@@ -51,7 +51,7 @@ Module modPCL
                 End If
 
             Case EtatPCL.epclTilda
-                If b = 40 Then        ' Parenthèse ouvrante
+                If b = 40 Then        ' Parenthï¿½se ouvrante
                     epclEtat = EtatPCL.epclTildaParOuvr
                     If Not bLearningMacro Then
                         PCLFlushText()
@@ -66,7 +66,7 @@ Module modPCL
                 End If
 
             Case EtatPCL.epclTildaParOuvr
-                If b = 41 Then        ' Parenthèse fermante
+                If b = 41 Then        ' Parenthï¿½se fermante
                     epclEtat = EtatPCL.epclPrint
                     If Not bLearningMacro Then TildaExecute()
                 Else
@@ -88,7 +88,7 @@ Module modPCL
                     bMainFunction = Asc("?")
                 ElseIf b = 57 Then     ' Esc 9 ???
                     epclEtat = EtatPCL.epclPrint
-                    ' On mange le caractère et on revient en mode print
+                    ' On mange le caractï¿½re et on revient en mode print
                 Else
                     Stop
                 End If
@@ -97,15 +97,15 @@ Module modPCL
                 If Not bLearningMacro Then tbData(tbData.GetLength(0) - iDataCount) = b
                 iDataCount -= 1
                 If iDataCount = 0 Then
-                    ' On traite les données
+                    ' On traite les donnï¿½es
                     If Not bLearningMacro Then
                         Select Case epclEtat
                             Case EtatPCL.epclData42bW : PCL42bWData(tbData)
                             Case Else
-                                PCLError("Séquence de données transparente {0} non prise en charge", epclEtat.ToString)
+                                PCLError("Sï¿½quence de donnï¿½es transparente {0} non prise en charge", epclEtat.ToString)
                         End Select
                     End If
-                    ' retour à l'état epclPrint
+                    ' retour ï¿½ l'ï¿½tat epclPrint
                     epclEtat = EtatPCL.epclPrint
                 End If
 
@@ -124,7 +124,7 @@ Module modPCL
             Exit Sub
         End If
 
-        ' Cas d'une séquence terminée par une minuscule suivie de Echap ou Entrée ou EOF (0x1b=26) -> on resynchronise en silence
+        ' Cas d'une sï¿½quence TerminÃ©e par une minuscule suivie de Echap ou Entrï¿½e ou EOF (0x1b=26) -> on resynchronise en silence
         If b = 27 Then
             epclEtat = EtatPCL.epclEscape
             Exit Sub
@@ -135,8 +135,8 @@ Module modPCL
             Exit Sub
         End If
 
-        ' Si majuscule, on passe à l'état print à la fin de la fonction
-        ' (sauf si la fonction décide de passer en mode data)
+        ' Si majuscule, on passe ï¿½ l'ï¿½tat print ï¿½ la fin de la fonction
+        ' (sauf si la fonction dï¿½cide de passer en mode data)
         If b >= Asc("@") And b <= Asc("Z") Then
             epclNextEtat = EtatPCL.epclPrint
         Else
@@ -151,7 +151,7 @@ Module modPCL
             PCLError("Fonction PCL <Esc>" & Chr(bMainFunction) & Chr(b) & " inconnue")
         End If
 
-        ' bMainFunction est défini après le traitement de cette même fonction, et en minuscules
+        ' bMainFunction est DÃ©fini aprï¿½s le traitement de cette mï¿½me fonction, et en minuscules
         If bMainFunction = Asc("?") Then
             bMainFunction = b
             If b >= Asc("@") And b <= Asc("Z") Then bMainFunction += 32
@@ -171,7 +171,7 @@ Module modPCL
         If cMainFunction <> "?" Then TraceWrite(cMainFunction)
         TraceWrite("{0}{1} ", sFactor, cFunction)
 
-        ' En mode mémorisation de macro, la seule séquence interpretée est la fin d'enregistrement, <Esc>&f1X
+        ' En mode mï¿½morisation de macro, la seule sï¿½quence interpretï¿½e est la fin d'enregistrement, <Esc>&f1X
         If bLearningMacro Then
             If epclEtat = EtatPCL.epclEscapeEt And cMainFunction = "f"c And cFunction = "X"c And Val(sFactor) = 1 Then
                 PCLStopLearning()
@@ -187,7 +187,7 @@ Module modPCL
 
         TraceWriteLine()
 
-        'cas des séquences suivies d'un flot d'octets
+        'cas des sï¿½quences suivies d'un flot d'octets
         If epclEtat = EtatPCL.epclEscapeEt And cMainFunction = "p" And cFunction = "X" Or
            epclEtat = EtatPCL.epclEscapeParOuvr And cMainFunction = "s" And cFunction = "W" Or
            epclEtat = EtatPCL.epclEscapeEtoile And cMainFunction = "g" And cFunction = "W" Or
@@ -197,8 +197,8 @@ Module modPCL
             iDataCount = Val(sFactor)
 
             If iDataCount <= 0 Then
-                PCLError("Séquence data " & cMainFunction & cFunction & " de longueur 0")
-                Exit Sub    ' On ne change pas d'état
+                PCLError("Sï¿½quence data " & cMainFunction & cFunction & " de longueur 0")
+                Exit Sub    ' On ne change pas d'ï¿½tat
             End If
 
             Select Case cMainFunction & cFunction
@@ -210,7 +210,7 @@ Module modPCL
                 Case Else : Stop
             End Select
 
-            TraceWriteLine("<{0} octets de données>", iDataCount)
+            TraceWriteLine("<{0} octets de donnï¿½es>", iDataCount)
             If Not bLearningMacro Then ReDim tbData(iDataCount - 1)
 
         End If
@@ -238,7 +238,7 @@ Module modPCL
             Case "dD" : PCL38dD(Val(sFactor))
             Case "d@" : PCL38dArobas()
             Case Else
-                PCLError("PCL38: Fonction <Esc>&" & cMainFunction & sFactor & cFunction & " non traitée")
+                PCLError("PCL38: Fonction <Esc>&" & cMainFunction & sFactor & cFunction & " non traitï¿½e")
         End Select
     End Sub
 
@@ -254,7 +254,7 @@ Module modPCL
             Case "sS" : PCL40sS(Val(sFactor))
             Case "sT" : PCL40sT(Val(sFactor))
             Case Else
-                PCLError("PCL40: Fonction <Esc>(" & cMainFunction & sFactor & cFunction & " non traitée")
+                PCLError("PCL40: Fonction <Esc>(" & cMainFunction & sFactor & cFunction & " non traitï¿½e")
         End Select
     End Sub
 
@@ -280,7 +280,7 @@ Module modPCL
             Case "pX" : PCL42pX(Val(sFactor))
             Case "pY" : PCL42pY(Val(sFactor))
             Case Else
-                PCLError("PCL42: Fonction <Esc>*" & cMainFunction & sFactor & cFunction & " non traitée")
+                PCLError("PCL42: Fonction <Esc>*" & cMainFunction & sFactor & cFunction & " non traitï¿½e")
         End Select
     End Sub
 
@@ -295,8 +295,8 @@ Module modMacros
     End Class
 
     Private macCurrentMacro As PCLMacro   ' macro en cours d'enregistrement
-    Private iMacroID As Integer           ' dernier ID rencontré
-    Private ReadOnly colMacros As New Hashtable    ' Macros stockées en mémoire
+    Private iMacroID As Integer           ' dernier ID rencontrï¿½
+    Private ReadOnly colMacros As New Hashtable    ' Macros stockï¿½es en mï¿½moire
 
     Sub PCLLearn(b As Byte)
         Debug.Assert(bLearningMacro = True)
@@ -325,9 +325,9 @@ Module modMacros
         Select Case iFonction
             Case 0
                 TraceWrite("[Macro: Start Macro Def.]")
-                If bDebugMacros Then Console.WriteLine("Début enregistrement macro {0}", iMacroID)
+                If bDebugMacros Then Console.WriteLine("Dï¿½but enregistrement macro {0}", iMacroID)
                 If colMacros.ContainsKey(iMacroID) Then
-                    If bDebugMacros Then Console.WriteLine("Effacement de la précédente macro {0}", iMacroID)
+                    If bDebugMacros Then Console.WriteLine("Effacement de la PrÃ©cÃ©dente macro {0}", iMacroID)
                     colMacros.Remove(iMacroID)
                 End If
                 macCurrentMacro = New PCLMacro
@@ -338,7 +338,7 @@ Module modMacros
         ' Rien puisqu'on n'est pas en mode learning
 
             Case 2 : TraceWrite("[Macro: Execute Macro]")
-                ' Mémorise état
+                ' Mï¿½morise ï¿½tat
                 RunMacro("Execute")
         ' Restaure etat
 
@@ -355,14 +355,14 @@ Module modMacros
         End Select
     End Sub
 
-    ' Exécute une macro
+    ' Exï¿½cute une macro
     Private Sub RunMacro(sAction As String)
         Dim m As PCLMacro
         Dim iId As Integer = iMacroID
-        If bDebugMacros Then Console.WriteLine("Début {0} macro {1}", sAction, iMacroID)
+        If bDebugMacros Then Console.WriteLine("Dï¿½but {0} macro {1}", sAction, iMacroID)
         m = CType(colMacros(iMacroID), PCLMacro)
         If m.bIsRunning Then
-            PCLError("Blocage anti-récursivité !")
+            PCLError("Blocage anti-rï¿½cursivitï¿½ !")
             Exit Sub
         End If
         m.bIsRunning = True
@@ -409,11 +409,11 @@ Module modTilda
     End Sub
 
     Sub TildaExecute()
-        If bDebugTilda Then Console.WriteLine("<Exécution séquence tilda '{0}'>", sTildaText.ToString)
+        If bDebugTilda Then Console.WriteLine("<Exï¿½cution sï¿½quence tilda '{0}'>", sTildaText.ToString)
         Dim tsCmd() As String = Split(sTildaText.ToString, " ".ToCharArray)
         Select Case LCase(tsCmd(0))
             Case "photo"
-                PCLTildaInsèrePhoto(tsCmd(1))
+                PCLTildaInsÃ¨rePhoto(tsCmd(1))
 
             Case Else
                 PCLError("Commade tilda inconnue: {0}", sTildaText.ToString)

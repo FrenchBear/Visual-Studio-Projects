@@ -1,6 +1,6 @@
-// 53 CS Héritage statique
-// Test d'une remarque de la doc du CIL: Les champs statiques d'une classe ne sont pas hérités
-// En fait en C# ça marche, mais le compilo génère bien une référence au champ statique de la classe de base...
+// 53 CS Hï¿½ritage statique
+// Test d'une remarque de la doc du CIL: Les champs statiques d'une classe ne sont pas hï¿½ritï¿½s
+// En fait en C# ï¿½a marche, mais le compilo GÃ©nÃ¨re bien une rï¿½fï¿½rence au champ statique de la classe de base...
 // 2001-07-29   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010

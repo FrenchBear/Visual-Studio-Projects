@@ -1,6 +1,6 @@
-// Essais sur la classe DateTime (chronométrage)
+// Essais sur la classe DateTime (chronomï¿½trage)
 // Comparaison des performances SortedList et Hashtable
-// Récup du nom de la fonction pointée par un delegate
+// RÃ©cup du nom de la fonction pointï¿½e par un delegate
 // 2001-02-25   PV
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010
@@ -43,7 +43,7 @@ public class Form1 : Form
         DateTime t2 = DateTime.Now;
         Trace("Fin " + sNomFonction);
         TimeSpan ts = t2 - t1;
-        Trace("Durée: " + ts);
+        Trace("DurÃ©e: " + ts);
         Trace();
     }
 

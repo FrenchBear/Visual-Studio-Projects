@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "24 C# Multicast Delegate", "24 C# Multicast Delegate.csproj", "{BAABE4A8-0963-47DC-862F-653CE7304AC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "24 C# Multicast Delegate", "024 CS Multicast Delegate.csproj", "{BAABE4A8-0963-47DC-862F-653CE7304AC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

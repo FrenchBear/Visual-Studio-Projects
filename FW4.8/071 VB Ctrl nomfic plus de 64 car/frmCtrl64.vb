@@ -8,7 +8,7 @@ Imports Scripting
 Public Class Form1
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -16,11 +16,11 @@ Public Class Form1
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -31,9 +31,9 @@ Public Class Form1
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents Button1 As Button
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
@@ -64,7 +64,7 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As System.Object, e As EventArgs) Handles Button1.Click
         Debug.AutoFlush = True
-        System.Diagnostics.Debug.WriteLine("Début")
+        System.Diagnostics.Debug.WriteLine("Dï¿½but")
         Analyse("C:\Documents")
         System.Diagnostics.Debug.WriteLine("Fin")
     End Sub

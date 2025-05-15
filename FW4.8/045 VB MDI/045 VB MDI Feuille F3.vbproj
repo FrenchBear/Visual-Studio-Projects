@@ -128,9 +128,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="45">
-      <Name>45</Name>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
@@ -172,6 +169,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="045 VB MDI Feuille F1.vbproj">
+      <Project>{4400eb94-07ad-4617-91bf-5d9ee174ef2f}</Project>
+      <Name>045 VB MDI Feuille F1</Name>
+    </ProjectReference>
     <ProjectReference Include="045 VB MDI.vbproj">
       <Project>{51f47a1c-8539-423c-a60e-e62cb1c0911b}</Project>
       <Name>045 VB MDI</Name>

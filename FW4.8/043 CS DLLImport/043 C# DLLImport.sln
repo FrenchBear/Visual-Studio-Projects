@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "43 C# DLLImport", "43 C# DLLImport.csproj", "{4DF9B47A-89DF-4210-83E5-07E24921DC07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "43 C# DLLImport", "043 CS DLLImport.csproj", "{4DF9B47A-89DF-4210-83E5-07E24921DC07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

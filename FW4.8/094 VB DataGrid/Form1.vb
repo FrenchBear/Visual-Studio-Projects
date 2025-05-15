@@ -9,7 +9,7 @@
 Public Class frmDataGrid
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -17,11 +17,11 @@ Public Class frmDataGrid
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -32,9 +32,9 @@ Public Class frmDataGrid
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
     Friend WithEvents SqlSelectCommand1 As SqlClient.SqlCommand
 
     Friend WithEvents SqlInsertCommand1 As SqlClient.SqlCommand
@@ -240,7 +240,7 @@ Public Class frmDataGrid
     End Sub
 
     Private Sub btnUpdate_Click(sender As System.Object, e As EventArgs) Handles btnUpdate.Click
-        ' Mise à jour des clients et des commandes
+        ' Mise ï¿½ jour des clients et des commandes
         SqlDACustomers.Update(myDS_NorthWind)
         SqlDAOrders.Update(myDS_NorthWind)
     End Sub

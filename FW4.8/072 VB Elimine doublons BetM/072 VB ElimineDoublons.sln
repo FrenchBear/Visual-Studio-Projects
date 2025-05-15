@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ElimineDoublons", "ElimineDoublons.vbproj", "{58A0AEC8-79FF-41C4-81A3-DC87710A10A2}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ElimineDoublons", "072 VB Elimine doublons BetM.vbproj", "{58A0AEC8-79FF-41C4-81A3-DC87710A10A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DupMP3", "DupMP3.csproj", "{E57586E8-73B1-465B-9D1F-62DBAFCE79CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DupMP3", "513 CS DupMP3.csproj", "{E57586E8-73B1-465B-9D1F-62DBAFCE79CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

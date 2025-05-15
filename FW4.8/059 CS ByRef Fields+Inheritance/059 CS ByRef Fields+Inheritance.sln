@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "059 CS ByRef Fields+Inheritance", "059 CS ByRef Fields+Inheritance.csproj", "{6E06CF64-C5B7-4EDF-829B-29FACA7EB636}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "059 CS ByRef Fields+Inheritance", "059 CS ByRef Fields and Inheritance.csproj", "{6E06CF64-C5B7-4EDF-829B-29FACA7EB636}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

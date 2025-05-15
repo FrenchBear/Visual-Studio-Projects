@@ -1,14 +1,14 @@
-' Essai de moteur LVSystem de tracé de fractales, inspiré du L-System FractInt (Lindenmayer System)
-' Par rapport au L-System original, il n'y a qu'une règle de transformation à chaque étape, et
-' S représente la séquence précédente, ~S la séquence précédente inversée (lecture ordre inverse,
+' Essai de moteur LVSystem de tracï¿½ de fractales, inspirï¿½ du L-System FractInt (Lindenmayer System)
+' Par rapport au L-System original, il n'y a qu'une rï¿½gle de transformation ï¿½ chaque ï¿½tape, et
+' S reprï¿½sente la sï¿½quence PrÃ©cÃ©dente, ~S la sï¿½quence PrÃ©cÃ©dente inversï¿½e (lecture ordre inverse,
 ' et permutation des - et +
 '
-' Dans les règles, S représente la séquence précédente, ~S la séquence précédente inversée
+' Dans les RÃ¨gles, S reprï¿½sente la sï¿½quence PrÃ©cÃ©dente, ~S la sï¿½quence PrÃ©cÃ©dente inversï¿½e
 ' + ou tourne dans le sens trigo, - dans le sens horaire, F dessine un trait
-' Peano:  Angle 4, Départ: +F-F-F+, règle: S=+~SF-SFS-F~S+
-' Dragon: Angle 8, Départ: F, règle: S=+S--~S+
+' Peano:  Angle 4, DÃ©part: +F-F-F+, rï¿½gle: S=+~SF-SFS-F~S+
+' Dragon: Angle 8, DÃ©part: F, rï¿½gle: S=+S--~S+
 '
-' 2003/11/11    PV  Première version
+' 2003/11/11    PV  Premiï¿½re version
 ' 2006-10-01    PV  VS 2005
 ' 2010-07-19    PV  VS 2010
 ' 2012-02-05    PV  Nettoyage
@@ -18,7 +18,7 @@
 Public Class LVSystemForm
     Inherits Form
 
-#Region " Code généré par le Concepteur Windows Form "
+#Region " Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -26,11 +26,11 @@ Public Class LVSystemForm
         'Cet appel est requis par le Concepteur Windows Form.
         InitializeComponent()
 
-        'Ajoutez une initialisation quelconque après l'appel InitializeComponent()
+        'Ajoutez une initialisation quelconque aprï¿½s l'appel InitializeComponent()
 
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(disposing As Boolean)
         If disposing Then
             components?.Dispose()
@@ -41,21 +41,21 @@ Public Class LVSystemForm
     'Requis par le Concepteur Windows Form
     Private ReadOnly components As System.ComponentModel.IContainer
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Elle peut être modifiée en utilisant le Concepteur Windows Form.
-    'Ne la modifiez pas en utilisant l'éditeur de code.
-    Friend WithEvents btnGénère As Button
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Elle peut ï¿½tre modifiï¿½e en utilisant le Concepteur Windows Form.
+    'Ne la modifiez pas en utilisant l'ï¿½diteur de code.
+    Friend WithEvents btnGÃ©nÃ¨re As Button
 
-    Friend WithEvents lblRègles As Label
-    Friend WithEvents txtDépart As TextBox
-    Friend WithEvents lblDépart As Label
-    Friend WithEvents txtRègles As TextBox
+    Friend WithEvents lblRÃ¨gles As Label
+    Friend WithEvents txtDÃ©part As TextBox
+    Friend WithEvents lblDÃ©part As Label
+    Friend WithEvents txtRÃ¨gles As TextBox
     Friend WithEvents txtFinal As TextBox
     Friend WithEvents lblFinal As Label
     Friend WithEvents lblAngle As Label
     Friend WithEvents txtAngle As TextBox
-    Friend WithEvents txtItérations As TextBox
-    Friend WithEvents lblItérations As Label
+    Friend WithEvents txtItÃ©rations As TextBox
+    Friend WithEvents lblItÃ©rations As Label
     Friend WithEvents txtAnalyse As TextBox
     Friend WithEvents lblAnalyse As Label
     Friend WithEvents ExempleHilbertButton As Button
@@ -63,17 +63,17 @@ Public Class LVSystemForm
     Friend WithEvents picOut As PictureBox
 
     <DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.btnGénère = New Button()
+        Me.btnGÃ©nÃ¨re = New Button()
         Me.lblAngle = New Label()
         Me.txtAngle = New TextBox()
-        Me.txtDépart = New TextBox()
-        Me.lblDépart = New Label()
-        Me.txtRègles = New TextBox()
-        Me.lblRègles = New Label()
+        Me.txtDÃ©part = New TextBox()
+        Me.lblDÃ©part = New Label()
+        Me.txtRÃ¨gles = New TextBox()
+        Me.lblRÃ¨gles = New Label()
         Me.txtFinal = New TextBox()
         Me.lblFinal = New Label()
-        Me.txtItérations = New TextBox()
-        Me.lblItérations = New Label()
+        Me.txtItÃ©rations = New TextBox()
+        Me.lblItÃ©rations = New Label()
         Me.txtAnalyse = New TextBox()
         Me.lblAnalyse = New Label()
         Me.picOut = New PictureBox()
@@ -82,13 +82,13 @@ Public Class LVSystemForm
         CType(Me.picOut, ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'btnGénère
+        'btnGÃ©nÃ¨re
         '
-        Me.btnGénère.Location = New Point(8, 192)
-        Me.btnGénère.Name = "btnGénère"
-        Me.btnGénère.Size = New Size(75, 23)
-        Me.btnGénère.TabIndex = 0
-        Me.btnGénère.Text = "Génère"
+        Me.btnGÃ©nÃ¨re.Location = New Point(8, 192)
+        Me.btnGÃ©nÃ¨re.Name = "btnGÃ©nÃ¨re"
+        Me.btnGÃ©nÃ¨re.Size = New Size(75, 23)
+        Me.btnGÃ©nÃ¨re.TabIndex = 0
+        Me.btnGÃ©nÃ¨re.Text = "GÃ©nÃ¨re"
         '
         'lblAngle
         '
@@ -107,40 +107,40 @@ Public Class LVSystemForm
         Me.txtAngle.TabIndex = 2
         Me.txtAngle.Text = "4"
         '
-        'txtDépart
+        'txtDÃ©part
         '
-        Me.txtDépart.Location = New Point(64, 8)
-        Me.txtDépart.Name = "txtDépart"
-        Me.txtDépart.Size = New Size(288, 21)
-        Me.txtDépart.TabIndex = 4
-        Me.txtDépart.Text = "+F-F-F+"
+        Me.txtDÃ©part.Location = New Point(64, 8)
+        Me.txtDÃ©part.Name = "txtDÃ©part"
+        Me.txtDÃ©part.Size = New Size(288, 21)
+        Me.txtDÃ©part.TabIndex = 4
+        Me.txtDÃ©part.Text = "+F-F-F+"
         '
-        'lblDépart
+        'lblDÃ©part
         '
-        Me.lblDépart.AutoSize = True
-        Me.lblDépart.Location = New Point(8, 8)
-        Me.lblDépart.Name = "lblDépart"
-        Me.lblDépart.Size = New Size(47, 13)
-        Me.lblDépart.TabIndex = 3
-        Me.lblDépart.Text = "Départ :"
+        Me.lblDÃ©part.AutoSize = True
+        Me.lblDÃ©part.Location = New Point(8, 8)
+        Me.lblDÃ©part.Name = "lblDÃ©part"
+        Me.lblDÃ©part.Size = New Size(47, 13)
+        Me.lblDÃ©part.TabIndex = 3
+        Me.lblDÃ©part.Text = "DÃ©part :"
         '
-        'txtRègles
+        'txtRÃ¨gles
         '
-        Me.txtRègles.Location = New Point(64, 40)
-        Me.txtRègles.Multiline = True
-        Me.txtRègles.Name = "txtRègles"
-        Me.txtRègles.Size = New Size(288, 80)
-        Me.txtRègles.TabIndex = 6
-        Me.txtRègles.Text = "S=+~SF-SFS-F~S+"
+        Me.txtRÃ¨gles.Location = New Point(64, 40)
+        Me.txtRÃ¨gles.Multiline = True
+        Me.txtRÃ¨gles.Name = "txtRÃ¨gles"
+        Me.txtRÃ¨gles.Size = New Size(288, 80)
+        Me.txtRÃ¨gles.TabIndex = 6
+        Me.txtRÃ¨gles.Text = "S=+~SF-SFS-F~S+"
         '
-        'lblRègles
+        'lblRÃ¨gles
         '
-        Me.lblRègles.AutoSize = True
-        Me.lblRègles.Location = New Point(8, 40)
-        Me.lblRègles.Name = "lblRègles"
-        Me.lblRègles.Size = New Size(46, 13)
-        Me.lblRègles.TabIndex = 5
-        Me.lblRègles.Text = "Règles :"
+        Me.lblRÃ¨gles.AutoSize = True
+        Me.lblRÃ¨gles.Location = New Point(8, 40)
+        Me.lblRÃ¨gles.Name = "lblRÃ¨gles"
+        Me.lblRÃ¨gles.Size = New Size(46, 13)
+        Me.lblRÃ¨gles.TabIndex = 5
+        Me.lblRÃ¨gles.Text = "RÃ¨gles :"
         '
         'txtFinal
         '
@@ -160,22 +160,22 @@ Public Class LVSystemForm
         Me.lblFinal.TabIndex = 7
         Me.lblFinal.Text = "Final :"
         '
-        'txtItérations
+        'txtItÃ©rations
         '
-        Me.txtItérations.Location = New Point(64, 160)
-        Me.txtItérations.Name = "txtItérations"
-        Me.txtItérations.Size = New Size(56, 21)
-        Me.txtItérations.TabIndex = 10
-        Me.txtItérations.Text = "1"
+        Me.txtItÃ©rations.Location = New Point(64, 160)
+        Me.txtItÃ©rations.Name = "txtItÃ©rations"
+        Me.txtItÃ©rations.Size = New Size(56, 21)
+        Me.txtItÃ©rations.TabIndex = 10
+        Me.txtItÃ©rations.Text = "1"
         '
-        'lblItérations
+        'lblItÃ©rations
         '
-        Me.lblItérations.AutoSize = True
-        Me.lblItérations.Location = New Point(8, 160)
-        Me.lblItérations.Name = "lblItérations"
-        Me.lblItérations.Size = New Size(61, 13)
-        Me.lblItérations.TabIndex = 9
-        Me.lblItérations.Text = "Itérations :"
+        Me.lblItÃ©rations.AutoSize = True
+        Me.lblItÃ©rations.Location = New Point(8, 160)
+        Me.lblItÃ©rations.Name = "lblItÃ©rations"
+        Me.lblItÃ©rations.Size = New Size(61, 13)
+        Me.lblItÃ©rations.TabIndex = 9
+        Me.lblItÃ©rations.Text = "ItÃ©rations :"
         '
         'txtAnalyse
         '
@@ -234,20 +234,20 @@ Public Class LVSystemForm
         Me.Controls.Add(Me.picOut)
         Me.Controls.Add(Me.txtAnalyse)
         Me.Controls.Add(Me.lblAnalyse)
-        Me.Controls.Add(Me.txtItérations)
-        Me.Controls.Add(Me.lblItérations)
+        Me.Controls.Add(Me.txtItÃ©rations)
+        Me.Controls.Add(Me.lblItÃ©rations)
         Me.Controls.Add(Me.txtFinal)
         Me.Controls.Add(Me.lblFinal)
-        Me.Controls.Add(Me.txtRègles)
-        Me.Controls.Add(Me.lblRègles)
-        Me.Controls.Add(Me.txtDépart)
-        Me.Controls.Add(Me.lblDépart)
+        Me.Controls.Add(Me.txtRÃ¨gles)
+        Me.Controls.Add(Me.lblRÃ¨gles)
+        Me.Controls.Add(Me.txtDÃ©part)
+        Me.Controls.Add(Me.lblDÃ©part)
         Me.Controls.Add(Me.txtAngle)
         Me.Controls.Add(Me.lblAngle)
-        Me.Controls.Add(Me.btnGénère)
+        Me.Controls.Add(Me.btnGÃ©nÃ¨re)
         Me.Font = New Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "frmLVSystem"
-        Me.Text = "LVSystem, Application à la courbe de Hilbert"
+        Me.Text = "LVSystem, Application ï¿½ la courbe de Hilbert"
         CType(Me.picOut, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -256,33 +256,33 @@ Public Class LVSystemForm
 
 #End Region
 
-    Dim iNbItérations As Integer
-    Dim sChaîne As String
+    Dim iNbItÃ©rations As Integer
+    Dim sChaÃ®ne As String
     Dim iAngle As Integer
-    Dim tsRègles As String()
+    Dim tsRÃ¨gles As String()
 
-    Private Sub btnGénère_Click(sender As System.Object, e As EventArgs) Handles btnGénère.Click
+    Private Sub btnGÃ©nÃ¨re_Click(sender As System.Object, e As EventArgs) Handles btnGÃ©nÃ¨re.Click
         System.Windows.Forms.Cursor.Current = Cursors.WaitCursor
 
-        sChaîne = txtDépart.Text
-        iNbItérations = Val(txtItérations.Text)
-        If iNbItérations < 0 Or iNbItérations > 16 Then
-            iNbItérations = 1
-            txtItérations.Text = Format(iNbItérations)
+        sChaÃ®ne = txtDÃ©part.Text
+        iNbItÃ©rations = Val(txtItÃ©rations.Text)
+        If iNbItÃ©rations < 0 Or iNbItÃ©rations > 16 Then
+            iNbItÃ©rations = 1
+            txtItÃ©rations.Text = Format(iNbItÃ©rations)
         End If
         iAngle = Val(txtAngle.Text)
         If iAngle < 0 Or iAngle > 100 Then
             iAngle = 4
-            txtItérations.Text = Format(iAngle)
+            txtItÃ©rations.Text = Format(iAngle)
         End If
-        tsRègles = txtRègles.Text.Split(Chr(13))
+        tsRÃ¨gles = txtRÃ¨gles.Text.Split(Chr(13))
 
-        For i As Integer = 1 To iNbItérations
-            sChaîne = sAppliqueRègles(sChaîne)
+        For i As Integer = 1 To iNbItÃ©rations
+            sChaÃ®ne = sAppliqueRÃ¨gles(sChaÃ®ne)
         Next
 
-        txtFinal.Text = sChaîne
-        txtAnalyse.Text = sAnalyseEtDessine(sChaîne)
+        txtFinal.Text = sChaÃ®ne
+        txtAnalyse.Text = sAnalyseEtDessine(sChaÃ®ne)
 
         System.Windows.Forms.Cursor.Current = Cursors.Default
     End Sub
@@ -291,8 +291,8 @@ Public Class LVSystemForm
         sAnalyseEtDessine(txtFinal.Text)
     End Sub
 
-    Function sAppliqueRègles(s As String) As String
-        For Each sr As String In tsRègles
+    Function sAppliqueRÃ¨gles(s As String) As String
+        For Each sr As String In tsRÃ¨gles
             Dim tsr As String()
             tsr = sr.Split("=")
             If tsr.Length = 2 Then
@@ -400,17 +400,17 @@ Public Class LVSystemForm
     End Function
 
     Private Sub ExempleHilbertButton_Click(sender As System.Object, e As EventArgs) Handles ExempleHilbertButton.Click
-        txtDépart.Text = "+F-F-F+"
-        txtRègles.Text = "S=+~SF-SFS-F~S+"
+        txtDÃ©part.Text = "+F-F-F+"
+        txtRÃ¨gles.Text = "S=+~SF-SFS-F~S+"
         txtAngle.Text = "4"
-        txtItérations.Text = "5"
+        txtItÃ©rations.Text = "5"
     End Sub
 
     Private Sub ExempleDragonButton_Click(sender As System.Object, e As EventArgs) Handles ExempleDragonButton.Click
-        txtDépart.Text = "F"
-        txtRègles.Text = "S=+S--~S+"
+        txtDÃ©part.Text = "F"
+        txtRÃ¨gles.Text = "S=+S--~S+"
         txtAngle.Text = "8"
-        txtItérations.Text = "10"
+        txtItÃ©rations.Text = "10"
     End Sub
 
 End Class

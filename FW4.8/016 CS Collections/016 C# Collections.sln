@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16 C# Collections", "16 C# Collections.csproj", "{6B13358A-F7C8-401A-9A40-BAF8DEDCDF5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16 C# Collections", "016 CS Collections.csproj", "{6B13358A-F7C8-401A-9A40-BAF8DEDCDF5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

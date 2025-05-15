@@ -1,6 +1,6 @@
 // 059 CS ByRef Fields+Inheritance
-// 2001-08-17   PV  Essai de transmission de champ et de propriété par référence (ne marche pas en VB6)
-//                  + essais méthodes/classes abstraites, scellées, virtuelles...
+// 2001-08-17   PV  Essai de transmission de champ et de propriï¿½tï¿½ par rï¿½fï¿½rence (ne marche pas en VB6)
+//                  + essais mï¿½thodes/classes abstraites, scellï¿½es, virtuelles...
 // 2006-10-01   PV  VS2005
 // 2012-02-25   PV  VS2010  sealed is an equivalent for methods to VB NotOverridable
 
@@ -23,8 +23,8 @@ public abstract class Zap
 
 public class Couleur : Zap
 {
-    // Si la variable n'est pas static, ça provoque un débordement de pile
-    // Non détecté par le compilo
+    // Si la variable n'est pas static, ï¿½a provoque un dï¿½bordement de pile
+    // Non dï¿½tectï¿½ par le compilo
     protected static Couleur Bleu = new Couleur(0, 0, 255);
 
     public int R, G, B;
@@ -53,13 +53,13 @@ public class Couleur : Zap
     // New slot
     public virtual void S1() => Console.WriteLine("Couleur.S1()");
 
-    // Pas trouvé l'équivalent de NotOverridable en VB (=final en MSIL)
+    // Pas trouvï¿½ l'ï¿½quivalent de NotOverridable en VB (=final en MSIL)
     // 2012-02-25: NotOverridable = sealed, also applicable to a method
     public sealed override void MO1() => Console.WriteLine("Couleur.MO1()");
 
     public override void MO2() => Console.WriteLine("Couleur.MO2()");
 
-    // Pas trouvé l'équivalent de NotOverridable en VB
+    // Pas trouvï¿½ l'ï¿½quivalent de NotOverridable en VB
     public /* NotOverridable */ override void OV1() => Console.WriteLine("Couleur.OV1()");
 }
 
@@ -82,12 +82,12 @@ public class Module1
 
         var c = new Couleur(128, 80, 200);
         Console.WriteLine("c = {0}", c);
-        Complément255(ref c.G);
+        ComplÃ©ment255(ref c.G);
         Console.WriteLine("c = {0}", c);
 
-        // Le compilo VB sait passer une propriété par référence !
+        // Le compilo VB sait passer une propriï¿½tï¿½ par rï¿½fï¿½rence !
         int __tmp = c.A;
-        Complément255(ref __tmp);
+        ComplÃ©ment255(ref __tmp);
         c.A = __tmp;
 
         Console.WriteLine("c = {0}", c);
@@ -135,5 +135,5 @@ public class Module1
         Console.ReadLine();
     }
 
-    private static void Complément255(ref int x) => x = 255 - x;
+    private static void ComplÃ©ment255(ref int x) => x = 255 - x;
 }

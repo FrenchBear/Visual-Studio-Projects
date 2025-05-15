@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31702.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "511 CS CreateVignette3", "511 CS CreateVignette3.csproj", "{95044896-0304-430C-8549-BD3AE595A4B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "511 CS CreateVignette3", "511c CS CreateVignette3.csproj", "{95044896-0304-430C-8549-BD3AE595A4B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

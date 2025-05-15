@@ -24,9 +24,9 @@ Piece::Piece(short hNP, char cP,
 	c[0] = Carre44(i00, i01, i02, i03, i10, i11, i12, i13);
 	iNbt = 1;
 	if (i00 + i01 + i02 + i03 + i10 + i11 + i12 + i13 != Carre44::size)
-		printf("Définition de la pièce %d incorrecte\n", hNP);
+		printf("DÃ©finition de la piï¿½ce %d incorrecte\n", hNP);
 
-	// On génère le tableau des transformations possibles
+	// On GÃ©nÃ¨re le tableau des transformations possibles
 	int i, j;
 
 	// For talos, symmetries are not needed -> only transformations 0 to 3 (the 4 rotations)
@@ -51,7 +51,7 @@ Piece::Piece(short hNP, char cP,
 // Traces
 void Piece::Dessin()
 {
-	printf("Pièce %d %c iNbt=%d\n", hNumPiece, cPiece, iNbt);
+	printf("Piï¿½ce %d %c iNbt=%d\n", hNumPiece, cPiece, iNbt);
 	c[0].Dessin();
 	printf("\n");
 }

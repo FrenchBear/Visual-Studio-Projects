@@ -1,5 +1,5 @@
 // Pile.cs
-// Implantation d'une classe pile très simple
+// Implantation d'une classe pile trï¿½s simple
 // 2001 PV
 // 2010-05-01   PV  VS2010
 
@@ -9,29 +9,29 @@ public class Pile
 {
     private class Noeud
     {
-        public object élément;
+        public object Ã©lÃ©ment;
         public Noeud suivant;
 
         public Noeud(object o, Noeud s)
         {
             suivant = s;
-            élément = o;
+            Ã©lÃ©ment = o;
         }
     }
 
-    private Noeud tête = null;
+    private Noeud tÃªte = null;
 
-    public object Dépile()
+    public object DÃ©pile()
     {
-        if (tête == null)
-            throw new Exception("Dépile sur pile vide");
+        if (tÃªte == null)
+            throw new Exception("DÃ©pile sur pile vide");
         else
         {
-            Noeud temp = tête;
-            tête = tête.suivant;
-            return temp.élément;
+            Noeud temp = tÃªte;
+            tÃªte = tÃªte.suivant;
+            return temp.Ã©lÃ©ment;
         }
     }
 
-    public void Empile(object o) => tête = new Noeud(o, tête);
+    public void Empile(object o) => tÃªte = new Noeud(o, tÃªte);
 }

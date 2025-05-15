@@ -1,7 +1,7 @@
 ' Essais de scripting en .Net
 ' 2004-01-05    PV
 ' 2006-10-01    PV  VS2005
-' 2012-02-25	PV  VS2010  + forçage en 32-bit
+' 2012-02-25	PV  VS2010  + forï¿½age en 32-bit
 
 Option Strict Off
 Option Explicit On
@@ -11,7 +11,7 @@ Option Explicit On
 Friend Class frmTestScripting
     Inherits Form
 
-#Region "Code généré par le Concepteur Windows Form "
+#Region "Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -20,7 +20,7 @@ Friend Class frmTestScripting
                 m_vb6FormDefInstance = Me
             Else
                 Try
-                    'Pour le formulaire de démarrage, la première instance créée est l'instance par défaut.
+                    'Pour le formulaire de dï¿½marrage, la premiï¿½re instance crï¿½ï¿½e est l'instance par dï¿½faut.
                     If System.Reflection.Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
                         m_vb6FormDefInstance = Me
                     End If
@@ -32,7 +32,7 @@ Friend Class frmTestScripting
         InitializeComponent()
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(Disposing As Boolean)
         If Disposing Then
             components?.Dispose()
@@ -51,9 +51,9 @@ Friend Class frmTestScripting
     Public WithEvents Command1 As Button
     Public WithEvents ScriptControl1 As AxMSScriptControl.AxScriptControl
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Il peut être modifié à l'aide du Concepteur Windows Form.
-    'Ne pas le modifier à l'aide de l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Il peut ï¿½tre modifiï¿½ ï¿½ l'aide du Concepteur Windows Form.
+    'Ne pas le modifier ï¿½ l'aide de l'ï¿½diteur de code.
     <DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container
         Dim resources As New Resources.ResourceManager(GetType(frmTestScripting))
@@ -159,7 +159,7 @@ Friend Class frmTestScripting
 
 #End Region
 
-#Region "Prise en charge de la mise à niveau "
+#Region "Prise en charge de la mise ï¿½ niveau "
 
     Private Shared m_vb6FormDefInstance As frmTestScripting
     Private Shared m_InitializingDefInstance As Boolean
@@ -181,7 +181,7 @@ Friend Class frmTestScripting
 #End Region
 
     ' frmTestScripting
-    ' Essais avec le contrôle ScriptControl
+    ' Essais avec le contrï¿½le ScriptControl
 
     Private Sub Command1_Click(eventSender As System.Object, eventArgs As EventArgs) Handles Command1.Click
         ScriptControl1.Run("NameMe", New Object() {})
@@ -205,15 +205,15 @@ Friend Class frmTestScripting
 
         modX.AddCode(strX)
         Dim objX As Object
-        ' Affecter le CodeObject à la variable, puis
-        ' appeler la procédure.
+        ' Affecter le CodeObject ï¿½ la variable, puis
+        ' appeler la ProcÃ©dure.
         objX = modX.CodeObject
         objX.Hello()
     End Sub
 
     Private Sub Command5_Click(eventSender As System.Object, eventArgs As EventArgs) Handles Command5.Click
         Dim script As String
-        script = "Sub TestWord()" & vbCrLf & "dim wd" & vbCrLf & "Set wd = CreateObject(""Word.application"")" & vbCrLf & "wd.Visible = True" & vbCrLf & "wd.Documents.Add" & vbCrLf & "wd.Selection.TypeText (""Il était un petit navire"")" & vbCrLf & "wd.Selection.TypeParagraph" & vbCrLf & "End Sub"
+        script = "Sub TestWord()" & vbCrLf & "dim wd" & vbCrLf & "Set wd = CreateObject(""Word.application"")" & vbCrLf & "wd.Visible = True" & vbCrLf & "wd.Documents.Add" & vbCrLf & "wd.Selection.TypeText (""Il ï¿½tait un petit navire"")" & vbCrLf & "wd.Selection.TypeParagraph" & vbCrLf & "End Sub"
 
         Dim modW As MSScriptControl.Module
         modW = ScriptControl1.Modules.Add("modW")
@@ -231,10 +231,10 @@ Friend Class frmTestScripting
     End Sub
 
     Private Sub EvalFunc()
-        ' Créer la fonction.
+        ' Crï¿½er la fonction.
         Dim strFonction As String
         strFonction = "Function ReturnThis(x, y)" & vbCrLf & " ReturnThis = x * y" & vbCrLf & "End Function"
-        ' Ajouter le code puis exécuter la fonction.
+        ' Ajouter le code puis exï¿½cuter la fonction.
         ScriptControl1.AddCode(strFonction)
         MsgBox(ScriptControl1.Run("ReturnThis", New Object() {3, 25}))
     End Sub

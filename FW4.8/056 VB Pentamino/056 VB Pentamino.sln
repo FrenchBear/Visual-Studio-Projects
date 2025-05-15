@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "56 VB Pentamino", "56 VB Pentamino.vbproj", "{3E844BA1-C7B3-47CA-A83E-AF725F6297FC}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "56 VB Pentamino", "056 VB Pentamino.vbproj", "{3E844BA1-C7B3-47CA-A83E-AF725F6297FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

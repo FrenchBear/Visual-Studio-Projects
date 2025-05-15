@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailleImages 3.0 WPF", "RetailleImages 3.0 WPF.csproj", "{ACFEBD33-247C-41E8-B2A4-8084F8BD2463}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailleImages 3.0 WPF", "511 CS RetailleImages 3.0 (WPF).csproj", "{ACFEBD33-247C-41E8-B2A4-8084F8BD2463}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

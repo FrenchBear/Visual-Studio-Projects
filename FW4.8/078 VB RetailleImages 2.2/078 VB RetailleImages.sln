@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RetailleImages", "RetailleImages.vbproj", "{CE44B420-32EB-4B08-B90C-304D50A96E44}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RetailleImages", "078 VB RetailleImages 2.2.vbproj", "{CE44B420-32EB-4B08-B90C-304D50A96E44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

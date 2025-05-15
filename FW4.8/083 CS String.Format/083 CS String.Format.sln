@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "83 CS String.Format", "83 CS String.Format.csproj", "{3FD40942-F04E-42DD-8837-4E80BD1A6247}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "83 CS String.Format", "083 CS String.Format.csproj", "{3FD40942-F04E-42DD-8837-4E80BD1A6247}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "44 C# Attributes", "44 C# Attributes.csproj", "{F44D6DAA-5603-41F3-AF17-7643AABB8ED8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "44 C# Attributes", "044 CS Attributes.csproj", "{F44D6DAA-5603-41F3-AF17-7643AABB8ED8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

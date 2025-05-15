@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "93 CS Path", "93 CS Path\93 CS Path.csproj", "{EAC85709-4541-4710-92C2-22912B240EC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "93 CS Path", "93 CS Path\093 CS Path.csproj", "{EAC85709-4541-4710-92C2-22912B240EC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

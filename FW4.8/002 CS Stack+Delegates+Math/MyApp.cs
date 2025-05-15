@@ -9,9 +9,9 @@ using System;
 
 public class MyMath
 {
-    public delegate double FRéelle(double arg);
+    public delegate double FRÃ©elle(double arg);
 
-    public static double Intégrale(double binf, double bsup, FRéelle f)
+    public static double IntÃ©grale(double binf, double bsup, FRÃ©elle f)
     {
         int i;
         double v;
@@ -23,7 +23,7 @@ public class MyMath
         return v * (bsup - binf) / PAS;
     }
 
-    public static double Carré(double x) => x * x;
+    public static double CarrÃ©(double x) => x * x;
 }
 
 public class MyApp
@@ -64,25 +64,25 @@ public class MyApp
         p.Empile(2);
         p.Empile(3);
 
-        Console.WriteLine("Dépile: {0}", p.Dépile());
-        Console.WriteLine("Dépile: {0}", p.Dépile());
+        Console.WriteLine("DÃ©pile: {0}", p.DÃ©pile());
+        Console.WriteLine("DÃ©pile: {0}", p.DÃ©pile());
 
         try
         {
-            Console.WriteLine("Dépile: {0}", p.Dépile());
+            Console.WriteLine("DÃ©pile: {0}", p.DÃ©pile());
         }
         catch (Exception e)
         {
-            Console.WriteLine("Échec au dépile: {0}", e.Message);
+            Console.WriteLine("ï¿½chec au DÃ©pile: {0}", e.Message);
         }
         finally
         {
             Console.WriteLine("Bloc finally");
         }
 
-        Console.WriteLine("12.3² = {0}", MyMath.Carré(12.3));
-        Console.WriteLine("Intégrale x²|0,1: {0}", MyMath.Intégrale(0.0, 1.0, new MyMath.FRéelle(MyMath.Carré)));
-        Console.WriteLine("Intégrale sin(x)|0,pi: {0}", MyMath.Intégrale(0.0, Math.PI, new MyMath.FRéelle(Math.Sin)));
+        Console.WriteLine("12.3ï¿½ = {0}", MyMath.CarrÃ©(12.3));
+        Console.WriteLine("IntÃ©grale xï¿½|0,1: {0}", MyMath.IntÃ©grale(0.0, 1.0, new MyMath.FRÃ©elle(MyMath.CarrÃ©)));
+        Console.WriteLine("IntÃ©grale sin(x)|0,pi: {0}", MyMath.IntÃ©grale(0.0, Math.PI, new MyMath.FRÃ©elle(Math.Sin)));
 
         Console.WriteLine();
         Console.Write("(Pause)");

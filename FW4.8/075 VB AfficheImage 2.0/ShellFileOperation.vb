@@ -1,8 +1,8 @@
 ' ShellFileOperation
-' Acces VB à SHFileOperation (effacement -> poubelle, copie, ...)
-' 11/11/97 PV Créé d'après la KB VB Microsoft
-'  3/01/98 PV DéplaceFichier
-'  5/08/99 PV EffaceFichierCorbeille envoie réellement dans la corbeille !!!
+' Acces VB ï¿½ SHFileOperation (effacement -> poubelle, copie, ...)
+' 11/11/97 PV Crï¿½ï¿½ d'aprï¿½s la KB VB Microsoft
+'  3/01/98 PV DÃ©placeFichier
+'  5/08/99 PV EffaceFichierCorbeille envoie rï¿½ellement dans la corbeille !!!
 ' 20/05/03 PV Portage VB.Net
 
 Module ShellFileOperation
@@ -52,7 +52,7 @@ Module ShellFileOperation
         EffaceFichierCorbeille = result
     End Function
 
-    Function DéplaceFichier(hwnd As Integer, sSource As String, sDest As String) As Long
+    Function DÃ©placeFichier(hwnd As Integer, sSource As String, sDest As String) As Long
         Dim MoveFileOp As SHFILEOPSTRUCT
         Dim result As Long
         While Right(sSource, 2) <> vbNullChar & vbNullChar : sSource &= vbNullChar : End While
@@ -66,7 +66,7 @@ Module ShellFileOperation
         End With
 #Disable Warning BC42109
         result = SHFileOperation(MoveFileOp)
-        DéplaceFichier = result
+        DÃ©placeFichier = result
     End Function
 
 End Module

@@ -6,7 +6,7 @@ Option Explicit On
 Friend Class frmAPropos
     Inherits Form
 
-#Region "Code généré par le Concepteur Windows Form "
+#Region "Code gï¿½nï¿½rï¿½ par le Concepteur Windows Form "
 
     Public Sub New()
         MyBase.New()
@@ -15,7 +15,7 @@ Friend Class frmAPropos
                 m_vb6FormDefInstance = Me
             Else
                 Try
-                    'Pour le formulaire de démarrage, la première instance créée est l'instance par défaut.
+                    'Pour le formulaire de dï¿½marrage, la premiï¿½re instance crï¿½ï¿½e est l'instance par dï¿½faut.
                     If System.Reflection.Assembly.GetExecutingAssembly.EntryPoint.DeclaringType Is Me.GetType Then
                         m_vb6FormDefInstance = Me
                     End If
@@ -27,7 +27,7 @@ Friend Class frmAPropos
         InitializeComponent()
     End Sub
 
-    'La méthode substituée Dispose du formulaire pour nettoyer la liste des composants.
+    'La mï¿½thode substituï¿½e Dispose du formulaire pour nettoyer la liste des composants.
     Protected Overloads Overrides Sub Dispose(Disposing As Boolean)
         If Disposing Then
             components?.Dispose()
@@ -46,9 +46,9 @@ Friend Class frmAPropos
     Public WithEvents Label3 As Label
     Public WithEvents Label1 As Label
 
-    'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
-    'Il peut être modifié à l'aide du Concepteur Windows Form.
-    'Ne pas le modifier à l'aide de l'éditeur de code.
+    'REMARQUEï¿½: la ProcÃ©dure suivante est requise par le Concepteur Windows Form
+    'Il peut ï¿½tre modifiï¿½ ï¿½ l'aide du Concepteur Windows Form.
+    'Ne pas le modifier ï¿½ l'aide de l'ï¿½diteur de code.
     <DebuggerStepThrough()> Private Sub InitializeComponent()
         Me.components = New ComponentModel.Container()
         Dim resources As New ComponentModel.ComponentResourceManager(GetType(frmAPropos))
@@ -164,7 +164,7 @@ Friend Class frmAPropos
         Me.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        Me.Text = "À propos d'AfficheImage"
+        Me.Text = "ï¿½ propos d'AfficheImage"
         CType(Me.Image1, ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgAuteur, ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -174,7 +174,7 @@ Friend Class frmAPropos
 
 #End Region
 
-#Region "Prise en charge de la mise à niveau "
+#Region "Prise en charge de la mise ï¿½ niveau "
 
     Private Shared m_vb6FormDefInstance As frmAPropos
     Private Shared m_InitializingDefInstance As Boolean
