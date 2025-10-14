@@ -433,7 +433,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "609b CS Arith2", "609b CS A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "609 CS Arith2", "609 CS Arith2\609 CS Arith2.csproj", "{45DC6AA3-63FC-4A85-8B34-125075A9C0E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "608 CS φ and ϕ", "608 CS φ and ϕ\608 CS φ and ϕ.csproj", "{0A2F2650-649D-44A0-B5E7-92E614686560}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "608 CS phi and phi", "608 CS phi and phi\608 CS phi and phi.csproj", "{0A2F2650-649D-44A0-B5E7-92E614686560}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "607 CS Higher Order Lambdas", "607 CS Higher Order Lambdas\607 CS Higher Order Lambdas.csproj", "{07E84DD9-ECD9-46EC-9175-44BB0A256CCB}"
 EndProject
