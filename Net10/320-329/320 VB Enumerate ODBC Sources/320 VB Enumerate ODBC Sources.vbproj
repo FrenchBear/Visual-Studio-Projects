@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>VB320</RootNamespace>
+		<AssemblyName>VB320</AssemblyName>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Title> 320 VB Enumerate ODBC Sources</Title>
+		<Copyright>Copyright ©2008-2026 Pierre Violent</Copyright>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Data.Odbc" Version="10.0.2" />
+	</ItemGroup>
+</Project>

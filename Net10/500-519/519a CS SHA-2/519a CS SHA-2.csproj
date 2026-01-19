@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>CS519a</RootNamespace>
+		<AssemblyName>CS519a</AssemblyName>
+		<Version>1.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Title>CS519a SHA-2 (CS519)</Title>
+		<Description>Example of implementation of SHA-2 hashing</Description>
+		<Copyright>Copyright ©2014-2026 Pierre Violent</Copyright>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="sha256-384-512.pdf">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

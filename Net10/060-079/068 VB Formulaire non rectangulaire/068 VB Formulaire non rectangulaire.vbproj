@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <OutputType>WinExe</OutputType>
+        <RootNamespace>VB068</RootNamespace>
+        <AssemblyName>VB068</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Copyright>Copyright ©2023-2026 Pierre Violent</Copyright>
+        <UseWindowsForms>true</UseWindowsForms>
+        <StartupObject>VB068.Form1</StartupObject>
+    </PropertyGroup>
+
+	<ItemGroup>
+		<Import Include="System" />
+		<Import Include="System.Data" />
+		<Import Include="System.Drawing" />
+		<Import Include="System.Windows.Forms" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="My Project\Application.Designer.vb">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Application.myapp</DependentUpon>
+		</Compile>
+		<Compile Update="My Project\Resources.Designer.vb">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="My Project\Resources.resx">
+	    <CustomToolNamespace>My.Resources</CustomToolNamespace>
+	    <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="My Project\Application.myapp">
+			<Generator>MyApplicationCodeGenerator</Generator>
+			<LastGenOutput>Application.Designer.vb</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+</Project>

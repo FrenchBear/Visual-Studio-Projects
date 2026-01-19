@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS605</RootNamespace>
+        <AssemblyName>CS605</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS605 GetBuildVersion</Title>
+        <Copyright>Copyright ©2017-2026 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+</Project>

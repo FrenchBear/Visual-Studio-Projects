@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS547</RootNamespace>
+        <AssemblyName>CS547</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS547 Array initialization and CS Interactive</Title>
+        <Copyright>Copyright ©2016-2026 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

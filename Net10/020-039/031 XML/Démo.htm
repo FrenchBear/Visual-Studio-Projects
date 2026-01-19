@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Démo simple d'une transformation XSL</title>
+</head>
+<xml id="source" src="Commande.xml"></xml>
+<xml id="style" src="Commande.xsl"></xml>
+
+<script for="window" event="onload" type="text/javascript">
+    xslTarget.innerHTML = source.transformNode(style.XMLDocument);
+</script>
+<body>
+    <p style="font-size:10pt; font-family:Verdana; color:gray">
+        <b>
+            Exemple d'utilisation d'ilôts de données (data island) pour charger une source XML et une feuille de
+            style XSL et intertion du résultat de la transformation dans une page Web.
+        </b>
+    </p>
+    <div id="xslTarget"></div>
+</body>
+</html>

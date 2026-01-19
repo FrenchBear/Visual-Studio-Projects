@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<RootNamespace>CS639</RootNamespace>
+		<Version>1.1.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Title>CS639 Enumerate Net6</Title>
+		<Description>New Enumerate Extension Methods for Net6</Description>
+		<Copyright>Copyright ©2021-2026 Pierre Violent</Copyright>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>Process_in_Linq</RootNamespace>
+        <AssemblyName>Process_in_Linq</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>Process in Linq</Title>
+        <Copyright>Copyright ©2008-2026 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

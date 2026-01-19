@@ -1,0 +1,127 @@
+﻿[*.cs]
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = warning
+
+# IDE0210: Convert to top-level statements
+dotnet_diagnostic.IDE0210.severity = none
+
+# IDE0040: Add accessibility modifiers
+dotnet_diagnostic.IDE0040.severity = none
+
+# IDE0079: Remove unnecessary suppression
+dotnet_diagnostic.IDE0079.severity = none
+
+# CA1051: Do not declare visible instance fields
+dotnet_diagnostic.CA1051.severity = none
+
+# IDE0008: Use explicit type
+dotnet_diagnostic.IDE0008.severity = none
+
+# CA1707: Identifiers should not contain underscores
+dotnet_diagnostic.CA1707.severity = none
+
+# CA1309: Use ordinal string comparison
+dotnet_diagnostic.CA1309.severity = none
+
+# IDE0058: Expression value is never used
+dotnet_diagnostic.IDE0058.severity = none
+
+# CA1304: Specify CultureInfo
+dotnet_diagnostic.CA1304.severity = none
+
+# CA1311: Specify a culture or use an invariant version
+dotnet_diagnostic.CA1311.severity = none
+
+# CA1710: Identifiers should have correct suffix
+dotnet_diagnostic.CA1710.severity = none
+
+# CA1305: Specify IFormatProvider
+dotnet_diagnostic.CA1305.severity = none
+
+# IDE0060: Remove unused parameter
+dotnet_diagnostic.IDE0060.severity = none
+
+# CA2201: Exception System.Exception is not sufficiently specific
+dotnet_diagnostic.CA2201.severity = none
+
+# IDE0010: Populate switch
+dotnet_diagnostic.IDE0010.severity = none
+
+# CA1310: string.StartsWith...
+dotnet_diagnostic.CA1310.severity = none
+
+# CA1711: rename xxxEventHandler
+dotnet_diagnostic.CA1711.severity = none
+
+# CA5369: Deserialize overload is not safe
+dotnet_diagnostic.CA5369.severity = none
+
+# CA1838: Avoid StringBuilder parameters for P/Invokes
+dotnet_diagnostic.CA1838.severity = none
+
+# IDE0065: Using directives must be placed outside of a namespace declaration
+dotnet_diagnostic.IDE0065.severity = none
+
+# CA1852: Class can be sealed (temporary)
+dotnet_diagnostic.CA1852.severity = none
+
+
+[*.vb]
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = warning
+
+# IDE0079: Remove unnecessary suppression
+dotnet_diagnostic.IDE0079.severity = none
+
+# CA1707: Remove the underscores
+dotnet_diagnostic.CA1707.severity = none
+
+# IDE0058: Expression value is never used
+dotnet_diagnostic.IDE0058.severity = none
+
+# CA1051: Do not declare visible instance fields
+dotnet_diagnostic.CA1051.severity = none
+
+# CA1711: Do not use suffix New
+dotnet_diagnostic.CA1711.severity = none
+
+# CA2201: Exception System.Exception is not sufficiently specific
+dotnet_diagnostic.CA2201.severity = none
+
+# IDE0079: Remove unnecessary suppression
+dotnet_diagnostic.IDE0079.severity = none
+
+# CA1304: Specify CultureInfo
+dotnet_diagnostic.CA1304.severity = none
+
+# CA1305: Vehavior could vary depending on current user locale
+dotnet_diagnostic.CA1305.severity = none
+
+# CA1310: string.StartsWith...
+dotnet_diagnostic.CA1310.severity = none
+
+# CA1852: Class can be sealed (temporary)
+dotnet_diagnostic.CA1852.severity = none
+
+# IDE0010: Populate switch
+dotnet_diagnostic.IDE0010.severity = none
+
+# BC42017: Late bound resolution; runtime errors can occur
+dotnet_diagnostic.BC42017.severity = none
+
+# BC42019: Operands of type Object used for operator '&'; runtime errors could occur
+dotnet_diagnostic.BC42019.severity = none
+
+# BC42016: Implicit conversion from 'T1' to 'T2'
+dotnet_diagnostic.BC42016.severity = none
+
+
+[*.{cs,vb}]
+
+# WFO1000: Property 'p' does not configure the code serialization for its property content
+dotnet_diagnostic.WFO1000.severity = none
+
+# WFDEV004: Public Event Closing As CancelEventHandler is obsolete: 'Form.OnClosing, Form.OnClosed and the corresponding events are obsolete. Use Form.OnFormClosing, Form.OnFormClosed, Form.FormClosing and Form.FormClosed instead.
+dotnet_diagnostic.WFDEV004.severity = none

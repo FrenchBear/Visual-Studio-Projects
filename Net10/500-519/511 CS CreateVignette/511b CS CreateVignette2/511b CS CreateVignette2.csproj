@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS511b</RootNamespace>
+        <AssemblyName>CS511b</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS511b CreateVignette2</Title>
+        <Copyright>Copyright ©2013-2026 Pierre Violent</Copyright>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+</Project>

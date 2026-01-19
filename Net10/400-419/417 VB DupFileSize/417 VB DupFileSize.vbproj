@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>DupFileSize</RootNamespace>
+        <AssemblyName>DupFileSize</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>VB417 DupFileSize</Title>
+        <Copyright>Copyright ©2011-2026 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<OutputType>Exe</OutputType>
+		<AssemblyName>CS056</AssemblyName>
+		<RootNamespace>CS056</RootNamespace>
+		<Description>Pentamino paving a 5x12 rectangle solver</Description>
+		<Version>2.0.0</Version>
+		<Authors>Pierre Violent</Authors>
+		<Copyright>Copyright ©2001-2026 Pierre Violent</Copyright>
+	</PropertyGroup>
+
+</Project>

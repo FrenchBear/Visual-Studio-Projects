@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS101_IEnumerable_Generic</RootNamespace>
+        <AssemblyName>CS101_IEnumerable_Generic</AssemblyName>
+        <Version>1.0.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>101 CS IEnumerable Generic</Title>
+        <Company>SGS</Company>
+        <Copyright>Copyright ©2005-2026 Pierre Violent</Copyright>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+</Project>

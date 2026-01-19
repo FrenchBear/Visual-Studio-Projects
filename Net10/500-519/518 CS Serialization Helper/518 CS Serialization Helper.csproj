@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <RootNamespace>CS518</RootNamespace>
+        <AssemblyName>CS518</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>Pierre Violent</Authors>
+        <Title>CS518 Serialization Helper</Title>
+        <Copyright>Copyright ©2014-2026 Pierre Violent</Copyright>
+    </PropertyGroup>
+</Project>
