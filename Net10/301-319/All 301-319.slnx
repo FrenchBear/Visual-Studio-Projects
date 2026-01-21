@@ -1,0 +1,22 @@
+<Solution>
+  <Project Path="301 VB ODBC to SQL Client/301 VB ODBC to SQL Client.vbproj" />
+  <Project Path="302 VB Create DataTable from schema/302 VB Create DataTable from schema.vbproj" />
+  <Project Path="303 VB Test MetaColumn Names/303 VB Test MetaColumn Names.vbproj" />
+  <Project Path="305 VB RotorRouter/305 VB RotorRouter.vbproj" />
+  <Project Path="306 VB AllStatusBarStyles/306 VB AllStatusBarStyles.vbproj" />
+  <Project Path="307 VB ComboDoubleClic/307 VB ComboDoubleClic.vbproj" />
+  <Project Path="308 VB Splitter.Net/308 VB Splitter.Net.vbproj" />
+  <Project Path="309 CS MessageQueue/309 CS MessageQueue.csproj" />
+  <Project Path="310 CS Lambda functions and Select projections/310 CS Lambda functions and Select projections.csproj" />
+  <Project Path="310 VB Lambda functions and Select projections/310 VB Lambda functions and Select projections.vbproj" />
+  <Project Path="311 CS Extensions of IEnumerable(Of T)/311 CS Extensions of IEnumerable(Of T).csproj" />
+  <Project Path="311 VB Extensions of IEnumerable(Of T)/311 VB Extensions of IEnumerable(Of T).vbproj" />
+  <Project Path="312 VB IComparable(Of T)/312 VB IComparable(Of T).vbproj" />
+  <Project Path="313 VB Partial Methods/313 VB Partial Methods.vbproj" />
+  <Project Path="314 VB PowerCollections/314 VB PowerCollections.vbproj" />
+  <Project Path="315 VB Enumerable Class/315 VB Enumerable Class.vbproj" />
+  <Project Path="316 VB Egality/316 VB Egality.vbproj" />
+  <Project Path="317 CS Crible/317 CS Crible.csproj" />
+  <Project Path="318 VB Linq to Objects/318 VB Linq to Objects.vbproj" />
+  <Project Path="319 VB ShellExecute/319 VB ShellExecute.vbproj" />
+</Solution>

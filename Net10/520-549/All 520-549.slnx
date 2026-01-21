@@ -1,0 +1,39 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="520 CS StringDecomposition/520 CS StringDecomposition.csproj" />
+  <Project Path="522 CS Ed850/522 CS Ed850.csproj" />
+  <Project Path="523_1 CS UnblockMe Solver/523_1 CS UnblockMe Solver.csproj" />
+  <Project Path="523_2 CS UnblockMe Visual Solver/523 CS UnblockMe Solver Visual.csproj" />
+  <Project Path="524 CS Cordic/524 CS Cordic.csproj" />
+  <Project Path="524b CS Cordic HalfTrig/524b CS Cordic HalfTrig.csproj" />
+  <Project Path="525 CS Suite de Rowland/525 CS Suite de Rowland.csproj" />
+  <Project Path="526 CS Nombres de Friedman/526 CS Nombres de Friedman.csproj" />
+  <Project Path="527 CS List Serialization/527 CS List Serialization.csproj" />
+  <Project Path="528 CS This Is A String/528 CS This Is A String.csproj" />
+  <Project Path="529 CS Boxes/529 CS Boxes.csproj" />
+  <Project Path="530 CS Hilbert Text/530 CS Hilbert Text.csproj" />
+  <Project Path="531 CS Vietnamese Puzzle/531 CS Vietnamese Puzzle.csproj" />
+  <Project Path="532 CS VS2015 New/532 CS VS2015 New.csproj" />
+  <Project Path="533 CS String Distance/533 CS String Distance.csproj" />
+  <Project Path="534 CS Normalized Filesystem/534 CS Normalized Filesystem.csproj" />
+  <Project Path="535 CS DoubleAlmostEqual/535 CS DoubleAlmostEqual.csproj" />
+  <Project Path="536 CS DLL Settings and Resources/Arithmetic/536 CS DLL Settings and Resources.csproj" />
+  <Project Path="536 CS DLL Settings and Resources/TestApplication/536 CS DLL Settings and Resources Test.csproj" />
+  <Project Path="537 CS Validate xml using xsd Schema/537 CS Validate xml using xsd Schema.csproj" />
+  <Project Path="539 C Order/Project1.vcxproj">
+    <Platform Solution="*|Any CPU" Project="Win32" />
+    <Build Solution="*|Any CPU" Project="false" />
+  </Project>
+  <Project Path="540 CS Synchronization/540 CS Synchronization.csproj" />
+  <Project Path="541 CS BitVector32/541 CS BitVector32.csproj" />
+  <Project Path="542 CS Arrays ByRef/542 CS Arrays ByRef.csproj" />
+  <Project Path="543 CS Arrays/543 CS Arrays.csproj" />
+  <Project Path="543 VB Arrays/543 VB Arrays.vbproj" />
+  <Project Path="544 CS SkipAt and Choice/544 CS SkipAt Choice GetRange Shuffle.csproj" />
+  <Project Path="547 CS Array initialization and CS Interactive/547 CS Array initialization and CS Interactive.csproj" />
+  <Project Path="549 CS Strcmp Accent and Case insensitive/549 CS Strcmp Accent and Case insensitive.csproj" />
+</Solution>

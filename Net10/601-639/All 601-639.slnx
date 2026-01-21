@@ -1,0 +1,36 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="601 CS,VB Visual Studio 2017 New Features/601 CS/601 CS VS2017.csproj" />
+  <Project Path="601 CS,VB Visual Studio 2017 New Features/601 VB/601 VB VS2017.vbproj" />
+  <Project Path="602 C Visual Studio 2017 Trigraphs/602 C Visual Studio 2017 Trigraphs.vcxproj">
+    <Platform Solution="*|Any CPU" Project="Win32" />
+    <Build Solution="*|Any CPU" Project="false" />
+  </Project>
+  <Project Path="603 CS Sort On/603 CS Sort On.csproj" />
+  <Project Path="604 CS Very Long Paths/604 CS Win10 DotNet 4.6.2 Long Paths.csproj" />
+  <Project Path="605 CS GetBuildVersion/605 CS GetBuildVersion.csproj" />
+  <Project Path="606 CS Expression/606 CS ExpressionApp.csproj" />
+  <Project Path="607 CS Higher Order Lambdas/607 CS Higher Order Lambdas.csproj" />
+  <Project Path="608 CS phi and phi/608 CS phi and phi.csproj" />
+  <Project Path="609 CS Arith2/609 CS Arith2.csproj" />
+  <Project Path="609b CS Arith2/609b CS Arith2.csproj" />
+  <Project Path="611 CS NewLaby/611 CS NewLaby.csproj" />
+  <Project Path="611b CS NewLaby Tests/611b CS NewLaby Tests.csproj" />
+  <Project Path="619 CS Populate Array/CS Populate Array/619 CS Populate Array.csproj" />
+  <Project Path="619 CS Populate Array/CS Populate ArrayUnitTests/619 CS Populate Array UnitTests.csproj" />
+  <Project Path="632 CS ReadOnly Collections/632 CS ReadOnly Collections.csproj" />
+  <Project Path="634 CS CPP Lambda/634 CPP LambdaCPP/634 CPP LambdaCPP.vcxproj">
+    <Platform Solution="*|Any CPU" Project="Win32" />
+    <Build Solution="*|Any CPU" Project="false" />
+  </Project>
+  <Project Path="634 CS CPP Lambda/634 CS LambdaCS/634 CS LambdaCS.csproj" />
+  <Project Path="635 CS IComparable and IComparer/635 CS IComparable and IComparer.csproj" />
+  <Project Path="636 CS SelectMany/636 CS SelectMany.csproj" />
+  <Project Path="637 CS Enumerate/637 CS Enumerate.csproj" />
+  <Project Path="638 CS LinkedList/638 CS LinkedList.csproj" />
+  <Project Path="639 CS Enumerate Net6/639 CS Enumerate Net6.csproj" />
+</Solution>

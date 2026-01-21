@@ -1,0 +1,27 @@
+<Solution>
+  <Project Path="500 CS async Navigation/500 CS async Navigation.csproj" />
+  <Project Path="501 CS async implementation/501 CS async implementation.csproj" />
+  <Project Path="502 CS Tasks/502 CS Tasks.csproj" />
+  <Project Path="503 CS Tasks/503 CS Tasks.csproj" />
+  <Project Path="504 CS Closure Example/504 CS Closure Example.csproj" />
+  <Project Path="505 CS Caller Info/505 CS Caller Info.csproj" />
+  <Project Path="506 CS Ribbon/506 CS Ribbon.csproj" />
+  <Project Path="507 CS String Normalize/507 CS String Normalize.csproj" />
+  <Project Path="508 CS ReadOnly Collections/508 CS ReadOnly Collections.csproj" />
+  <Project Path="509 VB Goldbach/509 VB Goldbach.vbproj" />
+  <Project Path="510 CS Rename Parentheses/510 CS Rename Parentheses.csproj" />
+  <Project Path="511 CS CreateVignette/511a CS CreateVignette1/511a CS CreateVignette1.csproj" />
+  <Project Path="511 CS CreateVignette/511b CS CreateVignette2/511b CS CreateVignette2.csproj" />
+  <Project Path="511 CS CreateVignette/511c CS CreateVignette3/511c CS CreateVignette3.csproj" />
+  <Project Path="511 CS RetailleImages 3.0 (WPF)/511 CS RetailleImages 3.0 (WPF).csproj" />
+  <Project Path="511 CS RetailleImages 3.1 (GDI)/511 CS RetailleImages 3.1 (GDI).csproj" />
+  <Project Path="513 CS DupMP3 Core/513 DupMP3 Core.csproj" />
+  <Project Path="513 CS DupMP3/513 CS DupMP3.csproj" />
+  <Project Path="514 CS Remap HR Extract Pics/514 CS Remap HR Extract Pics.csproj" />
+  <Project Path="515 CS Equals and inheritance/515 CS Equals and inheritance.csproj" />
+  <Project Path="516 CS Dynamic Code Compilation/516 CS Dynamic Code Compilation.csproj" />
+  <Project Path="517 CS IsDerivedFromType/517 CS IsDerivedFromType.csproj" />
+  <Project Path="518 CS Serialization Helper/518 CS Serialization Helper.csproj" />
+  <Project Path="519a CS SHA-2/519a CS SHA-2.csproj" />
+  <Project Path="519b CS SHA-1/519b CS SHA-1.csproj" />
+</Solution>

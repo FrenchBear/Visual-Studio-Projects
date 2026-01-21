@@ -1,0 +1,25 @@
+<Solution>
+  <Project Path="400 CS Numerics and Tuples/400 CS Numerics and Tuples.csproj" />
+  <Project Path="401 CS SortedSet/401 CS SortedSet.csproj" />
+  <Project Path="402 CS Initializers/402 CS Initializers.csproj" />
+  <Project Path="402 VB Initializers/402 VB Initializers.vbproj" />
+  <Project Path="403 VB Linq for Objects/403 VB Linq for Objects.vbproj" />
+  <Project Path="404 VB Start a DLL/DllLauncher/404 VB Start a DLL (App).vbproj" />
+  <Project Path="404 VB Start a DLL/MyDLL/404 Start a DLL (Dll).vbproj" />
+  <Project Path="405 CS Rename eMule Incoming/405 CS Rename eMule Incoming.csproj" />
+  <Project Path="406 CS BigDecimal/406 CS BigDecimal.csproj" />
+  <Project Path="407 VB Covariant Interface/407 VB Covariant Interface.vbproj" />
+  <Project Path="408 VB ConversionsWithLocales/408 VB ConversionsWithLocales.vbproj" />
+  <Project Path="409 VB Covariance/409 VB Covariance.vbproj" />
+  <Project Path="410 VB Component Walkthrough/CDemoLib/410 VB CDemoLib.vbproj" />
+  <Project Path="410 VB Component Walkthrough/CDemoTest/410 CDemoTest.vbproj" />
+  <Project Path="411 VB Multithread Calculations/411 VB Multithread Calculations.vbproj" />
+  <Project Path="412 VB NumTheory/412 VB NumTheory.vbproj" />
+  <Project Path="413 VB SelectAndCount/413 VB SelectAndCount.vbproj" />
+  <Project Path="414 VB CleanEmuleFilenames/414 VB CleanEmuleFilenames.vbproj" />
+  <Project Path="415 CS Extension Methods/415 CS Extension Methods.csproj" />
+  <Project Path="416 VB Boxing and Rational/416 VB Boxing and Rational.vbproj" />
+  <Project Path="417 VB DupFileSize/417 VB DupFileSize.vbproj" />
+  <Project Path="418 VB Covariance/418 VB Covariance.vbproj" />
+  <Project Path="419 CS LSystem/419 CS LSystem.csproj" />
+</Solution>

@@ -1,0 +1,43 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="020 CS et VB et CPP/CPP/CPP.vcxproj" />
+  <Project Path="020 CS et VB et CPP/CS/020 Multi CS.csproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="020 CS et VB et CPP/VB/020 Multi VB.vbproj">
+    <Platform Project="x64" />
+  </Project>
+  <Project Path="021 CS WinForms Inheritance/021 CS WinForms Inheritance.csproj" />
+  <Project Path="021 VB WinForms Inheritance/021 VB WinForms Inheritance.vbproj" />
+  <Project Path="022 VB Boxing/022 VB Boxing.vbproj" />
+  <Project Path="024 CS Multicast Delegate/024 CS Multicast Delegate.csproj" />
+  <Project Path="024 VB Multicast Delegate/024 VB Multicast Delegate.vbproj" />
+  <Project Path="025 CS Gradient Button/025 CS Gradient Button.csproj" />
+  <Project Path="026 VB string/026 VB string.vbproj" />
+  <Project Path="029 VB Data/029 VB Data.vbproj" />
+  <Project Path="030 CS ImageView/030 CS ImageView.csproj" />
+  <Project Path="031 XML/031 XML.csproj" />
+  <Project Path="032 CS TuneTown/032 CS TuneTown.csproj" />
+  <Project Path="033 CS ILDASM/033 CS ILDASM.csproj">
+    <Platform Solution="Release|x86" Project="x86" />
+  </Project>
+  <Project Path="033 CS ILDASM/033b CS Bibliothèque.csproj" />
+  <Project Path="033 VB ILDASM/033 VB ILDASM.vbproj" />
+  <Project Path="034 MCPP Application/34 MCPP Application.vcxproj">
+    <Platform Project="Win32" />
+    <Build Solution="*|Any CPU" Project="false" />
+  </Project>
+  <Project Path="036 VB Interfaces/036 VB Interfaces.vbproj" />
+  <Project Path="037 VB ADO over ODBC/037 VB ADO over ODBC.vbproj" />
+  <Project Path="038 CS Tableaux/038 CS Tableaux.csproj" />
+  <Project Path="039 CS Deployment/039 CS App.csproj">
+    <Platform Solution="Release|x86" Project="x86" />
+  </Project>
+  <Project Path="039 CS Deployment/039 CS Lib.csproj">
+    <Platform Solution="Release|x86" Project="x86" />
+  </Project>
+</Solution>

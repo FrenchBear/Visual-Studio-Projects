@@ -1,0 +1,20 @@
+<Solution>
+  <Project Path="060 VB Project Info/060 VB Assembly Info.vbproj" />
+  <Project Path="061 VB SHBrowseForFolder/061 VB SHBrowseForFolder.vbproj" />
+  <Project Path="062 VB EffaceImage/062 VB EffaceImage.vbproj" />
+  <Project Path="064 VB Multithread/064 VB Multithread.vbproj" />
+  <Project Path="066 VB Unicode/066 VB Unicode.vbproj" />
+  <Project Path="067 VB Labyrinthe/067 VB Labyrinthe.vbproj" />
+  <Project Path="068 VB Formulaire non rectangulaire/068 VB Formulaire non rectangulaire.vbproj" />
+  <Project Path="069 VB Controls/069 VB Controls.vbproj" />
+  <Project Path="070 VB Optimiseur K7/070 VB Optimiseur K7.vbproj" />
+  <Project Path="071 VB Ctrl nomfic plus de 64 car/071 VB Ctrl nomfic plus de 64 car.vbproj" />
+  <Project Path="072 VB Elimine doublons BetM/072 VB Elimine doublons BetM.vbproj" />
+  <Project Path="073 VB Essais IO FileSystem/073 VB Essais IO FileSystem.vbproj" />
+  <Project Path="074 VB Primes plot/074 VB Primes plot.vbproj" />
+  <Project Path="075 VB AfficheImage 2.3/075 VB AfficheImage 2.3.vbproj" />
+  <Project Path="078 VB PicReisze (English)/078 VB PicReisze (English).vbproj" />
+  <Project Path="078 VB RetailleImages 2.3/078 RetailleImages.vbproj" />
+  <Project Path="078 VB Vignettes/078 VB Vignettes.vbproj" />
+  <Project Path="079 VB AnalysePCL/079 VB AnalysePCL.vbproj" />
+</Solution>

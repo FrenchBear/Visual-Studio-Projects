@@ -1,0 +1,40 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="041 CS Enumerator/041 CS Enumerator.csproj" />
+  <Project Path="041 VB Enumerator/041 VB Enumerator.vbproj" />
+  <Project Path="042 CS IFormattable/042 CS IFormattable.csproj" />
+  <Project Path="042 MCPP IFormattable/042 MCPP IFormattable.vcxproj">
+    <Platform Project="Win32" />
+    <Build Solution="*|Any CPU" Project="false" />
+    <Build Solution="*|x64" Project="false" />
+  </Project>
+  <Project Path="043 CS DLLImport/043 CS DLLImport.csproj" />
+  <Project Path="044 CS Attributes/044 CS Attributes.csproj" />
+  <Project Path="044 VB Attributes/044 VB Attributes.vbproj" />
+  <Project Path="046 VB Dim New/046 VB Dim New.vbproj" />
+  <Project Path="047 CS System Namespace/047 CS System Namespace.csproj">
+    <Platform Solution="*|x64" Project="x64" />
+  </Project>
+  <Project Path="048 CS DateTime/048 CS DateTime.csproj" />
+  <Project Path="049 CS Fichiers/049 CS Fichiers.csproj" />
+  <Project Path="050 VB GC sample/050 VB GC sample.vbproj" />
+  <Project Path="052 VB Regular Expressions/052 VB Regular Expressions.vbproj" />
+  <Project Path="053 CS Static Inheritance/053 CS Static Inheritance.csproj" />
+  <Project Path="054 VB Graphiques/054 VB Graphiques.vbproj" />
+  <Project Path="055 VB Graphiques 2/055 VB Graphiques 2.vbproj" />
+  <Project Path="056 CPP Pentamino Talos/Pentamino.vcxproj">
+    <Platform Project="Win32" />
+    <Build Solution="*|Any CPU" Project="false" />
+    <Build Solution="*|x64" Project="false" />
+  </Project>
+  <Project Path="056 CS Pentamino/056 CS Pentamino.csproj" />
+  <Project Path="056 VB Pentamino/056 VB Pentamino.vbproj" />
+  <Project Path="057 VB Pentamino visuel/057 VB Pentamino visuel.vbproj" />
+  <Project Path="058 CS Interfaces/058 CS Interfaces.csproj" />
+  <Project Path="059 CS ByRef Fields+Inheritance/059 CS ByRef Fields and Inheritance.csproj" />
+  <Project Path="059 VB ByRef Fields+Inheritance/059 VB ByRef Fields and Inheritance.vbproj" />
+</Solution>

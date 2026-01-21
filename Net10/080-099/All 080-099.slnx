@@ -1,0 +1,18 @@
+<Solution>
+  <Project Path="080 VB Create Tiff Multipage/080 VB Create Tiff Multipage.vbproj" />
+  <Project Path="080 VB ShowTiff Multipage/080 VB ShowTiff Multipage.vbproj" />
+  <Project Path="083 CS String.Format/083 CS String.Format.csproj" />
+  <Project Path="084 VB LogoEtiq/084 VB LogoEtiq.vbproj" />
+  <Project Path="085 VB StringWidth/085 VB StringWidth.vbproj" />
+  <Project Path="086 VB ImgTo1Bit/086 VB ImgTo1Bit.vbproj" />
+  <Project Path="087 CS DataGrid/087 CS DataGrid.csproj" />
+  <Project Path="089 VB LVSystem/089 VB LVSystem.vbproj" />
+  <Project Path="090 VB Tests Scripting/090 VB Tests Scripting.vbproj" />
+  <Project Path="091 VB Test CodeDom/091 VB Test CodeDom.vbproj" />
+  <Project Path="092 CS Complex/092 CS Complex.csproj" />
+  <Project Path="093 CS Path/093 CS Path.csproj" />
+  <Project Path="095 VB MultiThread/095 VB MultiThread.vbproj" />
+  <Project Path="096 VB Radoteur/096 VB Radoteur.vbproj" />
+  <Project Path="097 VB Sort Comics, Rename dir/097 VB Sort Comics.vbproj" />
+  <Project Path="099 VB Components Inheritance/099 VB Components Inheritance.vbproj" />
+</Solution>

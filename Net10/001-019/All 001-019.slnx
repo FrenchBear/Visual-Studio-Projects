@@ -1,0 +1,34 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="001 VB Elementary/001 VB Elementary.vbproj" />
+  <Project Path="002 CS Stack+Delegates+Math/002 CS Stack+Delegates+Math.csproj" />
+  <Project Path="003 VB Anchoring Net6/003 VB Anchoring Net6.vbproj" />
+  <Project Path="004 CS WindowsApplication/004 CS WindowsApplication.csproj" />
+  <Project Path="005 VB System Components/005 VB System Components.vbproj" />
+  <Project Path="006 CS Inheritance/006 CS Inheritance.csproj" />
+  <Project Path="007 VB Inheritance/007 VB Inheritance.vbproj" />
+  <Project Path="008 CPP Managed/Project1 Managed CPP.vcxproj">
+    <Platform Project="Win32" />
+    <Build Solution="*|Any CPU" Project="false" />
+  </Project>
+  <Project Path="009 VB Inheritance/009 VB Inheritance.vbproj" />
+  <Project Path="010 CS Simple Forms/010 CS Simple Forms.csproj" />
+  <Project Path="011 CS Manual Forms/011a CS Manual Forms.csproj">
+    <Platform Solution="Release|x86" Project="x86" />
+  </Project>
+  <Project Path="011 CS Manual Forms/011b CS Manual Forms.csproj">
+    <Platform Solution="Release|x86" Project="x86" />
+  </Project>
+  <Project Path="012 CS Operators/012 CS Operators.csproj" />
+  <Project Path="013 CS SOAP Serialization/013 CS SOAP Serialization.csproj" />
+  <Project Path="014 CS Reflection/014 CS Reflection.csproj" />
+  <Project Path="015 CS System.Diagnostics/015 CS System.Diagnostics.csproj" />
+  <Project Path="016 CS Collections/016 CS Collections.csproj" />
+  <Project Path="017 CS Delegates/017 CS Delegates.csproj" />
+  <Project Path="018 CS DBInt/018 CS DBInt.csproj" />
+  <Project Path="019 CS Forms/019 CS Forms.csproj" />
+  <Project Path="019 VB Forms/019 VB Forms.vbproj" />
+</Solution>

@@ -1,0 +1,23 @@
+<Solution>
+  <Project Path="100 VB DotNet COM Class/100 VB DotNet COM Class.vbproj" />
+  <Project Path="101 CS File/101 CS File.csproj" />
+  <Project Path="102a VB AnalyseComputers/102 VB AnalyseComputers.vbproj" />
+  <Project Path="102b VB AnalyseUsers/102 VB AnalyseUsers.vbproj" />
+  <Project Path="103 VB AutoScroll and ScrollBars/103 VB AutoScroll and ScrollBars.vbproj" />
+  <Project Path="104a VB ImageTool/104a VB ImageTool.vbproj" />
+  <Project Path="104b VB Essais Design MugShot/104b VB Essais Design MugShot.vbproj" />
+  <Project Path="104c VB Test Form Inheritance/104c VB Test Form Inheritance.vbproj" />
+  <Project Path="104d VB FileSystemWatch tests/104d VB FileSystemWatch tests.vbproj" />
+  <Project Path="201 VB BookXML/201 VB BookXM.vbproj" />
+  <Project Path="202 CS AllEvents WPF Window/202 CS AllEvents WPF Window.csproj" />
+  <Project Path="202 VB AllEvents WinForms Form/202 VB AllEvents WinForms Form.vbproj" />
+  <Project Path="203 CS Inherited Events (Chien)/203 CS Inherited Events (Chien).csproj" />
+  <Project Path="203 CS Simple Event/203 CS Simple Event.csproj" />
+  <Project Path="203 VB Inherited Events (Chien)/203 VB Inherited Events (Chien).vbproj" />
+  <Project Path="204 VB Partial Class/204 VB Partial Class.vbproj" />
+  <Project Path="205 VB Divers Snippets and XSL/205 VB Divers Snippets and XSL.vbproj" />
+  <Project Path="206 VB Reference to Exe/206 VB Reference to Exe.vbproj" />
+  <Project Path="207 VB Generics/207 VB Generics.vbproj" />
+  <Project Path="208 VB PartialClass2/208 VB PartialClass2.vbproj" />
+  <Project Path="209 VB Protected abuse/209 VB Protected abuse.vbproj" />
+</Solution>

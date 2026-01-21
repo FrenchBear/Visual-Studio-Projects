@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="602 C Visual Studio 2017 Trigraphs.vcxproj" />
+</Solution>

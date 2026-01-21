@@ -1,0 +1,19 @@
+<Solution>
+  <Project Path="230 VB Inheritance (Zoo) v2/230 VB Inheritance (Zoo) v2.vbproj" />
+  <Project Path="231 VB SyncLock/231 VB SyncLock.vbproj" />
+  <Project Path="232 VB String ShallowCopy/232 VB String ShallowCopy.vbproj" />
+  <Project Path="233 VB XML Serialize Tests 1/233 VB XML Serialize Tests 1.vbproj" />
+  <Project Path="234 VB XMLConfig 1 (XmlDocument)/234 VB XMLConfig 1 (XmlDocument).vbproj" />
+  <Project Path="234 VB XMLConfig 2 (Serialize)/234 VB XMLConfig 2 (Serialize).vbproj" />
+  <Project Path="235 VB SQLAnalysis/235 VB SQLAnalysis.vbproj" />
+  <Project Path="236 VB Printing/236 VB Printing.vbproj" />
+  <Project Path="237 VB Array.Sort/237 VB Array.Sort.vbproj" />
+  <Project Path="238 VB Write XML/238 VB Write XML.vbproj" />
+  <Project Path="239 VB Test XSD Tool/239 VB Test XSD Tool.vbproj" />
+  <Project Path="240 VB Lift/240 VB Lift.vbproj" />
+  <Project Path="241 VB RenameFiles/241 VB RenameFiles.vbproj" />
+  <Project Path="242 VB AutoCleaner/242 VB AutoCleaner.vbproj" />
+  <Project Path="243 VB DragDropExample/243 VB DragDropExample.vbproj" />
+  <Project Path="245 VB Files and folders enum/245 VB Files and folders enum.vbproj" />
+  <Project Path="246 VB TimeZone Conversions/246 VB TimeZone Conversions.vbproj" />
+</Solution>

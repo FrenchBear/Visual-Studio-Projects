@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="DllLauncher/404 VB Start a DLL (App).vbproj" />
+  <Project Path="MyDLL/404 Start a DLL (Dll).vbproj" />
+</Solution>

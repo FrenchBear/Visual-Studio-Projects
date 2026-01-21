@@ -1,0 +1,23 @@
+<Solution>
+  <Project Path="210 CS Type Characters/210 CS Type Characters.csproj" />
+  <Project Path="210 VB Type Characters/210 VB Type Characters.vbproj" />
+  <Project Path="211 VB Operators (Fraction)/211 VB Operators (Fraction).vbproj" />
+  <Project Path="212 VB Call Timing/212 VB Call Timing.vbproj" />
+  <Project Path="213 VB Custom Attribute/213 VB Custom Attribute.vbproj" />
+  <Project Path="214 VB DotNetDll/214 VB DotNetDll.vbproj" />
+  <Project Path="215 VB Illusion/215 VB Illusion.vbproj" />
+  <Project Path="216 VB Launchpad 2005/216 VB Launchpad 2005.vbproj" />
+  <Project Path="217 VB Layout Forms/217 VB Layout Forms.vbproj" />
+  <Project Path="218 VB ToolStripPanel/218 VB ToolStripPanel.vbproj" />
+  <Project Path="220 VB Web Browser/220 VB Web Browser.vbproj" />
+  <Project Path="221 VB Tray Icon/221 VB Tray Icon.vbproj" />
+  <Project Path="222 VB Icons/222 VB Icons.vbproj" />
+  <Project Path="223 VB Printing using ShellExecute/223 VB Printing using ShellExecute.vbproj" />
+  <Project Path="224 VB FixWordProperties/224 VB FixWordProperties.vbproj" />
+  <Project Path="225 VB AutoScroll and ScrollBars/225 VB AutoScroll and ScrollBars.vbproj" />
+  <Project Path="226 VB Text Mixer (Harry Potter)/226 VB Text Mixer (Harry Potter).vbproj" />
+  <Project Path="227 VB IcoToBmp/227 VB IcoToBmp.vbproj" />
+  <Project Path="228 VB ImageTool/228 VB ImageTool.vbproj" />
+  <Project Path="229 CS IEnumerable Generic/229 CS IEnumerable Generic.csproj" />
+  <Project Path="229 VB IEnumerable Generic/229 VB IEnumerable Generic.vbproj" />
+</Solution>

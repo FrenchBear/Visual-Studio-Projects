@@ -1,0 +1,14 @@
+<Solution>
+  <Project Path="420 CS Expression Trees/420 CS Expression Trees.csproj" />
+  <Project Path="421 CS Recursive Iterator and Data Pipeline v2/421 CS Recursive Iterator and Data Pipeline v2.csproj" />
+  <Project Path="421 CS Recursive Iterator and Data Pipeline/421 CS Recursive Iterator and Data Pipeline.csproj" />
+  <Project Path="422 CS Closures/422 CS Closures.csproj" />
+  <Project Path="423 CS Timeline 1/423 CS Timeline 1.csproj" />
+  <Project Path="424 CS Delegates Contravariance/424 CS Delegates Contravariance.csproj" />
+  <Project Path="425 VB Egyptian Fractions/425 VB Egyptian Fractions.vbproj" />
+  <Project Path="425 VB Egyption Fractions Tests/425 VB Egyptian Fractions Tests.vbproj" />
+  <Project Path="426 CS Decimal to Fraction/426 CS Decimal to Fraction.csproj" />
+  <Project Path="427 CS DynamicObject/427 CS DynamicObject.csproj" />
+  <Project Path="428 CS Fast Multiplication Tests/428 CS Fast Multiplication Tests.csproj" />
+  <Project Path="428 CS Fast Multiplication/428 CS Fast Multiplication.csproj" />
+</Solution>
