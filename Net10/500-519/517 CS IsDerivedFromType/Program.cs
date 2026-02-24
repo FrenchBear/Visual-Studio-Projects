@@ -16,7 +16,7 @@ using static System.Console;
 
 namespace CS517;
 
-internal class Program
+internal sealed class Program
 {
     private static readonly object b1 = true;
 

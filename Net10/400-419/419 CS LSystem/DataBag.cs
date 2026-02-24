@@ -17,7 +17,7 @@ using System.IO;
 
 namespace CS419;
 
-internal class DataBag
+internal sealed class DataBag
 {
     public ObservableCollection<string> SourceFiles { get; set; }
     public ObservableCollection<SourceSystem> SourceSystems { get; set; }

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace CS638;
 
-internal class Program
+internal sealed class Program
 {
     static void Main(string[] args)
     {

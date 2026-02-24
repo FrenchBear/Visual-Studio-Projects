@@ -13,7 +13,7 @@ using static System.Threading.Interlocked;
 
 namespace StringDistance;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

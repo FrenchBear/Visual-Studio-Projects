@@ -11,7 +11,7 @@ using static System.Console;
 
 namespace CS534;
 
-internal class Program
+internal sealed class Program
 {
     private static readonly string normalizedName = @"Où ça, là!.txt";
     private static string denormalizedName;

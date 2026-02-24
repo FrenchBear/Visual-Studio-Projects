@@ -15,7 +15,7 @@ using static System.Console;
 
 namespace CS203;
 
-internal class Program
+internal sealed class Program
 {
     // Clean example how to implement the equivalent of a WithEvents variable using
     // a property in C#
@@ -177,14 +177,14 @@ public class Chien: Animal
     private void Chien_Nait() => WriteLine("Le chien " + Nom + " est né");
 }
 
-internal class Chiot(string sNom): Chien(sNom)
+internal sealed class Chiot(string sNom): Chien(sNom)
 {
     public override void Crier() => WriteLine(Nom + ": Wif !  Wif !");
 
     public new void Jouer() => WriteLine("Le chiot " + Nom + " joue.");
 }
 
-internal class Loup: Animal
+internal sealed class Loup: Animal
 {
     public Loup()
         : base("Lupus")

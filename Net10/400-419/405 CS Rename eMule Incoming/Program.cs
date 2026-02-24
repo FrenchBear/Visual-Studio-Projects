@@ -13,7 +13,7 @@ using static System.Console;
 
 namespace Rename_eMule_Incoming;
 
-internal partial class Program
+internal sealed partial class Program
 {
     private static void Main(string[] args)
     {

@@ -15,7 +15,7 @@ using System.Diagnostics;
 using static System.Console;
 using System.Linq;
 
-internal class Piece
+internal sealed class Piece
 {
     public short Num;		                    // Number in Katamino game (not really useful here)
     public char Letter;	                        // Usual letter naming the piece

@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace CS523a;
 
-internal class Program
+internal sealed class Program
 {
     // Describes the blocks of a specific game
     // Puzzle 1602
@@ -126,8 +126,8 @@ internal class Program
                         if (Pieces[i].RowCol == r && c >= config.Pos[i] && c <= config.Pos[i] + Pieces[i].Length - 1)
                             break;
                         else
-                        if (Pieces[i].RowCol == c && r >= config.Pos[i] && r <= config.Pos[i] + Pieces[i].Length - 1)
-                            break;
+                            if (Pieces[i].RowCol == c && r >= config.Pos[i] && r <= config.Pos[i] + Pieces[i].Length - 1)
+                                break;
 
                 BackgroundColor = i == config.Length ? ConsoleColor.Black : i == redPiece ? ConsoleColor.Red : Colors[i];
                 var ch = (char)183;     // centered dot
@@ -141,7 +141,7 @@ internal class Program
 }
 
 // Represents one wooden block in the game
-internal class Block
+internal sealed class Block
 {
     public bool IsHorizontal;
     public byte RowCol;
@@ -188,10 +188,10 @@ internal struct Config
                                 else if (Pos[j] + Pieces[j].Length - 1 >= Pos[i])
                                     return false;
                                 else
-                        // Check for intersection: piece j rowcol is in the rowcol range of piece i, and piece i rowcol is in the range of piece j
-                        if (Pieces[j].RowCol >= Pos[i] && Pieces[j].RowCol <= Pos[i] + Pieces[i].Length - 1)
-                                    if (Pieces[i].RowCol >= Pos[j] && Pieces[i].RowCol <= Pos[j] + Pieces[j].Length - 1)
-                                        return false;
+                                    // Check for intersection: piece j rowcol is in the rowcol range of piece i, and piece i rowcol is in the range of piece j
+                                    if (Pieces[j].RowCol >= Pos[i] && Pieces[j].RowCol <= Pos[i] + Pieces[i].Length - 1)
+                                        if (Pieces[i].RowCol >= Pos[j] && Pieces[i].RowCol <= Pos[j] + Pieces[j].Length - 1)
+                                            return false;
         }
         return true;
     }

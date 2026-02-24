@@ -11,7 +11,7 @@
 using System.Collections.Generic;
 using static System.Console;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

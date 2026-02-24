@@ -16,14 +16,14 @@ using System.Diagnostics;
 
 namespace CS421;
 
-internal class Node<T>
+internal sealed class Node<T>
 {
     public Node<T> LeftNode, RightNode;
     public T Item;
 }
 
 // Simple binary tree, unbalanced...
-internal class BinaryTree<T>: IEnumerable<T>
+internal sealed class BinaryTree<T>: IEnumerable<T>
     where T : IComparable
 {
     private Node<T> m_Root;
@@ -49,14 +49,14 @@ internal class BinaryTree<T>: IEnumerable<T>
             };
         }
         else
-        if ((item as IComparable).CompareTo(Node.Item) >= 0)
-        {
-            AddTree(ref Node.RightNode, item);
-        }
-        else
-        {
-            AddTree(ref Node.LeftNode, item);
-        }
+            if ((item as IComparable).CompareTo(Node.Item) >= 0)
+            {
+                AddTree(ref Node.RightNode, item);
+            }
+            else
+            {
+                AddTree(ref Node.LeftNode, item);
+            }
     }
 
     public IEnumerator<T> GetEnumerator() => EnumerateInOrder(m_Root).GetEnumerator();
@@ -83,7 +83,7 @@ internal class BinaryTree<T>: IEnumerable<T>
     }
 }
 
-internal class Program
+internal sealed class Program
 {
     private static void Main()
     {

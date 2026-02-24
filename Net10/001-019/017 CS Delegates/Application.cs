@@ -19,14 +19,14 @@ internal class MaClasse
     public virtual void F(int i) => WriteLine("MaClasse.F({0})", i);
 }
 
-internal class MaDérivée: MaClasse
+internal sealed class MaDérivée: MaClasse
 {
     public override void F(int i) => WriteLine("MaDérivée.F({0})", i);
 }
 
 internal delegate void MyDelegate(int x);
 
-internal class Test
+internal sealed class Test
 {
     public static void Main()
     {

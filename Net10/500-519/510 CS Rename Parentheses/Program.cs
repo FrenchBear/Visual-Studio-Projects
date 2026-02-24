@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace RenameParen;
 
-internal partial class Program
+internal sealed partial class Program
 {
     private static void Main(string[] args)
     {

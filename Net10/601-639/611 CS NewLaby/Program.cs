@@ -107,7 +107,7 @@ rows: 20, cols: 40
 
 namespace NewLaby;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main()
     {
@@ -217,10 +217,10 @@ public class Laby
                 BuildWall(c + 1, cmax, rmin, rmax, false);
             }
             else
-            if (isDetailedBuild)
-            {
-                WriteLine("No vertical build since cmin==cmax");
-            }
+                if (isDetailedBuild)
+                {
+                    WriteLine("No vertical build since cmin==cmax");
+                }
         }
         else
         {
@@ -243,10 +243,10 @@ public class Laby
                 BuildWall(cmin, cmax, r + 1, rmax, true);
             }
             else
-            if (isDetailedBuild)
-            {
-                WriteLine("No horizontal build since rmin==rmax");
-            }
+                if (isDetailedBuild)
+                {
+                    WriteLine("No horizontal build since rmin==rmax");
+                }
         }
     }
 }

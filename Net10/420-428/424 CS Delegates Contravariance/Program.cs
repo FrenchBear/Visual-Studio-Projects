@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace CS424;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {
@@ -60,7 +60,7 @@ internal class Vehicle: Contraption
     public int VehicleField;
 }
 
-internal class Bicycle: Vehicle
+internal sealed class Bicycle: Vehicle
 {
     public int BicycleField;
 }

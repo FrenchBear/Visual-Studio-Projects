@@ -19,7 +19,7 @@ using System.Diagnostics;
 
 namespace CS525;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

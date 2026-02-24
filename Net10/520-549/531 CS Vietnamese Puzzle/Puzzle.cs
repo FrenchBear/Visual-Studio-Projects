@@ -28,10 +28,11 @@ using System.Diagnostics;
 using static System.Console;
 
 #pragma warning disable CA1859 // Use concrete types when possible for improved performance
+#pragma warning disable CA1852  // Type X can be sealed
 
 namespace CS531;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {
@@ -133,13 +134,13 @@ internal class StackPermutator<T>(List<T> l): IEnumerable<List<T>>
 
     System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() => GetEnumerator();
 
-    private class MyEnumerator: IEnumerator<List<T>>
+    private sealed class MyEnumerator: IEnumerator<List<T>>
     {
         // Stack to store elements not fully permuted
         private readonly Stack<ListLevel<T>> stack;
 
         // One element of the stack, with level items at the head of the list already permuted
-        private class ListLevel<Z>
+        private sealed class ListLevel<Z>
         {
             public List<Z> list;
             public int level;

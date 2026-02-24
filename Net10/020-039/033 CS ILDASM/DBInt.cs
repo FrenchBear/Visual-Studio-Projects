@@ -1,5 +1,6 @@
 using System;
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable IDE0130 // Namespace doesn't match folder structure
 
 namespace MaBibliotheque;

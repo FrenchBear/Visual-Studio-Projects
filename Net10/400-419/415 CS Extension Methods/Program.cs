@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace CS415_Extension_Methods;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

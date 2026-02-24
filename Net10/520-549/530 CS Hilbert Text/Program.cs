@@ -15,7 +15,7 @@ using static System.Console;
 
 namespace CS530;
 
-internal class Program
+internal sealed class Program
 {
     // All possible cells in output, based on blocks characters: horizointal, vertical, down right, ...
     private enum Blocks

@@ -15,6 +15,7 @@ using System;
 using static System.Console;
 
 #pragma warning disable IDE0130 // Namespace doesn't match folder structure
+#pragma warning disable CA1852  // Type X can be sealed
 
 namespace EssaisILDasm;
 

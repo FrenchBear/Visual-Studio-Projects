@@ -24,7 +24,7 @@ using static System.Console;
 
 namespace PDel;
 
-internal class Program
+internal sealed class Program
 {
     private static bool isRecurseMode;          // True when option -s is used, delete files in subfolders too
     private static bool isVerbose; //= false;      // Option -v

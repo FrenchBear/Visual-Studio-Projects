@@ -1,6 +1,7 @@
 using static System.Console;
 
 #pragma warning disable IDE0051 // Remove unused private members
+#pragma warning disable CA1852  // Type X can be sealed
 
 internal class GlobalClass
 {

@@ -16,7 +16,7 @@ using System.Diagnostics;
 
 namespace CS101_IEnumerable_Generic;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

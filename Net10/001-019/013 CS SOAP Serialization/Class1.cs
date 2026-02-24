@@ -15,10 +15,10 @@ using static System.Console;
 
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
 
-internal class TestSer
+internal sealed class TestSer
 {
     [Serializable]
-    private class MaClasse(int i, string s)
+    private sealed class MaClasse(int i, string s)
     {
         private readonly int i = i;
         private readonly string s = s;

@@ -1,4 +1,7 @@
-﻿[*.cs]
+﻿# Référence:
+# https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/code-style-rule-options
+
+[*.cs]
 
 # Default severity for all analyzer diagnostics
 dotnet_analyzer_diagnostic.severity = warning
@@ -10,7 +13,7 @@ dotnet_diagnostic.IDE0210.severity = none
 dotnet_diagnostic.IDE0040.severity = none
 
 # IDE0079: Remove unnecessary suppression
-dotnet_diagnostic.IDE0079.severity = none
+# dotnet_diagnostic.IDE0079.severity = none
 
 # CA1051: Do not declare visible instance fields
 dotnet_diagnostic.CA1051.severity = none
@@ -61,11 +64,42 @@ dotnet_diagnostic.CA5369.severity = none
 dotnet_diagnostic.CA1838.severity = none
 
 # IDE0065: Using directives must be placed outside of a namespace declaration
-dotnet_diagnostic.IDE0065.severity = none
+# dotnet_diagnostic.IDE0065.severity = none
 
 # CA1852: Class can be sealed (temporary)
-dotnet_diagnostic.CA1852.severity = none
+# dotnet_diagnostic.CA1852.severity = none
 
+# IDE0011: Add braces
+csharp_prefer_braces = false
+
+# IDE0306 Simplify collection initialization
+# IDE0028 Simplify collection initialization
+dotnet_diagnostic.IDE0306.severity = none
+dotnet_diagnostic.IDE0028.severity = none
+
+# Code-block preferences
+csharp_style_namespace_declarations = file_scoped:warning
+csharp_style_expression_bodied_methods = true:none
+
+# Expression-bodied members
+csharp_style_expression_bodied_accessors = true
+csharp_style_expression_bodied_constructors = true
+csharp_style_expression_bodied_indexers = true
+csharp_style_expression_bodied_lambdas = true
+csharp_style_expression_bodied_local_functions = true
+csharp_style_expression_bodied_methods = true
+csharp_style_expression_bodied_operators = true
+csharp_style_expression_bodied_properties = true
+
+# IDE0048: Parentheses should be added for clarity
+dotnet_style_parentheses_in_arithmetic_binary_operators = never_if_unnecessary
+
+# dotnet_style_parentheses_in_other_binary_operators = never_if_unnecessary
+# dotnet_style_parentheses_in_other_operators = never_if_unnecessary
+# dotnet_style_parentheses_in_relational_binary_operators = never_if_unnecessary
+
+# Space preferences
+csharp_space_before_colon_in_inheritance_clause = false
 
 [*.vb]
 

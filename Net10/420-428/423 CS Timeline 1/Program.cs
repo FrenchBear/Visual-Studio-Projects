@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace _423_CS_Timeline_1;
 
-internal class Program
+internal sealed class Program
 {
     private const int maxLevel = 10;
 
@@ -52,7 +52,7 @@ internal class Program
     }
 }
 
-internal class SortedQueue<TKey, TValue>: SortedList<TKey, TValue>
+internal sealed class SortedQueue<TKey, TValue>: SortedList<TKey, TValue>
 {
     public KeyValuePair<TKey, TValue> TakeFirst()
     {
@@ -64,7 +64,7 @@ internal class SortedQueue<TKey, TValue>: SortedList<TKey, TValue>
     }
 }
 
-internal class Timeline
+internal sealed class Timeline
 {
     private readonly SortedQueue<double, TimelineEvent> tl = [];
     private double nowTime; //= 0.0;
@@ -103,7 +103,7 @@ internal class TimelineEvent(string name, Action<double, TimelineEvent> action)
     public void ExecuteAction(double nowTime) => _action?.Invoke(nowTime, this);
 }
 
-internal class UserArrivedEvent(int arrivalLevel, int destinationLevel, string name, Action<double, TimelineEvent> action): TimelineEvent(name, action)
+internal sealed class UserArrivedEvent(int arrivalLevel, int destinationLevel, string name, Action<double, TimelineEvent> action): TimelineEvent(name, action)
 {
     private static int numUserSource;
 

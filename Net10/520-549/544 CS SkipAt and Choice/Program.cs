@@ -27,7 +27,7 @@ using static System.Console;
 
 namespace CS544;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {
@@ -55,7 +55,7 @@ public static class Extensions
     /// Internal enumerable class providing the object returned by SkipAt extension
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    private class SkipAtEnumerator<T>(IEnumerable<T> original, int start, int count): IEnumerable<T>
+    private sealed class SkipAtEnumerator<T>(IEnumerable<T> original, int start, int count): IEnumerable<T>
     {
         private readonly IEnumerator<T> originalEnumerator = original.GetEnumerator();
         private readonly int start = start, count = count;
@@ -202,7 +202,7 @@ public static class Extensions
     /// Internal enumerable class providing the object returned by GetRange extension
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    private class GetRangeEnumerator<T>(IEnumerable<T> original, int start, int count): IEnumerable<T>
+    private sealed class GetRangeEnumerator<T>(IEnumerable<T> original, int start, int count): IEnumerable<T>
     {
         private readonly IEnumerator<T> originalEnumerator = original.GetEnumerator();
         private readonly int start = start, count = count;

@@ -12,7 +12,7 @@ using System;
 
 namespace CS542;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

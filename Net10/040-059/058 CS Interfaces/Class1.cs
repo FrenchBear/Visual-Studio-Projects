@@ -17,7 +17,7 @@ using static System.Console;
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 #pragma warning disable CA1859 // Use concrete types when possible for improved performance
 
-internal class MaClasse
+internal sealed class MaClasse
 {
     private static void Main(string[] args)
     {
@@ -105,7 +105,7 @@ internal class Cla1
     public virtual void H() => WriteLine("cla1.H()");
 }
 
-internal class Cla2: Cla1, IInter
+internal sealed class Cla2: Cla1, IInter
 {
     public override void H() => WriteLine("cla2.H()");
 

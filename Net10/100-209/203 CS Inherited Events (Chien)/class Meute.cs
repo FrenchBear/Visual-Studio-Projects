@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 
 namespace CS203;
 
-internal class Meute<T> where T : Animal
+internal sealed class Meute<T> where T : Animal
 {
     private readonly Collection<T> mCol;
 
@@ -33,7 +33,7 @@ internal class Meute<T> where T : Animal
 }
 
 // Custom Event Handler in C#
-internal class Events
+internal sealed class Events
 {
     private event EventHandler PreDrawEvent;
 

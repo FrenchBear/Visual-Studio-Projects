@@ -20,7 +20,7 @@ using static System.Console;
 
 namespace CS519b;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main()
     {

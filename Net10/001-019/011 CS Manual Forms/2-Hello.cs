@@ -11,7 +11,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-internal class Hello2
+internal sealed class Hello2
 {
     public static void Main()
     {

@@ -20,7 +20,7 @@ using static System.Console;
 
 namespace CS601;
 
-internal class Program
+internal sealed class Program
 {
     // throw expressions
     private readonly Point GlobalPoint = new Point(5, 6) ??

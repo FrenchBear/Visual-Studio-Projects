@@ -26,12 +26,12 @@ internal class Animal
     }
 };
 
-internal class Chien(string s): Animal
+internal sealed class Chien(string s): Animal
 {
     public string sRace = s;
 }
 
-internal class AppTest
+internal sealed class AppTest
 {
     private static void Main()
     {

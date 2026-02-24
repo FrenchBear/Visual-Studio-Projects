@@ -21,7 +21,7 @@ using static System.Console;
 
 namespace CS549;
 
-internal class Program
+internal sealed class Program
 {
     private const string file = @"Colorisation de BD - Du traditionnel au numérique (2005) - Cœur de Presse - Baril, Naïts.pdf";
 

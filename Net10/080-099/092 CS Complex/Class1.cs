@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace CS092;
 
-internal class Class1
+internal sealed class Class1
 {
     [STAThread]
     private static void Main(string[] args)

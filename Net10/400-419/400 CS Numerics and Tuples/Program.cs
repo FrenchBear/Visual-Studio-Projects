@@ -16,7 +16,7 @@ using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

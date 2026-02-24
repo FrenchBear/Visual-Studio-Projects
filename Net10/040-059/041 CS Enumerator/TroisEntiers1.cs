@@ -13,6 +13,8 @@
 using System;
 using System.Collections;
 
+#pragma warning disable CA1852  // Type X can be sealed
+
 internal class ThreeIntegers1(int i1, int i2, int i3): IEnumerable
 {
     private readonly int i1 = i1, i2 = i2, i3 = i3;

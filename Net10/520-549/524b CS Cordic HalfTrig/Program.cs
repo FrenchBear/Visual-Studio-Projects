@@ -22,7 +22,7 @@ using static System.Console;
 
 namespace CS524b_CordicHalfTrig;
 
-internal class Program
+internal sealed class Program
 {
     const bool UsePrecalc = true;
 
@@ -174,7 +174,7 @@ internal class Program
     // ---------------------------------------------------------------------
     // New version, with precomputation
 
-    record ASC(double Angle, double Sine, double Cosine);
+    sealed record ASC(double Angle, double Sine, double Cosine);
     const int ASCCount = 25;        // For angles smaller than (π/4)/2^25, we use sin(a)=a and cos(a)=1
     static readonly ASC[] tASC = new ASC[ASCCount];
 

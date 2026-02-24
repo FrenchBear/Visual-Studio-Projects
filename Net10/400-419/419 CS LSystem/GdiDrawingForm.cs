@@ -73,7 +73,7 @@ public partial class GdiDrawingForm: Form
     }
 
     // Implementation of rendered for GDI
-    private class GdiLSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
+    private sealed class GdiLSystemRenderer(IEnumerable<char> s, int angle): LSystemRenderer(s, angle)
     {
         private Graphics _graOut;
 

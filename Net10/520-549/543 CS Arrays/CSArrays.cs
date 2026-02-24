@@ -12,7 +12,7 @@ using static System.Console;
 
 namespace CS543;
 
-internal class CSArrays
+internal sealed class CSArrays
 {
     private static void Main(string[] args)
     {

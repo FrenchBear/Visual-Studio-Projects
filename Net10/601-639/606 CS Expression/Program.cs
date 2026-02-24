@@ -15,7 +15,7 @@ using static System.Console;
 
 namespace CS606;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

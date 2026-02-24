@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace This_Is_A_String;
 
-internal partial class Program
+internal sealed partial class Program
 {
     private static void Main(string[] args)
     {

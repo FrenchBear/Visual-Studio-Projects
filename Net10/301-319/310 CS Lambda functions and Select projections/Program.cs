@@ -12,7 +12,7 @@ using static System.Console;
 
 namespace CS310;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

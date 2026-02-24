@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace CS547;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

@@ -11,7 +11,7 @@ using System.Runtime.CompilerServices;
 
 namespace CS501;
 
-internal class Program
+internal sealed class Program
 {
     private static event EventHandler SomeEvent;
 
@@ -24,12 +24,12 @@ internal class Program
     private static async void Program_SomeEvent(object sender, EventArgs e) => await new Awaitable();
 }
 
-internal class Awaitable
+internal sealed class Awaitable
 {
     public Awaiter GetAwaiter() => new();
 }
 
-internal class Awaiter: INotifyCompletion
+internal sealed class Awaiter: INotifyCompletion
 {
     public bool BeginAwait(Action continuation) => false;
 

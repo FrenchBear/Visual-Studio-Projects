@@ -15,7 +15,7 @@ using static System.Console;
 
 namespace CS634;
 
-internal class Program
+internal sealed class Program
 {
     private static readonly List<Predicate<int>> filters = [];
 

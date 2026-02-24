@@ -6,7 +6,7 @@
 
 namespace CS031;
 
-internal class Class1
+internal sealed class Class1
 {
     public static void Main()
     {

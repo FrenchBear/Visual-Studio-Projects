@@ -13,6 +13,7 @@ using System;
 using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
+#pragma warning disable CA1852  // Type X can be sealed
 
 internal class Complexe
 {

@@ -16,7 +16,7 @@ namespace CS093;
 /// <summary>
 /// Description résumée de Class1.
 /// </summary>
-internal class Class1
+internal sealed class Class1
 {
     /// <summary>
     /// Point d'entrée principal de l'application.

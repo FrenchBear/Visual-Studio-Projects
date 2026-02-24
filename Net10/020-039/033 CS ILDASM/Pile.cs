@@ -1,12 +1,13 @@
 using System;
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable IDE0130 // Namespace doesn't match folder structure
 
 namespace MaBibliotheque;
 
 public class Pile
 {
-    private class Noeud(object o, Noeud s)
+    private sealed class Noeud(object o, Noeud s)
     {
         public object element = o;
         public Noeud suivant = s;

@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 
 namespace CS511a;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {
@@ -23,7 +23,7 @@ internal class Program
     }
 }
 
-internal class Test
+internal sealed class Test
 {
     private readonly string SourceFolder = @"C:\temp\F1";
     private readonly string TargetFolder = @"D:\Temp";
@@ -59,16 +59,16 @@ internal class Test
             }
         else
             if (bi.PixelHeight < LargeSideSize)
-        {
-            // smaller images keep their size
-            newWidth = bi.PixelWidth;
-            newHeight = bi.PixelHeight;
-        }
-        else
-        {
-            newHeight = LargeSideSize;
-            newWidth = (int)(LargeSideSize / (double)bi.PixelHeight * bi.PixelWidth);
-        }
+            {
+                // smaller images keep their size
+                newWidth = bi.PixelWidth;
+                newHeight = bi.PixelHeight;
+            }
+            else
+            {
+                newHeight = LargeSideSize;
+                newWidth = (int)(LargeSideSize / (double)bi.PixelHeight * bi.PixelWidth);
+            }
 
         var bi2 = ResizeBitmap(bi, newWidth, newHeight);
         JpegBitmapEncoder encoder = new()

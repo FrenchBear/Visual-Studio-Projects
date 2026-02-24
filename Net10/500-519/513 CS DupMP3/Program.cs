@@ -17,7 +17,7 @@ using static System.Console;
 
 namespace CS513;
 
-internal class AString
+internal sealed class AString
 {
     public string FullPath = "";     // only for main objects
     public string Name = "";
@@ -38,7 +38,7 @@ internal class AString
     }
 }
 
-internal class Program
+internal sealed class Program
 {
     private const string folder = @"C:\MusicOD\MP3P\Divers\Noël";
     private const int dist = 2;

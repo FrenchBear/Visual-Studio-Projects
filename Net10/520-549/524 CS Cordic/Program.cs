@@ -13,7 +13,7 @@ using static System.Console;
 
 namespace CS524;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

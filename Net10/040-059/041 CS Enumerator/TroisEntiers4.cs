@@ -12,7 +12,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-internal class ThreeIntegers4(int i1, int i2, int i3): IEnumerable<int>
+internal sealed class ThreeIntegers4(int i1, int i2, int i3): IEnumerable<int>
 {
     private readonly int i1 = i1, i2 = i2, i3 = i3;
 

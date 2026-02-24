@@ -16,7 +16,7 @@ using static System.Console;
 
 namespace CS635;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main()
     {
@@ -90,7 +90,7 @@ internal class Entier(int value)
 }
 
 // IComparable, for old code
-internal class Entier1(int value): Entier(value), IComparable
+internal sealed class Entier1(int value): Entier(value), IComparable
 {
     public int CompareTo(object? obj) => obj == null
             ? 1
@@ -98,13 +98,13 @@ internal class Entier1(int value): Entier(value), IComparable
 }
 
 // IComparer<T>, to build objects that implements specific sorting
-internal class EntierComparer: IComparer<Entier>
+internal sealed class EntierComparer: IComparer<Entier>
 {
     public int Compare(Entier? x, Entier? y) => (x == null || y == null) ? 1 : x.Value - y.Value;
 }
 
 // Implements operators >, >=, <, <=
-internal class Entier2(int value): Entier(value)
+internal sealed class Entier2(int value): Entier(value)
 {
     public static bool operator >(Entier2 e1, Entier2 e2) => e1.Value > e2.Value;
 
@@ -121,14 +121,14 @@ internal class Entier2(int value): Entier(value)
 // op_LessThan, and op_LessThanOrEqual operators to return values that are consistent with CompareTo.
 // In addition, you should also implement IEquatable<T>.
 // See the IEquatable<T> article for complete information.
-internal class Entier3(int value): Entier(value), IComparable<Entier3>
+internal sealed class Entier3(int value): Entier(value), IComparable<Entier3>
 {
     public int CompareTo(Entier3? other) => other == null ? 1 : Value - other.Value;
 }
 
 // IComparer<T>, to build objects that implements specific sorting
 // Here Entier3 is sorted using alphabetical sorting
-internal class Entier3Comparer: IComparer<Entier3>
+internal sealed class Entier3Comparer: IComparer<Entier3>
 {
     public int Compare(Entier3? x, Entier3? y) => string.Compare(x?.Value.ToString(), y?.Value.ToString(), StringComparison.Ordinal);
 }

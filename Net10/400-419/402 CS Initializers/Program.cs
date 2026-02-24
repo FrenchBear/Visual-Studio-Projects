@@ -75,7 +75,7 @@ internal static class Module1
     public static void Add(this List<Customer> genericList, int id, string name, OrderCollection orders) => genericList.Add(new Customer(id, name, orders));
 }
 
-internal class Complexe
+internal sealed class Complexe
 {
     public double real;
     public double imaginary;

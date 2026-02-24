@@ -17,7 +17,7 @@ using static System.Console;
 
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
 
-internal class TestCollections
+internal sealed class TestCollections
 {
     public static void PrintKeysAndValues(IDictionary myCollection)
     {
@@ -52,7 +52,7 @@ internal class TestCollections
         PrintKeysAndValues(h);
     }
 
-    private class MyComparer: IEqualityComparer
+    private sealed class MyComparer: IEqualityComparer
     {
         public new bool Equals(object x, object y) => x.Equals(y);
 

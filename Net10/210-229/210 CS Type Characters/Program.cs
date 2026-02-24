@@ -11,7 +11,7 @@
 
 namespace CS210_Type_Characters;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

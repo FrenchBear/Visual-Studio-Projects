@@ -18,7 +18,7 @@ using static System.Console;
 
 namespace CS636;
 
-class Program
+sealed class Program
 {
     static void Main()
     {

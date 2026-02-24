@@ -1,6 +1,7 @@
 using System;
 using static System.Console;
 
+#pragma warning disable IDE0079 // Remove unnecessary suppression
 #pragma warning disable IDE0052 // Remove unread private members
 #pragma warning disable CA1708 // Identifiers should differ by more than case
 #pragma warning disable IDE0051 // Remove unused private members
@@ -10,7 +11,7 @@ namespace MaBibliotheque;
 
 public class MaClasseDerivee: MaClasseDeBase, IMonInterface
 {
-    private class MaSousClasse(int a)
+    private sealed class MaSousClasse(int a)
     {
         public int A { get; set; } = a;
 

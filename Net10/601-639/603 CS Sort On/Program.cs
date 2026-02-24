@@ -15,7 +15,7 @@ using static System.Console;
 
 namespace CS603;
 
-internal class Program
+internal sealed class Program
 {
     private const int maxVal = 50;
     private const int numElements = 1000;

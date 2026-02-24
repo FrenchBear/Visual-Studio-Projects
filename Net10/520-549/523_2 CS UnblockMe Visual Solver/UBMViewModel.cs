@@ -14,6 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
+#pragma warning disable CA1852  // Type X can be sealed
+
 namespace CS523B;
 
 internal class UBMViewModel: INotifyPropertyChanged

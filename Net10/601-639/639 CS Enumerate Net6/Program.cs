@@ -14,7 +14,7 @@ using static System.Console;
 
 namespace CS639;
 
-class Program
+internal sealed class Program
 {
     static void Main() => TextMaxBy();
 

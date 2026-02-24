@@ -16,7 +16,7 @@ using System;
 using System.Diagnostics;
 using static System.Console;
 
-internal class Pentamino
+internal sealed class Pentamino
 {
     private const int LINES = 12;               // Number of lines of the surface to pave
     private const int COLS = 5;                 // Number of columns of the surface to pave

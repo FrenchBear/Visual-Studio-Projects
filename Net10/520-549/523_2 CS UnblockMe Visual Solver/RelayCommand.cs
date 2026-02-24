@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace CS523B;
 
-internal class RelayCommand<T>(Action<T> execute, Predicate<T> canExecute): ICommand
+internal sealed class RelayCommand<T>(Action<T> execute, Predicate<T> canExecute): ICommand
 {
     private readonly Predicate<T> canExecute = canExecute;
     private readonly Action<T> execute = execute;

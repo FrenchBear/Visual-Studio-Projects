@@ -79,7 +79,7 @@ internal readonly struct Complex(double r, double i): IFormattable
     #endregion Membres de IFormattable
 }
 
-internal class TestFormat
+internal sealed class TestFormat
 {
     /// <summary>
     /// Point d'entrée principal de l'application.

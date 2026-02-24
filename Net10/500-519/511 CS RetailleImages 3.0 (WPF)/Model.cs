@@ -158,16 +158,16 @@ public class Model
             }
         else
             if (bi.PixelHeight < LargeSideSize)
-        {
-            // smaller images keep their size
-            newWidth = bi.PixelWidth;
-            newHeight = bi.PixelHeight;
-        }
-        else
-        {
-            newHeight = LargeSideSize;
-            newWidth = (int)(LargeSideSize / (double)bi.PixelHeight * bi.PixelWidth);
-        }
+            {
+                // smaller images keep their size
+                newWidth = bi.PixelWidth;
+                newHeight = bi.PixelHeight;
+            }
+            else
+            {
+                newHeight = LargeSideSize;
+                newWidth = (int)(LargeSideSize / (double)bi.PixelHeight * bi.PixelWidth);
+            }
 
         // WPF resizing and save
         var bi2 = ResizeBitmap(bi, newWidth, newHeight);

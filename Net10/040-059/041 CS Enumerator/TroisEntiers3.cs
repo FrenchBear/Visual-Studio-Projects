@@ -14,7 +14,7 @@
 using System;
 using System.Collections;
 
-internal class ThreeIntegers3(int i1, int i2, int i3): IDictionary
+internal sealed class ThreeIntegers3(int i1, int i2, int i3): IDictionary
 {
     private readonly int i1 = i1, i2 = i2, i3 = i3;
 
@@ -56,7 +56,7 @@ internal class ThreeIntegers3(int i1, int i2, int i3): IDictionary
     bool IDictionary.IsReadOnly => true;
 
     // Trucs internes à la classe (énumérateur)
-    private class MonEnumerateur(ThreeIntegers3 t): IDictionaryEnumerator
+    private sealed class MonEnumerateur(ThreeIntegers3 t): IDictionaryEnumerator
     {
         private int pos = -1;
         private readonly ThreeIntegers3 tcur = t;

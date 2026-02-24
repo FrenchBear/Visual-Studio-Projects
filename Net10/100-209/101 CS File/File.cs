@@ -21,7 +21,7 @@ namespace NSFile;
 /// <summary>
 /// Summary description for Class1.
 /// </summary>
-internal class ClsFile
+internal sealed class ClsFile
 {
     private static bool IsAscii(byte c) => c is >= 1 and < 127;
 

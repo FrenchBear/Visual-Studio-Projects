@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace CS311;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {

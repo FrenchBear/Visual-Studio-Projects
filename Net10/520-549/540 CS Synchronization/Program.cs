@@ -21,7 +21,7 @@ using static System.Threading.Interlocked;
 
 namespace CS540;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main()
     {

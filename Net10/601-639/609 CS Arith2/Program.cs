@@ -20,6 +20,8 @@ using System.Numerics;
 using System.Text;
 using static System.Console;
 
+#pragma warning disable IDE0065 // Misplaced using directive
+
 namespace CS609;
 
 using Int1024d = DA<DA<DA<DA<DA<DA<DA<DA<Int4d>>>>>>>>;
@@ -225,7 +227,7 @@ public class DA<T>: ISimpleArith<DA<T>> where T : ISimpleArith<T>, new()
     public string ToString2(DA<T> b) => IsZero() ? b.ToString() : ToString() + b.ToStringWithLeadingZeros();
 }
 
-internal class Program
+internal sealed class Program
 {
     private static void Test<T>() where T : ISimpleArith<T>, new()
     {

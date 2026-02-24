@@ -25,12 +25,12 @@ public class MonAttribut(int iVal): Attribute
 }
 
 [MonAttribut(1, Info = "Info de MaClasse1")]
-internal class MaClasse1
+internal sealed class MaClasse1
 {
 }
 
 [MonAttribut(7)]
-internal class MaClasse2
+internal sealed class MaClasse2
 {
 }
 
@@ -43,8 +43,6 @@ internal static class MyApp
 
         Zap(o1);
         Zap(o2);
-
-        //Console.ReadLine();
     }
 
     private static void Zap(object o)

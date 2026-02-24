@@ -13,7 +13,7 @@ using static System.Console;
 
 namespace CS511c;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {
@@ -22,7 +22,7 @@ internal class Program
     }
 }
 
-internal class Test
+internal sealed class Test
 {
     private readonly string SourceFolder = @"D:\A_Copier\2013-06 Vacances AK et YT (Extrait) HR";
     private readonly string TargetFolder = @"C:\Temp";
@@ -84,16 +84,16 @@ internal class Test
             }
         else
             if (originalHeight < LargeSideSize)
-        {
-            // smaller images keep their size
-            newWidth = originalWidth;
-            newHeight = originalHeight;
-        }
-        else
-        {
-            newHeight = LargeSideSize;
-            newWidth = (int)(LargeSideSize / (double)originalHeight * originalWidth);
-        }
+            {
+                // smaller images keep their size
+                newWidth = originalWidth;
+                newHeight = originalHeight;
+            }
+            else
+            {
+                newHeight = LargeSideSize;
+                newWidth = (int)(LargeSideSize / (double)originalHeight * originalWidth);
+            }
 
         // GDI
         System.Drawing.Image vignette = new System.Drawing.Bitmap(image, newWidth, newHeight);

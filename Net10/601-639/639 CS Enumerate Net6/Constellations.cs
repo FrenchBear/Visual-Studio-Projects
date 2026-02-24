@@ -11,7 +11,7 @@ using System.Collections.Generic;
 
 namespace CS639;
 
-internal record ConstellationInfo
+internal sealed record ConstellationInfo
 {
     public string Abbreviation { get; init; }
     public string Constellation { get; init; }

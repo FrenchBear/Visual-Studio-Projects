@@ -9,7 +9,7 @@ using static System.Console;
 
 namespace CS422;
 
-internal class Program
+internal sealed class Program
 {
     private static void Main(string[] args)
     {
@@ -29,7 +29,7 @@ internal class Program
     }
 }
 
-internal class SomeClass
+internal sealed class SomeClass
 {
     private readonly int offset = 2;
 

@@ -12,7 +12,7 @@ using System.Globalization;
 
 namespace CS419;
 
-internal class SourceSystem
+internal sealed class SourceSystem
 {
     public string Name { get; set; }
     public int Angle { get; set; }
@@ -23,7 +23,7 @@ internal class SourceSystem
     public override string ToString() => Name;
 }
 
-internal class SourceSystemComparer: IComparer<SourceSystem>
+internal sealed class SourceSystemComparer: IComparer<SourceSystem>
 {
     public int Compare(SourceSystem x, SourceSystem y) => string.Compare(x.Name, y.Name, true, CultureInfo.InvariantCulture);
 }
