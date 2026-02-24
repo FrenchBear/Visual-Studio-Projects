@@ -10,6 +10,6 @@
 		<Copyright>Copyright ©2008-2026 Pierre Violent</Copyright>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="System.Data.Odbc" Version="10.0.2" />
+		<PackageReference Include="System.Data.Odbc" Version="10.0.3" />
 	</ItemGroup>
 </Project>

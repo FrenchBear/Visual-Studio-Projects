@@ -85,7 +85,9 @@ Public Class ArithmeticStuffTest
             actual = Gcd(a, b)
             Assert.Fail("gcd was expected to thow an exception and did not")
         Catch ex As Exception
+#Disable Warning MSTEST0058 ' Do not use asserts in catch blocks
             Assert.IsTrue(TypeOf ex Is ArgumentException)
+#Enable Warning MSTEST0058 ' Do not use asserts in catch blocks
         End Try
     End Sub
 
